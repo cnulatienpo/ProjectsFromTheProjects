@@ -1,0 +1,25 @@
+name: Size Guard
+on:
+  pull_request:
+  push:
+    branches: [ "main" ]
+jobs:
+  size-guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - name: Fail if any file > 10 MB
+        run: |
+          MAX=$((10*1024*1024))
+          bad=$(git ls-files | while read f; do [ -f "$f" ] && sz=$(wc -c < "$f"); [ "$sz" -gt "$MAX" ] && echo "$f"; done)
+          if [ -n "$bad" ]; then
+            echo "Files exceeding 10 MB:"
+            echo "$bad"
+            exit 1
+          fi
+      - name: Warn if repo size > 150 MB
+        run: |
+          sz=$(git count-objects -vH | awk '/size-pack/ {print $2$3}')
+          echo "Approx packed size: $sz"
+

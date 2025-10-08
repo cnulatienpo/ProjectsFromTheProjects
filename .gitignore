@@ -1,0 +1,135 @@
+# ---------- UNIVERSAL RULE ----------
+# If it's generated, cached, large, or secret → do NOT commit it.
+
+# OS / Editor junk
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+*.swp
+*.swo
+*.tmp
+*.bak
+*.orig
+*.log
+*.pid
+*.seed
+*.toc
+*.lock
+*.lockfile
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+
+# Environment / secrets (keep examples)
+.env
+.env.*.local
+*.env.local
+*.secret
+*.key
+!.env.example
+
+# Node / JS (if used later)
+node_modules/
+.pnpm-store/
+.npm/
+.yarn/
+.yarn-cache/
+.yarnrc.yml
+coverage/
+reports/
+dist/
+build/
+out/
+.storybook-out/
+storybook-static/
+.playwright/
+playwright-report/
+.cypress/
+cypress/videos/
+cypress/screenshots/
+.nyc_output/
+.eslintcache
+.stylelintcache
+.turbo/
+.next/
+.vite/
+.cache/
+
+# Python (if used later)
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+build/
+dist/
+*.egg-info/
+
+# Java / JVM (if used later)
+.gradle/
+.gradle-cache/
+build/
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# Go (if used later)
+bin/
+pkg/
+*.test
+
+# Rust (if used later)
+target/
+Cargo.lock
+
+# Ruby (if used later)
+.bundle/
+vendor/bundle
+coverage/
+
+# PHP (if used later)
+vendor/
+
+# Swift / iOS (if used later)
+DerivedData/
+*.xcworkspace/
+*.xcuserdatad/
+*.xccheckout
+
+# Images / art sources (big intermediates)
+*.psd
+*.ai
+*.sketch
+*.xcf
+*.blend
+
+# Archives & binaries
+*.zip
+*.7z
+*.gz
+*.tgz
+*.bz2
+*.xz
+*.dmg
+*.iso
+*.exe
+*.dll
+*.so
+
+# Generated static exports (keep sources, ignore builds)
+site/
+public-build/
+export/
+
+# Keep empty dirs with .gitkeep
+
