@@ -1,0 +1,12 @@
+{
+  "name": "projects-from-the-projects",
+  "private": true,
+  "scripts": {
+    "test:ids": "node scripts/check-testids.js",
+    "test:ui": "playwright test -c playwright.config.ts",
+    "pretest": "npm run test:ids || true"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.48.0"
+  }
+}

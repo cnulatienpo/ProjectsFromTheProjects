@@ -1,0 +1,13 @@
+name: Bug report
+description: Something broke or behaves weird
+labels: [bug]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Steps, what you expected, what you saw
+      placeholder: 1) Go to..., 2) Click..., 3) Error...
+  - type: input
+    id: env
+    attributes: { label: Environment, placeholder: OS, Node, browser }
