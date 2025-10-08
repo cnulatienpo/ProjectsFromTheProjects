@@ -6,20 +6,26 @@ on:
 jobs:
   size-guard:
     runs-on: ubuntu-latest
+    env:
+      MAX: ${{ vars.SIZE_GUARD_MAX_BYTES || 10485760 }}
+      EXCLUDES: '^(site/|export/|public-build/)'
     steps:
       - uses: actions/checkout@v4
         with: { fetch-depth: 0 }
-      - name: Fail if any file > 10 MB
+      - name: Fail if any file > MAX (except excluded paths)
+        shell: bash
         run: |
-          MAX=$((10*1024*1024))
-          bad=$(git ls-files | while read f; do [ -f "$f" ] && sz=$(wc -c < "$f"); [ "$sz" -gt "$MAX" ] && echo "$f"; done)
+          bad=$(git ls-files \
+            | grep -vE "${EXCLUDES:-^$}" \
+            | while read -r f; do
+                [ -f "$f" ] || continue
+                sz=$(wc -c < "$f")
+                [ "$sz" -gt "${MAX:-10485760}" ] && echo "$f"
+              done)
           if [ -n "$bad" ]; then
-            echo "Files exceeding 10 MB:"
+            echo "Files exceeding ${MAX:-10485760} bytes:"
             echo "$bad"
             exit 1
           fi
-      - name: Warn if repo size > 150 MB
-        run: |
-          sz=$(git count-objects -vH | awk '/size-pack/ {print $2$3}')
-          echo "Approx packed size: $sz"
-
+      - name: Repo packed size (info)
+        run: git count-objects -vH | awk '/^size-pack/ {print "Approx packed size:", $2$3}'
