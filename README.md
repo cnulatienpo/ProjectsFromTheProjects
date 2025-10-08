@@ -1,18 +1,20 @@
 # Projects From The Projects
+First milestone: **Literary Deviousness** — fiction writing games.
 
-First commit: hygiene + guardrails only.
+## What’s in this repo
+- Hygiene: `.gitignore`, `.gitattributes`, `.editorconfig`
+- Governance: `LICENSE`, `CODEOWNERS`
+- GitHub UX: issue + PR templates
+- Docs: `docs/REPO_HYGIENE.md`, `docs/LFS.md`, `docs/DECISIONS.md`
 
-## What’s here
-- `.gitignore` to keep junk and bloat out
-- `.gitattributes` for sane line endings and binary handling
-- `.editorconfig` for consistent formatting
-- `docs/REPO_HYGIENE.md` space policy + do/don’t
-- `docs/LFS.md` when/why to use Git LFS
-- `scripts/` cleaners and size checks
-- `.github/workflows/size-guard.yml` blocks huge files
+## Local setup
+- Node (if needed later): see `.nvmrc`
+- Line endings: LF enforced via `.gitattributes` / `.editorconfig`
 
-## First steps
-1) Keep sources small and text-first.
-2) If you need large media, read `docs/LFS.md`.
-3) Run `scripts/size-check.[sh|ps1]` locally before big commits.
+## Contributing (solo-friendly)
+- Open an issue (Bug/Feature) from templates
+- PRs require passing “Size Guard” (no >10MB files)
 
+## Roadmap (short)
+- /site shell → add game
+- integrate writer-type themes
