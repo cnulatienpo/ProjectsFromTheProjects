@@ -18,3 +18,7 @@ First milestone: **Literary Deviousness** — fiction writing games.
 ## Roadmap (short)
 - /site shell → add game
 - integrate writer-type themes
+
+## Dev tips
+- Make shell scripts executable: `chmod +x scripts/*.sh`
+- If on Windows, use the `.ps1` versions.
