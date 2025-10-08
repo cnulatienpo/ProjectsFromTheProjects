@@ -28,3 +28,16 @@
 *.yml  linguist-language=YAML
 *.yaml linguist-language=YAML
 
+
+# Lockfiles: prefer current branch during merges
+package-lock.json merge=ours
+yarn.lock         merge=ours
+pnpm-lock.yaml    merge=ours
+
+# Tool state / snapshots (keep ours)
+.playwright/**    merge=ours
+playwright-report/** merge=ours
+coverage/**       merge=ours
+
+# Markdown/docs: combine hunks when possible
+*.md merge=union

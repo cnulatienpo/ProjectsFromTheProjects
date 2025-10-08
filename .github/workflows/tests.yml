@@ -1,0 +1,17 @@
+name: Tests
+on: [push, pull_request]
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '22' }
+      - run: npm i --no-audit --no-fund || true
+      - name: Check duplicate data-testid
+        run: npm run -s test:ids
+      - name: Playwright
+        if: ${{ success() }}
+        run: |
+          npx playwright install --with-deps
+          npm run -s test:ui

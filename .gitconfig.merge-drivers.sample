@@ -1,0 +1,6 @@
+[merge "ours"]
+    name = keep our version (ignore incoming changes)
+    driver = true
+[merge "union"]
+    name = union lines for text files
+    driver = union
