@@ -1,0 +1,30 @@
+# Normalize line endings everywhere
+* text=auto eol=lf
+
+# Common binary types (avoid diffs)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.avif binary
+*.svg binary
+*.mp3 binary
+*.wav binary
+*.flac binary
+*.mp4 binary
+*.mov binary
+*.woff binary
+*.woff2 binary
+*.pdf binary
+*.zip binary
+*.7z binary
+*.psd binary
+*.ai  binary
+
+# Better diffs for texty formats
+*.md   diff=markdown
+*.json linguist-language=JSON
+*.yml  linguist-language=YAML
+*.yaml linguist-language=YAML
+
