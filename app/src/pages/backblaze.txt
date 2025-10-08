@@ -1,0 +1,39 @@
+keyID: 53905d406376
+keyName: Master Application Key
+bucketName: -
+capabilities:
+  - bypassGovernance
+  - listKeys
+  - writeKeys
+  - deleteKeys
+  - listAllBucketNames
+  - listBuckets
+  - readBuckets
+  - writeBuckets
+  - deleteBuckets
+  - readBucketEncryption
+  - readBucketReplications
+  - readBucketRetentions
+  - writeBucketEncryption
+  - writeBucketReplications
+  - writeBucketRetentions
+  - readBucketLogging
+  - writeBucketLogging
+  - listFiles
+  - readFiles
+  - shareFiles
+  - writeFiles
+  - deleteFiles
+  - readFileRetentions
+  - readFileLegalHolds
+  - writeFileRetentions
+  - writeFileLegalHolds
+expiration: Never
+Bucket ID: d5a3c990455dc42096930716
+Type: Private
+File Lifecycle: Keep all versions
+Snapshots: 0
+Current Files: 0
+Current Size: 0 bytes
+Endpoint: s3.us-east-005.backblazeb2.com
+Encryption: Disabled
