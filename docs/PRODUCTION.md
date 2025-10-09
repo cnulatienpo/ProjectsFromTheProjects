@@ -23,7 +23,7 @@ This app ships the **frontend** on **GitHub Pages** (free) and runs a tiny **Exp
 
 1. **Vite base path**
    - In `app/vite.config.js`, set:
-     ```js
+     ```text
      const REPO = process.env.GHPAGES_REPO || 'your-repo-name'
      export default defineConfig({ base: process.env.GHPAGES_BASE || `/${REPO}/`, /* … */ })
      ```
@@ -133,7 +133,7 @@ Make sure any production API calls use VITE_PROD_API:
 
 In app/src/lib/apiBase.js:
 
-```js
+```text
 const isProd = /github\.io$/.test(location.hostname)
 const PROD_API = import.meta.env.VITE_PROD_API || ''
 export const api = (p='') => `${isProd ? PROD_API : ''}${p}`

@@ -19,7 +19,6 @@
   "author": "Your Name",
   "license": "MIT",
   "dependencies": {
-    // Add your project dependencies here
   },
   "devDependencies": {
     "typescript": "^4.0.0"

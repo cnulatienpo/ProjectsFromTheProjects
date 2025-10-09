@@ -5,13 +5,12 @@
 
 ## Shape
 
-```ts
-export default {
-  closers: { low: string[], mid: string[], high: string[] },
-  tags: { [tag: string]: string[] },
-  praise: string[],
-  generic: string[]
-}
-```
+
+Shape summary:
+
+- `closers`: buckets `low`, `mid`, `high` (arrays of strings).
+- `tags`: record keyed by tag → array of strings.
+- `praise`: fallback praise strings.
+- `generic`: neutral fallbacks.
 
 Tags correspond to what `/api/judge` returns in `tags[]`.
