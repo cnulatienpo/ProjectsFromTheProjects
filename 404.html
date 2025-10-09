@@ -1,0 +1,9 @@
+<!doctype html>
+<meta charset="utf-8">
+<script>
+    const repo = '/ProjectsFromTheProjects/';  // <-- exact repo name, case-sensitive
+    const loc = location;
+    const newUrl = repo + 'index.html' + (loc.search ? loc.search + '&' : '?') +
+        'p=' + encodeURIComponent(loc.pathname) + loc.hash;
+    location.replace(newUrl);
+</script>
