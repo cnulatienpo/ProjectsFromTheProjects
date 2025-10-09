@@ -1,12 +1,11 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import LessonUI from '../components/LessonUI.jsx'
-import { saveDraftToCloud, loadLastDraftFromCloud } from '../lib/drafts.js'
+import { Store } from '@/domain/store.ts'
 
 export default function Grammar101() {
     const nav = useNavigate()
     const [fb, setFb] = useState('')
-    const [setDraftFn, setSetDraftFn] = useState(null)
 
     return (
         <LessonUI
@@ -21,39 +20,34 @@ export default function Grammar101() {
                 </>
             }
             feedback={fb}
-            registerSetDraft={fn => setSetDraftFn(() => fn)}
             onSubmit={(draft) => {
                 const words = draft.trim().split(/\s+/).filter(Boolean).length
-                const lines = draft.split(/\n/).length
+                // simple score: 0..1
+                const score = Math.max(0, Math.min(1, (words - 10) / 50))
+                // record attempt (no DB — just schema-validated object)
+                Store.addAttempt({
+                    attempt_id: crypto.randomUUID(),
+                    item_id: 'grammar-101:sentence-basics',
+                    user_id: 'local',
+                    response: draft,
+                    score,
+                    created_at: Date.now()
+                })
+                // add XP toward a “grammar” skill lane
+                const mastery = Store.addXp({ skill: 'grammar', amount: Math.round(score * 25), last_item_id: 'grammar-101:sentence-basics' })
+
+                // feedback
                 if (!draft.trim()) {
-                    setFb("Write something in the big black box, even if it’s ugly. I’ll react after you give me raw clay.")
+                    setFb("Write something in the big black box. Give me raw clay to shape.")
                 } else if (words < 25) {
-                    setFb("Good start. Now give me 2 more versions of the same idea: one with a single modifier, one with a connector (and/but/so). Keep the subject–verb spine obvious.")
-                } else if (lines < 3) {
-                    setFb("I see words but not the three versions. Break them into 3 short lines/paragraphs so we can compare the spine.")
+                    setFb("Good start. Try 2 more versions—one with a modifier, one with a connector (and/but/so). Keep the subject–verb spine obvious.")
                 } else {
-                    setFb("Nice. Spine is visible. Next time: try swapping in a stronger verb for version #2, not just piling on adjectives.")
+                    setFb(`Nice. Spine is visible. XP: ${mastery.xp} (Level ${mastery.level})`)
                 }
-                localStorage.setItem('ld:grammar101:lastSubmit', String(Date.now()))
             }}
             onSkip={() => nav('/game/start')}
             onNext={() => nav('/game/lesson/devices-101')}
             onRetry={() => setFb('')}
-            onSaveCloud={async (draft) => {
-                const key = await saveDraftToCloud({ lessonId: 'grammar-101', text: draft })
-                setFb(`Saved to cloud as: ${key}`)
-            }}
-            onLoadCloud={async () => {
-                try {
-                    const txt = await loadLastDraftFromCloud({ lessonId: 'grammar-101' })
-                    setDraftFn && setDraftFn(txt)
-                    setFb('Loaded last cloud draft.')
-                    return txt
-                } catch (e) {
-                    setFb('No cloud draft found yet.')
-                    return ''
-                }
-            }}
         />
     )
 }

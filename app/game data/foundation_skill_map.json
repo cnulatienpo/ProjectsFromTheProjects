@@ -1,0 +1,42 @@
+{
+  "character": [
+    "dev.throughline",
+    "dev.braid"
+  ],
+  "desire": [
+    "dev.throughline",
+    "dev.stakes"
+  ],
+  "stakes": [
+    "dev.stakes"
+  ],
+  "change": [
+    "dev.scene_change",
+    "dev.tension"
+  ],
+  "conflict": [
+    "dev.tension"
+  ],
+  "dialogue": [
+    "line.punct",
+    "copy.dialogue"
+  ],
+  "pacing": [
+    "line.rhythm"
+  ],
+  "scene": [
+    "dev.scene_change",
+    "line.cohesion"
+  ],
+  "symbol": [
+    "dev.shapes"
+  ],
+  "mood": [
+    "line.diction",
+    "line.rhythm"
+  ],
+  "grammar": [
+    "copy.boundaries",
+    "copy.commas"
+  ]
+}

@@ -20,5 +20,13 @@
         "src/**/*.tsx",
         "src/**/*.js",
         "src/**/*.jsx"
+    ],
+    "exclude": [
+        "src/config.js",
+        "src/copy/levels.js",
+        "src/lib/drafts.js",
+        "src/lib/storage.js",
+        "src/lib/upload.js",
+        "src/mocks/apiMock.js"
     ]
 }

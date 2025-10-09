@@ -1,0 +1,51 @@
+{
+    "version": 1,
+    "about": "Game catalog for Projects From The Projects. Contains metadata and definitions for each game.",
+    "schema": {
+        "id": "string",
+        "title": "string",
+        "description": "string",
+        "tags": [
+            "string"
+        ],
+        "levels": [
+            "string"
+        ],
+        "author": "string",
+        "created_at": "string"
+    },
+    "games": {
+        "grammar101": {
+            "id": "grammar101",
+            "title": "Grammar 101",
+            "description": "Learn the basics of sentence structure and grammar.",
+            "tags": [
+                "grammar",
+                "writing",
+                "basics"
+            ],
+            "levels": [
+                "beginner",
+                "intermediate"
+            ],
+            "author": "Ray Ray",
+            "created_at": "2025-10-08"
+        },
+        "devices101": {
+            "id": "devices101",
+            "title": "Literary Devices 101",
+            "description": "Explore metaphors, similes, and other literary devices.",
+            "tags": [
+                "devices",
+                "literature",
+                "style"
+            ],
+            "levels": [
+                "beginner",
+                "intermediate"
+            ],
+            "author": "Ray Ray",
+            "created_at": "2025-10-08"
+        }
+    }
+}

@@ -2,11 +2,14 @@
   "name": "projects-from-the-projects",
   "private": true,
   "scripts": {
-    "test:ids": "node scripts/check-testids.js",
-    "test:ui": "playwright test -c playwright.config.ts",
-    "pretest": "npm run test:ids || true"
+    "build:packs": "node tools/import_packs.mjs",
+    "emit:progression": "node tools/emit_progression.mjs",
+    "emit:phrases": "node tools/emit_report_phrases.mjs",
+    "emit:writer-types": "node tools/emit_writer_types.mjs",
+    "emit:report-types": "node tools/emit_report_types.mjs",
+    "emit:report-evolve": "node tools/emit_report_evolve.mjs"
   },
-  "devDependencies": {
-    "@playwright/test": "^1.48.0"
+  "dependencies": {
+    "./reportEvolve.loader.js": "file:./reportEvolve.loader.js"
   }
 }

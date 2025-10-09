@@ -132,4 +132,16 @@ public-build/
 export/
 
 # Keep empty dirs with .gitkeep
+server/.env
+tools/import.log
+game thingss/build/
+backups/
+*.sqlite
+*.sqlite.gz
+game thingss/levels.json
+game thingss/badges.json
+game thingss/influences.json
+game thingss/reportPhrases.json
+game thingss/writer_types.json
+game thingss/reportTypes.json
 
