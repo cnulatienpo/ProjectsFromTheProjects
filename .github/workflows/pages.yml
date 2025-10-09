@@ -22,24 +22,19 @@ jobs:
         working-directory: app
     steps:
       - uses: actions/checkout@v4
-
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: 'npm'
           cache-dependency-path: app/package-lock.json
-
       - name: Install deps
         run: npm ci --no-audit --no-fund
-
       - name: Build (Vite)
         env:
-          # Set your repo name so Vite base is correct
           GHPAGES_REPO: projects-from-the-projects
           GHPAGES_BASE: /projects-from-the-projects/
         run: npm run build
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
