@@ -1,0 +1,93 @@
+.notes-wrap {
+  display: block;
+  position: relative;
+  /* slight stick-out */
+  transform: translateX(4px);
+}
+
+.notes-card {
+  background: #fff8c7; /* pale yellow */
+  border: 2px solid #000;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.notes-tabs {
+  display: flex;
+  gap: 6px;
+  padding: 8px;
+  background: #000;
+}
+.notes-tabs button {
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 10px;
+  padding: 6px 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.notes-tabs button.on {
+  background: #ffef86;
+}
+
+.notes-body {
+  padding: 10px;
+  height: 100%;
+}
+
+.ruled-sheet {
+  height: 100%;
+  border: 2px solid #000;
+  border-radius: 10px;
+  overflow: hidden;
+  /* ruled lines via repeating gradient */
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent calc(1.5em - 1px),
+      #9fd0ff calc(1.5em - 1px),
+      #9fd0ff 1.5em
+    ),
+    #fff8c7;
+}
+.ruled-input {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  line-height: 1.5em; /* matches the rule spacing */
+  padding: 10px 12px;
+  font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  resize: none;
+  outline: none;
+  color: #111;
+}
+
+.ray-box {
+  border: 2px solid #000;
+  border-radius: 10px;
+  background: #fffef3;
+  padding: 10px 12px;
+}
+.ray-list { margin: 0; padding-left: 1.1rem; line-height: 1.5em; }
+.ray-empty { opacity: 0.7; }
+
+.notes-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+.btn {
+  border: 2px solid #000;
+  background: #fff;
+  border-radius: 10px;
+  padding: 6px 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn:hover { background: #ffef86; }
