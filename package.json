@@ -2,14 +2,17 @@
   "name": "projects-from-the-projects",
   "private": true,
   "scripts": {
-    "build:packs": "node tools/import_packs.mjs",
-    "emit:progression": "node tools/emit_progression.mjs",
-    "emit:phrases": "node tools/emit_report_phrases.mjs",
-    "emit:writer-types": "node tools/emit_writer_types.mjs",
-    "emit:report-types": "node tools/emit_report_types.mjs",
-    "emit:report-evolve": "node tools/emit_report_evolve.mjs"
+    "build": "vite build",
+    "preview": "vite preview",
+    "links:check": "node check-links.mjs",
+    "deploy:check": "node ensure-out.mjs"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.9"
   },
   "dependencies": {
-    "./reportEvolve.loader.js": "file:./reportEvolve.loader.js"
+    "express": "^5.1.0"
   }
 }
