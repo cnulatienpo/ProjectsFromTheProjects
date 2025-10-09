@@ -22,18 +22,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: dist
           force_orphan: true
-
-# GitHub Pages + API Deployment Guide
-
-1. Set repo secret:
-   - Go to Settings → Secrets → Actions → New repository secret
-   - Name: VITE_PROD_API
-   - Value: <your-api-host>
-
-2. If deploying under project pages, set vite.config.ts base to '/<repo>/' and keep 404.html repo variable in sync.
-
-3. After first push to main, enable GitHub Pages → Deploy from gh-pages branch (if not automatic).
-
-4. Final URLs:
-   - Site: https://<user>.github.io/<repo>/
-   - API:  <your-api-host>/health  (should return JSON)
