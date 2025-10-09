@@ -22,3 +22,18 @@ First milestone: **Literary Deviousness** — fiction writing games.
 ## Dev tips
 - Make shell scripts executable: `chmod +x scripts/*.sh`
 - If on Windows, use the `.ps1` versions.
+
+---
+## GitHub Pages Deployment
+
+After first push to main:
+- Go to **Settings → Pages** and set Source to “Deploy from a branch”, branch to “gh-pages” (if not auto-detected).
+
+Visit:
+- Site: https://<user>.github.io/<repo>/
+
+Local check before push:
+```sh
+npm run build && npx vite preview --open
+```
+---

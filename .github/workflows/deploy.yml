@@ -1,0 +1,39 @@
+name: Deploy Vite to GitHub Pages
+on:
+  push:
+    branches: [ main ]
+permissions:
+  contents: write
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm run build
+      - name: Add SPA fallback
+        run: cp 404.html dist/404.html
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: dist
+          force_orphan: true
+
+# GitHub Pages + API Deployment Guide
+
+1. Set repo secret:
+   - Go to Settings → Secrets → Actions → New repository secret
+   - Name: VITE_PROD_API
+   - Value: <your-api-host>
+
+2. If deploying under project pages, set vite.config.ts base to '/<repo>/' and keep 404.html repo variable in sync.
+
+3. After first push to main, enable GitHub Pages → Deploy from gh-pages branch (if not automatic).
+
+4. Final URLs:
+   - Site: https://<user>.github.io/<repo>/
+   - API:  <your-api-host>/health  (should return JSON)

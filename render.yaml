@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: ld-api
+    env: node
+    rootDir: api-service
+    buildCommand: npm i
+    startCommand: npm start
+    autoDeploy: true
+    plan: free
+    envVars:
+      - key: CORS_ORIGIN
+        value: "*"       
