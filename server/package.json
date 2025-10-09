@@ -1,0 +1,22 @@
+{
+    "name": "pfp-server",
+    "version": "0.2.0",
+    "private": true,
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+        "dev": "node server/index.js",
+        "start": "NODE_ENV=production node server/index.js",
+        "test": "vitest run",
+        "test:watch": "vitest"
+    },
+    "dependencies": {
+        "express": "^4.21.1",
+        "cors": "^2.8.5",
+        "dotenv": "^16.4.5"
+    },
+    "devDependencies": {
+        "vitest": "^2.0.0",
+        "@types/node": "^20.11.0"
+    }
+}
