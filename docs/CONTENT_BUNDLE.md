@@ -2,41 +2,11 @@
 
 The bundle is a single JSON file containing all game items and lessons.
 
-```json
-{
-  "version": 1,
-  "generated_at": "ISO8601 timestamp",
-  "items": [
-    {
-      "id": "",
-      "title": "",
-      "input_type": "",
-      "prompt_html": "",
-      "skill": null,
-      "unit": null,
-      "choices": [],
-      "correct_index": 0,
-      "min_words": null,
-      "tags": [],
-      "next": null
-    }
-    // ...more items
-  ],
-  "lessons": [
-    {
-      "lesson_id": "",
-      "ord": 0,
-      "title": "",
-      "body": "",
-      "skills": []
-    }
-    // ...more lessons
-  ],
-  "skills_map": {
-    // passthrough from foundation_skill_map.json if present
-  }
-}
-```
+- `version`: number.
+- `generated_at`: ISO 8601 timestamp string.
+- `items[]`: each item has `id`, `title`, `input_type`, `prompt_html`, optional `skill`/`unit`, optional choices/validation fields, tags, and optional `next` pointer.
+- `lessons[]`: each lesson has `lesson_id`, `ord`, `title`, `body`, and related `skills` array.
+- `skills_map`: optional passthrough from `foundation_skill_map.json`.
 
 ## How to check it
 

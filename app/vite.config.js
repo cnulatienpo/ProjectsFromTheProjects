@@ -1,12 +1,12 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import simpleReactPlugin from './plugins/simpleReactPlugin'
 import path from 'path'
 
 // EDIT THIS: your repo name exactly (e.g. "projects-from-the-projects")
 const REPO = process.env.GHPAGES_REPO || 'projects-from-the-projects'
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [simpleReactPlugin()],
   resolve: { alias: { '@': path.resolve(__dirname, 'src') } },
   base: process.env.GHPAGES_BASE || `/${REPO}/`,
   server: {
