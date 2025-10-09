@@ -1,0 +1,153 @@
+import React, { useState } from "react";
+
+// App Router: export metadata
+// If using Pages Router, replace with <Head> below.
+export const metadata = { title: "Play — Literary Deviousness" };
+
+const BADGE = {
+  emoji: "🕵️‍♂️",
+  title: "Literary Detective — Bronze",
+};
+
+const STYLE_REPORT = (
+  <section
+    aria-live="polite"
+    aria-label="Detailed Style Report from Professor Ray Ray"
+    className="bg-gray-50 rounded-lg p-6 mt-6 shadow"
+  >
+    <h2 className="text-xl font-bold mb-2">Style Report: Professor Ray Ray "Two Draft Minimum" From the Block, PhD</h2>
+    <h3 className="font-semibold mt-4 mb-1">Voice & Choices</h3>
+    <p className="mb-3">
+      Your submission demonstrates a clear attempt at personal voice, with several moments where your phrasing breaks from formulaic patterns. The opening sentence, in particular, shows a willingness to experiment with rhythm and pacing. Typed input was detected, with minimal pasting—suggesting authentic drafting and revision. You made deliberate choices in sentence structure, alternating between short, punchy lines and longer, more reflective passages. This balance helps maintain reader engagement and signals a developing sense of narrative control.
+    </p>
+    <h3 className="font-semibold mt-4 mb-1">Literary Devices</h3>
+    <p className="mb-3">
+      Device usage is evident: metaphors appear in your description of the protagonist’s journey (“a shadow stretching across the block”), and reversal is used effectively in the third paragraph to subvert expectations. Foreshadowing is present, though subtle, hinting at future conflict without giving away too much. These choices show an understanding of how to layer meaning and create anticipation.
+    </p>
+    <h3 className="font-semibold mt-4 mb-1">Strengths</h3>
+    <p className="mb-3">
+      Your strengths include varied sentence length, a willingness to play with structure, and a clear sense of character motivation. The narrative voice is consistent, and your use of concrete detail grounds the story in a believable setting. You avoid excessive adverbs, relying instead on strong verbs and specific nouns to convey action and emotion.
+    </p>
+    <h3 className="font-semibold mt-4 mb-1">Next Draft Focus</h3>
+    <p>
+      For your next draft, focus on deepening the emotional stakes. Consider how each scene advances the protagonist’s internal conflict, and look for opportunities to heighten tension through dialogue and pacing. Experiment with more vivid metaphors and explore moments of ambiguity to keep readers guessing. Review your transitions between paragraphs to ensure smooth flow, and challenge yourself to cut any sentence that doesn’t serve the story’s core arc. With these adjustments, your work will move closer to professional polish.
+    </p>
+  </section>
+);
+
+function BadgeDisplay() {
+  return (
+    <div className="flex items-center gap-3 mt-4 mb-2" role="status" aria-label="Badge earned">
+      <span className="text-3xl">{BADGE.emoji}</span>
+      <span className="font-semibold">{BADGE.title}</span>
+    </div>
+  );
+}
+
+export default function GamePage() {
+  const [state, setState] = useState<"write" | "complete" | "report">("write");
+  const [text, setText] = useState("");
+  const [score, setScore] = useState<number | null>(null);
+
+  // TODO: Use API_BASE for backend calls if needed
+  // const API_BASE = process.env.NEXT_PUBLIC_PROD_API || process.env.VITE_PROD_API || "";
+
+  function handleFinish() {
+    // Fake score: 0-100 based on length
+    const s = Math.min(100, Math.floor(text.trim().length / 2));
+    setScore(s);
+    setState("complete");
+  }
+
+  function handleSeeReport() {
+    setState("report");
+  }
+
+  function handleBack() {
+    window.location.href = "/games";
+  }
+
+  return (
+    <main
+      id="main-content"
+      data-testid="game-root"
+      className="max-w-xl mx-auto mt-10 p-6 bg-white rounded shadow"
+      role="main"
+      aria-label="Game main content"
+    >
+      <h1 className="sr-only">
+        {state === "write"
+          ? "Writing challenge"
+          : state === "complete"
+          ? "Level complete summary"
+          : "Style report from Professor Ray Ray"}
+      </h1>
+
+      {state === "write" && (
+        <form
+          aria-label="Writing challenge"
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleFinish();
+          }}
+        >
+          <label htmlFor="editor" className="block font-medium mb-2">
+            Write your passage below:
+          </label>
+          <textarea
+            id="editor"
+            name="editor"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            rows={8}
+            className="w-full border rounded p-3 mb-4"
+            aria-label="Writing editor"
+            required
+          />
+          <button
+            type="submit"
+            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            aria-label="Finish Level"
+          >
+            Finish Level
+          </button>
+        </form>
+      )}
+
+      {state === "complete" && (
+        <section aria-label="Level Complete Summary" className="mt-4">
+          <div className="mb-4">
+            <div className="text-lg font-bold mb-2">Level Complete!</div>
+            <div className="mb-2">
+              <span className="font-medium">Score:</span> {score ?? 0}
+            </div>
+            <div className="mb-2">
+              <span className="font-medium">Level:</span> 1
+            </div>
+            <BadgeDisplay />
+          </div>
+          <button
+            className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+            aria-label="See Style Report"
+            onClick={handleSeeReport}
+          >
+            See Style Report
+          </button>
+        </section>
+      )}
+
+      {state === "report" && (
+        <section aria-label="Style Report" aria-live="polite" className="mt-4">
+          {STYLE_REPORT}
+          <button
+            className="bg-gray-700 text-white px-4 py-2 rounded mt-6 hover:bg-gray-800"
+            aria-label="Back to Dashboard"
+            onClick={handleBack}
+          >
+            Back to Dashboard
+          </button>
+        </section>
+      )}
+    </main>
+  );
+}
