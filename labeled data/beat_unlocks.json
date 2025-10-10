@@ -1,0 +1,126 @@
+{
+  "created": "2025-10-10T18:27:33.665101Z",
+  "total_items": 405,
+  "introductions": {
+    "setup": {
+      "new_id": 89,
+      "original_id": "189",
+      "title": "Action 🔨"
+    },
+    "payoff": {
+      "new_id": 92,
+      "original_id": "192",
+      "title": "Reveal 👁️"
+    },
+    "emotion": {
+      "new_id": 8,
+      "original_id": "108",
+      "title": "Character Description"
+    },
+    "power": {
+      "new_id": 386,
+      "original_id": "521",
+      "title": "Designing for Indulgence"
+    },
+    "shift": {
+      "new_id": 16,
+      "original_id": "116",
+      "title": "Subject"
+    },
+    "intimacy": {
+      "new_id": 111,
+      "original_id": "211",
+      "title": "Pronoun"
+    },
+    "dialogue": {
+      "new_id": 9,
+      "original_id": "109",
+      "title": "DESIRE"
+    },
+    "interaction": {
+      "new_id": 127,
+      "original_id": "227",
+      "title": "back to action"
+    },
+    "agreement": {
+      "new_id": 300,
+      "original_id": "425",
+      "title": "Interrogative Sentences"
+    },
+    "disagreement": {
+      "new_id": 259,
+      "original_id": "384",
+      "title": "Back to interjections"
+    },
+    "test": {
+      "new_id": 18,
+      "original_id": "118",
+      "title": "Noun"
+    },
+    "reversal": {
+      "new_id": 94,
+      "original_id": "194",
+      "title": "🟣 EMOTION / PSYCHOLOGY (Purple)"
+    },
+    "atmosphere": {
+      "new_id": 39,
+      "original_id": "139",
+      "title": "Adjective"
+    },
+    "discovery": {
+      "new_id": 265,
+      "original_id": "390",
+      "title": "Exposition Without the Dump"
+    },
+    "loss": {
+      "new_id": 21,
+      "original_id": "121",
+      "title": "back to stakes:"
+    },
+    "arrival": {
+      "new_id": 12,
+      "original_id": "112",
+      "title": "STAKES"
+    },
+    "transition": {
+      "new_id": 218,
+      "original_id": "319",
+      "title": "Colon"
+    },
+    "turning point": {
+      "new_id": 112,
+      "original_id": "212",
+      "title": "Level Three (High Strength)"
+    },
+    "mirror": {
+      "new_id": 36,
+      "original_id": "136",
+      "title": "How to Spot Character Flaw in the Wild:"
+    },
+    "bridge": {
+      "new_id": 72,
+      "original_id": "172",
+      "title": "Period"
+    },
+    "suspense": {
+      "new_id": 34,
+      "original_id": "134",
+      "title": "Back to subject:"
+    },
+    "release": {
+      "new_id": 96,
+      "original_id": "196",
+      "title": "🟠 WORLD / ENVIRONMENT (Orange)"
+    },
+    "transformation": {
+      "new_id": 11,
+      "original_id": "111",
+      "title": "CHANGE"
+    },
+    "sacrifice": {
+      "new_id": 17,
+      "original_id": "117",
+      "title": "Back to Desire:"
+    }
+  }
+}
