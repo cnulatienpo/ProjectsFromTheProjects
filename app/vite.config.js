@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 
-const REPO = process.env.GHPAGES_REPO || 'projects-from-the-projects'
+const REPO = process.env.GHPAGES_REPO || 'ProjectsFromTheProjects'
 
 export default defineConfig({
   plugins: [react()],

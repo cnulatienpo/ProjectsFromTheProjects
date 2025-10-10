@@ -1,0 +1,17 @@
+## Deploying to GitHub Pages
+
+1. Build locally:
+   npm run build
+
+2. Preview:
+   npx vite preview --open
+
+3. Push to main; CI will deploy to Pages.
+
+4. Visit: https://<user>.github.io/ProjectsFromTheProjects/
+
+**Notes:**
+- Routing uses HashRouter (`#/path`).
+- All pages in `pages/` and `src/pages/` auto-discovered.
+- If you add new pages, rebuild and redeploy.
+- For backend calls, use static shim or set `VITE_API_BASE_URL`.
