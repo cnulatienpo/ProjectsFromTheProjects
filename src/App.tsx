@@ -3,6 +3,7 @@ import { Header } from './components/Header';
 import Home from './pages/Home';
 import Deck from './pages/Deck';
 import Play from './pages/Play';
+import CutGamesDebug from './dev/CutGamesDebug';
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/pack/:id" element={<Deck />} />
             <Route path="/play/:id" element={<Play />} />
+            <Route path="/dev/cut-games" element={<CutGamesDebug />} />
             <Route path="*" element={<Home />} />
           </Routes>
         </div>
