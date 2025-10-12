@@ -1,6 +1,7 @@
+import React from "react";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import GameRoot from "./pages/GameRoot"; // adjust path if needed
+import GameRoot from "./pages/GameRoot";
 
 export default function App() {
     return (
@@ -9,21 +10,11 @@ export default function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/game" element={<GameRoot />} />
+                    <Route path="/play" element={<div style={{ padding: 24 }}>Play Page</div>} />
+                    <Route path="/cutgames" element={<div style={{ padding: 24 }}>Cut Games Page</div>} />
                     <Route path="*" element={<Home />} />
                 </Routes>
             </HashRouter>
-        </div>
-    );
-}
-
-Next:add className = "bg-brand-soft min-h-screen" to your top - level wrapper <div>.
-
-
-export function Home() {
-    return (
-        <div style={{ padding: 32 }}>
-            <h1>Welcome to Literary Deviousness</h1>
-            <a href="#/game" style={{ fontSize: 20, color: "#06c" }}>Play the Game</a>
         </div>
     );
 }

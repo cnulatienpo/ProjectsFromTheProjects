@@ -1,6 +1,15 @@
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
 
+// These CSS files are located in src/styles/
+// This file is src/pages/GameRoot.tsx
+// Fix the import paths so they correctly point to:
+//   - src/styles/brutalist.css
+//   - src/styles/theme/theme.css
+// Use proper relative paths
+import "../styles/brutalist.css";
+import "../styles/theme/theme.css";
+
 export default function GameRoot(): JSX.Element {
     return (
         <div className="brutalist-root" style={{ padding: '1rem' }}>
@@ -15,22 +24,3 @@ export default function GameRoot(): JSX.Element {
 // Optional named export in case App.tsx uses it
 export { GameRoot };
 
-import { createRoot } from "react-dom/client";
-import App from "./App";
-
-// Optional: hybrid API boot (ignore if file missing)
-try { const mod = await import("./lib/api-boot"); await mod.bootApi?.(); } catch { }
-
-import "./brutalist.css";
-import "./theme.css";
-
-console.info("[vite] UI booting…");
-const root = document.getElementById("root");
-if (!root) {
-    const div = document.createElement("div");
-    div.id = "root";
-    document.body.appendChild(div);
-    createRoot(div).render(<App />);
-} else {
-    createRoot(root).render(<App />);
-}
