@@ -1,0 +1,24 @@
+{
+  "modes": [
+    {
+      "name": "Name",
+      "desc": "Identify beats by name"
+    },
+    {
+      "name": "Fix",
+      "desc": "Repair bad writing"
+    },
+    {
+      "name": "Order",
+      "desc": "Rearrange beats in sequence"
+    },
+    {
+      "name": "Highlight",
+      "desc": "Mark beats in context"
+    },
+    {
+      "name": "Why",
+      "desc": "Explain the purpose of each beat"
+    }
+  ]
+}
