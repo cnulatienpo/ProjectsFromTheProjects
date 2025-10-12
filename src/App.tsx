@@ -9,7 +9,7 @@ import CutGamesPlay from './pages/CutGamesPlay';
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/ProjectsFromTheProjects">
       <div className="min-h-screen bg-brand-soft text-brand">
         <Header />
         <div className="pb-16">
