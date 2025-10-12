@@ -62,7 +62,7 @@ router.get("/cut-games/tweetrunk", async (_req, res) => {
 });
 
 router.post("/cut-games/telemetry", async (req, res) => {
-    const playerId = derivePlayerId(req.get("X-Player-Id"));
+    const playerId = derivePlayerId(req.playerId);
     const body = (req.body ?? {}) as Record<string, unknown>;
     const event = typeof body.event === "string" ? body.event.toLowerCase() : "";
     const modeRaw = typeof body.mode === "string" ? body.mode.toLowerCase() : "";
@@ -103,7 +103,7 @@ router.get("/cut-games/practice", async (req, res) => {
         return;
     }
 
-    const playerId = derivePlayerId(req.get("X-Player-Id"));
+    const playerId = derivePlayerId(req.playerId);
     let player: PlayerEntry | null = null;
     let counter = 0;
 
