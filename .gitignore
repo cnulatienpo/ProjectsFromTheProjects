@@ -85,6 +85,7 @@ target/
 
 # Go (if used later)
 bin/
+!tools/ts-node/bin/
 pkg/
 *.test
 

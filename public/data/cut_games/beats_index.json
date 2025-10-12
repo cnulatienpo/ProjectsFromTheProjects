@@ -1,0 +1,310 @@
+[
+  {
+    "beat": "action",
+    "total": 328,
+    "from_tweetrunk": 328,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "agreement",
+    "total": 5,
+    "from_tweetrunk": 5,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "alienation",
+    "total": 9,
+    "from_tweetrunk": 9,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "arrival",
+    "total": 7,
+    "from_tweetrunk": 7,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "atmosphere",
+    "total": 31,
+    "from_tweetrunk": 31,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "bridge",
+    "total": 39,
+    "from_tweetrunk": 39,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "climax",
+    "total": 17,
+    "from_tweetrunk": 17,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "conflict",
+    "total": 136,
+    "from_tweetrunk": 136,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "counterpoint",
+    "total": 4,
+    "from_tweetrunk": 4,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "decision",
+    "total": 74,
+    "from_tweetrunk": 74,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "departure",
+    "total": 5,
+    "from_tweetrunk": 5,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "desire",
+    "total": 56,
+    "from_tweetrunk": 56,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "dialogue",
+    "total": 125,
+    "from_tweetrunk": 125,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "disagreement",
+    "total": 7,
+    "from_tweetrunk": 7,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "discovery",
+    "total": 15,
+    "from_tweetrunk": 15,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "emotion",
+    "total": 121,
+    "from_tweetrunk": 121,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "exposition",
+    "total": 24,
+    "from_tweetrunk": 24,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "foreshadow",
+    "total": 10,
+    "from_tweetrunk": 10,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "inciting",
+    "total": 2,
+    "from_tweetrunk": 2,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "interaction",
+    "total": 33,
+    "from_tweetrunk": 33,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "intimacy",
+    "total": 35,
+    "from_tweetrunk": 35,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "loss",
+    "total": 56,
+    "from_tweetrunk": 56,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "mirror",
+    "total": 58,
+    "from_tweetrunk": 58,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "nonverbal",
+    "total": 3,
+    "from_tweetrunk": 3,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "obstacle",
+    "total": 30,
+    "from_tweetrunk": 30,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "payoff",
+    "total": 36,
+    "from_tweetrunk": 36,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "power",
+    "total": 121,
+    "from_tweetrunk": 121,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "realization",
+    "total": 11,
+    "from_tweetrunk": 11,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "release",
+    "total": 17,
+    "from_tweetrunk": 17,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "resolution",
+    "total": 25,
+    "from_tweetrunk": 25,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "reveal",
+    "total": 153,
+    "from_tweetrunk": 153,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "reversal",
+    "total": 18,
+    "from_tweetrunk": 18,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "sacrifice",
+    "total": 49,
+    "from_tweetrunk": 49,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "setup",
+    "total": 33,
+    "from_tweetrunk": 33,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "shift",
+    "total": 138,
+    "from_tweetrunk": 138,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "suppression",
+    "total": 5,
+    "from_tweetrunk": 5,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "suspense",
+    "total": 58,
+    "from_tweetrunk": 58,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "test",
+    "total": 43,
+    "from_tweetrunk": 43,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "test of belief",
+    "total": 2,
+    "from_tweetrunk": 2,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "thematic statement",
+    "total": 2,
+    "from_tweetrunk": 2,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "transformation",
+    "total": 46,
+    "from_tweetrunk": 46,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "transition",
+    "total": 24,
+    "from_tweetrunk": 24,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "turning point",
+    "total": 29,
+    "from_tweetrunk": 29,
+    "from_good": 0,
+    "from_bad": 0
+  },
+  {
+    "beat": "vulnerability",
+    "total": 38,
+    "from_tweetrunk": 38,
+    "from_good": 0,
+    "from_bad": 0
+  }
+]
