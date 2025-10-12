@@ -1,20 +1,24 @@
-import React from "react";
-import { createRoot } from "react-dom/client";
-import { App } from "./App";
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App';
 
-// Optional: hybrid API boot (ignore if file missing)
-try {
-    const mod = await import("./lib/api-boot");
-    await mod.bootApi?.();
-} catch { }
+// Global styles (keep brutalist last so it wins)
+import './index.css';
+import './styles/brutalist.css';
+import './styles/brutalist-overrides.css';
 
-console.info("[vite] UI booting…");
-const root = document.getElementById("root");
-if (!root) {
-    const div = document.createElement("div");
-    div.id = "root";
-    document.body.appendChild(div);
-    createRoot(div).render(<App />);
-} else {
-    createRoot(root).render(<App />);
-}
+// Force theme classes early
+document.documentElement.classList.add('brutalist');
+document.body.classList.add('brutalist');
+
+// Create or find #root, then render
+const rootEl =
+    document.getElementById('root') ??
+    (() => {
+        const d = document.createElement('div');
+        d.id = 'root';
+        document.body.appendChild(d);
+        return d;
+    })();
+
+createRoot(rootEl).render(<App />);
