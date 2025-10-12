@@ -32,7 +32,16 @@ Icon?
 !.env.example
 
 # Node / JS (if used later)
-node_modules/
+**/node_modules/
+!/node_modules/
+/node_modules/*
+# Allow vendored runtime shims for offline execution
+!/node_modules/cookie-parser/
+/node_modules/cookie-parser/*
+!/node_modules/cookie-parser/index.js
+!/node_modules/uuid/
+/node_modules/uuid/*
+!/node_modules/uuid/index.js
 .pnpm-store/
 .npm/
 .yarn/

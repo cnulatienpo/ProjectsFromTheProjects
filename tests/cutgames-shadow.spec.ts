@@ -113,4 +113,48 @@ test.describe.serial("Cut Games shadow stack", () => {
             expect(hasInfoDump).toBe(true);
         }
     });
+
+    test("GET /cut-games/practice issues and reuses silent cookie", async ({ request }) => {
+        const first = await request.get(`${baseURL}/cut-games/practice?mode=bad`);
+        expect(first.ok()).toBeTruthy();
+        const firstBody = await first.json();
+        expect(Array.isArray(firstBody)).toBe(true);
+
+        const setCookieHeader = first.headersArray().find(({ name }) => name.toLowerCase() === "set-cookie");
+        expect(setCookieHeader?.value ?? "").toContain("pftpid=");
+        const cookieValue = (setCookieHeader?.value ?? "").split(/;\s*/)[0];
+        expect(cookieValue).toMatch(/^pftpid=[^;]+$/);
+
+        const second = await request.get(`${baseURL}/cut-games/practice?mode=bad`, {
+            headers: {
+                Cookie: cookieValue,
+            },
+        });
+        expect(second.ok()).toBeTruthy();
+        const secondBody = await second.json();
+        expect(Array.isArray(secondBody)).toBe(true);
+
+        const secondSetCookie = second.headersArray().filter(({ name }) => name.toLowerCase() === "set-cookie");
+        expect(secondSetCookie.length).toBe(0);
+
+        for (const payload of [firstBody, secondBody]) {
+            if (!Array.isArray(payload)) continue;
+            for (const row of payload) {
+                expect(row).toBeTruthy();
+                if (row && typeof row === "object") {
+                    expect("playerId" in row).toBe(false);
+                    expect("pftpid" in row).toBe(false);
+                }
+            }
+        }
+
+        const storeRaw = await fsp.readFile(shadowFile, "utf8");
+        const storeData = JSON.parse(storeRaw) as {
+            players?: Record<string, { counter?: number }>;
+        };
+        const playerEntries = Object.entries(storeData.players ?? {});
+        expect(playerEntries.length).toBe(1);
+        const [[, entry]] = playerEntries;
+        expect(entry?.counter).toBe(2);
+    });
 });

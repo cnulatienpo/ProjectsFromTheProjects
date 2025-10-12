@@ -1,7 +1,18 @@
 declare module "express" {
     import type { Server } from "http";
 
-    export type Request = any;
+    export interface Request {
+        playerId?: string;
+        cookies?: Record<string, string>;
+        signedCookies?: Record<string, string>;
+        body?: any;
+        query?: any;
+        params?: any;
+        headers?: Record<string, unknown>;
+        header?(name: string): string | undefined;
+        get?(name: string): string | undefined;
+        [key: string]: any;
+    }
     export type Response = any;
     export type NextFunction = (...args: any[]) => any;
     export type RequestHandler = (req: Request, res: Response, next?: NextFunction) => any;
