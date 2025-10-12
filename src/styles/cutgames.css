@@ -1,0 +1,18 @@
+:root { --card: rgba(20,20,24,0.7); --accent: #7df9ff; }
+.cut-shell { @apply min-h-screen bg-neutral-950 text-neutral-100; background-image:
+ radial-gradient(ellipse at 20% 10%, rgba(125,249,255,0.12), transparent 40%),
+ radial-gradient(ellipse at 80% 30%, rgba(255,138,76,0.08), transparent 45%); }
+.cut-container { @apply max-w-5xl mx-auto px-4 py-8; }
+.card { background: var(--card); @apply rounded-2xl p-5 border border-neutral-800 shadow-lg; backdrop-filter: blur(6px); }
+.card h2 { @apply text-xl font-semibold; }
+.btn { @apply inline-flex items-center justify-center rounded-xl px-4 py-2 border border-neutral-700 hover:border-neutral-500 transition; }
+.btn-primary { @apply bg-neutral-100 text-neutral-900 hover:bg-white; }
+.btn-ghost { @apply hover:bg-neutral-800/40; }
+.chip { @apply inline-flex items-center gap-1 rounded-full px-3 py-1 border border-neutral-700 text-sm; }
+.chip.is-on { border-color: var(--accent); color: var(--accent); }
+.kbd { @apply px-2 py-1 border border-neutral-700 rounded-md text-xs; }
+.scene { @apply whitespace-pre-wrap leading-7 selection:bg-neutral-700/60; }
+.progress-track { @apply h-2 w-full bg-neutral-800 rounded-full overflow-hidden; }
+.progress-bar { @apply h-2 bg-neutral-200 transition-all; }
+.pulse { animation: pulse 1.4s infinite; }
+@keyframes pulse { 0%{opacity:.5} 50%{opacity:1} 100%{opacity:.5} }
