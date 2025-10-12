@@ -1,0 +1,2873 @@
+[
+  {
+    "word": "kabbalah",
+    "from": {
+      "language": "Hebrew via Medieval Lat.",
+      "root": "qabbālāh",
+      "gloss": "receiving, tradition"
+    },
+    "literal": "Jewish mystical tradition"
+  },
+  {
+    "word": "kabuki",
+    "from": {
+      "language": "Japanese",
+      "root": "kabuki",
+      "gloss": "song-dance-skill"
+    },
+    "literal": "classical Japanese theater"
+  },
+  {
+    "word": "kachina",
+    "from": {
+      "language": "Hopi via Spanish",
+      "root": "kachina",
+      "gloss": "spirit being"
+    },
+    "literal": "masked spirit figure or doll"
+  },
+  {
+    "word": "kaftan",
+    "from": {
+      "language": "Turkish via Russian",
+      "root": "kaftan",
+      "gloss": "long coat"
+    },
+    "literal": "long belted robe"
+  },
+  {
+    "word": "kaiser",
+    "from": {
+      "language": "German",
+      "root": "Kaiser",
+      "gloss": "emperor"
+    },
+    "literal": "German/Austrian emperor"
+  },
+  {
+    "word": "kakistocracy",
+    "from": {
+      "language": "Greek",
+      "root": "kakistos + kratos",
+      "gloss": "worst + rule"
+    },
+    "literal": "government by the worst people"
+  },
+  {
+    "word": "kalends",
+    "from": {
+      "language": "Latin",
+      "root": "kalendae",
+      "gloss": "first day of month"
+    },
+    "literal": "first day of the Roman month"
+  },
+  {
+    "word": "kaleidoscope",
+    "from": {
+      "language": "Greek",
+      "root": "kalos + eidos + skopein",
+      "gloss": "beautiful + form + to look"
+    },
+    "literal": "instrument producing shifting patterns"
+  },
+  {
+    "word": "kallipygean",
+    "from": {
+      "language": "Greek",
+      "root": "kallos + pygē",
+      "gloss": "beauty + buttocks"
+    },
+    "literal": "having beautifully shaped buttocks (humorous)"
+  },
+  {
+    "word": "kamikaze",
+    "from": {
+      "language": "Japanese",
+      "root": "kamikaze",
+      "gloss": "divine wind"
+    },
+    "literal": "suicidal attack; reckless act"
+  },
+  {
+    "word": "kampong",
+    "from": {
+      "language": "Malay",
+      "root": "kampung",
+      "gloss": "village"
+    },
+    "literal": "Malay village; compound"
+  },
+  {
+    "word": "kanjur",
+    "from": {
+      "language": "Tibetan via Mongolian",
+      "root": "bka'-'gyur",
+      "gloss": "translation of the word"
+    },
+    "literal": "Tibetan Buddhist canon"
+  },
+  {
+    "word": "kaon",
+    "from": {
+      "language": "Greek letter-based",
+      "root": "kappa",
+      "gloss": "particle name"
+    },
+    "literal": "unstable subatomic particle"
+  },
+  {
+    "word": "kaftanic",
+    "from": {
+      "language": "Turkish via Russian",
+      "root": "kaftan",
+      "gloss": "long coat"
+    },
+    "literal": "relating to kaftans"
+  },
+  {
+    "word": "karst",
+    "from": {
+      "language": "German (from Slovene)",
+      "root": "Kras",
+      "gloss": "stony ground"
+    },
+    "literal": "limestone landscape with sinkholes"
+  },
+  {
+    "word": "karyogamy",
+    "from": {
+      "language": "Greek",
+      "root": "karyon + gamos",
+      "gloss": "nut (nucleus) + marriage"
+    },
+    "literal": "fusion of cell nuclei"
+  },
+  {
+    "word": "karyotype",
+    "from": {
+      "language": "Greek",
+      "root": "karyon + typos",
+      "gloss": "nucleus + model"
+    },
+    "literal": "chromosome set of an organism"
+  },
+  {
+    "word": "katharsis",
+    "from": {
+      "language": "Greek",
+      "root": "katharsis",
+      "gloss": "purging"
+    },
+    "literal": "emotional release; cleansing"
+  },
+  {
+    "word": "kathenotheism",
+    "from": {
+      "language": "Greek",
+      "root": "kath’ hena + theos",
+      "gloss": "one by one + god"
+    },
+    "literal": "worship of one god at a time"
+  },
+  {
+    "word": "katzenjammer",
+    "from": {
+      "language": "German",
+      "root": "Katzen + Jammer",
+      "gloss": "cats + wailing"
+    },
+    "literal": "hangover; uproar"
+  },
+  {
+    "word": "kauri",
+    "from": {
+      "language": "Maori",
+      "root": "kauri",
+      "gloss": "tree name"
+    },
+    "literal": "giant New Zealand conifer"
+  },
+  {
+    "word": "kavya",
+    "from": {
+      "language": "Sanskrit",
+      "root": "kāvya",
+      "gloss": "poem"
+    },
+    "literal": "classical Sanskrit poetry"
+  },
+  {
+    "word": "keelhaul",
+    "from": {
+      "language": "Dutch via Eng.",
+      "root": "kielhalen",
+      "gloss": "to haul under the keel"
+    },
+    "literal": "punish by dragging under a ship"
+  },
+  {
+    "word": "keening",
+    "from": {
+      "language": "Irish/Scots",
+      "root": "caoineadh",
+      "gloss": "lamentation"
+    },
+    "literal": "wailing lament for the dead"
+  },
+  {
+    "word": "keloid",
+    "from": {
+      "language": "Greek",
+      "root": "khēlē + -oid",
+      "gloss": "crab’s claw + like"
+    },
+    "literal": "raised overgrown scar"
+  },
+  {
+    "word": "kelson",
+    "from": {
+      "language": "Dutch",
+      "root": "kelson",
+      "gloss": "keelson"
+    },
+    "literal": "timber along a ship’s keel"
+  },
+  {
+    "word": "kelpie",
+    "from": {
+      "language": "Scots Gaelic",
+      "root": "cailpeach?",
+      "gloss": "water-horse"
+    },
+    "literal": "shape-shifting water spirit"
+  },
+  {
+    "word": "kermes",
+    "from": {
+      "language": "Arabic via Fr.",
+      "root": "qirmiz",
+      "gloss": "red dye insect"
+    },
+    "literal": "scale insect; scarlet dye"
+  },
+  {
+    "word": "kermis",
+    "from": {
+      "language": "Dutch",
+      "root": "kerk + mis",
+      "gloss": "church + mass"
+    },
+    "literal": "village fair"
+  },
+  {
+    "word": "kerygma",
+    "from": {
+      "language": "Greek",
+      "root": "kērygma",
+      "gloss": "proclamation"
+    },
+    "literal": "preaching of the gospel"
+  },
+  {
+    "word": "kestrel",
+    "from": {
+      "language": "Old French",
+      "root": "crecelle",
+      "gloss": "rattle (sound)"
+    },
+    "literal": "small falcon"
+  },
+  {
+    "word": "ketubah",
+    "from": {
+      "language": "Hebrew",
+      "root": "ketubbāh",
+      "gloss": "writing"
+    },
+    "literal": "Jewish marriage contract"
+  },
+  {
+    "word": "ketoacidosis",
+    "from": {
+      "language": "Greek + Latin",
+      "root": "keton + acidus",
+      "gloss": "ketone + sour"
+    },
+    "literal": "dangerous diabetic state"
+  },
+  {
+    "word": "ketoid",
+    "from": {
+      "language": "Greek",
+      "root": "keton + -oid",
+      "gloss": "ketone + like"
+    },
+    "literal": "resembling a ketone (chem.)"
+  },
+  {
+    "word": "khedive",
+    "from": {
+      "language": "Turkish via Fr.",
+      "root": "khidīw",
+      "gloss": "viceroy"
+    },
+    "literal": "Ottoman viceroy of Egypt"
+  },
+  {
+    "word": "kibbutz",
+    "from": {
+      "language": "Hebrew",
+      "root": "qibbūṣ",
+      "gloss": "gathering"
+    },
+    "literal": "collective community in Israel"
+  },
+  {
+    "word": "kibitz",
+    "from": {
+      "language": "Yiddish",
+      "root": "kibetsn",
+      "gloss": "to offer unwanted advice"
+    },
+    "literal": "chatter; give unsolicited advice"
+  },
+  {
+    "word": "kickshaw",
+    "from": {
+      "language": "French via Eng.",
+      "root": "quelque chose",
+      "gloss": "something"
+    },
+    "literal": "trivial delicacy; trinket"
+  },
+  {
+    "word": "kidnap",
+    "from": {
+      "language": "Eng. (kid + nap)",
+      "root": "kid + nap",
+      "gloss": "child + seize"
+    },
+    "literal": "abduct a person"
+  },
+  {
+    "word": "kieselguhr",
+    "from": {
+      "language": "German",
+      "root": "Kiesel + guhr",
+      "gloss": "pebble + earthy deposit"
+    },
+    "literal": "diatomaceous earth"
+  },
+  {
+    "word": "kilderkin",
+    "from": {
+      "language": "Dutch",
+      "root": "kindeken",
+      "gloss": "little cask"
+    },
+    "literal": "small barrel (half a barrel)"
+  },
+  {
+    "word": "kilim",
+    "from": {
+      "language": "Turkish",
+      "root": "kilim",
+      "gloss": "flatwoven carpet"
+    },
+    "literal": "pileless woven rug"
+  },
+  {
+    "word": "kinesics",
+    "from": {
+      "language": "Greek",
+      "root": "kinesis",
+      "gloss": "movement"
+    },
+    "literal": "study of body motion in communication"
+  },
+  {
+    "word": "kinetic",
+    "from": {
+      "language": "Greek",
+      "root": "kinein",
+      "gloss": "to move"
+    },
+    "literal": "relating to motion"
+  },
+  {
+    "word": "kinesiology",
+    "from": {
+      "language": "Greek",
+      "root": "kinesis + logos",
+      "gloss": "movement + study"
+    },
+    "literal": "study of human movement"
+  },
+  {
+    "word": "kingcup",
+    "from": {
+      "language": "Eng.",
+      "root": "king + cup",
+      "gloss": "royal + flower"
+    },
+    "literal": "marsh marigold"
+  },
+  {
+    "word": "kinnikinnick",
+    "from": {
+      "language": "Algonquian",
+      "root": "kinnikinic",
+      "gloss": "mixture"
+    },
+    "literal": "smoking mixture of herbs/bark"
+  },
+  {
+    "word": "kiosk",
+    "from": {
+      "language": "Turkish via Fr.",
+      "root": "köşk",
+      "gloss": "pavilion"
+    },
+    "literal": "small booth or pavilion"
+  },
+  {
+    "word": "kipper",
+    "from": {
+      "language": "Old Norse",
+      "root": "kippa",
+      "gloss": "to pull, snatch"
+    },
+    "literal": "salted smoked herring"
+  },
+  {
+    "word": "kirigami",
+    "from": {
+      "language": "Japanese",
+      "root": "kiru + kami",
+      "gloss": "to cut + paper"
+    },
+    "literal": "paper-cutting art"
+  },
+  {
+    "word": "kirsch",
+    "from": {
+      "language": "German",
+      "root": "Kirsche",
+      "gloss": "cherry"
+    },
+    "literal": "cherry brandy"
+  },
+  {
+    "word": "kirtle",
+    "from": {
+      "language": "Old Eng.",
+      "root": "cyrtel",
+      "gloss": "tunic"
+    },
+    "literal": "woman’s gown or man’s tunic (hist.)"
+  },
+  {
+    "word": "kishke",
+    "from": {
+      "language": "Yiddish",
+      "root": "kishke",
+      "gloss": "gut"
+    },
+    "literal": "stuffed intestine dish"
+  },
+  {
+    "word": "kismat",
+    "from": {
+      "language": "Turkish/Urdu",
+      "root": "qismat",
+      "gloss": "portion, fate"
+    },
+    "literal": "fate; destiny"
+  },
+  {
+    "word": "kismet",
+    "from": {
+      "language": "Turkish/Arabic",
+      "root": "qisma",
+      "gloss": "portion"
+    },
+    "literal": "fate; destiny"
+  },
+  {
+    "word": "kist",
+    "from": {
+      "language": "Scots",
+      "root": "kist",
+      "gloss": "chest"
+    },
+    "literal": "large chest or coffer"
+  },
+  {
+    "word": "kitbag",
+    "from": {
+      "language": "Eng.",
+      "root": "kit + bag",
+      "gloss": "gear + sack"
+    },
+    "literal": "soldier’s duffel"
+  },
+  {
+    "word": "kitchen midden",
+    "from": {
+      "language": "Danish/Eng.",
+      "root": "køkkenmødding",
+      "gloss": "kitchen refuse"
+    },
+    "literal": "prehistoric trash heap"
+  },
+  {
+    "word": "kitschy",
+    "from": {
+      "language": "German",
+      "root": "Kitsch",
+      "gloss": "gaudy art"
+    },
+    "literal": "gaudily sentimental"
+  },
+  {
+    "word": "klaxon",
+    "from": {
+      "language": "Trademark via Fr.",
+      "root": "klaxon",
+      "gloss": "brand name"
+    },
+    "literal": "loud electric horn"
+  },
+  {
+    "word": "kleptocracy",
+    "from": {
+      "language": "Greek",
+      "root": "kleptein + kratos",
+      "gloss": "to steal + rule"
+    },
+    "literal": "government by thieves"
+  },
+  {
+    "word": "kleptomaniac",
+    "from": {
+      "language": "Greek",
+      "root": "kleptein + mania",
+      "gloss": "to steal + madness"
+    },
+    "literal": "compulsive thief"
+  },
+  {
+    "word": "klezmer",
+    "from": {
+      "language": "Yiddish",
+      "root": "kley + zemer",
+      "gloss": "instrument + song"
+    },
+    "literal": "traditional Ashkenazi musician"
+  },
+  {
+    "word": "kline",
+    "from": {
+      "language": "Greek",
+      "root": "klinē",
+      "gloss": "couch"
+    },
+    "literal": "reclining couch (antiquity)"
+  },
+  {
+    "word": "kludge",
+    "from": {
+      "language": "American Eng.",
+      "root": "kludge",
+      "gloss": "awkward workaround"
+    },
+    "literal": "inelegant but effective fix"
+  },
+  {
+    "word": "knapweed",
+    "from": {
+      "language": "Eng.",
+      "root": "knap + weed",
+      "gloss": "head + plant"
+    },
+    "literal": "thistle-like plant"
+  },
+  {
+    "word": "knell",
+    "from": {
+      "language": "Old Eng.",
+      "root": "cnell",
+      "gloss": "stroke (of a bell)"
+    },
+    "literal": "solemn bell sound; omen of end"
+  },
+  {
+    "word": "knout",
+    "from": {
+      "language": "Russian via Fr.",
+      "root": "knut’",
+      "gloss": "whip"
+    },
+    "literal": "Russian whip; flogging device"
+  },
+  {
+    "word": "kobold",
+    "from": {
+      "language": "German",
+      "root": "Kobold",
+      "gloss": "house spirit"
+    },
+    "literal": "sprite; also cobalt ore spirit"
+  },
+  {
+    "word": "koel",
+    "from": {
+      "language": "Hindi",
+      "root": "koel",
+      "gloss": "cuckoo"
+    },
+    "literal": "Asian koel bird"
+  },
+  {
+    "word": "koine",
+    "from": {
+      "language": "Greek",
+      "root": "koinē",
+      "gloss": "common (dialect)"
+    },
+    "literal": "common Greek dialect of antiquity"
+  },
+  {
+    "word": "kolkhoz",
+    "from": {
+      "language": "Russian",
+      "root": "kollektivnoe khozyaistvo",
+      "gloss": "collective farm"
+    },
+    "literal": "Soviet collective farm"
+  },
+  {
+    "word": "komatik",
+    "from": {
+      "language": "Inuktitut",
+      "root": "qamutiik",
+      "gloss": "sled"
+    },
+    "literal": "Inuit wooden sled"
+  },
+  {
+    "word": "komondor",
+    "from": {
+      "language": "Hungarian",
+      "root": "komondor",
+      "gloss": "dog breed"
+    },
+    "literal": "large corded sheepdog"
+  },
+  {
+    "word": "kookaburra",
+    "from": {
+      "language": "Wiradjuri via Eng.",
+      "root": "gugubarra",
+      "gloss": "laughing bird"
+    },
+    "literal": "Australian kingfisher"
+  },
+  {
+    "word": "kopeck",
+    "from": {
+      "language": "Russian",
+      "root": "kopek",
+      "gloss": "small coin"
+    },
+    "literal": "Russian fractional coin"
+  },
+  {
+    "word": "kopje",
+    "from": {
+      "language": "Afrikaans",
+      "root": "kopje",
+      "gloss": "little head"
+    },
+    "literal": "small hill in southern Africa"
+  },
+  {
+    "word": "kora",
+    "from": {
+      "language": "Mandinka",
+      "root": "kora",
+      "gloss": "harp-lute"
+    },
+    "literal": "West African 21‑string harp"
+  },
+  {
+    "word": "koru",
+    "from": {
+      "language": "Maori",
+      "root": "koru",
+      "gloss": "coil"
+    },
+    "literal": "spiral fern motif in Māori art"
+  },
+  {
+    "word": "kosher",
+    "from": {
+      "language": "Hebrew via Yiddish",
+      "root": "kashēr",
+      "gloss": "fit, proper"
+    },
+    "literal": "ritually fit; acceptable"
+  },
+  {
+    "word": "kowtow",
+    "from": {
+      "language": "Cantonese via Eng.",
+      "root": "kau tau",
+      "gloss": "knock head"
+    },
+    "literal": "act of deep obeisance; grovel"
+  },
+  {
+    "word": "kraken",
+    "from": {
+      "language": "Norwegian",
+      "root": "krake",
+      "gloss": "sea monster"
+    },
+    "literal": "giant legendary sea creature"
+  },
+  {
+    "word": "kraft",
+    "from": {
+      "language": "German",
+      "root": "Kraft",
+      "gloss": "strength"
+    },
+    "literal": "sturdy paper; power"
+  },
+  {
+    "word": "krater",
+    "from": {
+      "language": "Greek",
+      "root": "kratēr",
+      "gloss": "mixing bowl"
+    },
+    "literal": "ancient Greek mixing vessel"
+  },
+  {
+    "word": "kremlinology",
+    "from": {
+      "language": "Russian + -logy",
+      "root": "Kreml’ + logos",
+      "gloss": "citadel + study"
+    },
+    "literal": "study of Soviet/Russian politics by signs"
+  },
+  {
+    "word": "krill",
+    "from": {
+      "language": "Norwegian",
+      "root": "krill",
+      "gloss": "small fry"
+    },
+    "literal": "tiny marine crustaceans"
+  },
+  {
+    "word": "kris",
+    "from": {
+      "language": "Malay",
+      "root": "keris",
+      "gloss": "wavy dagger"
+    },
+    "literal": "wavy‑bladed dagger"
+  },
+  {
+    "word": "krona",
+    "from": {
+      "language": "Swedish",
+      "root": "krona",
+      "gloss": "crown"
+    },
+    "literal": "Swedish unit of currency"
+  },
+  {
+    "word": "krypton",
+    "from": {
+      "language": "Greek",
+      "root": "kryptos",
+      "gloss": "hidden"
+    },
+    "literal": "noble gas element"
+  },
+  {
+    "word": "kudzu",
+    "from": {
+      "language": "Japanese",
+      "root": "kuzu",
+      "gloss": "kudzu vine"
+    },
+    "literal": "fast‑growing vine"
+  },
+  {
+    "word": "kummel",
+    "from": {
+      "language": "German",
+      "root": "Kümmel",
+      "gloss": "caraway"
+    },
+    "literal": "caraway liqueur"
+  },
+  {
+    "word": "kumquat",
+    "from": {
+      "language": "Cantonese via Eng.",
+      "root": "gam1 gwat1",
+      "gloss": "golden orange"
+    },
+    "literal": "small citrus fruit"
+  },
+  {
+    "word": "kuvasz",
+    "from": {
+      "language": "Hungarian",
+      "root": "kuvasz",
+      "gloss": "dog breed"
+    },
+    "literal": "large white livestock guardian"
+  },
+  {
+    "word": "kvass",
+    "from": {
+      "language": "Russian",
+      "root": "kvas",
+      "gloss": "leavened drink"
+    },
+    "literal": "fermented bread drink"
+  },
+  {
+    "word": "kwashiorkor",
+    "from": {
+      "language": "Ga via Eng.",
+      "root": "kwashiorkor",
+      "gloss": "disease of deprivation"
+    },
+    "literal": "protein‑deficiency in children"
+  },
+  {
+    "word": "labarum",
+    "from": {
+      "language": "Latin (Roman)",
+      "root": "labarum",
+      "gloss": "standard"
+    },
+    "literal": "Constantine’s imperial standard"
+  },
+  {
+    "word": "labile",
+    "from": {
+      "language": "Latin",
+      "root": "labilis",
+      "gloss": "liable to slip"
+    },
+    "literal": "unstable; easily changed"
+  },
+  {
+    "word": "labium",
+    "from": {
+      "language": "Latin",
+      "root": "labium",
+      "gloss": "lip"
+    },
+    "literal": "lip; lip‑like part"
+  },
+  {
+    "word": "labrys",
+    "from": {
+      "language": "Greek",
+      "root": "labrys",
+      "gloss": "double axe"
+    },
+    "literal": "double‑headed axe (Minoan)"
+  },
+  {
+    "word": "laccate",
+    "from": {
+      "language": "Latin",
+      "root": "lacca",
+      "gloss": "lac resin"
+    },
+    "literal": "shiny like varnish"
+  },
+  {
+    "word": "laccolith",
+    "from": {
+      "language": "Greek",
+      "root": "lakkos + lithos",
+      "gloss": "cistern + stone"
+    },
+    "literal": "mushroom‑shaped igneous intrusion"
+  },
+  {
+    "word": "lachrymose",
+    "from": {
+      "language": "Latin",
+      "root": "lacrima",
+      "gloss": "tear"
+    },
+    "literal": "tearful; mournful"
+  },
+  {
+    "word": "laconic",
+    "from": {
+      "language": "Greek",
+      "root": "Lakōn",
+      "gloss": "Spartan"
+    },
+    "literal": "using few words; terse"
+  },
+  {
+    "word": "lacuna",
+    "from": {
+      "language": "Latin",
+      "root": "lacuna",
+      "gloss": "hollow"
+    },
+    "literal": "gap; missing part"
+  },
+  {
+    "word": "laevorotatory",
+    "from": {
+      "language": "Latin",
+      "root": "laevus + rotare",
+      "gloss": "left + to turn"
+    },
+    "literal": "turning plane‑polarized light left"
+  },
+  {
+    "word": "lagan",
+    "from": {
+      "language": "French via Eng.",
+      "root": "lagan",
+      "gloss": "goods lying at sea"
+    },
+    "literal": "goods sunk but marked for recovery"
+  },
+  {
+    "word": "lagniappe",
+    "from": {
+      "language": "Louisiana Fr.",
+      "root": "la ñapa",
+      "gloss": "the bonus"
+    },
+    "literal": "small bonus given to a customer"
+  },
+  {
+    "word": "lagoon",
+    "from": {
+      "language": "Italian via Fr.",
+      "root": "laguna",
+      "gloss": "pond"
+    },
+    "literal": "shallow coastal body of water"
+  },
+  {
+    "word": "laic",
+    "from": {
+      "language": "French via Lat.",
+      "root": "laicus",
+      "gloss": "of the people"
+    },
+    "literal": "lay; non‑clerical"
+  },
+  {
+    "word": "lallation",
+    "from": {
+      "language": "Latin",
+      "root": "lallare",
+      "gloss": "to sing la‑la"
+    },
+    "literal": "childlike speech; sound substitution"
+  },
+  {
+    "word": "lamia",
+    "from": {
+      "language": "Greek",
+      "root": "Lamia",
+      "gloss": "devouring monster"
+    },
+    "literal": "female demon; child‑eater (myth)"
+  },
+  {
+    "word": "laminar",
+    "from": {
+      "language": "Latin",
+      "root": "lamina",
+      "gloss": "thin plate"
+    },
+    "literal": "in smooth layers (fluid)"
+  },
+  {
+    "word": "lammas",
+    "from": {
+      "language": "Old Eng.",
+      "root": "hlāfmæsse",
+      "gloss": "loaf‑mass"
+    },
+    "literal": "harvest festival day (Aug. 1)"
+  },
+  {
+    "word": "lampoon",
+    "from": {
+      "language": "French",
+      "root": "lampon",
+      "gloss": "let us drink"
+    },
+    "literal": "satirical attack"
+  },
+  {
+    "word": "lancinate",
+    "from": {
+      "language": "Latin",
+      "root": "lancinare",
+      "gloss": "to tear"
+    },
+    "literal": "piercing; stabbing (pain)"
+  },
+  {
+    "word": "laniferous",
+    "from": {
+      "language": "Latin",
+      "root": "lana + ferre",
+      "gloss": "wool + to bear"
+    },
+    "literal": "wool‑bearing"
+  },
+  {
+    "word": "langsyne",
+    "from": {
+      "language": "Scots",
+      "root": "lang syne",
+      "gloss": "long since"
+    },
+    "literal": "long ago"
+  },
+  {
+    "word": "languor",
+    "from": {
+      "language": "Latin",
+      "root": "languor",
+      "gloss": "faintness"
+    },
+    "literal": "pleasant tiredness; inertia"
+  },
+  {
+    "word": "laniary",
+    "from": {
+      "language": "Latin",
+      "root": "laniare",
+      "gloss": "to tear"
+    },
+    "literal": "canine tooth (tearing)"
+  },
+  {
+    "word": "lanolin",
+    "from": {
+      "language": "Latin",
+      "root": "lana + oleum",
+      "gloss": "wool + oil"
+    },
+    "literal": "wool grease"
+  },
+  {
+    "word": "lapidary",
+    "from": {
+      "language": "Latin",
+      "root": "lapis",
+      "gloss": "stone"
+    },
+    "literal": "stone‑cutter; precise style"
+  },
+  {
+    "word": "lapis lazuli",
+    "from": {
+      "language": "Latin via Arabic",
+      "root": "lāzaward",
+      "gloss": "blue stone"
+    },
+    "literal": "deep blue gemstone"
+  },
+  {
+    "word": "lappet",
+    "from": {
+      "language": "French",
+      "root": "lappe",
+      "gloss": "flap"
+    },
+    "literal": "decorative flap or loose piece"
+  },
+  {
+    "word": "larboard",
+    "from": {
+      "language": "Old Eng.",
+      "root": "lade‑bord",
+      "gloss": "loading side"
+    },
+    "literal": "port side (archaic)"
+  },
+  {
+    "word": "larceny",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "latrocinium",
+      "gloss": "robbery"
+    },
+    "literal": "theft of personal property"
+  },
+  {
+    "word": "larder",
+    "from": {
+      "language": "French via Lat.",
+      "root": "lardarium",
+      "gloss": "bacon store"
+    },
+    "literal": "pantry; food store"
+  },
+  {
+    "word": "largesse",
+    "from": {
+      "language": "French",
+      "root": "largesse",
+      "gloss": "bounty"
+    },
+    "literal": "generous giving"
+  },
+  {
+    "word": "larine",
+    "from": {
+      "language": "Latin",
+      "root": "larus",
+      "gloss": "gull"
+    },
+    "literal": "of or like gulls"
+  },
+  {
+    "word": "laryngeal",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "larynx",
+      "gloss": "throat organ"
+    },
+    "literal": "relating to the larynx"
+  },
+  {
+    "word": "lascar",
+    "from": {
+      "language": "Persian via Port.",
+      "root": "lashkar",
+      "gloss": "camp, army"
+    },
+    "literal": "Asian sailor (hist.)"
+  },
+  {
+    "word": "lascivious",
+    "from": {
+      "language": "Latin",
+      "root": "lascivus",
+      "gloss": "lustful"
+    },
+    "literal": "lewd; wanton"
+  },
+  {
+    "word": "lassitude",
+    "from": {
+      "language": "Latin",
+      "root": "lassitudo",
+      "gloss": "weariness"
+    },
+    "literal": "state of tiredness"
+  },
+  {
+    "word": "lastrum",
+    "from": {
+      "language": "Latin (arch.)",
+      "root": "lastra",
+      "gloss": "brick slab"
+    },
+    "literal": "paving stone (rare)"
+  },
+  {
+    "word": "latchet",
+    "from": {
+      "language": "Old Fr. via Eng.",
+      "root": "lachet",
+      "gloss": "small latch"
+    },
+    "literal": "small fastening strap"
+  },
+  {
+    "word": "lattice",
+    "from": {
+      "language": "French via Lat.",
+      "root": "laqueus? → lattis",
+      "gloss": "mesh"
+    },
+    "literal": "crisscross framework"
+  },
+  {
+    "word": "latitudinarian",
+    "from": {
+      "language": "Latin via Eng.",
+      "root": "latitudo",
+      "gloss": "breadth"
+    },
+    "literal": "broad‑minded (esp. religious)"
+  },
+  {
+    "word": "latria",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "latreia",
+      "gloss": "worship"
+    },
+    "literal": "highest worship due to God (theol.)"
+  },
+  {
+    "word": "laudanum",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "laudanum",
+      "gloss": "praised (name)"
+    },
+    "literal": "tincture of opium"
+  },
+  {
+    "word": "lauds",
+    "from": {
+      "language": "Latin",
+      "root": "laudes",
+      "gloss": "praises"
+    },
+    "literal": "morning prayer service"
+  },
+  {
+    "word": "launderette",
+    "from": {
+      "language": "Eng.",
+      "root": "launder + ‑ette",
+      "gloss": "wash + small"
+    },
+    "literal": "self‑service laundry"
+  },
+  {
+    "word": "laureate",
+    "from": {
+      "language": "Latin",
+      "root": "laureatus",
+      "gloss": "crowned with laurel"
+    },
+    "literal": "honored or awarded"
+  },
+  {
+    "word": "laurel",
+    "from": {
+      "language": "Latin",
+      "root": "laurus",
+      "gloss": "laurel tree"
+    },
+    "literal": "evergreen shrub; honor symbol"
+  },
+  {
+    "word": "lavation",
+    "from": {
+      "language": "Latin",
+      "root": "lavatio",
+      "gloss": "a washing"
+    },
+    "literal": "the act of washing"
+  },
+  {
+    "word": "lavish",
+    "from": {
+      "language": "French via Lat.",
+      "root": "lavasse",
+      "gloss": "to pour"
+    },
+    "literal": "sumptuously abundant"
+  },
+  {
+    "word": "lawine",
+    "from": {
+      "language": "German",
+      "root": "Lawine",
+      "gloss": "avalanche"
+    },
+    "literal": "avalanche (loanword)"
+  },
+  {
+    "word": "laxity",
+    "from": {
+      "language": "Latin",
+      "root": "laxitas",
+      "gloss": "looseness"
+    },
+    "literal": "slackness; negligence"
+  },
+  {
+    "word": "layette",
+    "from": {
+      "language": "French",
+      "root": "layette",
+      "gloss": "baby’s trousseau"
+    },
+    "literal": "set of clothing for a newborn"
+  },
+  {
+    "word": "lechatelierite",
+    "from": {
+      "language": "French (name)",
+      "root": "Le Châtelier",
+      "gloss": "chemist’s name"
+    },
+    "literal": "natural silica glass from lightning"
+  },
+  {
+    "word": "lecherous",
+    "from": {
+      "language": "French via Lat.",
+      "root": "lecher",
+      "gloss": "lustful person"
+    },
+    "literal": "sexually unrestrained"
+  },
+  {
+    "word": "lechery",
+    "from": {
+      "language": "French via Lat.",
+      "root": "lecherie",
+      "gloss": "lustfulness"
+    },
+    "literal": "sexual indulgence"
+  },
+  {
+    "word": "lectern",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "lectrum/lectrin",
+      "gloss": "reading place"
+    },
+    "literal": "reading stand"
+  },
+  {
+    "word": "lectionary",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "lectionarium",
+      "gloss": "reading book"
+    },
+    "literal": "book of scripture readings"
+  },
+  {
+    "word": "lector",
+    "from": {
+      "language": "Latin",
+      "root": "lector",
+      "gloss": "reader"
+    },
+    "literal": "public reader"
+  },
+  {
+    "word": "legerdemain",
+    "from": {
+      "language": "French",
+      "root": "léger de main",
+      "gloss": "light of hand"
+    },
+    "literal": "sleight of hand; trickery"
+  },
+  {
+    "word": "legerity",
+    "from": {
+      "language": "French via Lat.",
+      "root": "levis",
+      "gloss": "light (in weight)"
+    },
+    "literal": "lightness; nimbleness"
+  },
+  {
+    "word": "leger line",
+    "from": {
+      "language": "French via Eng.",
+      "root": "léger",
+      "gloss": "light (auxiliary)"
+    },
+    "literal": "short staff line for notes"
+  },
+  {
+    "word": "legionary",
+    "from": {
+      "language": "Latin",
+      "root": "legionarius",
+      "gloss": "of a legion"
+    },
+    "literal": "soldier of a Roman legion"
+  },
+  {
+    "word": "legatee",
+    "from": {
+      "language": "French via Lat.",
+      "root": "legatus",
+      "gloss": "appointed"
+    },
+    "literal": "one who receives a legacy"
+  },
+  {
+    "word": "legiferous",
+    "from": {
+      "language": "Latin",
+      "root": "lex + ferre",
+      "gloss": "law + to bear"
+    },
+    "literal": "bringing laws; lawgiving"
+  },
+  {
+    "word": "legionella",
+    "from": {
+      "language": "Latinized",
+      "root": "Legionella",
+      "gloss": "Legionnaires’"
+    },
+    "literal": "bacteria genus causing pneumonia"
+  },
+  {
+    "word": "lemming",
+    "from": {
+      "language": "Norwegian",
+      "root": "lemming",
+      "gloss": "rodent name"
+    },
+    "literal": "small arctic rodent"
+  },
+  {
+    "word": "lemniscate",
+    "from": {
+      "language": "Latin via Greek",
+      "root": "lēmniskos",
+      "gloss": "ribbon"
+    },
+    "literal": "figure‑eight curve"
+  },
+  {
+    "word": "lemurine",
+    "from": {
+      "language": "Latin",
+      "root": "lemures",
+      "gloss": "spirits"
+    },
+    "literal": "pertaining to lemurs"
+  },
+  {
+    "word": "lenitive",
+    "from": {
+      "language": "Latin",
+      "root": "lenire",
+      "gloss": "to soften"
+    },
+    "literal": "soothing; palliative"
+  },
+  {
+    "word": "lenity",
+    "from": {
+      "language": "Latin",
+      "root": "lenitas",
+      "gloss": "gentleness"
+    },
+    "literal": "mildness; clemency"
+  },
+  {
+    "word": "leno",
+    "from": {
+      "language": "Latin",
+      "root": "leno",
+      "gloss": "pimp"
+    },
+    "literal": "open‑weave gauze; also a pimp (arch.)"
+  },
+  {
+    "word": "lensman",
+    "from": {
+      "language": "Eng.",
+      "root": "lens + man",
+      "gloss": "lens user"
+    },
+    "literal": "photographer; space‑opera agent (pulp)"
+  },
+  {
+    "word": "lenticular",
+    "from": {
+      "language": "Latin",
+      "root": "lenticularis",
+      "gloss": "lentil‑shaped"
+    },
+    "literal": "lens‑shaped"
+  },
+  {
+    "word": "lepidolite",
+    "from": {
+      "language": "Greek via Ger.",
+      "root": "lepis + lithos",
+      "gloss": "scale + stone"
+    },
+    "literal": "mica rich in lithium"
+  },
+  {
+    "word": "lepidopteran",
+    "from": {
+      "language": "Greek",
+      "root": "lepis + pteron",
+      "gloss": "scale + wing"
+    },
+    "literal": "butterfly/moth order"
+  },
+  {
+    "word": "leporine",
+    "from": {
+      "language": "Latin",
+      "root": "leporinus",
+      "gloss": "of hare"
+    },
+    "literal": "hare‑like"
+  },
+  {
+    "word": "leptocephalus",
+    "from": {
+      "language": "Greek",
+      "root": "leptos + kephalē",
+      "gloss": "slender + head"
+    },
+    "literal": "leaf‑like eel larva"
+  },
+  {
+    "word": "leptokurtic",
+    "from": {
+      "language": "Greek",
+      "root": "leptos + kurtos",
+      "gloss": "slender + curved"
+    },
+    "literal": "having sharp‑peaked distribution"
+  },
+  {
+    "word": "lernaean",
+    "from": {
+      "language": "Greek myth",
+      "root": "Lernaia Hydra",
+      "gloss": "Lerna’s"
+    },
+    "literal": "of the Hydra; complex to defeat"
+  },
+  {
+    "word": "lese‑majesty",
+    "from": {
+      "language": "French",
+      "root": "lèse‑majesté",
+      "gloss": "injured majesty"
+    },
+    "literal": "crime against a sovereign"
+  },
+  {
+    "word": "lethargy",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "lēthargia",
+      "gloss": "forgetful idleness"
+    },
+    "literal": "state of sluggishness"
+  },
+  {
+    "word": "leucotomy",
+    "from": {
+      "language": "Greek",
+      "root": "leukos + tome",
+      "gloss": "white + cut"
+    },
+    "literal": "lobotomy (old term)"
+  },
+  {
+    "word": "levanter",
+    "from": {
+      "language": "Spanish/Fr.",
+      "root": "Levante",
+      "gloss": "east (wind)"
+    },
+    "literal": "strong easterly wind in Mediterranean"
+  },
+  {
+    "word": "levee",
+    "from": {
+      "language": "French",
+      "root": "levée",
+      "gloss": "raising"
+    },
+    "literal": "embankment; formal reception"
+  },
+  {
+    "word": "levigate",
+    "from": {
+      "language": "Latin",
+      "root": "levigare",
+      "gloss": "to make smooth"
+    },
+    "literal": "grind to fine powder; polish"
+  },
+  {
+    "word": "levin",
+    "from": {
+      "language": "Old Eng.",
+      "root": "lēofer? → levin",
+      "gloss": "lightning"
+    },
+    "literal": "lightning (poetic)"
+  },
+  {
+    "word": "levitate",
+    "from": {
+      "language": "Latin",
+      "root": "levitas",
+      "gloss": "lightness"
+    },
+    "literal": "rise or float in the air"
+  },
+  {
+    "word": "levirate",
+    "from": {
+      "language": "Latin",
+      "root": "levir",
+      "gloss": "husband’s brother"
+    },
+    "literal": "marriage to a deceased brother’s widow"
+  },
+  {
+    "word": "lexeme",
+    "from": {
+      "language": "Greek via Fr.",
+      "root": "lexis",
+      "gloss": "word"
+    },
+    "literal": "basic unit of meaning in a language"
+  },
+  {
+    "word": "lexical",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "lexis",
+      "gloss": "word"
+    },
+    "literal": "relating to words and vocabulary"
+  },
+  {
+    "word": "lexicon",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "lexikon",
+      "gloss": "word‑book"
+    },
+    "literal": "dictionary of a language"
+  },
+  {
+    "word": "ley line",
+    "from": {
+      "language": "Modern folklore",
+      "root": "ley",
+      "gloss": "cleared track"
+    },
+    "literal": "supposed ancient alignment of sites"
+  },
+  {
+    "word": "libation",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "libatio",
+      "gloss": "a pouring"
+    },
+    "literal": "ritual pouring out of a drink"
+  },
+  {
+    "word": "libellous",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "libellus",
+      "gloss": "little book"
+    },
+    "literal": "defamatory in writing"
+  },
+  {
+    "word": "liberality",
+    "from": {
+      "language": "Latin",
+      "root": "liberalitas",
+      "gloss": "generosity"
+    },
+    "literal": "open‑handedness"
+  },
+  {
+    "word": "libertine",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "libertinus",
+      "gloss": "freedman"
+    },
+    "literal": "morally unrestrained person"
+  },
+  {
+    "word": "libretto",
+    "from": {
+      "language": "Italian",
+      "root": "libretto",
+      "gloss": "little book"
+    },
+    "literal": "text of an opera"
+  },
+  {
+    "word": "licentious",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "licentiosus",
+      "gloss": "full of licence"
+    },
+    "literal": "sexually unrestrained"
+  },
+  {
+    "word": "lictorial",
+    "from": {
+      "language": "Latin",
+      "root": "lictor",
+      "gloss": "attendant"
+    },
+    "literal": "pertaining to a Roman lictor"
+  },
+  {
+    "word": "ligament",
+    "from": {
+      "language": "Latin",
+      "root": "ligare",
+      "gloss": "to bind"
+    },
+    "literal": "band of tissue connecting bones"
+  },
+  {
+    "word": "ligature",
+    "from": {
+      "language": "Latin",
+      "root": "ligare",
+      "gloss": "to bind"
+    },
+    "literal": "binding tie; joined letters"
+  },
+  {
+    "word": "ligneous",
+    "from": {
+      "language": "Latin",
+      "root": "ligneus",
+      "gloss": "woody"
+    },
+    "literal": "made of wood"
+  },
+  {
+    "word": "lignite",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "lignum",
+      "gloss": "wood"
+    },
+    "literal": "brown coal"
+  },
+  {
+    "word": "ligroin",
+    "from": {
+      "language": "Trademark/chem.",
+      "root": "ligroin",
+      "gloss": "petroleum fraction"
+    },
+    "literal": "light petroleum solvent"
+  },
+  {
+    "word": "lilliputian",
+    "from": {
+      "language": "English (Swift)",
+      "root": "Lilliput",
+      "gloss": "island name"
+    },
+    "literal": "very small; petty"
+  },
+  {
+    "word": "limacine",
+    "from": {
+      "language": "Latin",
+      "root": "limax",
+      "gloss": "slug"
+    },
+    "literal": "slug‑like"
+  },
+  {
+    "word": "limen",
+    "from": {
+      "language": "Latin",
+      "root": "limen",
+      "gloss": "threshold"
+    },
+    "literal": "threshold; minimal stimulus"
+  },
+  {
+    "word": "liminal",
+    "from": {
+      "language": "Latin",
+      "root": "limen",
+      "gloss": "threshold"
+    },
+    "literal": "at a threshold; transitional"
+  },
+  {
+    "word": "limn",
+    "from": {
+      "language": "Middle Eng.",
+      "root": "limnen",
+      "gloss": "to illuminate (manuscripts)"
+    },
+    "literal": "depict or describe"
+  },
+  {
+    "word": "limnic",
+    "from": {
+      "language": "Latin",
+      "root": "limnus",
+      "gloss": "marsh, lake"
+    },
+    "literal": "relating to fresh water"
+  },
+  {
+    "word": "limnology",
+    "from": {
+      "language": "Greek",
+      "root": "limnē + logos",
+      "gloss": "lake + study"
+    },
+    "literal": "study of inland waters"
+  },
+  {
+    "word": "limoncello",
+    "from": {
+      "language": "Italian",
+      "root": "limone + -cello",
+      "gloss": "lemon + diminutive"
+    },
+    "literal": "Italian lemon liqueur"
+  },
+  {
+    "word": "limpid",
+    "from": {
+      "language": "Latin",
+      "root": "limpidus",
+      "gloss": "clear"
+    },
+    "literal": "transparent; serene"
+  },
+  {
+    "word": "lineament",
+    "from": {
+      "language": "Latin",
+      "root": "linea",
+      "gloss": "line"
+    },
+    "literal": "distinctive contour of face/body"
+  },
+  {
+    "word": "lingam",
+    "from": {
+      "language": "Sanskrit",
+      "root": "liṅga",
+      "gloss": "mark, sign"
+    },
+    "literal": "symbol of Shiva"
+  },
+  {
+    "word": "linguate",
+    "from": {
+      "language": "Latin",
+      "root": "lingua",
+      "gloss": "tongue"
+    },
+    "literal": "tongue‑shaped"
+  },
+  {
+    "word": "lingual",
+    "from": {
+      "language": "Latin",
+      "root": "lingua",
+      "gloss": "tongue"
+    },
+    "literal": "relating to the tongue/language"
+  },
+  {
+    "word": "linguica",
+    "from": {
+      "language": "Portuguese",
+      "root": "linguiça",
+      "gloss": "sausage"
+    },
+    "literal": "smoked pork sausage"
+  },
+  {
+    "word": "linguistics",
+    "from": {
+      "language": "Latin/Greek",
+      "root": "lingua + -istics",
+      "gloss": "tongue + study"
+    },
+    "literal": "study of language"
+  },
+  {
+    "word": "liniment",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "linere",
+      "gloss": "to smear"
+    },
+    "literal": "soothing topical preparation"
+  },
+  {
+    "word": "linstock",
+    "from": {
+      "language": "Dutch via Eng.",
+      "root": "lont + stok",
+      "gloss": "match + stick"
+    },
+    "literal": "rod holding a slow match (artillery)"
+  },
+  {
+    "word": "lintel",
+    "from": {
+      "language": "French via Lat.",
+      "root": "limen",
+      "gloss": "threshold"
+    },
+    "literal": "horizontal support across top of a door"
+  },
+  {
+    "word": "linteum",
+    "from": {
+      "language": "Latin",
+      "root": "linteum",
+      "gloss": "linen cloth"
+    },
+    "literal": "linen garment (arch.)"
+  },
+  {
+    "word": "linx",
+    "from": {
+      "language": "Variant/Eng.",
+      "root": "lynx",
+      "gloss": "lynx"
+    },
+    "literal": "poetic/variant of lynx"
+  },
+  {
+    "word": "lionize",
+    "from": {
+      "language": "English",
+      "root": "lion",
+      "gloss": "celebrated person"
+    },
+    "literal": "treat as a celebrity"
+  },
+  {
+    "word": "liquescent",
+    "from": {
+      "language": "Latin",
+      "root": "liquescere",
+      "gloss": "to become liquid"
+    },
+    "literal": "becoming liquid; melting"
+  },
+  {
+    "word": "liquidus",
+    "from": {
+      "language": "Latin",
+      "root": "liquidus",
+      "gloss": "liquid"
+    },
+    "literal": "temperature where alloy melts"
+  },
+  {
+    "word": "lissome",
+    "from": {
+      "language": "English",
+      "root": "lithe + -some",
+      "gloss": "flexible + suffix"
+    },
+    "literal": "supple; graceful"
+  },
+  {
+    "word": "listless",
+    "from": {
+      "language": "English",
+      "root": "list (desire)",
+      "gloss": "pleasure/wish"
+    },
+    "literal": "lacking energy or interest"
+  },
+  {
+    "word": "litany",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "litaneia",
+      "gloss": "supplication"
+    },
+    "literal": "repetitive prayer or recital"
+  },
+  {
+    "word": "lithic",
+    "from": {
+      "language": "Greek",
+      "root": "lithos",
+      "gloss": "stone"
+    },
+    "literal": "made of stone"
+  },
+  {
+    "word": "lithify",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "lithos + -fy",
+      "gloss": "stone + make"
+    },
+    "literal": "turn into stone"
+  },
+  {
+    "word": "lithograph",
+    "from": {
+      "language": "Greek",
+      "root": "lithos + graphē",
+      "gloss": "stone + writing"
+    },
+    "literal": "print made from a flat stone"
+  },
+  {
+    "word": "lithology",
+    "from": {
+      "language": "Greek",
+      "root": "lithos + logos",
+      "gloss": "stone + study"
+    },
+    "literal": "study of rocks"
+  },
+  {
+    "word": "lithophyte",
+    "from": {
+      "language": "Greek",
+      "root": "lithos + phyton",
+      "gloss": "stone + plant"
+    },
+    "literal": "plant growing on rocks"
+  },
+  {
+    "word": "lithosphere",
+    "from": {
+      "language": "Greek",
+      "root": "lithos + sphaira",
+      "gloss": "stone + sphere"
+    },
+    "literal": "earth’s rigid outer layer"
+  },
+  {
+    "word": "lithotomy",
+    "from": {
+      "language": "Greek",
+      "root": "lithos + tomē",
+      "gloss": "stone + cutting"
+    },
+    "literal": "surgical removal of stones"
+  },
+  {
+    "word": "litigant",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "litigare",
+      "gloss": "to dispute"
+    },
+    "literal": "party in a lawsuit"
+  },
+  {
+    "word": "litotes",
+    "from": {
+      "language": "Greek",
+      "root": "litotēs",
+      "gloss": "plainness, understatement"
+    },
+    "literal": "understatement by negating the opposite"
+  },
+  {
+    "word": "littoral",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "litus",
+      "gloss": "shore"
+    },
+    "literal": "coastal; seashore region"
+  },
+  {
+    "word": "lituus",
+    "from": {
+      "language": "Latin",
+      "root": "lituus",
+      "gloss": "curved staff"
+    },
+    "literal": "augur’s staff; spiral horn"
+  },
+  {
+    "word": "livor mortis",
+    "from": {
+      "language": "Latin",
+      "root": "livor + mors",
+      "gloss": "bluishness + death"
+    },
+    "literal": "postmortem pooling of blood"
+  },
+  {
+    "word": "lixiviate",
+    "from": {
+      "language": "Latin",
+      "root": "lixivia",
+      "gloss": "lye"
+    },
+    "literal": "wash/ leach with a solution"
+  },
+  {
+    "word": "lobar",
+    "from": {
+      "language": "Latin",
+      "root": "lobus",
+      "gloss": "lobe"
+    },
+    "literal": "relating to a lobe"
+  },
+  {
+    "word": "lobate",
+    "from": {
+      "language": "Latin",
+      "root": "lobatus",
+      "gloss": "lobed"
+    },
+    "literal": "having lobes"
+  },
+  {
+    "word": "lobelia",
+    "from": {
+      "language": "Latinized",
+      "root": "Lobel",
+      "gloss": "botanist’s name"
+    },
+    "literal": "plant genus with tubular flowers"
+  },
+  {
+    "word": "lobe-finned",
+    "from": {
+      "language": "Modern term",
+      "root": "lobe + fin",
+      "gloss": "rounded fin"
+    },
+    "literal": "having fleshy lobed fins"
+  },
+  {
+    "word": "loblolly",
+    "from": {
+      "language": "English",
+      "root": "lob + lolly",
+      "gloss": "to bubble + broth"
+    },
+    "literal": "thick porridge; pine species"
+  },
+  {
+    "word": "lobscouse",
+    "from": {
+      "language": "Nautical Eng.",
+      "root": "lob + scouse",
+      "gloss": "lump + stew"
+    },
+    "literal": "sailors’ stew; Liverpool dialect"
+  },
+  {
+    "word": "locative",
+    "from": {
+      "language": "Latin",
+      "root": "locus",
+      "gloss": "place"
+    },
+    "literal": "grammatical case of location"
+  },
+  {
+    "word": "locale",
+    "from": {
+      "language": "French",
+      "root": "localis",
+      "gloss": "place"
+    },
+    "literal": "scene or setting"
+  },
+  {
+    "word": "locellus",
+    "from": {
+      "language": "Latin",
+      "root": "locellus",
+      "gloss": "little place"
+    },
+    "literal": "small compartment (botany)"
+  },
+  {
+    "word": "locofoco",
+    "from": {
+      "language": "US political nickname",
+      "root": "locofoco",
+      "gloss": "self‑igniting match"
+    },
+    "literal": "radical Democrat (1830s US)"
+  },
+  {
+    "word": "locomote",
+    "from": {
+      "language": "Latin + Eng.",
+      "root": "locus + motus",
+      "gloss": "place + moved"
+    },
+    "literal": "to move from place to place"
+  },
+  {
+    "word": "locule",
+    "from": {
+      "language": "Latin",
+      "root": "loculus",
+      "gloss": "little place"
+    },
+    "literal": "small cavity (botany/zoology)"
+  },
+  {
+    "word": "loculus",
+    "from": {
+      "language": "Latin",
+      "root": "loculus",
+      "gloss": "little place"
+    },
+    "literal": "small compartment"
+  },
+  {
+    "word": "locution",
+    "from": {
+      "language": "Latin",
+      "root": "locutio",
+      "gloss": "a speaking"
+    },
+    "literal": "style of expression"
+  },
+  {
+    "word": "lodestar",
+    "from": {
+      "language": "English",
+      "root": "lode + star",
+      "gloss": "way + star"
+    },
+    "literal": "guiding star; model"
+  },
+  {
+    "word": "loge",
+    "from": {
+      "language": "French",
+      "root": "loge",
+      "gloss": "box"
+    },
+    "literal": "theater box; lodge"
+  },
+  {
+    "word": "loggia",
+    "from": {
+      "language": "Italian",
+      "root": "loggia",
+      "gloss": "gallery"
+    },
+    "literal": "roofed open gallery"
+  },
+  {
+    "word": "logion",
+    "from": {
+      "language": "Greek",
+      "root": "logion",
+      "gloss": "saying"
+    },
+    "literal": "authoritative saying"
+  },
+  {
+    "word": "logogriph",
+    "from": {
+      "language": "Greek",
+      "root": "logos + griphos",
+      "gloss": "word + riddle"
+    },
+    "literal": "riddle with punning of words"
+  },
+  {
+    "word": "logomachy",
+    "from": {
+      "language": "Greek",
+      "root": "logos + machē",
+      "gloss": "word + battle"
+    },
+    "literal": "argument about words"
+  },
+  {
+    "word": "logomania",
+    "from": {
+      "language": "Greek",
+      "root": "logos + mania",
+      "gloss": "word + madness"
+    },
+    "literal": "excessive talking or word‑obsession"
+  },
+  {
+    "word": "logomisia",
+    "from": {
+      "language": "Greek",
+      "root": "logos + misos",
+      "gloss": "word + hatred"
+    },
+    "literal": "aversion to certain words"
+  },
+  {
+    "word": "logophile",
+    "from": {
+      "language": "Greek",
+      "root": "logos + philos",
+      "gloss": "word + loving"
+    },
+    "literal": "lover of words"
+  },
+  {
+    "word": "logorrhea",
+    "from": {
+      "language": "Greek",
+      "root": "logos + rhoia",
+      "gloss": "word + flow"
+    },
+    "literal": "pathologically excessive talking"
+  },
+  {
+    "word": "logothete",
+    "from": {
+      "language": "Greek",
+      "root": "logothetēs",
+      "gloss": "account‑setter"
+    },
+    "literal": "Byzantine administrator"
+  },
+  {
+    "word": "loess",
+    "from": {
+      "language": "German",
+      "root": "Löß",
+      "gloss": "loose"
+    },
+    "literal": "wind‑blown silt deposit"
+  },
+  {
+    "word": "lofter",
+    "from": {
+      "language": "Scots",
+      "root": "loft",
+      "gloss": "air lofting"
+    },
+    "literal": "golf club with steep loft"
+  },
+  {
+    "word": "loganberry",
+    "from": {
+      "language": "American Eng.",
+      "root": "Logan",
+      "gloss": "breeder’s name"
+    },
+    "literal": "raspberry‑blackberry hybrid"
+  },
+  {
+    "word": "loessic",
+    "from": {
+      "language": "German",
+      "root": "Löss",
+      "gloss": "loose silt"
+    },
+    "literal": "pertaining to loess"
+  },
+  {
+    "word": "loquacious",
+    "from": {
+      "language": "Latin",
+      "root": "loqui",
+      "gloss": "to speak"
+    },
+    "literal": "talkative"
+  },
+  {
+    "word": "lorica",
+    "from": {
+      "language": "Latin",
+      "root": "lorica",
+      "gloss": "cuirass"
+    },
+    "literal": "armor breastplate; protective coating"
+  },
+  {
+    "word": "lorgnette",
+    "from": {
+      "language": "French",
+      "root": "lorgner",
+      "gloss": "to ogle"
+    },
+    "literal": "eyeglasses on a handle"
+  },
+  {
+    "word": "lorn",
+    "from": {
+      "language": "Old Eng.",
+      "root": "loren",
+      "gloss": "lost"
+    },
+    "literal": "forsaken; desolate"
+  },
+  {
+    "word": "lory",
+    "from": {
+      "language": "Malay via Dutch",
+      "root": "lōri",
+      "gloss": "parrot"
+    },
+    "literal": "brush‑tongued parrot"
+  },
+  {
+    "word": "lotic",
+    "from": {
+      "language": "Latin",
+      "root": "loticus",
+      "gloss": "washed"
+    },
+    "literal": "relating to flowing water"
+  },
+  {
+    "word": "louche",
+    "from": {
+      "language": "French",
+      "root": "louche",
+      "gloss": "squinting; shady"
+    },
+    "literal": "disreputable or dubious"
+  },
+  {
+    "word": "lough",
+    "from": {
+      "language": "Irish",
+      "root": "loch",
+      "gloss": "lake"
+    },
+    "literal": "Irish lake or inlet"
+  },
+  {
+    "word": "loupe",
+    "from": {
+      "language": "French",
+      "root": "loupe",
+      "gloss": "magnifier"
+    },
+    "literal": "small jeweler’s magnifying lens"
+  },
+  {
+    "word": "louver",
+    "from": {
+      "language": "French",
+      "root": "louvers",
+      "gloss": "slats"
+    },
+    "literal": "slatted window blind/vent"
+  },
+  {
+    "word": "louvered",
+    "from": {
+      "language": "French",
+      "root": "louvre",
+      "gloss": "slatted"
+    },
+    "literal": "fitted with angled slats"
+  },
+  {
+    "word": "louvre (museum sense)",
+    "from": {
+      "language": "French",
+      "root": "Louvre",
+      "gloss": "fortified place"
+    },
+    "literal": "Paris museum/palace"
+  },
+  {
+    "word": "loxodrome",
+    "from": {
+      "language": "Greek",
+      "root": "loxos + dromos",
+      "gloss": "oblique + running"
+    },
+    "literal": "line of constant compass bearing"
+  },
+  {
+    "word": "lubberly",
+    "from": {
+      "language": "English",
+      "root": "lubber",
+      "gloss": "clumsy person"
+    },
+    "literal": "clumsy; inexperienced (nautical)"
+  },
+  {
+    "word": "lucent",
+    "from": {
+      "language": "Latin",
+      "root": "lucere",
+      "gloss": "to shine"
+    },
+    "literal": "glowing; luminous"
+  },
+  {
+    "word": "lucifugous",
+    "from": {
+      "language": "Latin",
+      "root": "lux + fugere",
+      "gloss": "light + to flee"
+    },
+    "literal": "avoiding light"
+  },
+  {
+    "word": "lucubrate",
+    "from": {
+      "language": "Latin",
+      "root": "lucubrare",
+      "gloss": "to work by lamplight"
+    },
+    "literal": "study or write late into the night"
+  },
+  {
+    "word": "lucrative",
+    "from": {
+      "language": "Latin",
+      "root": "lucrum",
+      "gloss": "gain, profit"
+    },
+    "literal": "profitable"
+  },
+  {
+    "word": "ludic",
+    "from": {
+      "language": "Latin",
+      "root": "ludus",
+      "gloss": "game, play"
+    },
+    "literal": "playful; game‑like"
+  },
+  {
+    "word": "ludicrous",
+    "from": {
+      "language": "Latin",
+      "root": "ludicrum",
+      "gloss": "plaything"
+    },
+    "literal": "ridiculous; laughable"
+  },
+  {
+    "word": "lumbago",
+    "from": {
+      "language": "Italian via Late Lat.",
+      "root": "lumbus",
+      "gloss": "loin"
+    },
+    "literal": "lower‑back pain"
+  },
+  {
+    "word": "lumbrical",
+    "from": {
+      "language": "Latin",
+      "root": "lumbricus",
+      "gloss": "worm"
+    },
+    "literal": "wormlike hand muscle"
+  },
+  {
+    "word": "lumen",
+    "from": {
+      "language": "Latin",
+      "root": "lumen",
+      "gloss": "light"
+    },
+    "literal": "unit of luminous flux"
+  },
+  {
+    "word": "luminary",
+    "from": {
+      "language": "Latin",
+      "root": "luminaria",
+      "gloss": "light source"
+    },
+    "literal": "famous person; heavenly body"
+  },
+  {
+    "word": "luminiferous",
+    "from": {
+      "language": "Latin",
+      "root": "lumen + ferre",
+      "gloss": "light + to carry"
+    },
+    "literal": "carrying light"
+  },
+  {
+    "word": "lumpen",
+    "from": {
+      "language": "German",
+      "root": "Lumpenproletariat",
+      "gloss": "rag‑proletariat"
+    },
+    "literal": "dispossessed underclass"
+  },
+  {
+    "word": "lunation",
+    "from": {
+      "language": "Latin",
+      "root": "luna",
+      "gloss": "moon"
+    },
+    "literal": "a lunar month"
+  },
+  {
+    "word": "lunette",
+    "from": {
+      "language": "French",
+      "root": "lunette",
+      "gloss": "little moon"
+    },
+    "literal": "crescent window; small fort work"
+  },
+  {
+    "word": "lunisolar",
+    "from": {
+      "language": "Latin",
+      "root": "luna + sol",
+      "gloss": "moon + sun"
+    },
+    "literal": "based on both sun and moon"
+  },
+  {
+    "word": "lupanar",
+    "from": {
+      "language": "Latin",
+      "root": "lupa",
+      "gloss": "she‑wolf"
+    },
+    "literal": "brothel (Roman)"
+  },
+  {
+    "word": "lupine",
+    "from": {
+      "language": "Latin",
+      "root": "lupinus",
+      "gloss": "wolfish; lupine plant"
+    },
+    "literal": "wolf‑like; plant genus"
+  },
+  {
+    "word": "lustral",
+    "from": {
+      "language": "Latin",
+      "root": "lustrare",
+      "gloss": "to purify"
+    },
+    "literal": "pertaining to purification"
+  },
+  {
+    "word": "lustrum",
+    "from": {
+      "language": "Latin",
+      "root": "lustrum",
+      "gloss": "five‑year period"
+    },
+    "literal": "period of five years"
+  },
+  {
+    "word": "lutaceous",
+    "from": {
+      "language": "Latin",
+      "root": "lutum",
+      "gloss": "mud"
+    },
+    "literal": "muddy; clayey"
+  },
+  {
+    "word": "lutein",
+    "from": {
+      "language": "Latin",
+      "root": "luteus",
+      "gloss": "yellow"
+    },
+    "literal": "yellow plant pigment"
+  },
+  {
+    "word": "lutefisk",
+    "from": {
+      "language": "Norwegian",
+      "root": "lut + fisk",
+      "gloss": "lye + fish"
+    },
+    "literal": "fish treated with lye"
+  },
+  {
+    "word": "lutenist",
+    "from": {
+      "language": "French via Eng.",
+      "root": "luth + -ist",
+      "gloss": "lute + player"
+    },
+    "literal": "lute player"
+  },
+  {
+    "word": "lustrate",
+    "from": {
+      "language": "Latin",
+      "root": "lustrare",
+      "gloss": "to purify"
+    },
+    "literal": "purify by ceremony"
+  },
+  {
+    "word": "lycanthrope",
+    "from": {
+      "language": "Greek",
+      "root": "lykos + anthrōpos",
+      "gloss": "wolf + man"
+    },
+    "literal": "werewolf"
+  },
+  {
+    "word": "lycee",
+    "from": {
+      "language": "French",
+      "root": "lycée",
+      "gloss": "secondary school"
+    },
+    "literal": "French public secondary school"
+  },
+  {
+    "word": "lyceum",
+    "from": {
+      "language": "Greek via Latin",
+      "root": "Lykeion",
+      "gloss": "Lyceum (place)"
+    },
+    "literal": "hall for education/lectures"
+  },
+  {
+    "word": "lychee",
+    "from": {
+      "language": "Cantonese",
+      "root": "lai chi",
+      "gloss": "lychee"
+    },
+    "literal": "tropical fruit"
+  },
+  {
+    "word": "lycopene",
+    "from": {
+      "language": "Greek via Neo‑Lat.",
+      "root": "lyco + penē",
+      "gloss": "wolf (tomato) + pigment"
+    },
+    "literal": "red carotenoid pigment"
+  },
+  {
+    "word": "lygodium",
+    "from": {
+      "language": "Greek",
+      "root": "lygodes",
+      "gloss": "flexible"
+    },
+    "literal": "climbing fern genus"
+  },
+  {
+    "word": "lymph",
+    "from": {
+      "language": "Latin",
+      "root": "lympha",
+      "gloss": "clear water"
+    },
+    "literal": "fluid of the lymphatic system"
+  },
+  {
+    "word": "lymphatic",
+    "from": {
+      "language": "Latin",
+      "root": "lympha",
+      "gloss": "water, lymph"
+    },
+    "literal": "relating to lymph or sluggishness"
+  },
+  {
+    "word": "lyncean",
+    "from": {
+      "language": "Latinized (Lynceus)",
+      "root": "Lynceus",
+      "gloss": "mythical keen‑sighted"
+    },
+    "literal": "sharp‑sighted; penetrating"
+  },
+  {
+    "word": "lyophilize",
+    "from": {
+      "language": "Greek",
+      "root": "lyein + philein",
+      "gloss": "to loosen + to love"
+    },
+    "literal": "freeze‑dry"
+  },
+  {
+    "word": "lyre",
+    "from": {
+      "language": "Greek",
+      "root": "lyra",
+      "gloss": "lyre"
+    },
+    "literal": "ancient stringed instrument"
+  },
+  {
+    "word": "lyricon",
+    "from": {
+      "language": "Trade name",
+      "root": "lyricon",
+      "gloss": "electronic wind"
+    },
+    "literal": "electronic wind instrument"
+  },
+  {
+    "word": "lysigenic",
+    "from": {
+      "language": "Greek",
+      "root": "lysis + gennaō",
+      "gloss": "loosen + produce"
+    },
+    "literal": "formed by dissolving tissue"
+  },
+  {
+    "word": "lysosome",
+    "from": {
+      "language": "Greek",
+      "root": "lysis + sōma",
+      "gloss": "loosen + body"
+    },
+    "literal": "cell organelle with digestive enzymes"
+  }
+]

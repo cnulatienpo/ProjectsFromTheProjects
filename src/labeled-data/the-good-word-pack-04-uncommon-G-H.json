@@ -1,0 +1,1334 @@
+[
+  {
+    "word": "gabelle",
+    "from": {
+      "language": "Old French",
+      "root": "gabelle",
+      "gloss": "salt tax"
+    },
+    "literal": "a tax, esp. on salt (hist.)"
+  },
+  {
+    "word": "gaberdine",
+    "from": {
+      "language": "Old French",
+      "root": "gabardine",
+      "gloss": "coarse cloak"
+    },
+    "literal": "long loose overcoat"
+  },
+  {
+    "word": "gable",
+    "from": {
+      "language": "Old French",
+      "root": "gabel",
+      "gloss": "fork, gable"
+    },
+    "literal": "triangular wall at a roof end"
+  },
+  {
+    "word": "gadfly",
+    "from": {
+      "language": "Old Norse + Eng.",
+      "root": "gaddr + fly",
+      "gloss": "spike + insect"
+    },
+    "literal": "biting fly; provoker"
+  },
+  {
+    "word": "gainsay",
+    "from": {
+      "language": "Middle English",
+      "root": "gegn + say",
+      "gloss": "against + say"
+    },
+    "literal": "deny or contradict"
+  },
+  {
+    "word": "gallimaufry",
+    "from": {
+      "language": "French",
+      "root": "galimafrée",
+      "gloss": "hash, stew"
+    },
+    "literal": "jumble; hodgepodge"
+  },
+  {
+    "word": "gallivant",
+    "from": {
+      "language": "English",
+      "root": "gallant + -ivant",
+      "gloss": "to roam for pleasure"
+    },
+    "literal": "wander seeking fun"
+  },
+  {
+    "word": "gambit",
+    "from": {
+      "language": "Spanish via It.",
+      "root": "gambetto",
+      "gloss": "leg-tripping"
+    },
+    "literal": "opening ploy"
+  },
+  {
+    "word": "gambol",
+    "from": {
+      "language": "Italian",
+      "root": "gamba",
+      "gloss": "leg"
+    },
+    "literal": "frolic; leap about"
+  },
+  {
+    "word": "gamut",
+    "from": {
+      "language": "Medieval Latin",
+      "root": "gamma + ut",
+      "gloss": "lowest note name"
+    },
+    "literal": "entire range"
+  },
+  {
+    "word": "ganglion",
+    "from": {
+      "language": "Greek",
+      "root": "ganglion",
+      "gloss": "knot"
+    },
+    "literal": "nerve cluster; cyst"
+  },
+  {
+    "word": "garish",
+    "from": {
+      "language": "English",
+      "root": "garish",
+      "gloss": "showy"
+    },
+    "literal": "too bright or showy"
+  },
+  {
+    "word": "gargoyle",
+    "from": {
+      "language": "Old French",
+      "root": "gargouille",
+      "gloss": "throat; waterspout"
+    },
+    "literal": "carved spout; grotesque"
+  },
+  {
+    "word": "garret",
+    "from": {
+      "language": "Old French",
+      "root": "garite",
+      "gloss": "watchtower"
+    },
+    "literal": "small attic room"
+  },
+  {
+    "word": "garrulous",
+    "from": {
+      "language": "Latin",
+      "root": "garrire",
+      "gloss": "to chatter"
+    },
+    "literal": "talkative in a rambling way"
+  },
+  {
+    "word": "gasconade",
+    "from": {
+      "language": "French",
+      "root": "Gascon",
+      "gloss": "boast like a Gascon"
+    },
+    "literal": "extravagant boasting"
+  },
+  {
+    "word": "gastronomy",
+    "from": {
+      "language": "Greek",
+      "root": "gastēr + nomos",
+      "gloss": "stomach + law"
+    },
+    "literal": "art of good eating"
+  },
+  {
+    "word": "gauche",
+    "from": {
+      "language": "French",
+      "root": "gauche",
+      "gloss": "left"
+    },
+    "literal": "socially awkward"
+  },
+  {
+    "word": "gaucherie",
+    "from": {
+      "language": "French",
+      "root": "gaucherie",
+      "gloss": "awkwardness"
+    },
+    "literal": "clumsy social act"
+  },
+  {
+    "word": "gazette",
+    "from": {
+      "language": "Italian",
+      "root": "gazzetta",
+      "gloss": "small coin → news sheet"
+    },
+    "literal": "newspaper; official journal"
+  },
+  {
+    "word": "gazebo",
+    "from": {
+      "language": "Humorous Latinized Eng.",
+      "root": "gaze + -bo",
+      "gloss": "I shall gaze"
+    },
+    "literal": "open garden pavilion"
+  },
+  {
+    "word": "gelid",
+    "from": {
+      "language": "Latin",
+      "root": "gelidus",
+      "gloss": "icy, cold"
+    },
+    "literal": "icy cold"
+  },
+  {
+    "word": "genial",
+    "from": {
+      "language": "Latin",
+      "root": "genialis",
+      "gloss": "festive, pleasant"
+    },
+    "literal": "cheerfully friendly"
+  },
+  {
+    "word": "genuflect",
+    "from": {
+      "language": "Latin",
+      "root": "genu + flectere",
+      "gloss": "knee + bend"
+    },
+    "literal": "bend the knee"
+  },
+  {
+    "word": "germane",
+    "from": {
+      "language": "Latin",
+      "root": "germanus",
+      "gloss": "of the same stock"
+    },
+    "literal": "closely relevant"
+  },
+  {
+    "word": "gestalt",
+    "from": {
+      "language": "German",
+      "root": "Gestalt",
+      "gloss": "shape, form"
+    },
+    "literal": "patterned whole"
+  },
+  {
+    "word": "gesticulate",
+    "from": {
+      "language": "Latin",
+      "root": "gestus",
+      "gloss": "gesture"
+    },
+    "literal": "use lively gestures"
+  },
+  {
+    "word": "gibber",
+    "from": {
+      "language": "Imitative",
+      "root": "gibber",
+      "gloss": "chatter"
+    },
+    "literal": "speak rapidly, unintelligibly"
+  },
+  {
+    "word": "gibbous",
+    "from": {
+      "language": "Latin",
+      "root": "gibbosus",
+      "gloss": "humped"
+    },
+    "literal": "bulging (of the moon)"
+  },
+  {
+    "word": "gibe",
+    "from": {
+      "language": "Old French",
+      "root": "giber",
+      "gloss": "to mock"
+    },
+    "literal": "taunt; jeer"
+  },
+  {
+    "word": "giddy",
+    "from": {
+      "language": "Old English",
+      "root": "gidig",
+      "gloss": "possessed"
+    },
+    "literal": "dizzy; lightheaded; silly"
+  },
+  {
+    "word": "gild",
+    "from": {
+      "language": "Old English",
+      "root": "gyldan",
+      "gloss": "to cover with gold"
+    },
+    "literal": "cover with gold leaf"
+  },
+  {
+    "word": "gimcrack",
+    "from": {
+      "language": "English",
+      "root": "gimcrack",
+      "gloss": "showy toy"
+    },
+    "literal": "cheap, showy trifle"
+  },
+  {
+    "word": "gingham",
+    "from": {
+      "language": "Malay via Dutch",
+      "root": "genggang",
+      "gloss": "striped"
+    },
+    "literal": "checked cotton cloth"
+  },
+  {
+    "word": "glabrous",
+    "from": {
+      "language": "Latin",
+      "root": "glaber",
+      "gloss": "smooth, hairless"
+    },
+    "literal": "without hair or fuzz"
+  },
+  {
+    "word": "glacial",
+    "from": {
+      "language": "Latin",
+      "root": "glacies",
+      "gloss": "ice"
+    },
+    "literal": "icy; extremely cold"
+  },
+  {
+    "word": "glade",
+    "from": {
+      "language": "Old Norse/Eng.",
+      "root": "glēd",
+      "gloss": "bright, open place"
+    },
+    "literal": "open space in a wood"
+  },
+  {
+    "word": "glaucous",
+    "from": {
+      "language": "Latin via Greek",
+      "root": "glaukos",
+      "gloss": "bluish-green"
+    },
+    "literal": "bluish-gray/green tint"
+  },
+  {
+    "word": "glean",
+    "from": {
+      "language": "Old French",
+      "root": "glener",
+      "gloss": "to gather leftover grain"
+    },
+    "literal": "gather little by little"
+  },
+  {
+    "word": "glib",
+    "from": {
+      "language": "Germanic",
+      "root": "glibberig",
+      "gloss": "slippery"
+    },
+    "literal": "smooth but shallow speech"
+  },
+  {
+    "word": "glissade",
+    "from": {
+      "language": "French",
+      "root": "glisser",
+      "gloss": "to slide"
+    },
+    "literal": "controlled slide (ski/dance)"
+  },
+  {
+    "word": "gloaming",
+    "from": {
+      "language": "Old English",
+      "root": "glōm",
+      "gloss": "twilight"
+    },
+    "literal": "dusk; twilight"
+  },
+  {
+    "word": "globule",
+    "from": {
+      "language": "Latin",
+      "root": "globulus",
+      "gloss": "small sphere"
+    },
+    "literal": "small drop or ball"
+  },
+  {
+    "word": "gloze",
+    "from": {
+      "language": "Latin via OFr.",
+      "root": "glossa",
+      "gloss": "tongue, explanation"
+    },
+    "literal": "explain away; gloss over"
+  },
+  {
+    "word": "glut",
+    "from": {
+      "language": "Latin",
+      "root": "gluttire",
+      "gloss": "to swallow"
+    },
+    "literal": "overfill; excess supply"
+  },
+  {
+    "word": "glutinous",
+    "from": {
+      "language": "Latin",
+      "root": "gluten",
+      "gloss": "glue"
+    },
+    "literal": "sticky; gluey"
+  },
+  {
+    "word": "glyptic",
+    "from": {
+      "language": "Greek",
+      "root": "glyphein",
+      "gloss": "to carve"
+    },
+    "literal": "related to carving or engraving"
+  },
+  {
+    "word": "gnash",
+    "from": {
+      "language": "Old English",
+      "root": "gnastan",
+      "gloss": "to grind teeth"
+    },
+    "literal": "grind the teeth together"
+  },
+  {
+    "word": "gnomon",
+    "from": {
+      "language": "Greek",
+      "root": "gnōmōn",
+      "gloss": "indicator"
+    },
+    "literal": "sundial pointer"
+  },
+  {
+    "word": "gnomic",
+    "from": {
+      "language": "Greek",
+      "root": "gnōmē",
+      "gloss": "opinion, maxim"
+    },
+    "literal": "aphoristic; wise-saying-like"
+  },
+  {
+    "word": "gnostic",
+    "from": {
+      "language": "Greek",
+      "root": "gnōsis",
+      "gloss": "knowledge"
+    },
+    "literal": "relating to hidden knowledge"
+  },
+  {
+    "word": "gorgonize",
+    "from": {
+      "language": "Greek myth",
+      "root": "Gorgon",
+      "gloss": "terrible woman"
+    },
+    "literal": "freeze with fear (as by Medusa)"
+  },
+  {
+    "word": "gossamer",
+    "from": {
+      "language": "Middle Eng.",
+      "root": "gos + somer",
+      "gloss": "goose + summer"
+    },
+    "literal": "very fine, light fabric"
+  },
+  {
+    "word": "gouge",
+    "from": {
+      "language": "Old French",
+      "root": "gouge",
+      "gloss": "chisel"
+    },
+    "literal": "scoop out; overcharge"
+  },
+  {
+    "word": "gourmand",
+    "from": {
+      "language": "French",
+      "root": "gourmand",
+      "gloss": "glutton"
+    },
+    "literal": "one who enjoys eating richly"
+  },
+  {
+    "word": "gubernatorial",
+    "from": {
+      "language": "Latin",
+      "root": "gubernare",
+      "gloss": "to steer, govern"
+    },
+    "literal": "relating to a governor"
+  },
+  {
+    "word": "guerdon",
+    "from": {
+      "language": "Old French",
+      "root": "guerdon",
+      "gloss": "reward"
+    },
+    "literal": "reward or recompense"
+  },
+  {
+    "word": "gulag",
+    "from": {
+      "language": "Russian",
+      "root": "Glavnoe Upravlenie Lagerei",
+      "gloss": "main camp administration"
+    },
+    "literal": "Soviet labor-camp system"
+  },
+  {
+    "word": "gumption",
+    "from": {
+      "language": "Scots",
+      "root": "gumption",
+      "gloss": "common sense, initiative"
+    },
+    "literal": "resourceful boldness"
+  },
+  {
+    "word": "gurgitate",
+    "from": {
+      "language": "Latin",
+      "root": "gurges",
+      "gloss": "whirlpool"
+    },
+    "literal": "to flow or surge forth"
+  },
+  {
+    "word": "gustatory",
+    "from": {
+      "language": "Latin",
+      "root": "gustare",
+      "gloss": "to taste"
+    },
+    "literal": "relating to taste"
+  },
+  {
+    "word": "guttural",
+    "from": {
+      "language": "Latin",
+      "root": "guttur",
+      "gloss": "throat"
+    },
+    "literal": "throaty in sound"
+  },
+  {
+    "word": "gyrate",
+    "from": {
+      "language": "Greek via Latin",
+      "root": "gyros",
+      "gloss": "circle"
+    },
+    "literal": "rotate in a circle"
+  },
+  {
+    "word": "gyre",
+    "from": {
+      "language": "Greek",
+      "root": "gyros",
+      "gloss": "circle"
+    },
+    "literal": "circular or spiral motion"
+  },
+  {
+    "word": "gyroscope",
+    "from": {
+      "language": "Greek",
+      "root": "gyros + skopein",
+      "gloss": "circle + to look"
+    },
+    "literal": "spinning stability device"
+  },
+  {
+    "word": "haberdashery",
+    "from": {
+      "language": "Middle Eng.",
+      "root": "haberdasher",
+      "gloss": "seller of small goods"
+    },
+    "literal": "men’s outfitter; notions shop"
+  },
+  {
+    "word": "habiliment",
+    "from": {
+      "language": "Latin",
+      "root": "habilimentum",
+      "gloss": "equipment, clothing"
+    },
+    "literal": "clothing; trappings"
+  },
+  {
+    "word": "habitus",
+    "from": {
+      "language": "Latin",
+      "root": "habitus",
+      "gloss": "condition, dress"
+    },
+    "literal": "characteristic state"
+  },
+  {
+    "word": "hachure",
+    "from": {
+      "language": "French",
+      "root": "hachure",
+      "gloss": "hatching"
+    },
+    "literal": "shading with short lines"
+  },
+  {
+    "word": "hagiography",
+    "from": {
+      "language": "Greek",
+      "root": "hagios + graphē",
+      "gloss": "holy + writing"
+    },
+    "literal": "saints’ biographies; adoring bio"
+  },
+  {
+    "word": "halcyon",
+    "from": {
+      "language": "Greek",
+      "root": "alkyōn",
+      "gloss": "kingfisher (calm seas myth)"
+    },
+    "literal": "calm, peaceful period"
+  },
+  {
+    "word": "halitus",
+    "from": {
+      "language": "Latin",
+      "root": "halitus",
+      "gloss": "breath, vapor"
+    },
+    "literal": "exhaled breath"
+  },
+  {
+    "word": "halyard",
+    "from": {
+      "language": "Dutch/Eng.",
+      "root": "haul + yard",
+      "gloss": "haul the yard"
+    },
+    "literal": "rope for raising a sail"
+  },
+  {
+    "word": "haptic",
+    "from": {
+      "language": "Greek",
+      "root": "haptesthai",
+      "gloss": "to touch"
+    },
+    "literal": "relating to touch"
+  },
+  {
+    "word": "harangue",
+    "from": {
+      "language": "French",
+      "root": "harangue",
+      "gloss": "formal speech"
+    },
+    "literal": "lengthy aggressive speech"
+  },
+  {
+    "word": "harbinger",
+    "from": {
+      "language": "Old French",
+      "root": "herbergeor",
+      "gloss": "lodging maker"
+    },
+    "literal": "forerunner; signal of approach"
+  },
+  {
+    "word": "harlequin",
+    "from": {
+      "language": "Italian",
+      "root": "Arlecchino",
+      "gloss": "comic servant"
+    },
+    "literal": "diamond-costumed jester"
+  },
+  {
+    "word": "harmattan",
+    "from": {
+      "language": "Akan/Arabic",
+      "root": "harmatan",
+      "gloss": "dry wind"
+    },
+    "literal": "dry West African wind"
+  },
+  {
+    "word": "harrow (verb)",
+    "from": {
+      "language": "Old English",
+      "root": "hergian",
+      "gloss": "to ravage"
+    },
+    "literal": "distress greatly; plow with a harrow"
+  },
+  {
+    "word": "harridan",
+    "from": {
+      "language": "French",
+      "root": "haridelle",
+      "gloss": "gaunt mare"
+    },
+    "literal": "scolding, ill-tempered woman"
+  },
+  {
+    "word": "hauteur",
+    "from": {
+      "language": "French",
+      "root": "hauteur",
+      "gloss": "highness"
+    },
+    "literal": "arrogant pride"
+  },
+  {
+    "word": "hawser",
+    "from": {
+      "language": "French",
+      "root": "hausse",
+      "gloss": "thick rope"
+    },
+    "literal": "thick ship’s rope"
+  },
+  {
+    "word": "hebetude",
+    "from": {
+      "language": "Latin",
+      "root": "hebetudo",
+      "gloss": "dullness"
+    },
+    "literal": "mental dullness"
+  },
+  {
+    "word": "hecatomb",
+    "from": {
+      "language": "Greek",
+      "root": "hekaton + bous",
+      "gloss": "hundred + ox"
+    },
+    "literal": "large public sacrifice; great loss"
+  },
+  {
+    "word": "hector",
+    "from": {
+      "language": "Greek (name)",
+      "root": "Hektōr",
+      "gloss": "to hold fast"
+    },
+    "literal": "to bully with words"
+  },
+  {
+    "word": "hedonic",
+    "from": {
+      "language": "Greek",
+      "root": "hēdonē",
+      "gloss": "pleasure"
+    },
+    "literal": "relating to pleasure"
+  },
+  {
+    "word": "hegira",
+    "from": {
+      "language": "Arabic via Lat.",
+      "root": "hijra",
+      "gloss": "flight"
+    },
+    "literal": "departure; exodus"
+  },
+  {
+    "word": "hegemony",
+    "from": {
+      "language": "Greek",
+      "root": "hēgemonia",
+      "gloss": "leadership"
+    },
+    "literal": "dominant influence"
+  },
+  {
+    "word": "heliacal",
+    "from": {
+      "language": "Greek",
+      "root": "hēlios",
+      "gloss": "sun"
+    },
+    "literal": "related to the sun’s rising/setting"
+  },
+  {
+    "word": "heliotrope",
+    "from": {
+      "language": "Greek",
+      "root": "hēlios + trepein",
+      "gloss": "sun + to turn"
+    },
+    "literal": "plant turning to the sun; purple tint"
+  },
+  {
+    "word": "helix",
+    "from": {
+      "language": "Greek",
+      "root": "helix",
+      "gloss": "spiral"
+    },
+    "literal": "spiral shape"
+  },
+  {
+    "word": "helminth",
+    "from": {
+      "language": "Greek",
+      "root": "helmins",
+      "gloss": "worm"
+    },
+    "literal": "parasitic worm"
+  },
+  {
+    "word": "helot",
+    "from": {
+      "language": "Greek",
+      "root": "Heilotai",
+      "gloss": "Spartan serf"
+    },
+    "literal": "serf; oppressed person"
+  },
+  {
+    "word": "hemidemisemiquaver",
+    "from": {
+      "language": "English (music)",
+      "root": "hemi + demi + semi + quaver",
+      "gloss": "1/64 note"
+    },
+    "literal": "sixty-fourth note (Br. music)"
+  },
+  {
+    "word": "hemostasis",
+    "from": {
+      "language": "Greek",
+      "root": "haima + stasis",
+      "gloss": "blood + standing"
+    },
+    "literal": "stopping of bleeding"
+  },
+  {
+    "word": "heptarchy",
+    "from": {
+      "language": "Greek",
+      "root": "hepta + archē",
+      "gloss": "seven + rule"
+    },
+    "literal": "rule by seven; Anglo-Saxon kingdoms"
+  },
+  {
+    "word": "heresiarch",
+    "from": {
+      "language": "Greek",
+      "root": "hairesis + archos",
+      "gloss": "choice + leader"
+    },
+    "literal": "leader of a heresy"
+  },
+  {
+    "word": "hermeneutic",
+    "from": {
+      "language": "Greek",
+      "root": "hermēneuein",
+      "gloss": "to interpret"
+    },
+    "literal": "concerning interpretation"
+  },
+  {
+    "word": "hermetic",
+    "from": {
+      "language": "Greek (Hermes)",
+      "root": "Hermēs Trismegistos",
+      "gloss": "sealed by Hermes"
+    },
+    "literal": "airtight; esoteric"
+  },
+  {
+    "word": "hermitage",
+    "from": {
+      "language": "French",
+      "root": "ermitage",
+      "gloss": "hermit’s dwelling"
+    },
+    "literal": "secluded residence"
+  },
+  {
+    "word": "herpetology",
+    "from": {
+      "language": "Greek",
+      "root": "herpeton + logos",
+      "gloss": "creeping thing + study"
+    },
+    "literal": "study of reptiles/amphibians"
+  },
+  {
+    "word": "heterodox",
+    "from": {
+      "language": "Greek",
+      "root": "heteros + doxa",
+      "gloss": "other + opinion"
+    },
+    "literal": "holding different beliefs"
+  },
+  {
+    "word": "heuristic",
+    "from": {
+      "language": "Greek",
+      "root": "heuriskein",
+      "gloss": "to find"
+    },
+    "literal": "rule-of-thumb discovery method"
+  },
+  {
+    "word": "hibernal",
+    "from": {
+      "language": "Latin",
+      "root": "hibernus",
+      "gloss": "wintry"
+    },
+    "literal": "relating to winter"
+  },
+  {
+    "word": "hieratic",
+    "from": {
+      "language": "Greek",
+      "root": "hieratikos",
+      "gloss": "priestly"
+    },
+    "literal": "priestly; cursive Egyptian script"
+  },
+  {
+    "word": "hieroglyph",
+    "from": {
+      "language": "Greek",
+      "root": "hieros + glyphein",
+      "gloss": "sacred + carve"
+    },
+    "literal": "sacred carved symbol"
+  },
+  {
+    "word": "hirsute",
+    "from": {
+      "language": "Latin",
+      "root": "hirsutus",
+      "gloss": "hairy"
+    },
+    "literal": "hairy; shaggy"
+  },
+  {
+    "word": "histrionic",
+    "from": {
+      "language": "Latin",
+      "root": "histrio",
+      "gloss": "actor"
+    },
+    "literal": "overly theatrical"
+  },
+  {
+    "word": "hobbledehoy",
+    "from": {
+      "language": "English",
+      "root": "hob + boy",
+      "gloss": "awkward youth"
+    },
+    "literal": "clumsy adolescent"
+  },
+  {
+    "word": "hod",
+    "from": {
+      "language": "Middle Eng.",
+      "root": "hod",
+      "gloss": "carrying box"
+    },
+    "literal": "box for carrying bricks"
+  },
+  {
+    "word": "hodograph",
+    "from": {
+      "language": "Greek",
+      "root": "hodos + graphē",
+      "gloss": "path + writing"
+    },
+    "literal": "curve showing motion path"
+  },
+  {
+    "word": "hoi polloi",
+    "from": {
+      "language": "Greek",
+      "root": "hoi polloi",
+      "gloss": "the many"
+    },
+    "literal": "the masses, common people"
+  },
+  {
+    "word": "holocene",
+    "from": {
+      "language": "Greek",
+      "root": "holos + kainos",
+      "gloss": "whole + new"
+    },
+    "literal": "current geological epoch"
+  },
+  {
+    "word": "homiletic",
+    "from": {
+      "language": "Greek",
+      "root": "homilētikos",
+      "gloss": "conversational"
+    },
+    "literal": "relating to sermons"
+  },
+  {
+    "word": "homunculus",
+    "from": {
+      "language": "Latin",
+      "root": "homunculus",
+      "gloss": "little man"
+    },
+    "literal": "miniature human (alchemical)"
+  },
+  {
+    "word": "honorific",
+    "from": {
+      "language": "Latin",
+      "root": "honorificus",
+      "gloss": "bringing honor"
+    },
+    "literal": "conveying respect in title/form"
+  },
+  {
+    "word": "hordeolum",
+    "from": {
+      "language": "Latin",
+      "root": "hordeum",
+      "gloss": "barley"
+    },
+    "literal": "stye (eyelid bump)"
+  },
+  {
+    "word": "hortatory",
+    "from": {
+      "language": "Latin",
+      "root": "hortari",
+      "gloss": "to urge"
+    },
+    "literal": "urging; encouraging"
+  },
+  {
+    "word": "horticulture",
+    "from": {
+      "language": "Latin",
+      "root": "hortus + cultura",
+      "gloss": "garden + tending"
+    },
+    "literal": "garden cultivation"
+  },
+  {
+    "word": "hosanna",
+    "from": {
+      "language": "Hebrew via Greek",
+      "root": "hoshia na",
+      "gloss": "save, please"
+    },
+    "literal": "cry of praise or appeal"
+  },
+  {
+    "word": "hotchpotch",
+    "from": {
+      "language": "French",
+      "root": "hochepot",
+      "gloss": "shake-pot stew"
+    },
+    "literal": "mixed assortment; jumble"
+  },
+  {
+    "word": "hoyden",
+    "from": {
+      "language": "Dutch via Eng.",
+      "root": "heiden (wild)",
+      "gloss": "rude person"
+    },
+    "literal": "boisterous girl or woman"
+  },
+  {
+    "word": "hubris",
+    "from": {
+      "language": "Greek",
+      "root": "hybris",
+      "gloss": "outrage, pride"
+    },
+    "literal": "arrogant overconfidence"
+  },
+  {
+    "word": "huckster",
+    "from": {
+      "language": "Middle Dutch",
+      "root": "hokester",
+      "gloss": "petty trader"
+    },
+    "literal": "peddler; pushy seller"
+  },
+  {
+    "word": "hue and cry",
+    "from": {
+      "language": "Anglo-French",
+      "root": "hute + cri",
+      "gloss": "shout + cry"
+    },
+    "literal": "public outcry and pursuit"
+  },
+  {
+    "word": "humanoid",
+    "from": {
+      "language": "Latin + Eng.",
+      "root": "humanus + -oid",
+      "gloss": "human-like"
+    },
+    "literal": "having human form"
+  },
+  {
+    "word": "humeral",
+    "from": {
+      "language": "Latin",
+      "root": "humerus",
+      "gloss": "shoulder/upper arm"
+    },
+    "literal": "relating to the upper arm"
+  },
+  {
+    "word": "humidor",
+    "from": {
+      "language": "Spanish/Eng.",
+      "root": "húmedo",
+      "gloss": "moist"
+    },
+    "literal": "moisture-controlled cigar box"
+  },
+  {
+    "word": "humic",
+    "from": {
+      "language": "Latin",
+      "root": "humus",
+      "gloss": "earth"
+    },
+    "literal": "relating to soil organic matter"
+  },
+  {
+    "word": "humus",
+    "from": {
+      "language": "Latin",
+      "root": "humus",
+      "gloss": "earth"
+    },
+    "literal": "dark organic soil layer"
+  },
+  {
+    "word": "hussar",
+    "from": {
+      "language": "Hungarian via Ger.",
+      "root": "huszár",
+      "gloss": "light cavalryman"
+    },
+    "literal": "light cavalry soldier"
+  },
+  {
+    "word": "hustings",
+    "from": {
+      "language": "Old Norse",
+      "root": "hūs + þing",
+      "gloss": "house + assembly"
+    },
+    "literal": "political campaign trail"
+  },
+  {
+    "word": "hyaline",
+    "from": {
+      "language": "Greek",
+      "root": "hyalos",
+      "gloss": "glass"
+    },
+    "literal": "glassy; translucent"
+  },
+  {
+    "word": "hydrargyrum",
+    "from": {
+      "language": "Greek/Latin",
+      "root": "hydor + argyros",
+      "gloss": "water + silver"
+    },
+    "literal": "mercury (chemical)"
+  },
+  {
+    "word": "hydra",
+    "from": {
+      "language": "Greek",
+      "root": "hydra",
+      "gloss": "water serpent"
+    },
+    "literal": "many-headed serpent (myth)"
+  },
+  {
+    "word": "hydric",
+    "from": {
+      "language": "Greek",
+      "root": "hydor",
+      "gloss": "water"
+    },
+    "literal": "pertaining to water conditions"
+  },
+  {
+    "word": "hydroponic",
+    "from": {
+      "language": "Greek",
+      "root": "hydor + ponos",
+      "gloss": "water + labor"
+    },
+    "literal": "growing plants in water"
+  },
+  {
+    "word": "hymenal",
+    "from": {
+      "language": "Greek",
+      "root": "hymen",
+      "gloss": "membrane; marriage god"
+    },
+    "literal": "relating to the hymen"
+  },
+  {
+    "word": "hymnody",
+    "from": {
+      "language": "Greek",
+      "root": "hymnos + ōidē",
+      "gloss": "song of praise + ode"
+    },
+    "literal": "the singing of hymns"
+  },
+  {
+    "word": "hyperbole",
+    "from": {
+      "language": "Greek",
+      "root": "hyper + ballein",
+      "gloss": "over + to throw"
+    },
+    "literal": "intentional exaggeration"
+  },
+  {
+    "word": "hyperborean",
+    "from": {
+      "language": "Greek",
+      "root": "hyper + Boreas",
+      "gloss": "beyond + north wind"
+    },
+    "literal": "far northern; arctic"
+  },
+  {
+    "word": "hypergamy",
+    "from": {
+      "language": "Greek",
+      "root": "hyper + gamos",
+      "gloss": "over + marriage"
+    },
+    "literal": "marrying into higher status"
+  },
+  {
+    "word": "hypostasis",
+    "from": {
+      "language": "Greek",
+      "root": "hypo + stasis",
+      "gloss": "under + standing"
+    },
+    "literal": "underlying substance; theology term"
+  },
+  {
+    "word": "hypotaxis",
+    "from": {
+      "language": "Greek",
+      "root": "hypo + taxis",
+      "gloss": "under + arrangement"
+    },
+    "literal": "subordination in grammar"
+  },
+  {
+    "word": "hyrax",
+    "from": {
+      "language": "Greek",
+      "root": "hyrakos",
+      "gloss": "shrew-mouse"
+    },
+    "literal": "small rock-dwelling mammal"
+  },
+  {
+    "word": "hyssop",
+    "from": {
+      "language": "Hebrew via Greek",
+      "root": "ēzōb",
+      "gloss": "holy herb"
+    },
+    "literal": "aromatic herb (biblical)"
+  },
+  {
+    "word": "hysteresis",
+    "from": {
+      "language": "Greek",
+      "root": "hysterēsis",
+      "gloss": "shortcoming, lagging"
+    },
+    "literal": "lag of effect behind cause"
+  },
+  {
+    "word": "hysteria",
+    "from": {
+      "language": "Greek",
+      "root": "hystera",
+      "gloss": "womb"
+    },
+    "literal": "uncontrollable emotion (hist. term)"
+  }
+]
