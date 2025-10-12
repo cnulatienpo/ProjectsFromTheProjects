@@ -1,0 +1,1703 @@
+[
+  {
+    "word": "ebullient",
+    "from": {
+      "language": "Latin",
+      "root": "ebullire",
+      "gloss": "to boil out"
+    },
+    "literal": "bubbling with enthusiasm"
+  },
+  {
+    "word": "ecdysis",
+    "from": {
+      "language": "Greek",
+      "root": "ekdysis",
+      "gloss": "a stripping off"
+    },
+    "literal": "shedding an outer layer"
+  },
+  {
+    "word": "echelon",
+    "from": {
+      "language": "French",
+      "root": "échelon",
+      "gloss": "rung, step"
+    },
+    "literal": "rank or level"
+  },
+  {
+    "word": "eclectic",
+    "from": {
+      "language": "Greek",
+      "root": "eklegein",
+      "gloss": "to pick out"
+    },
+    "literal": "choosing from many sources"
+  },
+  {
+    "word": "eclipse",
+    "from": {
+      "language": "Greek",
+      "root": "ekleipsis",
+      "gloss": "abandonment, failure to appear"
+    },
+    "literal": "hiding of light"
+  },
+  {
+    "word": "eclogue",
+    "from": {
+      "language": "Greek",
+      "root": "eklogē",
+      "gloss": "selection"
+    },
+    "literal": "short pastoral poem"
+  },
+  {
+    "word": "ecology",
+    "from": {
+      "language": "Greek",
+      "root": "oikos + logos",
+      "gloss": "house + study"
+    },
+    "literal": "study of living relations"
+  },
+  {
+    "word": "economy",
+    "from": {
+      "language": "Greek",
+      "root": "oikonomia",
+      "gloss": "household management"
+    },
+    "literal": "management of resources"
+  },
+  {
+    "word": "ecstasy",
+    "from": {
+      "language": "Greek",
+      "root": "ekstasis",
+      "gloss": "standing outside oneself"
+    },
+    "literal": "intense rapture"
+  },
+  {
+    "word": "ectopic",
+    "from": {
+      "language": "Greek",
+      "root": "ektopos",
+      "gloss": "out of place"
+    },
+    "literal": "in an abnormal position"
+  },
+  {
+    "word": "ectoplasm",
+    "from": {
+      "language": "Greek",
+      "root": "ektos + plasma",
+      "gloss": "outside + molded"
+    },
+    "literal": "outer cell material; spirit goo (old)"
+  },
+  {
+    "word": "edacious",
+    "from": {
+      "language": "Latin",
+      "root": "edax",
+      "gloss": "voracious"
+    },
+    "literal": "greedy for food"
+  },
+  {
+    "word": "edify",
+    "from": {
+      "language": "Latin",
+      "root": "aedificare",
+      "gloss": "to build"
+    },
+    "literal": "build up morally or intellectually"
+  },
+  {
+    "word": "educe",
+    "from": {
+      "language": "Latin",
+      "root": "educere",
+      "gloss": "to lead out"
+    },
+    "literal": "draw out (something latent)"
+  },
+  {
+    "word": "efface",
+    "from": {
+      "language": "Latin via French",
+      "root": "effacere",
+      "gloss": "to wipe out"
+    },
+    "literal": "rub away; make inconspicuous"
+  },
+  {
+    "word": "effervescent",
+    "from": {
+      "language": "Latin",
+      "root": "effervescere",
+      "gloss": "to begin to boil"
+    },
+    "literal": "bubbly; lively"
+  },
+  {
+    "word": "effete",
+    "from": {
+      "language": "Latin",
+      "root": "effetus",
+      "gloss": "worn out by bearing"
+    },
+    "literal": "spent; lacking vigor"
+  },
+  {
+    "word": "efficacy",
+    "from": {
+      "language": "Latin",
+      "root": "efficacia",
+      "gloss": "power to produce"
+    },
+    "literal": "capacity to bring about a result"
+  },
+  {
+    "word": "effigy",
+    "from": {
+      "language": "Latin",
+      "root": "effigies",
+      "gloss": "a likeness"
+    },
+    "literal": "image of a person"
+  },
+  {
+    "word": "efflorescence",
+    "from": {
+      "language": "Latin",
+      "root": "efflorescere",
+      "gloss": "to blossom out"
+    },
+    "literal": "flowering; powdery crust"
+  },
+  {
+    "word": "effluvia",
+    "from": {
+      "language": "Latin",
+      "root": "effluvium",
+      "gloss": "a flowing out"
+    },
+    "literal": "outgoing fumes or odors"
+  },
+  {
+    "word": "effulgent",
+    "from": {
+      "language": "Latin",
+      "root": "effulgere",
+      "gloss": "to shine out"
+    },
+    "literal": "radiantly shining"
+  },
+  {
+    "word": "egalitarian",
+    "from": {
+      "language": "French",
+      "root": "égal",
+      "gloss": "equal"
+    },
+    "literal": "favoring equality"
+  },
+  {
+    "word": "egregious",
+    "from": {
+      "language": "Latin",
+      "root": "egregius",
+      "gloss": "distinguished (later: conspicuously bad)"
+    },
+    "literal": "outstandingly bad"
+  },
+  {
+    "word": "eidetic",
+    "from": {
+      "language": "Greek",
+      "root": "eidos",
+      "gloss": "form, shape"
+    },
+    "literal": "vivid, almost photographic (memory)"
+  },
+  {
+    "word": "eldritch",
+    "from": {
+      "language": "English (orig. uncertain)",
+      "root": "eldritch",
+      "gloss": "weird, uncanny"
+    },
+    "literal": "weird; otherworldly"
+  },
+  {
+    "word": "eleemosynary",
+    "from": {
+      "language": "Greek via Latin",
+      "root": "eleēmosynē",
+      "gloss": "alms, charity"
+    },
+    "literal": "relating to charity"
+  },
+  {
+    "word": "elegiac",
+    "from": {
+      "language": "Greek",
+      "root": "elegeiakos",
+      "gloss": "of mournful verses"
+    },
+    "literal": "mournful in tone"
+  },
+  {
+    "word": "elide",
+    "from": {
+      "language": "Latin",
+      "root": "elidere",
+      "gloss": "to strike out"
+    },
+    "literal": "omit a sound or part"
+  },
+  {
+    "word": "elitism",
+    "from": {
+      "language": "French",
+      "root": "élite",
+      "gloss": "the chosen"
+    },
+    "literal": "rule or culture of the select few"
+  },
+  {
+    "word": "elope",
+    "from": {
+      "language": "Dutch via Eng.",
+      "root": "ontlopen → elope",
+      "gloss": "to run away"
+    },
+    "literal": "run away to marry"
+  },
+  {
+    "word": "elucidate",
+    "from": {
+      "language": "Latin",
+      "root": "elucidare",
+      "gloss": "to make light"
+    },
+    "literal": "clarify; explain"
+  },
+  {
+    "word": "elusion",
+    "from": {
+      "language": "Latin",
+      "root": "eludere",
+      "gloss": "to evade"
+    },
+    "literal": "the act of evading"
+  },
+  {
+    "word": "elusive",
+    "from": {
+      "language": "Latin",
+      "root": "eludere",
+      "gloss": "to evade"
+    },
+    "literal": "hard to catch or define"
+  },
+  {
+    "word": "emanate",
+    "from": {
+      "language": "Latin",
+      "root": "emanare",
+      "gloss": "to flow out"
+    },
+    "literal": "issue forth"
+  },
+  {
+    "word": "embargo",
+    "from": {
+      "language": "Spanish",
+      "root": "embargar",
+      "gloss": "to impede, seize"
+    },
+    "literal": "ban on trade"
+  },
+  {
+    "word": "embellish",
+    "from": {
+      "language": "Old French",
+      "root": "embelir",
+      "gloss": "to make beautiful"
+    },
+    "literal": "add decorative detail"
+  },
+  {
+    "word": "embezzle",
+    "from": {
+      "language": "Old French",
+      "root": "embesillier",
+      "gloss": "to steal, make away with"
+    },
+    "literal": "steal entrusted funds"
+  },
+  {
+    "word": "emend",
+    "from": {
+      "language": "Latin",
+      "root": "emendare",
+      "gloss": "to correct"
+    },
+    "literal": "fix text or errors"
+  },
+  {
+    "word": "emeritus",
+    "from": {
+      "language": "Latin",
+      "root": "emereri",
+      "gloss": "to earn out"
+    },
+    "literal": "retired with honor"
+  },
+  {
+    "word": "emollient",
+    "from": {
+      "language": "Latin",
+      "root": "mollire",
+      "gloss": "to soften"
+    },
+    "literal": "softening; soothing"
+  },
+  {
+    "word": "emote",
+    "from": {
+      "language": "English ← emotion",
+      "root": "emovere (base)",
+      "gloss": "to move out"
+    },
+    "literal": "express emotion strongly"
+  },
+  {
+    "word": "empirical",
+    "from": {
+      "language": "Greek",
+      "root": "empeiria",
+      "gloss": "experience"
+    },
+    "literal": "based on observation"
+  },
+  {
+    "word": "encomium",
+    "from": {
+      "language": "Greek",
+      "root": "enkomion",
+      "gloss": "laudatory ode"
+    },
+    "literal": "formal praise"
+  },
+  {
+    "word": "encroach",
+    "from": {
+      "language": "Old French",
+      "root": "encrochier",
+      "gloss": "to hook in"
+    },
+    "literal": "intrude gradually"
+  },
+  {
+    "word": "encumbrance",
+    "from": {
+      "language": "Old French",
+      "root": "encombrer",
+      "gloss": "to hinder, load"
+    },
+    "literal": "burden; hindrance"
+  },
+  {
+    "word": "endemic",
+    "from": {
+      "language": "Greek",
+      "root": "en + dēmos",
+      "gloss": "in + people"
+    },
+    "literal": "native to a region"
+  },
+  {
+    "word": "enervate",
+    "from": {
+      "language": "Latin",
+      "root": "enervare",
+      "gloss": "to weaken (out of sinew)"
+    },
+    "literal": "weaken; sap energy"
+  },
+  {
+    "word": "enjoin",
+    "from": {
+      "language": "Latin via French",
+      "root": "injungere",
+      "gloss": "to join upon"
+    },
+    "literal": "order; urge"
+  },
+  {
+    "word": "ennui",
+    "from": {
+      "language": "French",
+      "root": "ennui",
+      "gloss": "boredom"
+    },
+    "literal": "listless boredom"
+  },
+  {
+    "word": "ensconce",
+    "from": {
+      "language": "Old French",
+      "root": "esconce",
+      "gloss": "lantern, shelter"
+    },
+    "literal": "settle snugly"
+  },
+  {
+    "word": "ensue",
+    "from": {
+      "language": "Latin via French",
+      "root": "insequi",
+      "gloss": "to follow after"
+    },
+    "literal": "happen next"
+  },
+  {
+    "word": "entreat",
+    "from": {
+      "language": "Old French",
+      "root": "entraiter",
+      "gloss": "to deal with → beseech"
+    },
+    "literal": "plead earnestly"
+  },
+  {
+    "word": "entropic",
+    "from": {
+      "language": "Greek",
+      "root": "trope",
+      "gloss": "turning"
+    },
+    "literal": "tending toward disorder"
+  },
+  {
+    "word": "enunciate",
+    "from": {
+      "language": "Latin",
+      "root": "enuntiare",
+      "gloss": "to announce"
+    },
+    "literal": "pronounce clearly"
+  },
+  {
+    "word": "eon",
+    "from": {
+      "language": "Greek",
+      "root": "aiōn",
+      "gloss": "age, eternity"
+    },
+    "literal": "vast span of time"
+  },
+  {
+    "word": "ephemeral",
+    "from": {
+      "language": "Greek",
+      "root": "epi + hēmera",
+      "gloss": "upon + day"
+    },
+    "literal": "lasting a short time"
+  },
+  {
+    "word": "epicene",
+    "from": {
+      "language": "Greek",
+      "root": "epikoinos",
+      "gloss": "common to both sexes"
+    },
+    "literal": "having characteristics of both"
+  },
+  {
+    "word": "epicure",
+    "from": {
+      "language": "Greek",
+      "root": "Epicouros",
+      "gloss": "Epicurus (philosopher)"
+    },
+    "literal": "one devoted to fine food"
+  },
+  {
+    "word": "epigram",
+    "from": {
+      "language": "Greek",
+      "root": "epigramma",
+      "gloss": "inscription"
+    },
+    "literal": "short pointed saying"
+  },
+  {
+    "word": "epigraph",
+    "from": {
+      "language": "Greek",
+      "root": "epigraphein",
+      "gloss": "to write upon"
+    },
+    "literal": "inscription; opening quote"
+  },
+  {
+    "word": "epiphany",
+    "from": {
+      "language": "Greek",
+      "root": "epiphaneia",
+      "gloss": "appearance"
+    },
+    "literal": "sudden insight; manifestation"
+  },
+  {
+    "word": "epiphyte",
+    "from": {
+      "language": "Greek",
+      "root": "epi + phyton",
+      "gloss": "on + plant"
+    },
+    "literal": "plant growing on another plant"
+  },
+  {
+    "word": "episode",
+    "from": {
+      "language": "Greek",
+      "root": "epeisodion",
+      "gloss": "coming in besides"
+    },
+    "literal": "incident between choruses; part"
+  },
+  {
+    "word": "epistolary",
+    "from": {
+      "language": "Greek via Latin",
+      "root": "epistola",
+      "gloss": "letter"
+    },
+    "literal": "in letter form"
+  },
+  {
+    "word": "epitaph",
+    "from": {
+      "language": "Greek",
+      "root": "epi + taphos",
+      "gloss": "upon + tomb"
+    },
+    "literal": "tomb inscription"
+  },
+  {
+    "word": "epithet",
+    "from": {
+      "language": "Greek",
+      "root": "epi + tithenai",
+      "gloss": "upon + to place"
+    },
+    "literal": "descriptive label"
+  },
+  {
+    "word": "epitome",
+    "from": {
+      "language": "Greek",
+      "root": "epitemnein",
+      "gloss": "to cut short"
+    },
+    "literal": "brief summary; exemplar"
+  },
+  {
+    "word": "epoch",
+    "from": {
+      "language": "Greek",
+      "root": "epochē",
+      "gloss": "a pause"
+    },
+    "literal": "fixed point in time; era"
+  },
+  {
+    "word": "equanimity",
+    "from": {
+      "language": "Latin",
+      "root": "aequus + animus",
+      "gloss": "even + mind"
+    },
+    "literal": "calm balance of mind"
+  },
+  {
+    "word": "equipoise",
+    "from": {
+      "language": "Latin + French",
+      "root": "aequus + pes",
+      "gloss": "equal + weight"
+    },
+    "literal": "balance of forces"
+  },
+  {
+    "word": "equinox",
+    "from": {
+      "language": "Latin",
+      "root": "aequus + nox",
+      "gloss": "equal + night"
+    },
+    "literal": "day and night of equal length"
+  },
+  {
+    "word": "eremite",
+    "from": {
+      "language": "Greek via Latin",
+      "root": "erēmitēs",
+      "gloss": "desert-dweller"
+    },
+    "literal": "hermit"
+  },
+  {
+    "word": "erode",
+    "from": {
+      "language": "Latin",
+      "root": "erodere",
+      "gloss": "to gnaw out"
+    },
+    "literal": "wear away"
+  },
+  {
+    "word": "errant",
+    "from": {
+      "language": "Latin",
+      "root": "errare",
+      "gloss": "to wander"
+    },
+    "literal": "straying; wandering"
+  },
+  {
+    "word": "ersatz",
+    "from": {
+      "language": "German",
+      "root": "Ersatz",
+      "gloss": "replacement"
+    },
+    "literal": "substitute; inferior copy"
+  },
+  {
+    "word": "erstwhile",
+    "from": {
+      "language": "Old English",
+      "root": "ǣrest + hwīl",
+      "gloss": "earliest + time"
+    },
+    "literal": "former; in the past"
+  },
+  {
+    "word": "erudite",
+    "from": {
+      "language": "Latin",
+      "root": "erudire",
+      "gloss": "to polish, instruct"
+    },
+    "literal": "learned"
+  },
+  {
+    "word": "eschew",
+    "from": {
+      "language": "Old French",
+      "root": "eschiver",
+      "gloss": "to avoid"
+    },
+    "literal": "deliberately avoid"
+  },
+  {
+    "word": "esoteric",
+    "from": {
+      "language": "Greek",
+      "root": "esōterikos",
+      "gloss": "inner"
+    },
+    "literal": "intended for the few"
+  },
+  {
+    "word": "espouse",
+    "from": {
+      "language": "Latin via French",
+      "root": "sponsus/espouser",
+      "gloss": "betrothed → marry"
+    },
+    "literal": "adopt or support"
+  },
+  {
+    "word": "essay",
+    "from": {
+      "language": "Latin via French",
+      "root": "exagium/essai",
+      "gloss": "a weighing, trial"
+    },
+    "literal": "attempt; short piece of writing"
+  },
+  {
+    "word": "esprit",
+    "from": {
+      "language": "French",
+      "root": "esprit",
+      "gloss": "spirit, wit"
+    },
+    "literal": "lively intelligence"
+  },
+  {
+    "word": "estuary",
+    "from": {
+      "language": "Latin",
+      "root": "aestus",
+      "gloss": "tide, surge"
+    },
+    "literal": "river mouth with tidal flow"
+  },
+  {
+    "word": "etiology",
+    "from": {
+      "language": "Greek",
+      "root": "aitia + logos",
+      "gloss": "cause + study"
+    },
+    "literal": "study of causes"
+  },
+  {
+    "word": "ethereal",
+    "from": {
+      "language": "Greek",
+      "root": "aithēr",
+      "gloss": "upper air"
+    },
+    "literal": "light, airy, delicate"
+  },
+  {
+    "word": "ethos",
+    "from": {
+      "language": "Greek",
+      "root": "ēthos",
+      "gloss": "custom, character"
+    },
+    "literal": "spirit of a group"
+  },
+  {
+    "word": "etude",
+    "from": {
+      "language": "French",
+      "root": "étude",
+      "gloss": "study"
+    },
+    "literal": "exercise piece for practice"
+  },
+  {
+    "word": "euphemism",
+    "from": {
+      "language": "Greek",
+      "root": "eu + phēmē",
+      "gloss": "good + speech"
+    },
+    "literal": "mild word for a harsh one"
+  },
+  {
+    "word": "euphoria",
+    "from": {
+      "language": "Greek",
+      "root": "eu + pherein",
+      "gloss": "well + to bear"
+    },
+    "literal": "intense well-being"
+  },
+  {
+    "word": "euphony",
+    "from": {
+      "language": "Greek",
+      "root": "eu + phonē",
+      "gloss": "good + sound"
+    },
+    "literal": "pleasant sound"
+  },
+  {
+    "word": "euthanize",
+    "from": {
+      "language": "Greek",
+      "root": "eu + thanatos",
+      "gloss": "good + death"
+    },
+    "literal": "end life to relieve pain"
+  },
+  {
+    "word": "evanescent",
+    "from": {
+      "language": "Latin",
+      "root": "evanescere",
+      "gloss": "to disappear"
+    },
+    "literal": "fading away quickly"
+  },
+  {
+    "word": "evince",
+    "from": {
+      "language": "Latin",
+      "root": "evincere",
+      "gloss": "to prove, conquer"
+    },
+    "literal": "reveal; show clearly"
+  },
+  {
+    "word": "evocative",
+    "from": {
+      "language": "Latin",
+      "root": "evocare",
+      "gloss": "to call out"
+    },
+    "literal": "bringing strong images to mind"
+  },
+  {
+    "word": "evolve",
+    "from": {
+      "language": "Latin",
+      "root": "evolvere",
+      "gloss": "to roll out"
+    },
+    "literal": "develop gradually"
+  },
+  {
+    "word": "exacerbate",
+    "from": {
+      "language": "Latin",
+      "root": "ex + acerbus",
+      "gloss": "out + harsh"
+    },
+    "literal": "make a problem worse"
+  },
+  {
+    "word": "exacting",
+    "from": {
+      "language": "Latin",
+      "root": "exigere",
+      "gloss": "to demand"
+    },
+    "literal": "demanding great effort"
+  },
+  {
+    "word": "exalt",
+    "from": {
+      "language": "Latin",
+      "root": "ex + altus",
+      "gloss": "out/up + high"
+    },
+    "literal": "raise in rank or praise"
+  },
+  {
+    "word": "excoriate",
+    "from": {
+      "language": "Latin",
+      "root": "ex + corium",
+      "gloss": "out of + skin"
+    },
+    "literal": "strip the skin; harshly criticize"
+  },
+  {
+    "word": "exculpate",
+    "from": {
+      "language": "Latin",
+      "root": "ex + culpa",
+      "gloss": "out of + blame"
+    },
+    "literal": "clear of blame"
+  },
+  {
+    "word": "execrable",
+    "from": {
+      "language": "Latin",
+      "root": "exsecrari",
+      "gloss": "to curse"
+    },
+    "literal": "detestable; very bad"
+  },
+  {
+    "word": "exegesis",
+    "from": {
+      "language": "Greek",
+      "root": "exēgeisthai",
+      "gloss": "to lead out"
+    },
+    "literal": "interpretation (esp. of text)"
+  },
+  {
+    "word": "exemplar",
+    "from": {
+      "language": "Latin",
+      "root": "exemplum",
+      "gloss": "sample, pattern"
+    },
+    "literal": "model example"
+  },
+  {
+    "word": "exigent",
+    "from": {
+      "language": "Latin",
+      "root": "exigere",
+      "gloss": "to demand"
+    },
+    "literal": "pressing; requiring quick action"
+  },
+  {
+    "word": "exiguous",
+    "from": {
+      "language": "Latin",
+      "root": "exiguus",
+      "gloss": "scanty"
+    },
+    "literal": "meager; small in amount"
+  },
+  {
+    "word": "exonerate",
+    "from": {
+      "language": "Latin",
+      "root": "ex + onus",
+      "gloss": "out of + burden"
+    },
+    "literal": "free from blame or duty"
+  },
+  {
+    "word": "exorbitant",
+    "from": {
+      "language": "Latin",
+      "root": "ex + orbis",
+      "gloss": "out of + track"
+    },
+    "literal": "excessively out of bounds"
+  },
+  {
+    "word": "exorcise",
+    "from": {
+      "language": "Greek via Latin",
+      "root": "exorkizein",
+      "gloss": "to bind by oath"
+    },
+    "literal": "drive out (a spirit)"
+  },
+  {
+    "word": "exoskeleton",
+    "from": {
+      "language": "Greek",
+      "root": "exo + skeleton",
+      "gloss": "outside + frame"
+    },
+    "literal": "external supporting structure"
+  },
+  {
+    "word": "expatiate",
+    "from": {
+      "language": "Latin",
+      "root": "expatiari",
+      "gloss": "to wander about"
+    },
+    "literal": "speak or write at length"
+  },
+  {
+    "word": "expedient",
+    "from": {
+      "language": "Latin",
+      "root": "expedire",
+      "gloss": "to free the feet"
+    },
+    "literal": "suitable for the need"
+  },
+  {
+    "word": "expiate",
+    "from": {
+      "language": "Latin",
+      "root": "expiare",
+      "gloss": "to atone"
+    },
+    "literal": "make amends"
+  },
+  {
+    "word": "explicit",
+    "from": {
+      "language": "Latin",
+      "root": "explicitus",
+      "gloss": "unfolded"
+    },
+    "literal": "clear; fully expressed"
+  },
+  {
+    "word": "exploit",
+    "from": {
+      "language": "Latin via French",
+      "root": "explicare/exploit",
+      "gloss": "to unfold → achievement"
+    },
+    "literal": "use selfishly; notable deed"
+  },
+  {
+    "word": "exponent",
+    "from": {
+      "language": "Latin",
+      "root": "exponere",
+      "gloss": "to put out"
+    },
+    "literal": "one who explains or advocates"
+  },
+  {
+    "word": "expunge",
+    "from": {
+      "language": "Latin",
+      "root": "expungere",
+      "gloss": "to prick out"
+    },
+    "literal": "erase; strike from record"
+  },
+  {
+    "word": "expurgate",
+    "from": {
+      "language": "Latin",
+      "root": "expurgare",
+      "gloss": "to cleanse out"
+    },
+    "literal": "remove offensive parts"
+  },
+  {
+    "word": "extant",
+    "from": {
+      "language": "Latin",
+      "root": "extare",
+      "gloss": "to stand out"
+    },
+    "literal": "still existing"
+  },
+  {
+    "word": "extemporize",
+    "from": {
+      "language": "Latin",
+      "root": "ex tempore",
+      "gloss": "out of the time"
+    },
+    "literal": "improvise on the spot"
+  },
+  {
+    "word": "extenuate",
+    "from": {
+      "language": "Latin",
+      "root": "extenuare",
+      "gloss": "to make thin"
+    },
+    "literal": "lessen the seriousness"
+  },
+  {
+    "word": "extirpate",
+    "from": {
+      "language": "Latin",
+      "root": "ex + stirps",
+      "gloss": "out of + root"
+    },
+    "literal": "root out; destroy completely"
+  },
+  {
+    "word": "extol",
+    "from": {
+      "language": "Latin",
+      "root": "extollere",
+      "gloss": "to raise up"
+    },
+    "literal": "praise highly"
+  },
+  {
+    "word": "extort",
+    "from": {
+      "language": "Latin",
+      "root": "extorquere",
+      "gloss": "to twist out"
+    },
+    "literal": "obtain by force or threats"
+  },
+  {
+    "word": "extraneous",
+    "from": {
+      "language": "Latin",
+      "root": "extraneus",
+      "gloss": "from outside"
+    },
+    "literal": "irrelevant; external"
+  },
+  {
+    "word": "extrapolate",
+    "from": {
+      "language": "Latin + math",
+      "root": "extra + polire (by analogy)",
+      "gloss": "beyond + polish"
+    },
+    "literal": "extend known data outward"
+  },
+  {
+    "word": "extricate",
+    "from": {
+      "language": "Latin",
+      "root": "extricare",
+      "gloss": "to disentangle"
+    },
+    "literal": "free from a snarl"
+  },
+  {
+    "word": "exuberant",
+    "from": {
+      "language": "Latin",
+      "root": "ex + uber",
+      "gloss": "out of + fertile"
+    },
+    "literal": "overflowing in joy or growth"
+  },
+  {
+    "word": "exuviae",
+    "from": {
+      "language": "Latin",
+      "root": "exuviae",
+      "gloss": "that which is shed"
+    },
+    "literal": "cast-off outer covering"
+  },
+  {
+    "word": "facade",
+    "from": {
+      "language": "Italian via French",
+      "root": "facciata/façade",
+      "gloss": "front face"
+    },
+    "literal": "front; deceptive outward show"
+  },
+  {
+    "word": "facetious",
+    "from": {
+      "language": "Latin via French",
+      "root": "facetus",
+      "gloss": "witty, elegant"
+    },
+    "literal": "playfully humorous"
+  },
+  {
+    "word": "facile",
+    "from": {
+      "language": "Latin",
+      "root": "facilis",
+      "gloss": "easy to do"
+    },
+    "literal": "too easy; simplistic"
+  },
+  {
+    "word": "factotum",
+    "from": {
+      "language": "Latin",
+      "root": "facere + totum",
+      "gloss": "to do + everything"
+    },
+    "literal": "person who does many jobs"
+  },
+  {
+    "word": "fainéant",
+    "from": {
+      "language": "French",
+      "root": "fait-néant",
+      "gloss": "does-nothing"
+    },
+    "literal": "idle; do-nothing"
+  },
+  {
+    "word": "fallible",
+    "from": {
+      "language": "Latin",
+      "root": "fallere",
+      "gloss": "to deceive"
+    },
+    "literal": "liable to err"
+  },
+  {
+    "word": "fallow",
+    "from": {
+      "language": "Old English",
+      "root": "fealh",
+      "gloss": "unplowed"
+    },
+    "literal": "left unseeded"
+  },
+  {
+    "word": "falter",
+    "from": {
+      "language": "Old Norse/Eng.",
+      "root": "faltra?",
+      "gloss": "to stagger"
+    },
+    "literal": "hesitate; waver"
+  },
+  {
+    "word": "fanfare",
+    "from": {
+      "language": "French",
+      "root": "fanfare",
+      "gloss": "showy flourish"
+    },
+    "literal": "flashy display; trumpet call"
+  },
+  {
+    "word": "farcical",
+    "from": {
+      "language": "Latin via French",
+      "root": "farcire",
+      "gloss": "to stuff"
+    },
+    "literal": "ridiculously absurd"
+  },
+  {
+    "word": "fastidious",
+    "from": {
+      "language": "Latin",
+      "root": "fastidium",
+      "gloss": "disgust, loathing"
+    },
+    "literal": "excessively particular"
+  },
+  {
+    "word": "fatuous",
+    "from": {
+      "language": "Latin",
+      "root": "fatuus",
+      "gloss": "foolish"
+    },
+    "literal": "smugly foolish"
+  },
+  {
+    "word": "faunal",
+    "from": {
+      "language": "Latin",
+      "root": "Fauna",
+      "gloss": "goddess of animals"
+    },
+    "literal": "relating to animals"
+  },
+  {
+    "word": "febrile",
+    "from": {
+      "language": "Latin",
+      "root": "febris",
+      "gloss": "fever"
+    },
+    "literal": "feverish"
+  },
+  {
+    "word": "fecund",
+    "from": {
+      "language": "Latin",
+      "root": "fecundus",
+      "gloss": "fruitful"
+    },
+    "literal": "highly fertile; productive"
+  },
+  {
+    "word": "feckless",
+    "from": {
+      "language": "Scots",
+      "root": "feck (effect) + -less",
+      "gloss": "effect-less"
+    },
+    "literal": "ineffective; irresponsible"
+  },
+  {
+    "word": "felicitous",
+    "from": {
+      "language": "Latin",
+      "root": "felicitas",
+      "gloss": "happiness"
+    },
+    "literal": "well-chosen; pleasant"
+  },
+  {
+    "word": "feral",
+    "from": {
+      "language": "Latin",
+      "root": "fera",
+      "gloss": "wild animal"
+    },
+    "literal": "untamed; reverted to wild"
+  },
+  {
+    "word": "ferine",
+    "from": {
+      "language": "Latin",
+      "root": "ferinus",
+      "gloss": "of wild beasts"
+    },
+    "literal": "wild; beastlike"
+  },
+  {
+    "word": "ferret",
+    "from": {
+      "language": "Latin via French",
+      "root": "furitare/furet",
+      "gloss": "to thief around → ferret"
+    },
+    "literal": "domesticated polecat; to search out"
+  },
+  {
+    "word": "fervid",
+    "from": {
+      "language": "Latin",
+      "root": "fervidus",
+      "gloss": "boiling, glowing"
+    },
+    "literal": "intensely passionate"
+  },
+  {
+    "word": "festoon",
+    "from": {
+      "language": "Italian via French",
+      "root": "festone",
+      "gloss": "a garland"
+    },
+    "literal": "decorate with garlands"
+  },
+  {
+    "word": "fetid",
+    "from": {
+      "language": "Latin",
+      "root": "foetidus",
+      "gloss": "stinking"
+    },
+    "literal": "having a bad smell"
+  },
+  {
+    "word": "fiasco",
+    "from": {
+      "language": "Italian",
+      "root": "fare fiasco",
+      "gloss": "make a bottle → flop"
+    },
+    "literal": "complete failure"
+  },
+  {
+    "word": "fiduciary",
+    "from": {
+      "language": "Latin",
+      "root": "fides",
+      "gloss": "trust, faith"
+    },
+    "literal": "held in trust"
+  },
+  {
+    "word": "filament",
+    "from": {
+      "language": "Latin",
+      "root": "filum",
+      "gloss": "thread"
+    },
+    "literal": "fine threadlike strand"
+  },
+  {
+    "word": "filigree",
+    "from": {
+      "language": "Latin via Italian",
+      "root": "filum + granum",
+      "gloss": "thread + grain"
+    },
+    "literal": "delicate ornamental work"
+  },
+  {
+    "word": "finagle",
+    "from": {
+      "language": "Yiddish/Eng.",
+      "root": "fegnagen? (uncertain)",
+      "gloss": "to swindle"
+    },
+    "literal": "wriggle, scheme"
+  },
+  {
+    "word": "finial",
+    "from": {
+      "language": "Latin",
+      "root": "finis",
+      "gloss": "end"
+    },
+    "literal": "ornament at the top end"
+  },
+  {
+    "word": "fissure",
+    "from": {
+      "language": "Latin",
+      "root": "findere",
+      "gloss": "to split"
+    },
+    "literal": "narrow crack"
+  },
+  {
+    "word": "flagellate",
+    "from": {
+      "language": "Latin",
+      "root": "flagellum",
+      "gloss": "whip"
+    },
+    "literal": "whip; having a lash-like tail"
+  },
+  {
+    "word": "flagrant",
+    "from": {
+      "language": "Latin",
+      "root": "flagrare",
+      "gloss": "to burn"
+    },
+    "literal": "glaringly obvious"
+  },
+  {
+    "word": "flay",
+    "from": {
+      "language": "Old English",
+      "root": "flēan",
+      "gloss": "to strip the skin"
+    },
+    "literal": "skin; criticize harshly"
+  },
+  {
+    "word": "fleeting",
+    "from": {
+      "language": "Old English",
+      "root": "flēotan",
+      "gloss": "to float, flow"
+    },
+    "literal": "passing quickly"
+  },
+  {
+    "word": "flicker",
+    "from": {
+      "language": "Imitative",
+      "root": "flicker",
+      "gloss": "fluttering light"
+    },
+    "literal": "unsteady light"
+  },
+  {
+    "word": "florid",
+    "from": {
+      "language": "Latin",
+      "root": "floridus",
+      "gloss": "flowery"
+    },
+    "literal": "elaborately ornate; rosy"
+  },
+  {
+    "word": "flotsam",
+    "from": {
+      "language": "French",
+      "root": "flotter",
+      "gloss": "to float"
+    },
+    "literal": "floating wreckage"
+  },
+  {
+    "word": "flummox",
+    "from": {
+      "language": "English",
+      "root": "flummox",
+      "gloss": "to bewilder"
+    },
+    "literal": "confuse utterly"
+  },
+  {
+    "word": "fluvial",
+    "from": {
+      "language": "Latin",
+      "root": "fluvius",
+      "gloss": "river"
+    },
+    "literal": "of rivers"
+  },
+  {
+    "word": "flux",
+    "from": {
+      "language": "Latin",
+      "root": "fluere",
+      "gloss": "to flow"
+    },
+    "literal": "continuous change"
+  },
+  {
+    "word": "foist",
+    "from": {
+      "language": "Dutch",
+      "root": "vuisten (to palm)",
+      "gloss": "to palm"
+    },
+    "literal": "pass off deceitfully"
+  },
+  {
+    "word": "foment",
+    "from": {
+      "language": "Latin",
+      "root": "fomentum",
+      "gloss": "a warm application"
+    },
+    "literal": "stir up; apply warm compress"
+  },
+  {
+    "word": "foppish",
+    "from": {
+      "language": "English",
+      "root": "fop",
+      "gloss": "dandy"
+    },
+    "literal": "vain about appearance"
+  },
+  {
+    "word": "forbear",
+    "from": {
+      "language": "Old English",
+      "root": "for + beran",
+      "gloss": "before + bear"
+    },
+    "literal": "refrain; ancestor"
+  },
+  {
+    "word": "forswear",
+    "from": {
+      "language": "Old English",
+      "root": "for + swerian",
+      "gloss": "completely + swear"
+    },
+    "literal": "renounce under oath"
+  },
+  {
+    "word": "fortuitous",
+    "from": {
+      "language": "Latin",
+      "root": "fors/fortuitus",
+      "gloss": "chance"
+    },
+    "literal": "happening by accident"
+  },
+  {
+    "word": "fossick",
+    "from": {
+      "language": "Australian Eng.",
+      "root": "fossick",
+      "gloss": "to rummage"
+    },
+    "literal": "search aimlessly"
+  },
+  {
+    "word": "fractious",
+    "from": {
+      "language": "Latin",
+      "root": "frangere",
+      "gloss": "to break"
+    },
+    "literal": "irritable; hard to manage"
+  },
+  {
+    "word": "frangible",
+    "from": {
+      "language": "Latin",
+      "root": "frangere",
+      "gloss": "to break"
+    },
+    "literal": "breakable"
+  },
+  {
+    "word": "fratricide",
+    "from": {
+      "language": "Latin",
+      "root": "frater + caedere",
+      "gloss": "brother + to cut"
+    },
+    "literal": "killing one's brother"
+  },
+  {
+    "word": "frenetic",
+    "from": {
+      "language": "Greek via Latin",
+      "root": "phrenētikos",
+      "gloss": "delirious"
+    },
+    "literal": "wildly agitated"
+  },
+  {
+    "word": "frisson",
+    "from": {
+      "language": "French",
+      "root": "frisson",
+      "gloss": "shiver"
+    },
+    "literal": "sudden thrill or chill"
+  },
+  {
+    "word": "frowzy",
+    "from": {
+      "language": "English",
+      "root": "frowzy",
+      "gloss": "musty, slovenly"
+    },
+    "literal": "scruffy; stale-smelling"
+  },
+  {
+    "word": "fulgurate",
+    "from": {
+      "language": "Latin",
+      "root": "fulgur",
+      "gloss": "lightning"
+    },
+    "literal": "flash like lightning"
+  },
+  {
+    "word": "fulminate",
+    "from": {
+      "language": "Latin",
+      "root": "fulmen",
+      "gloss": "lightning"
+    },
+    "literal": "explode; thunder against"
+  },
+  {
+    "word": "fungible",
+    "from": {
+      "language": "Latin",
+      "root": "fungi (function)",
+      "gloss": "to perform"
+    },
+    "literal": "interchangeable in law"
+  },
+  {
+    "word": "funicular",
+    "from": {
+      "language": "Latin",
+      "root": "funiculus",
+      "gloss": "little rope"
+    },
+    "literal": "cable railway; rope-like"
+  },
+  {
+    "word": "furbelow",
+    "from": {
+      "language": "French",
+      "root": "falbala",
+      "gloss": "frill"
+    },
+    "literal": "showy ruffle or trimming"
+  },
+  {
+    "word": "furtive",
+    "from": {
+      "language": "Latin",
+      "root": "fur",
+      "gloss": "thief"
+    },
+    "literal": "sneaky; secretive"
+  },
+  {
+    "word": "fustian",
+    "from": {
+      "language": "French via Latin",
+      "root": "fustanum",
+      "gloss": "coarse cloth"
+    },
+    "literal": "pompous speech; stout fabric"
+  }
+]

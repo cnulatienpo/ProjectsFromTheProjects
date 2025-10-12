@@ -1,0 +1,31 @@
+Tweetrunk parsed 405 items.
+Types: {'mixed': 325, 'prompt': 70, 'lesson': 6, 'note': 4}
+Items with prompts: 395
+Items with beats mentioned: 385
+Items that appear to introduce beats: 160
+
+First introductions per beat:
+- setup: item 89 (orig 189) — Action 🔨
+- payoff: item 92 (orig 192) — Reveal 👁️
+- emotion: item 8 (orig 108) — Character Description
+- power: item 386 (orig 521) — Designing for Indulgence
+- shift: item 16 (orig 116) — Subject
+- intimacy: item 111 (orig 211) — Pronoun
+- dialogue: item 9 (orig 109) — DESIRE
+- interaction: item 127 (orig 227) — back to action
+- agreement: item 300 (orig 425) — Interrogative Sentences
+- disagreement: item 259 (orig 384) — Back to interjections
+- test: item 18 (orig 118) — Noun
+- reversal: item 94 (orig 194) — 🟣 EMOTION / PSYCHOLOGY (Purple)
+- atmosphere: item 39 (orig 139) — Adjective
+- discovery: item 265 (orig 390) — Exposition Without the Dump
+- loss: item 21 (orig 121) — back to stakes:
+- arrival: item 12 (orig 112) — STAKES
+- transition: item 218 (orig 319) — Colon
+- turning point: item 112 (orig 212) — Level Three (High Strength)
+- mirror: item 36 (orig 136) — How to Spot Character Flaw in the Wild:
+- bridge: item 72 (orig 172) — Period
+- suspense: item 34 (orig 134) — Back to subject:
+- release: item 96 (orig 196) — 🟠 WORLD / ENVIRONMENT (Orange)
+- transformation: item 11 (orig 111) — CHANGE
+- sacrifice: item 17 (orig 117) — Back to Desire:

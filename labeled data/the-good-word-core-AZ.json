@@ -1,0 +1,983 @@
+[
+  {
+    "word": "able",
+    "from": {
+      "language": "Old French ← Latin",
+      "root": "habilis",
+      "gloss": "capable, apt"
+    },
+    "literal": "having the power to"
+  },
+  {
+    "word": "about",
+    "from": {
+      "language": "Old English",
+      "root": "abūtan",
+      "gloss": "on the outside of"
+    },
+    "literal": "approximately; concerning"
+  },
+  {
+    "word": "above",
+    "from": {
+      "language": "Old English",
+      "root": "abufan",
+      "gloss": "over, on top"
+    },
+    "literal": "over; higher than"
+  },
+  {
+    "word": "absent",
+    "from": {
+      "language": "Latin via French",
+      "root": "absens",
+      "gloss": "being away"
+    },
+    "literal": "not present"
+  },
+  {
+    "word": "accept",
+    "from": {
+      "language": "Latin via French",
+      "root": "accipere",
+      "gloss": "to take to oneself"
+    },
+    "literal": "receive willingly"
+  },
+  {
+    "word": "account",
+    "from": {
+      "language": "Latin via French",
+      "root": "computare",
+      "gloss": "to reckon"
+    },
+    "literal": "record; explanation"
+  },
+  {
+    "word": "act",
+    "from": {
+      "language": "Latin via French",
+      "root": "actus",
+      "gloss": "a doing, act"
+    },
+    "literal": "do; deed"
+  },
+  {
+    "word": "add",
+    "from": {
+      "language": "Latin via French",
+      "root": "addere",
+      "gloss": "to put to"
+    },
+    "literal": "join to; increase"
+  },
+  {
+    "word": "address",
+    "from": {
+      "language": "Latin via French",
+      "root": "ad + regere",
+      "gloss": "to direct toward"
+    },
+    "literal": "location; to speak to"
+  },
+  {
+    "word": "adult",
+    "from": {
+      "language": "Latin",
+      "root": "adultus",
+      "gloss": "grown, mature"
+    },
+    "literal": "fully grown person"
+  },
+  {
+    "word": "afraid",
+    "from": {
+      "language": "Old English",
+      "root": "ā + frǣgan (to affray)",
+      "gloss": "frightened"
+    },
+    "literal": "scared"
+  },
+  {
+    "word": "after",
+    "from": {
+      "language": "Old English",
+      "root": "æfter",
+      "gloss": "following"
+    },
+    "literal": "later in time"
+  },
+  {
+    "word": "again",
+    "from": {
+      "language": "Old English",
+      "root": "ongean",
+      "gloss": "against, back"
+    },
+    "literal": "once more"
+  },
+  {
+    "word": "age",
+    "from": {
+      "language": "Latin via French",
+      "root": "aetas/age",
+      "gloss": "lifetime"
+    },
+    "literal": "length of life; era"
+  },
+  {
+    "word": "agree",
+    "from": {
+      "language": "Latin via French",
+      "root": "ad + gratus",
+      "gloss": "to please toward"
+    },
+    "literal": "share the same view"
+  },
+  {
+    "word": "air",
+    "from": {
+      "language": "Greek via Latin",
+      "root": "aēr",
+      "gloss": "air"
+    },
+    "literal": "the gas we breathe"
+  },
+  {
+    "word": "alive",
+    "from": {
+      "language": "Old English",
+      "root": "on līfe",
+      "gloss": "in life"
+    },
+    "literal": "living"
+  },
+  {
+    "word": "all",
+    "from": {
+      "language": "Old English",
+      "root": "eall",
+      "gloss": "all"
+    },
+    "literal": "every; the whole"
+  },
+  {
+    "word": "allow",
+    "from": {
+      "language": "Latin via French",
+      "root": "adlaudare → allow",
+      "gloss": "to praise → permit"
+    },
+    "literal": "permit"
+  },
+  {
+    "word": "almost",
+    "from": {
+      "language": "Old English",
+      "root": "ealmæst",
+      "gloss": "nearly"
+    },
+    "literal": "nearly"
+  },
+  {
+    "word": "alone",
+    "from": {
+      "language": "Old English",
+      "root": "all + one",
+      "gloss": "all one"
+    },
+    "literal": "by oneself"
+  },
+  {
+    "word": "along",
+    "from": {
+      "language": "Old English",
+      "root": "andlang",
+      "gloss": "lengthwise"
+    },
+    "literal": "together with; lengthwise"
+  },
+  {
+    "word": "already",
+    "from": {
+      "language": "Old English",
+      "root": "eal + ræde",
+      "gloss": "all + ready"
+    },
+    "literal": "by this time"
+  },
+  {
+    "word": "also",
+    "from": {
+      "language": "Old English",
+      "root": "eallswā",
+      "gloss": "all so"
+    },
+    "literal": "in addition"
+  },
+  {
+    "word": "always",
+    "from": {
+      "language": "Old English",
+      "root": "ealne weg",
+      "gloss": "all the way"
+    },
+    "literal": "at all times"
+  },
+  {
+    "word": "amaze",
+    "from": {
+      "language": "Old English",
+      "root": "amasian",
+      "gloss": "to bewilder"
+    },
+    "literal": "surprise greatly"
+  },
+  {
+    "word": "among",
+    "from": {
+      "language": "Old English",
+      "root": "on gemang",
+      "gloss": "in a crowd"
+    },
+    "literal": "in the middle of"
+  },
+  {
+    "word": "animal",
+    "from": {
+      "language": "Latin via French",
+      "root": "animal",
+      "gloss": "living being"
+    },
+    "literal": "living creature"
+  },
+  {
+    "word": "answer",
+    "from": {
+      "language": "Old English",
+      "root": "andswaru",
+      "gloss": "a reply"
+    },
+    "literal": "reply"
+  },
+  {
+    "word": "any",
+    "from": {
+      "language": "Old English",
+      "root": "æniġ",
+      "gloss": "any"
+    },
+    "literal": "one or some, no matter which"
+  },
+  {
+    "word": "appear",
+    "from": {
+      "language": "Latin via French",
+      "root": "apparere",
+      "gloss": "to come into view"
+    },
+    "literal": "come into sight"
+  },
+  {
+    "word": "apple",
+    "from": {
+      "language": "Old English",
+      "root": "æppel",
+      "gloss": "apple"
+    },
+    "literal": "round fruit"
+  },
+  {
+    "word": "arm",
+    "from": {
+      "language": "Old English",
+      "root": "earm",
+      "gloss": "arm"
+    },
+    "literal": "upper limb"
+  },
+  {
+    "word": "arrive",
+    "from": {
+      "language": "Latin via French",
+      "root": "ad + ripa",
+      "gloss": "to the shore"
+    },
+    "literal": "reach a place"
+  },
+  {
+    "word": "art",
+    "from": {
+      "language": "Latin via French",
+      "root": "ars",
+      "gloss": "skill"
+    },
+    "literal": "human creative skill"
+  },
+  {
+    "word": "ask",
+    "from": {
+      "language": "Old English",
+      "root": "ascian",
+      "gloss": "to inquire"
+    },
+    "literal": "request information"
+  },
+  {
+    "word": "at",
+    "from": {
+      "language": "Old English",
+      "root": "æt",
+      "gloss": "at"
+    },
+    "literal": "in, on, to"
+  },
+  {
+    "word": "aunt",
+    "from": {
+      "language": "Latin via French",
+      "root": "amita/ante",
+      "gloss": "father’s sister → aunt"
+    },
+    "literal": "parent’s sister/relative"
+  },
+  {
+    "word": "autumn",
+    "from": {
+      "language": "Latin via French",
+      "root": "autumnus",
+      "gloss": "autumn"
+    },
+    "literal": "fall season"
+  },
+  {
+    "word": "away",
+    "from": {
+      "language": "Old English",
+      "root": "onweg",
+      "gloss": "on the way (out)"
+    },
+    "literal": "to a distance"
+  },
+  {
+    "word": "baby",
+    "from": {
+      "language": "Middle English",
+      "root": "babe",
+      "gloss": "infant"
+    },
+    "literal": "very young child"
+  },
+  {
+    "word": "back",
+    "from": {
+      "language": "Old Norse/English",
+      "root": "bak",
+      "gloss": "back"
+    },
+    "literal": "rear part; return"
+  },
+  {
+    "word": "bad",
+    "from": {
+      "language": "Old English",
+      "root": "badde?",
+      "gloss": "evil, inferior"
+    },
+    "literal": "not good"
+  },
+  {
+    "word": "bag",
+    "from": {
+      "language": "Old Norse",
+      "root": "baggi",
+      "gloss": "bundle"
+    },
+    "literal": "container of flexible material"
+  },
+  {
+    "word": "bake",
+    "from": {
+      "language": "Old English",
+      "root": "bacan",
+      "gloss": "to bake"
+    },
+    "literal": "cook with dry heat"
+  },
+  {
+    "word": "ball",
+    "from": {
+      "language": "Old Norse/English",
+      "root": "bǫllr",
+      "gloss": "ball"
+    },
+    "literal": "round object"
+  },
+  {
+    "word": "band",
+    "from": {
+      "language": "Old Norse/Old French",
+      "root": "band/bande",
+      "gloss": "binding, strip"
+    },
+    "literal": "strip; group"
+  },
+  {
+    "word": "bank (money)",
+    "from": {
+      "language": "Italian via French",
+      "root": "banca",
+      "gloss": "bench, exchange"
+    },
+    "literal": "money-keeping place"
+  },
+  {
+    "word": "bar",
+    "from": {
+      "language": "Old French",
+      "root": "barre",
+      "gloss": "rod, barrier"
+    },
+    "literal": "long rod; counter"
+  },
+  {
+    "word": "base",
+    "from": {
+      "language": "Latin via French",
+      "root": "basis/base",
+      "gloss": "foundation"
+    },
+    "literal": "bottom support"
+  },
+  {
+    "word": "basket",
+    "from": {
+      "language": "Old Northern French",
+      "root": "bascat",
+      "gloss": "woven container"
+    },
+    "literal": "woven container"
+  },
+  {
+    "word": "battle",
+    "from": {
+      "language": "Latin via French",
+      "root": "battuere/bataille",
+      "gloss": "to beat/battle"
+    },
+    "literal": "fight between forces"
+  },
+  {
+    "word": "be",
+    "from": {
+      "language": "Old English",
+      "root": "beon/wesan",
+      "gloss": "to be"
+    },
+    "literal": "exist"
+  },
+  {
+    "word": "beach",
+    "from": {
+      "language": "Old English",
+      "root": "bæce? → beach",
+      "gloss": "shore"
+    },
+    "literal": "shore by the sea"
+  },
+  {
+    "word": "bean",
+    "from": {
+      "language": "Old English",
+      "root": "bēan",
+      "gloss": "bean"
+    },
+    "literal": "edible seed"
+  },
+  {
+    "word": "bear (animal)",
+    "from": {
+      "language": "Old English",
+      "root": "bera",
+      "gloss": "bear"
+    },
+    "literal": "large furry mammal"
+  },
+  {
+    "word": "beat",
+    "from": {
+      "language": "Old English",
+      "root": "beatan",
+      "gloss": "to strike"
+    },
+    "literal": "hit repeatedly; defeat"
+  },
+  {
+    "word": "beautiful",
+    "from": {
+      "language": "French + Eng.",
+      "root": "beau + -ful",
+      "gloss": "fine + full"
+    },
+    "literal": "very pleasing to the senses"
+  },
+  {
+    "word": "because",
+    "from": {
+      "language": "Middle English",
+      "root": "by cause",
+      "gloss": "by reason"
+    },
+    "literal": "for the reason that"
+  },
+  {
+    "word": "become",
+    "from": {
+      "language": "Old English",
+      "root": "becuman",
+      "gloss": "to come to be"
+    },
+    "literal": "turn into"
+  },
+  {
+    "word": "bed",
+    "from": {
+      "language": "Old English",
+      "root": "bedd",
+      "gloss": "bed"
+    },
+    "literal": "sleeping furniture"
+  },
+  {
+    "word": "bee",
+    "from": {
+      "language": "Old English",
+      "root": "bēo",
+      "gloss": "bee"
+    },
+    "literal": "stinging insect making honey"
+  },
+  {
+    "word": "begin",
+    "from": {
+      "language": "Old English",
+      "root": "beginnan",
+      "gloss": "to start"
+    },
+    "literal": "start"
+  },
+  {
+    "word": "believe",
+    "from": {
+      "language": "Old English",
+      "root": "gelēfan",
+      "gloss": "to hold dear, believe"
+    },
+    "literal": "accept as true"
+  },
+  {
+    "word": "bell",
+    "from": {
+      "language": "Old English",
+      "root": "belle",
+      "gloss": "bell"
+    },
+    "literal": "hollow metal sound-maker"
+  },
+  {
+    "word": "belong",
+    "from": {
+      "language": "Old English",
+      "root": "belangan",
+      "gloss": "to pertain to"
+    },
+    "literal": "be the property of; fit"
+  },
+  {
+    "word": "below",
+    "from": {
+      "language": "Old Norse/English",
+      "root": "bilō",
+      "gloss": "under"
+    },
+    "literal": "underneath"
+  },
+  {
+    "word": "bend",
+    "from": {
+      "language": "Old English",
+      "root": "bendan",
+      "gloss": "to curve"
+    },
+    "literal": "curve; flex"
+  },
+  {
+    "word": "best",
+    "from": {
+      "language": "Old English",
+      "root": "betst",
+      "gloss": "superlative of good"
+    },
+    "literal": "most good"
+  },
+  {
+    "word": "better",
+    "from": {
+      "language": "Old English",
+      "root": "betere",
+      "gloss": "comparative of good"
+    },
+    "literal": "more good"
+  },
+  {
+    "word": "between",
+    "from": {
+      "language": "Old English",
+      "root": "betwēonum",
+      "gloss": "in the space between"
+    },
+    "literal": "in the middle of two"
+  },
+  {
+    "word": "bird",
+    "from": {
+      "language": "Old English",
+      "root": "brid",
+      "gloss": "young bird → bird"
+    },
+    "literal": "feathered animal"
+  },
+  {
+    "word": "birth",
+    "from": {
+      "language": "Old Norse/English",
+      "root": "byrðr",
+      "gloss": "bearing"
+    },
+    "literal": "coming into life"
+  },
+  {
+    "word": "black",
+    "from": {
+      "language": "Old English",
+      "root": "blæc",
+      "gloss": "black"
+    },
+    "literal": "darkest color"
+  },
+  {
+    "word": "blade",
+    "from": {
+      "language": "Old English",
+      "root": "blæd",
+      "gloss": "leaf, blade"
+    },
+    "literal": "flat cutting part"
+  },
+  {
+    "word": "blood",
+    "from": {
+      "language": "Old English",
+      "root": "blōd",
+      "gloss": "blood"
+    },
+    "literal": "red body fluid"
+  },
+  {
+    "word": "blue",
+    "from": {
+      "language": "Old French",
+      "root": "bleu",
+      "gloss": "blue"
+    },
+    "literal": "color of the sky"
+  },
+  {
+    "word": "board",
+    "from": {
+      "language": "Old English",
+      "root": "bord",
+      "gloss": "plank"
+    },
+    "literal": "flat plank; committee"
+  },
+  {
+    "word": "boat",
+    "from": {
+      "language": "Old English",
+      "root": "bāt",
+      "gloss": "boat"
+    },
+    "literal": "small watercraft"
+  },
+  {
+    "word": "body",
+    "from": {
+      "language": "Old English",
+      "root": "bodig",
+      "gloss": "body"
+    },
+    "literal": "physical form"
+  },
+  {
+    "word": "boil",
+    "from": {
+      "language": "Latin via French",
+      "root": "bullire",
+      "gloss": "to bubble"
+    },
+    "literal": "heat until bubbling"
+  },
+  {
+    "word": "bone",
+    "from": {
+      "language": "Old English",
+      "root": "bān",
+      "gloss": "bone"
+    },
+    "literal": "hard body piece"
+  },
+  {
+    "word": "book",
+    "from": {
+      "language": "Old English",
+      "root": "bōc",
+      "gloss": "book"
+    },
+    "literal": "written work"
+  },
+  {
+    "word": "border",
+    "from": {
+      "language": "Old French",
+      "root": "bordure",
+      "gloss": "edge"
+    },
+    "literal": "boundary line"
+  },
+  {
+    "word": "born",
+    "from": {
+      "language": "Old English",
+      "root": "beran (pp.)",
+      "gloss": "to bear"
+    },
+    "literal": "brought into life"
+  },
+  {
+    "word": "borrow",
+    "from": {
+      "language": "Old English",
+      "root": "borgian",
+      "gloss": "to lend/borrow"
+    },
+    "literal": "take for a time"
+  },
+  {
+    "word": "both",
+    "from": {
+      "language": "Old Norse",
+      "root": "bāðir",
+      "gloss": "both"
+    },
+    "literal": "the two together"
+  },
+  {
+    "word": "bottle",
+    "from": {
+      "language": "Old French",
+      "root": "botel",
+      "gloss": "container"
+    },
+    "literal": "narrow-necked container"
+  },
+  {
+    "word": "bottom",
+    "from": {
+      "language": "Old English",
+      "root": "botm",
+      "gloss": "lowest part"
+    },
+    "literal": "base; underside"
+  },
+  {
+    "word": "bowl",
+    "from": {
+      "language": "Old English",
+      "root": "bolla",
+      "gloss": "bowl"
+    },
+    "literal": "round open dish"
+  },
+  {
+    "word": "box",
+    "from": {
+      "language": "Old English",
+      "root": "box",
+      "gloss": "box; boxwood"
+    },
+    "literal": "container with sides"
+  },
+  {
+    "word": "boy",
+    "from": {
+      "language": "Middle English",
+      "root": "boie",
+      "gloss": "servant, boy"
+    },
+    "literal": "male child"
+  },
+  {
+    "word": "brain",
+    "from": {
+      "language": "Old English",
+      "root": "brægen",
+      "gloss": "brain"
+    },
+    "literal": "thinking organ"
+  },
+  {
+    "word": "branch",
+    "from": {
+      "language": "Old French",
+      "root": "branche",
+      "gloss": "shoot, branch"
+    },
+    "literal": "tree limb; division"
+  },
+  {
+    "word": "bread",
+    "from": {
+      "language": "Old English",
+      "root": "brēad",
+      "gloss": "bread"
+    },
+    "literal": "baked food from grain"
+  },
+  {
+    "word": "break",
+    "from": {
+      "language": "Old English",
+      "root": "brecan",
+      "gloss": "to break"
+    },
+    "literal": "separate by force; pause"
+  },
+  {
+    "word": "breath",
+    "from": {
+      "language": "Old English",
+      "root": "brǣþ",
+      "gloss": "breath"
+    },
+    "literal": "air taken in/out"
+  },
+  {
+    "word": "bring",
+    "from": {
+      "language": "Old English",
+      "root": "bringan",
+      "gloss": "to carry to"
+    },
+    "literal": "carry here"
+  },
+  {
+    "word": "broad",
+    "from": {
+      "language": "Old English",
+      "root": "brād",
+      "gloss": "wide"
+    },
+    "literal": "wide"
+  },
+  {
+    "word": "brother",
+    "from": {
+      "language": "Old English",
+      "root": "brōþor",
+      "gloss": "brother"
+    },
+    "literal": "male sibling"
+  },
+  {
+    "word": "brown",
+    "from": {
+      "language": "Old English",
+      "root": "brūn",
+      "gloss": "brown"
+    },
+    "literal": "dark tan color"
+  },
+  {
+    "word": "build",
+    "from": {
+      "language": "Old English",
+      "root": "byldan",
+      "gloss": "to construct"
+    },
+    "literal": "put together to make"
+  },
+  {
+    "word": "burn",
+    "from": {
+      "language": "Old English",
+      "root": "beornan/bærnan",
+      "gloss": "to burn"
+    },
+    "literal": "consume by fire"
+  },
+  {
+    "word": "burst",
+    "from": {
+      "language": "Old English",
+      "root": "berstan",
+      "gloss": "to burst"
+    },
+    "literal": "break open suddenly"
+  },
+  {
+    "word": "busy",
+    "from": {
+      "language": "Old English",
+      "root": "bisig",
+      "gloss": "occupied"
+    },
+    "literal": "actively engaged"
+  },
+  {
+    "word": "butter",
+    "from": {
+      "language": "Greek via Latin",
+      "root": "boutyron",
+      "gloss": "cow cheese → butter"
+    },
+    "literal": "fat spread from milk"
+  },
+  {
+    "word": "button",
+    "from": {
+      "language": "Old French",
+      "root": "bouton",
+      "gloss": "bud, knob"
+    },
+    "literal": "fastening disk"
+  },
+  {
+    "word": "buy",
+    "from": {
+      "language": "Old English",
+      "root": "bycgan",
+      "gloss": "to purchase"
+    },
+    "literal": "acquire by paying"
+  },
+  {
+    "word": "by",
+    "from": {
+      "language": "Old Norse/English",
+      "root": "bý/by",
+      "gloss": "settlement; near"
+    },
+    "literal": "near; through the action of"
+  }
+]
