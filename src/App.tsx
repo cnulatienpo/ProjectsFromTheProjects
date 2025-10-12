@@ -4,6 +4,8 @@ import Home from './pages/Home';
 import Deck from './pages/Deck';
 import Play from './pages/Play';
 import CutGamesDebug from './dev/CutGamesDebug';
+import CutGames from './pages/CutGames';
+import CutGamesPlay from './pages/CutGamesPlay';
 
 export default function App() {
   return (
@@ -15,6 +17,8 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/pack/:id" element={<Deck />} />
             <Route path="/play/:id" element={<Play />} />
+            <Route path="/cut-games" element={<CutGames />} />
+            <Route path="/play/cut-games" element={<CutGamesPlay />} />
             <Route path="/dev/cut-games" element={<CutGamesDebug />} />
             <Route path="*" element={<Home />} />
           </Routes>

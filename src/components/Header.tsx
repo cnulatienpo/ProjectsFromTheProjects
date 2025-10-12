@@ -20,8 +20,19 @@ export function Header() {
                 isActive ? 'bg-brand-accent text-white' : 'text-brand hover:bg-brand/5'
               }`
             }
-          >
+            >
             Home
+          </NavLink>
+          <NavLink
+            to="/cut-games"
+            className={({ isActive }) =>
+              `rounded-full px-3 py-1 transition-colors ${
+                isActive ? 'bg-brand-accent text-white' : 'text-brand hover:bg-brand/5'
+              }`
+            }
+            data-testid="nav-cutgames-link"
+          >
+            Cut Games
           </NavLink>
           <span className="rounded-full bg-brand/90 px-3 py-1 text-xs font-medium uppercase tracking-wide text-white">
             {points} pts
