@@ -1,0 +1,7931 @@
+[
+  {
+    "word": "oaken",
+    "from": {
+      "language": "Old Eng.",
+      "root": "āc",
+      "gloss": "oak"
+    },
+    "literal": "made of oak"
+  },
+  {
+    "word": "oasis",
+    "from": {
+      "language": "Greek via Latin",
+      "root": "ōasis",
+      "gloss": "fertile spot"
+    },
+    "literal": "green place in a desert"
+  },
+  {
+    "word": "obelisk",
+    "from": {
+      "language": "Greek",
+      "root": "obeliskos",
+      "gloss": "little spit/skewer"
+    },
+    "literal": "tall four-sided stone pillar"
+  },
+  {
+    "word": "obdurate",
+    "from": {
+      "language": "Latin",
+      "root": "ob + durare",
+      "gloss": "against + to harden"
+    },
+    "literal": "stubborn; unyielding"
+  },
+  {
+    "word": "obeisance",
+    "from": {
+      "language": "French via Eng.",
+      "root": "obeir",
+      "gloss": "to obey"
+    },
+    "literal": "deep bow; show of respect"
+  },
+  {
+    "word": "obelus",
+    "from": {
+      "language": "Greek",
+      "root": "obelos",
+      "gloss": "spit; ÷ sign"
+    },
+    "literal": "division sign; critical mark"
+  },
+  {
+    "word": "obfuscate",
+    "from": {
+      "language": "Latin",
+      "root": "ob + fuscare",
+      "gloss": "toward + to darken"
+    },
+    "literal": "make unclear; muddy"
+  },
+  {
+    "word": "objurgate",
+    "from": {
+      "language": "Latin",
+      "root": "ob + iurgare",
+      "gloss": "against + to scold"
+    },
+    "literal": "rebuke sharply"
+  },
+  {
+    "word": "oblate",
+    "from": {
+      "language": "Latin",
+      "root": "oblatus",
+      "gloss": "offered"
+    },
+    "literal": "lay helper; offered to a monastery"
+  },
+  {
+    "word": "oblation",
+    "from": {
+      "language": "Latin",
+      "root": "oblatio",
+      "gloss": "an offering"
+    },
+    "literal": "offering to a deity"
+  },
+  {
+    "word": "obliquity",
+    "from": {
+      "language": "Latin",
+      "root": "obliquitas",
+      "gloss": "slanting"
+    },
+    "literal": "tilt; moral lapse"
+  },
+  {
+    "word": "obliterate",
+    "from": {
+      "language": "Latin",
+      "root": "obliterae",
+      "gloss": "to smear out letters"
+    },
+    "literal": "erase completely"
+  },
+  {
+    "word": "obloquy",
+    "from": {
+      "language": "Latin",
+      "root": "ob + loqui",
+      "gloss": "against + to speak"
+    },
+    "literal": "strong public criticism"
+  },
+  {
+    "word": "obnubilate",
+    "from": {
+      "language": "Latin",
+      "root": "ob + nubes",
+      "gloss": "over + cloud"
+    },
+    "literal": "to cloud over; obscure"
+  },
+  {
+    "word": "obsequy",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "obsequiae",
+      "gloss": "funeral rites"
+    },
+    "literal": "funeral service (often plural)"
+  },
+  {
+    "word": "obstreperous",
+    "from": {
+      "language": "Latin",
+      "root": "ob + strepere",
+      "gloss": "against + to make a noise"
+    },
+    "literal": "noisily defiant"
+  },
+  {
+    "word": "obtest",
+    "from": {
+      "language": "Latin",
+      "root": "obtestari",
+      "gloss": "to call as witness"
+    },
+    "literal": "implore solemnly; appeal"
+  },
+  {
+    "word": "obtund",
+    "from": {
+      "language": "Latin",
+      "root": "obtundere",
+      "gloss": "to beat against"
+    },
+    "literal": "dull the edge or force"
+  },
+  {
+    "word": "obtuse",
+    "from": {
+      "language": "Latin",
+      "root": "obtusus",
+      "gloss": "blunted"
+    },
+    "literal": "dull; slow to understand"
+  },
+  {
+    "word": "obverse",
+    "from": {
+      "language": "Latin",
+      "root": "obvertere",
+      "gloss": "to turn toward"
+    },
+    "literal": "front face of a coin; counterpart"
+  },
+  {
+    "word": "ocarina",
+    "from": {
+      "language": "Italian",
+      "root": "ocarina",
+      "gloss": "little goose"
+    },
+    "literal": "vessel flute instrument"
+  },
+  {
+    "word": "occiput",
+    "from": {
+      "language": "Latin",
+      "root": "ob + caput",
+      "gloss": "back + head"
+    },
+    "literal": "back part of the skull"
+  },
+  {
+    "word": "occlude",
+    "from": {
+      "language": "Latin",
+      "root": "occludere",
+      "gloss": "to shut up"
+    },
+    "literal": "close off; block"
+  },
+  {
+    "word": "occult",
+    "from": {
+      "language": "Latin",
+      "root": "occultus",
+      "gloss": "hidden"
+    },
+    "literal": "secret or mystical"
+  },
+  {
+    "word": "ocher",
+    "from": {
+      "language": "Greek via Fr.",
+      "root": "ōkhra",
+      "gloss": "pale yellow"
+    },
+    "literal": "earthy yellow pigment"
+  },
+  {
+    "word": "ochlocracy",
+    "from": {
+      "language": "Greek",
+      "root": "ochlos + kratos",
+      "gloss": "mob + rule"
+    },
+    "literal": "mob rule"
+  },
+  {
+    "word": "ocotillo",
+    "from": {
+      "language": "Nahuatl via Sp.",
+      "root": "ocotl",
+      "gloss": "candlewood"
+    },
+    "literal": "spiky desert shrub"
+  },
+  {
+    "word": "octave",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "octavus",
+      "gloss": "eighth"
+    },
+    "literal": "eight-line stanza; music interval"
+  },
+  {
+    "word": "octothorpe",
+    "from": {
+      "language": "American coinage",
+      "root": "octo + thorpe",
+      "gloss": "eight + name"
+    },
+    "literal": "# symbol; hash"
+  },
+  {
+    "word": "ocular",
+    "from": {
+      "language": "Latin",
+      "root": "oculus",
+      "gloss": "eye"
+    },
+    "literal": "relating to the eye"
+  },
+  {
+    "word": "odalisque",
+    "from": {
+      "language": "Turkish via Fr.",
+      "root": "odalık",
+      "gloss": "chamber woman"
+    },
+    "literal": "concubine in Ottoman seraglio"
+  },
+  {
+    "word": "odometer",
+    "from": {
+      "language": "Greek",
+      "root": "hodos + metron",
+      "gloss": "path + measure"
+    },
+    "literal": "distance-measuring instrument"
+  },
+  {
+    "word": "odyssey",
+    "from": {
+      "language": "Greek",
+      "root": "Odysseus",
+      "gloss": "hero’s name"
+    },
+    "literal": "long wandering journey"
+  },
+  {
+    "word": "oenology",
+    "from": {
+      "language": "Greek",
+      "root": "oinos + logos",
+      "gloss": "wine + study"
+    },
+    "literal": "study of wine"
+  },
+  {
+    "word": "oenophile",
+    "from": {
+      "language": "Greek",
+      "root": "oinos + philos",
+      "gloss": "wine + loving"
+    },
+    "literal": "lover of wine"
+  },
+  {
+    "word": "oestrus",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "oistros",
+      "gloss": "gadfly; heat"
+    },
+    "literal": "period of sexual receptivity (zool.)"
+  },
+  {
+    "word": "offal",
+    "from": {
+      "language": "Old Eng.",
+      "root": "of + fall",
+      "gloss": "off + fall"
+    },
+    "literal": "waste parts; organ meats"
+  },
+  {
+    "word": "officious",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "officiosus",
+      "gloss": "dutiful; obliging"
+    },
+    "literal": "meddlesome; overhelpful"
+  },
+  {
+    "word": "ogdoad",
+    "from": {
+      "language": "Greek",
+      "root": "ogdoas",
+      "gloss": "group of eight"
+    },
+    "literal": "set of eight (mystic)"
+  },
+  {
+    "word": "ogive",
+    "from": {
+      "language": "French",
+      "root": "ogive",
+      "gloss": "diagonal rib"
+    },
+    "literal": "pointed Gothic arch; S-curve"
+  },
+  {
+    "word": "ogre",
+    "from": {
+      "language": "French",
+      "root": "ogre",
+      "gloss": "man-eater"
+    },
+    "literal": "giant man-eating monster"
+  },
+  {
+    "word": "ojime",
+    "from": {
+      "language": "Japanese",
+      "root": "ojime",
+      "gloss": "sliding bead"
+    },
+    "literal": "carved bead clasp (netsuke set)"
+  },
+  {
+    "word": "okapi",
+    "from": {
+      "language": "Bantu via Fr.",
+      "root": "okapi",
+      "gloss": "animal name"
+    },
+    "literal": "forest giraffid of Congo"
+  },
+  {
+    "word": "oleaginous",
+    "from": {
+      "language": "Latin",
+      "root": "oleum",
+      "gloss": "oil"
+    },
+    "literal": "oily; smugly ingratiating"
+  },
+  {
+    "word": "oleander",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "olea + andros?",
+      "gloss": "olive + man?"
+    },
+    "literal": "poisonous flowering shrub"
+  },
+  {
+    "word": "olfactory",
+    "from": {
+      "language": "Latin",
+      "root": "olfactus",
+      "gloss": "smelling"
+    },
+    "literal": "relating to smell"
+  },
+  {
+    "word": "olio",
+    "from": {
+      "language": "Spanish",
+      "root": "olla",
+      "gloss": "pot"
+    },
+    "literal": "miscellaneous mixture; stew"
+  },
+  {
+    "word": "oliphant",
+    "from": {
+      "language": "Old Fr.",
+      "root": "olifant",
+      "gloss": "elephant; horn"
+    },
+    "literal": "ivory horn; elephant (arch.)"
+  },
+  {
+    "word": "olivine",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "oliva",
+      "gloss": "olive"
+    },
+    "literal": "green mineral in basalts"
+  },
+  {
+    "word": "ombudsman",
+    "from": {
+      "language": "Swedish",
+      "root": "ombud + man",
+      "gloss": "proxy + person"
+    },
+    "literal": "official mediator for complaints"
+  },
+  {
+    "word": "omega",
+    "from": {
+      "language": "Greek",
+      "root": "ō mega",
+      "gloss": "great o"
+    },
+    "literal": "last letter of Greek alphabet"
+  },
+  {
+    "word": "omicron",
+    "from": {
+      "language": "Greek",
+      "root": "o mikron",
+      "gloss": "small o"
+    },
+    "literal": "Greek letter; very small amount (fig.)"
+  },
+  {
+    "word": "ominous",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "ominosus",
+      "gloss": "boding"
+    },
+    "literal": "threatening; of bad omen"
+  },
+  {
+    "word": "omnibus",
+    "from": {
+      "language": "Latin",
+      "root": "omnibus",
+      "gloss": "for all"
+    },
+    "literal": "bus; anthology serving many"
+  },
+  {
+    "word": "omnifarious",
+    "from": {
+      "language": "Latin",
+      "root": "omnis + facere",
+      "gloss": "all + to do"
+    },
+    "literal": "of all sorts; manifold"
+  },
+  {
+    "word": "omniscient",
+    "from": {
+      "language": "Latin",
+      "root": "omnis + scire",
+      "gloss": "all + to know"
+    },
+    "literal": "all-knowing"
+  },
+  {
+    "word": "omnivore",
+    "from": {
+      "language": "Latin",
+      "root": "omnis + vorare",
+      "gloss": "all + to devour"
+    },
+    "literal": "eater of plants and animals"
+  },
+  {
+    "word": "onager",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "onagros",
+      "gloss": "wild ass"
+    },
+    "literal": "Roman stone-thrower; wild ass"
+  },
+  {
+    "word": "onerous",
+    "from": {
+      "language": "Latin",
+      "root": "onus",
+      "gloss": "burden"
+    },
+    "literal": "heavy; burdensome"
+  },
+  {
+    "word": "onomasticon",
+    "from": {
+      "language": "Greek",
+      "root": "onoma + -sticon",
+      "gloss": "name + list"
+    },
+    "literal": "lexicon of proper names"
+  },
+  {
+    "word": "opalesce",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "opalus",
+      "gloss": "opal"
+    },
+    "literal": "to shimmer with milky iridescence"
+  },
+  {
+    "word": "operculum",
+    "from": {
+      "language": "Latin",
+      "root": "operculum",
+      "gloss": "little cover"
+    },
+    "literal": "lid-like structure (bio.)"
+  },
+  {
+    "word": "operose",
+    "from": {
+      "language": "Latin",
+      "root": "operosus",
+      "gloss": "full of work"
+    },
+    "literal": "laborious; industrious"
+  },
+  {
+    "word": "ophidian",
+    "from": {
+      "language": "Greek",
+      "root": "ophis",
+      "gloss": "snake"
+    },
+    "literal": "serpentine; snake-like"
+  },
+  {
+    "word": "opprobrium",
+    "from": {
+      "language": "Latin",
+      "root": "opprobrare",
+      "gloss": "to reproach"
+    },
+    "literal": "public disgrace; reproach"
+  },
+  {
+    "word": "opsimath",
+    "from": {
+      "language": "Greek",
+      "root": "opsē + mathēs",
+      "gloss": "late + learner"
+    },
+    "literal": "one who begins to study late"
+  },
+  {
+    "word": "optative",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "optativus",
+      "gloss": "wishing"
+    },
+    "literal": "expressing a wish (mood)"
+  },
+  {
+    "word": "oracular",
+    "from": {
+      "language": "Latin",
+      "root": "oraculum",
+      "gloss": "prophetic shrine"
+    },
+    "literal": "prophetic; riddling"
+  },
+  {
+    "word": "orate",
+    "from": {
+      "language": "Latin",
+      "root": "orare",
+      "gloss": "to speak"
+    },
+    "literal": "speak formally"
+  },
+  {
+    "word": "orbicular",
+    "from": {
+      "language": "Latin",
+      "root": "orbiculus",
+      "gloss": "little disk"
+    },
+    "literal": "circular; disk-like"
+  },
+  {
+    "word": "orchidaceous",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "orchis",
+      "gloss": "testicle (root shape)"
+    },
+    "literal": "flashy; orchid-like"
+  },
+  {
+    "word": "oriflamme",
+    "from": {
+      "language": "French",
+      "root": "oriflamme",
+      "gloss": "gold flame"
+    },
+    "literal": "sacred banner of France; inspiration"
+  },
+  {
+    "word": "origami",
+    "from": {
+      "language": "Japanese",
+      "root": "oru + kami",
+      "gloss": "to fold + paper"
+    },
+    "literal": "art of paper folding"
+  },
+  {
+    "word": "orison",
+    "from": {
+      "language": "French via Eng.",
+      "root": "oraison",
+      "gloss": "prayer"
+    },
+    "literal": "prayer (poetic)"
+  },
+  {
+    "word": "ormolu",
+    "from": {
+      "language": "French",
+      "root": "or + moulu",
+      "gloss": "gold + ground"
+    },
+    "literal": "gilded bronze decoration"
+  },
+  {
+    "word": "ornery",
+    "from": {
+      "language": "Amer. Eng.",
+      "root": "ordinary (dialect)",
+      "gloss": "plain; mean"
+    },
+    "literal": "stubborn; cranky"
+  },
+  {
+    "word": "ornithopter",
+    "from": {
+      "language": "Greek",
+      "root": "ornis + pteron",
+      "gloss": "bird + wing"
+    },
+    "literal": "flapping-wing aircraft"
+  },
+  {
+    "word": "orrery",
+    "from": {
+      "language": "English (name)",
+      "root": "Earl of Orrery",
+      "gloss": "title name"
+    },
+    "literal": "heliocentric model device"
+  },
+  {
+    "word": "orthography",
+    "from": {
+      "language": "Greek",
+      "root": "orthos + graphē",
+      "gloss": "straight + writing"
+    },
+    "literal": "spelling system"
+  },
+  {
+    "word": "orthogonal",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "orthos + gōnia",
+      "gloss": "right + angle"
+    },
+    "literal": "right-angled; independent"
+  },
+  {
+    "word": "orthopteran",
+    "from": {
+      "language": "Greek",
+      "root": "orthos + pteron",
+      "gloss": "straight + wing"
+    },
+    "literal": "grasshopper/cricket order"
+  },
+  {
+    "word": "oscilloscope",
+    "from": {
+      "language": "Latin + Greek",
+      "root": "oscillare + skopein",
+      "gloss": "to swing + to look"
+    },
+    "literal": "device displaying waveforms"
+  },
+  {
+    "word": "osier",
+    "from": {
+      "language": "French via Eng.",
+      "root": "osier",
+      "gloss": "willow"
+    },
+    "literal": "basket-willow; its twigs"
+  },
+  {
+    "word": "osmosis",
+    "from": {
+      "language": "Greek via NL",
+      "root": "ōsmos + -sis",
+      "gloss": "push + process"
+    },
+    "literal": "diffusion through a semipermeable membrane"
+  },
+  {
+    "word": "osseous",
+    "from": {
+      "language": "Latin",
+      "root": "osseus",
+      "gloss": "bony"
+    },
+    "literal": "made of bone"
+  },
+  {
+    "word": "ossify",
+    "from": {
+      "language": "Latin",
+      "root": "os + facere",
+      "gloss": "bone + to make"
+    },
+    "literal": "turn into bone; become rigid"
+  },
+  {
+    "word": "ossuary",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "ossuarium",
+      "gloss": "bone place"
+    },
+    "literal": "container for bones"
+  },
+  {
+    "word": "ostensible",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "ostendere",
+      "gloss": "to show"
+    },
+    "literal": "apparent; stated but not proven"
+  },
+  {
+    "word": "osteology",
+    "from": {
+      "language": "Greek",
+      "root": "osteon + logos",
+      "gloss": "bone + study"
+    },
+    "literal": "study of bones"
+  },
+  {
+    "word": "ostracize",
+    "from": {
+      "language": "Greek",
+      "root": "ostrakon",
+      "gloss": "potsherd"
+    },
+    "literal": "banish by vote; exclude"
+  },
+  {
+    "word": "otiose",
+    "from": {
+      "language": "Latin",
+      "root": "otium",
+      "gloss": "leisure"
+    },
+    "literal": "idle; serving no useful purpose"
+  },
+  {
+    "word": "otology",
+    "from": {
+      "language": "Greek",
+      "root": "ous + logos",
+      "gloss": "ear + study"
+    },
+    "literal": "study of the ear"
+  },
+  {
+    "word": "ottoman",
+    "from": {
+      "language": "Turkish via Fr.",
+      "root": "Osmanli",
+      "gloss": "Ottoman"
+    },
+    "literal": "padded seat; Ottoman person"
+  },
+  {
+    "word": "oubliette",
+    "from": {
+      "language": "French",
+      "root": "oublier",
+      "gloss": "to forget"
+    },
+    "literal": "dungeon with a trapdoor"
+  },
+  {
+    "word": "outre",
+    "from": {
+      "language": "French",
+      "root": "outré",
+      "gloss": "excessive"
+    },
+    "literal": "bizarre; outlandish"
+  },
+  {
+    "word": "oviparous",
+    "from": {
+      "language": "Latin",
+      "root": "ovum + parere",
+      "gloss": "egg + to bring forth"
+    },
+    "literal": "egg-laying"
+  },
+  {
+    "word": "ovipositor",
+    "from": {
+      "language": "Latin",
+      "root": "ovum + positus",
+      "gloss": "egg + placed"
+    },
+    "literal": "egg-laying organ"
+  },
+  {
+    "word": "ovoid",
+    "from": {
+      "language": "Latin",
+      "root": "ovum + -oid",
+      "gloss": "egg + like"
+    },
+    "literal": "egg-shaped"
+  },
+  {
+    "word": "oxbow",
+    "from": {
+      "language": "English",
+      "root": "ox + bow",
+      "gloss": "yoke + curve"
+    },
+    "literal": "U-shaped river bend"
+  },
+  {
+    "word": "oxymoron",
+    "from": {
+      "language": "Greek",
+      "root": "oxys + mōros",
+      "gloss": "sharp + foolish"
+    },
+    "literal": "contradictory phrase"
+  },
+  {
+    "word": "pachyderm",
+    "from": {
+      "language": "Greek",
+      "root": "pachys + derma",
+      "gloss": "thick + skin"
+    },
+    "literal": "thick-skinned mammal (elephant etc.)"
+  },
+  {
+    "word": "palaestra",
+    "from": {
+      "language": "Greek",
+      "root": "palaiein",
+      "gloss": "to wrestle"
+    },
+    "literal": "wrestling school in ancient Greece"
+  },
+  {
+    "word": "paladin",
+    "from": {
+      "language": "Italian via Fr.",
+      "root": "paladino",
+      "gloss": "palace official"
+    },
+    "literal": "heroic knight; champion"
+  },
+  {
+    "word": "palimpsest",
+    "from": {
+      "language": "Greek",
+      "root": "palin + psēstos",
+      "gloss": "again + scraped"
+    },
+    "literal": "parchment reused for writing"
+  },
+  {
+    "word": "palinode",
+    "from": {
+      "language": "Greek",
+      "root": "palin + ōdē",
+      "gloss": "again + song"
+    },
+    "literal": "poem retracting a previous one"
+  },
+  {
+    "word": "palliate",
+    "from": {
+      "language": "Latin",
+      "root": "pallium",
+      "gloss": "cloak"
+    },
+    "literal": "ease without curing; cover up"
+  },
+  {
+    "word": "paludal",
+    "from": {
+      "language": "Latin",
+      "root": "palus",
+      "gloss": "marsh"
+    },
+    "literal": "marshy; relating to swamps"
+  },
+  {
+    "word": "panache",
+    "from": {
+      "language": "French",
+      "root": "penna",
+      "gloss": "feather"
+    },
+    "literal": "flair; feathered plume"
+  },
+  {
+    "word": "panegyric",
+    "from": {
+      "language": "Greek",
+      "root": "pan + agyris",
+      "gloss": "all + assembly"
+    },
+    "literal": "formal public praise"
+  },
+  {
+    "word": "panoply",
+    "from": {
+      "language": "Greek via Fr.",
+      "root": "pan + hopla",
+      "gloss": "all + arms"
+    },
+    "literal": "complete suit of armor; full array"
+  },
+  {
+    "word": "pantheon",
+    "from": {
+      "language": "Greek",
+      "root": "pan + theoi",
+      "gloss": "all + gods"
+    },
+    "literal": "temple of all gods; illustrious group"
+  },
+  {
+    "word": "pantograph",
+    "from": {
+      "language": "Greek",
+      "root": "pan + graphein",
+      "gloss": "all + write"
+    },
+    "literal": "copying instrument; linkage device"
+  },
+  {
+    "word": "papeterie",
+    "from": {
+      "language": "French",
+      "root": "papeterie",
+      "gloss": "stationer’s shop"
+    },
+    "literal": "writing paper and stationery shop"
+  },
+  {
+    "word": "papilionaceous",
+    "from": {
+      "language": "Latin",
+      "root": "papilio",
+      "gloss": "butterfly"
+    },
+    "literal": "butterfly-like; pea-family flower"
+  },
+  {
+    "word": "pappus",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "pappos",
+      "gloss": "down, fluff"
+    },
+    "literal": "tuft of hairs on a seed"
+  },
+  {
+    "word": "parabasis",
+    "from": {
+      "language": "Greek",
+      "root": "para + bainein",
+      "gloss": "beside + to step"
+    },
+    "literal": "chorus addresses audience (Old Comedy)"
+  },
+  {
+    "word": "parabolic",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "parabolē",
+      "gloss": "comparison; curve"
+    },
+    "literal": "parable-like; U-shaped curve"
+  },
+  {
+    "word": "paraclete",
+    "from": {
+      "language": "Greek",
+      "root": "paraklētos",
+      "gloss": "advocate, comforter"
+    },
+    "literal": "Holy Spirit as advocate (theo.)"
+  },
+  {
+    "word": "paragon",
+    "from": {
+      "language": "Greek via Fr.",
+      "root": "para + akonē",
+      "gloss": "beside + whetstone"
+    },
+    "literal": "model of excellence"
+  },
+  {
+    "word": "parallax",
+    "from": {
+      "language": "Greek",
+      "root": "parallaxis",
+      "gloss": "change"
+    },
+    "literal": "apparent shift from different viewpoints"
+  },
+  {
+    "word": "parapet",
+    "from": {
+      "language": "Italian via Fr.",
+      "root": "parare + petto",
+      "gloss": "to ward + chest"
+    },
+    "literal": "low protective wall"
+  },
+  {
+    "word": "paraphernalia",
+    "from": {
+      "language": "Greek via Mod. Lat.",
+      "root": "para + pherne",
+      "gloss": "beside + dowry"
+    },
+    "literal": "misc. items; personal gear"
+  },
+  {
+    "word": "parataxis",
+    "from": {
+      "language": "Greek",
+      "root": "para + tassein",
+      "gloss": "beside + arrange"
+    },
+    "literal": "phrases placed side by side"
+  },
+  {
+    "word": "parietal",
+    "from": {
+      "language": "Latin",
+      "root": "paries",
+      "gloss": "wall"
+    },
+    "literal": "relating to a wall; skull bone"
+  },
+  {
+    "word": "paroxysm",
+    "from": {
+      "language": "Greek",
+      "root": "para + oxys",
+      "gloss": "beyond + sharp"
+    },
+    "literal": "sudden attack or outburst"
+  },
+  {
+    "word": "parquet",
+    "from": {
+      "language": "French",
+      "root": "parquet",
+      "gloss": "wooden floor"
+    },
+    "literal": "decorative wood flooring"
+  },
+  {
+    "word": "parsimony",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "parsimōnia",
+      "gloss": "thrift"
+    },
+    "literal": "extreme unwillingness to spend"
+  },
+  {
+    "word": "parvenu",
+    "from": {
+      "language": "French",
+      "root": "parvenir",
+      "gloss": "to arrive"
+    },
+    "literal": "upstart who has gained status"
+  },
+  {
+    "word": "pasquinade",
+    "from": {
+      "language": "Italian via Fr.",
+      "root": "Pasquino",
+      "gloss": "satiric statue"
+    },
+    "literal": "public lampoon"
+  },
+  {
+    "word": "pastiche",
+    "from": {
+      "language": "French via It.",
+      "root": "pasticcio",
+      "gloss": "pie; medley"
+    },
+    "literal": "work imitating another style"
+  },
+  {
+    "word": "pavilion",
+    "from": {
+      "language": "French via It.",
+      "root": "papilio",
+      "gloss": "butterfly, tent"
+    },
+    "literal": "ornamental tent-like structure"
+  },
+  {
+    "word": "pawky",
+    "from": {
+      "language": "Scots",
+      "root": "pawky",
+      "gloss": "sly"
+    },
+    "literal": "archly cunning; dry-witted"
+  },
+  {
+    "word": "peccant",
+    "from": {
+      "language": "Latin",
+      "root": "peccare",
+      "gloss": "to sin"
+    },
+    "literal": "sinning; causing disease"
+  },
+  {
+    "word": "peculate",
+    "from": {
+      "language": "Latin",
+      "root": "peculium",
+      "gloss": "private property"
+    },
+    "literal": "embezzle public money"
+  },
+  {
+    "word": "pecuniary",
+    "from": {
+      "language": "Latin",
+      "root": "pecunia",
+      "gloss": "money (cattle)"
+    },
+    "literal": "relating to money"
+  },
+  {
+    "word": "pectinate",
+    "from": {
+      "language": "Latin",
+      "root": "pecten",
+      "gloss": "comb"
+    },
+    "literal": "comb-like"
+  },
+  {
+    "word": "pedagog",
+    "from": {
+      "language": "Greek via Fr.",
+      "root": "pais + agōgos",
+      "gloss": "child + leader"
+    },
+    "literal": "teacher; schoolmaster"
+  },
+  {
+    "word": "pediment",
+    "from": {
+      "language": "Italian via Fr.",
+      "root": "pes + -ment",
+      "gloss": "foot + end"
+    },
+    "literal": "triangular gable above a portico"
+  },
+  {
+    "word": "pelagic",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "pelagos",
+      "gloss": "sea"
+    },
+    "literal": "relating to the open ocean"
+  },
+  {
+    "word": "pelisse",
+    "from": {
+      "language": "French",
+      "root": "pelisse",
+      "gloss": "fur cloak"
+    },
+    "literal": "long outer garment (hist.)"
+  },
+  {
+    "word": "peloton",
+    "from": {
+      "language": "French",
+      "root": "pelote",
+      "gloss": "small ball"
+    },
+    "literal": "main group of riders (cycling)"
+  },
+  {
+    "word": "peltate",
+    "from": {
+      "language": "Latin",
+      "root": "pelta",
+      "gloss": "small shield"
+    },
+    "literal": "shield-shaped (leaf)"
+  },
+  {
+    "word": "peneplain",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "paene + planus",
+      "gloss": "almost + flat"
+    },
+    "literal": "almost level eroded plain"
+  },
+  {
+    "word": "penetralia",
+    "from": {
+      "language": "Latin",
+      "root": "penetralia",
+      "gloss": "inmost parts"
+    },
+    "literal": "inner sanctum; secret places"
+  },
+  {
+    "word": "penology",
+    "from": {
+      "language": "Greek via Eng.",
+      "root": "poine + logos",
+      "gloss": "punishment + study"
+    },
+    "literal": "study of prisons and punishment"
+  },
+  {
+    "word": "pensile",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "pendere",
+      "gloss": "to hang"
+    },
+    "literal": "hanging; suspended"
+  },
+  {
+    "word": "pensive",
+    "from": {
+      "language": "French via Eng.",
+      "root": "penser",
+      "gloss": "to think"
+    },
+    "literal": "thoughtful, often sad"
+  },
+  {
+    "word": "penumbra",
+    "from": {
+      "language": "Latin",
+      "root": "paene + umbra",
+      "gloss": "almost + shadow"
+    },
+    "literal": "partial shadow region"
+  },
+  {
+    "word": "peplos",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "peplos",
+      "gloss": "women’s robe"
+    },
+    "literal": "ancient Greek garment"
+  },
+  {
+    "word": "peptic",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "peptein",
+      "gloss": "to digest"
+    },
+    "literal": "relating to digestion"
+  },
+  {
+    "word": "peradventure",
+    "from": {
+      "language": "French via Eng.",
+      "root": "par aventure",
+      "gloss": "by chance"
+    },
+    "literal": "perhaps; doubt"
+  },
+  {
+    "word": "percipience",
+    "from": {
+      "language": "Latin via Eng.",
+      "root": "percipere",
+      "gloss": "to perceive"
+    },
+    "literal": "keen perception"
+  },
+  {
+    "word": "perdurable",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "per + durare",
+      "gloss": "through + to last"
+    },
+    "literal": "very durable; lasting"
+  },
+  {
+    "word": "peregrine",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "peregrinus",
+      "gloss": "foreign, wandering"
+    },
+    "literal": "falcon; wandering"
+  },
+  {
+    "word": "peremptory",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "perimere",
+      "gloss": "to take away completely"
+    },
+    "literal": "decisive; dictatorial"
+  },
+  {
+    "word": "perennial",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "perennis",
+      "gloss": "lasting through years"
+    },
+    "literal": "lasting many years"
+  },
+  {
+    "word": "pergola",
+    "from": {
+      "language": "Italian",
+      "root": "pergola",
+      "gloss": "projecting eave"
+    },
+    "literal": "leafy arbor; garden trellis"
+  },
+  {
+    "word": "perigee",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "peri + gē",
+      "gloss": "near + earth"
+    },
+    "literal": "point closest to Earth (orbit)"
+  },
+  {
+    "word": "perihelion",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "peri + hēlios",
+      "gloss": "near + sun"
+    },
+    "literal": "orbit point nearest the sun"
+  },
+  {
+    "word": "peripatetic",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "peri + patein",
+      "gloss": "around + to walk"
+    },
+    "literal": "wandering; Aristotelian school"
+  },
+  {
+    "word": "periphrasis",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "peri + phrazein",
+      "gloss": "around + to speak"
+    },
+    "literal": "roundabout expression"
+  },
+  {
+    "word": "peristalsis",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "peri + stellein",
+      "gloss": "around + to place"
+    },
+    "literal": "wave-like gut movement"
+  },
+  {
+    "word": "peristyle",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "peri + stylos",
+      "gloss": "around + column"
+    },
+    "literal": "colonnaded courtyard"
+  },
+  {
+    "word": "perjure",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "per + iurare",
+      "gloss": "through + to swear"
+    },
+    "literal": "swear falsely"
+  },
+  {
+    "word": "perlocutionary",
+    "from": {
+      "language": "Latin via Eng.",
+      "root": "per + locutio",
+      "gloss": "through + speaking"
+    },
+    "literal": "speech act producing effects"
+  },
+  {
+    "word": "pernicious",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "per + nex",
+      "gloss": "through + death"
+    },
+    "literal": "highly harmful"
+  },
+  {
+    "word": "peroration",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "perorare",
+      "gloss": "to speak to the end"
+    },
+    "literal": "concluding part of a speech"
+  },
+  {
+    "word": "perquisite",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "perquirere",
+      "gloss": "to seek thoroughly"
+    },
+    "literal": "perk; special privilege"
+  },
+  {
+    "word": "persiflage",
+    "from": {
+      "language": "French",
+      "root": "persifler",
+      "gloss": "to banter"
+    },
+    "literal": "light mockery; banter"
+  },
+  {
+    "word": "persimmon",
+    "from": {
+      "language": "Powhatan via Eng.",
+      "root": "pichamin",
+      "gloss": "dry fruit"
+    },
+    "literal": "orange plum-like fruit"
+  },
+  {
+    "word": "pertinacious",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "per + tenax",
+      "gloss": "very + tenacious"
+    },
+    "literal": "stubbornly persistent"
+  },
+  {
+    "word": "perturb",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "per + turbare",
+      "gloss": "through + to disturb"
+    },
+    "literal": "disturb; unsettle"
+  },
+  {
+    "word": "pertussis",
+    "from": {
+      "language": "Latin via Med.",
+      "root": "per + tussis",
+      "gloss": "through + cough"
+    },
+    "literal": "whooping cough"
+  },
+  {
+    "word": "peruke",
+    "from": {
+      "language": "French",
+      "root": "perruque",
+      "gloss": "wig"
+    },
+    "literal": "wig (old term)"
+  },
+  {
+    "word": "perverse",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "pervertere",
+      "gloss": "to turn thoroughly"
+    },
+    "literal": "stubbornly contrary"
+  },
+  {
+    "word": "peseta",
+    "from": {
+      "language": "Spanish",
+      "root": "peseta",
+      "gloss": "coin name"
+    },
+    "literal": "former Spanish currency"
+  },
+  {
+    "word": "pessary",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "pessos",
+      "gloss": "oval stone"
+    },
+    "literal": "device inserted into the vagina"
+  },
+  {
+    "word": "pestiferous",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "pestis + ferre",
+      "gloss": "plague + to bear"
+    },
+    "literal": "bearing plague; troublesome"
+  },
+  {
+    "word": "petiole",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "petiolus",
+      "gloss": "little foot"
+    },
+    "literal": "leaf stalk"
+  },
+  {
+    "word": "petrichor",
+    "from": {
+      "language": "Greek coinage",
+      "root": "petra + ichor",
+      "gloss": "stone + divine fluid"
+    },
+    "literal": "smell after rain on dry earth"
+  },
+  {
+    "word": "petrology",
+    "from": {
+      "language": "Greek via Eng.",
+      "root": "petra + logos",
+      "gloss": "rock + study"
+    },
+    "literal": "study of rocks"
+  },
+  {
+    "word": "petulant",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "petulans",
+      "gloss": "impudent"
+    },
+    "literal": "peevish; childishly sulky"
+  },
+  {
+    "word": "pewter",
+    "from": {
+      "language": "Middle Eng. via Fr.",
+      "root": "peautre",
+      "gloss": "alloy name"
+    },
+    "literal": "tin-based alloy"
+  },
+  {
+    "word": "phalanstery",
+    "from": {
+      "language": "French via Eng.",
+      "root": "phalanstère",
+      "gloss": "phalanx + monastery"
+    },
+    "literal": "utopian community (Fourier)"
+  },
+  {
+    "word": "phalarope",
+    "from": {
+      "language": "Greek via NL",
+      "root": "phalaris + pous",
+      "gloss": "coot + foot"
+    },
+    "literal": "shorebird with lobed toes"
+  },
+  {
+    "word": "phatic",
+    "from": {
+      "language": "Greek via Eng.",
+      "root": "phatos?",
+      "gloss": "uttered"
+    },
+    "literal": "small-talk function of language"
+  },
+  {
+    "word": "phantasmagoria",
+    "from": {
+      "language": "Greek via Fr.",
+      "root": "phantasma + agora",
+      "gloss": "appearance + assembly"
+    },
+    "literal": "shifting series of illusions"
+  },
+  {
+    "word": "pharos",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "Pharos",
+      "gloss": "lighthouse island"
+    },
+    "literal": "lighthouse; beacon"
+  },
+  {
+    "word": "phenotype",
+    "from": {
+      "language": "Greek via Ger.",
+      "root": "phainein + typos",
+      "gloss": "to show + type"
+    },
+    "literal": "observable traits of an organism"
+  },
+  {
+    "word": "pheromone",
+    "from": {
+      "language": "Greek via Ger.",
+      "root": "pherein + horman",
+      "gloss": "to carry + to set in motion"
+    },
+    "literal": "chemical signal between animals"
+  },
+  {
+    "word": "philately",
+    "from": {
+      "language": "Greek via Fr.",
+      "root": "philos + ateleia",
+      "gloss": "fond + tax-exempt"
+    },
+    "literal": "stamp collecting"
+  },
+  {
+    "word": "philippic",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "Philippoi",
+      "gloss": "Philip’s speeches"
+    },
+    "literal": "bitter denunciation speech"
+  },
+  {
+    "word": "philomath",
+    "from": {
+      "language": "Greek",
+      "root": "philos + mathēs",
+      "gloss": "loving + learning"
+    },
+    "literal": "lover of learning"
+  },
+  {
+    "word": "phlegmatic",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "phlegma",
+      "gloss": "inflammation; humor"
+    },
+    "literal": "calm; unemotional"
+  },
+  {
+    "word": "phlogiston",
+    "from": {
+      "language": "Greek via NL",
+      "root": "phlogistos",
+      "gloss": "burnable"
+    },
+    "literal": "obsolete fire-principle theory"
+  },
+  {
+    "word": "phlox",
+    "from": {
+      "language": "Greek via NL",
+      "root": "phlox",
+      "gloss": "flame"
+    },
+    "literal": "garden flower genus"
+  },
+  {
+    "word": "phoneme",
+    "from": {
+      "language": "Greek via Fr.",
+      "root": "phōnēma",
+      "gloss": "speech sound"
+    },
+    "literal": "distinctive unit of sound"
+  },
+  {
+    "word": "phonetics",
+    "from": {
+      "language": "Greek via Fr.",
+      "root": "phōnē + -tics",
+      "gloss": "voice + study"
+    },
+    "literal": "study of speech sounds"
+  },
+  {
+    "word": "phosphene",
+    "from": {
+      "language": "Greek via Fr.",
+      "root": "phōs + phainein",
+      "gloss": "light + to show"
+    },
+    "literal": "spots of light from pressure on eye"
+  },
+  {
+    "word": "photics",
+    "from": {
+      "language": "Greek",
+      "root": "phōs + -ics",
+      "gloss": "light + study"
+    },
+    "literal": "pertaining to light (ocean layer)"
+  },
+  {
+    "word": "phototropism",
+    "from": {
+      "language": "Greek",
+      "root": "phōs + tropos",
+      "gloss": "light + turn"
+    },
+    "literal": "growth in response to light"
+  },
+  {
+    "word": "phratry",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "phratria",
+      "gloss": "brotherhood"
+    },
+    "literal": "subdivision of a tribe"
+  },
+  {
+    "word": "phrenic",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "phrēn",
+      "gloss": "mind; diaphragm"
+    },
+    "literal": "relating to the diaphragm/ mind"
+  },
+  {
+    "word": "obduracy",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: obduracy"
+  },
+  {
+    "word": "obeah",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: obeah"
+  },
+  {
+    "word": "obcordate",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: obcordate"
+  },
+  {
+    "word": "obduce",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: obduce"
+  },
+  {
+    "word": "obdure",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: obdure"
+  },
+  {
+    "word": "obduration",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: obduration"
+  },
+  {
+    "word": "obduct",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: obduct"
+  },
+  {
+    "word": "obduction",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: obduction"
+  },
+  {
+    "word": "obdormition",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: obdormition"
+  },
+  {
+    "word": "obductional",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: obductional"
+  },
+  {
+    "word": "obdiplostemonous",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: obdiplostemonous"
+  },
+  {
+    "word": "obent",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: obent"
+  },
+  {
+    "word": "oblate (math)",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oblate (math)"
+  },
+  {
+    "word": "oblanceolate",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oblanceolate"
+  },
+  {
+    "word": "oblectation",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oblectation"
+  },
+  {
+    "word": "obligate (bio)",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: obligate (bio)"
+  },
+  {
+    "word": "obituarial",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: obituarial"
+  },
+  {
+    "word": "objete",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: objete"
+  },
+  {
+    "word": "oblationary",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oblationary"
+  },
+  {
+    "word": "oblatrate",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oblatrate"
+  },
+  {
+    "word": "oblect",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oblect"
+  },
+  {
+    "word": "obligor",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: obligor"
+  },
+  {
+    "word": "obliquation",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: obliquation"
+  },
+  {
+    "word": "obmutescence",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: obmutescence"
+  },
+  {
+    "word": "obnoxion",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: obnoxion"
+  },
+  {
+    "word": "obreption",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: obreption"
+  },
+  {
+    "word": "obrogate",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: obrogate"
+  },
+  {
+    "word": "obsidional",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: obsidional"
+  },
+  {
+    "word": "obsolescent",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: obsolescent"
+  },
+  {
+    "word": "obstipation",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: obstipation"
+  },
+  {
+    "word": "obstupefy",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: obstupefy"
+  },
+  {
+    "word": "obtemperate",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: obtemperate"
+  },
+  {
+    "word": "obturation",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: obturation"
+  },
+  {
+    "word": "obumbrate",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: obumbrate"
+  },
+  {
+    "word": "obvention",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: obvention"
+  },
+  {
+    "word": "obverso",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: obverso"
+  },
+  {
+    "word": "obvert",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: obvert"
+  },
+  {
+    "word": "obvolute",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: obvolute"
+  },
+  {
+    "word": "ocarinate",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ocarinate"
+  },
+  {
+    "word": "ocellar",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ocellar"
+  },
+  {
+    "word": "ocellate",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ocellate"
+  },
+  {
+    "word": "occamism",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: occamism"
+  },
+  {
+    "word": "occasionalism",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: occasionalism"
+  },
+  {
+    "word": "occipitalis",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: occipitalis"
+  },
+  {
+    "word": "occision",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: occision"
+  },
+  {
+    "word": "occultation",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: occultation"
+  },
+  {
+    "word": "occurrent",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: occurrent"
+  },
+  {
+    "word": "oceanarium",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oceanarium"
+  },
+  {
+    "word": "oceanicity",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oceanicity"
+  },
+  {
+    "word": "ocellar spot",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ocellar spot"
+  },
+  {
+    "word": "ocelloid",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ocelloid"
+  },
+  {
+    "word": "ochlocratic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ochlocratic"
+  },
+  {
+    "word": "ochone",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ochone"
+  },
+  {
+    "word": "ochrea",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ochrea"
+  },
+  {
+    "word": "ocreate",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ocreate"
+  },
+  {
+    "word": "octaeteris",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: octaeteris"
+  },
+  {
+    "word": "octan",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: octan"
+  },
+  {
+    "word": "octans",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: octans"
+  },
+  {
+    "word": "octastyle",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: octastyle"
+  },
+  {
+    "word": "octennial",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: octennial"
+  },
+  {
+    "word": "octodecimo",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: octodecimo"
+  },
+  {
+    "word": "octonary",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: octonary"
+  },
+  {
+    "word": "octonion",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: octonion"
+  },
+  {
+    "word": "octosyllabic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: octosyllabic"
+  },
+  {
+    "word": "octothorpean",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: octothorpean"
+  },
+  {
+    "word": "octroy",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: octroy"
+  },
+  {
+    "word": "octuplex",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: octuplex"
+  },
+  {
+    "word": "oculomotor",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oculomotor"
+  },
+  {
+    "word": "odography",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: odography"
+  },
+  {
+    "word": "odohertyism",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: odohertyism"
+  },
+  {
+    "word": "odontalgia",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: odontalgia"
+  },
+  {
+    "word": "odontiasis",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: odontiasis"
+  },
+  {
+    "word": "odontocete",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: odontocete"
+  },
+  {
+    "word": "odontoid",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: odontoid"
+  },
+  {
+    "word": "odontophore",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: odontophore"
+  },
+  {
+    "word": "odynophagia",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: odynophagia"
+  },
+  {
+    "word": "oecology",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oecology"
+  },
+  {
+    "word": "oenophilehood",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oenophilehood"
+  },
+  {
+    "word": "oersted",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oersted"
+  },
+  {
+    "word": "oesophageal",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oesophageal"
+  },
+  {
+    "word": "oestrous",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oestrous"
+  },
+  {
+    "word": "offprint",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: offprint"
+  },
+  {
+    "word": "offsetter",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: offsetter"
+  },
+  {
+    "word": "ogham",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ogham"
+  },
+  {
+    "word": "ogleable",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ogleable"
+  },
+  {
+    "word": "ogival",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ogival"
+  },
+  {
+    "word": "ogonek",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ogonek"
+  },
+  {
+    "word": "ohmage",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ohmage"
+  },
+  {
+    "word": "oikology",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oikology"
+  },
+  {
+    "word": "oilbird",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oilbird"
+  },
+  {
+    "word": "oilstone",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oilstone"
+  },
+  {
+    "word": "ojibwa",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ojibwa"
+  },
+  {
+    "word": "olefinic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: olefinic"
+  },
+  {
+    "word": "oleoresin",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oleoresin"
+  },
+  {
+    "word": "oligoclase",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oligoclase"
+  },
+  {
+    "word": "oligocene",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oligocene"
+  },
+  {
+    "word": "oligopoly",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oligopoly"
+  },
+  {
+    "word": "olitory",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: olitory"
+  },
+  {
+    "word": "olla podrida",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: olla podrida"
+  },
+  {
+    "word": "ombrogenous",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ombrogenous"
+  },
+  {
+    "word": "ombrophilous",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ombrophilous"
+  },
+  {
+    "word": "omega-point",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: omega-point"
+  },
+  {
+    "word": "omentum",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: omentum"
+  },
+  {
+    "word": "ommatidium",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ommatidium"
+  },
+  {
+    "word": "omnibenevolent",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: omnibenevolent"
+  },
+  {
+    "word": "omnium",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: omnium"
+  },
+  {
+    "word": "omnivorousness",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: omnivorousness"
+  },
+  {
+    "word": "omophagy",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: omophagy"
+  },
+  {
+    "word": "onanism",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: onanism"
+  },
+  {
+    "word": "oneiric",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oneiric"
+  },
+  {
+    "word": "oneirocritic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oneirocritic"
+  },
+  {
+    "word": "oneirology",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oneirology"
+  },
+  {
+    "word": "oneironaut",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oneironaut"
+  },
+  {
+    "word": "oneric",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oneric"
+  },
+  {
+    "word": "onguent",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: onguent"
+  },
+  {
+    "word": "onomasiology",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: onomasiology"
+  },
+  {
+    "word": "onomatomania",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: onomatomania"
+  },
+  {
+    "word": "onomatomancy",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: onomatomancy"
+  },
+  {
+    "word": "onrushment",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: onrushment"
+  },
+  {
+    "word": "onside",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: onside"
+  },
+  {
+    "word": "onychium",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: onychium"
+  },
+  {
+    "word": "onychophora",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: onychophora"
+  },
+  {
+    "word": "onyx marble",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: onyx marble"
+  },
+  {
+    "word": "oophorectomy",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oophorectomy"
+  },
+  {
+    "word": "oosphere",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oosphere"
+  },
+  {
+    "word": "oospore",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oospore"
+  },
+  {
+    "word": "opah",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: opah"
+  },
+  {
+    "word": "opalescable",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: opalescable"
+  },
+  {
+    "word": "opelet",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: opelet"
+  },
+  {
+    "word": "openwork",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: openwork"
+  },
+  {
+    "word": "operant",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: operant"
+  },
+  {
+    "word": "operon",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: operon"
+  },
+  {
+    "word": "ophicleidean",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ophicleidean"
+  },
+  {
+    "word": "ophidiophobia",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ophidiophobia"
+  },
+  {
+    "word": "ophthalmoplegia",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ophthalmoplegia"
+  },
+  {
+    "word": "ophthalmoscope",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ophthalmoscope"
+  },
+  {
+    "word": "opobalsam",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: opobalsam"
+  },
+  {
+    "word": "opopanax",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: opopanax"
+  },
+  {
+    "word": "opprobrious",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: opprobrious"
+  },
+  {
+    "word": "opsimathy",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: opsimathy"
+  },
+  {
+    "word": "optogram",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: optogram"
+  },
+  {
+    "word": "optophone",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: optophone"
+  },
+  {
+    "word": "opusculum",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: opusculum"
+  },
+  {
+    "word": "orache",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: orache"
+  },
+  {
+    "word": "oratrix",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oratrix"
+  },
+  {
+    "word": "orbiculate",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: orbiculate"
+  },
+  {
+    "word": "orb-weaver",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: orb-weaver"
+  },
+  {
+    "word": "orbifold",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: orbifold"
+  },
+  {
+    "word": "orcadian",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: orcadian"
+  },
+  {
+    "word": "orcein",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: orcein"
+  },
+  {
+    "word": "orchidectomy",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: orchidectomy"
+  },
+  {
+    "word": "orchiectomy",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: orchiectomy"
+  },
+  {
+    "word": "orcinol",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: orcinol"
+  },
+  {
+    "word": "ordure",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ordure"
+  },
+  {
+    "word": "oreology",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oreology"
+  },
+  {
+    "word": "orexin",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: orexin"
+  },
+  {
+    "word": "organon",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: organon"
+  },
+  {
+    "word": "organdie",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: organdie"
+  },
+  {
+    "word": "organdy",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: organdy"
+  },
+  {
+    "word": "organzine",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: organzine"
+  },
+  {
+    "word": "orgulousness",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: orgulousness"
+  },
+  {
+    "word": "orichalceous",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: orichalceous"
+  },
+  {
+    "word": "orientalize",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: orientalize"
+  },
+  {
+    "word": "orismology",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: orismology"
+  },
+  {
+    "word": "orlop",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: orlop"
+  },
+  {
+    "word": "ormer",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ormer"
+  },
+  {
+    "word": "ornithic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ornithic"
+  },
+  {
+    "word": "ornithotomy",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ornithotomy"
+  },
+  {
+    "word": "orographic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: orographic"
+  },
+  {
+    "word": "orograph",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: orograph"
+  },
+  {
+    "word": "orotund",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: orotund"
+  },
+  {
+    "word": "orphrey",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: orphrey"
+  },
+  {
+    "word": "ort",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ort"
+  },
+  {
+    "word": "orthant",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: orthant"
+  },
+  {
+    "word": "orthicon",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: orthicon"
+  },
+  {
+    "word": "orthocenter",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: orthocenter"
+  },
+  {
+    "word": "orthoclase",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: orthoclase"
+  },
+  {
+    "word": "orthogenesis",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: orthogenesis"
+  },
+  {
+    "word": "orthograde",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: orthograde"
+  },
+  {
+    "word": "orthonormal",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: orthonormal"
+  },
+  {
+    "word": "orthopsychiatry",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: orthopsychiatry"
+  },
+  {
+    "word": "orthostat",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: orthostat"
+  },
+  {
+    "word": "orthotics",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: orthotics"
+  },
+  {
+    "word": "orthotropism",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: orthotropism"
+  },
+  {
+    "word": "oryctology",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oryctology"
+  },
+  {
+    "word": "orycterope",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: orycterope"
+  },
+  {
+    "word": "oryx",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oryx"
+  },
+  {
+    "word": "oscheocele",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oscheocele"
+  },
+  {
+    "word": "osculant",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: osculant"
+  },
+  {
+    "word": "osculatory",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: osculatory"
+  },
+  {
+    "word": "oscular",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oscular"
+  },
+  {
+    "word": "osculation",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: osculation"
+  },
+  {
+    "word": "osmeterium",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: osmeterium"
+  },
+  {
+    "word": "osmic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: osmic"
+  },
+  {
+    "word": "osmoregulate",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: osmoregulate"
+  },
+  {
+    "word": "osmoreceptor",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: osmoreceptor"
+  },
+  {
+    "word": "osmosimeter",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: osmosimeter"
+  },
+  {
+    "word": "osmoticum",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: osmoticum"
+  },
+  {
+    "word": "osmundine",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: osmundine"
+  },
+  {
+    "word": "ossature",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ossature"
+  },
+  {
+    "word": "osselet",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: osselet"
+  },
+  {
+    "word": "ossifrage",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ossifrage"
+  },
+  {
+    "word": "ostariophysan",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ostariophysan"
+  },
+  {
+    "word": "osteitis",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: osteitis"
+  },
+  {
+    "word": "osteocyte",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: osteocyte"
+  },
+  {
+    "word": "osteoma",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: osteoma"
+  },
+  {
+    "word": "ostinato",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ostinato"
+  },
+  {
+    "word": "ostracod",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ostracod"
+  },
+  {
+    "word": "otacousticon",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: otacousticon"
+  },
+  {
+    "word": "otitis",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: otitis"
+  },
+  {
+    "word": "otolithic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: otolithic"
+  },
+  {
+    "word": "otorrhea",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: otorrhea"
+  },
+  {
+    "word": "otoscope",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: otoscope"
+  },
+  {
+    "word": "ototoxic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ototoxic"
+  },
+  {
+    "word": "oubliettes",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oubliettes"
+  },
+  {
+    "word": "ouguiya",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ouguiya"
+  },
+  {
+    "word": "ouistiti",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ouistiti"
+  },
+  {
+    "word": "outblaze",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: outblaze"
+  },
+  {
+    "word": "outblush",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: outblush"
+  },
+  {
+    "word": "outclimb",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: outclimb"
+  },
+  {
+    "word": "outcropper",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: outcropper"
+  },
+  {
+    "word": "outdrink",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: outdrink"
+  },
+  {
+    "word": "outface",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: outface"
+  },
+  {
+    "word": "outfast",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: outfast"
+  },
+  {
+    "word": "outflank",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: outflank"
+  },
+  {
+    "word": "outgeneral",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: outgeneral"
+  },
+  {
+    "word": "outglare",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: outglare"
+  },
+  {
+    "word": "outjockey",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: outjockey"
+  },
+  {
+    "word": "outjump",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: outjump"
+  },
+  {
+    "word": "outlaugh",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: outlaugh"
+  },
+  {
+    "word": "outplay",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: outplay"
+  },
+  {
+    "word": "outpreach",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: outpreach"
+  },
+  {
+    "word": "outrank",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: outrank"
+  },
+  {
+    "word": "outride",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: outride"
+  },
+  {
+    "word": "outrig",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: outrig"
+  },
+  {
+    "word": "outsin",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: outsin"
+  },
+  {
+    "word": "outsit",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: outsit"
+  },
+  {
+    "word": "outsnore",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: outsnore"
+  },
+  {
+    "word": "outspeed",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: outspeed"
+  },
+  {
+    "word": "outstare",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: outstare"
+  },
+  {
+    "word": "outswim",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: outswim"
+  },
+  {
+    "word": "outvoice",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: outvoice"
+  },
+  {
+    "word": "outvote",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: outvote"
+  },
+  {
+    "word": "outwit",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: outwit"
+  },
+  {
+    "word": "ovariole",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ovariole"
+  },
+  {
+    "word": "ovicide",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ovicide"
+  },
+  {
+    "word": "oviconic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oviconic"
+  },
+  {
+    "word": "oviraptor",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oviraptor"
+  },
+  {
+    "word": "oviposit",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oviposit"
+  },
+  {
+    "word": "oviscap",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oviscap"
+  },
+  {
+    "word": "ovoviviparous",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ovoviviparous"
+  },
+  {
+    "word": "ovular",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ovular"
+  },
+  {
+    "word": "ovulum",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ovulum"
+  },
+  {
+    "word": "ovum donor",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: ovum donor"
+  },
+  {
+    "word": "oxalate",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oxalate"
+  },
+  {
+    "word": "oxaluric",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oxaluric"
+  },
+  {
+    "word": "oxazolidinone",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oxazolidinone"
+  },
+  {
+    "word": "oxidase",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oxidase"
+  },
+  {
+    "word": "oxidimetry",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oxidimetry"
+  },
+  {
+    "word": "oxidizable",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oxidizable"
+  },
+  {
+    "word": "oxyacid",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oxyacid"
+  },
+  {
+    "word": "oxyblepsia",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oxyblepsia"
+  },
+  {
+    "word": "oxycephaly",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oxycephaly"
+  },
+  {
+    "word": "oxymel",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oxymel"
+  },
+  {
+    "word": "oxyntic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oxyntic"
+  },
+  {
+    "word": "oxyphile",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oxyphile"
+  },
+  {
+    "word": "oxysalt",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oxysalt"
+  },
+  {
+    "word": "oxytocic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: oxytocic"
+  },
+  {
+    "word": "pachycephaly",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pachycephaly"
+  },
+  {
+    "word": "pacificist",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pacificist"
+  },
+  {
+    "word": "pacificatory",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pacificatory"
+  },
+  {
+    "word": "packthread",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: packthread"
+  },
+  {
+    "word": "paction",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paction"
+  },
+  {
+    "word": "pactitious",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pactitious"
+  },
+  {
+    "word": "padauk",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: padauk"
+  },
+  {
+    "word": "paddlefish",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paddlefish"
+  },
+  {
+    "word": "paddywhack",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paddywhack"
+  },
+  {
+    "word": "paedology",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paedology"
+  },
+  {
+    "word": "paedomorphosis",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paedomorphosis"
+  },
+  {
+    "word": "paedopsychiatry",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paedopsychiatry"
+  },
+  {
+    "word": "paella-like",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paella-like"
+  },
+  {
+    "word": "pagandom",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pagandom"
+  },
+  {
+    "word": "pageantry",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pageantry"
+  },
+  {
+    "word": "pahlavi",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pahlavi"
+  },
+  {
+    "word": "paidology",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paidology"
+  },
+  {
+    "word": "paillette",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paillette"
+  },
+  {
+    "word": "palatalize",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: palatalize"
+  },
+  {
+    "word": "palatinate",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: palatinate"
+  },
+  {
+    "word": "palatine",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: palatine"
+  },
+  {
+    "word": "palaverous",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: palaverous"
+  },
+  {
+    "word": "paleobotany",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paleobotany"
+  },
+  {
+    "word": "paleography",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paleography"
+  },
+  {
+    "word": "paleolith",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paleolith"
+  },
+  {
+    "word": "paleopathology",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paleopathology"
+  },
+  {
+    "word": "palimpsestic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: palimpsestic"
+  },
+  {
+    "word": "palisade",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: palisade"
+  },
+  {
+    "word": "palladium",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: palladium"
+  },
+  {
+    "word": "pallesthesia",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pallesthesia"
+  },
+  {
+    "word": "palmary",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: palmary"
+  },
+  {
+    "word": "palpebral",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: palpebral"
+  },
+  {
+    "word": "paltriness",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paltriness"
+  },
+  {
+    "word": "palynology",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: palynology"
+  },
+  {
+    "word": "pampean",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pampean"
+  },
+  {
+    "word": "pancreatitis",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pancreatitis"
+  },
+  {
+    "word": "panchreston",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: panchreston"
+  },
+  {
+    "word": "pancytopenia",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pancytopenia"
+  },
+  {
+    "word": "pandect",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pandect"
+  },
+  {
+    "word": "pandemicity",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pandemicity"
+  },
+  {
+    "word": "pandurate",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pandurate"
+  },
+  {
+    "word": "panentheism",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: panentheism"
+  },
+  {
+    "word": "panflute",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: panflute"
+  },
+  {
+    "word": "pangenesis",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pangenesis"
+  },
+  {
+    "word": "panmixia",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: panmixia"
+  },
+  {
+    "word": "pannier",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pannier"
+  },
+  {
+    "word": "panopticism",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: panopticism"
+  },
+  {
+    "word": "pansophy",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pansophy"
+  },
+  {
+    "word": "panspermy",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: panspermy"
+  },
+  {
+    "word": "pantagruelian",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pantagruelian"
+  },
+  {
+    "word": "pantile",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pantile"
+  },
+  {
+    "word": "pantographize",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pantographize"
+  },
+  {
+    "word": "pantywaist",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pantywaist"
+  },
+  {
+    "word": "papability",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: papability"
+  },
+  {
+    "word": "papaveraceous",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: papaveraceous"
+  },
+  {
+    "word": "papaverine",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: papaverine"
+  },
+  {
+    "word": "papilloma",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: papilloma"
+  },
+  {
+    "word": "pappiform",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pappiform"
+  },
+  {
+    "word": "papulose",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: papulose"
+  },
+  {
+    "word": "papyraceous",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: papyraceous"
+  },
+  {
+    "word": "parabola",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: parabola"
+  },
+  {
+    "word": "parabiotic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: parabiotic"
+  },
+  {
+    "word": "paraboloid",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paraboloid"
+  },
+  {
+    "word": "parabolicity",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: parabolicity"
+  },
+  {
+    "word": "paracme",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paracme"
+  },
+  {
+    "word": "paradiplomacy",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paradiplomacy"
+  },
+  {
+    "word": "paraenesis",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paraenesis"
+  },
+  {
+    "word": "paraffinoid",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paraffinoid"
+  },
+  {
+    "word": "paragoge",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paragoge"
+  },
+  {
+    "word": "paragnosia",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paragnosia"
+  },
+  {
+    "word": "paragogic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paragogic"
+  },
+  {
+    "word": "paragram",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paragram"
+  },
+  {
+    "word": "paraheretic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paraheretic"
+  },
+  {
+    "word": "paralinguistic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paralinguistic"
+  },
+  {
+    "word": "paralogia",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paralogia"
+  },
+  {
+    "word": "paralogy",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paralogy"
+  },
+  {
+    "word": "paralipsis",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paralipsis"
+  },
+  {
+    "word": "paramnesia",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paramnesia"
+  },
+  {
+    "word": "paramorph",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paramorph"
+  },
+  {
+    "word": "paraneoplastic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paraneoplastic"
+  },
+  {
+    "word": "paranymph",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paranymph"
+  },
+  {
+    "word": "paraparesis",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paraparesis"
+  },
+  {
+    "word": "paraplast",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paraplast"
+  },
+  {
+    "word": "paraquat",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paraquat"
+  },
+  {
+    "word": "parasitemia",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: parasitemia"
+  },
+  {
+    "word": "parasiticide",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: parasiticide"
+  },
+  {
+    "word": "parasitiform",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: parasitiform"
+  },
+  {
+    "word": "parasitology",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: parasitology"
+  },
+  {
+    "word": "paratactic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paratactic"
+  },
+  {
+    "word": "parathesis",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: parathesis"
+  },
+  {
+    "word": "parathyroid",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: parathyroid"
+  },
+  {
+    "word": "paravertebral",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paravertebral"
+  },
+  {
+    "word": "parbuckle",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: parbuckle"
+  },
+  {
+    "word": "parcel-gilt",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: parcel-gilt"
+  },
+  {
+    "word": "paregoric",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paregoric"
+  },
+  {
+    "word": "parergon",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: parergon"
+  },
+  {
+    "word": "paresthesia",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paresthesia"
+  },
+  {
+    "word": "parge",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: parge"
+  },
+  {
+    "word": "pargo",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pargo"
+  },
+  {
+    "word": "parhelic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: parhelic"
+  },
+  {
+    "word": "parietes",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: parietes"
+  },
+  {
+    "word": "parisology",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: parisology"
+  },
+  {
+    "word": "parkin",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: parkin"
+  },
+  {
+    "word": "parlando",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: parlando"
+  },
+  {
+    "word": "parleyvoo",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: parleyvoo"
+  },
+  {
+    "word": "parliamentarianism",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: parliamentarianism"
+  },
+  {
+    "word": "parlousness",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: parlousness"
+  },
+  {
+    "word": "parmigiana",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: parmigiana"
+  },
+  {
+    "word": "parnassian",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: parnassian"
+  },
+  {
+    "word": "parodic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: parodic"
+  },
+  {
+    "word": "parodos",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: parodos"
+  },
+  {
+    "word": "parolee",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: parolee"
+  },
+  {
+    "word": "paronymous",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paronymous"
+  },
+  {
+    "word": "paronymy",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paronymy"
+  },
+  {
+    "word": "parophrys",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: parophrys"
+  },
+  {
+    "word": "paroxytone",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paroxytone"
+  },
+  {
+    "word": "parquetage",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: parquetage"
+  },
+  {
+    "word": "parrhesiastic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: parrhesiastic"
+  },
+  {
+    "word": "parsimoniousness",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: parsimoniousness"
+  },
+  {
+    "word": "parturition",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: parturition"
+  },
+  {
+    "word": "parvovirus",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: parvovirus"
+  },
+  {
+    "word": "paschal",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paschal"
+  },
+  {
+    "word": "pashm",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pashm"
+  },
+  {
+    "word": "pasquinader",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pasquinader"
+  },
+  {
+    "word": "passacaglias",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: passacaglias"
+  },
+  {
+    "word": "passerine",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: passerine"
+  },
+  {
+    "word": "passionary",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: passionary"
+  },
+  {
+    "word": "pastorate",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pastorate"
+  },
+  {
+    "word": "pastose",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pastose"
+  },
+  {
+    "word": "pataca",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pataca"
+  },
+  {
+    "word": "patagium",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: patagium"
+  },
+  {
+    "word": "patas",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: patas"
+  },
+  {
+    "word": "patchouli",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: patchouli"
+  },
+  {
+    "word": "patelliform",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: patelliform"
+  },
+  {
+    "word": "paten",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paten"
+  },
+  {
+    "word": "paternoster",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paternoster"
+  },
+  {
+    "word": "pathergy",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pathergy"
+  },
+  {
+    "word": "pathognomonic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pathognomonic"
+  },
+  {
+    "word": "pathography",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pathography"
+  },
+  {
+    "word": "pathomechanics",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pathomechanics"
+  },
+  {
+    "word": "pathosophy",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pathosophy"
+  },
+  {
+    "word": "patibulary",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: patibulary"
+  },
+  {
+    "word": "patinaed",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: patinaed"
+  },
+  {
+    "word": "patrial",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: patrial"
+  },
+  {
+    "word": "patrilocal",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: patrilocal"
+  },
+  {
+    "word": "patrologist",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: patrologist"
+  },
+  {
+    "word": "patrology",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: patrology"
+  },
+  {
+    "word": "patronymic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: patronymic"
+  },
+  {
+    "word": "pattens",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pattens"
+  },
+  {
+    "word": "pavemental",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pavemental"
+  },
+  {
+    "word": "pavidly",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pavidly"
+  },
+  {
+    "word": "pawl",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pawl"
+  },
+  {
+    "word": "paymastership",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: paymastership"
+  },
+  {
+    "word": "peag-strings",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: peag-strings"
+  },
+  {
+    "word": "pearliferous",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pearliferous"
+  },
+  {
+    "word": "pearmain",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pearmain"
+  },
+  {
+    "word": "peccancy",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: peccancy"
+  },
+  {
+    "word": "pectization",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pectization"
+  },
+  {
+    "word": "pectose",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pectose"
+  },
+  {
+    "word": "pectus carinatum",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pectus carinatum"
+  },
+  {
+    "word": "peculiarism",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: peculiarism"
+  },
+  {
+    "word": "peculium-like",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: peculium-like"
+  },
+  {
+    "word": "pedagogy",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pedagogy"
+  },
+  {
+    "word": "pedantocracy",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pedantocracy"
+  },
+  {
+    "word": "pedestrianism",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pedestrianism"
+  },
+  {
+    "word": "pediculate",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pediculate"
+  },
+  {
+    "word": "pediform",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pediform"
+  },
+  {
+    "word": "pedipalps",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pedipalps"
+  },
+  {
+    "word": "pedogenesis",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pedogenesis"
+  },
+  {
+    "word": "pedology",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pedology"
+  },
+  {
+    "word": "pedunculate",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pedunculate"
+  },
+  {
+    "word": "pegmatite",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pegmatite"
+  },
+  {
+    "word": "peignoiré",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: peignoiré"
+  },
+  {
+    "word": "pekoe",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pekoe"
+  },
+  {
+    "word": "pelagial",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pelagial"
+  },
+  {
+    "word": "pelargic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pelargic"
+  },
+  {
+    "word": "pellicle",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pellicle"
+  },
+  {
+    "word": "pellucidness",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pellucidness"
+  },
+  {
+    "word": "pelmatozoan",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pelmatozoan"
+  },
+  {
+    "word": "pelorism",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pelorism"
+  },
+  {
+    "word": "pelorus",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pelorus"
+  },
+  {
+    "word": "pelotherapy",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pelotherapy"
+  },
+  {
+    "word": "peltry",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: peltry"
+  },
+  {
+    "word": "pelvimeter",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pelvimeter"
+  },
+  {
+    "word": "pelycosaur",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pelycosaur"
+  },
+  {
+    "word": "pemican",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pemican"
+  },
+  {
+    "word": "pemmican",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pemmican"
+  },
+  {
+    "word": "penannular",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: penannular"
+  },
+  {
+    "word": "peneplaination",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: peneplaination"
+  },
+  {
+    "word": "penetrometer",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: penetrometer"
+  },
+  {
+    "word": "penicillinase",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: penicillinase"
+  },
+  {
+    "word": "peninsularism",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: peninsularism"
+  },
+  {
+    "word": "penitentiary",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: penitentiary"
+  },
+  {
+    "word": "pentaerythritol",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pentaerythritol"
+  },
+  {
+    "word": "pentimento",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pentimento"
+  },
+  {
+    "word": "pentlandite",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pentlandite"
+  },
+  {
+    "word": "pentode",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pentode"
+  },
+  {
+    "word": "pentstemon",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pentstemon"
+  },
+  {
+    "word": "penumbrous",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: penumbrous"
+  },
+  {
+    "word": "peopler",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: peopler"
+  },
+  {
+    "word": "peperino",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: peperino"
+  },
+  {
+    "word": "peppergrass",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: peppergrass"
+  },
+  {
+    "word": "peptidase",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: peptidase"
+  },
+  {
+    "word": "peptization",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: peptization"
+  },
+  {
+    "word": "peptone",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: peptone"
+  },
+  {
+    "word": "peptonoid",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: peptonoid"
+  },
+  {
+    "word": "peracid",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: peracid"
+  },
+  {
+    "word": "perborate",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: perborate"
+  },
+  {
+    "word": "percaline",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: percaline"
+  },
+  {
+    "word": "percarbide",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: percarbide"
+  },
+  {
+    "word": "perceivable",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: perceivable"
+  },
+  {
+    "word": "perceptuality",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: perceptuality"
+  },
+  {
+    "word": "perchlorate",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: perchlorate"
+  },
+  {
+    "word": "percipient",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: percipient"
+  },
+  {
+    "word": "percoid",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: percoid"
+  },
+  {
+    "word": "perdurably",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: perdurably"
+  },
+  {
+    "word": "peregrination",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: peregrination"
+  },
+  {
+    "word": "pereopod",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pereopod"
+  },
+  {
+    "word": "perfoliate",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: perfoliate"
+  },
+  {
+    "word": "perfusate",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: perfusate"
+  },
+  {
+    "word": "pergamine",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pergamine"
+  },
+  {
+    "word": "perhumous",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: perhumous"
+  },
+  {
+    "word": "perianth",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: perianth"
+  },
+  {
+    "word": "periastron",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: periastron"
+  },
+  {
+    "word": "periauger",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: periauger"
+  },
+  {
+    "word": "periclasite",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: periclasite"
+  },
+  {
+    "word": "pericline",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pericline"
+  },
+  {
+    "word": "periclinal",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: periclinal"
+  },
+  {
+    "word": "pericope",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pericope"
+  },
+  {
+    "word": "peridiole",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: peridiole"
+  },
+  {
+    "word": "peridium",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: peridium"
+  },
+  {
+    "word": "perigeal",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: perigeal"
+  },
+  {
+    "word": "perigon",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: perigon"
+  },
+  {
+    "word": "perigonium",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: perigonium"
+  },
+  {
+    "word": "perilune",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: perilune"
+  },
+  {
+    "word": "perimysium",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: perimysium"
+  },
+  {
+    "word": "perinatal",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: perinatal"
+  },
+  {
+    "word": "perineum",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: perineum"
+  },
+  {
+    "word": "perineurium",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: perineurium"
+  },
+  {
+    "word": "periodontium",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: periodontium"
+  },
+  {
+    "word": "periostracum",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: periostracum"
+  },
+  {
+    "word": "peripateticism",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: peripateticism"
+  },
+  {
+    "word": "peripeteia",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: peripeteia"
+  },
+  {
+    "word": "periplasm",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: periplasm"
+  },
+  {
+    "word": "periproct",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: periproct"
+  },
+  {
+    "word": "perisarc",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: perisarc"
+  },
+  {
+    "word": "perishability",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: perishability"
+  },
+  {
+    "word": "perissology",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: perissology"
+  },
+  {
+    "word": "peristome",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: peristome"
+  },
+  {
+    "word": "perithecium",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: perithecium"
+  },
+  {
+    "word": "peritrichous",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: peritrichous"
+  },
+  {
+    "word": "perihelia",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: perihelia"
+  },
+  {
+    "word": "peroneal",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: peroneal"
+  },
+  {
+    "word": "peroral",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: peroral"
+  },
+  {
+    "word": "peroxidase",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: peroxidase"
+  },
+  {
+    "word": "persifleur",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: persifleur"
+  },
+  {
+    "word": "perspicacity",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: perspicacity"
+  },
+  {
+    "word": "perspicuity",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: perspicuity"
+  },
+  {
+    "word": "perspicuousness",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: perspicuousness"
+  },
+  {
+    "word": "persulphate",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: persulphate"
+  },
+  {
+    "word": "persulphide",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: persulphide"
+  },
+  {
+    "word": "persulphuric",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: persulphuric"
+  },
+  {
+    "word": "pertinacity",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pertinacity"
+  },
+  {
+    "word": "perturbative",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: perturbative"
+  },
+  {
+    "word": "pertussal",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pertussal"
+  },
+  {
+    "word": "peruke-maker",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: peruke-maker"
+  },
+  {
+    "word": "perules",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: perules"
+  },
+  {
+    "word": "pervasion",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pervasion"
+  },
+  {
+    "word": "pescatarian",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pescatarian"
+  },
+  {
+    "word": "pessary-like",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pessary-like"
+  },
+  {
+    "word": "pestalozzian",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pestalozzian"
+  },
+  {
+    "word": "pester-power",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pester-power"
+  },
+  {
+    "word": "pestology",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pestology"
+  },
+  {
+    "word": "petaliferous",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: petaliferous"
+  },
+  {
+    "word": "petiolate",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: petiolate"
+  },
+  {
+    "word": "petiolule",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: petiolule"
+  },
+  {
+    "word": "petitio principii",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: petitio principii"
+  },
+  {
+    "word": "petitory",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: petitory"
+  },
+  {
+    "word": "petroglyph",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: petroglyph"
+  },
+  {
+    "word": "petrogenesis",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: petrogenesis"
+  },
+  {
+    "word": "petromyzon",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: petromyzon"
+  },
+  {
+    "word": "petrophysics",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: petrophysics"
+  },
+  {
+    "word": "petrous",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: petrous"
+  },
+  {
+    "word": "pettable",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pettable"
+  },
+  {
+    "word": "pewtery",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pewtery"
+  },
+  {
+    "word": "phaeochrome",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phaeochrome"
+  },
+  {
+    "word": "phaeophyte",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phaeophyte"
+  },
+  {
+    "word": "phaeophytin",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phaeophytin"
+  },
+  {
+    "word": "phaeton",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phaeton"
+  },
+  {
+    "word": "phalanx",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phalanx"
+  },
+  {
+    "word": "phallocentric",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phallocentric"
+  },
+  {
+    "word": "phalanger",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phalanger"
+  },
+  {
+    "word": "phaleron",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phaleron"
+  },
+  {
+    "word": "phallicism",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phallicism"
+  },
+  {
+    "word": "phanariot",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phanariot"
+  },
+  {
+    "word": "phaneritic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phaneritic"
+  },
+  {
+    "word": "phantomology",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phantomology"
+  },
+  {
+    "word": "pharology",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pharology"
+  },
+  {
+    "word": "pharyngal",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pharyngal"
+  },
+  {
+    "word": "pharyngology",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pharyngology"
+  },
+  {
+    "word": "pharyngula",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pharyngula"
+  },
+  {
+    "word": "phaseal",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phaseal"
+  },
+  {
+    "word": "phaseolus",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phaseolus"
+  },
+  {
+    "word": "phasmid",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phasmid"
+  },
+  {
+    "word": "phaticity",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phaticity"
+  },
+  {
+    "word": "pheme",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pheme"
+  },
+  {
+    "word": "phenolic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phenolic"
+  },
+  {
+    "word": "phenolphthalein",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phenolphthalein"
+  },
+  {
+    "word": "phenomenography",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phenomenography"
+  },
+  {
+    "word": "phenology",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phenology"
+  },
+  {
+    "word": "phenoscopy",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phenoscopy"
+  },
+  {
+    "word": "phenylephrine",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phenylephrine"
+  },
+  {
+    "word": "pheretima",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pheretima"
+  },
+  {
+    "word": "phial",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phial"
+  },
+  {
+    "word": "philanderer",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: philanderer"
+  },
+  {
+    "word": "philander",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: philander"
+  },
+  {
+    "word": "philargyrist",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: philargyrist"
+  },
+  {
+    "word": "philematology",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: philematology"
+  },
+  {
+    "word": "philhellene",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: philhellene"
+  },
+  {
+    "word": "philodemic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: philodemic"
+  },
+  {
+    "word": "philogeny",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: philogeny"
+  },
+  {
+    "word": "philologaster",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: philologaster"
+  },
+  {
+    "word": "philomelian",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: philomelian"
+  },
+  {
+    "word": "philoprogenitive",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: philoprogenitive"
+  },
+  {
+    "word": "philotechnic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: philotechnic"
+  },
+  {
+    "word": "philtrum",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: philtrum"
+  },
+  {
+    "word": "phlebitis",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phlebitis"
+  },
+  {
+    "word": "phlebology",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phlebology"
+  },
+  {
+    "word": "phlebotomy",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phlebotomy"
+  },
+  {
+    "word": "phlegmon",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phlegmon"
+  },
+  {
+    "word": "phlogistic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phlogistic"
+  },
+  {
+    "word": "phloretin",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phloretin"
+  },
+  {
+    "word": "phloxine",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phloxine"
+  },
+  {
+    "word": "phlyctena",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phlyctena"
+  },
+  {
+    "word": "phocid",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phocid"
+  },
+  {
+    "word": "phocomelia",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phocomelia"
+  },
+  {
+    "word": "phoebe",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phoebe"
+  },
+  {
+    "word": "pholad",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pholad"
+  },
+  {
+    "word": "phonatory",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phonatory"
+  },
+  {
+    "word": "phonautograph",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phonautograph"
+  },
+  {
+    "word": "phonemics",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phonemics"
+  },
+  {
+    "word": "phonogram",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phonogram"
+  },
+  {
+    "word": "phonography",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phonography"
+  },
+  {
+    "word": "phonolite",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phonolite"
+  },
+  {
+    "word": "phonology",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phonology"
+  },
+  {
+    "word": "phorid",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phorid"
+  },
+  {
+    "word": "phormium",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phormium"
+  },
+  {
+    "word": "phosphatic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phosphatic"
+  },
+  {
+    "word": "phosphenes",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phosphenes"
+  },
+  {
+    "word": "phosphide",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phosphide"
+  },
+  {
+    "word": "phosphorite",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phosphorite"
+  },
+  {
+    "word": "photobiology",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: photobiology"
+  },
+  {
+    "word": "photochemistry",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: photochemistry"
+  },
+  {
+    "word": "photoelasticity",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: photoelasticity"
+  },
+  {
+    "word": "photoionization",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: photoionization"
+  },
+  {
+    "word": "photolithography",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: photolithography"
+  },
+  {
+    "word": "photolysis",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: photolysis"
+  },
+  {
+    "word": "photoperiodism",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: photoperiodism"
+  },
+  {
+    "word": "photophore",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: photophore"
+  },
+  {
+    "word": "photophone",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: photophone"
+  },
+  {
+    "word": "photopsia",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: photopsia"
+  },
+  {
+    "word": "photorealism",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: photorealism"
+  },
+  {
+    "word": "photosphere",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: photosphere"
+  },
+  {
+    "word": "photostat",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: photostat"
+  },
+  {
+    "word": "phototaxis",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phototaxis"
+  },
+  {
+    "word": "phrasal",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phrasal"
+  },
+  {
+    "word": "phraseogram",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phraseogram"
+  },
+  {
+    "word": "phrastic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phrastic"
+  },
+  {
+    "word": "phrenetic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phrenetic"
+  },
+  {
+    "word": "phrenology",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phrenology"
+  },
+  {
+    "word": "phrensical",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phrensical"
+  },
+  {
+    "word": "phrygian",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phrygian"
+  },
+  {
+    "word": "phthalate",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phthalate"
+  },
+  {
+    "word": "phthalimide",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phthalimide"
+  },
+  {
+    "word": "phthisic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phthisic"
+  },
+  {
+    "word": "phthisiology",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phthisiology"
+  },
+  {
+    "word": "phycology",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phycology"
+  },
+  {
+    "word": "phylae",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phylae"
+  },
+  {
+    "word": "phylarchy",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phylarchy"
+  },
+  {
+    "word": "phylaxis",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phylaxis"
+  },
+  {
+    "word": "phyllary",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phyllary"
+  },
+  {
+    "word": "phyllode",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phyllode"
+  },
+  {
+    "word": "phylloclade",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phylloclade"
+  },
+  {
+    "word": "phyllopod",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phyllopod"
+  },
+  {
+    "word": "phylogeny",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phylogeny"
+  },
+  {
+    "word": "physa",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: physa"
+  },
+  {
+    "word": "physalia",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: physalia"
+  },
+  {
+    "word": "physiocracy",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: physiocracy"
+  },
+  {
+    "word": "physiognomy",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: physiognomy"
+  },
+  {
+    "word": "physiography",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: physiography"
+  },
+  {
+    "word": "physiology",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: physiology"
+  },
+  {
+    "word": "physiotherapy",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: physiotherapy"
+  },
+  {
+    "word": "physis",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: physis"
+  },
+  {
+    "word": "physostome",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: physostome"
+  },
+  {
+    "word": "physostomous",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: physostomous"
+  },
+  {
+    "word": "phytolith",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phytolith"
+  },
+  {
+    "word": "phytoplanktonic",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phytoplanktonic"
+  },
+  {
+    "word": "phytosanitary",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phytosanitary"
+  },
+  {
+    "word": "phytotomy",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: phytotomy"
+  },
+  {
+    "word": "piazza",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: piazza"
+  },
+  {
+    "word": "piacular",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: piacular"
+  },
+  {
+    "word": "pianissimo",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pianissimo"
+  },
+  {
+    "word": "piaster",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: piaster"
+  },
+  {
+    "word": "pibroch",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pibroch"
+  },
+  {
+    "word": "picador",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: picador"
+  },
+  {
+    "word": "piccalilli",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: piccalilli"
+  },
+  {
+    "word": "piccolo",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: piccolo"
+  },
+  {
+    "word": "pickelhaube",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: pickelhaube"
+  },
+  {
+    "word": "picklock",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: picklock"
+  },
+  {
+    "word": "picoline",
+    "from": {
+      "language": "Various (Gr./Lt./Fr./Eng.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "term: picoline"
+  }
+]

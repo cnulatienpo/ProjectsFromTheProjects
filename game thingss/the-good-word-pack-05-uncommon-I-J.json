@@ -1,0 +1,4115 @@
+[
+  {
+    "word": "iamb",
+    "from": {
+      "language": "Greek",
+      "root": "iambos",
+      "gloss": "a metrical foot"
+    },
+    "literal": "unstressed-stressed foot in verse"
+  },
+  {
+    "word": "iambic",
+    "from": {
+      "language": "Greek",
+      "root": "iambikos",
+      "gloss": "relating to iambs"
+    },
+    "literal": "made of iambs"
+  },
+  {
+    "word": "iberian",
+    "from": {
+      "language": "Latin via Greek",
+      "root": "Hiberia",
+      "gloss": "Spain/Portugal"
+    },
+    "literal": "of the Iberian peninsula"
+  },
+  {
+    "word": "ichor",
+    "from": {
+      "language": "Greek",
+      "root": "ichōr",
+      "gloss": "fluid of the gods"
+    },
+    "literal": "thin watery fluid; mythic blood"
+  },
+  {
+    "word": "ichthyology",
+    "from": {
+      "language": "Greek",
+      "root": "ikhthys + logos",
+      "gloss": "fish + study"
+    },
+    "literal": "study of fishes"
+  },
+  {
+    "word": "iconoclast",
+    "from": {
+      "language": "Greek",
+      "root": "eikōn + klan",
+      "gloss": "image + to break"
+    },
+    "literal": "one who destroys cherished beliefs"
+  },
+  {
+    "word": "iconography",
+    "from": {
+      "language": "Greek",
+      "root": "eikōn + graphē",
+      "gloss": "image + writing"
+    },
+    "literal": "visual symbols and their study"
+  },
+  {
+    "word": "ictus",
+    "from": {
+      "language": "Latin",
+      "root": "ictus",
+      "gloss": "a blow; stress"
+    },
+    "literal": "accent or stress in poetry/music"
+  },
+  {
+    "word": "ideate",
+    "from": {
+      "language": "Greek via Late Latin",
+      "root": "idea",
+      "gloss": "form, pattern"
+    },
+    "literal": "form an idea; imagine"
+  },
+  {
+    "word": "ideation",
+    "from": {
+      "language": "Greek via Late Latin",
+      "root": "idea",
+      "gloss": "form, pattern"
+    },
+    "literal": "process of forming ideas"
+  },
+  {
+    "word": "ideogram",
+    "from": {
+      "language": "Greek",
+      "root": "idea + gramma",
+      "gloss": "form + letter"
+    },
+    "literal": "symbol that represents an idea"
+  },
+  {
+    "word": "ideologue",
+    "from": {
+      "language": "French ← Greek",
+      "root": "idéologue",
+      "gloss": "theory speaker"
+    },
+    "literal": "doctrinaire thinker"
+  },
+  {
+    "word": "idiolect",
+    "from": {
+      "language": "Greek",
+      "root": "idios + lektos",
+      "gloss": "one’s own + speech"
+    },
+    "literal": "an individual’s speech pattern"
+  },
+  {
+    "word": "idiosyncrasy",
+    "from": {
+      "language": "Greek",
+      "root": "idios + syn + krasis",
+      "gloss": "own + with + mixture"
+    },
+    "literal": "peculiar personal habit"
+  },
+  {
+    "word": "idyll",
+    "from": {
+      "language": "Greek",
+      "root": "eidyllion",
+      "gloss": "little picture"
+    },
+    "literal": "short pastoral piece; simple scene"
+  },
+  {
+    "word": "igneous",
+    "from": {
+      "language": "Latin",
+      "root": "ignis",
+      "gloss": "fire"
+    },
+    "literal": "formed by fire (geology)"
+  },
+  {
+    "word": "ignoble",
+    "from": {
+      "language": "Latin",
+      "root": "ignobilis",
+      "gloss": "unknown, base"
+    },
+    "literal": "dishonorable; low"
+  },
+  {
+    "word": "ignominious",
+    "from": {
+      "language": "Latin",
+      "root": "in + nomen",
+      "gloss": "without + name"
+    },
+    "literal": "deserving public shame"
+  },
+  {
+    "word": "ignis fatuus",
+    "from": {
+      "language": "Latin",
+      "root": "ignis + fatuus",
+      "gloss": "fire + foolish"
+    },
+    "literal": "will-o’-the-wisp; misleading hope"
+  },
+  {
+    "word": "ilex",
+    "from": {
+      "language": "Latin",
+      "root": "ilex",
+      "gloss": "holm oak"
+    },
+    "literal": "holm oak tree"
+  },
+  {
+    "word": "illicit",
+    "from": {
+      "language": "Latin",
+      "root": "illicitus",
+      "gloss": "not allowed"
+    },
+    "literal": "forbidden by law or rule"
+  },
+  {
+    "word": "illimitable",
+    "from": {
+      "language": "Latin",
+      "root": "in + limes",
+      "gloss": "not + boundary"
+    },
+    "literal": "without limit"
+  },
+  {
+    "word": "illuminate",
+    "from": {
+      "language": "Latin",
+      "root": "illuminare",
+      "gloss": "to light up"
+    },
+    "literal": "light; clarify"
+  },
+  {
+    "word": "illusion",
+    "from": {
+      "language": "Latin",
+      "root": "illusio",
+      "gloss": "a mocking; trick"
+    },
+    "literal": "false appearance"
+  },
+  {
+    "word": "illusory",
+    "from": {
+      "language": "Latin",
+      "root": "illusorius",
+      "gloss": "mocking, deceptive"
+    },
+    "literal": "deceptive; not real"
+  },
+  {
+    "word": "illustrate",
+    "from": {
+      "language": "Latin",
+      "root": "illustris",
+      "gloss": "bright, clear"
+    },
+    "literal": "make clear with examples or pictures"
+  },
+  {
+    "word": "imago",
+    "from": {
+      "language": "Latin",
+      "root": "imago",
+      "gloss": "image"
+    },
+    "literal": "adult insect stage; idealized image"
+  },
+  {
+    "word": "imbibe",
+    "from": {
+      "language": "Latin",
+      "root": "imbibere",
+      "gloss": "to drink in"
+    },
+    "literal": "drink; absorb"
+  },
+  {
+    "word": "imbroglio",
+    "from": {
+      "language": "Italian",
+      "root": "imbrogliare",
+      "gloss": "to entangle"
+    },
+    "literal": "complicated, messy situation"
+  },
+  {
+    "word": "immaculate",
+    "from": {
+      "language": "Latin",
+      "root": "immaculatus",
+      "gloss": "unstained"
+    },
+    "literal": "perfectly clean; free from sin"
+  },
+  {
+    "word": "immane",
+    "from": {
+      "language": "Latin",
+      "root": "immanis",
+      "gloss": "monstrous"
+    },
+    "literal": "huge; dreadful"
+  },
+  {
+    "word": "immaterial",
+    "from": {
+      "language": "Latin",
+      "root": "in + materia",
+      "gloss": "not + matter"
+    },
+    "literal": "not important; not physical"
+  },
+  {
+    "word": "immemorial",
+    "from": {
+      "language": "Latin",
+      "root": "in + memoria",
+      "gloss": "beyond memory"
+    },
+    "literal": "ancient; very old"
+  },
+  {
+    "word": "immense",
+    "from": {
+      "language": "Latin",
+      "root": "immensus",
+      "gloss": "unmeasured"
+    },
+    "literal": "enormous"
+  },
+  {
+    "word": "immerse",
+    "from": {
+      "language": "Latin",
+      "root": "immergere",
+      "gloss": "to plunge in"
+    },
+    "literal": "dip or submerge"
+  },
+  {
+    "word": "imminent",
+    "from": {
+      "language": "Latin",
+      "root": "imminere",
+      "gloss": "to overhang"
+    },
+    "literal": "about to happen"
+  },
+  {
+    "word": "immanent",
+    "from": {
+      "language": "Latin",
+      "root": "immanere",
+      "gloss": "to remain within"
+    },
+    "literal": "inherent; remaining within"
+  },
+  {
+    "word": "immiscible",
+    "from": {
+      "language": "Latin",
+      "root": "in + miscere",
+      "gloss": "not + to mix"
+    },
+    "literal": "not forming a homogenous mixture"
+  },
+  {
+    "word": "immutable",
+    "from": {
+      "language": "Latin",
+      "root": "immutabilis",
+      "gloss": "unchangeable"
+    },
+    "literal": "unchanging over time"
+  },
+  {
+    "word": "impalpable",
+    "from": {
+      "language": "Latin",
+      "root": "in + palpare",
+      "gloss": "not + to touch"
+    },
+    "literal": "intangible; hard to grasp"
+  },
+  {
+    "word": "impecunious",
+    "from": {
+      "language": "Latin",
+      "root": "pecunia",
+      "gloss": "money"
+    },
+    "literal": "having little or no money"
+  },
+  {
+    "word": "impend",
+    "from": {
+      "language": "Latin",
+      "root": "impendere",
+      "gloss": "to hang over"
+    },
+    "literal": "be about to happen"
+  },
+  {
+    "word": "impenitent",
+    "from": {
+      "language": "Latin",
+      "root": "in + paenitere",
+      "gloss": "not + to repent"
+    },
+    "literal": "not feeling remorse"
+  },
+  {
+    "word": "imperative",
+    "from": {
+      "language": "Latin",
+      "root": "imperare",
+      "gloss": "to command"
+    },
+    "literal": "necessary; command form"
+  },
+  {
+    "word": "imperil",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "periculum",
+      "gloss": "danger"
+    },
+    "literal": "put at risk"
+  },
+  {
+    "word": "imperious",
+    "from": {
+      "language": "Latin",
+      "root": "imperiosus",
+      "gloss": "commanding"
+    },
+    "literal": "domineering; urgent"
+  },
+  {
+    "word": "impertinent",
+    "from": {
+      "language": "Latin",
+      "root": "in + pertinens",
+      "gloss": "not + relevant"
+    },
+    "literal": "rude; not pertinent"
+  },
+  {
+    "word": "imperturbable",
+    "from": {
+      "language": "Latin",
+      "root": "in + turbare",
+      "gloss": "not + to disturb"
+    },
+    "literal": "calm; unshakable"
+  },
+  {
+    "word": "impervious",
+    "from": {
+      "language": "Latin",
+      "root": "in + per via",
+      "gloss": "not + through way"
+    },
+    "literal": "not allowing passage or effect"
+  },
+  {
+    "word": "impetuous",
+    "from": {
+      "language": "Latin",
+      "root": "impetus",
+      "gloss": "assault; impulse"
+    },
+    "literal": "rashly hasty; forceful"
+  },
+  {
+    "word": "impinge",
+    "from": {
+      "language": "Latin",
+      "root": "impingere",
+      "gloss": "to strike against"
+    },
+    "literal": "encroach; strike"
+  },
+  {
+    "word": "implacable",
+    "from": {
+      "language": "Latin",
+      "root": "implacabilis",
+      "gloss": "cannot be appeased"
+    },
+    "literal": "unyielding; relentless"
+  },
+  {
+    "word": "implant",
+    "from": {
+      "language": "Latin",
+      "root": "in + plantare",
+      "gloss": "into + plant"
+    },
+    "literal": "insert firmly"
+  },
+  {
+    "word": "implement",
+    "from": {
+      "language": "Latin",
+      "root": "implere",
+      "gloss": "to fill up"
+    },
+    "literal": "tool; carry out"
+  },
+  {
+    "word": "implicate",
+    "from": {
+      "language": "Latin",
+      "root": "implicare",
+      "gloss": "to fold in"
+    },
+    "literal": "involve; suggest guilt"
+  },
+  {
+    "word": "implicit",
+    "from": {
+      "language": "Latin",
+      "root": "implicitus",
+      "gloss": "entangled"
+    },
+    "literal": "implied; absolute (trust)"
+  },
+  {
+    "word": "implode",
+    "from": {
+      "language": "Latin",
+      "root": "implodere",
+      "gloss": "to clap inward"
+    },
+    "literal": "collapse inward"
+  },
+  {
+    "word": "implore",
+    "from": {
+      "language": "Latin",
+      "root": "implorare",
+      "gloss": "to cry out for"
+    },
+    "literal": "beg earnestly"
+  },
+  {
+    "word": "importune",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "importunus",
+      "gloss": "inconvenient"
+    },
+    "literal": "press or solicit persistently"
+  },
+  {
+    "word": "impostor",
+    "from": {
+      "language": "Latin",
+      "root": "imponere",
+      "gloss": "to impose"
+    },
+    "literal": "one who deceives by assumption of a role"
+  },
+  {
+    "word": "impostume",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "apostema",
+      "gloss": "abscess"
+    },
+    "literal": "swollen sore; abscess (arch.)"
+  },
+  {
+    "word": "imprecation",
+    "from": {
+      "language": "Latin",
+      "root": "imprecari",
+      "gloss": "to pray against"
+    },
+    "literal": "a spoken curse"
+  },
+  {
+    "word": "impregnable",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "prehendere",
+      "gloss": "to seize"
+    },
+    "literal": "unable to be taken by force"
+  },
+  {
+    "word": "impresario",
+    "from": {
+      "language": "Italian",
+      "root": "impresa",
+      "gloss": "undertaking"
+    },
+    "literal": "organizer of concerts/shows"
+  },
+  {
+    "word": "imprimatur",
+    "from": {
+      "language": "Latin",
+      "root": "imprimatur",
+      "gloss": "let it be printed"
+    },
+    "literal": "official approval"
+  },
+  {
+    "word": "improvident",
+    "from": {
+      "language": "Latin",
+      "root": "in + providere",
+      "gloss": "not + foresee"
+    },
+    "literal": "wasteful; not thrifty"
+  },
+  {
+    "word": "improvise",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "improvisus",
+      "gloss": "unforeseen"
+    },
+    "literal": "compose or perform on the spot"
+  },
+  {
+    "word": "imprudent",
+    "from": {
+      "language": "Latin",
+      "root": "imprudens",
+      "gloss": "not wise"
+    },
+    "literal": "not showing care for consequences"
+  },
+  {
+    "word": "impugn",
+    "from": {
+      "language": "Latin",
+      "root": "impugnare",
+      "gloss": "to fight against"
+    },
+    "literal": "challenge as false; attack"
+  },
+  {
+    "word": "impuissant",
+    "from": {
+      "language": "French ← Latin",
+      "root": "impotens",
+      "gloss": "powerless"
+    },
+    "literal": "weak; lacking strength"
+  },
+  {
+    "word": "inane",
+    "from": {
+      "language": "Latin",
+      "root": "inanis",
+      "gloss": "empty"
+    },
+    "literal": "silly; empty of meaning"
+  },
+  {
+    "word": "inchoate",
+    "from": {
+      "language": "Latin",
+      "root": "incohare",
+      "gloss": "to begin"
+    },
+    "literal": "just begun; not fully formed"
+  },
+  {
+    "word": "incipient",
+    "from": {
+      "language": "Latin",
+      "root": "incipere",
+      "gloss": "to begin"
+    },
+    "literal": "in an initial stage"
+  },
+  {
+    "word": "incise",
+    "from": {
+      "language": "Latin",
+      "root": "incidere",
+      "gloss": "to cut into"
+    },
+    "literal": "cut into; engrave"
+  },
+  {
+    "word": "incisor",
+    "from": {
+      "language": "Latin",
+      "root": "incidere",
+      "gloss": "to cut into"
+    },
+    "literal": "front cutting tooth"
+  },
+  {
+    "word": "incite",
+    "from": {
+      "language": "Latin",
+      "root": "incitare",
+      "gloss": "to set in motion"
+    },
+    "literal": "stir up; provoke"
+  },
+  {
+    "word": "incommode",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "incommodare",
+      "gloss": "to trouble"
+    },
+    "literal": "inconvenience; disturb"
+  },
+  {
+    "word": "incongruous",
+    "from": {
+      "language": "Latin",
+      "root": "in + congruere",
+      "gloss": "not + to agree"
+    },
+    "literal": "not in harmony"
+  },
+  {
+    "word": "incontrovertible",
+    "from": {
+      "language": "Latin",
+      "root": "in + convertere",
+      "gloss": "not + to turn"
+    },
+    "literal": "not open to question"
+  },
+  {
+    "word": "incorrigible",
+    "from": {
+      "language": "Latin",
+      "root": "incorrigibilis",
+      "gloss": "not to be corrected"
+    },
+    "literal": "beyond reform"
+  },
+  {
+    "word": "increment",
+    "from": {
+      "language": "Latin",
+      "root": "incrementum",
+      "gloss": "growth"
+    },
+    "literal": "increase; step up"
+  },
+  {
+    "word": "incubate",
+    "from": {
+      "language": "Latin",
+      "root": "incubare",
+      "gloss": "to lie on"
+    },
+    "literal": "keep warm for hatching; develop an idea"
+  },
+  {
+    "word": "incubus",
+    "from": {
+      "language": "Latin",
+      "root": "incubare",
+      "gloss": "to lie upon"
+    },
+    "literal": "male demon; oppressive burden"
+  },
+  {
+    "word": "inculcate",
+    "from": {
+      "language": "Latin",
+      "root": "inculcare",
+      "gloss": "to tread in"
+    },
+    "literal": "teach by persistent repetition"
+  },
+  {
+    "word": "incunabulum",
+    "from": {
+      "language": "Neo-Latin",
+      "root": "incunabula",
+      "gloss": "swaddling-clothes"
+    },
+    "literal": "book printed before 1501"
+  },
+  {
+    "word": "incursion",
+    "from": {
+      "language": "Latin",
+      "root": "incurrere",
+      "gloss": "to run into"
+    },
+    "literal": "sudden invasion"
+  },
+  {
+    "word": "indagate",
+    "from": {
+      "language": "Latin",
+      "root": "indagare",
+      "gloss": "to track, investigate"
+    },
+    "literal": "search out; investigate"
+  },
+  {
+    "word": "indecorous",
+    "from": {
+      "language": "Latin",
+      "root": "indecorus",
+      "gloss": "not fitting"
+    },
+    "literal": "improper; unbecoming"
+  },
+  {
+    "word": "indefatigable",
+    "from": {
+      "language": "Latin",
+      "root": "in + defatigare",
+      "gloss": "not + to tire out"
+    },
+    "literal": "untiring; relentless"
+  },
+  {
+    "word": "indemnify",
+    "from": {
+      "language": "Latin",
+      "root": "indemnis",
+      "gloss": "unharmed"
+    },
+    "literal": "compensate for loss"
+  },
+  {
+    "word": "indenture",
+    "from": {
+      "language": "French via Latin",
+      "root": "indentare",
+      "gloss": "to notch"
+    },
+    "literal": "contract with notched copies"
+  },
+  {
+    "word": "indelible",
+    "from": {
+      "language": "Latin",
+      "root": "indelebilis",
+      "gloss": "not able to be erased"
+    },
+    "literal": "permanent; unforgettable"
+  },
+  {
+    "word": "indict",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "indictare",
+      "gloss": "to declare"
+    },
+    "literal": "formally accuse"
+  },
+  {
+    "word": "indite",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "indictare",
+      "gloss": "to compose"
+    },
+    "literal": "write; put in words"
+  },
+  {
+    "word": "indigence",
+    "from": {
+      "language": "Latin",
+      "root": "indigens",
+      "gloss": "needing"
+    },
+    "literal": "poverty; neediness"
+  },
+  {
+    "word": "indignant",
+    "from": {
+      "language": "Latin",
+      "root": "indignari",
+      "gloss": "to deem unworthy"
+    },
+    "literal": "angry at injustice"
+  },
+  {
+    "word": "indigo",
+    "from": {
+      "language": "Portuguese ← Indic",
+      "root": "índigo/नील (nīla)",
+      "gloss": "blue dye"
+    },
+    "literal": "deep blue color"
+  },
+  {
+    "word": "indolent",
+    "from": {
+      "language": "Latin",
+      "root": "in + dolere",
+      "gloss": "not + to feel pain"
+    },
+    "literal": "lazy; averse to activity"
+  },
+  {
+    "word": "indomitable",
+    "from": {
+      "language": "Latin",
+      "root": "in + domare",
+      "gloss": "not + to tame"
+    },
+    "literal": "unconquerable"
+  },
+  {
+    "word": "indurate",
+    "from": {
+      "language": "Latin",
+      "root": "indurare",
+      "gloss": "to harden"
+    },
+    "literal": "harden; make unfeeling"
+  },
+  {
+    "word": "ineffable",
+    "from": {
+      "language": "Latin",
+      "root": "ineffabilis",
+      "gloss": "not speakable"
+    },
+    "literal": "too great for words"
+  },
+  {
+    "word": "ineluctable",
+    "from": {
+      "language": "Latin",
+      "root": "in + eluctari",
+      "gloss": "not + to struggle out"
+    },
+    "literal": "inescapable"
+  },
+  {
+    "word": "inequity",
+    "from": {
+      "language": "Latin",
+      "root": "inaequitas",
+      "gloss": "unevenness; injustice"
+    },
+    "literal": "unfairness"
+  },
+  {
+    "word": "inert",
+    "from": {
+      "language": "Latin",
+      "root": "iners",
+      "gloss": "unskilled; idle"
+    },
+    "literal": "lacking movement or vigor"
+  },
+  {
+    "word": "inerrant",
+    "from": {
+      "language": "Latin",
+      "root": "inerrans",
+      "gloss": "not wandering"
+    },
+    "literal": "incapable of error"
+  },
+  {
+    "word": "inestimable",
+    "from": {
+      "language": "Latin",
+      "root": "inaestimabilis",
+      "gloss": "not able to be valued"
+    },
+    "literal": "too precious to estimate"
+  },
+  {
+    "word": "inextirpable",
+    "from": {
+      "language": "Latin",
+      "root": "in + exstirpare",
+      "gloss": "not + root out"
+    },
+    "literal": "impossible to eradicate"
+  },
+  {
+    "word": "inextricable",
+    "from": {
+      "language": "Latin",
+      "root": "in + extricare",
+      "gloss": "not + disentangle"
+    },
+    "literal": "impossible to untangle"
+  },
+  {
+    "word": "infantilize",
+    "from": {
+      "language": "French ← Latin",
+      "root": "infans",
+      "gloss": "infant"
+    },
+    "literal": "treat as a child"
+  },
+  {
+    "word": "infatuate",
+    "from": {
+      "language": "Latin",
+      "root": "infatuare",
+      "gloss": "to make foolish"
+    },
+    "literal": "inspire with foolish love"
+  },
+  {
+    "word": "infelicitous",
+    "from": {
+      "language": "Latin",
+      "root": "in + felicitas",
+      "gloss": "not + happiness"
+    },
+    "literal": "unfortunate; awkward"
+  },
+  {
+    "word": "infernal",
+    "from": {
+      "language": "Latin",
+      "root": "infernus",
+      "gloss": "lower, hellish"
+    },
+    "literal": "of hell; very bad"
+  },
+  {
+    "word": "infest",
+    "from": {
+      "language": "Latin",
+      "root": "infestare",
+      "gloss": "to attack, disturb"
+    },
+    "literal": "overrun in large numbers"
+  },
+  {
+    "word": "infidel",
+    "from": {
+      "language": "Latin",
+      "root": "infidelis",
+      "gloss": "unfaithful"
+    },
+    "literal": "person who lacks a given faith"
+  },
+  {
+    "word": "infiltrate",
+    "from": {
+      "language": "Latin",
+      "root": "filtrum",
+      "gloss": "filter"
+    },
+    "literal": "pass gradually through; surreptitiously enter"
+  },
+  {
+    "word": "infinitesimal",
+    "from": {
+      "language": "Latin",
+      "root": "infinitus",
+      "gloss": "unbounded"
+    },
+    "literal": "extremely small"
+  },
+  {
+    "word": "inflame",
+    "from": {
+      "language": "Latin",
+      "root": "in + flamma",
+      "gloss": "into + flame"
+    },
+    "literal": "set on fire; arouse passion"
+  },
+  {
+    "word": "inflate",
+    "from": {
+      "language": "Latin",
+      "root": "in + flare",
+      "gloss": "into + blow"
+    },
+    "literal": "swell with air; exaggerate"
+  },
+  {
+    "word": "inflect",
+    "from": {
+      "language": "Latin",
+      "root": "inflectere",
+      "gloss": "to bend"
+    },
+    "literal": "change the form of a word"
+  },
+  {
+    "word": "inflorescence",
+    "from": {
+      "language": "Latin",
+      "root": "inflorescere",
+      "gloss": "to begin to flower"
+    },
+    "literal": "flower cluster"
+  },
+  {
+    "word": "infrangible",
+    "from": {
+      "language": "Latin",
+      "root": "in + frangere",
+      "gloss": "not + break"
+    },
+    "literal": "unbreakable; inviolable"
+  },
+  {
+    "word": "infuse",
+    "from": {
+      "language": "Latin",
+      "root": "infundere",
+      "gloss": "to pour in"
+    },
+    "literal": "fill; instill"
+  },
+  {
+    "word": "ingenious",
+    "from": {
+      "language": "Latin",
+      "root": "ingenium",
+      "gloss": "inborn talent"
+    },
+    "literal": "clever, inventive"
+  },
+  {
+    "word": "ingenuous",
+    "from": {
+      "language": "Latin",
+      "root": "ingenuus",
+      "gloss": "native, freeborn"
+    },
+    "literal": "naive; frank"
+  },
+  {
+    "word": "ingest",
+    "from": {
+      "language": "Latin",
+      "root": "ingestus",
+      "gloss": "to carry in"
+    },
+    "literal": "take into the body"
+  },
+  {
+    "word": "inglorious",
+    "from": {
+      "language": "Latin",
+      "root": "in + gloria",
+      "gloss": "not + glory"
+    },
+    "literal": "shameful; obscure"
+  },
+  {
+    "word": "ingot",
+    "from": {
+      "language": "Old Eng./Norse",
+      "root": "ingot",
+      "gloss": "molded mass"
+    },
+    "literal": "bar of metal"
+  },
+  {
+    "word": "ingrate",
+    "from": {
+      "language": "Latin",
+      "root": "ingratus",
+      "gloss": "ungrateful"
+    },
+    "literal": "ungrateful person"
+  },
+  {
+    "word": "ingratiate",
+    "from": {
+      "language": "Latin",
+      "root": "in + gratia",
+      "gloss": "into + favor"
+    },
+    "literal": "bring oneself into favor"
+  },
+  {
+    "word": "ingress",
+    "from": {
+      "language": "Latin",
+      "root": "ingredi",
+      "gloss": "to step in"
+    },
+    "literal": "entrance; entering"
+  },
+  {
+    "word": "inhere",
+    "from": {
+      "language": "Latin",
+      "root": "inhaerere",
+      "gloss": "to stick in"
+    },
+    "literal": "exist essentially in"
+  },
+  {
+    "word": "inhibit",
+    "from": {
+      "language": "Latin",
+      "root": "inhibere",
+      "gloss": "to hold in"
+    },
+    "literal": "restrain; hinder"
+  },
+  {
+    "word": "inimitable",
+    "from": {
+      "language": "Latin",
+      "root": "in + imitabilis",
+      "gloss": "not + imitable"
+    },
+    "literal": "matchless; unique"
+  },
+  {
+    "word": "iniquity",
+    "from": {
+      "language": "Latin",
+      "root": "iniquitas",
+      "gloss": "unequalness"
+    },
+    "literal": "immoral behavior; injustice"
+  },
+  {
+    "word": "inquiry",
+    "from": {
+      "language": "Latin",
+      "root": "inquirere",
+      "gloss": "to seek in"
+    },
+    "literal": "act of asking; investigation"
+  },
+  {
+    "word": "inquisitor",
+    "from": {
+      "language": "Latin",
+      "root": "inquirere",
+      "gloss": "to seek in"
+    },
+    "literal": "official questioner"
+  },
+  {
+    "word": "inroad",
+    "from": {
+      "language": "Old Eng.",
+      "root": "in + rād",
+      "gloss": "in + ride"
+    },
+    "literal": "hostile incursion"
+  },
+  {
+    "word": "insatiable",
+    "from": {
+      "language": "Latin",
+      "root": "in + satiare",
+      "gloss": "not + fill"
+    },
+    "literal": "impossible to satisfy"
+  },
+  {
+    "word": "inscrutable",
+    "from": {
+      "language": "Latin",
+      "root": "in + scrutari",
+      "gloss": "not + to search"
+    },
+    "literal": "impossible to understand"
+  },
+  {
+    "word": "insectivorous",
+    "from": {
+      "language": "Latin",
+      "root": "insectum + vorare",
+      "gloss": "cut-in + devour"
+    },
+    "literal": "feeding on insects"
+  },
+  {
+    "word": "insensate",
+    "from": {
+      "language": "Latin",
+      "root": "insensatus",
+      "gloss": "without feeling"
+    },
+    "literal": "lacking sensation or sympathy"
+  },
+  {
+    "word": "insidious",
+    "from": {
+      "language": "Latin",
+      "root": "insidiae",
+      "gloss": "ambush"
+    },
+    "literal": "treacherous; gradual harm"
+  },
+  {
+    "word": "insinuate",
+    "from": {
+      "language": "Latin",
+      "root": "insinuare",
+      "gloss": "to bend in"
+    },
+    "literal": "hint slyly; introduce gradually"
+  },
+  {
+    "word": "insipid",
+    "from": {
+      "language": "Latin",
+      "root": "in + sapidus",
+      "gloss": "not + tasty"
+    },
+    "literal": "dull; lacking flavor"
+  },
+  {
+    "word": "insolent",
+    "from": {
+      "language": "Latin",
+      "root": "insolens",
+      "gloss": "unaccustomed"
+    },
+    "literal": "rude; arrogant"
+  },
+  {
+    "word": "insolvent",
+    "from": {
+      "language": "Latin",
+      "root": "in + solvere",
+      "gloss": "not + loosen/pay"
+    },
+    "literal": "unable to pay debts"
+  },
+  {
+    "word": "insular",
+    "from": {
+      "language": "Latin",
+      "root": "insula",
+      "gloss": "island"
+    },
+    "literal": "narrow; island-dwelling"
+  },
+  {
+    "word": "insulate",
+    "from": {
+      "language": "Latin",
+      "root": "insula",
+      "gloss": "island"
+    },
+    "literal": "protect by isolating"
+  },
+  {
+    "word": "insurgent",
+    "from": {
+      "language": "Latin",
+      "root": "insurgere",
+      "gloss": "to rise up"
+    },
+    "literal": "rebel; rising in revolt"
+  },
+  {
+    "word": "intaglio",
+    "from": {
+      "language": "Italian",
+      "root": "intagliare",
+      "gloss": "to engrave"
+    },
+    "literal": "engraving below the surface"
+  },
+  {
+    "word": "integument",
+    "from": {
+      "language": "Latin",
+      "root": "integumentum",
+      "gloss": "a covering"
+    },
+    "literal": "natural covering (skin, shell)"
+  },
+  {
+    "word": "intemperate",
+    "from": {
+      "language": "Latin",
+      "root": "in + temperare",
+      "gloss": "not + to moderate"
+    },
+    "literal": "lacking restraint"
+  },
+  {
+    "word": "inter",
+    "from": {
+      "language": "Latin",
+      "root": "inter",
+      "gloss": "between"
+    },
+    "literal": "bury (place in the earth)"
+  },
+  {
+    "word": "intercalate",
+    "from": {
+      "language": "Latin",
+      "root": "inter + calare",
+      "gloss": "between + call"
+    },
+    "literal": "insert in a calendar/series"
+  },
+  {
+    "word": "intercede",
+    "from": {
+      "language": "Latin",
+      "root": "inter + cedere",
+      "gloss": "between + go"
+    },
+    "literal": "mediate; plead for another"
+  },
+  {
+    "word": "interdict",
+    "from": {
+      "language": "Latin",
+      "root": "inter + dicere",
+      "gloss": "between + say"
+    },
+    "literal": "forbid by law"
+  },
+  {
+    "word": "interdigitate",
+    "from": {
+      "language": "Latin",
+      "root": "digitus",
+      "gloss": "finger"
+    },
+    "literal": "fit together like fingers"
+  },
+  {
+    "word": "interim",
+    "from": {
+      "language": "Latin",
+      "root": "interim",
+      "gloss": "in the meantime"
+    },
+    "literal": "temporary interval"
+  },
+  {
+    "word": "interlard",
+    "from": {
+      "language": "French",
+      "root": "entrelarder",
+      "gloss": "to mix with bacon"
+    },
+    "literal": "mix in something different"
+  },
+  {
+    "word": "interloper",
+    "from": {
+      "language": "Dutch/Eng.",
+      "root": "loop",
+      "gloss": "to run"
+    },
+    "literal": "one who intrudes"
+  },
+  {
+    "word": "intermezzo",
+    "from": {
+      "language": "Italian",
+      "root": "intermezzo",
+      "gloss": "between-middle"
+    },
+    "literal": "short piece between longer works"
+  },
+  {
+    "word": "internecine",
+    "from": {
+      "language": "Latin",
+      "root": "internecare",
+      "gloss": "to kill among"
+    },
+    "literal": "mutually destructive"
+  },
+  {
+    "word": "interpolate",
+    "from": {
+      "language": "Latin",
+      "root": "inter + polire",
+      "gloss": "between + polish"
+    },
+    "literal": "insert into a text"
+  },
+  {
+    "word": "interpose",
+    "from": {
+      "language": "Latin",
+      "root": "inter + ponere",
+      "gloss": "between + put"
+    },
+    "literal": "place between; intervene"
+  },
+  {
+    "word": "interpret",
+    "from": {
+      "language": "Latin",
+      "root": "interpres",
+      "gloss": "go-between"
+    },
+    "literal": "explain the meaning"
+  },
+  {
+    "word": "interregnum",
+    "from": {
+      "language": "Latin",
+      "root": "inter + regnum",
+      "gloss": "between + rule"
+    },
+    "literal": "period without a ruler"
+  },
+  {
+    "word": "interrogate",
+    "from": {
+      "language": "Latin",
+      "root": "interrogare",
+      "gloss": "to ask"
+    },
+    "literal": "question formally"
+  },
+  {
+    "word": "intersperse",
+    "from": {
+      "language": "Latin",
+      "root": "inter + spargere",
+      "gloss": "between + scatter"
+    },
+    "literal": "scatter among"
+  },
+  {
+    "word": "interstice",
+    "from": {
+      "language": "Latin",
+      "root": "inter + sistere",
+      "gloss": "between + to stand"
+    },
+    "literal": "small gap or space"
+  },
+  {
+    "word": "intestate",
+    "from": {
+      "language": "Latin",
+      "root": "in + testari",
+      "gloss": "not + to witness"
+    },
+    "literal": "dying without a will"
+  },
+  {
+    "word": "intimation",
+    "from": {
+      "language": "Latin",
+      "root": "intimare",
+      "gloss": "to make known"
+    },
+    "literal": "a hint; indirect suggestion"
+  },
+  {
+    "word": "intransigent",
+    "from": {
+      "language": "Spanish ← Latin",
+      "root": "intransigente",
+      "gloss": "uncompromising"
+    },
+    "literal": "refusing to change position"
+  },
+  {
+    "word": "intrepid",
+    "from": {
+      "language": "Latin",
+      "root": "in + trepidus",
+      "gloss": "not + alarmed"
+    },
+    "literal": "fearless; adventurous"
+  },
+  {
+    "word": "intrigue",
+    "from": {
+      "language": "French",
+      "root": "intriguer",
+      "gloss": "to plot"
+    },
+    "literal": "secret scheme; fascinate"
+  },
+  {
+    "word": "intrinsic",
+    "from": {
+      "language": "Latin",
+      "root": "intrinsecus",
+      "gloss": "on the inside"
+    },
+    "literal": "belonging by nature"
+  },
+  {
+    "word": "introject",
+    "from": {
+      "language": "Latin",
+      "root": "intro + iacere",
+      "gloss": "within + throw"
+    },
+    "literal": "unconsciously adopt into the self"
+  },
+  {
+    "word": "intromit",
+    "from": {
+      "language": "Latin",
+      "root": "intro + mittere",
+      "gloss": "within + send"
+    },
+    "literal": "send or let in"
+  },
+  {
+    "word": "introit",
+    "from": {
+      "language": "Latin",
+      "root": "introitus",
+      "gloss": "a going in"
+    },
+    "literal": "opening chant; entrance"
+  },
+  {
+    "word": "introrse",
+    "from": {
+      "language": "Latin",
+      "root": "intra + versus",
+      "gloss": "inward + turned"
+    },
+    "literal": "turned inward (botany)"
+  },
+  {
+    "word": "intuition",
+    "from": {
+      "language": "Latin",
+      "root": "intueri",
+      "gloss": "to look upon"
+    },
+    "literal": "immediate understanding"
+  },
+  {
+    "word": "invaginate",
+    "from": {
+      "language": "Latin",
+      "root": "in + vagina",
+      "gloss": "in + sheath"
+    },
+    "literal": "fold in like a sheath"
+  },
+  {
+    "word": "inveigh",
+    "from": {
+      "language": "Latin",
+      "root": "in + vehere",
+      "gloss": "in + carry"
+    },
+    "literal": "speak or write angrily against"
+  },
+  {
+    "word": "inveigle",
+    "from": {
+      "language": "French",
+      "root": "aveugler (influence)",
+      "gloss": "to blind, lead astray"
+    },
+    "literal": "win over by deception"
+  },
+  {
+    "word": "invent",
+    "from": {
+      "language": "Latin",
+      "root": "invenire",
+      "gloss": "to come upon"
+    },
+    "literal": "create or discover"
+  },
+  {
+    "word": "inventory",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "inventarium",
+      "gloss": "a list"
+    },
+    "literal": "detailed list of goods"
+  },
+  {
+    "word": "inverse",
+    "from": {
+      "language": "Latin",
+      "root": "in + vertere",
+      "gloss": "in + turn"
+    },
+    "literal": "opposite in order"
+  },
+  {
+    "word": "invert",
+    "from": {
+      "language": "Latin",
+      "root": "in + vertere",
+      "gloss": "to turn in"
+    },
+    "literal": "turn upside down"
+  },
+  {
+    "word": "investiture",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "investitura",
+      "gloss": "clothing in"
+    },
+    "literal": "formal conferring of rank"
+  },
+  {
+    "word": "inveterate",
+    "from": {
+      "language": "Latin",
+      "root": "inveterare",
+      "gloss": "to make old"
+    },
+    "literal": "long-established; habitual"
+  },
+  {
+    "word": "invidious",
+    "from": {
+      "language": "Latin",
+      "root": "invidere",
+      "gloss": "to look against"
+    },
+    "literal": "likely to arouse resentment"
+  },
+  {
+    "word": "invigilate",
+    "from": {
+      "language": "Latin",
+      "root": "vigilare",
+      "gloss": "to keep watch"
+    },
+    "literal": "supervise students at an exam"
+  },
+  {
+    "word": "invigorate",
+    "from": {
+      "language": "Latin",
+      "root": "vigor",
+      "gloss": "liveliness"
+    },
+    "literal": "give energy to"
+  },
+  {
+    "word": "inviolate",
+    "from": {
+      "language": "Latin",
+      "root": "in + violare",
+      "gloss": "not + to harm"
+    },
+    "literal": "pure; not violated"
+  },
+  {
+    "word": "invoke",
+    "from": {
+      "language": "Latin",
+      "root": "invocare",
+      "gloss": "to call upon"
+    },
+    "literal": "appeal to; call in prayer"
+  },
+  {
+    "word": "involute",
+    "from": {
+      "language": "Latin",
+      "root": "in + volvere",
+      "gloss": "to roll in"
+    },
+    "literal": "rolled inward; complex"
+  },
+  {
+    "word": "iodine",
+    "from": {
+      "language": "French ← Greek",
+      "root": "ioeides",
+      "gloss": "violet-like"
+    },
+    "literal": "chemical element, violet vapor"
+  },
+  {
+    "word": "iota",
+    "from": {
+      "language": "Greek",
+      "root": "iōta",
+      "gloss": "smallest letter"
+    },
+    "literal": "very small amount"
+  },
+  {
+    "word": "ipecac",
+    "from": {
+      "language": "Portuguese ← Tupi",
+      "root": "ipe-ka’águêne",
+      "gloss": "plant that causes vomiting"
+    },
+    "literal": "emetic plant/drug"
+  },
+  {
+    "word": "irascible",
+    "from": {
+      "language": "Latin",
+      "root": "irasci",
+      "gloss": "to grow angry"
+    },
+    "literal": "easily angered"
+  },
+  {
+    "word": "irenic",
+    "from": {
+      "language": "Greek",
+      "root": "eirēnikos",
+      "gloss": "peaceful"
+    },
+    "literal": "favoring peace"
+  },
+  {
+    "word": "iridescent",
+    "from": {
+      "language": "Latin ← Greek",
+      "root": "Iris",
+      "gloss": "rainbow"
+    },
+    "literal": "showing rainbow colors"
+  },
+  {
+    "word": "iridium",
+    "from": {
+      "language": "Latin ← Greek",
+      "root": "Iris",
+      "gloss": "rainbow"
+    },
+    "literal": "hard, corrosion-resistant element"
+  },
+  {
+    "word": "irksome",
+    "from": {
+      "language": "English",
+      "root": "irk",
+      "gloss": "to annoy"
+    },
+    "literal": "tedious; irritating"
+  },
+  {
+    "word": "irrupt",
+    "from": {
+      "language": "Latin",
+      "root": "irrumpere",
+      "gloss": "to burst in"
+    },
+    "literal": "sudden increase; break in"
+  },
+  {
+    "word": "isinglass",
+    "from": {
+      "language": "Dutch",
+      "root": "huizenblas",
+      "gloss": "sturgeon bladder"
+    },
+    "literal": "gelatin from fish bladders; mica sheets"
+  },
+  {
+    "word": "isobar",
+    "from": {
+      "language": "Greek",
+      "root": "isos + baros",
+      "gloss": "equal + weight"
+    },
+    "literal": "line of equal pressure"
+  },
+  {
+    "word": "isochronous",
+    "from": {
+      "language": "Greek",
+      "root": "isos + chronos",
+      "gloss": "equal + time"
+    },
+    "literal": "occurring at equal time intervals"
+  },
+  {
+    "word": "isogloss",
+    "from": {
+      "language": "Greek",
+      "root": "isos + glōssa",
+      "gloss": "equal + tongue"
+    },
+    "literal": "dialect boundary line"
+  },
+  {
+    "word": "isolate",
+    "from": {
+      "language": "Italian via Fr.",
+      "root": "isolare",
+      "gloss": "to make into an island"
+    },
+    "literal": "separate from others"
+  },
+  {
+    "word": "isometric",
+    "from": {
+      "language": "Greek",
+      "root": "isos + metron",
+      "gloss": "equal + measure"
+    },
+    "literal": "having equal dimensions"
+  },
+  {
+    "word": "isotope",
+    "from": {
+      "language": "Greek",
+      "root": "isos + topos",
+      "gloss": "equal + place"
+    },
+    "literal": "same protons, different neutrons"
+  },
+  {
+    "word": "isthmus",
+    "from": {
+      "language": "Greek",
+      "root": "isthmos",
+      "gloss": "neck"
+    },
+    "literal": "narrow land bridge"
+  },
+  {
+    "word": "itinerant",
+    "from": {
+      "language": "Latin",
+      "root": "itinerari",
+      "gloss": "to travel"
+    },
+    "literal": "traveling from place to place"
+  },
+  {
+    "word": "iterate",
+    "from": {
+      "language": "Latin",
+      "root": "iterare",
+      "gloss": "to repeat"
+    },
+    "literal": "say or do repeatedly"
+  },
+  {
+    "word": "jabot",
+    "from": {
+      "language": "French",
+      "root": "jabot",
+      "gloss": "bird’s crop"
+    },
+    "literal": "decorative frill at a shirt neck"
+  },
+  {
+    "word": "jacaranda",
+    "from": {
+      "language": "Tupi via Portuguese",
+      "root": "jacarandá",
+      "gloss": "tree name"
+    },
+    "literal": "tropical tree; its purple flowers"
+  },
+  {
+    "word": "jacobin",
+    "from": {
+      "language": "French",
+      "root": "Jacobin",
+      "gloss": "revolutionary club"
+    },
+    "literal": "radical revolutionary"
+  },
+  {
+    "word": "jacquard",
+    "from": {
+      "language": "French",
+      "root": "Jacquard",
+      "gloss": "inventor’s name"
+    },
+    "literal": "loom patterning method; fabric"
+  },
+  {
+    "word": "jadeite",
+    "from": {
+      "language": "French/Spanish",
+      "root": "piedra de ijada",
+      "gloss": "loin-stone"
+    },
+    "literal": "green pyroxene mineral"
+  },
+  {
+    "word": "jadish",
+    "from": {
+      "language": "English",
+      "root": "jade + -ish",
+      "gloss": "wear out"
+    },
+    "literal": "tired; ill-tempered"
+  },
+  {
+    "word": "jactation",
+    "from": {
+      "language": "Latin",
+      "root": "iactatio",
+      "gloss": "boasting; tossing"
+    },
+    "literal": "boastful talk; restless tossing"
+  },
+  {
+    "word": "jaculate",
+    "from": {
+      "language": "Latin",
+      "root": "iaculare",
+      "gloss": "to throw"
+    },
+    "literal": "hurl or cast"
+  },
+  {
+    "word": "jaggery",
+    "from": {
+      "language": "Portuguese ← Malayalam",
+      "root": "jaggery",
+      "gloss": "raw sugar"
+    },
+    "literal": "unrefined cane sugar"
+  },
+  {
+    "word": "jaguar",
+    "from": {
+      "language": "Tupi via Portuguese",
+      "root": "jaguara",
+      "gloss": "beast of prey"
+    },
+    "literal": "large American cat"
+  },
+  {
+    "word": "jalousie",
+    "from": {
+      "language": "French",
+      "root": "jalousie",
+      "gloss": "jealousy → slatted blind"
+    },
+    "literal": "slatted window blind"
+  },
+  {
+    "word": "jamb",
+    "from": {
+      "language": "French",
+      "root": "jambe",
+      "gloss": "leg; side post"
+    },
+    "literal": "side post of a doorway"
+  },
+  {
+    "word": "jamboree",
+    "from": {
+      "language": "American Eng.",
+      "root": "jamboree",
+      "gloss": "lively gathering"
+    },
+    "literal": "boisterous party; Scout rally"
+  },
+  {
+    "word": "jangle",
+    "from": {
+      "language": "Middle Eng.",
+      "root": "janglen",
+      "gloss": "to chatter"
+    },
+    "literal": "harsh metallic ringing"
+  },
+  {
+    "word": "janissary",
+    "from": {
+      "language": "Turkish",
+      "root": "yeniçeri",
+      "gloss": "new soldier"
+    },
+    "literal": "elite Ottoman infantryman"
+  },
+  {
+    "word": "jape",
+    "from": {
+      "language": "English",
+      "root": "jape",
+      "gloss": "jest, trick"
+    },
+    "literal": "mock or joke"
+  },
+  {
+    "word": "japonica",
+    "from": {
+      "language": "Latinized",
+      "root": "japonicus",
+      "gloss": "Japanese"
+    },
+    "literal": "ornamental shrub (Camellia)"
+  },
+  {
+    "word": "jarl",
+    "from": {
+      "language": "Old Norse",
+      "root": "jarl",
+      "gloss": "earl"
+    },
+    "literal": "Scandinavian nobleman"
+  },
+  {
+    "word": "jargon",
+    "from": {
+      "language": "French",
+      "root": "jargon",
+      "gloss": "chatter"
+    },
+    "literal": "specialized technical language"
+  },
+  {
+    "word": "jasper",
+    "from": {
+      "language": "Greek via Latin",
+      "root": "iaspis",
+      "gloss": "spotted stone"
+    },
+    "literal": "opaque variety of quartz"
+  },
+  {
+    "word": "jaundice",
+    "from": {
+      "language": "French",
+      "root": "jaunisse",
+      "gloss": "yellowness"
+    },
+    "literal": "yellowing of skin; envy (fig.)"
+  },
+  {
+    "word": "jaunt",
+    "from": {
+      "language": "English",
+      "root": "jaunt",
+      "gloss": "trippery"
+    },
+    "literal": "short pleasurable trip"
+  },
+  {
+    "word": "javelin",
+    "from": {
+      "language": "French",
+      "root": "javelot",
+      "gloss": "dart"
+    },
+    "literal": "light spear for throwing"
+  },
+  {
+    "word": "jawbone",
+    "from": {
+      "language": "English",
+      "root": "jaw + bone",
+      "gloss": "mandible"
+    },
+    "literal": "to persuade by talking (US)"
+  },
+  {
+    "word": "jaywalk",
+    "from": {
+      "language": "American Eng.",
+      "root": "jay + walk",
+      "gloss": "greenhorn + walk"
+    },
+    "literal": "cross street illegally"
+  },
+  {
+    "word": "jejune",
+    "from": {
+      "language": "Latin",
+      "root": "ieiunus",
+      "gloss": "fasting; barren"
+    },
+    "literal": "naive; dull; simplistic"
+  },
+  {
+    "word": "jeremiad",
+    "from": {
+      "language": "French",
+      "root": "Jérémie",
+      "gloss": "prophet Jeremiah"
+    },
+    "literal": "long mournful complaint"
+  },
+  {
+    "word": "jerkin",
+    "from": {
+      "language": "English",
+      "root": "jerkin",
+      "gloss": "short jacket"
+    },
+    "literal": "close-fitting sleeveless jacket"
+  },
+  {
+    "word": "jeroboam",
+    "from": {
+      "language": "French",
+      "root": "Jéroboam",
+      "gloss": "king’s name"
+    },
+    "literal": "large wine bottle (3L)"
+  },
+  {
+    "word": "jerry-built",
+    "from": {
+      "language": "English",
+      "root": "Jerry",
+      "gloss": "shoddy builder"
+    },
+    "literal": "badly built; flimsy"
+  },
+  {
+    "word": "jessamine",
+    "from": {
+      "language": "French",
+      "root": "jasmin",
+      "gloss": "jasmine"
+    },
+    "literal": "poetic form of jasmine"
+  },
+  {
+    "word": "jetsam",
+    "from": {
+      "language": "Old French",
+      "root": "getteson",
+      "gloss": "that which is thrown"
+    },
+    "literal": "goods thrown overboard"
+  },
+  {
+    "word": "jettison",
+    "from": {
+      "language": "French",
+      "root": "jeter",
+      "gloss": "to throw"
+    },
+    "literal": "throw overboard; discard"
+  },
+  {
+    "word": "jettatura",
+    "from": {
+      "language": "Italian",
+      "root": "iettatura",
+      "gloss": "casting of the evil eye"
+    },
+    "literal": "evil influence; the evil eye"
+  },
+  {
+    "word": "jibe",
+    "from": {
+      "language": "Unknown (Eng.)",
+      "root": "jibe",
+      "gloss": "to agree; to taunt"
+    },
+    "literal": "to be in accord; or to mock"
+  },
+  {
+    "word": "jicama",
+    "from": {
+      "language": "Nahuatl via Spanish",
+      "root": "xicama",
+      "gloss": "edible root"
+    },
+    "literal": "crunchy tuber vegetable"
+  },
+  {
+    "word": "jiffy",
+    "from": {
+      "language": "English slang",
+      "root": "jiffy",
+      "gloss": "moment"
+    },
+    "literal": "a very short time"
+  },
+  {
+    "word": "jingoism",
+    "from": {
+      "language": "English",
+      "root": "by Jingo!",
+      "gloss": "minced oath"
+    },
+    "literal": "belligerent nationalism"
+  },
+  {
+    "word": "jink",
+    "from": {
+      "language": "Scots",
+      "root": "jink",
+      "gloss": "quick dodge"
+    },
+    "literal": "dodge suddenly"
+  },
+  {
+    "word": "jinx",
+    "from": {
+      "language": "American slang",
+      "root": "jinx",
+      "gloss": "spell; bird?"
+    },
+    "literal": "bring bad luck to"
+  },
+  {
+    "word": "jipijapa",
+    "from": {
+      "language": "Spanish (Ecuador)",
+      "root": "jipijapa",
+      "gloss": "palm name"
+    },
+    "literal": "Panama-hat plant"
+  },
+  {
+    "word": "joist",
+    "from": {
+      "language": "Old French",
+      "root": "joiste",
+      "gloss": "support beam"
+    },
+    "literal": "beam supporting a floor/roof"
+  },
+  {
+    "word": "jollity",
+    "from": {
+      "language": "English",
+      "root": "jolly",
+      "gloss": "merry"
+    },
+    "literal": "cheerful celebration"
+  },
+  {
+    "word": "jostle",
+    "from": {
+      "language": "Old French",
+      "root": "jouster",
+      "gloss": "to joust, bump"
+    },
+    "literal": "bump roughly; compete"
+  },
+  {
+    "word": "jounce",
+    "from": {
+      "language": "Dialect Eng.",
+      "root": "jounce",
+      "gloss": "jolt"
+    },
+    "literal": "move with jolts"
+  },
+  {
+    "word": "joust",
+    "from": {
+      "language": "Old French",
+      "root": "jouster",
+      "gloss": "to tilt"
+    },
+    "literal": "fight on horseback with lances"
+  },
+  {
+    "word": "jovial",
+    "from": {
+      "language": "French ← Latin",
+      "root": "Jovialis",
+      "gloss": "of Jupiter"
+    },
+    "literal": "cheerfully friendly"
+  },
+  {
+    "word": "jovian",
+    "from": {
+      "language": "Latin",
+      "root": "Jovianus/Iovis",
+      "gloss": "Jupiter’s"
+    },
+    "literal": "relating to Jupiter; gas giants"
+  },
+  {
+    "word": "jubilee",
+    "from": {
+      "language": "Hebrew via Latin",
+      "root": "yōvēl",
+      "gloss": "ram’s horn"
+    },
+    "literal": "special anniversary; rejoicing"
+  },
+  {
+    "word": "judder",
+    "from": {
+      "language": "Dialect Eng.",
+      "root": "judder",
+      "gloss": "to vibrate"
+    },
+    "literal": "shake with rapid vibration"
+  },
+  {
+    "word": "judicature",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "judicare",
+      "gloss": "to judge"
+    },
+    "literal": "administration of justice"
+  },
+  {
+    "word": "judicious",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "judicium",
+      "gloss": "judgment"
+    },
+    "literal": "showing good judgment"
+  },
+  {
+    "word": "juggernaut",
+    "from": {
+      "language": "Hindi via Eng.",
+      "root": "Jagannāth",
+      "gloss": "lord of the world"
+    },
+    "literal": "overwhelming, crushing force"
+  },
+  {
+    "word": "jugulate",
+    "from": {
+      "language": "Latin",
+      "root": "jugulum",
+      "gloss": "throat"
+    },
+    "literal": "to cut the throat; to check disease"
+  },
+  {
+    "word": "jugular",
+    "from": {
+      "language": "Latin",
+      "root": "jugulum",
+      "gloss": "throat"
+    },
+    "literal": "relating to the throat/neck vein"
+  },
+  {
+    "word": "juxtapose",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "iuxta + ponere",
+      "gloss": "next to + put"
+    },
+    "literal": "place side by side"
+  },
+  {
+    "word": "julep",
+    "from": {
+      "language": "Arabic via Fr.",
+      "root": "julāb",
+      "gloss": "rose-water drink"
+    },
+    "literal": "sweet flavored drink"
+  },
+  {
+    "word": "julienne",
+    "from": {
+      "language": "French",
+      "root": "julienne",
+      "gloss": "thin strips"
+    },
+    "literal": "cut into thin matchsticks"
+  },
+  {
+    "word": "jumble",
+    "from": {
+      "language": "Old French",
+      "root": "gomeler?",
+      "gloss": "to mix"
+    },
+    "literal": "mixed heap; muddle"
+  },
+  {
+    "word": "junction",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "iungere",
+      "gloss": "to join"
+    },
+    "literal": "place where things meet"
+  },
+  {
+    "word": "junta",
+    "from": {
+      "language": "Spanish",
+      "root": "junta",
+      "gloss": "meeting"
+    },
+    "literal": "ruling council; often military"
+  },
+  {
+    "word": "juridical",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "ius + dicere",
+      "gloss": "law + to say"
+    },
+    "literal": "relating to law/courts"
+  },
+  {
+    "word": "jurisprudence",
+    "from": {
+      "language": "Latin",
+      "root": "ius + prudentia",
+      "gloss": "law + knowledge"
+    },
+    "literal": "the theory of law"
+  },
+  {
+    "word": "jury-rig",
+    "from": {
+      "language": "Nautical Eng.",
+      "root": "jury (improvised)",
+      "gloss": "makeshift"
+    },
+    "literal": "improvise a temporary fix"
+  },
+  {
+    "word": "jute",
+    "from": {
+      "language": "Bengali via Eng.",
+      "root": "jhut",
+      "gloss": "plant fiber"
+    },
+    "literal": "strong fiber from Corchorus plants"
+  },
+  {
+    "word": "juvenilia",
+    "from": {
+      "language": "Latin",
+      "root": "iuvenilis",
+      "gloss": "youthful things"
+    },
+    "literal": "works produced in youth"
+  },
+  {
+    "word": "juvenescent",
+    "from": {
+      "language": "Latin",
+      "root": "iuvenescere",
+      "gloss": "to grow young"
+    },
+    "literal": "becoming youthful"
+  },
+  {
+    "word": "juvenesce",
+    "from": {
+      "language": "Latin",
+      "root": "iuvenescere",
+      "gloss": "to grow young"
+    },
+    "literal": "grow or make young again"
+  },
+  {
+    "word": "juvenescent",
+    "from": {
+      "language": "Latin",
+      "root": "iuvenescere",
+      "gloss": "to grow young"
+    },
+    "literal": "tending toward youthfulness"
+  },
+  {
+    "word": "juxtaposition",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "iuxta + positio",
+      "gloss": "next to + placing"
+    },
+    "literal": "act of placing side by side"
+  },
+  {
+    "word": "jezail",
+    "from": {
+      "language": "Pashto via Eng.",
+      "root": "jezail",
+      "gloss": "long rifle"
+    },
+    "literal": "Afghan long-barreled musket"
+  },
+  {
+    "word": "joie de vivre",
+    "from": {
+      "language": "French",
+      "root": "joie de vivre",
+      "gloss": "joy of living"
+    },
+    "literal": "exuberant enjoyment of life"
+  },
+  {
+    "word": "jonquil",
+    "from": {
+      "language": "French",
+      "root": "jonquille",
+      "gloss": "rush, reed"
+    },
+    "literal": "yellow-flowered narcissus"
+  },
+  {
+    "word": "jorum",
+    "from": {
+      "language": "English",
+      "root": "Jorum (biblical)",
+      "gloss": "proper name"
+    },
+    "literal": "large drinking bowl or measure"
+  },
+  {
+    "word": "jot",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "iota",
+      "gloss": "small letter"
+    },
+    "literal": "a very small amount; to write briefly"
+  },
+  {
+    "word": "joviality",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "Jovialis",
+      "gloss": "Jupiter’s"
+    },
+    "literal": "state of hearty cheer"
+  },
+  {
+    "word": "juddering",
+    "from": {
+      "language": "Dialect Eng.",
+      "root": "judder",
+      "gloss": "to vibrate"
+    },
+    "literal": "shaking violently"
+  },
+  {
+    "word": "jut",
+    "from": {
+      "language": "Latin via Fr./Eng.",
+      "root": "iuctus? → jut",
+      "gloss": "to project"
+    },
+    "literal": "stick out; project"
+  },
+  {
+    "word": "ixora",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'ixora'"
+  },
+  {
+    "word": "irenics",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'irenics'"
+  },
+  {
+    "word": "irenicon",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'irenicon'"
+  },
+  {
+    "word": "iridiumized",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'iridiumized'"
+  },
+  {
+    "word": "irruptive",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'irruptive'"
+  },
+  {
+    "word": "isallobar",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'isallobar'"
+  },
+  {
+    "word": "isallotherm",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'isallotherm'"
+  },
+  {
+    "word": "isarithm",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'isarithm'"
+  },
+  {
+    "word": "isoclinal",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'isoclinal'"
+  },
+  {
+    "word": "isopleth",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'isopleth'"
+  },
+  {
+    "word": "isopteran",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'isopteran'"
+  },
+  {
+    "word": "isostasy",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'isostasy'"
+  },
+  {
+    "word": "isotherm",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'isotherm'"
+  },
+  {
+    "word": "isothere",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'isothere'"
+  },
+  {
+    "word": "isotrope",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'isotrope'"
+  },
+  {
+    "word": "italics",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'italics'"
+  },
+  {
+    "word": "ithyphallus",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'ithyphallus'"
+  },
+  {
+    "word": "ivoride",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'ivoride'"
+  },
+  {
+    "word": "ixodid",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'ixodid'"
+  },
+  {
+    "word": "ixodiasis",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'ixodiasis'"
+  },
+  {
+    "word": "irenology",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'irenology'"
+  },
+  {
+    "word": "isagoge",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'isagoge'"
+  },
+  {
+    "word": "isagogic",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'isagogic'"
+  },
+  {
+    "word": "isarithmic",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'isarithmic'"
+  },
+  {
+    "word": "ischial",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'ischial'"
+  },
+  {
+    "word": "ischium",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'ischium'"
+  },
+  {
+    "word": "ischiadic",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'ischiadic'"
+  },
+  {
+    "word": "isobath",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'isobath'"
+  },
+  {
+    "word": "isogeotherm",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'isogeotherm'"
+  },
+  {
+    "word": "isohel",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'isohel'"
+  },
+  {
+    "word": "isohypsa",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'isohypsa'"
+  },
+  {
+    "word": "isoneph",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'isoneph'"
+  },
+  {
+    "word": "isophote",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'isophote'"
+  },
+  {
+    "word": "isopiestic",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'isopiestic'"
+  },
+  {
+    "word": "isopod",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'isopod'"
+  },
+  {
+    "word": "isoseismal",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'isoseismal'"
+  },
+  {
+    "word": "isotach",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'isotach'"
+  },
+  {
+    "word": "isotone",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'isotone'"
+  },
+  {
+    "word": "isotopicity",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'isotopicity'"
+  },
+  {
+    "word": "isotopy",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'isotopy'"
+  },
+  {
+    "word": "isotypy",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'isotypy'"
+  },
+  {
+    "word": "iterative",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'iterative'"
+  },
+  {
+    "word": "iatrogenic",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'iatrogenic'"
+  },
+  {
+    "word": "iatrology",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'iatrology'"
+  },
+  {
+    "word": "iatromancy",
+    "from": {
+      "language": "Greek/Neo-Latin",
+      "root": "various scientific roots",
+      "gloss": "technical formation"
+    },
+    "literal": "technical term 'iatromancy'"
+  },
+  {
+    "word": "jackanapes",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jackanapes"
+  },
+  {
+    "word": "jackboot",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jackboot"
+  },
+  {
+    "word": "jackdaw",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jackdaw"
+  },
+  {
+    "word": "jackleg",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jackleg"
+  },
+  {
+    "word": "jacklight",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jacklight"
+  },
+  {
+    "word": "jackstraw",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jackstraw"
+  },
+  {
+    "word": "jacobinism",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jacobinism"
+  },
+  {
+    "word": "jacobean",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jacobean"
+  },
+  {
+    "word": "jaculate",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jaculate"
+  },
+  {
+    "word": "jade-green",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jade-green"
+  },
+  {
+    "word": "jakes",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jakes"
+  },
+  {
+    "word": "jalopy",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jalopy"
+  },
+  {
+    "word": "jama",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jama"
+  },
+  {
+    "word": "jampack",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jampack"
+  },
+  {
+    "word": "jampot",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jampot"
+  },
+  {
+    "word": "jangly",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jangly"
+  },
+  {
+    "word": "janiform",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: janiform"
+  },
+  {
+    "word": "janty",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: janty"
+  },
+  {
+    "word": "janty?",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: janty?"
+  },
+  {
+    "word": "japanesque",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: japanesque"
+  },
+  {
+    "word": "japery",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: japery"
+  },
+  {
+    "word": "japonaise",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: japonaise"
+  },
+  {
+    "word": "jarosite",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jarosite"
+  },
+  {
+    "word": "jasmine",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jasmine"
+  },
+  {
+    "word": "jaspery",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jaspery"
+  },
+  {
+    "word": "jaspideous",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jaspideous"
+  },
+  {
+    "word": "jato",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jato"
+  },
+  {
+    "word": "jaunce",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jaunce"
+  },
+  {
+    "word": "javelina",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: javelina"
+  },
+  {
+    "word": "jawing",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jawing"
+  },
+  {
+    "word": "jaybird",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jaybird"
+  },
+  {
+    "word": "jayhawker",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jayhawker"
+  },
+  {
+    "word": "jehad",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jehad"
+  },
+  {
+    "word": "jejunal",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jejunal"
+  },
+  {
+    "word": "jennet",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jennet"
+  },
+  {
+    "word": "jenneting",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jenneting"
+  },
+  {
+    "word": "jeofail",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jeofail"
+  },
+  {
+    "word": "jerid",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jerid"
+  },
+  {
+    "word": "jerrycan",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jerrycan"
+  },
+  {
+    "word": "jessamy",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jessamy"
+  },
+  {
+    "word": "jesuitical",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jesuitical"
+  },
+  {
+    "word": "jetsammy",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jetsammy"
+  },
+  {
+    "word": "jetton",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jetton"
+  },
+  {
+    "word": "jibboom",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jibboom"
+  },
+  {
+    "word": "jibstay",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jibstay"
+  },
+  {
+    "word": "jiffybag",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jiffybag"
+  },
+  {
+    "word": "jigjog",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jigjog"
+  },
+  {
+    "word": "jigger",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jigger"
+  },
+  {
+    "word": "jigging",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jigging"
+  },
+  {
+    "word": "jigsaw",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jigsaw"
+  },
+  {
+    "word": "jillaroo",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jillaroo"
+  },
+  {
+    "word": "jilt",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jilt"
+  },
+  {
+    "word": "jimjams",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jimjams"
+  },
+  {
+    "word": "jimmywoodser",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jimmywoodser"
+  },
+  {
+    "word": "jingoist",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jingoist"
+  },
+  {
+    "word": "jingoes",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jingoes"
+  },
+  {
+    "word": "jingly",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jingly"
+  },
+  {
+    "word": "jinkers",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jinkers"
+  },
+  {
+    "word": "jinricksha",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jinricksha"
+  },
+  {
+    "word": "jinrikisha",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jinrikisha"
+  },
+  {
+    "word": "jitney",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jitney"
+  },
+  {
+    "word": "jitterbug",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jitterbug"
+  },
+  {
+    "word": "jobbernowl",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jobbernowl"
+  },
+  {
+    "word": "jobbery",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jobbery"
+  },
+  {
+    "word": "jobation",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jobation"
+  },
+  {
+    "word": "joinder",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: joinder"
+  },
+  {
+    "word": "joistless",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: joistless"
+  },
+  {
+    "word": "jokelet",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jokelet"
+  },
+  {
+    "word": "jolterhead",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jolterhead"
+  },
+  {
+    "word": "jolty",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jolty"
+  },
+  {
+    "word": "jonesing",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jonesing"
+  },
+  {
+    "word": "joropo",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: joropo"
+  },
+  {
+    "word": "jotter",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jotter"
+  },
+  {
+    "word": "jotting",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jotting"
+  },
+  {
+    "word": "joule",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: joule"
+  },
+  {
+    "word": "journalese",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: journalese"
+  },
+  {
+    "word": "journo",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: journo"
+  },
+  {
+    "word": "jowar",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jowar"
+  },
+  {
+    "word": "joyance",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: joyance"
+  },
+  {
+    "word": "joyousness",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: joyousness"
+  },
+  {
+    "word": "joyride",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: joyride"
+  },
+  {
+    "word": "joystick",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: joystick"
+  },
+  {
+    "word": "jubate",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jubate"
+  },
+  {
+    "word": "jubilarian",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jubilarian"
+  },
+  {
+    "word": "jubilation",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jubilation"
+  },
+  {
+    "word": "juddery",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: juddery"
+  },
+  {
+    "word": "judicatory",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: judicatory"
+  },
+  {
+    "word": "judoka",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: judoka"
+  },
+  {
+    "word": "jugate",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jugate"
+  },
+  {
+    "word": "jugate (leaf)",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jugate (leaf)"
+  },
+  {
+    "word": "jugate?",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jugate?"
+  },
+  {
+    "word": "juglandin",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: juglandin"
+  },
+  {
+    "word": "jugulate (bot.)",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jugulate (bot.)"
+  },
+  {
+    "word": "juicehead",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: juicehead"
+  },
+  {
+    "word": "jujitsu",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jujitsu"
+  },
+  {
+    "word": "juking",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: juking"
+  },
+  {
+    "word": "juleps",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: juleps"
+  },
+  {
+    "word": "julid",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: julid"
+  },
+  {
+    "word": "jumboize",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jumboize"
+  },
+  {
+    "word": "jumby",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jumby"
+  },
+  {
+    "word": "jumper (cable)",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jumper (cable)"
+  },
+  {
+    "word": "jungly",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jungly"
+  },
+  {
+    "word": "junglist",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: junglist"
+  },
+  {
+    "word": "juniorship",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: juniorship"
+  },
+  {
+    "word": "junketeer",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: junketeer"
+  },
+  {
+    "word": "junket",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: junket"
+  },
+  {
+    "word": "junketery",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: junketery"
+  },
+  {
+    "word": "junkyard",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: junkyard"
+  },
+  {
+    "word": "juntaism",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: juntaism"
+  },
+  {
+    "word": "jurant",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jurant"
+  },
+  {
+    "word": "jurat",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jurat"
+  },
+  {
+    "word": "jurel",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jurel"
+  },
+  {
+    "word": "juridic",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: juridic"
+  },
+  {
+    "word": "jurimetrics",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jurimetrics"
+  },
+  {
+    "word": "juryrigged",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: juryrigged"
+  },
+  {
+    "word": "jus cogens",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jus cogens"
+  },
+  {
+    "word": "justiciar",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: justiciar"
+  },
+  {
+    "word": "justiciable",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: justiciable"
+  },
+  {
+    "word": "jute-like",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jute-like"
+  },
+  {
+    "word": "jutty",
+    "from": {
+      "language": "Various (Eng./Fr./etc.)",
+      "root": "various",
+      "gloss": "see term"
+    },
+    "literal": "word: jutty"
+  }
+]
