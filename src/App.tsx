@@ -4,15 +4,20 @@ import GameRoot from "./pages/GameRoot"; // adjust path if needed
 
 export default function App() {
     return (
-        <HashRouter>
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/game" element={<GameRoot />} />
-                <Route path="*" element={<Home />} />
-            </Routes>
-        </HashRouter>
+        <div className="bg-brand-soft min-h-screen">
+            <HashRouter>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/game" element={<GameRoot />} />
+                    <Route path="*" element={<Home />} />
+                </Routes>
+            </HashRouter>
+        </div>
     );
 }
+
+Next:add className = "bg-brand-soft min-h-screen" to your top - level wrapper <div>.
+
 
 export function Home() {
     return (

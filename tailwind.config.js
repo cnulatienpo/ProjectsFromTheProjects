@@ -2,13 +2,12 @@
 module.exports = {
     content: [
         "./index.html",
-        "./src/**/*.{js,jsx,ts,tsx,vue,html}", // Covers all source files for Tailwind scanning
+        "./src/**/*.{js,jsx,ts,tsx}",
     ],
     theme: {
         extend: {
             colors: {
-                'brand-soft': '#F7FAF9', // Replace with your actual color value if needed
-                // other custom colors...
+                'brand-soft': '#F7FAF9',
             },
         },
     },

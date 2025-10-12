@@ -1,13 +1,21 @@
+@import "tailwindcss";
+/* keep it empty otherwise; no @apply here */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Optional: global page background using your custom color */
+body {
+  @apply bg-brand-soft;
+}
 
 :root {
   color-scheme: light;
 }
 
 body {
-  @apply bg-brand-soft text-brand antialiased;
+  @apply text-brand antialiased;
 }
 
 a {
