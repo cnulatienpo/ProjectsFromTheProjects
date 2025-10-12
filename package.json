@@ -2,8 +2,9 @@
   "name": "ProjectsFromTheProjects",
   "private": true,
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "prep:brutalist": "node scripts/prepare-brutalist.mjs",
+    "dev": "npm run prep:brutalist && vite",
+    "build": "npm run prep:brutalist && vite build",
     "preview": "vite preview",
     "wire:cut-games": "node tools/ts-node/bin/ts-node.js --transpile-only scripts/wire_cut_games.ts"
   },
