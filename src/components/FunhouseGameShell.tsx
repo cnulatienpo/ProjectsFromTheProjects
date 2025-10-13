@@ -1,4 +1,7 @@
-import type { JSX } from "react";
+import { useState, type JSX } from "react";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { Badge } from "@/components/ui/badge";
 
 export interface FunhouseGameShellProps {
   title: string;
@@ -15,37 +18,50 @@ export default function FunhouseGameShell({
   distortion,
   description,
 }: FunhouseGameShellProps): JSX.Element {
+  const [text, setText] = useState("");
+
   return (
-    <article className="flex flex-col gap-4 rounded-xl border border-neutral-200 bg-white p-6 shadow-sm dark:border-neutral-700 dark:bg-neutral-900">
-      <header className="space-y-1">
-        <p className="text-sm font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
-          Funhouse Variant
-        </p>
-        <h1 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">{title}</h1>
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
-          Remixed from lesson <span className="font-mono text-xs">{lessonId}</span>
-        </p>
-      </header>
-      <section className="space-y-3">
-        <p className="text-base leading-relaxed text-neutral-700 dark:text-neutral-200">{description}</p>
-        <dl className="grid grid-cols-1 gap-2 text-sm text-neutral-600 dark:text-neutral-300 sm:grid-cols-2">
-          <div className="rounded-lg bg-neutral-100 p-3 dark:bg-neutral-800">
-            <dt className="text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Mode</dt>
-            <dd className="text-base font-medium text-neutral-900 dark:text-neutral-100">{mode}</dd>
+    <div
+      className="p-6 max-w-3xl mx-auto space-y-6"
+      data-lesson-id={lessonId}
+    >
+      <div className="space-y-2">
+        <h1 className="text-3xl font-bold">{title}</h1>
+        <p className="text-muted-foreground italic">{description}</p>
+        <div className="flex flex-wrap gap-2">
+          <Badge variant="outline">Funhouse</Badge>
+          <Badge variant="ghost">{distortion}</Badge>
+          <Badge variant="secondary" className="font-mono text-xs uppercase">
+            Lesson {lessonId}
+          </Badge>
+        </div>
+      </div>
+
+      {mode === "text" && (
+        <div className="space-y-4">
+          <Textarea
+            value={text}
+            onChange={(event) => setText(event.target.value)}
+            placeholder="Write it all wrong. C’mon. Make it ugly."
+            className="min-h-[200px] w-full"
+          />
+          <div className="flex justify-end">
+            <Button variant="secondary">Submit to the Chaos</Button>
           </div>
-          <div className="rounded-lg bg-neutral-100 p-3 dark:bg-neutral-800">
-            <dt className="text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Distortion</dt>
-            <dd className="text-base font-medium text-neutral-900 dark:text-neutral-100">{distortion}</dd>
-          </div>
-        </dl>
-      </section>
-      <footer className="rounded-lg bg-blue-50 p-4 text-sm text-blue-900 dark:bg-blue-950 dark:text-blue-100">
-        <p>
-          Use this shell as a starting point for implementing the interactive experience for{" "}
-          <span className="font-semibold">{title}</span>. Wire it up to the correct funhouse game UI and have fun breaking the
-          rules.
-        </p>
-      </footer>
-    </article>
+        </div>
+      )}
+
+      {mode === "freeform" && (
+        <div className="space-y-4">
+          <p>There are no rules in this mode. Write, draw, scream, whatever.</p>
+          <Textarea
+            value={text}
+            onChange={(event) => setText(event.target.value)}
+            placeholder="The paper is melting. Do something weird."
+            className="min-h-[300px] w-full bg-yellow-50 italic"
+          />
+        </div>
+      )}
+    </div>
   );
 }
