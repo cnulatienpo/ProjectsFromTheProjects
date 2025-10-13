@@ -1,43 +1,42 @@
 import React from "react";
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import Game from "./pages/Game";
-import Play from "./pages/Play";
-import CutGames from "./pages/CutGames";
-import CutGamesPlay from "./pages/CutGamesPlay";
-import Deck from "./pages/Deck";
+import PackPage from "./pages/Pack";
+import PracticePage from "./pages/Practice";
+import PracticeHub from "./pages/Play";
+import Settings from "./pages/Settings";
+import PlaySee from "./pages/PlaySee";
+import PlayMCQ from "./pages/PlayMCQ";
+import PlaySlot from "./pages/PlaySlot";
+import NotFound from "./pages/NotFound";
+import { Header } from "./components/Header";
+import { ToastHost } from "./components/ToastHost";
+import { KeyOverlay } from "./components/KeyOverlay";
+import { Footer } from "./components/Footer";
+import { ErrorBoundary } from "./components/ErrorBoundary";
 
 export default function App() {
-    return (
-        <div className="bg-brand-soft min-h-screen">
-            <HashRouter>
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route
-                        path="/game"
-                        element={
-                            <div style={{
-                                padding: "2rem 0",
-                                textAlign: "center"
-                            }}>
-                                <h1 style={{
-                                    fontSize: "2.5rem",
-                                    fontWeight: "bold",
-                                    margin: "2rem 0"
-                                }}>
-                                    Literary Deviousness: Fiction Writing School For Broke Mutherfuckers.
-                                </h1>
-                                <Game />
-                            </div>
-                        }
-                    />
-                    <Route path="/cutgames" element={<CutGames />} />
-                    <Route path="/cutgames/play" element={<CutGamesPlay />} />
-                    <Route path="/dictionary" element={<Deck />} />
-                    <Route path="/play" element={<Play />} />
-                    <Route path="*" element={<Home />} />
-                </Routes>
-            </HashRouter>
+  return (
+    <ErrorBoundary>
+      <BrowserRouter>
+        <div className="min-h-screen bg-neutral-50 text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
+          <Header />
+          <ToastHost />
+          <KeyOverlay />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/pack/:id" element={<PackPage />} />
+            <Route path="/practice" element={<PracticeHub />} />
+            <Route path="/practice/:id" element={<PracticePage />} />
+            <Route path="/play/:id/see" element={<PlaySee />} />
+            <Route path="/play/:id/mcq" element={<PlayMCQ />} />
+            <Route path="/play/:id/slot" element={<PlaySlot />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <Footer />
         </div>
-    );
+      </BrowserRouter>
+    </ErrorBoundary>
+  );
 }

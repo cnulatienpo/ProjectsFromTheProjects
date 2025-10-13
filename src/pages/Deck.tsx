@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { loadAllPacks } from '../data/loadPacks';
+import { loadAllPacks } from '../data/loadAllPacksSafe';
 import type { Pack } from '../types';
 import { WordCard } from '../components/WordCard';
 
@@ -78,7 +78,7 @@ export function Deck() {
       {pack && (
         <section aria-label="Word cards" className="grid gap-4">
           {pack.entries.map((entry) => (
-            <WordCard key={entry.word} entry={entry} />
+            <WordCard key={entry.word} e={entry} />
           ))}
         </section>
       )}
