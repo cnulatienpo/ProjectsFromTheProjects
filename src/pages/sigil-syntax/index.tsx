@@ -1,5 +1,6 @@
 import React, { Suspense, useEffect, useMemo, useState } from "react";
 import { loadComponent, resolveOriginalScreens } from "@/games/original.resolve";
+import { Guard } from "@/games/guard";
 
 export default function SigilSyntaxHome() {
   const [Comp, setComp] = useState<React.ComponentType<any> | null>(null);
@@ -34,8 +35,10 @@ export default function SigilSyntaxHome() {
   }
 
   return (
-    <Suspense fallback={<div style={{ padding: 20 }}>Loading…</div>}>
-      <Comp />
-    </Suspense>
+    <Guard gameId="original">
+      <Suspense fallback={<div style={{ padding: 20 }}>Loading…</div>}>
+        <Comp />
+      </Suspense>
+    </Guard>
   );
 }
