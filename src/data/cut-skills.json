@@ -1,0 +1,17 @@
+[
+  {
+    "id": "beats",
+    "label": "Beat Mastery",
+    "description": "Recognising how narrative beats stack and collide."
+  },
+  {
+    "id": "pacing",
+    "label": "Pacing",
+    "description": "Modulating tempo and momentum across a scene."
+  },
+  {
+    "id": "stakes",
+    "label": "Raise the Stakes",
+    "description": "Turning up consequences so the reader cares."
+  }
+]

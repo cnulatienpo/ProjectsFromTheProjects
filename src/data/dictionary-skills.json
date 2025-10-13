@@ -1,0 +1,17 @@
+[
+  {
+    "id": "focus",
+    "label": "Focus",
+    "description": "Dialing in on the most important idea in a sentence or scene."
+  },
+  {
+    "id": "repetition",
+    "label": "Repetition",
+    "description": "Controlling repeated words and phrases for emphasis or rhythm."
+  },
+  {
+    "id": "precision",
+    "label": "Precision",
+    "description": "Choosing exact language to keep meaning sharp."
+  }
+]
