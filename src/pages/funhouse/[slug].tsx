@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 
 import FunhouseGameShell from "@/components/FunhouseGameShell";
 import { funhouseCatalog } from "@/games/fun_house_writing/funhouse_catalog";
+import { resolveFunhouseDistortion } from "@/games/fun_house_writing/utils";
 
 function resolveMode(gameType?: string): string {
   if (!gameType) {
@@ -14,14 +15,6 @@ function resolveMode(gameType?: string): string {
   }
 
   return "text";
-}
-
-function resolveDistortion(constraintLabel?: string, constraintType?: string): string {
-  if (constraintLabel && constraintType) {
-    return `${constraintLabel} (${constraintType})`;
-  }
-
-  return constraintLabel ?? constraintType ?? "Funhouse Remix";
 }
 
 export default function FunhousePromptPage() {
@@ -72,7 +65,7 @@ export default function FunhousePromptPage() {
       title={prompt.title}
       lessonId={prompt.mirrors_lesson_id ?? "unknown-lesson"}
       mode={resolveMode(prompt.game_type)}
-      distortion={resolveDistortion(prompt.constraint_label, prompt.constraint_type)}
+      distortion={resolveFunhouseDistortion(prompt.constraint_label, prompt.constraint_type)}
       description={prompt.description}
       promptText={prompt.prompt_text}
     />
