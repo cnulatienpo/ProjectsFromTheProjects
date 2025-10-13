@@ -6,6 +6,10 @@ import {
     Dictionary,
     Foundation,
     Home,
+    Play,
+    PlayMCQ,
+    PlaySee,
+    PlaySlot,
     SigilSyntaxRoot,
 } from "./pages";
 
@@ -18,7 +22,8 @@ export default function SigilSyntaxApp() {
                     <Link to="/">Home</Link> {" | "}
                     <Link to="/cutgames">Cut Game</Link> {" | "}
                     <Link to="/foundation">Foundation</Link> {" | "}
-                    <Link to="/dictionary">Dictionary</Link>
+                    <Link to="/dictionary">Dictionary</Link> {" | "}
+                    <Link to="/play">Play</Link>
                 </nav>
 
                 <Routes>
@@ -30,6 +35,13 @@ export default function SigilSyntaxApp() {
                     {/* Foundation + Dictionary */}
                     <Route path="/foundation" element={<Foundation />} />
                     <Route path="/dictionary" element={<Dictionary />} />
+
+                    {/* Word games */}
+                    <Route path="/play" element={<Play />} />
+                    <Route path="/play/:id" element={<PlaySee />} />
+                    <Route path="/play/:id/see" element={<PlaySee />} />
+                    <Route path="/play/:id/mcq" element={<PlayMCQ />} />
+                    <Route path="/play/:id/slot" element={<PlaySlot />} />
 
                     {/* Generic container if you want nested stuff later */}
                     <Route path="/game" element={<SigilSyntaxRoot />} />

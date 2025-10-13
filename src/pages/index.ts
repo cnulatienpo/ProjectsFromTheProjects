@@ -1,9 +1,9 @@
-export { default as CutGames } from "./CutGames";
-export { default as CutGamesPlay } from "./CutGamesPlay";
-export { default as Deck } from "./Deck";
-export { default as Dictionary } from "./Dictionary";
-export { default as Foundation } from "./Foundation";
-export { default as GameRoot } from "./GameRoot";
 export { default as Home } from "./Home";
-export { default as Play } from "./Play";
-export { default as SigilSyntaxRoot } from "./SigilSyntaxRoot";
+export { default as PackPage } from "./Pack";
+export { default as PracticePage } from "./Practice";
+export { default as PracticeHub } from "./Play";
+export { default as Settings } from "./Settings";
+export { default as PlaySee } from "./PlaySee";
+export { default as PlayMCQ } from "./PlayMCQ";
+export { default as PlaySlot } from "./PlaySlot";
+export { default as NotFound } from "./NotFound";

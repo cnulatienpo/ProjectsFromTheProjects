@@ -1,28 +1,21 @@
-import clsx from 'clsx';
-import type { WordEntry } from '../types';
+import React from "react";
 
-interface WordCardProps {
-  entry: WordEntry;
-  className?: string;
-}
+export type Entry = {
+  word: string;
+  from: { language: string; root: string; gloss: string };
+  literal: string;
+};
 
-export function WordCard({ entry, className }: WordCardProps) {
+export function WordCard({ e }: { e: Entry }) {
   return (
-    <article
-      className={clsx(
-        'rounded-xl border border-brand/10 bg-white p-5 shadow-sm transition hover:shadow-md',
-        className
-      )}
-    >
-      <h2 className="font-display text-2xl font-semibold text-brand sm:text-3xl">
-        {entry.word}
-      </h2>
-      <p className="mt-3 text-sm text-brand/80">
-        <span className="font-medium text-brand">Story:</span> from {entry.from.language}, root "
-        {entry.from.root}" meaning "{entry.from.gloss}"
+    <article className="mx-auto max-w-xl rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm dark:border-neutral-800 dark:bg-neutral-950">
+      <h1 className="mb-3 text-3xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">{e.word}</h1>
+      <p className="text-sm text-neutral-700 dark:text-neutral-300">
+        <span className="font-medium">Story:</span>{" "}
+        from <span className="italic">{e.from.language}</span>, root “{e.from.root}” meaning “{e.from.gloss}”
       </p>
-      <p className="mt-2 text-sm text-brand/80">
-        <span className="font-medium text-brand">Literal:</span> "{entry.literal}"
+      <p className="mt-1 text-sm text-neutral-700 dark:text-neutral-300">
+        <span className="font-medium">Literal:</span> “{e.literal}”
       </p>
     </article>
   );
