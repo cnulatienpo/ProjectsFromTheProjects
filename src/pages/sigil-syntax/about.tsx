@@ -3,16 +3,16 @@ import { loadComponent, resolveOriginalScreens } from "@/games/original.resolve"
 import { Guard } from "@/games/guard";
 import { GameMenu } from "@/games/menu";
 
-export default function SigilSyntaxHome() {
+export default function SigilSyntaxAbout() {
   const [Comp, setComp] = useState<React.ComponentType<any> | null>(null);
   const screens = useMemo(() => resolveOriginalScreens(), []);
 
   useEffect(() => {
     let cancelled = false;
     if (typeof window !== "undefined") {
-      console.info("[sigil&syntax] launching ORIGINAL");
+      console.info("[sigil&syntax] launching ORIGINAL about");
     }
-    const path = screens.home || screens.play || screens.fallbacks[0];
+    const path = screens.rules || screens.play || screens.home || screens.fallbacks[0];
     if (path) {
       loadComponent(path)
         .then((component) => {
@@ -22,7 +22,7 @@ export default function SigilSyntaxHome() {
         })
         .catch((error) => {
           if (!cancelled) {
-            console.error("[sigil&syntax] failed to load home", path, error);
+            console.error("[sigil&syntax] failed to load about", path, error);
           }
         });
     }

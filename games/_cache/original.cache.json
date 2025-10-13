@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2025-10-13T18:35:36.064Z",
+  "generatedAt": "2025-10-13T18:40:01.386Z",
   "files": [
     "public/.gitkeep",
     "public/404.html",
@@ -18,6 +18,7 @@
     "src/components/ToastHost.tsx",
     "src/components/WordCard.tsx",
     "src/games/asset.ts",
+    "src/games/menu.tsx",
     "src/games/original.resolve.ts",
     "src/index.css",
     "src/index.ts",
@@ -33,6 +34,7 @@
     "src/pages/brutalist.css",
     "src/pages/literary-deviousness/index.tsx",
     "src/pages/original/index.tsx",
+    "src/pages/sigil-syntax/about.tsx",
     "src/pages/sigil-syntax/index.tsx",
     "src/pages/sigil-syntax/play.tsx",
     "src/pages/sigil-syntax/rules.tsx",
@@ -52,22 +54,24 @@
     "home": [
       "sigil",
       "syntax",
+      "src/games/menu.tsx",
       "src/index.css",
       "src/index.ts",
       "src/pages/Home.css",
       "src/pages/Home.incoming.tsx",
       "src/pages/Home.ours.merge.tsx",
       "src/pages/Home.tsx",
-      "src/pages/literary-deviousness/index.tsx",
-      "src/pages/original/index.tsx"
+      "src/pages/literary-deviousness/index.tsx"
     ],
     "play": [
       "public/games/original/.gitkeep",
       "src/games/asset.ts",
+      "src/games/menu.tsx",
       "src/games/original.resolve.ts",
       "src/pages/sigil-syntax/play.tsx"
     ],
     "rules": [
+      "src/pages/sigil-syntax/about.tsx",
       "src/pages/sigil-syntax/rules.tsx"
     ]
   }

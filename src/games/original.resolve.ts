@@ -128,6 +128,14 @@ export function resolveOriginalScreens(): Resolved {
   if (!selected.get("rules")) {
     selected.set("rules", findByPattern(rulesPattern, "rules", debug));
   }
+  if (!selected.get("rules")) {
+    const aboutLike = manifestFiles.find((file) =>
+      /(about|info|overview|readme|guide)/i.test(file),
+    );
+    if (aboutLike && isComponentCandidate(aboutLike)) {
+      selected.set("rules", aboutLike);
+    }
+  }
 
   const used = new Set(
     Array.from(selected.values()).filter((value): value is string => Boolean(value)),
