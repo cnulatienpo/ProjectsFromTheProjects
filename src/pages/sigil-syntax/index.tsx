@@ -8,7 +8,7 @@ export default function SigilSyntaxHome() {
   useEffect(() => {
     let cancelled = false;
     if (typeof window !== "undefined") {
-      console.info("[sigil&syntax] launching ORIGINAL home");
+      console.info("[sigil&syntax] launching ORIGINAL");
     }
     const path = screens.home || screens.play || screens.fallbacks[0];
     if (path) {

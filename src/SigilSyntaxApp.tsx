@@ -5,6 +5,7 @@ import {
     CutGamesPlay,
     Dictionary,
     Foundation,
+    Games,
     Home,
     Play,
     PlayMCQ,
@@ -20,6 +21,7 @@ export default function SigilSyntaxApp() {
                 {/* simple top nav so everything is discoverable */}
                 <nav style={{ padding: 12, borderBottom: "2px solid #000" }}>
                     <Link to="/">Home</Link> {" | "}
+                    <Link to="/games">Games</Link> {" | "}
                     <Link to="/cutgames">Cut Game</Link> {" | "}
                     <Link to="/foundation">Foundation</Link> {" | "}
                     <Link to="/dictionary">Dictionary</Link> {" | "}
@@ -29,6 +31,7 @@ export default function SigilSyntaxApp() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     {/* Cut Game */}
+                    <Route path="/games" element={<Games />} />
                     <Route path="/cutgames" element={<CutGames />} />
                     <Route path="/cutgames/play" element={<CutGamesPlay />} />
 
