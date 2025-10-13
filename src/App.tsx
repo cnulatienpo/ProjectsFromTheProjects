@@ -9,6 +9,7 @@ import PlaySee from "./pages/PlaySee";
 import PlayMCQ from "./pages/PlayMCQ";
 import PlaySlot from "./pages/PlaySlot";
 import NotFound from "./pages/NotFound";
+import CutGames from "./pages/CutGames";
 import { Header } from "./components/Header";
 import { ToastHost } from "./components/ToastHost";
 import { KeyOverlay } from "./components/KeyOverlay";
@@ -32,6 +33,7 @@ export default function App() {
             <Route path="/pack/:id" element={<PackPage />} />
             <Route path="/practice" element={<PracticeHub />} />
             <Route path="/practice/:id" element={<PracticePage />} />
+            <Route path="/play/cut-games" element={<CutGames />} />
             <Route path="/play/:id/see" element={<PlaySee />} />
             <Route path="/play/:id/mcq" element={<PlayMCQ />} />
             <Route path="/play/:id/slot" element={<PlaySlot />} />

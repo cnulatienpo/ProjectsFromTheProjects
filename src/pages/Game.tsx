@@ -25,7 +25,7 @@ export default function Game() {
                     <span className="inline-block px-4 py-2 bg-black text-white rounded">Go to Game</span>
                 </Link>
                 <Link
-                    to="/cutgames"
+                    to="/play/cut-games"
                     className="block bg-white border-2 border-black rounded-lg shadow hover:bg-neutral-100 transition p-6 text-center"
                 >
                     <div className="font-bold text-lg mb-2">The Cut Games</div>

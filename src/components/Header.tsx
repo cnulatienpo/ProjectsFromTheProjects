@@ -29,6 +29,9 @@ export function Header() {
           <NavLink to="/practice" className={navClass}>
             Practice
           </NavLink>
+          <NavLink to="/play/cut-games" className={navClass}>
+            Cut Games
+          </NavLink>
           <NavLink to="/settings" className={navClass}>
             Settings
           </NavLink>
