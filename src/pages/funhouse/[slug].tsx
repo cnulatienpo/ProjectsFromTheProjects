@@ -37,7 +37,24 @@ export default function FunhousePromptPage() {
     return funhouseCatalog.find((entry) => entry.id === slug);
   }, [slug]);
 
-  if (!slug) return null;
+  if (!router.isReady) {
+    return (
+      <div className="p-6 text-gray-500">
+        Loading prompt…
+      </div>
+    );
+  }
+
+  if (!slug) {
+    return (
+      <div className="space-y-2 p-6">
+        <p className="text-lg font-semibold">Prompt not found 😢</p>
+        <a className="text-sm text-blue-600 underline-offset-2 hover:underline" href="/funhouse">
+          Back to Funhouse hub
+        </a>
+      </div>
+    );
+  }
 
   if (!prompt) {
     return (
