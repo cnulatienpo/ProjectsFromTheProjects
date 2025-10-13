@@ -1,3 +1,5 @@
+import Head from "next/head";
+import Link from "next/link";
 import { useMemo } from "react";
 import { useRouter } from "next/router";
 
@@ -38,36 +40,40 @@ export default function FunhousePromptPage() {
     );
   }
 
-  if (!slug) {
-    return (
-      <div className="space-y-2 p-6">
-        <p className="text-lg font-semibold">Prompt not found 😢</p>
-        <a className="text-sm text-blue-600 underline-offset-2 hover:underline" href="/funhouse">
-          Back to Funhouse hub
-        </a>
-      </div>
-    );
-  }
-
-  if (!prompt) {
-    return (
-      <div className="space-y-2 p-6">
-        <p className="text-lg font-semibold">Prompt not found 😢</p>
-        <a className="text-sm text-blue-600 underline-offset-2 hover:underline" href="/funhouse">
-          Back to Funhouse hub
-        </a>
-      </div>
-    );
+  if (!slug || !prompt) {
+    return <FunhousePromptNotFound />;
   }
 
   return (
-    <FunhouseGameShell
-      title={prompt.title}
-      lessonId={prompt.mirrors_lesson_id ?? "unknown-lesson"}
-      mode={resolveMode(prompt.game_type)}
-      distortion={resolveFunhouseDistortion(prompt.constraint_label, prompt.constraint_type)}
-      description={prompt.description}
-      promptText={prompt.prompt_text}
-    />
+    <>
+      <Head>
+        <title>{`${prompt.title} | Funhouse Prompt`}</title>
+        {prompt.description ? <meta name="description" content={prompt.description} /> : null}
+      </Head>
+      <FunhouseGameShell
+        title={prompt.title}
+        lessonId={prompt.mirrors_lesson_id ?? "unknown-lesson"}
+        mode={resolveMode(prompt.game_type)}
+        distortion={resolveFunhouseDistortion(prompt.constraint_label, prompt.constraint_type)}
+        description={prompt.description}
+        promptText={prompt.prompt_text}
+      />
+    </>
+  );
+}
+
+function FunhousePromptNotFound() {
+  return (
+    <>
+      <Head>
+        <title>Funhouse Prompt Not Found</title>
+      </Head>
+      <div className="space-y-2 p-6">
+        <p className="text-lg font-semibold">Prompt not found 😢</p>
+        <Link className="text-sm text-blue-600 underline-offset-2 hover:underline" href="/funhouse">
+          Back to Funhouse hub
+        </Link>
+      </div>
+    </>
   );
 }
