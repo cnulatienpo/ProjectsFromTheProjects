@@ -12,6 +12,7 @@ import NotFound from "./pages/NotFound";
 import CutGames from "./pages/CutGames";
 import FunhouseHub from "./pages/FunhouseHub";
 import FunhouseGame from "./pages/FunhouseGame";
+import FunhouseDebug from "./pages/FunhouseDebug";
 import { Header } from "./components/Header";
 import { ToastHost } from "./components/ToastHost";
 import { KeyOverlay } from "./components/KeyOverlay";
@@ -38,6 +39,7 @@ export default function App() {
             <Route path="/play/cut-games" element={<CutGames />} />
             <Route path="/funhouse" element={<FunhouseHub />} />
             <Route path="/funhouse/:id" element={<FunhouseGame />} />
+            <Route path="/funhouse-debug" element={<FunhouseDebug />} />
             <Route path="/play/:id/see" element={<PlaySee />} />
             <Route path="/play/:id/mcq" element={<PlayMCQ />} />
             <Route path="/play/:id/slot" element={<PlaySlot />} />
