@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { rng } from "../utils/rng";
 
 type Toast = { id: number; text: string };
 
@@ -12,7 +13,7 @@ export const useToast = create<ToastStore>((set) => ({
   toasts: [],
   push: (text) =>
     set((state) => {
-      const id = Date.now() + Math.random();
+      const id = Date.now() + rng().random();
       if (typeof window !== "undefined") {
         window.setTimeout(() => useToast.getState().remove(id), 2000);
       }

@@ -6,13 +6,7 @@ import { useProgress } from "../state/useProgress";
 import type { WordEntry } from "../data/validateAndNormalize";
 import { ProgressBar } from "../components/ProgressBar";
 import { useToast } from "../state/useToast";
-
-function shuffle<T>(input: T[]): T[] {
-  return input
-    .map((value) => ({ value, sort: Math.random() }))
-    .sort((a, b) => a.sort - b.sort)
-    .map(({ value }) => value);
-}
+import { rng } from "../utils/rng";
 
 export default function PlayMCQ() {
   const { id } = useParams();
@@ -49,8 +43,13 @@ export default function PlayMCQ() {
 
   const options = useMemo(() => {
     if (!current) return [];
-    const distractors = shuffle(entries.filter((entry) => entry.word !== current.word)).slice(0, 3);
-    return shuffle([current.literal, ...distractors.map((entry) => entry.literal)]).slice(0, 4);
+    const random = rng();
+    const distractors = random
+      .shuffle(entries.filter((entry) => entry.word !== current.word))
+      .slice(0, 3);
+    return random
+      .shuffle([current.literal, ...distractors.map((entry) => entry.literal)])
+      .slice(0, 4);
   }, [current, entries]);
 
   useEffect(() => {
