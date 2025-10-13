@@ -17,11 +17,26 @@ export function PackCard({ id, label, entries, allEntries }: PackCardProps) {
   const seenCount = useMemo(() => entries.filter((entry) => seen[entry.word]).length, [entries, seen]);
   const totalSeen = useMemo(() => allEntries.filter((entry) => seen[entry.word]).length, [allEntries, seen]);
 
+  const isSigilSyntax = label.trim() === "Sigil & Syntax";
+
   return (
     <article className="rounded-xl border border-neutral-200 bg-white p-5 shadow-sm transition hover:shadow-md dark:border-neutral-800 dark:bg-neutral-950">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h2 className="text-lg font-semibold">{label}</h2>
+          <h2 className="text-lg font-semibold">
+            {isSigilSyntax ? (
+              <a
+                href="#/sigil-syntax"
+                data-game="original"
+                onClick={() => console.info("[sigil&syntax] click → #/sigil-syntax")}
+                style={{ color: "inherit", textDecoration: "none" }}
+              >
+                {label}
+              </a>
+            ) : (
+              label
+            )}
+          </h2>
           <p className="text-sm text-neutral-600 dark:text-neutral-400">
             {matches} {matches === 1 ? "word" : "words"}
             {matches !== allEntries.length && ` · ${allEntries.length} total`}
