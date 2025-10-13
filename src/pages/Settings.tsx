@@ -1,10 +1,12 @@
 import React from "react";
 import { useProgress } from "../state/useProgress";
 import { useToast } from "../state/useToast";
+import { useFirstRun } from "../state/useFirstRun";
 
 export default function Settings() {
   const resetProgress = useProgress((state) => state.resetProgress);
   const push = useToast((state) => state.push);
+  const resetWelcome = useFirstRun((state) => state.resetWelcome);
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-6 space-y-4">
@@ -27,6 +29,16 @@ export default function Settings() {
           }}
         >
           Reset progress
+        </button>
+        <button
+          type="button"
+          className="mt-3 ml-2 rounded-md border border-neutral-300 px-3 py-2 text-sm transition hover:bg-neutral-100 focus:outline-none focus:ring dark:border-neutral-700 dark:hover:bg-neutral-800"
+          onClick={() => {
+            resetWelcome();
+            alert("Welcome screen will show next time.");
+          }}
+        >
+          Reset welcome
         </button>
       </section>
     </main>
