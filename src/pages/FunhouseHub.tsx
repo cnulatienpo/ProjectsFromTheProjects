@@ -17,6 +17,14 @@ export default function FunhouseHub(): JSX.Element {
         <p className="text-neutral-600 dark:text-neutral-400">
           Pick a remix to see the prompt and launch its custom interface.
         </p>
+        <div className="pt-2">
+          <Link
+            to="/funhouse/past"
+            className="inline-flex items-center justify-center rounded-full border-2 border-black bg-white px-4 py-2 text-sm font-semibold uppercase tracking-widest shadow-[4px_4px_0_rgba(0,0,0,0.7)] transition hover:-translate-y-0.5 hover:-rotate-1 hover:bg-yellow-200 hover:text-black"
+          >
+            🗄️ Visit Past Mischief
+          </Link>
+        </div>
       </header>
       <ul className="space-y-4">
         {routes.map((route) => (

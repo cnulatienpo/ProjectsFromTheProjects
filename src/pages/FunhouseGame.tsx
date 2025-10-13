@@ -1,10 +1,12 @@
 import { useCallback, useEffect, useMemo, useState, type JSX } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 import { findFunhouseVariantById, funhousePrompts } from "@/data/funhouse-prompts";
 
 import { GameLoader } from "@/games/fun_house_writing";
+import { saveEntry } from "@/utils/funhouseStorage";
 
 type PromptIndices = {
   promptIndex: number;
@@ -34,20 +36,35 @@ function resolveIndices(id: string | undefined): PromptIndices {
 export default function FunhouseGame(): JSX.Element {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const location = useLocation();
   const initialIndices = useMemo(() => resolveIndices(id), [id]);
   const [currentPromptIndex, setCurrentPromptIndex] = useState(initialIndices.promptIndex);
   const [variantIndex, setVariantIndex] = useState(initialIndices.variantIndex);
   const [isRandomizing, setIsRandomizing] = useState(false);
   const [isFlashMode, setIsFlashMode] = useState(false);
+  const [userText, setUserText] = useState("");
 
   const currentPrompt = funhousePrompts[currentPromptIndex];
   const currentVariant = currentPrompt?.variants[variantIndex];
+  const replayText =
+    typeof location.state === "object" && location.state !== null
+      ? (location.state as { replayText?: string }).replayText
+      : undefined;
 
   useEffect(() => {
     const next = resolveIndices(id);
     setCurrentPromptIndex(next.promptIndex);
     setVariantIndex(next.variantIndex);
   }, [id]);
+
+  useEffect(() => {
+    if (replayText !== undefined) {
+      setUserText(replayText);
+      return;
+    }
+
+    setUserText("");
+  }, [currentVariant?.id, replayText]);
 
   const activateVariant = useCallback(
     (nextPromptIndex: number, nextVariantIndex: number) => {
@@ -152,6 +169,24 @@ export default function FunhouseGame(): JSX.Element {
     ? "bg-yellow-200/30 ring-4 ring-yellow-300 transition"
     : "transition";
 
+  const handleSave = useCallback(() => {
+    if (!currentPrompt || !currentVariant) {
+      return;
+    }
+
+    saveEntry({
+      id: currentVariant.id,
+      variant: currentVariant.mode,
+      title: currentPrompt.title,
+      text: userText,
+      timestamp: Date.now(),
+    });
+
+    if (typeof window !== "undefined") {
+      window.alert("Disaster preserved!");
+    }
+  }, [currentPrompt, currentVariant, userText]);
+
   return (
     <div className={`mx-auto w-full max-w-5xl space-y-6 p-4 ${chaosContainerClass}`}>
       {currentPrompt && currentVariant ? (
@@ -200,6 +235,25 @@ export default function FunhouseGame(): JSX.Element {
                   {line}
                 </p>
               ))}
+          </div>
+          <div className="mt-6 space-y-3 rounded-2xl border border-purple-200/40 bg-black/20 p-4 shadow-[4px_4px_0_rgba(59,7,100,0.45)]">
+            <Textarea
+              value={userText}
+              onChange={(event) => setUserText(event.target.value)}
+              placeholder="Spew your weirdest prose right here."
+              className="min-h-[200px] w-full border-2 border-purple-200 bg-purple-950/40 text-purple-50 shadow-[2px_2px_0_rgba(147,51,234,0.5)] focus-visible:border-yellow-300"
+            />
+            <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-xs uppercase tracking-[0.2em] text-purple-200/80">
+                Save your chaos to revisit in Past Mischief.
+              </p>
+              <Button
+                onClick={handleSave}
+                className="bg-black text-white border-2 border-white px-5 py-2 font-semibold tracking-wide shadow-[3px_3px_0_rgba(255,255,255,0.35)] transition hover:translate-y-0.5 hover:bg-white hover:text-black"
+              >
+                💾 Save This Disaster
+              </Button>
+            </div>
           </div>
         </section>
       ) : null}
