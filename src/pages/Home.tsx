@@ -1,41 +1,67 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { loadAllPacks } from "../data/loadAllPacksSafe";
-import type { Pack } from "../data/loadAllPacksSafe";
-import { useProgress } from "../state/useProgress";
+import { useEffect, useMemo, useState } from "react";
+import { loadAllPacksSafe, type Pack } from "../data/loadAllPacksSafe";
 import { PackCard } from "../components/PackCard";
+import { Loader } from "../components/Loader";
+import { EmptyState } from "../components/EmptyState";
+import { NoResults } from "../components/NoResults";
+import { useProgress } from "../state/useProgress";
 
 export default function Home() {
-  const [packs, setPacks] = useState<Pack[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [packs, setPacks] = useState<Pack[] | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState<"default" | "entries" | "seen">("default");
   const seen = useProgress((state) => state.seen);
 
   useEffect(() => {
-    let active = true;
-
-    setLoading(true);
-    void loadAllPacks()
-      .then((loaded) => {
-        if (!active) {
-          return;
-        }
-        setPacks(loaded);
-      })
-      .finally(() => {
-        if (active) {
-          setLoading(false);
-        }
-      });
-
-    return () => {
-      active = false;
-    };
+    loadAllPacksSafe()
+      .then(({ packs: loaded }) => setPacks(loaded))
+      .catch((e) => setError(String(e)));
   }, []);
 
+  if (error) {
+    return (
+      <main className="mx-auto max-w-5xl p-4">
+        <EmptyState
+          title="Couldn’t load packs"
+          note={error}
+          emoji="⚠️"
+          action={
+            <button
+              type="button"
+              onClick={() => location.reload()}
+              className="rounded-md border px-3 py-2 underline"
+            >
+              Reload
+            </button>
+          }
+        />
+      </main>
+    );
+  }
+
+  if (packs === null) {
+    return (
+      <main className="mx-auto max-w-5xl p-4">
+        <Loader />
+      </main>
+    );
+  }
+
+  if (!packs.length) {
+    return (
+      <main className="mx-auto max-w-5xl p-4">
+        <EmptyState
+          title="No packs found"
+          note="Add JSON packs to /src/labeled-data and reload."
+          emoji="📄"
+        />
+      </main>
+    );
+  }
+
   const packsShown = useMemo(() => {
-    const list = [...packs];
-    return list.sort((a, b) => {
+    return [...packs].sort((a, b) => {
       if (sort === "entries") {
         return b.entries.length - a.entries.length;
       }
@@ -48,37 +74,31 @@ export default function Home() {
     });
   }, [packs, sort, seen]);
 
-  const filteredPacks = useMemo(() => {
-    const normalized = query.trim().toLowerCase();
-    if (!normalized) {
-      return packsShown.map((pack) => ({ pack, entries: pack.entries }));
-    }
-    return packsShown.map((pack) => ({
-      pack,
-      entries: pack.entries.filter((entry) => entry.word.toLowerCase().includes(normalized)),
-    }));
-  }, [packsShown, query]);
+  const normalized = query.trim().toLowerCase();
+  const filtered = packsShown.map((pack) => {
+    const entries = normalized
+      ? pack.entries.filter((entry) => entry.word.toLowerCase().includes(normalized))
+      : pack.entries;
+    return { pack, entries };
+  });
+
+  const anyResults = filtered.some(({ entries }) => entries.length > 0);
 
   return (
-    <main className="mx-auto w-full max-w-5xl px-4 py-6">
-      <header className="space-y-1">
-        <h1 className="text-3xl font-semibold">Word packs</h1>
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
-          Search across your packs and jump back into practice.
-        </p>
-      </header>
+    <main className="mx-auto max-w-5xl p-4">
+      <h1 className="mb-3 text-2xl font-semibold">Packs</h1>
 
-      <div className="mt-4 mb-3 flex flex-col gap-2 sm:flex-row">
+      <div className="mb-3 flex flex-col gap-2 sm:flex-row">
         <input
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           placeholder="Search words…"
-          className="w-full rounded-md border border-neutral-300 px-3 py-2 text-sm dark:border-neutral-700 dark:bg-neutral-900"
+          className="w-full rounded-md border px-3 py-2 sm:max-w-sm"
         />
         <select
           value={sort}
           onChange={(event) => setSort(event.target.value as typeof sort)}
-          className="rounded-md border border-neutral-300 px-3 py-2 text-sm dark:border-neutral-700 dark:bg-neutral-900"
+          className="rounded-md border px-3 py-2"
         >
           <option value="default">Sort: Default</option>
           <option value="entries">Sort: Most entries</option>
@@ -86,18 +106,23 @@ export default function Home() {
         </select>
       </div>
 
-      {loading && <p className="text-sm text-neutral-600 dark:text-neutral-400">Loading packs…</p>}
-      {!loading && !packs.length && (
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
-          Add JSON packs under <code className="rounded bg-neutral-100 px-1 dark:bg-neutral-800">src/labeled-data</code> to get started.
-        </p>
+      {!anyResults ? (
+        <NoResults query={query} reset={() => setQuery("")} />
+      ) : (
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {filtered
+            .filter(({ entries }) => entries.length > 0 || !query)
+            .map(({ pack, entries }) => (
+              <PackCard
+                key={pack.id}
+                id={pack.id}
+                label={pack.label}
+                entries={entries}
+                allEntries={pack.entries}
+              />
+            ))}
+        </div>
       )}
-
-      <div className="mt-4 space-y-4">
-        {filteredPacks.map(({ pack, entries }) => (
-          <PackCard key={pack.id} id={pack.id} label={pack.label} entries={entries} allEntries={pack.entries} />
-        ))}
-      </div>
     </main>
   );
 }
