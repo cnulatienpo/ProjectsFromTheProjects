@@ -1,6 +1,7 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { useProgress } from "../state/useProgress";
 import type { WordEntry } from "../data/validateAndNormalize";
+import { rng } from "../utils/rng";
 
 export function useGameDeck(all: WordEntry[], opts?: { includeSeen?: boolean }) {
   const includeSeen = opts?.includeSeen ?? false;
@@ -9,34 +10,25 @@ export function useGameDeck(all: WordEntry[], opts?: { includeSeen?: boolean }) 
     () => all.filter((e) => includeSeen || !seen[e.word]),
     [all, includeSeen, seen]
   );
-  const idx = useRef(0);
+  const index = useRef(0);
   const [nonce, setNonce] = useState(0);
 
-  const randomize = useCallback(() => {
-    if (pool.length) {
-      idx.current = Math.floor(Math.random() * pool.length);
-    }
-  }, [pool]);
+  function randomize() {
+    if (!pool.length) return;
+    index.current = rng().randint(0, pool.length - 1);
+  }
 
-  const current = useCallback(() => {
-    return pool.length ? pool[idx.current % pool.length] : null;
-  }, [pool]);
+  function current() {
+    return pool.length ? pool[index.current % pool.length] : null;
+  }
 
-  const next = useCallback(() => {
+  function next() {
     randomize();
     setNonce((n) => n + 1);
     return current();
-  }, [current, randomize]);
+  }
 
-  useEffect(() => {
-    if (pool.length) {
-      randomize();
-      setNonce((n) => n + 1);
-    } else {
-      idx.current = 0;
-      setNonce((n) => n + 1);
-    }
-  }, [pool, randomize]);
+  if (pool.length && nonce === 0 && index.current === 0) randomize();
 
   return { current: current(), next, left: pool.length, total: all.length, nonce };
 }
