@@ -1,0 +1,38 @@
+.home {
+    background-color: black;
+    color: white;
+    min-height: 100vh;
+    padding: 2rem;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.image-container {
+    border: 2px solid white;
+    width: 100%;
+    margin-bottom: 2rem;
+    box-sizing: border-box;
+}
+
+.banner-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.title {
+    font-size: 3rem;
+    margin: 1rem 0;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.project-link {
+    color: #00f0ff;
+    text-decoration: underline;
+    font-size: 1rem;
+}

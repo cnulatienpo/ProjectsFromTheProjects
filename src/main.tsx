@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import App from './App';
+import SigilSyntaxApp from './SigilSyntaxApp';
 
 import './index.css';
 import './styles/brutalist.css';
@@ -13,4 +13,4 @@ const rootEl =
     document.getElementById('root') ??
     (() => { const d = document.createElement('div'); d.id = 'root'; document.body.appendChild(d); return d; })();
 
-createRoot(rootEl).render(<App />);
+createRoot(rootEl).render(<SigilSyntaxApp />);
