@@ -1,6 +1,8 @@
-import { useCallback, useEffect, useMemo, useState, type JSX } from "react";
+import { useCallback, useEffect, useMemo, useState, type Dispatch, type JSX, type SetStateAction } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 
+import { CountdownTimer } from "@/components/CountdownTimer";
+import { OneLineEditor } from "@/components/OneLineEditor";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { findFunhouseVariantById, funhousePrompts } from "@/data/funhouse-prompts";
@@ -11,6 +13,33 @@ import { saveEntry } from "@/utils/funhouseStorage";
 type PromptIndices = {
   promptIndex: number;
   variantIndex: number;
+};
+
+type ModeControls = {
+  disableTextarea: Dispatch<SetStateAction<boolean>>;
+  hideTextarea: Dispatch<SetStateAction<boolean>>;
+};
+
+const modeEngine: Record<string, (controls: ModeControls) => JSX.Element | null> = {
+  "Beat Challenge": () => (
+    <div className="space-y-2 rounded-xl border border-yellow-300/40 bg-yellow-100/10 p-3 text-sm text-yellow-100">
+      <p className="text-xs uppercase tracking-[0.2em] text-yellow-200/80">Beat checklist</p>
+      <label className="flex items-center gap-2">
+        <input type="checkbox" className="h-4 w-4" />
+        <span>Introduce a character</span>
+      </label>
+      <label className="flex items-center gap-2">
+        <input type="checkbox" className="h-4 w-4" />
+        <span>Cause a change</span>
+      </label>
+      <label className="flex items-center gap-2">
+        <input type="checkbox" className="h-4 w-4" />
+        <span>Add mystery</span>
+      </label>
+    </div>
+  ),
+  "Timed Rewrite": ({ disableTextarea }) => <TimedRewriteMode disableTextarea={disableTextarea} />,
+  "One Line at a Time": ({ hideTextarea }) => <OneLineMode hideTextarea={hideTextarea} />,
 };
 
 function resolveIndices(id: string | undefined): PromptIndices {
@@ -42,6 +71,8 @@ export default function FunhouseGame(): JSX.Element {
   const [variantIndex, setVariantIndex] = useState(initialIndices.variantIndex);
   const [isRandomizing, setIsRandomizing] = useState(false);
   const [isFlashMode, setIsFlashMode] = useState(false);
+  const [isTextareaDisabled, setIsTextareaDisabled] = useState(false);
+  const [isTextareaHidden, setIsTextareaHidden] = useState(false);
   const [userText, setUserText] = useState("");
 
   const currentPrompt = funhousePrompts[currentPromptIndex];
@@ -65,6 +96,11 @@ export default function FunhouseGame(): JSX.Element {
 
     setUserText("");
   }, [currentVariant?.id, replayText]);
+
+  useEffect(() => {
+    setIsTextareaDisabled(false);
+    setIsTextareaHidden(false);
+  }, [currentVariant?.id]);
 
   const activateVariant = useCallback(
     (nextPromptIndex: number, nextVariantIndex: number) => {
@@ -237,12 +273,31 @@ export default function FunhouseGame(): JSX.Element {
               ))}
           </div>
           <div className="mt-6 space-y-3 rounded-2xl border border-purple-200/40 bg-black/20 p-4 shadow-[4px_4px_0_rgba(59,7,100,0.45)]">
-            <Textarea
-              value={userText}
-              onChange={(event) => setUserText(event.target.value)}
-              placeholder="Spew your weirdest prose right here."
-              className="min-h-[200px] w-full border-2 border-purple-200 bg-purple-950/40 text-purple-50 shadow-[2px_2px_0_rgba(147,51,234,0.5)] focus-visible:border-yellow-300"
-            />
+            {renderModeLayer(currentVariant.mode, {
+              disableTextarea: setIsTextareaDisabled,
+              hideTextarea: setIsTextareaHidden,
+            })}
+            {!modeEngine[currentVariant.mode] ? (
+              <p className="text-sm italic text-purple-100/70">Free Play mode</p>
+            ) : null}
+            {isTextareaHidden ? (
+              <p className="rounded-xl border border-purple-300/30 bg-purple-950/50 p-3 text-sm text-purple-100/80">
+                The main editor unlocks after your next line.
+              </p>
+            ) : (
+              <Textarea
+                value={userText}
+                onChange={(event) => setUserText(event.target.value)}
+                placeholder="Spew your weirdest prose right here."
+                disabled={isTextareaDisabled}
+                className="min-h-[200px] w-full border-2 border-purple-200 bg-purple-950/40 text-purple-50 shadow-[2px_2px_0_rgba(147,51,234,0.5)] focus-visible:border-yellow-300 disabled:cursor-not-allowed disabled:opacity-70"
+              />
+            )}
+            {isTextareaDisabled ? (
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-red-400/90">
+                Timer expired — editing locked.
+              </p>
+            ) : null}
             <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
               <p className="text-xs uppercase tracking-[0.2em] text-purple-200/80">
                 Save your chaos to revisit in Past Mischief.
@@ -261,4 +316,44 @@ export default function FunhouseGame(): JSX.Element {
       {currentVariant ? <GameLoader id={currentVariant.id} /> : null}
     </div>
   );
+}
+
+function renderModeLayer(mode: string, controls: ModeControls): JSX.Element | null {
+  const renderer = modeEngine[mode];
+
+  if (!renderer) {
+    return null;
+  }
+
+  return renderer(controls);
+}
+
+function TimedRewriteMode({ disableTextarea }: { disableTextarea: ModeControls["disableTextarea"] }): JSX.Element {
+  useEffect(() => {
+    disableTextarea(false);
+
+    return () => {
+      disableTextarea(false);
+    };
+  }, [disableTextarea]);
+
+  return (
+    <div className="space-y-2 rounded-xl border border-purple-200/40 bg-purple-950/40 p-3">
+      <p className="text-xs uppercase tracking-[0.2em] text-purple-200/80">Timed rewrite</p>
+      <CountdownTimer minutes={3} onExpire={() => disableTextarea(true)} />
+      <p className="text-xs text-purple-100/70">When the clock strikes zero, the main editor locks.</p>
+    </div>
+  );
+}
+
+function OneLineMode({ hideTextarea }: { hideTextarea: ModeControls["hideTextarea"] }): JSX.Element {
+  const handleHide = useCallback(() => {
+    hideTextarea(true);
+  }, [hideTextarea]);
+
+  const handleReveal = useCallback(() => {
+    hideTextarea(false);
+  }, [hideTextarea]);
+
+  return <OneLineEditor onHideTextarea={handleHide} onRevealTextarea={handleReveal} />;
 }
