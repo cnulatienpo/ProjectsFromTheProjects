@@ -32,6 +32,9 @@ export function Header() {
           <NavLink to="/play/cut-games" className={navClass}>
             Cut Games
           </NavLink>
+          <NavLink to="/funhouse" className={navClass}>
+            Funhouse
+          </NavLink>
           <NavLink to="/settings" className={navClass}>
             Settings
           </NavLink>

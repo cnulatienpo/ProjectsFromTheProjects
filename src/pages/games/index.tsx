@@ -16,6 +16,9 @@ export default function GamesHub(): JSX.Element {
         <a className="text-blue-600 underline" href="#/cutgames">
           The Cut Games
         </a>
+        <a className="text-blue-600 underline" href="#/funhouse">
+          The Funhouse
+        </a>
       </nav>
     </section>
   );

@@ -15,3 +15,5 @@ export { default as Foundation } from "./Foundation";
 export { default as Games } from "./games";
 export { default as Play } from "./Play";
 export { default as SigilSyntaxRoot } from "./SigilSyntaxRoot";
+export { default as FunhouseHub } from "./FunhouseHub";
+export { default as FunhouseGame } from "./FunhouseGame";
