@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useFirstRun } from "../state/useFirstRun";
 import { loadAllPacksSafe, type Pack } from "../data/loadAllPacksSafe";
+import { Loader } from "../components/Loader";
 
 export default function Welcome() {
   const navigate = useNavigate();
@@ -64,7 +65,7 @@ export default function Welcome() {
       </section>
 
       <div className="text-sm text-neutral-600 dark:text-neutral-300">
-        {packs === null ? "Loading packs…" : `${packs.length} pack(s) detected`}
+        {packs === null ? <Loader label="Scanning packs…" /> : `${packs.length} pack(s) detected`}
       </div>
 
       <div className="flex gap-2">
