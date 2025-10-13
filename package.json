@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "build:pages": "vite build && node scripts/copy404.mjs",
+    "preview": "vite preview --port 4173"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.14",
