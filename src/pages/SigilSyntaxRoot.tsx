@@ -1,4 +1,4 @@
-import React from 'react';
+import type { JSX } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 
 export default function SigilSyntaxRoot(): JSX.Element {

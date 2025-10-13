@@ -1,4 +1,4 @@
-import { Router, type Response } from "express";
+import express, { type Request, type Response } from "express";
 import fsp from "node:fs/promises";
 import fs from "node:fs";
 import path from "node:path";
@@ -23,23 +23,25 @@ interface PracticeRow {
 
 type ShadowPracticeRow = PracticeRow & { type?: string };
 
-const router = Router();
+type PlayerRequest = Request & { playerId?: string };
+
+const router = express.Router();
 const dataDir = path.resolve(process.cwd(), "public", "data", "cut_games");
 const practiceCache: Record<string, Promise<ShadowPracticeRow[]>> = {};
 
-router.get("/cut-games/catalog", async (_req, res) => {
+router.get("/cut-games/catalog", async (_req: Request, res: Response) => {
     await sendJsonFile(res, "catalog.json");
 });
 
-router.get("/cut-games/introductions", async (_req, res) => {
+router.get("/cut-games/introductions", async (_req: Request, res: Response) => {
     await sendJsonFile(res, "introductions.json");
 });
 
-router.get("/cut-games/beats", async (_req, res) => {
+router.get("/cut-games/beats", async (_req: Request, res: Response) => {
     await sendJsonFile(res, "beats_index.json");
 });
 
-router.get("/cut-games/tweetrunk", async (_req, res) => {
+router.get("/cut-games/tweetrunk", async (_req: Request, res: Response) => {
     const file = resolveDataFile("tweetrunk_renumbered.jsonl");
     try {
         await fsp.access(file);
@@ -50,7 +52,7 @@ router.get("/cut-games/tweetrunk", async (_req, res) => {
 
     res.type("application/x-ndjson");
     const stream = fs.createReadStream(file);
-    stream.on("error", err => {
+    stream.on("error", (err: unknown) => {
         if (!res.headersSent) res.status(500);
         res.end();
         console.error("[cut-games] stream error", err);
@@ -61,7 +63,7 @@ router.get("/cut-games/tweetrunk", async (_req, res) => {
     stream.pipe(res);
 });
 
-router.post("/cut-games/telemetry", async (req, res) => {
+router.post("/cut-games/telemetry", async (req: PlayerRequest, res: Response) => {
     const playerId = derivePlayerId(req.playerId);
     const body = (req.body ?? {}) as Record<string, unknown>;
     const event = typeof body.event === "string" ? body.event.toLowerCase() : "";
@@ -88,7 +90,7 @@ router.post("/cut-games/telemetry", async (req, res) => {
     res.json({ ok: true });
 });
 
-router.get("/cut-games/practice", async (req, res) => {
+router.get("/cut-games/practice", async (req: PlayerRequest, res: Response) => {
     const mode = String(req.query.mode || "").toLowerCase();
     if (mode !== "good" && mode !== "bad") {
         res.status(400).json({ error: "invalid_mode" });
@@ -153,9 +155,14 @@ async function sendJsonFile(res: Response, filename: string) {
         res.status(404).json({ error: "missing_bundle" });
         return;
     }
-    res.sendFile(file, err => {
+    res.sendFile(file, (err: NodeJS.ErrnoException | undefined) => {
         if (err) {
-            if (!res.headersSent) res.status(err.statusCode ?? 500);
+            if (!res.headersSent) {
+                const status = typeof (err as { statusCode?: number }).statusCode === "number"
+                    ? (err as { statusCode?: number }).statusCode
+                    : 500;
+                res.status(status);
+            }
             res.end();
         }
     });

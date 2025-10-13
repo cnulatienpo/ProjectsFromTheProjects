@@ -38,7 +38,10 @@ export const useGameStore = create<GameState>()(
           return {
             getItem: () => null,
             setItem: () => undefined,
-            removeItem: () => undefined
+            removeItem: () => undefined,
+            clear: () => undefined,
+            key: (_index: number) => null,
+            length: 0
           } as Storage;
         }
         return window.localStorage;

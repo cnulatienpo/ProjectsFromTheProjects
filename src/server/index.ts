@@ -2,7 +2,9 @@ import path from "node:path";
 import { createRequire } from "node:module";
 
 import cookieParser from "cookie-parser";
+import type { NextFunction, Request, Response } from "express";
 import { v4 as uuidv4 } from "uuid";
+import cutGamesRouter from "./routes/cutGames";
 
 function loadExpress() {
     const localRequire = createRequire(import.meta.url);
@@ -19,12 +21,20 @@ const express = (expressModule && typeof expressModule === "object" && "default"
     ? expressModule.default
     : expressModule;
 
+type PlayerRequest = Request & {
+    playerId?: string;
+    cookies: Record<string, string>;
+    header?(name: string): string | undefined;
+    get?(name: string): string | undefined;
+};
+
 const app = express();
 
 app.use(cookieParser());
-app.use((req, res, next) => {
-    const cookies = req.cookies ?? {};
-    let pid = typeof cookies.pftpid === "string" ? cookies.pftpid.trim() : "";
+app.use((req: PlayerRequest, res: Response, next: NextFunction) => {
+    const cookieJar = req.cookies ?? {};
+    req.cookies = cookieJar;
+    let pid = typeof cookieJar.pftpid === "string" ? cookieJar.pftpid.trim() : "";
     if (!pid) {
         pid = uuidv4();
         res.cookie("pftpid", pid, {
@@ -32,11 +42,11 @@ app.use((req, res, next) => {
             sameSite: "lax",
             maxAge: 1000 * 60 * 60 * 24 * 365 * 2,
         });
-        req.cookies.pftpid = pid;
+        cookieJar.pftpid = pid;
     }
 
     if (pid) {
-        req.cookies.pftpid = pid;
+        cookieJar.pftpid = pid;
     }
 
     const overrideHeader = typeof req.header === "function"
@@ -55,9 +65,6 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 app.use(express.static(path.resolve(process.cwd(), "public")));
-
-const cutGamesRouter = require("./routes/cutGames").default as import("express").Router;
-
 app.use(cutGamesRouter);
 
 export default app;

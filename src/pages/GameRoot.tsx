@@ -1,4 +1,4 @@
-import React from 'react';
+import type { JSX } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 
 // These CSS files are located in src/styles/
