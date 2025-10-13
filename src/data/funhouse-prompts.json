@@ -1,0 +1,42 @@
+[
+  {
+    "id": "foundation-014-funhouse-1",
+    "title": "Tell Everything, Show Nothing",
+    "description": "Over-explain every feeling, every action, and leave zero mystery.",
+    "mode": "free",
+    "targets": ["show-dont-tell", "focus"],
+    "source": "foundation"
+  },
+  {
+    "id": "foundation-014-funhouse-5",
+    "title": "Show, Don’t Tell – Horror Remix",
+    "description": "Twist the core lesson into a creeping dread that drips from every sentence.",
+    "mode": "timed",
+    "targets": ["show-dont-tell", "pacing", "stakes"],
+    "source": "foundation"
+  },
+  {
+    "id": "foundation-014-funhouse-9",
+    "title": "Show, Don’t Tell – Backwards",
+    "description": "Structure the scene in reverse order so the emotional reveal lands first.",
+    "mode": "beat",
+    "targets": ["structure", "beats"],
+    "source": "foundation"
+  },
+  {
+    "id": "dictionary-focus-funhouse",
+    "title": "Focus Roulette",
+    "description": "Cycle through three wildly different focal points to distort the original prompt.",
+    "mode": "free",
+    "targets": ["focus", "precision"],
+    "source": "dictionary"
+  },
+  {
+    "id": "cut-repetition-funhouse",
+    "title": "Echo Chamber",
+    "description": "Lean into repetition until the beat pattern becomes hypnotic and weird.",
+    "mode": "beat",
+    "targets": ["repetition", "beats"],
+    "source": "cut"
+  }
+]
