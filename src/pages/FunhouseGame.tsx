@@ -149,32 +149,101 @@ export default function FunhouseGame(): JSX.Element {
       return;
     }
 
-    let newPromptIndex = currentPromptIndex;
-    let newVariantIndex = variantIndex;
     const currentVariantId = currentVariant?.id ?? null;
 
-    for (let attempts = 0; attempts < 12; attempts += 1) {
-      newPromptIndex = Math.floor(Math.random() * funhousePrompts.length);
-      const variants = funhousePrompts[newPromptIndex]?.variants ?? [];
+    const pickRandomIndices = (): PromptIndices => {
+      let newPromptIndex = currentPromptIndex;
+      let newVariantIndex = variantIndex;
 
-      if (variants.length === 0) {
-        continue;
+      for (let attempts = 0; attempts < 12; attempts += 1) {
+        newPromptIndex = Math.floor(Math.random() * funhousePrompts.length);
+        const variants = funhousePrompts[newPromptIndex]?.variants ?? [];
+
+        if (variants.length === 0) {
+          continue;
+        }
+
+        newVariantIndex = Math.floor(Math.random() * variants.length);
+
+        if (variants[newVariantIndex]?.id !== currentVariantId) {
+          break;
+        }
+
+        if (attempts === 11) {
+          const fallbackPromptIndex = (currentPromptIndex + 1) % funhousePrompts.length;
+          const fallbackVariants = funhousePrompts[fallbackPromptIndex]?.variants ?? [];
+
+          newPromptIndex = fallbackPromptIndex;
+          newVariantIndex = fallbackVariants.length > 0 ? 0 : variantIndex;
+        }
       }
 
-      newVariantIndex = Math.floor(Math.random() * variants.length);
+      return {
+        promptIndex: newPromptIndex,
+        variantIndex: newVariantIndex,
+      };
+    };
 
-      if (variants[newVariantIndex]?.id !== currentVariantId) {
-        break;
+    const pickShadowIndices = (): PromptIndices | null => {
+      if (typeof window === "undefined") {
+        return null;
       }
 
-      if (attempts === 11) {
-        const fallbackPromptIndex = (currentPromptIndex + 1) % funhousePrompts.length;
-        const fallbackVariants = funhousePrompts[fallbackPromptIndex]?.variants ?? [];
+      let stack: Record<string, number> = {};
 
-        newPromptIndex = fallbackPromptIndex;
-        newVariantIndex = fallbackVariants.length > 0 ? 0 : variantIndex;
+      try {
+        stack = JSON.parse(window.localStorage.getItem("shadowStack") ?? "{}") as Record<string, number>;
+      } catch (error) {
+        stack = {};
       }
-    }
+
+      const mostSkippedTags = Object.entries(stack)
+        .filter(([, count]) => typeof count === "number" && Number.isFinite(count) && count > 0)
+        .sort((a, b) => b[1] - a[1])
+        .map(([tag]) => tag.toLowerCase());
+
+      if (mostSkippedTags.length === 0) {
+        return null;
+      }
+
+      for (const tag of mostSkippedTags) {
+        const promptIndex = funhousePrompts.findIndex((prompt) => prompt.tags?.some((promptTag) => promptTag === tag));
+
+        if (promptIndex === -1) {
+          continue;
+        }
+
+        const prompt = funhousePrompts[promptIndex];
+        const variants = prompt?.variants ?? [];
+
+        if (!prompt || variants.length === 0) {
+          continue;
+        }
+
+        const availableVariants = variants.filter((variantOption) => variantOption.id !== currentVariantId);
+        const variantPool = availableVariants.length > 0 ? availableVariants : variants;
+        const selectedVariant = variantPool[Math.floor(Math.random() * variantPool.length)];
+
+        if (!selectedVariant || selectedVariant.id === currentVariantId) {
+          continue;
+        }
+
+        const selectedVariantIndex = variants.findIndex((variantOption) => variantOption.id === selectedVariant.id);
+
+        if (selectedVariantIndex === -1) {
+          continue;
+        }
+
+        return {
+          promptIndex,
+          variantIndex: selectedVariantIndex,
+        };
+      }
+
+      return null;
+    };
+
+    const targetIndices = Math.random() < 0.05 ? pickShadowIndices() ?? pickRandomIndices() : pickRandomIndices();
 
     setIsRandomizing(true);
     setIsFlashMode(true);
@@ -184,8 +253,34 @@ export default function FunhouseGame(): JSX.Element {
 
     navigator.vibrate?.(80);
 
-    activateVariant(newPromptIndex, newVariantIndex);
+    activateVariant(targetIndices.promptIndex, targetIndices.variantIndex);
   }, [activateVariant, currentPromptIndex, currentVariant?.id, variantIndex]);
+
+  const handleSkip = useCallback(() => {
+    if (!currentPrompt) {
+      randomPrompt();
+      return;
+    }
+
+    if (typeof window !== "undefined" && Array.isArray(currentPrompt.tags)) {
+      try {
+        const storedStack = window.localStorage.getItem("shadowStack");
+        const parsedStack: Record<string, number> = storedStack ? JSON.parse(storedStack) : {};
+        const nextStack: Record<string, number> = { ...parsedStack };
+
+        currentPrompt.tags.forEach((tag) => {
+          const normalisedTag = tag.toLowerCase();
+          nextStack[normalisedTag] = (nextStack[normalisedTag] ?? 0) + 1;
+        });
+
+        window.localStorage.setItem("shadowStack", JSON.stringify(nextStack));
+      } catch (error) {
+        console.error("Failed to update shadow stack", error);
+      }
+    }
+
+    randomPrompt();
+  }, [currentPrompt, randomPrompt]);
 
   if (!id && !currentVariant) {
     return (
@@ -272,6 +367,9 @@ export default function FunhouseGame(): JSX.Element {
                 </p>
               ))}
           </div>
+          <Button onClick={handleSkip} variant="ghost">
+            ❌ Skip This One
+          </Button>
           <div className="mt-6 space-y-3 rounded-2xl border border-purple-200/40 bg-black/20 p-4 shadow-[4px_4px_0_rgba(59,7,100,0.45)]">
             {renderModeLayer(currentVariant.mode, {
               disableTextarea: setIsTextareaDisabled,
