@@ -2,18 +2,10 @@ import { useCallback, useEffect, useState } from "react";
 import "../styles/cutgames.css";
 import ModePicker from "../components/cutgames/ModePicker";
 import BeatPitfallPicker from "../components/cutgames/BeatPitfallPicker";
-import RoundEngine from "../components/cutgames/RoundEngine";
+import RoundEngine, { type RoundCompletion } from "../components/cutgames/RoundEngine";
 import ResultsScreen from "../components/cutgames/ResultsScreen";
 
 type ModeName = "Name" | "Missing" | "Fix" | "Order" | "Highlight" | "Why";
-
-type RoundResult = {
-  score: number;
-  notes: string[];
-  id: string;
-  summary: { completed: number; skipped: number };
-  payload: any;
-};
 
 type Phase = "select" | "play" | "results";
 
@@ -23,7 +15,7 @@ export default function CutGamesPlay() {
   const [pitfall, setPitfall] = useState<string | undefined>();
   const [roundKey, setRoundKey] = useState(0);
   const [phase, setPhase] = useState<Phase>("select");
-  const [results, setResults] = useState<RoundResult | null>(null);
+  const [results, setResults] = useState<RoundCompletion | null>(null);
 
   const startRound = useCallback(() => {
     setPhase("play");
@@ -43,7 +35,7 @@ export default function CutGamesPlay() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [phase, startRound]);
 
-  const handleDone = (roundResult: RoundResult) => {
+  const handleDone = (roundResult: RoundCompletion) => {
     setResults(roundResult);
     setPhase("results");
   };

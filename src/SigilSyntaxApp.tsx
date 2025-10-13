@@ -1,11 +1,13 @@
 import React from "react";
 import { HashRouter, Routes, Route, Link } from "react-router-dom";
-import Home from "./pages/Home";
-import SigilSyntaxRoot from "./pages/SigilSyntaxRoot";
-import CutGames from "./pages/CutGames";
-import CutGamesPlay from "./pages/CutGamesPlay";
-import Foundation from "./pages/Foundation";
-import Dictionary from "./pages/Dictionary";
+import {
+    CutGames,
+    CutGamesPlay,
+    Dictionary,
+    Foundation,
+    Home,
+    SigilSyntaxRoot,
+} from "./pages";
 
 export default function SigilSyntaxApp() {
     return (

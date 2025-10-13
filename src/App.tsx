@@ -1,10 +1,11 @@
 import React from "react";
-import { HashRouter, Routes, Route, Link } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import GameRoot from "./pages/GameRoot";
+import Play from "./pages/Play";
 import CutGames from "./pages/CutGames";
 import CutGamesPlay from "./pages/CutGamesPlay";
-import Dictionary from "./pages/Dictionary";
+import Deck from "./pages/Deck";
 
 export default function App() {
     return (
