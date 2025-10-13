@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/freeze-manifests.mjs",
     "build": "vite build",
     "build:pages": "vite build && node scripts/copy404.mjs",
     "preview": "vite preview --port 4173"
