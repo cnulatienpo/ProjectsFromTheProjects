@@ -1,57 +1,47 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { funhouseCatalog } from "./funhouse_catalog";
-import {
-  FunhouseComponentKey,
-  FunhouseGameType,
-  FunhousePrompt,
-} from "./types";
+import { FunhousePrompt } from "./types";
 
 type DynamicComponent = React.ComponentType<{ prompt: FunhousePrompt }>;
 
 type LoaderState =
-  | { status: "idle" | "loading"; component: null }
-  | { status: "ready"; component: DynamicComponent }
-  | { status: "error"; component: null };
-
-const componentByGameType: Partial<Record<FunhouseGameType, FunhouseComponentKey>> = {
-  writing_prompt: "FreeWriteTextBox",
-  beat_arcade: "BeatComboMachine",
-  style_swap: "VoiceImpersonatorChallenge",
-};
+  | { status: "idle" | "loading"; Component: null }
+  | { status: "ready"; Component: DynamicComponent }
+  | { status: "error"; Component: null };
 
 export interface GameLoaderProps {
   id: string;
 }
 
 export function GameLoader({ id }: GameLoaderProps) {
-  const prompt = useMemo(() => funhouseCatalog.find((entry) => entry.id === id), [id]);
+  const game = useMemo(() => funhouseCatalog.find((entry) => entry.id === id), [id]);
   const [state, setState] = useState<LoaderState>(() =>
-    prompt ? { status: "loading", component: null } : { status: "idle", component: null }
+    game ? { status: "loading", Component: null } : { status: "idle", Component: null }
   );
 
   useEffect(() => {
-    if (!prompt) {
-      setState({ status: "idle", component: null });
+    if (!game) {
+      setState({ status: "idle", Component: null });
       return;
     }
 
-    setState({ status: "loading", component: null });
-
-    const componentName = componentByGameType[prompt.game_type] ?? prompt.ui_component;
     let isActive = true;
+    setState({ status: "loading", Component: null });
 
-    import(/* @vite-ignore */ `./components/${componentName}`)
+    import(/* @vite-ignore */ `./components/${game.ui_component}`)
       .then((module) => {
         if (!isActive) {
           return;
         }
 
-        const ImportedComponent = (module.default ?? module[componentName]) as DynamicComponent | undefined;
+        const ImportedComponent = (module.default ?? module[game.ui_component]) as
+          | DynamicComponent
+          | undefined;
 
         if (ImportedComponent) {
-          setState({ status: "ready", component: ImportedComponent });
+          setState({ status: "ready", Component: ImportedComponent });
         } else {
-          setState({ status: "error", component: null });
+          setState({ status: "error", Component: null });
         }
       })
       .catch(() => {
@@ -59,28 +49,41 @@ export function GameLoader({ id }: GameLoaderProps) {
           return;
         }
 
-        setState({ status: "error", component: null });
+        setState({ status: "error", Component: null });
       });
 
     return () => {
       isActive = false;
     };
-  }, [prompt]);
+  }, [game]);
 
-  if (!prompt) {
+  if (!game) {
     return (
-      <div style={{ padding: "2rem", fontFamily: "system-ui, sans-serif" }}>
-        <h2 style={{ marginBottom: "0.5rem" }}>Funhouse prompt not found</h2>
-        <p style={{ color: "#555" }}>
-          The requested Funhouse prompt either does not exist yet or is still being prototyped in the Funhouse lab.
-        </p>
+      <div style={{ fontFamily: "system-ui, sans-serif", padding: "2rem" }}>
+        <p style={{ marginBottom: "1rem" }}>Game not found.</p>
+        <button
+          type="button"
+          onClick={() => {
+            // TODO: Wire up navigation to the Funhouse menu when available.
+          }}
+          style={{
+            backgroundColor: "#4f46e5",
+            border: "none",
+            borderRadius: "0.5rem",
+            color: "white",
+            cursor: "pointer",
+            padding: "0.75rem 1.5rem",
+          }}
+        >
+          Back to Funhouse Menu
+        </button>
       </div>
     );
   }
 
   if (state.status === "loading") {
     return (
-      <div style={{ padding: "2rem", fontFamily: "system-ui, sans-serif" }}>
+      <div style={{ fontFamily: "system-ui, sans-serif", padding: "2rem" }}>
         <p>Loading Funhouse interface…</p>
       </div>
     );
@@ -88,15 +91,15 @@ export function GameLoader({ id }: GameLoaderProps) {
 
   if (state.status === "error") {
     return (
-      <div style={{ padding: "2rem", fontFamily: "system-ui, sans-serif" }}>
+      <div style={{ fontFamily: "system-ui, sans-serif", padding: "2rem" }}>
         <p>This Funhouse game doesn't have an interface yet.</p>
       </div>
     );
   }
 
-  if (state.status === "ready" && state.component) {
-    const LoadedComponent = state.component;
-    return <LoadedComponent prompt={prompt} />;
+  if (state.status === "ready" && state.Component) {
+    const LoadedComponent = state.Component;
+    return <LoadedComponent prompt={game} />;
   }
 
   return null;
