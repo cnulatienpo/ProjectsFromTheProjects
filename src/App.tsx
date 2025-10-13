@@ -14,8 +14,11 @@ import { ToastHost } from "./components/ToastHost";
 import { KeyOverlay } from "./components/KeyOverlay";
 import { Footer } from "./components/Footer";
 import { ErrorBoundary } from "./components/ErrorBoundary";
+import Welcome from "./pages/Welcome";
+import { useFirstRun } from "./state/useFirstRun";
 
 export default function App() {
+  const seenWelcome = useFirstRun((state) => state.seenWelcome);
   return (
     <ErrorBoundary>
       <BrowserRouter>
@@ -24,7 +27,8 @@ export default function App() {
           <ToastHost />
           <KeyOverlay />
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={seenWelcome ? <Home /> : <Welcome />} />
+            <Route path="/welcome" element={<Welcome />} />
             <Route path="/pack/:id" element={<PackPage />} />
             <Route path="/practice" element={<PracticeHub />} />
             <Route path="/practice/:id" element={<PracticePage />} />
