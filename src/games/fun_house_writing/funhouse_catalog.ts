@@ -2,14 +2,14 @@ import { FunhouseCatalog } from "./types";
 
 export const funhouseCatalog: FunhouseCatalog = [
   {
-    id: "tell-everything-show-nothing",
-    title: "Show, Don't Tell",
+    id: "funhouse-001",
+    title: "Tell Everything, Show Nothing",
     description:
-      "Flip the classic writing advice on its head by over-explaining every feeling and action in exhausting detail.",
-    mirrors_lesson_id: "show-dont-tell",
+      "Break the classic rule. Dump exposition. Explain emotions. Say the quiet part loud.",
+    mirrors_lesson_id: "foundation-014",
     prompt_text:
-      "Rewrite a short scene so that every emotion, motivation, and action is explicitly explained. Do not rely on imagery—spell out every intention, feeling, and transition.",
+      "Write a scene where every feeling is stated outright, every action is explained in detail, and nothing is left to the imagination.",
     game_type: "writing_prompt",
-    ui_component: "TellEverythingShowNothing",
+    ui_component: "FreeWriteTextBox",
   },
 ];

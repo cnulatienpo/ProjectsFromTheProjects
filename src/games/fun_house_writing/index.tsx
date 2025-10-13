@@ -1,56 +1,103 @@
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { funhouseCatalog } from "./funhouse_catalog";
-import { FunhousePrompt } from "./types";
-import { TellEverythingShowNothing } from "./components/TellEverythingShowNothing";
+import {
+  FunhouseComponentKey,
+  FunhouseGameType,
+  FunhousePrompt,
+} from "./types";
 
-const componentRegistry: Record<string, React.ComponentType<{ prompt: FunhousePrompt }>> = {
-  TellEverythingShowNothing: ({ prompt }) => (
-    <TellEverythingShowNothing promptText={prompt.prompt_text} />
-  ),
+type DynamicComponent = React.ComponentType<{ prompt: FunhousePrompt }>;
+
+type LoaderState =
+  | { status: "idle" | "loading"; component: null }
+  | { status: "ready"; component: DynamicComponent }
+  | { status: "error"; component: null };
+
+const componentByGameType: Partial<Record<FunhouseGameType, FunhouseComponentKey>> = {
+  writing_prompt: "FreeWriteTextBox",
+  beat_arcade: "BeatComboMachine",
+  style_swap: "VoiceImpersonatorChallenge",
 };
 
-export interface FunHouseWritingProps {
-  promptId?: string;
+export interface GameLoaderProps {
+  id: string;
 }
 
-export function FunHouseWriting(props: FunHouseWritingProps) {
-  const { promptId } = props;
-  const prompt = resolvePrompt(promptId);
+export function GameLoader({ id }: GameLoaderProps) {
+  const prompt = useMemo(() => funhouseCatalog.find((entry) => entry.id === id), [id]);
+  const [state, setState] = useState<LoaderState>(() =>
+    prompt ? { status: "loading", component: null } : { status: "idle", component: null }
+  );
+
+  useEffect(() => {
+    if (!prompt) {
+      setState({ status: "idle", component: null });
+      return;
+    }
+
+    setState({ status: "loading", component: null });
+
+    const componentName = componentByGameType[prompt.game_type] ?? prompt.ui_component;
+    let isActive = true;
+
+    import(/* @vite-ignore */ `./components/${componentName}`)
+      .then((module) => {
+        if (!isActive) {
+          return;
+        }
+
+        const ImportedComponent = (module.default ?? module[componentName]) as DynamicComponent | undefined;
+
+        if (ImportedComponent) {
+          setState({ status: "ready", component: ImportedComponent });
+        } else {
+          setState({ status: "error", component: null });
+        }
+      })
+      .catch(() => {
+        if (!isActive) {
+          return;
+        }
+
+        setState({ status: "error", component: null });
+      });
+
+    return () => {
+      isActive = false;
+    };
+  }, [prompt]);
 
   if (!prompt) {
     return (
       <div style={{ padding: "2rem", fontFamily: "system-ui, sans-serif" }}>
         <h2 style={{ marginBottom: "0.5rem" }}>Funhouse prompt not found</h2>
         <p style={{ color: "#555" }}>
-          The requested Funhouse prompt either does not exist yet or is still being
-          prototyped in the Funhouse lab.
+          The requested Funhouse prompt either does not exist yet or is still being prototyped in the Funhouse lab.
         </p>
       </div>
     );
   }
 
-  const Component = componentRegistry[prompt.ui_component];
-
-  if (!Component) {
+  if (state.status === "loading") {
     return (
       <div style={{ padding: "2rem", fontFamily: "system-ui, sans-serif" }}>
-        <h2 style={{ marginBottom: "0.5rem" }}>UI component missing</h2>
-        <p style={{ color: "#555" }}>
-          We have a prompt definition for this game, but the UI component
-          <code style={{ marginLeft: 4 }}>{prompt.ui_component}</code> has not been
-          wired up yet.
-        </p>
+        <p>Loading Funhouse interface…</p>
       </div>
     );
   }
 
-  return <Component prompt={prompt} />;
-}
-
-function resolvePrompt(promptId?: string): FunhousePrompt | undefined {
-  if (promptId) {
-    return funhouseCatalog.find((entry) => entry.id === promptId);
+  if (state.status === "error") {
+    return (
+      <div style={{ padding: "2rem", fontFamily: "system-ui, sans-serif" }}>
+        <p>This Funhouse game doesn't have an interface yet.</p>
+      </div>
+    );
   }
 
-  return funhouseCatalog[0];
+  if (state.status === "ready" && state.component) {
+    const LoadedComponent = state.component;
+    return <LoadedComponent prompt={prompt} />;
+  }
+
+  return null;
 }
