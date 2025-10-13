@@ -29,7 +29,6 @@ export function PackCard({ id, label, entries, allEntries }: PackCardProps) {
                 href="#/sigil-syntax"
                 data-game="original"
                 onClick={() => console.info("[sigil&syntax] click → #/sigil-syntax")}
-                style={{ color: "inherit", textDecoration: "none" }}
               >
                 {label}
               </a>

@@ -1,16 +1,16 @@
-# Game Discovery Status
+# Game discovery status
 
-Generated at 2025-10-13T15:26:23.198Z
+Generated at 2025-10-13T17:07:45.638Z.
 
-- CUT_GAMES: 30
+## Counts
+- CUT_GAMES: 31
 - GOOD_WORD: 19
 - SHARED: 20
-- ORIGINAL: 38
-- TOTAL: 107
+- ORIGINAL: 44
+- Total scanned: 114
 
 ## Notes
-- [x] Sigil & Syntax → ORIGINAL wired
-- counts => cut: 30, good: 19, shared: 20, original: 38, total: 107
+- counts => cut: 31, good: 19, shared: 20, original: 44, total: 114
 - ambiguous: src/components/Header.tsx -> cut, good
 - ambiguous: src/components/cutgames/BeatPitfallPicker.tsx -> cut, shared
 - ambiguous: src/components/cutgames/ModePicker.tsx -> cut, shared
@@ -34,8 +34,10 @@ Generated at 2025-10-13T15:26:23.198Z
 - ambiguous: src/pages/Deck.tsx -> good, shared
 - ambiguous: src/pages/Game.tsx -> cut, good
 - ambiguous: src/pages/Settings.tsx -> good, shared
+- ambiguous: src/pages/__games.tsx -> cut, good
 - ambiguous: src/server/routes/cutGames.ts -> cut, shared
 - ambiguous: src/state/useFirstRun.ts -> good, shared
 - ambiguous: src/state/useProgress.ts -> good, shared
 - ambiguous: src/state/useTheme.ts -> good, shared
 - ambiguous: src/utils/rng.ts -> good, shared
+- [x] Sigil & Syntax → ORIGINAL wired

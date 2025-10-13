@@ -1,196 +1,226 @@
 import cutManifest from "../../games/_manifests/cut-games.manifest.json";
 import goodManifest from "../../games/_manifests/good-word.manifest.json";
-import sharedManifest from "../../games/_manifests/shared.manifest.json";
 import originalManifest from "../../games/_manifests/original.manifest.json";
 import { resolveOriginalScreens } from "@/games/original.resolve";
 
+const MAX_FILES = 20;
+
 type Manifest = typeof cutManifest;
 
-type BucketKey = "CUT_GAMES" | "GOOD_WORD" | "SHARED" | "ORIGINAL";
-
-type BucketEntry = {
-  key: BucketKey;
+type Bucket = {
+  key: "CUT_GAMES" | "GOOD_WORD" | "ORIGINAL";
   manifest: Manifest;
 };
 
-const BUCKETS: BucketEntry[] = [
+const BUCKETS: Bucket[] = [
   { key: "CUT_GAMES", manifest: cutManifest },
   { key: "GOOD_WORD", manifest: goodManifest },
-  { key: "SHARED", manifest: sharedManifest },
   { key: "ORIGINAL", manifest: originalManifest },
 ];
 
-function formatTimestamp(timestamp: string): string {
-  try {
-    const date = new Date(timestamp);
-    if (!Number.isNaN(date.getTime())) {
-      return date.toLocaleString();
-    }
-  } catch (error) {
-    // ignore
-  }
-  return timestamp;
+const ORIGINAL_ROUTES: Record<"home" | "play" | "rules", string> = {
+  home: "#/sigil-syntax",
+  play: "#/sigil-syntax/play",
+  rules: "#/sigil-syntax/rules",
+};
+
+function ResolvedOriginalScreens() {
+  const resolved = resolveOriginalScreens();
+  const entries: Array<{ key: keyof typeof ORIGINAL_ROUTES; label: string }> = [
+    { key: "home", label: "Home" },
+    { key: "play", label: "Play" },
+    { key: "rules", label: "Rules" },
+  ];
+
+  return (
+    <section className="space-y-4">
+      <div>
+        <h2 className="text-xl font-semibold">Resolved ORIGINAL screens</h2>
+        <p className="text-sm text-neutral-600 dark:text-neutral-400">
+          Live routes below point to the Sigil &amp; Syntax wrappers; file paths show the selected components.
+        </p>
+      </div>
+      <ul className="space-y-3 text-sm">
+        {entries.map(({ key, label }) => {
+          const path = resolved[key];
+          return (
+            <li
+              key={key}
+              className="rounded border border-neutral-200 p-3 dark:border-neutral-700"
+            >
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                <div className="font-semibold uppercase tracking-wide text-neutral-500">
+                  {label}
+                </div>
+                {path ? (
+                  <div className="flex flex-col items-start gap-1 sm:items-end">
+                    <code className="break-all font-mono text-xs sm:text-sm">{path}</code>
+                    <a className="underline" href={ORIGINAL_ROUTES[key]}>
+                      Visit {label.toLowerCase()} route
+                    </a>
+                  </div>
+                ) : (
+                  <span className="text-neutral-500">No match selected</span>
+                )}
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+      {resolved.fallbacks.length ? (
+        <div>
+          <h3 className="text-md font-semibold uppercase tracking-wide text-neutral-500">
+            Fallback queue
+          </h3>
+          <ol className="mt-2 space-y-1 text-sm">
+            {resolved.fallbacks.map((file) => (
+              <li key={file} className="break-all font-mono">
+                {file}
+              </li>
+            ))}
+          </ol>
+        </div>
+      ) : null}
+    </section>
+  );
 }
 
-function TopFiles({ manifest }: { manifest: Manifest }) {
-  const topFiles = manifest.files.slice(0, 20);
+function FilesList({ manifest }: { manifest: Manifest }) {
+  const topFiles = manifest.files.slice(0, MAX_FILES);
+  const remaining = Math.max(0, manifest.files.length - MAX_FILES);
+
   return (
-    <ol className="game-discovery__file-list">
+    <ol className="space-y-1 text-sm">
       {topFiles.map((file) => (
-        <li key={file}>{file}</li>
+        <li key={file} className="break-all font-mono">
+          {file}
+        </li>
       ))}
-      {manifest.files.length > 20 ? (
-        <li className="game-discovery__more">… {manifest.files.length - 20} more</li>
+      {remaining > 0 ? (
+        <li className="italic text-neutral-500 dark:text-neutral-400">
+          … {remaining} more
+        </li>
       ) : null}
     </ol>
   );
 }
 
 function OriginalHints() {
-  const { hints } = originalManifest;
-  const extras = (hints as Record<string, unknown>).extras as
-    | Record<string, string[]>
-    | undefined;
-
-  return (
-    <section className="game-discovery__original-hints">
-      <h2>Original Home / Play / Rules candidates</h2>
-      <div className="game-discovery__hint-columns">
-        <div>
-          <h3>Home</h3>
-          <ul>
-            {hints.home.map((path) => (
-              <li key={`home-${path}`}>{path}</li>
-            ))}
-            {hints.home.length === 0 ? <li>None detected</li> : null}
-          </ul>
-        </div>
-        <div>
-          <h3>Play</h3>
-          <ul>
-            {hints.play.map((path) => (
-              <li key={`play-${path}`}>{path}</li>
-            ))}
-            {hints.play.length === 0 ? <li>None detected</li> : null}
-          </ul>
-        </div>
-        <div>
-          <h3>Rules</h3>
-          <ul>
-            {hints.rules.map((path) => (
-              <li key={`rules-${path}`}>{path}</li>
-            ))}
-            {hints.rules.length === 0 ? <li>None detected</li> : null}
-          </ul>
-        </div>
-      </div>
-      {extras ? (
-        <div className="game-discovery__extras">
-          <h3>Extra patterns</h3>
-          <div className="game-discovery__hint-columns">
-            {Object.entries(extras).map(([name, paths]) => (
-              <div key={name}>
-                <h4>{name}</h4>
-                <ul>
-                  {paths.map((path) => (
-                    <li key={`${name}-${path}`}>{path}</li>
-                  ))}
-                  {paths.length === 0 ? <li>None detected</li> : null}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      ) : null}
-    </section>
+  const baseKeys: Array<keyof Manifest["hints"]> = ["home", "play", "rules"];
+  const extras = Object.keys(originalManifest.hints).filter(
+    (key) => !baseKeys.includes(key as keyof Manifest["hints"])
   );
-}
-
-function OriginalResolutionDetails() {
-  const screens = resolveOriginalScreens();
-  const entries: {
-    label: string;
-    path?: string;
-    href: string;
-  }[] = [
-    { label: "Home", path: screens.home, href: "#/sigil-syntax" },
-    { label: "Play", path: screens.play, href: "#/sigil-syntax/play" },
-    { label: "Rules", path: screens.rules, href: "#/sigil-syntax/rules" },
-  ];
 
   return (
-    <section className="game-discovery__original-resolution">
-      <h2>Original screen resolver</h2>
-      <ul>
-        {entries.map(({ label, path, href }) => (
-          <li key={label}>
-            <strong>{label}:</strong> {path ? <code>{path}</code> : <em>Not resolved</em>} {" "}
-            <a href={href}>Open</a>
-          </li>
+    <section className="space-y-4">
+      <div>
+        <h2 className="text-lg font-semibold">Original candidates</h2>
+        <p className="text-sm text-neutral-600 dark:text-neutral-400">
+          Home, play, and rules guesses come directly from discovery patterns.
+        </p>
+      </div>
+      <div className="grid gap-6 md:grid-cols-3">
+        {baseKeys.map((key) => (
+          <div key={key}>
+            <h3 className="text-md font-semibold uppercase tracking-wide text-neutral-500">
+              {key}
+            </h3>
+            <ul className="mt-2 space-y-1 text-sm">
+              {originalManifest.hints[key]?.length ? (
+                originalManifest.hints[key]!.map((item) => (
+                  <li key={`${key}-${item}`} className="break-all font-mono">
+                    {item}
+                  </li>
+                ))
+              ) : (
+                <li className="text-neutral-500">No matches</li>
+              )}
+            </ul>
+          </div>
         ))}
-      </ul>
-      {screens.fallbacks.length ? (
-        <div className="game-discovery__fallbacks">
-          <h3>Fallback candidates</h3>
-          <ul>
-            {screens.fallbacks.map((file) => (
-              <li key={file}>
-                <code>{file}</code>
+      </div>
+      {extras.length > 0 ? (
+        <div>
+          <h3 className="text-md font-semibold">Extra signals</h3>
+          <ul className="mt-2 space-y-2 text-sm">
+            {extras.map((extraKey) => (
+              <li key={extraKey}>
+                <div className="font-semibold uppercase tracking-wide text-neutral-500">
+                  {extraKey}
+                </div>
+                <ul className="ml-4 mt-1 space-y-1">
+                  {originalManifest.hints[extraKey]?.length ? (
+                    originalManifest.hints[extraKey]!.map((item) => (
+                      <li key={`${extraKey}-${item}`} className="break-all font-mono">
+                        {item}
+                      </li>
+                    ))
+                  ) : (
+                    <li className="text-neutral-500">No matches</li>
+                  )}
+                </ul>
               </li>
             ))}
           </ul>
         </div>
       ) : null}
-      {screens.debug.tried.length ? (
-        <details>
-          <summary>Debug attempts</summary>
-          <pre>{screens.debug.tried.join("\n")}</pre>
-        </details>
-      ) : null}
     </section>
   );
 }
 
-export default function GamesDiagnosticsPage() {
-  const total = BUCKETS.reduce((acc, entry) => acc + entry.manifest.files.length, 0);
-  const generatedAt = formatTimestamp(originalManifest.generatedAt);
+export default function GamesDiagnosticPage() {
+  const totalFiles = BUCKETS.reduce((sum, bucket) => sum + bucket.manifest.files.length, 0);
 
   return (
-    <div className="game-discovery">
-      <header>
-        <h1>Game Discovery Diagnostics</h1>
-        <p className="game-discovery__note">No files were moved; wrappers will import dynamically.</p>
-        <p>Last generated: {generatedAt}</p>
-        <nav className="game-discovery__links">
+    <main className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-6 py-10">
+      <header className="space-y-3">
+        <h1 className="text-3xl font-bold">Game discovery buckets</h1>
+        <p className="text-sm text-neutral-600 dark:text-neutral-400">
+          No files were moved; wrappers will import dynamically.
+        </p>
+        <p className="text-sm text-neutral-600 dark:text-neutral-400">
+          Manifest generated at {new Date(cutManifest.generatedAt).toLocaleString()}.
+        </p>
+        <nav className="flex flex-wrap gap-4 text-sm underline">
           <a href="#/sigil-syntax">#/sigil-syntax</a>
           <a href="#/sigil-syntax/play">#/sigil-syntax/play</a>
           <a href="#/sigil-syntax/rules">#/sigil-syntax/rules</a>
         </nav>
       </header>
 
-      <section className="game-discovery__summary">
-        <h2>Bucket counts</h2>
-        <ul>
-          {BUCKETS.map((entry) => (
-            <li key={entry.key}>
-              <strong>{entry.key}:</strong> {entry.manifest.files.length} files
+      <section>
+        <h2 className="text-xl font-semibold">Counts</h2>
+        <ul className="mt-2 grid gap-2 text-sm md:grid-cols-2">
+          {BUCKETS.map(({ key, manifest }) => (
+            <li key={key} className="flex items-center justify-between rounded border border-neutral-200 px-3 py-2 dark:border-neutral-700">
+              <span className="font-semibold">{key}</span>
+              <span className="font-mono">{manifest.files.length}</span>
             </li>
           ))}
+          <li className="flex items-center justify-between rounded border border-neutral-200 px-3 py-2 font-semibold dark:border-neutral-700">
+            <span>Total tracked</span>
+            <span className="font-mono">{totalFiles}</span>
+          </li>
         </ul>
-        <p>Total classified files: {total}</p>
       </section>
 
-      {BUCKETS.map((entry) => (
-        <section key={`section-${entry.key}`} className="game-discovery__bucket">
-          <h2>
-            {entry.key} <small>(generated {formatTimestamp(entry.manifest.generatedAt)})</small>
-          </h2>
-          <TopFiles manifest={entry.manifest} />
-        </section>
-      ))}
+      <ResolvedOriginalScreens />
 
-      <OriginalResolutionDetails />
+      <section className="space-y-8">
+        {BUCKETS.map(({ key, manifest }) => (
+          <article key={key} className="space-y-4">
+            <div>
+              <h2 className="text-xl font-semibold">{key}</h2>
+              <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                Showing up to {MAX_FILES} of {manifest.files.length} files.
+              </p>
+            </div>
+            <FilesList manifest={manifest} />
+          </article>
+        ))}
+      </section>
+
       <OriginalHints />
-    </div>
+    </main>
   );
 }
