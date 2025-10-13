@@ -1,55 +1,27 @@
 import type { Pack, WordEntry } from '../types';
 
-interface PackModule {
-  default: WordEntry[];
+function derivePackId(filename: string): string {
+  const match = filename.match(/pack-(\d+)/i);
+  return match ? `pack-${match[1]}` : filename.replace(/\.json$/, '');
 }
 
-const packModules = import.meta.glob<PackModule>('../labeled-data/*.json', {
-  eager: true
-});
-
-let cache: Pack[] | null = null;
-
-function toPackId(filename: string): string {
-  const base = filename.replace(/\.json$/i, '');
-  const withoutPrefix = base.replace(/^the-good-word-/, '');
-  const parts = withoutPrefix.split('-').filter(Boolean);
-  if (parts[0] === 'pack' && parts[1]) {
-    return `pack-${parts[1]}`;
-  }
-  if (parts.length === 0) {
-    return base;
-  }
-  return parts[0];
-}
-
-function toLabel(filename: string): string {
-  const base = filename.replace(/\.json$/i, '');
-  const words = base.split('-').filter(Boolean);
-  return words
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
-}
-
-function getFileName(path: string): string {
-  const segments = path.split('/');
-  return segments[segments.length - 1];
+function deriveLabel(filename: string): string {
+  return filename
+    .replace(/\.json$/, '')
+    .replace(/-/g, ' ')
+    .replace(/\b\w/g, (l) => l.toUpperCase());
 }
 
 export async function loadAllPacks(): Promise<Pack[]> {
-  if (cache) {
-    return cache;
+  const modules = import.meta.glob('../game thingss/*.json');
+  const packs: Pack[] = [];
+  for (const path in modules) {
+    const mod: any = await modules[path]();
+    const entries: WordEntry[] = mod.default || mod;
+    const id = derivePackId(path.split('/').pop() || '');
+    const label = deriveLabel(path.split('/').pop() || '');
+    packs.push({ id, label, entries });
   }
-
-  const packs: Pack[] = Object.entries(packModules).map(([path, mod]) => {
-    const fileName = getFileName(path);
-    return {
-      id: toPackId(fileName),
-      label: toLabel(fileName),
-      entries: Array.isArray(mod.default) ? mod.default : []
-    } satisfies Pack;
-  });
-
-  cache = packs.sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true }));
-  return cache;
+  packs.sort((a, b) => a.id.localeCompare(b.id));
+  return packs;
 }
