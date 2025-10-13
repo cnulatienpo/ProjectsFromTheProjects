@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2025-10-13T15:26:23.198Z",
+  "generatedAt": "2025-10-13T17:07:45.630Z",
   "files": [
     "public/data/cut_games/beats_index.json",
     "public/data/cut_games/catalog.json",
@@ -28,6 +28,7 @@
     "src/pages/Game.tsx",
     "src/pages/GameRoot.tsx",
     "src/pages/SigilSyntaxRoot.tsx",
+    "src/pages/__games.tsx",
     "src/server/index.ts",
     "src/server/routes/cutGames.ts",
     "src/styles/cutgames.css"
@@ -61,6 +62,7 @@
       "src/pages/CutGamesPlay.tsx",
       "src/pages/Game.tsx",
       "src/pages/GameRoot.tsx",
+      "src/pages/__games.tsx",
       "src/server/routes/cutGames.ts",
       "src/styles/cutgames.css"
     ],

@@ -6,13 +6,27 @@ export default function SigilSyntaxHome() {
   const screens = useMemo(() => resolveOriginalScreens(), []);
 
   useEffect(() => {
+    let cancelled = false;
     if (typeof window !== "undefined") {
-      console.info("[sigil&syntax] launching ORIGINAL");
+      console.info("[sigil&syntax] launching ORIGINAL home");
     }
     const path = screens.home || screens.play || screens.fallbacks[0];
     if (path) {
-      loadComponent(path).then(setComp);
+      loadComponent(path)
+        .then((component) => {
+          if (!cancelled) {
+            setComp(() => component);
+          }
+        })
+        .catch((error) => {
+          if (!cancelled) {
+            console.error("[sigil&syntax] failed to load home", path, error);
+          }
+        });
     }
+    return () => {
+      cancelled = true;
+    };
   }, [screens]);
 
   if (!Comp) {

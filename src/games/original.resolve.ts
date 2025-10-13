@@ -13,7 +13,7 @@ export type Resolved = {
   debug: { tried: string[] };
 };
 
-const COMPONENT_EXTENSIONS = [".tsx", ".jsx", ".js"];
+const COMPONENT_EXTENSIONS = [".tsx", ".jsx", ".js", ".ts"];
 
 const manifestFiles = originalManifest.files ?? [];
 const componentFiles = manifestFiles.filter((file) =>
@@ -62,11 +62,13 @@ function findByPattern(pattern: RegExp, debugLabel: string, debug: string[]): st
 
 function toModuleSpecifier(modulePath: string): string | null {
   const normalized = normalizePath(modulePath);
-  const withoutExtension = normalized.replace(/\.[^.]+$/, "");
-  if (normalized.startsWith("src/")) {
-    return `@/${withoutExtension.slice(4)}`;
+  if (!normalized.startsWith("src/")) {
+    return null;
   }
-  return null;
+
+  const relative = normalized.slice("src/".length);
+  const specifier = `../${relative}`;
+  return specifier;
 }
 
 function isLikelyComponent(exportName: string, value: unknown): value is ComponentType<any> {
@@ -109,7 +111,11 @@ export function resolveOriginalScreens(): Resolved {
     Array.from(selected.values()).filter((value): value is string => Boolean(value)),
   );
 
-  const fallbacks = componentFiles.filter((file) => !used.has(file)).slice(0, 5);
+  const remaining = componentFiles.filter((file) => !used.has(file));
+  const fallbackTarget = remaining.length === 0
+    ? 0
+    : Math.min(remaining.length, Math.max(3, Math.min(5, remaining.length)));
+  const fallbacks = remaining.slice(0, fallbackTarget);
 
   return {
     home: selected.get("home") ?? undefined,
