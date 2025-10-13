@@ -1,2 +1,6 @@
 @import "tailwindcss";
 /* leave empty below; do NOT use @apply here */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
