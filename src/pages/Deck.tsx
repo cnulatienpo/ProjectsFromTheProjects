@@ -3,7 +3,6 @@ import { useParams, Link } from 'react-router-dom';
 import { loadAllPacks } from '../data/loadPacks';
 import type { Pack } from '../types';
 import { WordCard } from '../components/WordCard';
-import { getNextPrompt } from '../../server/game thingss/prompts';
 
 export function Deck() {
   const { id } = useParams<{ id: string }>();
@@ -62,6 +61,4 @@ export function Deck() {
   );
 }
 
-export default function Deck() {
-  return <div>📖 Dictionary Game goes here</div>;
-}
+export default Deck;

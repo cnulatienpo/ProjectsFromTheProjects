@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchBeats, fetchCatalog, fetchPractice } from "../lib/cutGamesClient";
+import { fetchBeats, fetchCatalog, fetchPractice, type PracticeItem } from "../lib/cutGamesClient";
 
 type CatalogSummary = {
     tweetrunkCount?: number;
@@ -11,18 +11,11 @@ type CatalogSummary = {
     [key: string]: unknown;
 };
 
-type PracticeRow = {
-    id: string | number;
-    scene: string;
-    beat?: string;
-    pitfall?: string;
-};
-
 export default function CutGamesDebug() {
     const [catalog, setCatalog] = useState<CatalogSummary | null>(null);
     const [beats, setBeats] = useState<any[]>([]);
-    const [good, setGood] = useState<PracticeRow[]>([]);
-    const [bad, setBad] = useState<PracticeRow[]>([]);
+    const [good, setGood] = useState<PracticeItem[]>([]);
+    const [bad, setBad] = useState<PracticeItem[]>([]);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
@@ -30,10 +23,10 @@ export default function CutGamesDebug() {
         (async () => {
             try {
                 const [cat, beatsIndex, goodRows, badRows] = await Promise.all([
-                    fetchCatalog<CatalogSummary>(),
-                    fetchBeats<any[]>(),
-                    fetchPractice<PracticeRow[]>({ mode: "good" }),
-                    fetchPractice<PracticeRow[]>({ mode: "bad" })
+                    fetchCatalog(),
+                    fetchBeats(),
+                    fetchPractice({ mode: "good" }),
+                    fetchPractice({ mode: "bad" })
                 ]);
                 if (cancelled) return;
                 setCatalog(cat);

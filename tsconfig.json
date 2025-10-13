@@ -7,6 +7,16 @@
         "resolveJsonModule": true,
         "strict": true,
         "esModuleInterop": true,
+        "skipLibCheck": true,
+        "lib": [
+            "DOM",
+            "DOM.Iterable",
+            "ES2023"
+        ],
+        "types": [
+            "node",
+            "@playwright/test"
+        ],
         "typeRoots": [
             "./types",
             "./node_modules/@types"
@@ -17,5 +27,24 @@
                 "src/*"
             ]
         }
-    }
+    },
+    "include": [
+        "src",
+        "tests",
+        "types",
+        "scripts/**/*.ts",
+        "scripts/**/*.tsx",
+        "vite.config.ts",
+        "playwright.config.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "app",
+        "docs",
+        "literary-deviousness",
+        "server",
+        "_archive",
+        "api-service",
+        "library"
+    ]
 }
