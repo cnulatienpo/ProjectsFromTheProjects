@@ -5,7 +5,11 @@ export type FunhouseGameType =
   | "experimental"
   | string;
 
-export type FunhouseComponentKey = "TellEverythingShowNothing" | string;
+export type FunhouseComponentKey =
+  | "FreeWriteTextBox"
+  | "BeatComboMachine"
+  | "VoiceImpersonatorChallenge"
+  | string;
 
 export interface FunhousePrompt {
   id: string;
