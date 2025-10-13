@@ -1,10 +1,10 @@
 import { useEffect, useState, type JSX } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { getSaveById, loadSaves, type FunhouseSaveEntry } from "@/utils/funhouseStorage";
-import { formatTimeAgo } from "@/utils/timeAgo";
+import { Button } from "../components/ui/button";
+import { Textarea } from "../components/ui/textarea";
+import { getSaveById, loadSaves, type FunhouseSaveEntry } from "../utils/funhouseStorage";
+import { formatTimeAgo } from "../utils/timeAgo";
 
 export default function FunhouseReplay(): JSX.Element {
   const { id } = useParams<{ id: string }>();

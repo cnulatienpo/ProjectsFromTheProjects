@@ -1,7 +1,7 @@
 import type { JSX } from "react";
 import { Link } from "react-router-dom";
 
-import { funhousePrompts } from "@/data/funhouse-prompts";
+import { funhousePrompts } from "../data/funhouse-prompts";
 
 function ParagraphList({ text }: { text: string }): JSX.Element {
   const lines = text.split(/\n+/).filter((line) => line.trim().length > 0);

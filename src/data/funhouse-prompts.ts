@@ -1,6 +1,6 @@
-import foundationPromptsJson from "@/data/foundation-prompts.json";
-import cutPromptsJson from "@/data/cut-prompts.json";
-import dictionaryPromptsJson from "@/data/dictionary-prompts.json";
+import foundationPromptsJson from "./foundation-prompts.json";
+import cutPromptsJson from "./cut-prompts.json";
+import dictionaryPromptsJson from "./dictionary-prompts.json";
 
 export type PromptSource = "foundation" | "cut" | "dictionary";
 

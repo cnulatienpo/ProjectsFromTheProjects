@@ -1,8 +1,8 @@
 import { useEffect, useState, type JSX } from "react";
 import { Link } from "react-router-dom";
 
-import { loadSaves, type FunhouseSaveEntry } from "@/utils/funhouseStorage";
-import { formatTimeAgo } from "@/utils/timeAgo";
+import { loadSaves, type FunhouseSaveEntry } from "../utils/funhouseStorage";
+import { formatTimeAgo } from "../utils/timeAgo";
 
 function truncate(text: string, maxLength = 100): string {
   if (text.length <= maxLength) {

@@ -1,7 +1,7 @@
-import foundation from "@/data/foundation-skills.json";
-import dictionary from "@/data/dictionary-skills.json";
-import cut from "@/data/cut-skills.json";
-import funhouse from "@/data/funhouse-prompts.json";
+import foundation from "../data/foundation-skills.json";
+import dictionary from "../data/dictionary-skills.json";
+import cut from "../data/cut-skills.json";
+import funhouse from "../data/funhouse-prompts.json";
 
 type SkillRecord = { id?: unknown } | string;
 

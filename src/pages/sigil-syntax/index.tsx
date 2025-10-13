@@ -1,7 +1,7 @@
 import React, { Suspense, useEffect, useMemo, useState } from "react";
-import { loadComponent, resolveOriginalScreens } from "@/games/original.resolve";
-import { Guard } from "@/games/guard";
-import { GameMenu } from "@/games/menu";
+import { loadComponent, resolveOriginalScreens } from "../../games/original.resolve";
+import { Guard } from "../../games/guard";
+import { GameMenu } from "../../games/menu";
 
 export default function SigilSyntaxHome() {
   const [Comp, setComp] = useState<React.ComponentType<any> | null>(null);
