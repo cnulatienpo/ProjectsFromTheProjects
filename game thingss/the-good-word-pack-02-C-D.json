@@ -1,0 +1,1856 @@
+[
+  {
+    "word": "cabin",
+    "from": {
+      "language": "Old French",
+      "root": "cabane",
+      "gloss": "hut"
+    },
+    "literal": "small simple house"
+  },
+  {
+    "word": "cable",
+    "from": {
+      "language": "Latin via French",
+      "root": "capulum/cable",
+      "gloss": "rope"
+    },
+    "literal": "thick rope; wire bundle"
+  },
+  {
+    "word": "cake",
+    "from": {
+      "language": "Old Norse",
+      "root": "kaka",
+      "gloss": "cake"
+    },
+    "literal": "sweet baked round"
+  },
+  {
+    "word": "call",
+    "from": {
+      "language": "Old Norse/English",
+      "root": "kalla",
+      "gloss": "to call"
+    },
+    "literal": "cry out; phone"
+  },
+  {
+    "word": "calm",
+    "from": {
+      "language": "Old French via Latin",
+      "root": "cauma/calm",
+      "gloss": "heat → quiet sea"
+    },
+    "literal": "quiet; not agitated"
+  },
+  {
+    "word": "camera",
+    "from": {
+      "language": "Latin",
+      "root": "camera",
+      "gloss": "vaulted room → chamber"
+    },
+    "literal": "image-making device"
+  },
+  {
+    "word": "camp",
+    "from": {
+      "language": "Latin via French",
+      "root": "campus/camp",
+      "gloss": "field"
+    },
+    "literal": "temporary outdoor place"
+  },
+  {
+    "word": "can",
+    "from": {
+      "language": "Old English",
+      "root": "cunnan",
+      "gloss": "to know how"
+    },
+    "literal": "be able to"
+  },
+  {
+    "word": "candle",
+    "from": {
+      "language": "Latin via French",
+      "root": "candela",
+      "gloss": "light, candle"
+    },
+    "literal": "wax light stick"
+  },
+  {
+    "word": "candy",
+    "from": {
+      "language": "Arabic via French",
+      "root": "qand",
+      "gloss": "sugar"
+    },
+    "literal": "sweet confection"
+  },
+  {
+    "word": "cap",
+    "from": {
+      "language": "Old English",
+      "root": "cæppe",
+      "gloss": "cap"
+    },
+    "literal": "soft head covering"
+  },
+  {
+    "word": "cape",
+    "from": {
+      "language": "Latin via French",
+      "root": "cappa/cape",
+      "gloss": "cloak"
+    },
+    "literal": "sleeveless cloak; headland"
+  },
+  {
+    "word": "capital (city)",
+    "from": {
+      "language": "Latin via French",
+      "root": "caput/capital",
+      "gloss": "head"
+    },
+    "literal": "head city of a state"
+  },
+  {
+    "word": "captain",
+    "from": {
+      "language": "Latin via French",
+      "root": "capitaneus",
+      "gloss": "chief, head"
+    },
+    "literal": "leader; ship commander"
+  },
+  {
+    "word": "car",
+    "from": {
+      "language": "Latin via French",
+      "root": "carrus",
+      "gloss": "wagon"
+    },
+    "literal": "motor vehicle"
+  },
+  {
+    "word": "card",
+    "from": {
+      "language": "Greek via Latin",
+      "root": "charta",
+      "gloss": "leaf of paper"
+    },
+    "literal": "stiff paper piece"
+  },
+  {
+    "word": "care",
+    "from": {
+      "language": "Old English",
+      "root": "caru",
+      "gloss": "sorrow, concern"
+    },
+    "literal": "concern; look after"
+  },
+  {
+    "word": "carry",
+    "from": {
+      "language": "Old French",
+      "root": "carier",
+      "gloss": "to transport"
+    },
+    "literal": "bear from place to place"
+  },
+  {
+    "word": "cart",
+    "from": {
+      "language": "Old Norse",
+      "root": "kartr",
+      "gloss": "two-wheeled wagon"
+    },
+    "literal": "small vehicle for goods"
+  },
+  {
+    "word": "carve",
+    "from": {
+      "language": "Old English",
+      "root": "ceorfan",
+      "gloss": "to cut"
+    },
+    "literal": "cut into a shape"
+  },
+  {
+    "word": "case",
+    "from": {
+      "language": "Latin via French",
+      "root": "capsa/case",
+      "gloss": "box"
+    },
+    "literal": "container; instance"
+  },
+  {
+    "word": "castle",
+    "from": {
+      "language": "Latin via French",
+      "root": "castellum",
+      "gloss": "fortified place"
+    },
+    "literal": "fort house"
+  },
+  {
+    "word": "cat",
+    "from": {
+      "language": "Late Latin via OE",
+      "root": "cattus",
+      "gloss": "cat"
+    },
+    "literal": "small feline"
+  },
+  {
+    "word": "catch",
+    "from": {
+      "language": "Latin via French",
+      "root": "captiare/cachier",
+      "gloss": "to seize"
+    },
+    "literal": "seize; receive a throw"
+  },
+  {
+    "word": "cattle",
+    "from": {
+      "language": "Old French",
+      "root": "chatel",
+      "gloss": "property"
+    },
+    "literal": "farm animals"
+  },
+  {
+    "word": "cause",
+    "from": {
+      "language": "Latin via French",
+      "root": "causa",
+      "gloss": "reason"
+    },
+    "literal": "reason; bring about"
+  },
+  {
+    "word": "cave",
+    "from": {
+      "language": "Latin via French",
+      "root": "cavus/cave",
+      "gloss": "hollow"
+    },
+    "literal": "natural hollow in rock"
+  },
+  {
+    "word": "ceiling",
+    "from": {
+      "language": "Old French",
+      "root": "ceil",
+      "gloss": "sky → ceiling"
+    },
+    "literal": "upper inside surface"
+  },
+  {
+    "word": "cell",
+    "from": {
+      "language": "Latin via French",
+      "root": "cella",
+      "gloss": "small room"
+    },
+    "literal": "small room; living unit"
+  },
+  {
+    "word": "cent",
+    "from": {
+      "language": "Latin via French",
+      "root": "centum/cent",
+      "gloss": "hundred"
+    },
+    "literal": "one hundredth of a dollar"
+  },
+  {
+    "word": "center",
+    "from": {
+      "language": "Greek via Latin",
+      "root": "kentron",
+      "gloss": "sharp point"
+    },
+    "literal": "middle point"
+  },
+  {
+    "word": "century",
+    "from": {
+      "language": "Latin via French",
+      "root": "saeculum/centuria",
+      "gloss": "age; group of 100"
+    },
+    "literal": "one hundred years"
+  },
+  {
+    "word": "certain",
+    "from": {
+      "language": "Latin via French",
+      "root": "certus",
+      "gloss": "settled, sure"
+    },
+    "literal": "sure; fixed"
+  },
+  {
+    "word": "chain",
+    "from": {
+      "language": "Latin via French",
+      "root": "catena/chaîne",
+      "gloss": "chain"
+    },
+    "literal": "linked metal series"
+  },
+  {
+    "word": "chair",
+    "from": {
+      "language": "Greek via French",
+      "root": "cathedra/chaire",
+      "gloss": "seat"
+    },
+    "literal": "seat with back"
+  },
+  {
+    "word": "chalk",
+    "from": {
+      "language": "Old English",
+      "root": "cealc",
+      "gloss": "chalk, lime"
+    },
+    "literal": "soft white rock for marking"
+  },
+  {
+    "word": "chance",
+    "from": {
+      "language": "Latin via French",
+      "root": "cadere/chance",
+      "gloss": "to fall → happen"
+    },
+    "literal": "luck; possibility"
+  },
+  {
+    "word": "change",
+    "from": {
+      "language": "Latin via French",
+      "root": "cambiare/changer",
+      "gloss": "to exchange"
+    },
+    "literal": "make different; coins"
+  },
+  {
+    "word": "cheap",
+    "from": {
+      "language": "Old English",
+      "root": "ceap",
+      "gloss": "trade, bargain"
+    },
+    "literal": "low in price"
+  },
+  {
+    "word": "cheek",
+    "from": {
+      "language": "Old English",
+      "root": "ceace",
+      "gloss": "cheek"
+    },
+    "literal": "side of the face"
+  },
+  {
+    "word": "cheese",
+    "from": {
+      "language": "Latin via OE",
+      "root": "caseus",
+      "gloss": "cheese"
+    },
+    "literal": "curd food from milk"
+  },
+  {
+    "word": "chest",
+    "from": {
+      "language": "Old English",
+      "root": "ciest",
+      "gloss": "box; chest"
+    },
+    "literal": "box; upper body front"
+  },
+  {
+    "word": "chicken",
+    "from": {
+      "language": "Old English",
+      "root": "cicen",
+      "gloss": "young fowl"
+    },
+    "literal": "domestic bird"
+  },
+  {
+    "word": "chief",
+    "from": {
+      "language": "Latin via French",
+      "root": "caput/chef",
+      "gloss": "head"
+    },
+    "literal": "leader; main"
+  },
+  {
+    "word": "child",
+    "from": {
+      "language": "Old English",
+      "root": "cild",
+      "gloss": "child"
+    },
+    "literal": "young person"
+  },
+  {
+    "word": "chimney",
+    "from": {
+      "language": "Greek via French",
+      "root": "kaminos/cheminée",
+      "gloss": "furnace; flue"
+    },
+    "literal": "smoke passage"
+  },
+  {
+    "word": "chin",
+    "from": {
+      "language": "Old English",
+      "root": "cin",
+      "gloss": "chin"
+    },
+    "literal": "lower jaw front"
+  },
+  {
+    "word": "choose",
+    "from": {
+      "language": "Old English",
+      "root": "ceosan",
+      "gloss": "to choose"
+    },
+    "literal": "select"
+  },
+  {
+    "word": "chop",
+    "from": {
+      "language": "Old Norse/English",
+      "root": "kopa? → chop",
+      "gloss": "to cut"
+    },
+    "literal": "cut into pieces"
+  },
+  {
+    "word": "circle",
+    "from": {
+      "language": "Latin via French",
+      "root": "circulus",
+      "gloss": "ring"
+    },
+    "literal": "round shape"
+  },
+  {
+    "word": "city",
+    "from": {
+      "language": "Latin via French",
+      "root": "civitas/cité",
+      "gloss": "citizenship; city"
+    },
+    "literal": "large town"
+  },
+  {
+    "word": "claim",
+    "from": {
+      "language": "Latin via French",
+      "root": "clamare/claimer",
+      "gloss": "to cry out → claim"
+    },
+    "literal": "assert; demand"
+  },
+  {
+    "word": "class",
+    "from": {
+      "language": "Latin via French",
+      "root": "classis",
+      "gloss": "group"
+    },
+    "literal": "group; school session"
+  },
+  {
+    "word": "clay",
+    "from": {
+      "language": "Old English",
+      "root": "clæg",
+      "gloss": "clay"
+    },
+    "literal": "sticky earth"
+  },
+  {
+    "word": "clean",
+    "from": {
+      "language": "Old English",
+      "root": "clǣne",
+      "gloss": "clean"
+    },
+    "literal": "free of dirt; pure"
+  },
+  {
+    "word": "clear",
+    "from": {
+      "language": "Latin via French",
+      "root": "clarus/cler",
+      "gloss": "bright, clear"
+    },
+    "literal": "easy to see; obvious"
+  },
+  {
+    "word": "clerk",
+    "from": {
+      "language": "Greek via Old Eng.",
+      "root": "klērikos/clerec",
+      "gloss": "clergyman, scribe"
+    },
+    "literal": "office worker; scribe"
+  },
+  {
+    "word": "clever",
+    "from": {
+      "language": "English",
+      "root": "clever",
+      "gloss": "skilled"
+    },
+    "literal": "quick to learn"
+  },
+  {
+    "word": "cliff",
+    "from": {
+      "language": "Old Norse/English",
+      "root": "klif",
+      "gloss": "steep rock"
+    },
+    "literal": "steep rock face"
+  },
+  {
+    "word": "climb",
+    "from": {
+      "language": "Old English",
+      "root": "climban",
+      "gloss": "to climb"
+    },
+    "literal": "go up using hands/feet"
+  },
+  {
+    "word": "clock",
+    "from": {
+      "language": "Medieval Latin via Fr.",
+      "root": "clocca",
+      "gloss": "bell"
+    },
+    "literal": "time-measuring device"
+  },
+  {
+    "word": "close (near)",
+    "from": {
+      "language": "Latin via French",
+      "root": "clausus/clos",
+      "gloss": "shut, enclosed"
+    },
+    "literal": "near in space or time"
+  },
+  {
+    "word": "cloth",
+    "from": {
+      "language": "Old English",
+      "root": "clāð",
+      "gloss": "cloth"
+    },
+    "literal": "woven fabric"
+  },
+  {
+    "word": "cloud",
+    "from": {
+      "language": "Old English",
+      "root": "clud",
+      "gloss": "mass, rock → cloud"
+    },
+    "literal": "sky vapor mass"
+  },
+  {
+    "word": "club",
+    "from": {
+      "language": "Old Norse/English",
+      "root": "klubba",
+      "gloss": "stick, club"
+    },
+    "literal": "heavy stick; group"
+  },
+  {
+    "word": "coal",
+    "from": {
+      "language": "Old English",
+      "root": "col",
+      "gloss": "coal"
+    },
+    "literal": "black rock fuel"
+  },
+  {
+    "word": "coast",
+    "from": {
+      "language": "Latin via French",
+      "root": "costa/coste",
+      "gloss": "rib, side → coast"
+    },
+    "literal": "land by the sea"
+  },
+  {
+    "word": "coat",
+    "from": {
+      "language": "Latin via French",
+      "root": "cotta",
+      "gloss": "outer garment"
+    },
+    "literal": "outer garment"
+  },
+  {
+    "word": "coffee",
+    "from": {
+      "language": "Arabic via Turkish/It.",
+      "root": "qahwa/caffè",
+      "gloss": "coffee"
+    },
+    "literal": "drink from roasted beans"
+  },
+  {
+    "word": "coin",
+    "from": {
+      "language": "Latin via French",
+      "root": "cuneus/coin",
+      "gloss": "wedge → die-stamp"
+    },
+    "literal": "metal money piece"
+  },
+  {
+    "word": "cold",
+    "from": {
+      "language": "Old English",
+      "root": "ceald",
+      "gloss": "cold"
+    },
+    "literal": "low temperature"
+  },
+  {
+    "word": "collect",
+    "from": {
+      "language": "Latin via French",
+      "root": "colligere",
+      "gloss": "to gather together"
+    },
+    "literal": "gather"
+  },
+  {
+    "word": "color",
+    "from": {
+      "language": "Latin via French",
+      "root": "color",
+      "gloss": "color"
+    },
+    "literal": "hue, shade"
+  },
+  {
+    "word": "comb",
+    "from": {
+      "language": "Old English",
+      "root": "camb",
+      "gloss": "comb"
+    },
+    "literal": "toothed tool for hair"
+  },
+  {
+    "word": "come",
+    "from": {
+      "language": "Old English",
+      "root": "cuman",
+      "gloss": "to come"
+    },
+    "literal": "approach; arrive"
+  },
+  {
+    "word": "comfort",
+    "from": {
+      "language": "Latin via French",
+      "root": "confortare",
+      "gloss": "to strengthen"
+    },
+    "literal": "ease; console"
+  },
+  {
+    "word": "common",
+    "from": {
+      "language": "Latin via French",
+      "root": "communis",
+      "gloss": "shared"
+    },
+    "literal": "ordinary; shared"
+  },
+  {
+    "word": "company",
+    "from": {
+      "language": "Latin via French",
+      "root": "companio",
+      "gloss": "bread-mate"
+    },
+    "literal": "group; business"
+  },
+  {
+    "word": "compare",
+    "from": {
+      "language": "Latin via French",
+      "root": "comparare",
+      "gloss": "to pair with"
+    },
+    "literal": "look at differences/sameness"
+  },
+  {
+    "word": "come-on",
+    "from": {
+      "language": "English",
+      "root": "come on",
+      "gloss": "invitation"
+    },
+    "literal": "enticing offer"
+  },
+  {
+    "word": "complete",
+    "from": {
+      "language": "Latin via French",
+      "root": "completus",
+      "gloss": "filled up"
+    },
+    "literal": "finished; whole"
+  },
+  {
+    "word": "compose",
+    "from": {
+      "language": "Latin via French",
+      "root": "componere",
+      "gloss": "to put together"
+    },
+    "literal": "create; arrange"
+  },
+  {
+    "word": "control",
+    "from": {
+      "language": "Latin via French",
+      "root": "contra + rotulus",
+      "gloss": "check against a roll"
+    },
+    "literal": "direct; regulate"
+  },
+  {
+    "word": "cook",
+    "from": {
+      "language": "Latin via Old Eng.",
+      "root": "coquere/cocian",
+      "gloss": "to cook"
+    },
+    "literal": "prepare food by heat"
+  },
+  {
+    "word": "cool",
+    "from": {
+      "language": "Old English",
+      "root": "cōl",
+      "gloss": "cool"
+    },
+    "literal": "slightly cold"
+  },
+  {
+    "word": "copper",
+    "from": {
+      "language": "Latin via Old Eng.",
+      "root": "cuprum",
+      "gloss": "copper"
+    },
+    "literal": "reddish metal"
+  },
+  {
+    "word": "copy",
+    "from": {
+      "language": "Latin via French",
+      "root": "copia",
+      "gloss": "plenty → transcript"
+    },
+    "literal": "duplicate; imitate"
+  },
+  {
+    "word": "corn",
+    "from": {
+      "language": "Old English",
+      "root": "corn",
+      "gloss": "grain"
+    },
+    "literal": "grain; in US: maize"
+  },
+  {
+    "word": "corner",
+    "from": {
+      "language": "Latin via French",
+      "root": "corne/corner",
+      "gloss": "horn → angle"
+    },
+    "literal": "where two lines meet"
+  },
+  {
+    "word": "correct",
+    "from": {
+      "language": "Latin via French",
+      "root": "corrigere",
+      "gloss": "to set right"
+    },
+    "literal": "free of error"
+  },
+  {
+    "word": "cost",
+    "from": {
+      "language": "Latin via French",
+      "root": "constare",
+      "gloss": "to stand together (amount)"
+    },
+    "literal": "price to pay"
+  },
+  {
+    "word": "cotton",
+    "from": {
+      "language": "Arabic via French",
+      "root": "qutn/coton",
+      "gloss": "cotton plant"
+    },
+    "literal": "soft white fiber"
+  },
+  {
+    "word": "cough",
+    "from": {
+      "language": "Old English",
+      "root": "cohhian",
+      "gloss": "to cough"
+    },
+    "literal": "expel air sharply"
+  },
+  {
+    "word": "could",
+    "from": {
+      "language": "Old English",
+      "root": "cunnan (past)",
+      "gloss": "knew how"
+    },
+    "literal": "was able to"
+  },
+  {
+    "word": "count",
+    "from": {
+      "language": "Latin via French",
+      "root": "computare/contare",
+      "gloss": "to reckon"
+    },
+    "literal": "add up; consider"
+  },
+  {
+    "word": "country",
+    "from": {
+      "language": "Latin via French",
+      "root": "contra/contrée",
+      "gloss": "land against city"
+    },
+    "literal": "nation; rural area"
+  },
+  {
+    "word": "course",
+    "from": {
+      "language": "Latin via French",
+      "root": "currere/cours",
+      "gloss": "to run"
+    },
+    "literal": "path; class"
+  },
+  {
+    "word": "court",
+    "from": {
+      "language": "Latin via French",
+      "root": "cohors/corte",
+      "gloss": "enclosed yard"
+    },
+    "literal": "royal house; law place"
+  },
+  {
+    "word": "cousin",
+    "from": {
+      "language": "Latin via French",
+      "root": "consobrinus/cousin",
+      "gloss": "relative"
+    },
+    "literal": "child of an aunt/uncle"
+  },
+  {
+    "word": "cover",
+    "from": {
+      "language": "Latin via French",
+      "root": "cooperire/couvrir",
+      "gloss": "to cover"
+    },
+    "literal": "put over; include"
+  },
+  {
+    "word": "cow",
+    "from": {
+      "language": "Old English",
+      "root": "cū",
+      "gloss": "cow"
+    },
+    "literal": "adult female cattle"
+  },
+  {
+    "word": "crack",
+    "from": {
+      "language": "Old Norse/English",
+      "root": "kraka",
+      "gloss": "to creak"
+    },
+    "literal": "split line; sharp sound"
+  },
+  {
+    "word": "craft",
+    "from": {
+      "language": "Old English",
+      "root": "cræft",
+      "gloss": "skill"
+    },
+    "literal": "skill; trade"
+  },
+  {
+    "word": "crash",
+    "from": {
+      "language": "Imitative",
+      "root": "crash",
+      "gloss": "loud smash"
+    },
+    "literal": "violent collision"
+  },
+  {
+    "word": "crawl",
+    "from": {
+      "language": "Old Norse/English",
+      "root": "krafla? → crawl",
+      "gloss": "to creep"
+    },
+    "literal": "move on hands/knees"
+  },
+  {
+    "word": "crazy",
+    "from": {
+      "language": "English",
+      "root": "craze",
+      "gloss": "crack → craze"
+    },
+    "literal": "insane; very enthusiastic"
+  },
+  {
+    "word": "cream",
+    "from": {
+      "language": "Old French",
+      "root": "creme",
+      "gloss": "cream"
+    },
+    "literal": "thick part of milk"
+  },
+  {
+    "word": "create",
+    "from": {
+      "language": "Latin via French",
+      "root": "creare",
+      "gloss": "to bring forth"
+    },
+    "literal": "make"
+  },
+  {
+    "word": "creek",
+    "from": {
+      "language": "Old Norse/English",
+      "root": "kriki",
+      "gloss": "bend, nook → creek"
+    },
+    "literal": "small stream"
+  },
+  {
+    "word": "crew",
+    "from": {
+      "language": "Old French",
+      "root": "creue",
+      "gloss": "increase, recruit"
+    },
+    "literal": "group working together"
+  },
+  {
+    "word": "crisp",
+    "from": {
+      "language": "Latin via Old Eng.",
+      "root": "crispus",
+      "gloss": "curled → brittle"
+    },
+    "literal": "firm and brittle"
+  },
+  {
+    "word": "crop",
+    "from": {
+      "language": "Old English",
+      "root": "crop",
+      "gloss": "head → yield"
+    },
+    "literal": "harvest; plant grown"
+  },
+  {
+    "word": "cross",
+    "from": {
+      "language": "Latin via Norse/Eng.",
+      "root": "crux/kross",
+      "gloss": "cross"
+    },
+    "literal": "two lines at right angles"
+  },
+  {
+    "word": "crowd",
+    "from": {
+      "language": "Old Norse/English",
+      "root": "krúð? → crowd",
+      "gloss": "press together"
+    },
+    "literal": "many people together"
+  },
+  {
+    "word": "crown",
+    "from": {
+      "language": "Latin via French",
+      "root": "corona/corone",
+      "gloss": "wreath"
+    },
+    "literal": "royal headpiece"
+  },
+  {
+    "word": "cruel",
+    "from": {
+      "language": "Latin via French",
+      "root": "crudelis/cruel",
+      "gloss": "hard-hearted"
+    },
+    "literal": "mean; causing pain"
+  },
+  {
+    "word": "crush",
+    "from": {
+      "language": "Old French",
+      "root": "ecraser/crush",
+      "gloss": "to break to pieces"
+    },
+    "literal": "press to break"
+  },
+  {
+    "word": "cry",
+    "from": {
+      "language": "Old French",
+      "root": "crier",
+      "gloss": "to shout"
+    },
+    "literal": "weep; call out"
+  },
+  {
+    "word": "cup",
+    "from": {
+      "language": "Old English",
+      "root": "cuppe",
+      "gloss": "cup"
+    },
+    "literal": "small drinking vessel"
+  },
+  {
+    "word": "cure",
+    "from": {
+      "language": "Latin via French",
+      "root": "cura/curer",
+      "gloss": "care"
+    },
+    "literal": "heal; preserve"
+  },
+  {
+    "word": "curious",
+    "from": {
+      "language": "Latin via French",
+      "root": "curiosus",
+      "gloss": "careful; inquisitive"
+    },
+    "literal": "wanting to know"
+  },
+  {
+    "word": "current",
+    "from": {
+      "language": "Latin via French",
+      "root": "currere/courant",
+      "gloss": "running"
+    },
+    "literal": "flowing; present"
+  },
+  {
+    "word": "curve",
+    "from": {
+      "language": "Latin via French",
+      "root": "curvus",
+      "gloss": "bent"
+    },
+    "literal": "bending line"
+  },
+  {
+    "word": "cushion",
+    "from": {
+      "language": "Old French",
+      "root": "coissin",
+      "gloss": "pad"
+    },
+    "literal": "soft support pad"
+  },
+  {
+    "word": "custom",
+    "from": {
+      "language": "Latin via French",
+      "root": "consuetudo/costume",
+      "gloss": "habit"
+    },
+    "literal": "usual practice"
+  },
+  {
+    "word": "dad",
+    "from": {
+      "language": "Child speech/Eng.",
+      "root": "dad",
+      "gloss": "father"
+    },
+    "literal": "father (informal)"
+  },
+  {
+    "word": "daily",
+    "from": {
+      "language": "Old English",
+      "root": "dæg + -lic",
+      "gloss": "day + like"
+    },
+    "literal": "every day"
+  },
+  {
+    "word": "damage",
+    "from": {
+      "language": "Old French",
+      "root": "damnage",
+      "gloss": "loss, hurt"
+    },
+    "literal": "harm; cost"
+  },
+  {
+    "word": "dance",
+    "from": {
+      "language": "Old French",
+      "root": "dancier",
+      "gloss": "to dance"
+    },
+    "literal": "move to music"
+  },
+  {
+    "word": "danger",
+    "from": {
+      "language": "Old French",
+      "root": "dangier",
+      "gloss": "power, control → peril"
+    },
+    "literal": "risk of harm"
+  },
+  {
+    "word": "dark",
+    "from": {
+      "language": "Old English",
+      "root": "deorc",
+      "gloss": "dark"
+    },
+    "literal": "little or no light"
+  },
+  {
+    "word": "date (time)",
+    "from": {
+      "language": "Latin via French",
+      "root": "datum",
+      "gloss": "given (day)"
+    },
+    "literal": "calendar day"
+  },
+  {
+    "word": "daughter",
+    "from": {
+      "language": "Old English",
+      "root": "dohtor",
+      "gloss": "daughter"
+    },
+    "literal": "female child"
+  },
+  {
+    "word": "dawn",
+    "from": {
+      "language": "Old English",
+      "root": "dagung",
+      "gloss": "day-ing"
+    },
+    "literal": "first light of day"
+  },
+  {
+    "word": "day",
+    "from": {
+      "language": "Old English",
+      "root": "dæg",
+      "gloss": "day"
+    },
+    "literal": "24 hours; daylight"
+  },
+  {
+    "word": "dead",
+    "from": {
+      "language": "Old English",
+      "root": "dēad",
+      "gloss": "dead"
+    },
+    "literal": "no longer living"
+  },
+  {
+    "word": "deal",
+    "from": {
+      "language": "Old English",
+      "root": "dǣlan",
+      "gloss": "to divide, deal"
+    },
+    "literal": "portion; agreement"
+  },
+  {
+    "word": "dear",
+    "from": {
+      "language": "Old English",
+      "root": "dēore",
+      "gloss": "precious"
+    },
+    "literal": "beloved; costly"
+  },
+  {
+    "word": "death",
+    "from": {
+      "language": "Old English",
+      "root": "dēaþ",
+      "gloss": "death"
+    },
+    "literal": "end of life"
+  },
+  {
+    "word": "decide",
+    "from": {
+      "language": "Latin via French",
+      "root": "decidere",
+      "gloss": "to cut off"
+    },
+    "literal": "make a choice"
+  },
+  {
+    "word": "deep",
+    "from": {
+      "language": "Old English",
+      "root": "dēop",
+      "gloss": "deep"
+    },
+    "literal": "far down; intense"
+  },
+  {
+    "word": "deer",
+    "from": {
+      "language": "Old English",
+      "root": "dēor",
+      "gloss": "animal → deer"
+    },
+    "literal": "hoofed forest animal"
+  },
+  {
+    "word": "defend",
+    "from": {
+      "language": "Latin via French",
+      "root": "defendere",
+      "gloss": "to ward off"
+    },
+    "literal": "protect from attack"
+  },
+  {
+    "word": "degree",
+    "from": {
+      "language": "Latin via French",
+      "root": "gradus/degré",
+      "gloss": "step"
+    },
+    "literal": "step; unit of measure"
+  },
+  {
+    "word": "delay",
+    "from": {
+      "language": "Old French",
+      "root": "deslaier",
+      "gloss": "to leave off"
+    },
+    "literal": "put off; lateness"
+  },
+  {
+    "word": "deliver",
+    "from": {
+      "language": "Latin via French",
+      "root": "de + liberare",
+      "gloss": "away + free"
+    },
+    "literal": "bring; set free"
+  },
+  {
+    "word": "demand",
+    "from": {
+      "language": "Latin via French",
+      "root": "demandare",
+      "gloss": "to entrust → ask"
+    },
+    "literal": "ask firmly; require"
+  },
+  {
+    "word": "dense",
+    "from": {
+      "language": "Latin via French",
+      "root": "densus",
+      "gloss": "thick"
+    },
+    "literal": "packed closely"
+  },
+  {
+    "word": "deny",
+    "from": {
+      "language": "Latin via French",
+      "root": "denegare/denier",
+      "gloss": "to refuse"
+    },
+    "literal": "say it isn’t so"
+  },
+  {
+    "word": "depend",
+    "from": {
+      "language": "Latin via French",
+      "root": "dependere",
+      "gloss": "to hang from"
+    },
+    "literal": "rely on"
+  },
+  {
+    "word": "describe",
+    "from": {
+      "language": "Latin via French",
+      "root": "describere",
+      "gloss": "to write down"
+    },
+    "literal": "tell what something is like"
+  },
+  {
+    "word": "desert (dry land)",
+    "from": {
+      "language": "Latin via French",
+      "root": "desertum",
+      "gloss": "abandoned"
+    },
+    "literal": "barren dry land"
+  },
+  {
+    "word": "deserve",
+    "from": {
+      "language": "Latin via French",
+      "root": "deservire",
+      "gloss": "to serve well"
+    },
+    "literal": "earn by merit"
+  },
+  {
+    "word": "design",
+    "from": {
+      "language": "Latin via French",
+      "root": "designare",
+      "gloss": "to mark out"
+    },
+    "literal": "plan; create a form"
+  },
+  {
+    "word": "desk",
+    "from": {
+      "language": "Latin via French",
+      "root": "desca",
+      "gloss": "table"
+    },
+    "literal": "writing table"
+  },
+  {
+    "word": "detail",
+    "from": {
+      "language": "Latin via French",
+      "root": "détailler",
+      "gloss": "to cut in pieces"
+    },
+    "literal": "small part; specify"
+  },
+  {
+    "word": "detect",
+    "from": {
+      "language": "Latin via French",
+      "root": "detegere",
+      "gloss": "to uncover"
+    },
+    "literal": "discover"
+  },
+  {
+    "word": "develop",
+    "from": {
+      "language": "French",
+      "root": "développer",
+      "gloss": "to unwrap"
+    },
+    "literal": "grow; bring out"
+  },
+  {
+    "word": "device",
+    "from": {
+      "language": "Old French",
+      "root": "devis",
+      "gloss": "division → plan"
+    },
+    "literal": "tool; invention"
+  },
+  {
+    "word": "devil",
+    "from": {
+      "language": "Greek via Latin",
+      "root": "diabolos",
+      "gloss": "slanderer"
+    },
+    "literal": "evil spirit (myth/religion)"
+  },
+  {
+    "word": "dew",
+    "from": {
+      "language": "Old English",
+      "root": "dēaw",
+      "gloss": "dew"
+    },
+    "literal": "morning moisture"
+  },
+  {
+    "word": "dial",
+    "from": {
+      "language": "Latin via French",
+      "root": "dies/dial",
+      "gloss": "day → sundial"
+    },
+    "literal": "face with marks"
+  },
+  {
+    "word": "diamond",
+    "from": {
+      "language": "Greek via French",
+      "root": "adamas/diamant",
+      "gloss": "unconquerable"
+    },
+    "literal": "hard precious stone"
+  },
+  {
+    "word": "diary",
+    "from": {
+      "language": "Latin via French",
+      "root": "dies/diarium",
+      "gloss": "day → daily record"
+    },
+    "literal": "daily record book"
+  },
+  {
+    "word": "dice",
+    "from": {
+      "language": "Latin via French",
+      "root": "datum/dé",
+      "gloss": "something given → die"
+    },
+    "literal": "small cubes for games"
+  },
+  {
+    "word": "did",
+    "from": {
+      "language": "Old English",
+      "root": "didan (past of do)",
+      "gloss": "did"
+    },
+    "literal": "performed"
+  },
+  {
+    "word": "die",
+    "from": {
+      "language": "Old Norse/English",
+      "root": "deyja",
+      "gloss": "to die"
+    },
+    "literal": "cease living"
+  },
+  {
+    "word": "diet",
+    "from": {
+      "language": "Greek via Latin",
+      "root": "diaita",
+      "gloss": "way of life"
+    },
+    "literal": "food habit"
+  },
+  {
+    "word": "differ",
+    "from": {
+      "language": "Latin via French",
+      "root": "differre",
+      "gloss": "to carry apart"
+    },
+    "literal": "be unlike"
+  },
+  {
+    "word": "dig",
+    "from": {
+      "language": "Old English",
+      "root": "dīcian/dicgan",
+      "gloss": "to dig"
+    },
+    "literal": "break up earth"
+  },
+  {
+    "word": "dinner",
+    "from": {
+      "language": "Old French",
+      "root": "disner",
+      "gloss": "main meal"
+    },
+    "literal": "main meal of the day"
+  },
+  {
+    "word": "direct",
+    "from": {
+      "language": "Latin via French",
+      "root": "dirigere",
+      "gloss": "to set straight"
+    },
+    "literal": "straight; guide"
+  },
+  {
+    "word": "dirty",
+    "from": {
+      "language": "Old English",
+      "root": "dirt/dyrt",
+      "gloss": "filth"
+    },
+    "literal": "not clean"
+  },
+  {
+    "word": "discover",
+    "from": {
+      "language": "Latin via French",
+      "root": "dis + cooperire",
+      "gloss": "un + cover"
+    },
+    "literal": "find out"
+  },
+  {
+    "word": "dish",
+    "from": {
+      "language": "Old English",
+      "root": "disc",
+      "gloss": "plate"
+    },
+    "literal": "plate; prepared food"
+  },
+  {
+    "word": "dismiss",
+    "from": {
+      "language": "Latin via French",
+      "root": "dimittere",
+      "gloss": "to send away"
+    },
+    "literal": "let go; reject"
+  },
+  {
+    "word": "distant",
+    "from": {
+      "language": "Latin via French",
+      "root": "distantia",
+      "gloss": "standing apart"
+    },
+    "literal": "far away"
+  },
+  {
+    "word": "divide",
+    "from": {
+      "language": "Latin via French",
+      "root": "dividere",
+      "gloss": "to separate"
+    },
+    "literal": "separate into parts"
+  },
+  {
+    "word": "do",
+    "from": {
+      "language": "Old English",
+      "root": "dōn",
+      "gloss": "to do"
+    },
+    "literal": "perform; make happen"
+  },
+  {
+    "word": "doctor",
+    "from": {
+      "language": "Latin via French",
+      "root": "doctor",
+      "gloss": "teacher"
+    },
+    "literal": "medical professional; scholar"
+  },
+  {
+    "word": "dog",
+    "from": {
+      "language": "Old English",
+      "root": "docga",
+      "gloss": "dog"
+    },
+    "literal": "domesticated canine"
+  },
+  {
+    "word": "doll",
+    "from": {
+      "language": "English",
+      "root": "Doll (for Dorothy)",
+      "gloss": "pet name → toy"
+    },
+    "literal": "toy human figure"
+  },
+  {
+    "word": "dollar",
+    "from": {
+      "language": "German via Dutch/Eng.",
+      "root": "Thaler/daler",
+      "gloss": "coin from Joachimsthal"
+    },
+    "literal": "basic money unit (US etc.)"
+  },
+  {
+    "word": "dolphin",
+    "from": {
+      "language": "Greek via French",
+      "root": "delphis/dauphin",
+      "gloss": "wombed (fish)"
+    },
+    "literal": "intelligent sea mammal"
+  },
+  {
+    "word": "door",
+    "from": {
+      "language": "Old English",
+      "root": "duru",
+      "gloss": "door"
+    },
+    "literal": "entry panel"
+  },
+  {
+    "word": "dot",
+    "from": {
+      "language": "Low German/English",
+      "root": "dot",
+      "gloss": "small spot"
+    },
+    "literal": "small round mark"
+  },
+  {
+    "word": "double",
+    "from": {
+      "language": "Latin via French",
+      "root": "duplus/double",
+      "gloss": "twice"
+    },
+    "literal": "twofold"
+  },
+  {
+    "word": "doubt",
+    "from": {
+      "language": "Latin via French",
+      "root": "dubitare/douter",
+      "gloss": "to waver"
+    },
+    "literal": "uncertainty; suspect"
+  },
+  {
+    "word": "down",
+    "from": {
+      "language": "Old English",
+      "root": "dūn",
+      "gloss": "hill → downward"
+    },
+    "literal": "toward a lower place"
+  },
+  {
+    "word": "dozen",
+    "from": {
+      "language": "Old French",
+      "root": "douzaine",
+      "gloss": "group of twelve"
+    },
+    "literal": "twelve"
+  },
+  {
+    "word": "draft",
+    "from": {
+      "language": "Old English/Old Norse",
+      "root": "dragan",
+      "gloss": "to draw"
+    },
+    "literal": "sketch; air current"
+  },
+  {
+    "word": "drag",
+    "from": {
+      "language": "Old English",
+      "root": "dragan",
+      "gloss": "to draw, pull"
+    },
+    "literal": "pull along"
+  },
+  {
+    "word": "drain",
+    "from": {
+      "language": "Old English",
+      "root": "drēahnian",
+      "gloss": "to strain"
+    },
+    "literal": "let liquid run off"
+  },
+  {
+    "word": "draw",
+    "from": {
+      "language": "Old English",
+      "root": "dragan",
+      "gloss": "to pull"
+    },
+    "literal": "pull; make a picture"
+  },
+  {
+    "word": "dream",
+    "from": {
+      "language": "Old English",
+      "root": "drēam",
+      "gloss": "joy → dream"
+    },
+    "literal": "sleep vision; hope"
+  },
+  {
+    "word": "dress",
+    "from": {
+      "language": "Old French",
+      "root": "dresser",
+      "gloss": "to arrange, dress"
+    },
+    "literal": "garment; put on clothes"
+  },
+  {
+    "word": "drink",
+    "from": {
+      "language": "Old English",
+      "root": "drincan",
+      "gloss": "to drink"
+    },
+    "literal": "swallow liquid"
+  },
+  {
+    "word": "drive",
+    "from": {
+      "language": "Old English",
+      "root": "drīfan",
+      "gloss": "to drive"
+    },
+    "literal": "operate a vehicle; force"
+  },
+  {
+    "word": "drop",
+    "from": {
+      "language": "Old Norse/English",
+      "root": "dropi",
+      "gloss": "drop"
+    },
+    "literal": "let fall; small bead"
+  },
+  {
+    "word": "drown",
+    "from": {
+      "language": "Old English",
+      "root": "druncnian",
+      "gloss": "to be drowned"
+    },
+    "literal": "die in water"
+  },
+  {
+    "word": "dry",
+    "from": {
+      "language": "Old English",
+      "root": "drȳge",
+      "gloss": "dry"
+    },
+    "literal": "without moisture"
+  },
+  {
+    "word": "duck",
+    "from": {
+      "language": "Old English",
+      "root": "duce/dūce",
+      "gloss": "diver → duck"
+    },
+    "literal": "waterfowl; lower quickly"
+  },
+  {
+    "word": "due",
+    "from": {
+      "language": "Latin via French",
+      "root": "debere/due",
+      "gloss": "ought"
+    },
+    "literal": "owed; expected"
+  },
+  {
+    "word": "dull",
+    "from": {
+      "language": "Old English",
+      "root": "dol",
+      "gloss": "foolish → blunt"
+    },
+    "literal": "not sharp; boring"
+  },
+  {
+    "word": "dust",
+    "from": {
+      "language": "Old English",
+      "root": "dūst",
+      "gloss": "dust"
+    },
+    "literal": "fine dry particles"
+  },
+  {
+    "word": "duty",
+    "from": {
+      "language": "Old French",
+      "root": "deu/deute",
+      "gloss": "that which is owed"
+    },
+    "literal": "responsibility"
+  }
+]

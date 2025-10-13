@@ -1,0 +1,3206 @@
+[
+  {
+    "word": "macabre",
+    "from": {
+      "language": "French via Old Fr.",
+      "root": "macabre",
+      "gloss": "Dance of Death"
+    },
+    "literal": "gruesome; grimly horrible"
+  },
+  {
+    "word": "macadamize",
+    "from": {
+      "language": "Scots (name)",
+      "root": "MacAdam",
+      "gloss": "engineer’s name"
+    },
+    "literal": "surface a road with crushed stone"
+  },
+  {
+    "word": "macerate",
+    "from": {
+      "language": "Latin",
+      "root": "macero",
+      "gloss": "to soften by soaking"
+    },
+    "literal": "soften or break down in liquid"
+  },
+  {
+    "word": "machicolation",
+    "from": {
+      "language": "French via Med. Lat.",
+      "root": "machiocolum",
+      "gloss": "neck-crusher opening"
+    },
+    "literal": "stone opening to drop missiles"
+  },
+  {
+    "word": "machinate",
+    "from": {
+      "language": "Latin",
+      "root": "machinari",
+      "gloss": "to devise"
+    },
+    "literal": "plot or scheme"
+  },
+  {
+    "word": "machinist",
+    "from": {
+      "language": "French via Eng.",
+      "root": "machine",
+      "gloss": "contrivance"
+    },
+    "literal": "skilled operator of machines"
+  },
+  {
+    "word": "macrocosm",
+    "from": {
+      "language": "Greek",
+      "root": "makros + kosmos",
+      "gloss": "large + world"
+    },
+    "literal": "the great universe as a whole"
+  },
+  {
+    "word": "macrology",
+    "from": {
+      "language": "Greek",
+      "root": "makros + logos",
+      "gloss": "long + speech"
+    },
+    "literal": "tedious long-winded talk"
+  },
+  {
+    "word": "madrigal",
+    "from": {
+      "language": "Italian",
+      "root": "mandriale?",
+      "gloss": "pastoral song"
+    },
+    "literal": "short lyric poem or part-song"
+  },
+  {
+    "word": "maelstrom",
+    "from": {
+      "language": "Dutch via Ger.",
+      "root": "maelstrom",
+      "gloss": "grinding stream"
+    },
+    "literal": "powerful whirlpool; chaos"
+  },
+  {
+    "word": "maenad",
+    "from": {
+      "language": "Greek",
+      "root": "mainas",
+      "gloss": "raving woman"
+    },
+    "literal": "frenzied follower of Dionysus"
+  },
+  {
+    "word": "magisterial",
+    "from": {
+      "language": "Latin",
+      "root": "magister",
+      "gloss": "master"
+    },
+    "literal": "authoritative; like a magistrate"
+  },
+  {
+    "word": "magnanimous",
+    "from": {
+      "language": "Latin",
+      "root": "magnus + animus",
+      "gloss": "great + spirit"
+    },
+    "literal": "nobly generous"
+  },
+  {
+    "word": "magniloquent",
+    "from": {
+      "language": "Latin",
+      "root": "magnus + loqui",
+      "gloss": "great + speak"
+    },
+    "literal": "lofty or pompous in speech"
+  },
+  {
+    "word": "mahout",
+    "from": {
+      "language": "Hindi via Urdu",
+      "root": "mahāvat",
+      "gloss": "elephant driver"
+    },
+    "literal": "elephant handler"
+  },
+  {
+    "word": "maieutic",
+    "from": {
+      "language": "Greek",
+      "root": "maieutikos",
+      "gloss": "midwifery"
+    },
+    "literal": "Socratic method of drawing out ideas"
+  },
+  {
+    "word": "mainmast",
+    "from": {
+      "language": "English",
+      "root": "main + mast",
+      "gloss": "principal + pole"
+    },
+    "literal": "principal mast of a ship"
+  },
+  {
+    "word": "maladroit",
+    "from": {
+      "language": "French",
+      "root": "mal + adroit",
+      "gloss": "bad + skillful"
+    },
+    "literal": "clumsy; unskillful"
+  },
+  {
+    "word": "malediction",
+    "from": {
+      "language": "Latin",
+      "root": "malum + dicere",
+      "gloss": "evil + to speak"
+    },
+    "literal": "a curse; speaking ill"
+  },
+  {
+    "word": "malefactor",
+    "from": {
+      "language": "Latin",
+      "root": "malus + facere",
+      "gloss": "bad + to do"
+    },
+    "literal": "criminal; wrongdoer"
+  },
+  {
+    "word": "malevolent",
+    "from": {
+      "language": "Latin",
+      "root": "malus + velle",
+      "gloss": "bad + to wish"
+    },
+    "literal": "wishing harm; hostile"
+  },
+  {
+    "word": "malfeasance",
+    "from": {
+      "language": "French",
+      "root": "mal + faisance",
+      "gloss": "bad + doing"
+    },
+    "literal": "wrongdoing by a public official"
+  },
+  {
+    "word": "malison",
+    "from": {
+      "language": "French via Eng.",
+      "root": "maleiçon",
+      "gloss": "a curse"
+    },
+    "literal": "a curse; imprecation"
+  },
+  {
+    "word": "malleable",
+    "from": {
+      "language": "Latin",
+      "root": "malleus",
+      "gloss": "hammer"
+    },
+    "literal": "capable of being shaped by hammering"
+  },
+  {
+    "word": "malodorous",
+    "from": {
+      "language": "Latin",
+      "root": "malus + odor",
+      "gloss": "bad + smell"
+    },
+    "literal": "having a bad smell"
+  },
+  {
+    "word": "mammiferous",
+    "from": {
+      "language": "Latin",
+      "root": "mamma + ferre",
+      "gloss": "breast + to bear"
+    },
+    "literal": "bearing breasts; mammal-bearing"
+  },
+  {
+    "word": "mandala",
+    "from": {
+      "language": "Sanskrit",
+      "root": "maṇḍala",
+      "gloss": "circle"
+    },
+    "literal": "ritual diagram; symbolic circle"
+  },
+  {
+    "word": "mandamus",
+    "from": {
+      "language": "Latin",
+      "root": "mandamus",
+      "gloss": "we command"
+    },
+    "literal": "court order to a public authority"
+  },
+  {
+    "word": "mandible",
+    "from": {
+      "language": "Latin",
+      "root": "mandibula",
+      "gloss": "jaw"
+    },
+    "literal": "lower jawbone; biting part"
+  },
+  {
+    "word": "manducate",
+    "from": {
+      "language": "Latin",
+      "root": "manducare",
+      "gloss": "to chew"
+    },
+    "literal": "chew; eat (arch./humor)"
+  },
+  {
+    "word": "manege",
+    "from": {
+      "language": "French",
+      "root": "manège",
+      "gloss": "riding ring"
+    },
+    "literal": "art of horse training"
+  },
+  {
+    "word": "manganese",
+    "from": {
+      "language": "Latinized",
+      "root": "magnesia (nigra)",
+      "gloss": "ore name"
+    },
+    "literal": "chemical element Mn"
+  },
+  {
+    "word": "mangrove",
+    "from": {
+      "language": "Portuguese via Eng.",
+      "root": "mangue",
+      "gloss": "tree of swamps"
+    },
+    "literal": "tropical swamp tree"
+  },
+  {
+    "word": "manichaean",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "Manichaios",
+      "gloss": "Mani’s doctrine"
+    },
+    "literal": "dualistic religious believer"
+  },
+  {
+    "word": "manicule",
+    "from": {
+      "language": "Latin via Eng.",
+      "root": "manicula",
+      "gloss": "little hand"
+    },
+    "literal": "☞ pointing hand mark"
+  },
+  {
+    "word": "manifesto",
+    "from": {
+      "language": "Italian",
+      "root": "manifesto",
+      "gloss": "clear proof"
+    },
+    "literal": "public declaration of aims"
+  },
+  {
+    "word": "maniple",
+    "from": {
+      "language": "Latin",
+      "root": "manipulus",
+      "gloss": "handful"
+    },
+    "literal": "Roman military unit; liturgical cloth"
+  },
+  {
+    "word": "mantic",
+    "from": {
+      "language": "Greek",
+      "root": "mantikos",
+      "gloss": "prophetic"
+    },
+    "literal": "relating to divination"
+  },
+  {
+    "word": "mantilla",
+    "from": {
+      "language": "Spanish",
+      "root": "mantilla",
+      "gloss": "little cloak"
+    },
+    "literal": "lace shawl worn over head/shoulders"
+  },
+  {
+    "word": "manumission",
+    "from": {
+      "language": "Latin",
+      "root": "manus + mittere",
+      "gloss": "hand + send"
+    },
+    "literal": "formal freeing of a slave"
+  },
+  {
+    "word": "manure",
+    "from": {
+      "language": "French via Eng.",
+      "root": "manoeuvrer",
+      "gloss": "to work (the land)"
+    },
+    "literal": "fertilize soil"
+  },
+  {
+    "word": "marcescent",
+    "from": {
+      "language": "Latin",
+      "root": "marcescere",
+      "gloss": "to wither"
+    },
+    "literal": "withering but not falling (botany)"
+  },
+  {
+    "word": "marmoreal",
+    "from": {
+      "language": "Latin",
+      "root": "marmor",
+      "gloss": "marble"
+    },
+    "literal": "marble-like"
+  },
+  {
+    "word": "marplot",
+    "from": {
+      "language": "English",
+      "root": "Mar + plotter",
+      "gloss": "proper name + plotter"
+    },
+    "literal": "blundering meddler"
+  },
+  {
+    "word": "marsupial",
+    "from": {
+      "language": "Latin via Greek",
+      "root": "marsupium",
+      "gloss": "pouch"
+    },
+    "literal": "pouched mammal"
+  },
+  {
+    "word": "martinet",
+    "from": {
+      "language": "French",
+      "root": "Martinet",
+      "gloss": "officer’s name"
+    },
+    "literal": "strict disciplinarian"
+  },
+  {
+    "word": "martingale",
+    "from": {
+      "language": "French",
+      "root": "martingale",
+      "gloss": "strap"
+    },
+    "literal": "safety strap; betting system"
+  },
+  {
+    "word": "marzipan",
+    "from": {
+      "language": "German/It. via Arab.",
+      "root": "mauthaban → marzapane",
+      "gloss": "seat of authority?"
+    },
+    "literal": "almond paste confection"
+  },
+  {
+    "word": "mascon",
+    "from": {
+      "language": "NASA coinage",
+      "root": "mass + concentration",
+      "gloss": "mass + cluster"
+    },
+    "literal": "dense gravity spot on the moon"
+  },
+  {
+    "word": "mashrabiyya",
+    "from": {
+      "language": "Arabic",
+      "root": "mashrabiyya",
+      "gloss": "drinking-place lattice"
+    },
+    "literal": "latticed window screen"
+  },
+  {
+    "word": "masonic",
+    "from": {
+      "language": "French via Lat.",
+      "root": "mason",
+      "gloss": "stoneworker"
+    },
+    "literal": "relating to Freemasons"
+  },
+  {
+    "word": "massif",
+    "from": {
+      "language": "French",
+      "root": "massif",
+      "gloss": "massive body"
+    },
+    "literal": "compact mountain block"
+  },
+  {
+    "word": "massif central",
+    "from": {
+      "language": "French",
+      "root": "Massif Central",
+      "gloss": "proper name"
+    },
+    "literal": "central French uplands"
+  },
+  {
+    "word": "mastaba",
+    "from": {
+      "language": "Arabic via Fr.",
+      "root": "maṣṭaba",
+      "gloss": "stone bench"
+    },
+    "literal": "flat-roofed Egyptian tomb"
+  },
+  {
+    "word": "mastication",
+    "from": {
+      "language": "Latin",
+      "root": "masticare",
+      "gloss": "to chew"
+    },
+    "literal": "chewing"
+  },
+  {
+    "word": "mastiff",
+    "from": {
+      "language": "French via Eng.",
+      "root": "mastin",
+      "gloss": "watchdog"
+    },
+    "literal": "large powerful dog"
+  },
+  {
+    "word": "mastoid",
+    "from": {
+      "language": "Greek",
+      "root": "mastoeides",
+      "gloss": "breast-like"
+    },
+    "literal": "skull bone behind ear"
+  },
+  {
+    "word": "matador",
+    "from": {
+      "language": "Spanish",
+      "root": "matar",
+      "gloss": "to kill"
+    },
+    "literal": "bullfighter who kills the bull"
+  },
+  {
+    "word": "matelotage",
+    "from": {
+      "language": "French",
+      "root": "matelot",
+      "gloss": "sailor"
+    },
+    "literal": "pirates’ mutual-aid pact (hist.)"
+  },
+  {
+    "word": "materiel",
+    "from": {
+      "language": "French",
+      "root": "matériel",
+      "gloss": "equipment"
+    },
+    "literal": "military equipment and supplies"
+  },
+  {
+    "word": "matins",
+    "from": {
+      "language": "French via Lat.",
+      "root": "matutinum",
+      "gloss": "morning service"
+    },
+    "literal": "morning prayer service"
+  },
+  {
+    "word": "matriarchate",
+    "from": {
+      "language": "Latin/Greek",
+      "root": "mater + archein",
+      "gloss": "mother + to rule"
+    },
+    "literal": "society ruled by mothers"
+  },
+  {
+    "word": "matriculate",
+    "from": {
+      "language": "Latin",
+      "root": "matricula",
+      "gloss": "little list"
+    },
+    "literal": "enroll at a college"
+  },
+  {
+    "word": "matrilineal",
+    "from": {
+      "language": "Latin",
+      "root": "mater + linea",
+      "gloss": "mother + line"
+    },
+    "literal": "traced through the mother"
+  },
+  {
+    "word": "matutinal",
+    "from": {
+      "language": "Latin",
+      "root": "matutinus",
+      "gloss": "of the morning"
+    },
+    "literal": "occurring in the early morning"
+  },
+  {
+    "word": "maverick",
+    "from": {
+      "language": "American Eng.",
+      "root": "Maverick",
+      "gloss": "rancher’s name"
+    },
+    "literal": "independent-minded person"
+  },
+  {
+    "word": "maxilla",
+    "from": {
+      "language": "Latin",
+      "root": "maxilla",
+      "gloss": "jawbone"
+    },
+    "literal": "upper jawbone"
+  },
+  {
+    "word": "mayhem",
+    "from": {
+      "language": "French via Eng.",
+      "root": "mayhem",
+      "gloss": "maiming"
+    },
+    "literal": "violent disorder; maiming"
+  },
+  {
+    "word": "mead",
+    "from": {
+      "language": "Old Eng.",
+      "root": "meodu",
+      "gloss": "mead"
+    },
+    "literal": "honey wine; meadow variant (ME)"
+  },
+  {
+    "word": "meander",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "Maiandros",
+      "gloss": "river name"
+    },
+    "literal": "to wind aimlessly"
+  },
+  {
+    "word": "meatspace",
+    "from": {
+      "language": "Net slang",
+      "root": "meat + space",
+      "gloss": "body + world"
+    },
+    "literal": "the physical world (vs. online)"
+  },
+  {
+    "word": "meerschaum",
+    "from": {
+      "language": "German via Turk.",
+      "root": "Meerschaum",
+      "gloss": "sea-foam"
+    },
+    "literal": "soft white mineral for pipes"
+  },
+  {
+    "word": "megalith",
+    "from": {
+      "language": "Greek",
+      "root": "megas + lithos",
+      "gloss": "great + stone"
+    },
+    "literal": "large prehistoric standing stone"
+  },
+  {
+    "word": "megillah",
+    "from": {
+      "language": "Yiddish via Heb.",
+      "root": "megillah",
+      "gloss": "scroll"
+    },
+    "literal": "long tedious account"
+  },
+  {
+    "word": "megilp",
+    "from": {
+      "language": "English",
+      "root": "megilp",
+      "gloss": "mixing jelly"
+    },
+    "literal": "oil-painting medium"
+  },
+  {
+    "word": "megrim",
+    "from": {
+      "language": "French via Eng.",
+      "root": "migraigne",
+      "gloss": "migraine"
+    },
+    "literal": "low spirits; migraine (arch.)"
+  },
+  {
+    "word": "meiosis",
+    "from": {
+      "language": "Greek",
+      "root": "meiosis",
+      "gloss": "diminution"
+    },
+    "literal": "cell division halving chromosome number"
+  },
+  {
+    "word": "melancholia",
+    "from": {
+      "language": "Greek",
+      "root": "melas + chole",
+      "gloss": "black + bile"
+    },
+    "literal": "depression (old theory)"
+  },
+  {
+    "word": "meleagrine",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "Meleagris",
+      "gloss": "guineafowl"
+    },
+    "literal": "guineafowl-like; pearly spotted"
+  },
+  {
+    "word": "melismatic",
+    "from": {
+      "language": "Greek",
+      "root": "melisma",
+      "gloss": "a song run"
+    },
+    "literal": "singing many notes per syllable"
+  },
+  {
+    "word": "melisma",
+    "from": {
+      "language": "Greek",
+      "root": "melisma",
+      "gloss": "song ornament"
+    },
+    "literal": "ornate run in singing"
+  },
+  {
+    "word": "mellifluous",
+    "from": {
+      "language": "Latin",
+      "root": "mel + fluere",
+      "gloss": "honey + to flow"
+    },
+    "literal": "sweetly flowing (sound)"
+  },
+  {
+    "word": "melodrama",
+    "from": {
+      "language": "Greek",
+      "root": "melos + drama",
+      "gloss": "song + action"
+    },
+    "literal": "sensational dramatic piece"
+  },
+  {
+    "word": "melusine",
+    "from": {
+      "language": "French folklore",
+      "root": "Mélusine",
+      "gloss": "water spirit"
+    },
+    "literal": "female water spirit with serpent tail"
+  },
+  {
+    "word": "membranous",
+    "from": {
+      "language": "Latin",
+      "root": "membrana",
+      "gloss": "skin"
+    },
+    "literal": "thin and pliable like a membrane"
+  },
+  {
+    "word": "menagerie",
+    "from": {
+      "language": "French",
+      "root": "ménage",
+      "gloss": "household"
+    },
+    "literal": "collection of animals"
+  },
+  {
+    "word": "mendacious",
+    "from": {
+      "language": "Latin",
+      "root": "mendax",
+      "gloss": "lying"
+    },
+    "literal": "not truthful; deceptive"
+  },
+  {
+    "word": "menhir",
+    "from": {
+      "language": "Breton via Fr.",
+      "root": "men + hir",
+      "gloss": "stone + long"
+    },
+    "literal": "tall standing stone"
+  },
+  {
+    "word": "mensal",
+    "from": {
+      "language": "Latin",
+      "root": "mensa",
+      "gloss": "table"
+    },
+    "literal": "pertaining to the table; shared meal"
+  },
+  {
+    "word": "menticide",
+    "from": {
+      "language": "Latin",
+      "root": "mens + caedere",
+      "gloss": "mind + to cut"
+    },
+    "literal": "killing of the mind; brainwashing"
+  },
+  {
+    "word": "mephitic",
+    "from": {
+      "language": "Latin",
+      "root": "mephitis",
+      "gloss": "noxious exhalation"
+    },
+    "literal": "foul-smelling; poisonous"
+  },
+  {
+    "word": "mercer",
+    "from": {
+      "language": "French via Eng.",
+      "root": "mercier",
+      "gloss": "trader"
+    },
+    "literal": "dealer in fine cloth"
+  },
+  {
+    "word": "mercurial",
+    "from": {
+      "language": "Latin",
+      "root": "Mercurius",
+      "gloss": "Mercury"
+    },
+    "literal": "changeable; lively"
+  },
+  {
+    "word": "meridian",
+    "from": {
+      "language": "Latin",
+      "root": "meridies",
+      "gloss": "midday"
+    },
+    "literal": "noon line; highest point"
+  },
+  {
+    "word": "meristic",
+    "from": {
+      "language": "Greek",
+      "root": "merizein",
+      "gloss": "to divide"
+    },
+    "literal": "dividing into repetitive segments"
+  },
+  {
+    "word": "merlon",
+    "from": {
+      "language": "French via It.",
+      "root": "merlo",
+      "gloss": "merlon (battle tooth)"
+    },
+    "literal": "upright part of a battlement"
+  },
+  {
+    "word": "mermaid",
+    "from": {
+      "language": "English",
+      "root": "mere + maid",
+      "gloss": "sea + girl"
+    },
+    "literal": "sea maiden; mythic being"
+  },
+  {
+    "word": "mesmerize",
+    "from": {
+      "language": "German (name)",
+      "root": "Mesmer",
+      "gloss": "physician’s name"
+    },
+    "literal": "hypnotize; fascinate"
+  },
+  {
+    "word": "mesolithic",
+    "from": {
+      "language": "Greek",
+      "root": "mesos + lithos",
+      "gloss": "middle + stone"
+    },
+    "literal": "Middle Stone Age"
+  },
+  {
+    "word": "mesosphere",
+    "from": {
+      "language": "Greek",
+      "root": "mesos + sphaira",
+      "gloss": "middle + sphere"
+    },
+    "literal": "atmospheric layer above stratosphere"
+  },
+  {
+    "word": "messuage",
+    "from": {
+      "language": "French via Eng.",
+      "root": "mesnage",
+      "gloss": "dwelling"
+    },
+    "literal": "a house, outbuildings, and land"
+  },
+  {
+    "word": "metacentric",
+    "from": {
+      "language": "Greek",
+      "root": "meta + kentron",
+      "gloss": "after + center"
+    },
+    "literal": "having a center of buoyancy/ gravity relation"
+  },
+  {
+    "word": "metanoia",
+    "from": {
+      "language": "Greek",
+      "root": "meta + noos",
+      "gloss": "after + mind"
+    },
+    "literal": "repentance; change of mind"
+  },
+  {
+    "word": "metastable",
+    "from": {
+      "language": "Greek + Lat.",
+      "root": "meta + stabilis",
+      "gloss": "change + stable"
+    },
+    "literal": "stable until disturbed"
+  },
+  {
+    "word": "metempsychosis",
+    "from": {
+      "language": "Greek",
+      "root": "meta + empsychoun",
+      "gloss": "after + to animate"
+    },
+    "literal": "transmigration of souls"
+  },
+  {
+    "word": "meteorism",
+    "from": {
+      "language": "Greek",
+      "root": "meteōros",
+      "gloss": "raised up"
+    },
+    "literal": "abdominal bloating (med.)"
+  },
+  {
+    "word": "methinks",
+    "from": {
+      "language": "Old Eng.",
+      "root": "me + þyncan",
+      "gloss": "me + seems"
+    },
+    "literal": "it seems to me (arch.)"
+  },
+  {
+    "word": "methuselah",
+    "from": {
+      "language": "Hebrew via Eng.",
+      "root": "Metushelach",
+      "gloss": "biblical name"
+    },
+    "literal": "very old person; large wine bottle"
+  },
+  {
+    "word": "metonym",
+    "from": {
+      "language": "Greek",
+      "root": "meta + onoma",
+      "gloss": "change + name"
+    },
+    "literal": "word used for a thing it’s related to"
+  },
+  {
+    "word": "mezzanine",
+    "from": {
+      "language": "French via It.",
+      "root": "mezzanino",
+      "gloss": "middle story"
+    },
+    "literal": "intermediate floor"
+  },
+  {
+    "word": "mezzo-relievo",
+    "from": {
+      "language": "Italian",
+      "root": "mezzo + rilievo",
+      "gloss": "half + relief"
+    },
+    "literal": "shallow relief carving"
+  },
+  {
+    "word": "miaow",
+    "from": {
+      "language": "Imitative",
+      "root": "miaow",
+      "gloss": "cat sound"
+    },
+    "literal": "a cat’s meow (Brit. form)"
+  },
+  {
+    "word": "micaceous",
+    "from": {
+      "language": "Latin",
+      "root": "mica",
+      "gloss": "grain"
+    },
+    "literal": "sparkly; containing mica"
+  },
+  {
+    "word": "mickle",
+    "from": {
+      "language": "Old Eng.",
+      "root": "micel",
+      "gloss": "great"
+    },
+    "literal": "much; great amount (Scots/arch.)"
+  },
+  {
+    "word": "microcosm",
+    "from": {
+      "language": "Greek",
+      "root": "mikros + kosmos",
+      "gloss": "small + world"
+    },
+    "literal": "miniature world"
+  },
+  {
+    "word": "microfiche",
+    "from": {
+      "language": "French",
+      "root": "micro + fiche",
+      "gloss": "small + card"
+    },
+    "literal": "flat sheet of microfilm"
+  },
+  {
+    "word": "micrometeorite",
+    "from": {
+      "language": "Greek",
+      "root": "mikros + meteōros",
+      "gloss": "small + raised up"
+    },
+    "literal": "tiny space rock particle"
+  },
+  {
+    "word": "midrash",
+    "from": {
+      "language": "Hebrew",
+      "root": "midrash",
+      "gloss": "exposition"
+    },
+    "literal": "rabbinic commentary or story"
+  },
+  {
+    "word": "miff",
+    "from": {
+      "language": "English",
+      "root": "miff",
+      "gloss": "trifle of offense"
+    },
+    "literal": "petty quarrel; to offend slightly"
+  },
+  {
+    "word": "mignonette",
+    "from": {
+      "language": "French",
+      "root": "mignonne",
+      "gloss": "dainty"
+    },
+    "literal": "fragrant plant; pale green color"
+  },
+  {
+    "word": "millefleur",
+    "from": {
+      "language": "French",
+      "root": "mille + fleur",
+      "gloss": "thousand + flower"
+    },
+    "literal": "tapestry pattern with many flowers"
+  },
+  {
+    "word": "millenary",
+    "from": {
+      "language": "Latin",
+      "root": "millenarius",
+      "gloss": "thousandfold"
+    },
+    "literal": "group of a thousand; millennium related"
+  },
+  {
+    "word": "millrace",
+    "from": {
+      "language": "English",
+      "root": "mill + race",
+      "gloss": "mill + watercourse"
+    },
+    "literal": "fast water channel by a mill"
+  },
+  {
+    "word": "mimesis",
+    "from": {
+      "language": "Greek",
+      "root": "mimesis",
+      "gloss": "imitation"
+    },
+    "literal": "artistic imitation of nature"
+  },
+  {
+    "word": "minatory",
+    "from": {
+      "language": "Latin",
+      "root": "minari",
+      "gloss": "to threaten"
+    },
+    "literal": "menacing; threatening"
+  },
+  {
+    "word": "minim",
+    "from": {
+      "language": "Latin via Eng.",
+      "root": "minimus",
+      "gloss": "smallest"
+    },
+    "literal": "note of short value; tiny amount"
+  },
+  {
+    "word": "minimifidian",
+    "from": {
+      "language": "Latin",
+      "root": "minimus + fidere",
+      "gloss": "least + to trust"
+    },
+    "literal": "puritanical stickler (humor/rare)"
+  },
+  {
+    "word": "minnow",
+    "from": {
+      "language": "Old Eng.",
+      "root": "myne",
+      "gloss": "small fish"
+    },
+    "literal": "a very small fish"
+  },
+  {
+    "word": "minster",
+    "from": {
+      "language": "Old Eng.",
+      "root": "mynster",
+      "gloss": "monastic church"
+    },
+    "literal": "large important church"
+  },
+  {
+    "word": "minstrel",
+    "from": {
+      "language": "French via Eng.",
+      "root": "menestral",
+      "gloss": "servant; minstrel"
+    },
+    "literal": "medieval singer/poet"
+  },
+  {
+    "word": "minuscule",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "minusculus",
+      "gloss": "rather small"
+    },
+    "literal": "extremely small; small script"
+  },
+  {
+    "word": "miquelet",
+    "from": {
+      "language": "Catalan/Sp.",
+      "root": "miquelet",
+      "gloss": "militia name"
+    },
+    "literal": "Spanish flintlock; militiaman"
+  },
+  {
+    "word": "mirepoix",
+    "from": {
+      "language": "French",
+      "root": "Mirepoix",
+      "gloss": "duke’s name"
+    },
+    "literal": "base of diced carrots, celery, onions"
+  },
+  {
+    "word": "mirabile dictu",
+    "from": {
+      "language": "Latin",
+      "root": "mirabile dictu",
+      "gloss": "wonderful to say"
+    },
+    "literal": "astonishing to relate"
+  },
+  {
+    "word": "mirthless",
+    "from": {
+      "language": "English",
+      "root": "mirth + -less",
+      "gloss": "joy + without"
+    },
+    "literal": "without joy or laughter"
+  },
+  {
+    "word": "misandry",
+    "from": {
+      "language": "Greek",
+      "root": "misos + anēr",
+      "gloss": "hatred + man"
+    },
+    "literal": "hatred of men"
+  },
+  {
+    "word": "misericord",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "misericordia",
+      "gloss": "mercy"
+    },
+    "literal": "carved mercy seat in choir stalls"
+  },
+  {
+    "word": "misology",
+    "from": {
+      "language": "Greek",
+      "root": "misos + logos",
+      "gloss": "hatred + reason"
+    },
+    "literal": "hatred of reason or learning"
+  },
+  {
+    "word": "missa cantata",
+    "from": {
+      "language": "Latin",
+      "root": "missa + cantata",
+      "gloss": "mass + sung"
+    },
+    "literal": "sung mass (church)"
+  },
+  {
+    "word": "missive",
+    "from": {
+      "language": "Latin",
+      "root": "mittere",
+      "gloss": "to send"
+    },
+    "literal": "written message; letter"
+  },
+  {
+    "word": "mistletoe",
+    "from": {
+      "language": "Old Eng.",
+      "root": "mistel + tan",
+      "gloss": "dung + twig"
+    },
+    "literal": "evergreen parasite plant"
+  },
+  {
+    "word": "mistral",
+    "from": {
+      "language": "French",
+      "root": "mistral",
+      "gloss": "masterly (wind)"
+    },
+    "literal": "strong NW wind of Provence"
+  },
+  {
+    "word": "mithridate",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "Mithridatēs",
+      "gloss": "king’s name"
+    },
+    "literal": "antidote against poison"
+  },
+  {
+    "word": "mitigate",
+    "from": {
+      "language": "Latin",
+      "root": "mitigare",
+      "gloss": "to soften"
+    },
+    "literal": "make less severe"
+  },
+  {
+    "word": "mitosis",
+    "from": {
+      "language": "Greek",
+      "root": "mitos",
+      "gloss": "thread"
+    },
+    "literal": "cell division where chromosomes separate"
+  },
+  {
+    "word": "mizzle",
+    "from": {
+      "language": "English",
+      "root": "mizzle",
+      "gloss": "fine rain"
+    },
+    "literal": "drizzle lightly"
+  },
+  {
+    "word": "mnemonic",
+    "from": {
+      "language": "Greek",
+      "root": "mnēmōn",
+      "gloss": "mindful"
+    },
+    "literal": "aiding the memory"
+  },
+  {
+    "word": "moiety",
+    "from": {
+      "language": "French via Lat.",
+      "root": "moietatem",
+      "gloss": "a half"
+    },
+    "literal": "a part or portion"
+  },
+  {
+    "word": "moirai",
+    "from": {
+      "language": "Greek",
+      "root": "moirai",
+      "gloss": "the Fates"
+    },
+    "literal": "the three Fates (mythology)"
+  },
+  {
+    "word": "moire",
+    "from": {
+      "language": "French",
+      "root": "moiré",
+      "gloss": "watered (fabric)"
+    },
+    "literal": "rippling pattern fabric"
+  },
+  {
+    "word": "moirette",
+    "from": {
+      "language": "French",
+      "root": "moirette",
+      "gloss": "little moire"
+    },
+    "literal": "small watered pattern"
+  },
+  {
+    "word": "moira",
+    "from": {
+      "language": "Greek",
+      "root": "moira",
+      "gloss": "share, fate"
+    },
+    "literal": "a share; fate; one of the Fates"
+  },
+  {
+    "word": "mojarra",
+    "from": {
+      "language": "Spanish",
+      "root": "mojarra",
+      "gloss": "fish name"
+    },
+    "literal": "small fish used as bait/food"
+  },
+  {
+    "word": "moke",
+    "from": {
+      "language": "British slang",
+      "root": "moke",
+      "gloss": "donkey"
+    },
+    "literal": "donkey; foolish person (slang)"
+  },
+  {
+    "word": "molariform",
+    "from": {
+      "language": "Latin",
+      "root": "molaris + forma",
+      "gloss": "molar + shape"
+    },
+    "literal": "shaped like a molar tooth"
+  },
+  {
+    "word": "molder",
+    "from": {
+      "language": "English",
+      "root": "molder",
+      "gloss": "to crumble"
+    },
+    "literal": "slowly decay; crumble"
+  },
+  {
+    "word": "molehill",
+    "from": {
+      "language": "English",
+      "root": "mole + hill",
+      "gloss": "burrowing animal + heap"
+    },
+    "literal": "small mound of earth"
+  },
+  {
+    "word": "mollify",
+    "from": {
+      "language": "Latin",
+      "root": "mollis + facere",
+      "gloss": "soft + to make"
+    },
+    "literal": "soothe; make softer"
+  },
+  {
+    "word": "molybdenum",
+    "from": {
+      "language": "Greek via Neo-Lat.",
+      "root": "molybdos",
+      "gloss": "lead"
+    },
+    "literal": "chemical element Mo"
+  },
+  {
+    "word": "molybdic",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "molybdos",
+      "gloss": "lead"
+    },
+    "literal": "relating to molybdenum"
+  },
+  {
+    "word": "momentous",
+    "from": {
+      "language": "French via Eng.",
+      "root": "moment + -ous",
+      "gloss": "importance"
+    },
+    "literal": "very important"
+  },
+  {
+    "word": "monad",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "monas",
+      "gloss": "unit"
+    },
+    "literal": "single unit; philosophical entity"
+  },
+  {
+    "word": "monition",
+    "from": {
+      "language": "Latin",
+      "root": "monitio",
+      "gloss": "warning"
+    },
+    "literal": "admonition; warning"
+  },
+  {
+    "word": "monocot",
+    "from": {
+      "language": "Greek",
+      "root": "monos + kotylē",
+      "gloss": "single + cup"
+    },
+    "literal": "monocotyledon plant"
+  },
+  {
+    "word": "monody",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "monōidia",
+      "gloss": "single song"
+    },
+    "literal": "lament sung by one voice"
+  },
+  {
+    "word": "monomania",
+    "from": {
+      "language": "Greek",
+      "root": "monos + mania",
+      "gloss": "single + madness"
+    },
+    "literal": "obsession with one idea"
+  },
+  {
+    "word": "monopsony",
+    "from": {
+      "language": "Greek",
+      "root": "monos + opsōnein",
+      "gloss": "single + to purchase"
+    },
+    "literal": "market with one buyer"
+  },
+  {
+    "word": "monotreme",
+    "from": {
+      "language": "Greek",
+      "root": "monos + trema",
+      "gloss": "single + hole"
+    },
+    "literal": "egg-laying mammal"
+  },
+  {
+    "word": "monsieur",
+    "from": {
+      "language": "French",
+      "root": "mon + sieur",
+      "gloss": "my + lord"
+    },
+    "literal": "French term of address 'Mr.'"
+  },
+  {
+    "word": "montane",
+    "from": {
+      "language": "French via Lat.",
+      "root": "montanus",
+      "gloss": "mountainous"
+    },
+    "literal": "of mountainous regions"
+  },
+  {
+    "word": "moorish",
+    "from": {
+      "language": "Arabic via Sp.",
+      "root": "Moro",
+      "gloss": "Moor"
+    },
+    "literal": "relating to Moors; ornate style"
+  },
+  {
+    "word": "moraine",
+    "from": {
+      "language": "French",
+      "root": "moraine",
+      "gloss": "pile of stones"
+    },
+    "literal": "glacial debris ridge"
+  },
+  {
+    "word": "mordacious",
+    "from": {
+      "language": "Latin",
+      "root": "mordere",
+      "gloss": "to bite"
+    },
+    "literal": "biting; sharp-tongued"
+  },
+  {
+    "word": "moribund",
+    "from": {
+      "language": "Latin",
+      "root": "mori + -bundus",
+      "gloss": "to die + about to"
+    },
+    "literal": "at the point of death; stagnant"
+  },
+  {
+    "word": "morphology",
+    "from": {
+      "language": "Greek",
+      "root": "morphē + logos",
+      "gloss": "form + study"
+    },
+    "literal": "study of forms/structures"
+  },
+  {
+    "word": "mortise",
+    "from": {
+      "language": "French via Eng.",
+      "root": "mortaise",
+      "gloss": "slot"
+    },
+    "literal": "hole or notch to receive a tenon"
+  },
+  {
+    "word": "moshav",
+    "from": {
+      "language": "Hebrew",
+      "root": "moshav",
+      "gloss": "settlement"
+    },
+    "literal": "cooperative Israeli village"
+  },
+  {
+    "word": "mossback",
+    "from": {
+      "language": "American Eng.",
+      "root": "moss + back",
+      "gloss": "moss + back"
+    },
+    "literal": "old-fashioned person"
+  },
+  {
+    "word": "moue",
+    "from": {
+      "language": "French",
+      "root": "moue",
+      "gloss": "pout"
+    },
+    "literal": "pouting expression"
+  },
+  {
+    "word": "moue-like",
+    "from": {
+      "language": "French + Eng.",
+      "root": "moue",
+      "gloss": "pout"
+    },
+    "literal": "having a pouty look"
+  },
+  {
+    "word": "moue-ish",
+    "from": {
+      "language": "French + Eng.",
+      "root": "moue",
+      "gloss": "pout"
+    },
+    "literal": "somewhat pouty"
+  },
+  {
+    "word": "mucilage",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "mucilago",
+      "gloss": "musty juice"
+    },
+    "literal": "sticky plant secretion"
+  },
+  {
+    "word": "muffle",
+    "from": {
+      "language": "English",
+      "root": "muffle",
+      "gloss": "wrap up"
+    },
+    "literal": "wrap warmly; deaden a sound"
+  },
+  {
+    "word": "muggins",
+    "from": {
+      "language": "British slang",
+      "root": "Muggins",
+      "gloss": "proper name"
+    },
+    "literal": "dupe; fool (colloq.)"
+  },
+  {
+    "word": "mugs game",
+    "from": {
+      "language": "British slang",
+      "root": "mug",
+      "gloss": "dupe"
+    },
+    "literal": "foolish, profitless activity"
+  },
+  {
+    "word": "muliebrity",
+    "from": {
+      "language": "Latin",
+      "root": "mulier",
+      "gloss": "woman"
+    },
+    "literal": "womanly quality"
+  },
+  {
+    "word": "mulish",
+    "from": {
+      "language": "English",
+      "root": "mule + -ish",
+      "gloss": "stubborn animal"
+    },
+    "literal": "stubborn like a mule"
+  },
+  {
+    "word": "mullion",
+    "from": {
+      "language": "French via Eng.",
+      "root": "mouillon",
+      "gloss": "central pier"
+    },
+    "literal": "vertical bar between window panes"
+  },
+  {
+    "word": "multivalent",
+    "from": {
+      "language": "Latin",
+      "root": "multus + valere",
+      "gloss": "many + to be strong"
+    },
+    "literal": "having many valences/meanings"
+  },
+  {
+    "word": "mundane",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "mundus",
+      "gloss": "world"
+    },
+    "literal": "worldly; ordinary"
+  },
+  {
+    "word": "muniments",
+    "from": {
+      "language": "French via Lat.",
+      "root": "munimenta",
+      "gloss": "defenses"
+    },
+    "literal": "title deeds; documents of title"
+  },
+  {
+    "word": "muntjac",
+    "from": {
+      "language": "Sunda via Eng.",
+      "root": "mencek?",
+      "gloss": "deer name"
+    },
+    "literal": "small barking deer"
+  },
+  {
+    "word": "murine",
+    "from": {
+      "language": "Latin",
+      "root": "mus",
+      "gloss": "mouse"
+    },
+    "literal": "mouse-like; relating to rodents"
+  },
+  {
+    "word": "murrhine",
+    "from": {
+      "language": "Latin via Greek",
+      "root": "murrhina",
+      "gloss": "fluorite vessels"
+    },
+    "literal": "costly Roman stoneware"
+  },
+  {
+    "word": "musette",
+    "from": {
+      "language": "French",
+      "root": "musette",
+      "gloss": "small bagpipe"
+    },
+    "literal": "French bagpipe; dance"
+  },
+  {
+    "word": "muskeg",
+    "from": {
+      "language": "Cree via Can. Eng.",
+      "root": "maskêk",
+      "gloss": "bog"
+    },
+    "literal": "peaty bog; muskeg soil"
+  },
+  {
+    "word": "mussitate",
+    "from": {
+      "language": "Latin",
+      "root": "mussitare",
+      "gloss": "to mutter"
+    },
+    "literal": "mutter; speak under breath"
+  },
+  {
+    "word": "musteline",
+    "from": {
+      "language": "Latin",
+      "root": "mustela",
+      "gloss": "weasel"
+    },
+    "literal": "weasel-like"
+  },
+  {
+    "word": "mutatis mutandis",
+    "from": {
+      "language": "Latin",
+      "root": "mutatis mutandis",
+      "gloss": "things changed that must be changed"
+    },
+    "literal": "with necessary alterations"
+  },
+  {
+    "word": "mycelium",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "mykēs + hēlion",
+      "gloss": "fungus + tissue"
+    },
+    "literal": "mass of fungal threads"
+  },
+  {
+    "word": "myiasis",
+    "from": {
+      "language": "Greek",
+      "root": "myia",
+      "gloss": "fly"
+    },
+    "literal": "infestation by fly larvae"
+  },
+  {
+    "word": "myrmidon",
+    "from": {
+      "language": "Greek",
+      "root": "Myrmidones",
+      "gloss": "ant-people (myth)"
+    },
+    "literal": "blind follower; loyal soldier"
+  },
+  {
+    "word": "myrmecology",
+    "from": {
+      "language": "Greek",
+      "root": "myrmēx + logos",
+      "gloss": "ant + study"
+    },
+    "literal": "study of ants"
+  },
+  {
+    "word": "myrmecophagous",
+    "from": {
+      "language": "Greek",
+      "root": "myrmēx + phagein",
+      "gloss": "ant + to eat"
+    },
+    "literal": "ant-eating"
+  },
+  {
+    "word": "myrrh",
+    "from": {
+      "language": "Greek via Semitic",
+      "root": "myrrha",
+      "gloss": "bitter"
+    },
+    "literal": "aromatic gum resin"
+  },
+  {
+    "word": "myrtaceous",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "myrtos",
+      "gloss": "myrtle"
+    },
+    "literal": "relating to myrtle family"
+  },
+  {
+    "word": "mythopoeia",
+    "from": {
+      "language": "Greek",
+      "root": "mythos + poiein",
+      "gloss": "story + to make"
+    },
+    "literal": "creation of myth"
+  },
+  {
+    "word": "myzostom",
+    "from": {
+      "language": "Greek",
+      "root": "myza + stoma",
+      "gloss": "to suck + mouth"
+    },
+    "literal": "parasitic annelid (rare)"
+  },
+  {
+    "word": "nabob",
+    "from": {
+      "language": "Hindi via Port.",
+      "root": "nawāb",
+      "gloss": "provincial governor"
+    },
+    "literal": "wealthy, powerful person"
+  },
+  {
+    "word": "nacelle",
+    "from": {
+      "language": "French",
+      "root": "nacelle",
+      "gloss": "little boat"
+    },
+    "literal": "engine housing or gondola"
+  },
+  {
+    "word": "nacreous",
+    "from": {
+      "language": "French via Arab.",
+      "root": "nacre",
+      "gloss": "mother-of-pearl"
+    },
+    "literal": "iridescent like mother-of-pearl"
+  },
+  {
+    "word": "naevus",
+    "from": {
+      "language": "Latin",
+      "root": "naevus",
+      "gloss": "birthmark"
+    },
+    "literal": "mole; pigmented skin patch"
+  },
+  {
+    "word": "naif",
+    "from": {
+      "language": "French",
+      "root": "naïf",
+      "gloss": "naive"
+    },
+    "literal": "artless; unsophisticated person"
+  },
+  {
+    "word": "naira",
+    "from": {
+      "language": "Hausa via Eng.",
+      "root": "naira",
+      "gloss": "coin name"
+    },
+    "literal": "Nigerian currency unit"
+  },
+  {
+    "word": "naissant",
+    "from": {
+      "language": "French",
+      "root": "naissant",
+      "gloss": "being born"
+    },
+    "literal": "coming into existence"
+  },
+  {
+    "word": "naiad",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "naias",
+      "gloss": "water nymph"
+    },
+    "literal": "water nymph; aquatic insect larva"
+  },
+  {
+    "word": "naif realism",
+    "from": {
+      "language": "French + Eng.",
+      "root": "naïf + realism",
+      "gloss": "simple + realism"
+    },
+    "literal": "unsophisticated realism (art/philos.)"
+  },
+  {
+    "word": "naira-peg",
+    "from": {
+      "language": "Hausa + Eng.",
+      "root": "naira + peg",
+      "gloss": "currency + fix"
+    },
+    "literal": "fixed rate to naira (econ.)"
+  },
+  {
+    "word": "nainsook",
+    "from": {
+      "language": "Hindi via Eng.",
+      "root": "nainsukh",
+      "gloss": "eye-pleasing"
+    },
+    "literal": "soft fine cotton fabric"
+  },
+  {
+    "word": "naissant wine",
+    "from": {
+      "language": "French + Eng.",
+      "root": "naissant + wine",
+      "gloss": "nascent + wine"
+    },
+    "literal": "newly fermenting wine"
+  },
+  {
+    "word": "naology",
+    "from": {
+      "language": "Greek",
+      "root": "naos + logos",
+      "gloss": "temple + study"
+    },
+    "literal": "study of temples; church architecture"
+  },
+  {
+    "word": "napery",
+    "from": {
+      "language": "French via Eng.",
+      "root": "nappe",
+      "gloss": "tablecloth"
+    },
+    "literal": "household table linens"
+  },
+  {
+    "word": "naphtha",
+    "from": {
+      "language": "Greek via Semitic",
+      "root": "naphtha",
+      "gloss": "bitumen"
+    },
+    "literal": "volatile petroleum distillate"
+  },
+  {
+    "word": "naphthoquinone",
+    "from": {
+      "language": "Greek",
+      "root": "naphtha + quinone",
+      "gloss": "bitumen + chemical base"
+    },
+    "literal": "chemical compound class"
+  },
+  {
+    "word": "narcose",
+    "from": {
+      "language": "French via Gr.",
+      "root": "narkōsis",
+      "gloss": "numbness"
+    },
+    "literal": "state of stupor (diving)"
+  },
+  {
+    "word": "narthex",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "narthex",
+      "gloss": "giant fennel; porch"
+    },
+    "literal": "church vestibule; fennel plant"
+  },
+  {
+    "word": "nascent",
+    "from": {
+      "language": "Latin",
+      "root": "nasci",
+      "gloss": "to be born"
+    },
+    "literal": "coming into being"
+  },
+  {
+    "word": "nasology",
+    "from": {
+      "language": "Greek",
+      "root": "nāsus (Lat.) + logos",
+      "gloss": "nose + study"
+    },
+    "literal": "study of the nose"
+  },
+  {
+    "word": "nasturtium",
+    "from": {
+      "language": "Latin",
+      "root": "nasus + tortus",
+      "gloss": "nose + twisted"
+    },
+    "literal": "peppery plant that wrings the nose"
+  },
+  {
+    "word": "natatorium",
+    "from": {
+      "language": "Latin",
+      "root": "natare",
+      "gloss": "to swim"
+    },
+    "literal": "indoor swimming pool"
+  },
+  {
+    "word": "nattily",
+    "from": {
+      "language": "English",
+      "root": "natty + -ly",
+      "gloss": "tidy + manner"
+    },
+    "literal": "in a smart, tidy way"
+  },
+  {
+    "word": "nativity",
+    "from": {
+      "language": "Latin",
+      "root": "nativitas",
+      "gloss": "birth"
+    },
+    "literal": "birth, esp. of Jesus"
+  },
+  {
+    "word": "natterjack",
+    "from": {
+      "language": "English",
+      "root": "natter + jack",
+      "gloss": "to chatter + man"
+    },
+    "literal": "toad with a rattling call"
+  },
+  {
+    "word": "naturism",
+    "from": {
+      "language": "French via Eng.",
+      "root": "naturisme",
+      "gloss": "nature worship"
+    },
+    "literal": "nudism; nature-centric belief"
+  },
+  {
+    "word": "naufragous",
+    "from": {
+      "language": "Latin",
+      "root": "naufragium",
+      "gloss": "shipwreck"
+    },
+    "literal": "causing shipwreck; wrecked"
+  },
+  {
+    "word": "naumachia",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "naumachia",
+      "gloss": "sea-battle show"
+    },
+    "literal": "staged naval battle (Roman)"
+  },
+  {
+    "word": "nautiloid",
+    "from": {
+      "language": "Greek",
+      "root": "nautilos + eidos",
+      "gloss": "sailor + form"
+    },
+    "literal": "squid-like fossil group"
+  },
+  {
+    "word": "navette",
+    "from": {
+      "language": "French",
+      "root": "navette",
+      "gloss": "little ship"
+    },
+    "literal": "oval gem cut; shuttle shape"
+  },
+  {
+    "word": "navvy",
+    "from": {
+      "language": "English",
+      "root": "navigator (canal)",
+      "gloss": "canal worker"
+    },
+    "literal": "laborer; excavator"
+  },
+  {
+    "word": "neap tide",
+    "from": {
+      "language": "Old Eng.",
+      "root": "nepflōd",
+      "gloss": "without power flood"
+    },
+    "literal": "lower range of tide"
+  },
+  {
+    "word": "neapolitan",
+    "from": {
+      "language": "Italian",
+      "root": "Neapolitanus",
+      "gloss": "of Naples"
+    },
+    "literal": "from Naples; ice cream triad"
+  },
+  {
+    "word": "nebulous",
+    "from": {
+      "language": "Latin",
+      "root": "nebula",
+      "gloss": "mist, cloud"
+    },
+    "literal": "vague; cloud-like"
+  },
+  {
+    "word": "necropolis",
+    "from": {
+      "language": "Greek",
+      "root": "nekros + polis",
+      "gloss": "dead + city"
+    },
+    "literal": "large ancient cemetery"
+  },
+  {
+    "word": "nectary",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "nectarium",
+      "gloss": "nectar holder"
+    },
+    "literal": "gland secreting nectar"
+  },
+  {
+    "word": "necrotic",
+    "from": {
+      "language": "Greek",
+      "root": "nekros",
+      "gloss": "dead"
+    },
+    "literal": "relating to dead tissue"
+  },
+  {
+    "word": "necromancy",
+    "from": {
+      "language": "Greek",
+      "root": "nekros + manteia",
+      "gloss": "dead + divination"
+    },
+    "literal": "divination by spirits of the dead"
+  },
+  {
+    "word": "nectareous",
+    "from": {
+      "language": "Latin",
+      "root": "nectar",
+      "gloss": "gods’ drink"
+    },
+    "literal": "sweet like nectar"
+  },
+  {
+    "word": "necton",
+    "from": {
+      "language": "Greek",
+      "root": "nektos",
+      "gloss": "swimming"
+    },
+    "literal": "actively swimming aquatic animals"
+  },
+  {
+    "word": "nectonous",
+    "from": {
+      "language": "Greek",
+      "root": "nektos",
+      "gloss": "swimming"
+    },
+    "literal": "of the nekton; able to swim"
+  },
+  {
+    "word": "needlecast",
+    "from": {
+      "language": "Eng. forestry",
+      "root": "needle + cast",
+      "gloss": "leaf + fall"
+    },
+    "literal": "conifer needle disease/leaf drop"
+  },
+  {
+    "word": "nefarious",
+    "from": {
+      "language": "Latin",
+      "root": "ne + fas",
+      "gloss": "not + divine law"
+    },
+    "literal": "wicked; criminal"
+  },
+  {
+    "word": "nefas",
+    "from": {
+      "language": "Latin",
+      "root": "ne + fas",
+      "gloss": "not + right"
+    },
+    "literal": "that which is wrong by divine law"
+  },
+  {
+    "word": "negationist",
+    "from": {
+      "language": "Latin via Eng.",
+      "root": "negare",
+      "gloss": "to deny"
+    },
+    "literal": "one who denies a historical fact"
+  },
+  {
+    "word": "negligee",
+    "from": {
+      "language": "French",
+      "root": "négligé",
+      "gloss": "careless"
+    },
+    "literal": "light dressing gown"
+  },
+  {
+    "word": "negotiate",
+    "from": {
+      "language": "Latin",
+      "root": "neg-otium",
+      "gloss": "not-leisure"
+    },
+    "literal": "discuss to reach agreement"
+  },
+  {
+    "word": "negroni",
+    "from": {
+      "language": "Italian",
+      "root": "Negroni",
+      "gloss": "count’s name"
+    },
+    "literal": "cocktail of gin, vermouth, Campari"
+  },
+  {
+    "word": "negritude",
+    "from": {
+      "language": "French",
+      "root": "nègre + -itude",
+      "gloss": "black + ness"
+    },
+    "literal": "Black cultural consciousness (Fr.)"
+  },
+  {
+    "word": "neologize",
+    "from": {
+      "language": "Greek via Eng.",
+      "root": "neos + logos",
+      "gloss": "new + word"
+    },
+    "literal": "coin or use a new word"
+  },
+  {
+    "word": "neology",
+    "from": {
+      "language": "Greek via Eng.",
+      "root": "neos + logos",
+      "gloss": "new + word"
+    },
+    "literal": "use or study of new words"
+  },
+  {
+    "word": "neophyte",
+    "from": {
+      "language": "Greek",
+      "root": "neos + phyton",
+      "gloss": "new + plant"
+    },
+    "literal": "new convert; novice"
+  },
+  {
+    "word": "nephogram",
+    "from": {
+      "language": "Greek",
+      "root": "nephos + gramma",
+      "gloss": "cloud + writing"
+    },
+    "literal": "photograph of clouds"
+  },
+  {
+    "word": "nephology",
+    "from": {
+      "language": "Greek",
+      "root": "nephos + logos",
+      "gloss": "cloud + study"
+    },
+    "literal": "study of clouds"
+  },
+  {
+    "word": "nephrite",
+    "from": {
+      "language": "Greek via Ger.",
+      "root": "nephros",
+      "gloss": "kidney"
+    },
+    "literal": "jade variety; kidney-shaped"
+  },
+  {
+    "word": "nepotism",
+    "from": {
+      "language": "Italian via Lat.",
+      "root": "nepote",
+      "gloss": "nephew"
+    },
+    "literal": "favoritism to relatives"
+  },
+  {
+    "word": "neritic",
+    "from": {
+      "language": "Greek",
+      "root": "nērīs",
+      "gloss": "of the coast"
+    },
+    "literal": "relating to coastal waters"
+  },
+  {
+    "word": "nescience",
+    "from": {
+      "language": "Latin",
+      "root": "nescire",
+      "gloss": "not to know"
+    },
+    "literal": "ignorance"
+  },
+  {
+    "word": "nestorian",
+    "from": {
+      "language": "Syriac via Gr.",
+      "root": "Nestōrios",
+      "gloss": "bishop’s name"
+    },
+    "literal": "relating to Nestorius; doctrine"
+  },
+  {
+    "word": "nestor",
+    "from": {
+      "language": "Greek",
+      "root": "Nestor",
+      "gloss": "wise elder’s name"
+    },
+    "literal": "venerable wise old man"
+  },
+  {
+    "word": "nettle",
+    "from": {
+      "language": "Old Eng.",
+      "root": "netele",
+      "gloss": "sting plant"
+    },
+    "literal": "stinging plant; irritate"
+  },
+  {
+    "word": "neume",
+    "from": {
+      "language": "Greek via Med. Lat.",
+      "root": "pneuma/neos?",
+      "gloss": "breath; sign"
+    },
+    "literal": "Gregorian chant sign"
+  },
+  {
+    "word": "neuralgia",
+    "from": {
+      "language": "Greek",
+      "root": "neuron + algos",
+      "gloss": "nerve + pain"
+    },
+    "literal": "nerve pain"
+  },
+  {
+    "word": "neurasthenia",
+    "from": {
+      "language": "Greek",
+      "root": "neuron + astheneia",
+      "gloss": "nerve + weakness"
+    },
+    "literal": "nervous exhaustion (hist.)"
+  },
+  {
+    "word": "neuritis",
+    "from": {
+      "language": "Greek",
+      "root": "neuron + -itis",
+      "gloss": "nerve + inflammation"
+    },
+    "literal": "nerve inflammation"
+  },
+  {
+    "word": "neuroglia",
+    "from": {
+      "language": "Greek",
+      "root": "neuron + glia",
+      "gloss": "nerve + glue"
+    },
+    "literal": "support cells of nervous system"
+  },
+  {
+    "word": "neutropenia",
+    "from": {
+      "language": "Latin/Greek",
+      "root": "neuter + penia",
+      "gloss": "neutral + lack"
+    },
+    "literal": "low neutrophil count"
+  },
+  {
+    "word": "nevus",
+    "from": {
+      "language": "Latin",
+      "root": "naevus",
+      "gloss": "birthmark"
+    },
+    "literal": "pigmented skin spot"
+  },
+  {
+    "word": "newel",
+    "from": {
+      "language": "French via Eng.",
+      "root": "nouel",
+      "gloss": "new (post)"
+    },
+    "literal": "central post of a staircase"
+  },
+  {
+    "word": "nexus",
+    "from": {
+      "language": "Latin",
+      "root": "nectere",
+      "gloss": "to bind"
+    },
+    "literal": "connection; link"
+  },
+  {
+    "word": "niacin",
+    "from": {
+      "language": "Trade name",
+      "root": "nicotinic acid + vitam",
+      "gloss": "chem. + vital amine"
+    },
+    "literal": "vitamin B3"
+  },
+  {
+    "word": "niblick",
+    "from": {
+      "language": "Scots golf",
+      "root": "niblick",
+      "gloss": "little nib?"
+    },
+    "literal": "golf club; 9-iron historically"
+  },
+  {
+    "word": "nidificate",
+    "from": {
+      "language": "Latin",
+      "root": "nidus + facere",
+      "gloss": "nest + to make"
+    },
+    "literal": "to build a nest"
+  },
+  {
+    "word": "nidifugous",
+    "from": {
+      "language": "Latin",
+      "root": "nidus + fugere",
+      "gloss": "nest + to flee"
+    },
+    "literal": "leaving the nest early"
+  },
+  {
+    "word": "nidor",
+    "from": {
+      "language": "Latin",
+      "root": "nidor",
+      "gloss": "steam of roasting"
+    },
+    "literal": "smell of sizzling fat"
+  },
+  {
+    "word": "nidus",
+    "from": {
+      "language": "Latin",
+      "root": "nidus",
+      "gloss": "nest"
+    },
+    "literal": "nest; breeding place"
+  },
+  {
+    "word": "nief",
+    "from": {
+      "language": "Old Fr. via Eng.",
+      "root": "naif/nef",
+      "gloss": "born subject"
+    },
+    "literal": "a serf; servile person (hist.)"
+  },
+  {
+    "word": "niello",
+    "from": {
+      "language": "Italian",
+      "root": "niello",
+      "gloss": "black mixture"
+    },
+    "literal": "black inlay in metalwork"
+  },
+  {
+    "word": "nieve",
+    "from": {
+      "language": "Scots",
+      "root": "neve",
+      "gloss": "fist"
+    },
+    "literal": "fist (Scots)"
+  },
+  {
+    "word": "niftily",
+    "from": {
+      "language": "English",
+      "root": "nifty + -ly",
+      "gloss": "clever + manner"
+    },
+    "literal": "in a neat, clever way"
+  },
+  {
+    "word": "nigrescent",
+    "from": {
+      "language": "Latin",
+      "root": "nigrescere",
+      "gloss": "to grow black"
+    },
+    "literal": "becoming black or dark"
+  },
+  {
+    "word": "nihilarian",
+    "from": {
+      "language": "Latin",
+      "root": "nihil + -arian",
+      "gloss": "nothing + person"
+    },
+    "literal": "one who deals in trifles (humor)"
+  },
+  {
+    "word": "nihility",
+    "from": {
+      "language": "Latin",
+      "root": "nihil",
+      "gloss": "nothingness"
+    },
+    "literal": "nothingness; nonexistence"
+  },
+  {
+    "word": "nihilism",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "nihil",
+      "gloss": "nothing"
+    },
+    "literal": "belief in meaninglessness"
+  },
+  {
+    "word": "nilgai",
+    "from": {
+      "language": "Hindi",
+      "root": "nīlgāy",
+      "gloss": "blue bull"
+    },
+    "literal": "large Indian antelope"
+  },
+  {
+    "word": "nimiety",
+    "from": {
+      "language": "Latin",
+      "root": "nimietas",
+      "gloss": "excess"
+    },
+    "literal": "too much; redundancy"
+  },
+  {
+    "word": "nincompoop",
+    "from": {
+      "language": "Eng. (humor)",
+      "root": "non compos (mentis)",
+      "gloss": "not in control (mind)"
+    },
+    "literal": "foolish person"
+  },
+  {
+    "word": "ninon",
+    "from": {
+      "language": "French",
+      "root": "ninon",
+      "gloss": "thin stuff"
+    },
+    "literal": "sheer fabric"
+  },
+  {
+    "word": "nival",
+    "from": {
+      "language": "Latin",
+      "root": "nix, niv-",
+      "gloss": "snow"
+    },
+    "literal": "relating to snow"
+  },
+  {
+    "word": "nivation",
+    "from": {
+      "language": "Latin",
+      "root": "nix + -ation",
+      "gloss": "snow + act"
+    },
+    "literal": "erosion by snow processes"
+  },
+  {
+    "word": "nixie",
+    "from": {
+      "language": "German via Eng.",
+      "root": "Nixe",
+      "gloss": "water sprite"
+    },
+    "literal": "water spirit; mis-sent mail (US)"
+  },
+  {
+    "word": "nizam",
+    "from": {
+      "language": "Urdu via Turk.",
+      "root": "niẓām",
+      "gloss": "order; ruler"
+    },
+    "literal": "title of a ruler; system"
+  },
+  {
+    "word": "noctambulist",
+    "from": {
+      "language": "Latin",
+      "root": "noctis + ambulare",
+      "gloss": "night + to walk"
+    },
+    "literal": "sleepwalker"
+  },
+  {
+    "word": "noetic",
+    "from": {
+      "language": "Greek",
+      "root": "noētikos",
+      "gloss": "intellectual"
+    },
+    "literal": "relating to the mind/intellect"
+  },
+  {
+    "word": "noisome",
+    "from": {
+      "language": "English",
+      "root": "annoy + -some",
+      "gloss": "annoying"
+    },
+    "literal": "offensive; harmful to health"
+  },
+  {
+    "word": "nolle prosequi",
+    "from": {
+      "language": "Latin",
+      "root": "nolle + prosequi",
+      "gloss": "to be unwilling + to pursue"
+    },
+    "literal": "formal notice of dropping a case"
+  },
+  {
+    "word": "nolo contendere",
+    "from": {
+      "language": "Latin",
+      "root": "nolo + contendere",
+      "gloss": "I am unwilling + to contend"
+    },
+    "literal": "no-contest plea in court"
+  },
+  {
+    "word": "nomadic",
+    "from": {
+      "language": "Greek via Lat.",
+      "root": "nomas",
+      "gloss": "roaming"
+    },
+    "literal": "wandering from place to place"
+  },
+  {
+    "word": "nomenclator",
+    "from": {
+      "language": "Latin",
+      "root": "nomen + calare",
+      "gloss": "name + to call"
+    },
+    "literal": "name-announcer; list-maker"
+  },
+  {
+    "word": "nomenclature",
+    "from": {
+      "language": "Latin",
+      "root": "nomen + calare",
+      "gloss": "name + to call"
+    },
+    "literal": "system of names"
+  },
+  {
+    "word": "nominalism",
+    "from": {
+      "language": "Latin via Eng.",
+      "root": "nomen",
+      "gloss": "name"
+    },
+    "literal": "view that universals are names only"
+  },
+  {
+    "word": "nomography",
+    "from": {
+      "language": "Greek",
+      "root": "nomos + graphein",
+      "gloss": "law + write"
+    },
+    "literal": "graphical calculating method"
+  },
+  {
+    "word": "nomothetic",
+    "from": {
+      "language": "Greek",
+      "root": "nomos + tithenai",
+      "gloss": "law + place"
+    },
+    "literal": "seeking general laws"
+  },
+  {
+    "word": "nonage",
+    "from": {
+      "language": "French via Eng.",
+      "root": "non-âge",
+      "gloss": "not of age"
+    },
+    "literal": "legal minority; immaturity"
+  },
+  {
+    "word": "nonce word",
+    "from": {
+      "language": "English",
+      "root": "for the nonce",
+      "gloss": "for the occasion"
+    },
+    "literal": "a word coined for one occasion"
+  },
+  {
+    "word": "nonesuch",
+    "from": {
+      "language": "English",
+      "root": "none + such",
+      "gloss": "none + such"
+    },
+    "literal": "a person/thing without equal"
+  },
+  {
+    "word": "nonpareil",
+    "from": {
+      "language": "French",
+      "root": "non + pareil",
+      "gloss": "not + equal"
+    },
+    "literal": "without equal; type of confection"
+  },
+  {
+    "word": "noria",
+    "from": {
+      "language": "Arabic via Sp.",
+      "root": "nā‘ūra",
+      "gloss": "water-wheel"
+    },
+    "literal": "irrigation water wheel"
+  },
+  {
+    "word": "normative",
+    "from": {
+      "language": "Latin",
+      "root": "norma",
+      "gloss": "carpenter’s square"
+    },
+    "literal": "establishing a standard"
+  },
+  {
+    "word": "norther",
+    "from": {
+      "language": "American Eng.",
+      "root": "north + -er",
+      "gloss": "north wind"
+    },
+    "literal": "strong cold north wind"
+  },
+  {
+    "word": "nosology",
+    "from": {
+      "language": "Greek",
+      "root": "nosos + logos",
+      "gloss": "disease + study"
+    },
+    "literal": "classification of diseases"
+  },
+  {
+    "word": "nostrum",
+    "from": {
+      "language": "Latin",
+      "root": "nostrum",
+      "gloss": "our (remedy)"
+    },
+    "literal": "quack medicine; pet plan"
+  },
+  {
+    "word": "notarial",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "notarius",
+      "gloss": "note-taker"
+    },
+    "literal": "relating to notaries"
+  },
+  {
+    "word": "nourriture",
+    "from": {
+      "language": "French",
+      "root": "nourriture",
+      "gloss": "nourishment"
+    },
+    "literal": "food (Fr. loan)"
+  },
+  {
+    "word": "novena",
+    "from": {
+      "language": "Latin via Sp./It.",
+      "root": "novem",
+      "gloss": "nine"
+    },
+    "literal": "nine-day prayer"
+  },
+  {
+    "word": "novitiate",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "novitius",
+      "gloss": "newly come"
+    },
+    "literal": "period of probation for novices"
+  },
+  {
+    "word": "novity",
+    "from": {
+      "language": "Latin via Eng.",
+      "root": "novitas",
+      "gloss": "newness"
+    },
+    "literal": "newness; innovation"
+  },
+  {
+    "word": "noxious",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "noxa",
+      "gloss": "harm"
+    },
+    "literal": "harmful; injurious"
+  },
+  {
+    "word": "nubbin",
+    "from": {
+      "language": "English",
+      "root": "nub",
+      "gloss": "lump"
+    },
+    "literal": "small knob or lump"
+  },
+  {
+    "word": "nubile",
+    "from": {
+      "language": "Latin via Fr.",
+      "root": "nubilis",
+      "gloss": "marriageable"
+    },
+    "literal": "sexually mature; of marriageable age"
+  },
+  {
+    "word": "nubilous",
+    "from": {
+      "language": "Latin",
+      "root": "nubilus",
+      "gloss": "cloudy"
+    },
+    "literal": "cloudy; threatening rain"
+  },
+  {
+    "word": "nucellus",
+    "from": {
+      "language": "Latin",
+      "root": "nucellus",
+      "gloss": "little nut"
+    },
+    "literal": "central part of an ovule"
+  },
+  {
+    "word": "nuchal",
+    "from": {
+      "language": "Latin",
+      "root": "nucha",
+      "gloss": "nape"
+    },
+    "literal": "of the nape of the neck"
+  },
+  {
+    "word": "nucleate",
+    "from": {
+      "language": "Latin",
+      "root": "nucleus",
+      "gloss": "kernel"
+    },
+    "literal": "to form a nucleus; having a nucleus"
+  },
+  {
+    "word": "nucleolus",
+    "from": {
+      "language": "Latin",
+      "root": "nucleus + -olus",
+      "gloss": "kernel + diminutive"
+    },
+    "literal": "small dense body in a nucleus"
+  },
+  {
+    "word": "nudnik",
+    "from": {
+      "language": "Yiddish",
+      "root": "nudnik",
+      "gloss": "bore"
+    },
+    "literal": "annoying, tedious person"
+  },
+  {
+    "word": "nudum pactum",
+    "from": {
+      "language": "Latin",
+      "root": "nudum + pactum",
+      "gloss": "naked + agreement"
+    },
+    "literal": "unenforceable promise (law)"
+  },
+  {
+    "word": "nugatory",
+    "from": {
+      "language": "Latin",
+      "root": "nugae",
+      "gloss": "trifles"
+    },
+    "literal": "trivial; of no value"
+  },
+  {
+    "word": "nullibiety",
+    "from": {
+      "language": "Latin",
+      "root": "nullibi",
+      "gloss": "nowhere"
+    },
+    "literal": "state of being nowhere (philos.)"
+  },
+  {
+    "word": "nulliparous",
+    "from": {
+      "language": "Latin",
+      "root": "nullus + parere",
+      "gloss": "none + to bring forth"
+    },
+    "literal": "of a woman who has not borne children"
+  },
+  {
+    "word": "nullity",
+    "from": {
+      "language": "Latin",
+      "root": "nullitas",
+      "gloss": "nothingness"
+    },
+    "literal": "invalidity; state of being null"
+  },
+  {
+    "word": "numen",
+    "from": {
+      "language": "Latin",
+      "root": "numen",
+      "gloss": "nod (divine)"
+    },
+    "literal": "divine power or presence"
+  },
+  {
+    "word": "numinous",
+    "from": {
+      "language": "Latin",
+      "root": "numen",
+      "gloss": "divine presence"
+    },
+    "literal": "spiritually awe-inspiring"
+  },
+  {
+    "word": "nummular",
+    "from": {
+      "language": "Latin",
+      "root": "nummulus",
+      "gloss": "coin"
+    },
+    "literal": "coin-shaped; coin eczema"
+  },
+  {
+    "word": "nunc dimittis",
+    "from": {
+      "language": "Latin",
+      "root": "nunc dimittis",
+      "gloss": "now dismiss"
+    },
+    "literal": "Simeon’s canticle; night prayer"
+  },
+  {
+    "word": "nuncio",
+    "from": {
+      "language": "Latin via It./Sp.",
+      "root": "nuntius",
+      "gloss": "messenger"
+    },
+    "literal": "papal ambassador"
+  },
+  {
+    "word": "nundinal",
+    "from": {
+      "language": "Latin",
+      "root": "nundinae",
+      "gloss": "nine-day market"
+    },
+    "literal": "relating to Roman market days"
+  },
+  {
+    "word": "nundinate",
+    "from": {
+      "language": "Latin",
+      "root": "nundinae",
+      "gloss": "market day"
+    },
+    "literal": "trade at a fair or market"
+  },
+  {
+    "word": "nurdle",
+    "from": {
+      "language": "English",
+      "root": "nurdle",
+      "gloss": "small pellet"
+    },
+    "literal": "plastic pre-production pellet; cricket shot"
+  },
+  {
+    "word": "nurdled",
+    "from": {
+      "language": "English",
+      "root": "nurdle + -ed",
+      "gloss": "pellet + past"
+    },
+    "literal": "spattered with pellets; edged in cricket"
+  },
+  {
+    "word": "nurdling",
+    "from": {
+      "language": "English",
+      "root": "nurdle + -ing",
+      "gloss": "pellet + -ing"
+    },
+    "literal": "the act of edging the ball (cricket)"
+  },
+  {
+    "word": "nursling",
+    "from": {
+      "language": "English",
+      "root": "nurse + -ling",
+      "gloss": "to nourish + little one"
+    },
+    "literal": "child being nursed"
+  },
+  {
+    "word": "nutant",
+    "from": {
+      "language": "Latin",
+      "root": "nutare",
+      "gloss": "to nod"
+    },
+    "literal": "nodding; drooping (botany)"
+  },
+  {
+    "word": "nutate",
+    "from": {
+      "language": "Latin",
+      "root": "nutare",
+      "gloss": "to nod"
+    },
+    "literal": "wobble slightly (astronomy)"
+  },
+  {
+    "word": "nutation",
+    "from": {
+      "language": "Latin",
+      "root": "nutatio",
+      "gloss": "a nodding"
+    },
+    "literal": "nodding oscillation (astr./bot.)"
+  },
+  {
+    "word": "nyctophobia",
+    "from": {
+      "language": "Greek",
+      "root": "nyx + phobos",
+      "gloss": "night + fear"
+    },
+    "literal": "fear of the dark"
+  },
+  {
+    "word": "nympholepsy",
+    "from": {
+      "language": "Greek",
+      "root": "nymphē + lēpsis",
+      "gloss": "bride + seizure"
+    },
+    "literal": "passion for nymphs; rapture at beauty"
+  },
+  {
+    "word": "nyssa",
+    "from": {
+      "language": "Greek via Neo-Lat.",
+      "root": "Nyssa",
+      "gloss": "dogwood genus"
+    },
+    "literal": "genus of tupelo trees"
+  }
+]
