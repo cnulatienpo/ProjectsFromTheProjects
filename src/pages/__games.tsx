@@ -1,7 +1,7 @@
 import cutManifest from "../../games/_manifests/cut-games.manifest.json";
 import goodManifest from "../../games/_manifests/good-word.manifest.json";
 import originalManifest from "../../games/_manifests/original.manifest.json";
-import { resolveOriginalScreens } from "@/games/original.resolve";
+import { resolveOriginalScreens } from "../games/original.resolve";
 
 const MAX_FILES = 20;
 

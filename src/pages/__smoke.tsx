@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect, useMemo, useState } from "react";
-import { resolveOriginalScreens, loadComponent } from "@/games/original.resolve";
+import { resolveOriginalScreens, loadComponent } from "../games/original.resolve";
 
 type ScreenKey = "home" | "play" | "rules";
 

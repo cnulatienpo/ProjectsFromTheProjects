@@ -1,6 +1,6 @@
 import { useEffect, useState, type ChangeEvent, type JSX } from "react";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "./ui/button";
 
 interface OneLineEditorProps {
   onHideTextarea?: () => void;

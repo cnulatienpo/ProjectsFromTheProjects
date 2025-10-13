@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 
-import { funhouseCatalog } from "@/games/fun_house_writing/funhouse_catalog";
-import { resolveFunhouseDistortion } from "@/games/fun_house_writing/utils";
+import { funhouseCatalog } from "../../games/fun_house_writing/funhouse_catalog";
+import { resolveFunhouseDistortion } from "../../games/fun_house_writing/utils";
 
 const funhousePrompts = funhouseCatalog.map((prompt) => ({
   id: prompt.id,

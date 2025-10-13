@@ -1,14 +1,14 @@
 import { useCallback, useEffect, useMemo, useState, type Dispatch, type JSX, type SetStateAction } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 
-import { CountdownTimer } from "@/components/CountdownTimer";
-import { OneLineEditor } from "@/components/OneLineEditor";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { findFunhouseVariantById, funhousePrompts } from "@/data/funhouse-prompts";
+import { CountdownTimer } from "../components/CountdownTimer";
+import { OneLineEditor } from "../components/OneLineEditor";
+import { Button } from "../components/ui/button";
+import { Textarea } from "../components/ui/textarea";
+import { findFunhouseVariantById, funhousePrompts } from "../data/funhouse-prompts";
 
-import { GameLoader } from "@/games/fun_house_writing";
-import { saveEntry } from "@/utils/funhouseStorage";
+import { GameLoader } from "../games/fun_house_writing";
+import { saveEntry } from "../utils/funhouseStorage";
 
 type PromptIndices = {
   promptIndex: number;

@@ -3,9 +3,9 @@ import Link from "next/link";
 import { useMemo } from "react";
 import { useRouter } from "next/router";
 
-import FunhouseGameShell from "@/components/FunhouseGameShell";
-import { funhouseCatalog } from "@/games/fun_house_writing/funhouse_catalog";
-import { resolveFunhouseDistortion } from "@/games/fun_house_writing/utils";
+import FunhouseGameShell from "../../components/FunhouseGameShell";
+import { funhouseCatalog } from "../../games/fun_house_writing/funhouse_catalog";
+import { resolveFunhouseDistortion } from "../../games/fun_house_writing/utils";
 
 function resolveMode(gameType?: string): string {
   if (!gameType) {

@@ -1,7 +1,7 @@
 import type { JSX } from "react";
 import { Link } from "react-router-dom";
 
-import { funhouseCatalog } from "@/games/fun_house_writing/funhouse_catalog";
+import { funhouseCatalog } from "../games/fun_house_writing/funhouse_catalog";
 
 export default function FunhouseHub(): JSX.Element {
   const routes = funhouseCatalog.map((entry) => ({
