@@ -11,9 +11,55 @@ type FunhouseVariant = {
   description: string;
   mirrors_lesson_id: string;
   prompt_text: string;
-  game_type: "writing_prompt";
-  ui_component: "FreeWriteTextBox";
+  constraint_type: string;
+  constraint_label: string;
+  game_type: FunhouseGameType;
+  ui_component: FunhouseComponentKey;
 };
+
+type FunhouseGameType =
+  | "writing_prompt"
+  | "beat_arcade"
+  | "style_swap"
+  | "experimental";
+
+type FunhouseComponentKey =
+  | "FreeWriteTextBox"
+  | "BeatComboMachine"
+  | "VoiceSwapGame"
+  | "GenreMangleMachine"
+  | "MirrorDrillUI"
+  | "OneParagraphChallenge";
+
+type Constraint = {
+  type: string;
+  label: string;
+  ui: FunhouseComponentKey;
+  gameType: FunhouseGameType;
+};
+
+const CONSTRAINTS: Constraint[] = [
+  { type: "tone", label: "Make it melodramatic", ui: "FreeWriteTextBox", gameType: "writing_prompt" },
+  { type: "tone", label: "Make it absurd comedy", ui: "FreeWriteTextBox", gameType: "writing_prompt" },
+  { type: "POV", label: "Write in second person", ui: "VoiceSwapGame", gameType: "style_swap" },
+  { type: "POV", label: "Unreliable narrator version", ui: "VoiceSwapGame", gameType: "style_swap" },
+  { type: "genre", label: "Make it horror", ui: "GenreMangleMachine", gameType: "style_swap" },
+  {
+    type: "genre",
+    label: "Make it noir detective fiction",
+    ui: "GenreMangleMachine",
+    gameType: "style_swap",
+  },
+  { type: "emotion", label: "Character denies the emotion", ui: "MirrorDrillUI", gameType: "experimental" },
+  { type: "emotion", label: "Character explodes with the emotion", ui: "MirrorDrillUI", gameType: "experimental" },
+  { type: "structure", label: "Write it backwards", ui: "BeatComboMachine", gameType: "beat_arcade" },
+  {
+    type: "structure",
+    label: "List the story as 10 weird observations",
+    ui: "OneParagraphChallenge",
+    gameType: "experimental",
+  },
+];
 
 const OUTPUT_PATH = path.join(
   "src",
@@ -46,17 +92,50 @@ function hasValidTitle(lesson: LessonCatalogEntry): lesson is LessonCatalogEntry
   return typeof title === "string" && title.trim().length > 0;
 }
 
-function createVariant(lesson: LessonCatalogEntry & { title: string }): FunhouseVariant {
+function getSummary(lesson: LessonCatalogEntry): string | null {
+  const summary = (lesson as { summary?: unknown }).summary;
+  if (typeof summary === "string" && summary.trim().length > 0) {
+    return summary.trim();
+  }
+
+  return null;
+}
+
+function getCorePrompt(lesson: LessonCatalogEntry): string | null {
+  const corePrompt = (lesson as { core_prompt?: unknown }).core_prompt;
+  if (typeof corePrompt === "string" && corePrompt.trim().length > 0) {
+    return corePrompt.trim();
+  }
+
+  return null;
+}
+
+function createVariant(
+  lesson: LessonCatalogEntry & { title: string },
+  constraint: Constraint,
+  index: number,
+): FunhouseVariant {
   const title = lesson.title.trim();
+  const summary = getSummary(lesson);
+  const corePrompt = getCorePrompt(lesson);
+  const variantNumber = index + 1;
+
+  const promptIntro = corePrompt
+    ? `Original prompt: ${corePrompt}\n\n`
+    : "";
 
   return {
-    id: `funhouse-${lesson.id}`,
-    title: `BREAK: ${title}`,
-    description: "Do the opposite of what this lesson teaches. Write it wrong, make it weird.",
+    id: `${lesson.id}-funhouse-${variantNumber}`,
+    title: `${title} – Funhouse Variant ${variantNumber}`,
+    description: summary
+      ? `${summary} Funhouse twist: ${constraint.label}.`
+      : `Funhouse twist: ${constraint.label}.`,
     mirrors_lesson_id: lesson.id,
-    prompt_text: `Write a scene that breaks the rule of '${title}'. Do the exact opposite and try to make it fun.`,
-    game_type: "writing_prompt",
-    ui_component: "FreeWriteTextBox",
+    prompt_text: `${promptIntro}Rewrite the lesson prompt but with this twist: ${constraint.label}.`,
+    constraint_type: constraint.type,
+    constraint_label: constraint.label,
+    game_type: constraint.gameType,
+    ui_component: constraint.ui,
   };
 }
 
@@ -72,7 +151,9 @@ function buildVariants(): FunhouseVariant[] {
       continue;
     }
 
-    variants.push(createVariant(lesson));
+    CONSTRAINTS.forEach((constraint, index) => {
+      variants.push(createVariant(lesson, constraint, index));
+    });
   }
 
   return variants;

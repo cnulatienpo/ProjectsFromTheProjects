@@ -9,6 +9,10 @@ export type FunhouseComponentKey =
   | "FreeWriteTextBox"
   | "BeatComboMachine"
   | "VoiceImpersonatorChallenge"
+  | "VoiceSwapGame"
+  | "GenreMangleMachine"
+  | "MirrorDrillUI"
+  | "OneParagraphChallenge"
   | string;
 
 export interface FunhousePrompt {
@@ -19,6 +23,8 @@ export interface FunhousePrompt {
   prompt_text: string;
   game_type: FunhouseGameType;
   ui_component: FunhouseComponentKey;
+  constraint_type?: string;
+  constraint_label?: string;
 }
 
 export type FunhouseCatalog = FunhousePrompt[];

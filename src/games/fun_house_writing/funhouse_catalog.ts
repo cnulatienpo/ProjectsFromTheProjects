@@ -1,4 +1,5 @@
 import { FunhouseCatalog } from "./types";
+import { generatedFunhouseVariants } from "./generated_funhouse_variants";
 
 export const funhouseCatalog: FunhouseCatalog = [
   {
@@ -12,4 +13,5 @@ export const funhouseCatalog: FunhouseCatalog = [
     game_type: "writing_prompt",
     ui_component: "FreeWriteTextBox",
   },
+  ...generatedFunhouseVariants,
 ];
