@@ -1,7 +1,29 @@
-import originalManifest from "../../games/_manifests/original.manifest.json";
+// @ts-ignore
+import cacheJson from "../../games/_cache/original.cache.json?raw";
+// @ts-ignore
+import manifestJson from "../../games/_manifests/original.manifest.json?raw";
 import type { ComponentType } from "react";
 
-type Manifest = typeof originalManifest;
+type Manifest = {
+  generatedAt?: string;
+  files: string[];
+  hints: Record<string, string[]>;
+};
+
+function readManifest(): Manifest {
+  try {
+    if (import.meta.env.PROD && cacheJson) {
+      return JSON.parse(cacheJson) as Manifest;
+    }
+  } catch {}
+  try {
+    return JSON.parse(manifestJson) as Manifest;
+  } catch {
+    return { files: [], hints: { home: [], play: [], rules: [] } } as Manifest;
+  }
+}
+
+const originalManifest = readManifest();
 
 type HintKey = "home" | "play" | "rules";
 
