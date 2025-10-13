@@ -37,7 +37,8 @@ function ResolvedOriginalScreens() {
       <div>
         <h2 className="text-xl font-semibold">Resolved ORIGINAL screens</h2>
         <p className="text-sm text-neutral-600 dark:text-neutral-400">
-          Live routes below point to the Sigil &amp; Syntax wrappers; file paths show the selected components.
+          Live routes below point to the <a href="#/sigil-syntax">Sigil &amp; Syntax</a> wrappers; file paths show
+          the selected components.
         </p>
       </div>
       <ul className="space-y-3 text-sm">
