@@ -3,8 +3,8 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  // IMPORTANT: set to your repo name with leading/trailing slashes
-  // Example: base: "/the-good-word/"
-  base: "/ProjectsFromTheProjects/",
+  base: process.env.GITHUB_REPOSITORY
+    ? "/" + process.env.GITHUB_REPOSITORY.split("/")[1] + "/"
+    : "/",
   build: { sourcemap: true, outDir: "dist" },
 });
