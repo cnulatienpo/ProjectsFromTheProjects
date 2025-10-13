@@ -9,6 +9,7 @@ export interface FunhouseGameShellProps {
   mode: string;
   distortion: string;
   description: string;
+  promptText?: string;
 }
 
 export default function FunhouseGameShell({
@@ -17,6 +18,7 @@ export default function FunhouseGameShell({
   mode,
   distortion,
   description,
+  promptText,
 }: FunhouseGameShellProps): JSX.Element {
   const [text, setText] = useState("");
 
@@ -36,6 +38,17 @@ export default function FunhouseGameShell({
           </Badge>
         </div>
       </div>
+
+      {promptText && (
+        <section className="rounded-lg border border-neutral-200 bg-neutral-50 p-4 text-sm text-neutral-700 dark:border-neutral-700 dark:bg-neutral-900/40 dark:text-neutral-300">
+          <h2 className="mb-2 font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+            Prompt
+          </h2>
+          <p className="whitespace-pre-wrap leading-relaxed text-neutral-900 dark:text-neutral-100">
+            {promptText}
+          </p>
+        </section>
+      )}
 
       {mode === "text" && (
         <div className="space-y-4">
