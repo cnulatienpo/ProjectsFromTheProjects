@@ -1,13 +1,11 @@
-// src/components/cutgames/SceneCard.tsx
 import { PracticeItem } from "../../lib/cutGamesClient";
-
-export default function SceneCard({ item }: { item: PracticeItem }) {
+export default function SceneCard({ item }:{ item:PracticeItem }) {
   return (
     <div className="card" data-testid="scene-card">
-      <div className="flex items-center gap-2 mb-3">
+      <div style={{display:"flex", alignItems:"center", gap:"8px", marginBottom:"10px"}}>
         {item.beat && <span className="chip">{item.beat}</span>}
         {item.pitfall && <span className="chip">{item.pitfall}</span>}
-        <span className="text-xs text-neutral-500 ml-auto">#{item.id}</span>
+        <span style={{marginLeft:"auto", opacity:.6, fontSize:12}}>#{item.id}</span>
       </div>
       <div className="scene">{item.scene}</div>
     </div>
