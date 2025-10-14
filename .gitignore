@@ -154,4 +154,8 @@ game thingss/influences.json
 game thingss/reportPhrases.json
 game thingss/writer_types.json
 game thingss/reportTypes.json
+game thingss/build/bundle_cut_game.json
+game thingss/build/bundle_good_word.json
+game things/build/bundle_cut_game.json
+game things/build/bundle_good_word.json
 
