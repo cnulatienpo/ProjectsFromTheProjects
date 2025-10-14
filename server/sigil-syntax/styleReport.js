@@ -17,5 +17,13 @@ export function analyzeText(text = '') {
     // crude score 0..1
     const score = Math.max(0, Math.min(1, 1 - (longSentences * 0.15 + adverbs * 0.03 + passiveHints * 0.1)))
 
-    return { score, words: words.length, sentences: sentences.length, notes }
+    return {
+        score,
+        words: words.length,
+        sentences: sentences.length,
+        adverbs,
+        passiveHints,
+        longSentences,
+        notes,
+    }
 }

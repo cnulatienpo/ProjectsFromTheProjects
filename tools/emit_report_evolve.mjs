@@ -1,10 +1,11 @@
-// Input:  app/src/ai/reportEvolve.ts
+// Input:  app/src/ai/sigil-syntax/reportEvolve.ts
 // Output: server/generated/reportEvolve.js  (ESM)
 
 import fs from 'fs'
 import path from 'path'
 
-const INPUT = process.env.REPORT_EVOLVE_TS || path.resolve('app/src/ai/reportEvolve.ts')
+const INPUT =
+  process.env.REPORT_EVOLVE_TS || path.resolve('app/src/ai/sigil-syntax/reportEvolve.ts')
 const OUTDIR = path.resolve('server/generated')
 const OUT = path.join(OUTDIR, 'reportEvolve.js')
 

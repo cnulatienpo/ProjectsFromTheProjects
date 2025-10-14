@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 export default function Home() {
     return (
         <div className="site">
@@ -47,9 +49,9 @@ export default function Home() {
                     Fiction Writing School for Broke Mutherfuckers.
                 </p>
 
-                <a className="tile" href="/game">
+                <Link className="tile" to="/game">
                     ▶︎ Play the game
-                </a>
+                </Link>
             </main>
         </div>
     )

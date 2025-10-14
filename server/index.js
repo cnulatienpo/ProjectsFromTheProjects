@@ -5,11 +5,14 @@ import { readBundle, listItemIds, getItem, listLessons, getLesson } from './bund
 import { loadFoundations } from './foundations.loader.js'
 import { readStatus } from './status.js'
 import { levelForXp, checkBadges } from './sigil-syntax/progression.js'
+import { readReportPhrases } from './sigil-syntax/reportPhrases.js'
+import { loadEvolver } from './sigil-syntax/reportEvolve.loader.js'
 import fs from 'fs'
 import path from 'path'
 import { evaluateAttempt } from './sigil-syntax/judgment.js'
 import { listWriterTypes, getWriterType, allWriterTypes } from './sigil-syntax/writerTypes.js'
 import { listReportTypes, getReportType, defaultReportType } from './sigil-syntax/reportTypes.js'
+import { analyzeText } from './sigil-syntax/styleReport.js'
 import { listCutIds, getCutItem, listGoodIds, getGoodItem } from './cutGood/index.js'
 
 const app = express()
@@ -217,6 +220,52 @@ app.post('/api/judge', express.json({ limit: '200kb' }), (req, res) => {
         const code = e.code === 'unknown_game' ? 404 : 500
         return res.status(code).json({ error: e.code || 'judge_failed', message: String(e.message || e) })
     }
+})
+
+app.post('/style-report', express.json({ limit: '200kb' }), async (req, res) => {
+    const { text, history } = req.body || {}
+    if (typeof text !== 'string' || !text.trim()) {
+        return res.status(400).json({ error: 'missing_text' })
+    }
+
+    const base = analyzeText(text)
+    const latest = {
+        score: base.score,
+        feedback: Array.isArray(base.notes) ? base.notes : [],
+        tags: (Array.isArray(base.notes) ? base.notes : []).map((_, idx) => `style-${idx}`),
+    }
+
+    let evolved = { ...latest }
+    try {
+        const evolver = await loadEvolver()
+        if (typeof evolver === 'function') {
+            const out = await evolver(Array.isArray(history) ? history : [], latest)
+            if (out && typeof out === 'object') {
+                evolved = {
+                    score: typeof out.score === 'number' ? out.score : latest.score,
+                    feedback: Array.isArray(out.feedback) ? out.feedback : latest.feedback,
+                    tags: Array.isArray(out.tags) ? out.tags : latest.tags,
+                }
+            }
+        }
+    } catch (e) {
+        console.warn('[style-report] evolver error', e?.message || e)
+    }
+
+    const phrases = readReportPhrases()
+    const feedback = evolved.feedback && evolved.feedback.length ? [...evolved.feedback] : [...(phrases.generic || [])]
+    const closers = base.score < 0.4 ? phrases.closers.low : base.score < 0.8 ? phrases.closers.mid : phrases.closers.high
+    if (Array.isArray(closers) && closers.length) {
+        const closer = closers[Math.floor(Math.random() * closers.length)]
+        if (closer) feedback.push(closer)
+    }
+
+    return res.json({
+        schema: 'sigil-syntax/style/v1',
+        ...base,
+        feedback,
+        tags: evolved.tags,
+    })
 })
 
 // Writer types endpoints

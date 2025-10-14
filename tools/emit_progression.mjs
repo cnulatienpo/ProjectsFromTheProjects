@@ -26,8 +26,10 @@ function parseTSFile(tsPath, name) {
     return json
 }
 
-const levelsPath = process.env.LEVELS_TS || path.resolve('app/src/progression/levels.ts')
-const badgesPath = process.env.BADGES_TS || path.resolve('app/src/progression/badges.ts')
+const levelsPath =
+  process.env.LEVELS_TS || path.resolve('app/src/ai/sigil-syntax/levels.ts')
+const badgesPath =
+  process.env.BADGES_TS || path.resolve('app/src/ai/sigil-syntax/badges.ts')
 
 const levels = parseTSFile(levelsPath, 'levels.ts')
 const badges = parseTSFile(badgesPath, 'badges.ts')

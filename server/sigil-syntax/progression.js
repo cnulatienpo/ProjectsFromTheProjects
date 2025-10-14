@@ -35,11 +35,11 @@ function parseTSFile(tsPath, name) {
 
 if (!LEVELS) {
     console.warn('[progression] levels.json missing, trying to read TypeScript source. Run: npm run emit:progression')
-    LEVELS = parseTSFile(path.resolve('app/src/progression/levels.ts'), 'levels.ts')
+    LEVELS = parseTSFile(path.resolve('app/src/ai/sigil-syntax/levels.ts'), 'levels.ts')
 }
 if (!BADGES) {
     console.warn('[progression] badges.json missing, trying to read TypeScript source. Run: npm run emit:progression')
-    BADGES = parseTSFile(path.resolve('app/src/progression/badges.ts'), 'badges.ts')
+    BADGES = parseTSFile(path.resolve('app/src/ai/sigil-syntax/badges.ts'), 'badges.ts')
 }
 
 export function allLevels() { return LEVELS }
