@@ -12,9 +12,15 @@ export type GameSpec = {
     evaluate?: (input: string | number | null) => { score: number; feedback: string }
 }
 
+type GameResult = {
+    score: number
+    feedback: string
+    response?: string | { key: number | null } | null
+}
+
 type Props = {
     spec: GameSpec
-    onResult: (r: { score: number; feedback: string }) => void
+    onResult: (r: GameResult) => void
 }
 
 export default function GameItem({ spec, onResult }: Props) {
@@ -37,10 +43,22 @@ export default function GameItem({ spec, onResult }: Props) {
     }
 
     function onSubmit() {
-        const evalr = spec.evaluate
-            ? spec.evaluate(spec.mode === 'mcq' ? choice : (spec.mode === 'write' ? text : null))
-            : defaultEvaluate()
-        onResult(evalr)
+        const rawInput = spec.mode === 'mcq'
+            ? choice
+            : (spec.mode === 'write' ? text : null)
+
+        const evalr = (spec.evaluate
+            ? spec.evaluate(rawInput)
+            : defaultEvaluate()) as GameResult
+
+        const response = spec.mode === 'mcq'
+            ? { key: rawInput as number | null }
+            : (spec.mode === 'write' ? String(rawInput ?? '') : null)
+
+        onResult({
+            ...evalr,
+            response: evalr.response ?? response,
+        })
     }
 
     return (

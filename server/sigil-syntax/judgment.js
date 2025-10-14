@@ -2,7 +2,7 @@
 // to produce feedback, tags, and an XP delta (no SQL).
 
 import { readInfluences } from './influences.js'        // from the first step (influences.json loader)
-import { analyzeText } from '../styleReport.js'          // our simple style analyzer
+import { analyzeText } from './styleReport.js'           // our simple style analyzer
 import { getItem } from '../bundle.js'                   // pulls a game by id from bundle/catalog
 
 const clamp01 = (x) => Math.max(0, Math.min(1, x))
