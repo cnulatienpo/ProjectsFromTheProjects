@@ -3,7 +3,16 @@ declare module "node:path" {
         resolve: (...paths: Array<string | URL>) => string;
         join: (...paths: string[]) => string;
         dirname: (path: string) => string;
+        basename: (path: string) => string;
+        relative: (from: string, to: string) => string;
+        extname: (path: string) => string;
+        sep: string;
     };
+    export = path;
+}
+
+declare module "path" {
+    import path = require("node:path");
     export = path;
 }
 
@@ -20,6 +29,11 @@ declare module "node:fs/promises" {
 
 declare module "node:fs" {
     export interface Stats {
+        isFile(): boolean;
+        isDirectory(): boolean;
+    }
+    export interface Dirent {
+        name: string;
         isFile(): boolean;
         isDirectory(): boolean;
     }
@@ -105,19 +119,34 @@ declare module "node:tls" {
 }
 
 declare module "node:url" {
-    export { URL } from "url";
-}
-
-declare module "node:zlib" {
-    export interface ZlibOptions {
-        [key: string]: unknown;
-    }
+    export { URL, URLSearchParams } from "url";
+    export function fileURLToPath(url: any): string;
 }
 
 declare module "url" {
     export class URL {
         constructor(input: string, base?: string | URL);
+        hash: string;
+        host: string;
+        hostname: string;
+        href: string;
+        origin: string;
+        pathname: string;
+        protocol: string;
+        search: string;
         toString(): string;
+    }
+    export function fileURLToPath(url: string | URL): string;
+}
+
+declare module "fs" {
+    export * from "node:fs";
+    export { promises } from "node:fs";
+}
+
+declare module "node:zlib" {
+    export interface ZlibOptions {
+        [key: string]: unknown;
     }
 }
 
@@ -146,6 +175,7 @@ declare namespace NodeJS {
         env: ProcessEnv;
         cwd(): string;
         exit(code?: number): void;
+        argv: string[];
     }
     interface Timeout {}
     interface FSWatcher {}
