@@ -154,6 +154,12 @@ game thingss/influences.json
 game thingss/reportPhrases.json
 game thingss/writer_types.json
 game thingss/reportTypes.json
+game thingss/sigil-syntax/levels.json
+game thingss/sigil-syntax/badges.json
+game thingss/sigil-syntax/influences.json
+game thingss/sigil-syntax/reportPhrases.json
+game thingss/sigil-syntax/reportTypes.json
+game thingss/sigil-syntax/writer_types.json
 game thingss/build/bundle_cut_game.json
 game thingss/build/bundle_good_word.json
 game things/build/bundle_cut_game.json

@@ -1,4 +1,4 @@
-import { SigilSyntaxHeader } from '@sigil'
+import SigilSyntaxHeader from '@sigil/Header'
 
 export default function GameRoot() {
     return (

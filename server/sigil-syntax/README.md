@@ -1,10 +1,13 @@
 # Sigil_&_Syntax (server namespace)
 
-Server modules for the game previously called “Literary Deviousness.”
+Server modules for the Sigil_&_Syntax game.
 
 - Display name: **Sigil_&_Syntax**
 - Code slug: `sigil-syntax`
+- JSON inputs live in `game thingss/sigil-syntax/` (emitted via scripts in `tools/`)
 
-Contains judgment, progression, report phrasing, writer type loaders, and related utilities.
+Judgment and loaders consume the generated JSON files; if they are missing we fall back to the TypeScript sources in
+`app/src/ai/sigil-syntax/`.
 
-The text-style analyzer now lives at `styleReport.js` in this directory and is imported by `judgment.js`.
+The style analyzer (`styleReport.js`) powers the `/style-report` route and the evolver loader prefers
+`server/generated/reportEvolve.js` when present.
