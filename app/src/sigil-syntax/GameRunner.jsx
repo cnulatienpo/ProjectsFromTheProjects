@@ -5,6 +5,7 @@ import GameItem from '@sigil/GameItem'
 import NotesPanel from '@sigil/NotesPanel'
 import LevelUpModal from '@sigil/LevelUpModal'
 import BadgeStrip from '@sigil/BadgeStrip'
+import StyleReportBox from '@sigil/StyleReportBox'
 import { toSpec } from '@/lib/gameAdapter.js'
 import { api } from '@/lib/apiBase.js'
 
@@ -17,9 +18,11 @@ export default function GameRunner() {
     const [err, setErr] = useState('')
     const [levelUp, setLevelUp] = useState(null)
     const [newBadges, setNewBadges] = useState([])
+    const [styleReport, setStyleReport] = useState(null)
+    const [styleStatus, setStyleStatus] = useState('')
 
     useEffect(() => {
-        setErr(''); setFeedback([]); setPoints(0); setLevelUp(null); setNewBadges([])
+        setErr(''); setFeedback([]); setPoints(0); setLevelUp(null); setNewBadges([]); setStyleReport(null); setStyleStatus('')
         fetch(api(`/catalog/game/${id}`))
             .then(r => r.ok ? r.json() : Promise.reject(r.status))
             .then(setGame)
@@ -51,6 +54,29 @@ export default function GameRunner() {
                 setNewBadges(data.newBadges || [])
             })
             .catch(() => { })
+
+        const textResponse = typeof r.response === 'string' ? r.response : null
+        if (game?.input_type === 'write' && textResponse && textResponse.trim()) {
+            setStyleReport(null)
+            setStyleStatus('Analyzing style…')
+            fetch(api('/style-report'), {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text: textResponse })
+            })
+                .then(resp => resp.ok ? resp.json() : Promise.reject(resp.status))
+                .then(data => {
+                    setStyleReport(data)
+                    setStyleStatus('')
+                })
+                .catch(e => {
+                    const msg = typeof e === 'number' ? `Style report unavailable (${e}).` : 'Style report unavailable.'
+                    setStyleStatus(msg)
+                })
+        } else {
+            setStyleReport(null)
+            setStyleStatus('')
+        }
     }
 
     const rayLines = err
@@ -72,7 +98,13 @@ export default function GameRunner() {
         ) : null)
 
     const badgeNode = newBadges.length ? <BadgeStrip badges={newBadges} /> : null
-    const feedbackContent = feedbackList || badgeNode ? <>{feedbackList}{badgeNode}</> : null
+    const styleNode = styleReport
+        ? <StyleReportBox report={styleReport} />
+        : (styleStatus ? <p style={{ marginTop: 12 }}>{styleStatus}</p> : null)
+
+    const feedbackContent = feedbackList || badgeNode || styleNode
+        ? <>{feedbackList}{badgeNode}{styleNode}</>
+        : null
 
     return (
         <>
