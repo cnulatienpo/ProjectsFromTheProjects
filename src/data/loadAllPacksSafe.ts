@@ -27,7 +27,7 @@ export async function loadAllPacksSafe(): Promise<{ packs: Pack[]; report: strin
   const rawEntries = collectRawPacks();
 
   if (!rawEntries.length) {
-    console.warn("[GoodWord] No pack files found under 'game thingss/' or 'labled data/'. Check paths & filenames.");
+    console.warn("[GoodWord] No pack files found under 'game thingss/' or 'labeled data/'. Check paths & filenames.");
   }
 
   const packs: Pack[] = [];

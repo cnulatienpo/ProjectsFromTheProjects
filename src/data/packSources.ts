@@ -2,7 +2,7 @@
 const globsRaw = {
   // strings for md/txt/jsonl; JSON will still come as string here (we treat uniformly)
   gameThingss: import.meta.glob("/game thingss/**/*.{json,jsonl,txt,md}", { as: "raw", eager: true }),
-  labeledData: import.meta.glob("/labled data/**/*.{json,jsonl,txt,md}", { as: "raw", eager: true }),
+  labeledData: import.meta.glob("/labeled data/**/*.{json,jsonl,txt,md}", { as: "raw", eager: true }),
   labeledDataAlt: import.meta.glob("/labeled data/**/*.{json,jsonl,txt,md}", { as: "raw", eager: true }),
 };
 

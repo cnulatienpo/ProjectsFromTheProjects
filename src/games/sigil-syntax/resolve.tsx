@@ -5,7 +5,7 @@ import React from "react";
  * and choose the best candidate by scoring:
  *  1) File path contains "sigil" or "syntax"
  *  2) File content includes "Sigil" or "Syntax"
- *  3) File imports from "labled data" or "game thingss"
+ *  3) File imports from "labeled data" or "game thingss"
  *  4) Fallback: first matching "app.tsx" nearest to games/
  *
  * We do NOT move/rename anything. We just import the chosen module and render its default export.
@@ -31,7 +31,7 @@ function scorePath(path: string, raw: string): number {
   if (p.includes("sigil")) s += 6;
   if (p.includes("syntax")) s += 6;
   if (/sigil|syntax/i.test(raw)) s += 5;
-  if (/from\s+["'][./\s]*labled data/i.test(raw)) s += 4;
+  if (/from\s+["'][./\s]*labeled data/i.test(raw)) s += 4;
   if (/from\s+["'][./\s]*game thingss/i.test(raw)) s += 4;
   // Prefer under games/
   if (p.includes("/games/")) s += 3;
