@@ -1,4 +1,4 @@
-import validateAndNormalize, { type WordEntry } from "@/utils/validateAndNormalize";
+import validateAndNormalize, { type ValidationResult, type WordEntry } from "@/utils/validateAndNormalize";
 import { ensurePackObject } from "@/utils/ensurePackObject";
 import { collectRawPacks } from "./packSources";
 
@@ -37,7 +37,7 @@ export async function loadAllPacksSafe(): Promise<{ packs: Pack[]; report: strin
   for (const { path, content } of rawEntries) {
     const asObj = ensurePackObject(content);
 
-    let normalized: { entries: WordEntry[]; issues: string[] };
+    let normalized: ValidationResult;
     try {
       normalized = validateAndNormalize(asObj);
     } catch (e: any) {

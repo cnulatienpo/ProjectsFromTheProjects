@@ -10,6 +10,7 @@ export type ValidationIssue = string;
 
 export type ValidationResult = {
   entries: WordEntry[];
+  items: WordEntry[];
   issues: ValidationIssue[];
 };
 
@@ -195,7 +196,7 @@ export default function validateAndNormalize(raw: unknown): ValidationResult {
     if (normalized) entries.push(normalized);
   });
 
-  return { entries, issues };
+  return { entries, items: entries, issues };
 }
 
 export { WordEntrySchema };
