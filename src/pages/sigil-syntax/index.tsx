@@ -37,7 +37,7 @@ export default function SigilSyntaxHome() {
 
   return (
     <Guard gameId="original">
-      <GameMenu base="/sigil-syntax" />
+      <GameMenu base="." />
       <Suspense fallback={<div style={{ padding: 20 }}>Loading…</div>}>
         <Comp />
       </Suspense>
