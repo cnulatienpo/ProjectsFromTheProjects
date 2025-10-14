@@ -10,6 +10,7 @@ import path from 'path'
 import { evaluateAttempt } from './sigil-syntax/judgment.js'
 import { listWriterTypes, getWriterType, allWriterTypes } from './sigil-syntax/writerTypes.js'
 import { listReportTypes, getReportType, defaultReportType } from './sigil-syntax/reportTypes.js'
+import { listCutIds, getCutItem, listGoodIds, getGoodItem } from './cutGood/index.js'
 
 const app = express()
 app.use(express.json())
@@ -45,6 +46,22 @@ app.get('/catalog/game/:id', (req, res) => {
     const item = getItem(req.params.id)
     if (!item) return res.status(404).json({ error: 'not_found', id: req.params.id })
     res.json(item)
+})
+
+// Cut Game
+app.get('/cut/catalog', (req,res) => res.json({ games: listCutIds() }))
+app.get('/cut/game/:id', (req,res) => {
+    const it = getCutItem(req.params.id)
+    if (!it) return res.status(404).json({ error:'not_found', id:req.params.id })
+    res.json(it)
+})
+
+// The Good Word
+app.get('/goodword/catalog', (req,res) => res.json({ games: listGoodIds() }))
+app.get('/goodword/game/:id', (req,res) => {
+    const it = getGoodItem(req.params.id)
+    if (!it) return res.status(404).json({ error:'not_found', id:req.params.id })
+    res.json(it)
 })
 
 // Lessons endpoints
