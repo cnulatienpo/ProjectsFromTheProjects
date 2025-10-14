@@ -1,7 +1,12 @@
 import { z } from 'zod';
+import type { ZodIssue } from 'zod';
 import type { WordEntry } from '@/data/wordTypes';
 
 export type { WordEntry } from '@/data/wordTypes';
+
+export type ValidateOptions = {
+  strict?: boolean;
+};
 
 type ValidationResult = {
   entries: WordEntry[];
@@ -59,7 +64,11 @@ function extractEntries(raw: unknown): ExtractResult {
   return { entries: null, error: 'expected an array of entries or an object with an entries array' };
 }
 
-export function validateAndNormalize(fileName: string, raw: unknown): ValidationResult {
+export function validateAndNormalize(
+  fileName: string,
+  raw: unknown,
+  _options: ValidateOptions = {},
+): ValidationResult {
   const { entries, error } = extractEntries(raw);
   const issues: string[] = [];
 
@@ -77,7 +86,7 @@ export function validateAndNormalize(fileName: string, raw: unknown): Validation
     if (!parsed.success) {
       const reason =
         parsed.error.issues
-          .map((issue) => {
+          .map((issue: ZodIssue) => {
             const path = issue.path.length ? issue.path.join('.') : 'entry';
             return `${path}: ${issue.message}`;
           })

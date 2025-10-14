@@ -33,6 +33,7 @@ export type Resolved = {
   rules?: string;
   fallbacks: string[];
   debug: { tried: string[] };
+  [key: string]: unknown;
 };
 
 const COMPONENT_EXTENSIONS = [".tsx", ".jsx", ".js", ".ts"];
@@ -97,13 +98,17 @@ function isLikelyComponent(exportName: string, value: unknown): value is Compone
   if (typeof value !== "function") {
     return false;
   }
-  if (value.displayName && typeof value.displayName === "string") {
+  const candidate = value as ComponentType<any> & {
+    displayName?: string;
+    prototype?: { isReactComponent?: boolean };
+  };
+  if (candidate.displayName && typeof candidate.displayName === "string") {
     return true;
   }
-  if (value.prototype && value.prototype.isReactComponent) {
+  if (candidate.prototype && candidate.prototype.isReactComponent) {
     return true;
   }
-  const resolvedName = value.name && value.name.length > 0 ? value.name : exportName;
+  const resolvedName = candidate.name && candidate.name.length > 0 ? candidate.name : exportName;
   return /^[A-Z]/.test(resolvedName);
 }
 
