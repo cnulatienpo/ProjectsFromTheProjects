@@ -29,7 +29,7 @@ import Game from "@/pages/Game";
 import SiteChrome from "@/components/SiteChrome";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import GoodWord from "@/games/goodword";
-import SigilSyntaxGame from "@/games/sigil-syntax/SigilSyntaxGame";
+import SigilSyntaxGame from "@/pages/SigilSyntaxGame";
 
 export default function App() {
   return (
@@ -40,7 +40,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/games" element={<Games />} />
             <Route path="/games/goodword" element={<GoodWord />} />
-            <Route path="/games/sigil-syntax" element={<SigilSyntaxGame />} />
+            <Route path="/games/sigil-syntax/*" element={<SigilSyntaxGame />} />
 
             <Route path="/pack/:id" element={<PackPage />} />
             <Route path="/practice" element={<PracticeHub />} />
