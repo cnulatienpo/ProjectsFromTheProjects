@@ -1,0 +1,12 @@
+{
+  "items": [
+    { "term": "Asyndeton", "definition": "Omission of conjunctions to create speed or intensity." },
+    { "term": "Polysyndeton", "definition": "Use of many conjunctions to slow rhythm or add weight." },
+    { "term": "Chiasmus", "definition": "Inverted parallel structure (ABBA) for emphasis." },
+    { "term": "Anaphora", "definition": "Repetition at the start of successive clauses." },
+    { "term": "Epistrophe", "definition": "Repetition at the end of successive clauses." },
+    { "term": "Zeugma", "definition": "A word applies to multiple parts of the sentence in different senses." },
+    { "term": "Litotes", "definition": "Understatement via double negatives or negation of the opposite." },
+    { "term": "Anadiplosis", "definition": "Repetition of the last word of a clause at the beginning of the next." }
+  ]
+}
