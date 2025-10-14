@@ -1,4 +1,4 @@
-import { validateAndNormalizePack } from './validateAndNormalize';
+import validateAndNormalize from "../utils/validateAndNormalize";
 import type { WordEntry } from './wordTypes';
 
 export type { WordEntry } from './wordTypes';
@@ -31,7 +31,7 @@ export async function loadAllPacksSafe(): Promise<{ packs: Pack[]; report: strin
   for (const [file, mod] of Object.entries(modules)) {
     const raw = (mod as { default?: unknown }).default ?? mod;
     const fileName = file.split('/').pop() || file;
-    const { entries, issues } = validateAndNormalizePack(fileName, raw);
+    const { entries, issues } = validateAndNormalize(fileName, raw);
 
     const seen = new Set<string>();
     const deduped: WordEntry[] = [];

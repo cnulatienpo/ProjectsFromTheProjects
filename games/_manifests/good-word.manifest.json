@@ -1,0 +1,41 @@
+{
+  "generatedAt": "2025-10-13T17:07:45.630Z",
+  "files": [
+    "src/components/Footer.tsx",
+    "src/labeled-data/the-good-word-core-AZ.json",
+    "src/labeled-data/the-good-word-pack-02-C-D.json",
+    "src/labeled-data/the-good-word-pack-03-uncommon-E-F.json",
+    "src/labeled-data/the-good-word-pack-04-uncommon-G-H.json",
+    "src/labeled-data/the-good-word-pack-05-uncommon-I-J.json",
+    "src/labeled-data/the-good-word-pack-06-uncommon-K-L.json",
+    "src/labeled-data/the-good-word-pack-07-uncommon-M-N.json",
+    "src/labeled-data/the-good-word-pack-08-uncommon-O-P.json",
+    "src/labeled-data/the-good-word-pack-09-uncommon-Q-R.json",
+    "src/labeled-data/the-good-word-pack-10-uncommon-S-T.json",
+    "src/labeled-data/the-good-word-pack-11-uncommon-U-Z.json",
+    "src/pages/Deck.tsx",
+    "src/pages/Settings.tsx",
+    "src/pages/Welcome.tsx",
+    "src/state/useFirstRun.ts",
+    "src/state/useProgress.ts",
+    "src/state/useTheme.ts",
+    "src/utils/rng.ts"
+  ],
+  "hints": {
+    "home": [],
+    "play": [
+      "src/labeled-data/the-good-word-core-AZ.json",
+      "src/labeled-data/the-good-word-pack-02-C-D.json",
+      "src/labeled-data/the-good-word-pack-03-uncommon-E-F.json",
+      "src/labeled-data/the-good-word-pack-04-uncommon-G-H.json",
+      "src/labeled-data/the-good-word-pack-05-uncommon-I-J.json",
+      "src/labeled-data/the-good-word-pack-06-uncommon-K-L.json",
+      "src/labeled-data/the-good-word-pack-07-uncommon-M-N.json",
+      "src/labeled-data/the-good-word-pack-08-uncommon-O-P.json",
+      "src/labeled-data/the-good-word-pack-09-uncommon-Q-R.json",
+      "src/labeled-data/the-good-word-pack-10-uncommon-S-T.json",
+      "src/labeled-data/the-good-word-pack-11-uncommon-U-Z.json"
+    ],
+    "rules": []
+  }
+}

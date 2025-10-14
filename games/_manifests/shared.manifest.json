@@ -1,0 +1,37 @@
+{
+  "generatedAt": "2025-10-13T15:26:23.198Z",
+  "files": [
+    "src/components/PackCard.tsx",
+    "src/components/PackList.tsx",
+    "src/data/loadAllPacksSafe.ts",
+    "src/data/validateAndNormalize.ts",
+    "src/data/wordTypes.ts",
+    "src/hooks/useGameDeck.ts",
+    "src/lib/api-boot.ts",
+    "src/lib/api-shim.ts",
+    "src/main.ts",
+    "src/pages/Dictionary.tsx",
+    "src/pages/Play.tsx",
+    "src/pages/PlayMCQ.tsx",
+    "src/pages/PlaySee.tsx",
+    "src/pages/PlaySlot.tsx",
+    "src/pages/Practice.tsx",
+    "src/server/utils/shadowStore.ts",
+    "src/state/useToast.ts",
+    "src/types.ts",
+    "src/utils/progressIO.ts",
+    "src/vite-env.d.ts"
+  ],
+  "hints": {
+    "home": [],
+    "play": [
+      "src/data/wordTypes.ts",
+      "src/hooks/useGameDeck.ts",
+      "src/pages/Play.tsx",
+      "src/pages/PlayMCQ.tsx",
+      "src/pages/PlaySee.tsx",
+      "src/pages/PlaySlot.tsx"
+    ],
+    "rules": []
+  }
+}

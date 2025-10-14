@@ -1,0 +1,128 @@
+[
+  {
+    "slug": "tell-then-tell-again",
+    "title": "Tell, Then Tell Again",
+    "description": "Turn the subtle art of showing into a loudspeaker of over-explanation that refuses to leave a single mystery alive.",
+    "text": "Rewrite the classic show-don't-tell moment as a dramatic press conference. The narrator must announce every micro-expression, interior motive, and stray eyebrow twitch twice—once for the live audience and once for the official transcript.",
+    "mode": "free",
+    "distortion": "Overwriting",
+    "source": "foundation-014"
+  },
+  {
+    "slug": "powerpoint-of-feelings",
+    "title": "PowerPoint of Feelings",
+    "description": "Emotion, but make it quarterly. Transform raw feeling into a rigid slide deck complete with soulless clip art.",
+    "text": "Present your character's heartbreak as a corporate PowerPoint. Include agenda slides, bullet points about how everyone should feel, and a pie chart quantifying the protagonist's despair versus snacks provided.",
+    "mode": "timed",
+    "distortion": "Genre Twist",
+    "source": "foundation-014"
+  },
+  {
+    "slug": "emotion-weather-report",
+    "title": "Emotion Weather Report",
+    "description": "Swap subtext for Doppler radar so the audience can't miss the incoming storm of feelings.",
+    "text": "Broadcast the scene as a local weather report that names every mood front rolling through. Mention exact humidity levels of sorrow, probability percentages for regret showers, and an emergency crawl for incoming catharsis.",
+    "mode": "beat",
+    "distortion": "POV Swap",
+    "source": "foundation-014"
+  },
+  {
+    "slug": "metaphor-hr-complaint",
+    "title": "Metaphor HR Complaint",
+    "description": "Every metaphor is now a hostile work environment report with fully documented grievances.",
+    "text": "File an HR complaint against the emotion in the scene. Detail how the feeling misbehaved, cite three witnesses who saw it, and recommend a mandatory training seminar on how to be obvious about your needs.",
+    "mode": "free",
+    "distortion": "Tone Reversal",
+    "source": "foundation-014"
+  },
+  {
+    "slug": "subtext-karaoke-night",
+    "title": "Subtext Karaoke Night",
+    "description": "Let the characters belt their hidden feelings with zero subtlety and one questionable key change.",
+    "text": "Host a karaoke night where each character performs a power ballad that literally states the emotion they were supposed to hide. Include stage banter explaining the moral in case anyone missed it.",
+    "mode": "timed",
+    "distortion": "Emotion Inversion",
+    "source": "foundation-014"
+  },
+  {
+    "slug": "outsourced-conscience-call-center",
+    "title": "Outsourced Conscience Call Center",
+    "description": "Internal conflict is now handled by an underpaid customer service agent reading from a script.",
+    "text": "Write the character's internal conflict as a support ticket escalated to a call center. Include hold music, repeated verification questions, and a mandatory satisfaction survey about whether they chose the wrong option.",
+    "mode": "free",
+    "distortion": "POV Swap",
+    "source": "character-005"
+  },
+  {
+    "slug": "split-screen-pep-talk",
+    "title": "Split-Screen Pep Talk",
+    "description": "Two versions of the same person fight over the motivational spotlight like dueling influencers.",
+    "text": "Describe the conflict as a live-streamed split-screen debate between Optimistic You and Doomsday You. Each side must weaponize inspirational quotes while sabotaging the other's lighting and follower count.",
+    "mode": "timed",
+    "distortion": "Perspective Clash",
+    "source": "character-005"
+  },
+  {
+    "slug": "jury-of-unhelpful-exes",
+    "title": "Jury of Unhelpful Exes",
+    "description": "The character's past relationships convene to deliver wildly biased verdicts on their next move.",
+    "text": "Stage the internal struggle as a courtroom drama where five exes serve as judge, jury, and gossip column. Each must deliver an objection that reveals too much embarrassing backstory while pretending to be impartial.",
+    "mode": "beat",
+    "distortion": "Genre Twist",
+    "source": "character-005"
+  },
+  {
+    "slug": "mood-swing-auction",
+    "title": "Mood Swing Auction",
+    "description": "Feelings are for sale and the paddles are flying.",
+    "text": "Turn the internal conflict into a high-speed auction where every competing desire bids on the protagonist's soul. Include a fast-talking auctioneer who summarizes each bid in all-caps emotional slogans.",
+    "mode": "timed",
+    "distortion": "Energy Surge",
+    "source": "character-005"
+  },
+  {
+    "slug": "calendar-invite-for-doubt",
+    "title": "Calendar Invite for Doubt",
+    "description": "Self-sabotage now lives in a shared corporate calendar full of passive-aggressive reminders.",
+    "text": "Write the internal conflict as a week's worth of calendar invites sent between conflicting parts of the character. Include subject lines like 'Please Panic' and attach agendas that outline worst-case scenarios.",
+    "mode": "free",
+    "distortion": "Underwriting",
+    "source": "character-005"
+  },
+  {
+    "slug": "action-meeting-minutes",
+    "title": "Action Meeting Minutes",
+    "description": "Every dynamic action beat is trapped in bureaucratic documentation no one will read.",
+    "text": "Document the big reveal scene as official meeting minutes. List who made motions, who seconded them, and the exact time someone finally noticed the plot twist while checking email.",
+    "mode": "free",
+    "distortion": "Bureaucratic Glaze",
+    "source": "scene-008"
+  },
+  {
+    "slug": "instruction-manual-showdown",
+    "title": "Instruction Manual Showdown",
+    "description": "The climax now arrives with warranty paperwork and confusing diagrams.",
+    "text": "Rewrite the action reveal as an instruction manual with exploded diagrams explaining every move. Include numbered safety warnings about feelings and a troubleshooting section for when the tension fizzles.",
+    "mode": "beat",
+    "distortion": "Overwriting",
+    "source": "scene-008"
+  },
+  {
+    "slug": "propaganda-puppetry",
+    "title": "Propaganda Puppetry",
+    "description": "Heroics become a state-sponsored puppet show shouting the moral through loudspeakers.",
+    "text": "Stage the scene as a televised propaganda puppet performance where every action is narrated by a cheerfully ominous announcer. Characters must hold still until the narrator explains what they are about to do.",
+    "mode": "timed",
+    "distortion": "Genre Twist",
+    "source": "scene-008"
+  },
+  {
+    "slug": "slow-motion-loudspeaker",
+    "title": "Slow-Motion Loudspeaker",
+    "description": "Nothing happens fast except the commentary that ruins the surprise.",
+    "text": "Play the reveal in ultra slow motion while a stadium announcer interrupts every second to explain what the characters will eventually attempt. Demand instant replay, telestrator doodles, and sponsor shout-outs mid-leap.",
+    "mode": "timed",
+    "distortion": "Overexposure",
+    "source": "scene-008"
+  }
+]

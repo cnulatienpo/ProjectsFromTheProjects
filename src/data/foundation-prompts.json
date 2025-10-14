@@ -1,0 +1,20 @@
+[
+  {
+    "id": "foundation-001",
+    "title": "Show, Don't Tell Redux",
+    "instructions": "Write a scene where emotions are implied through actions and sensory detail without naming the feelings outright.",
+    "tags": ["emotion", "imagery", "scene"]
+  },
+  {
+    "id": "foundation-002",
+    "title": "Conflicted Voices",
+    "instructions": "Draft a conversation between two characters who want the same thing for different reasons, letting subtext carry the tension.",
+    "tags": ["dialogue", "subtext", "character"]
+  },
+  {
+    "id": "foundation-003",
+    "title": "Momentum Builder",
+    "instructions": "Write a short sequence of three escalating beats that push a reluctant protagonist toward a decision they fear.",
+    "tags": ["structure", "pacing", "stakes"]
+  }
+]

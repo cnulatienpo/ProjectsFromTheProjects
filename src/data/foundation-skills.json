@@ -1,0 +1,17 @@
+[
+  {
+    "id": "show-dont-tell",
+    "label": "Show, Don't Tell",
+    "description": "Understanding how to reveal emotion and story through action instead of direct explanation."
+  },
+  {
+    "id": "voice",
+    "label": "Voice Control",
+    "description": "Experimenting with tone, diction, and point of view to shape narration."
+  },
+  {
+    "id": "structure",
+    "label": "Story Structure",
+    "description": "Working with scene beats, escalation, and reversals to move a story forward."
+  }
+]

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { z } from "zod";
 
 export const WordEntrySchema = z.object({
@@ -23,3 +24,7 @@ export function validateAndNormalizePack(data: unknown) {
     }
     return result.data;
 }
+=======
+export { default } from "../utils/validateAndNormalize";
+export * from "../utils/validateAndNormalize";
+>>>>>>> b5d40d1934d5b6a601792fe47ed65f483fc206b5

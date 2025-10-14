@@ -22,16 +22,34 @@ export function Header() {
           <span className="text-lg font-semibold">The Good Word</span>
           <span className="text-xs text-neutral-500 dark:text-neutral-400">Words, but exact.</span>
         </Link>
-        <nav className="flex items-center gap-3">
+        <nav className="flex flex-wrap items-center gap-2 md:gap-3">
           <NavLink to="/" end className={navClass}>
             Home
+          </NavLink>
+          <NavLink to="/games" className={navClass}>
+            Games
           </NavLink>
           <NavLink to="/practice" className={navClass}>
             Practice
           </NavLink>
+          <NavLink to="/play/cut-games" className={navClass}>
+            Cut Games
+          </NavLink>
+          <NavLink to="/funhouse" className={navClass}>
+            Funhouse
+          </NavLink>
           <NavLink to="/settings" className={navClass}>
             Settings
           </NavLink>
+          <div className="flex items-center gap-1">
+            <NavLink to="/login" className={navClass}>
+              Login
+            </NavLink>
+            <span className="text-xs font-semibold uppercase text-neutral-400">/</span>
+            <NavLink to="/signup" className={navClass}>
+              Signup
+            </NavLink>
+          </div>
           <button
             type="button"
             className="text-sm underline-offset-4 transition hover:underline"

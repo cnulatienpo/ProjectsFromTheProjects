@@ -9,33 +9,62 @@ import PlaySee from "./pages/PlaySee";
 import PlayMCQ from "./pages/PlayMCQ";
 import PlaySlot from "./pages/PlaySlot";
 import NotFound from "./pages/NotFound";
-import { Header } from "./components/Header";
-import { ToastHost } from "./components/ToastHost";
-import { KeyOverlay } from "./components/KeyOverlay";
-import { Footer } from "./components/Footer";
+import CutGames from "./pages/CutGames";
+import FunhouseHub from "./pages/FunhouseHub";
+import FunhouseGame from "./pages/FunhouseGame";
+import FunhousePast from "./pages/FunhousePast";
+import FunhouseReplay from "./pages/FunhouseReplay";
+import FunhouseDebug from "./pages/FunhouseDebug";
+import Games from "./pages/games";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
+import Cookies from "./pages/Cookies";
+import DMCA from "./pages/DMCA";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import ResetPassword from "./pages/ResetPassword";
+import SiteChrome from "./components/SiteChrome";
 import { ErrorBoundary } from "./components/ErrorBoundary";
+import Welcome from "./pages/Welcome";
+import { useFirstRun } from "./state/useFirstRun";
 
 export default function App() {
+  const seenWelcome = useFirstRun((state) => state.seenWelcome);
   return (
     <ErrorBoundary>
-      <BrowserRouter>
-        <div className="min-h-screen bg-neutral-50 text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
-          <Header />
-          <ToastHost />
-          <KeyOverlay />
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
+        <SiteChrome>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={seenWelcome ? <Home /> : <Welcome />} />
+            <Route path="/welcome" element={<Welcome />} />
             <Route path="/pack/:id" element={<PackPage />} />
             <Route path="/practice" element={<PracticeHub />} />
             <Route path="/practice/:id" element={<PracticePage />} />
+            <Route path="/play/cut-games" element={<CutGames />} />
+            <Route path="/funhouse" element={<FunhouseHub />} />
+            <Route path="/funhouse/past" element={<FunhousePast />} />
+            <Route path="/funhouse/replay/:id" element={<FunhouseReplay />} />
+            <Route path="/funhouse/:id" element={<FunhouseGame />} />
+            <Route path="/funhouse-debug" element={<FunhouseDebug />} />
+            <Route path="/games" element={<Games />} />
             <Route path="/play/:id/see" element={<PlaySee />} />
             <Route path="/play/:id/mcq" element={<PlayMCQ />} />
             <Route path="/play/:id/slot" element={<PlaySlot />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/cookies" element={<Cookies />} />
+            <Route path="/dmca" element={<DMCA />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/reset" element={<ResetPassword />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-          <Footer />
-        </div>
+        </SiteChrome>
       </BrowserRouter>
     </ErrorBoundary>
   );

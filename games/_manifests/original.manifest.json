@@ -1,0 +1,84 @@
+{
+  "generatedAt": "2025-10-13T17:07:45.630Z",
+  "files": [
+    "public/.gitkeep",
+    "public/404.html",
+    "src/.gitkeep",
+    "src/App.incoming.tsx",
+    "src/App.ours.merge.tsx",
+    "src/components/EmptyState.tsx",
+    "src/components/ErrorBanner.tsx",
+    "src/components/ErrorBoundary.tsx",
+    "src/components/Loader.tsx",
+    "src/components/NoResults.tsx",
+    "src/components/PackCleared.tsx",
+    "src/components/PointsChip.tsx",
+    "src/components/ProgressBar.tsx",
+    "src/components/ToastHost.tsx",
+    "src/components/WordCard.tsx",
+    "src/games/original.resolve.ts",
+    "src/index.css",
+    "src/index.ts",
+    "src/main.tsx",
+    "src/pages/Foundation.tsx",
+    "src/pages/Home.css",
+    "src/pages/Home.incoming.tsx",
+    "src/pages/Home.ours.merge.tsx",
+    "src/pages/Home.tsx",
+    "src/pages/NotFound.tsx",
+    "src/pages/Pack.tsx",
+    "src/pages/brutalist.css",
+    "src/pages/index.ts",
+    "src/pages/literary-deviousness/index.tsx",
+    "src/pages/original/index.tsx",
+    "src/pages/sigil-syntax/index.tsx",
+    "src/pages/sigil-syntax/play.tsx",
+    "src/pages/sigil-syntax/rules.tsx",
+    "src/scripts/00_repo_snapshot.sh",
+    "src/scripts/61_inject_probe.sh",
+    "src/scripts/scripts/10_fix_entry.sh",
+    "src/scripts/scripts/62_force_render_main.sh",
+    "src/scripts/scripts/scripts/20_patch_index_html.sh",
+    "src/scripts/scripts/scripts/scripts/30_configure_vite_base.sh",
+    "src/server/data/shadow_stack.json",
+    "src/styles/brutalist-overrides.css",
+    "src/styles/brutalist.css",
+    "src/styles/theme/brutalist-src/style.css",
+    "src/styles/theme/theme.css"
+  ],
+  "hints": {
+    "home": [
+      "src/index.css",
+      "src/index.ts",
+      "src/pages/Home.css",
+      "src/pages/Home.incoming.tsx",
+      "src/pages/Home.ours.merge.tsx",
+      "src/pages/Home.tsx",
+      "src/pages/index.ts",
+      "src/pages/literary-deviousness/index.tsx",
+      "src/pages/original/index.tsx",
+      "src/pages/sigil-syntax/index.tsx",
+      "src/scripts/scripts/scripts/20_patch_index_html.sh"
+    ],
+    "play": [
+      "src/components/WordCard.tsx",
+      "src/games/original.resolve.ts",
+      "src/pages/sigil-syntax/play.tsx"
+    ],
+    "rules": [
+      "src/pages/sigil-syntax/rules.tsx"
+    ],
+    "sigil": [
+      "src/pages/sigil-syntax/index.tsx",
+      "src/pages/sigil-syntax/play.tsx",
+      "src/pages/sigil-syntax/rules.tsx"
+    ],
+    "syntax": [
+      "src/pages/sigil-syntax/index.tsx",
+      "src/pages/sigil-syntax/play.tsx",
+      "src/pages/sigil-syntax/rules.tsx"
+    ],
+    "scene": [],
+    "order": []
+  }
+}

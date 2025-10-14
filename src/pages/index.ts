@@ -7,3 +7,14 @@ export { default as PlaySee } from "./PlaySee";
 export { default as PlayMCQ } from "./PlayMCQ";
 export { default as PlaySlot } from "./PlaySlot";
 export { default as NotFound } from "./NotFound";
+
+export { default as CutGames } from "./CutGames";
+export { default as CutGamesPlay } from "./CutGamesPlay";
+export { default as Dictionary } from "./Dictionary";
+export { default as Foundation } from "./Foundation";
+export { default as Games } from "./games";
+export { default as Play } from "./Play";
+export { default as SigilSyntaxRoot } from "./SigilSyntaxRoot";
+export { default as FunhouseHub } from "./FunhouseHub";
+export { default as FunhouseGame } from "./FunhouseGame";
+export { default as FunhouseDebug } from "./FunhouseDebug";

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "dictionary-001",
+    "title": "Invented Lexicon",
+    "instructions": "Choose three obscure words and build a scene around them without explaining what they mean.",
+    "tags": ["vocabulary", "worldbuilding", "mystery"]
+  },
+  {
+    "id": "dictionary-002",
+    "title": "Synonym Riot",
+    "instructions": "Rewrite a paragraph using entirely new word choices that keep the tone but change the texture of the language.",
+    "tags": ["diction", "tone", "style"]
+  },
+  {
+    "id": "dictionary-003",
+    "title": "Definition Duel",
+    "instructions": "Write a dialogue where two characters argue over the meaning of a single word, using quotes from imaginary dictionaries.",
+    "tags": ["dialogue", "humor", "wordplay"]
+  }
+]

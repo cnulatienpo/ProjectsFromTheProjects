@@ -1,76 +1,45 @@
 import { useEffect, useState } from "react";
 import { fetchCatalog } from "../../lib/cutGamesClient";
 
-type Mode = { name: string; desc?: string };
+type Mode = { name:string; desc?:string };
 
-type ModePickerProps = {
-  value?: string;
-  onChange: (mode: string) => void;
-};
-
-const FALLBACK_MODES: Mode[] = [
-  { name: "Name", desc: "Identify beats by name" },
-  { name: "Missing", desc: "Find what's missing" },
-  { name: "Fix", desc: "Repair weak writing" },
-  { name: "Order", desc: "Arrange beats in sequence" },
-  { name: "Highlight", desc: "Mark beats in context" },
-  { name: "Why", desc: "Explain the purpose" },
-];
-
-export default function ModePicker({ value, onChange }: ModePickerProps) {
+export default function ModePicker({ value, onChange }:{ value?:string; onChange:(m:string)=>void }) {
   const [modes, setModes] = useState<Mode[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    let active = true;
-    (async () => {
-      try {
-        const catalog = await fetchCatalog();
-        if (!active) return;
-        const catalogModes: Mode[] = (catalog?.modes ?? []).map((mode: any) => ({
-          name: String(mode?.name ?? ""),
-          desc: mode?.desc,
-        }));
-        const filtered = catalogModes.filter((mode) => mode.name);
-        setModes(filtered.length ? filtered : FALLBACK_MODES);
-      } catch {
-        if (!active) return;
-        setModes(FALLBACK_MODES);
-      } finally {
-        if (active) setLoading(false);
-      }
-    })();
-    return () => {
-      active = false;
-    };
-  }, []);
+  useEffect(() => { (async () => {
+    try {
+      const cat = await fetchCatalog();
+      const ms = (cat?.modes ?? []).map((m:any)=>({ name:m.name, desc:m.desc }));
+      setModes(ms.length ? ms : [
+        { name:"Name", desc:"Identify beats by name" },
+        { name:"Missing", desc:"Find what’s missing" },
+        { name:"Fix", desc:"Repair weak writing" },
+        { name:"Order", desc:"Arrange sequence" },
+        { name:"Highlight", desc:"Mark beats in context" },
+        { name:"Why", desc:"Explain purpose" },
+      ]);
+    } finally { setLoading(false); }
+  })(); }, []);
 
   const selected = value || modes[0]?.name;
-
   return (
     <div className="card" data-testid="mode-picker">
       <h2 className="mb-3">Choose a mode</h2>
-      {loading ? (
-        <div className="pulse">loading modes…</div>
-      ) : (
-        <div className="grid gap-3 sm:grid-cols-2">
-          {modes.map((mode) => (
-            <button
-              key={mode.name}
-              className={`btn btn-ghost justify-start ${selected === mode.name ? "border-white" : ""}`}
-              onClick={() => onChange(mode.name)}
-              title={mode.desc || ""}
-              data-testid={`mode-option-${mode.name.replace(/\s+/g, "-").toLowerCase()}`}
-            >
-              <span className="mr-2 font-semibold">{mode.name}</span>
-              <span className="text-neutral-400">{mode.desc}</span>
+      {loading ? <div className="pulse">loading modes…</div> : (
+        <div className="grid sm:grid-cols-2 gap-3">
+          {modes.map(m=>(
+            <button key={m.name}
+              className={`btn btn-ghost justify-start ${selected===m.name?"border-white":""}`}
+              onClick={()=>onChange(m.name)} title={m.desc||""}>
+              <span className="font-semibold mr-2">{m.name}</span>
+              <span style={{opacity:.65}}>{m.desc}</span>
             </button>
           ))}
         </div>
       )}
-      <div className="mt-3 flex items-center gap-2 text-xs text-neutral-400">
-        <span className="kbd">R</span>
-        <span>start round</span>
+      <div className="mt-3 text-xs" style={{opacity:.65}}>
+        <span className="kbd">R</span> start round
       </div>
     </div>
   );

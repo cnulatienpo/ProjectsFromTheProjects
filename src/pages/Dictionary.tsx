@@ -8,8 +8,8 @@ export default function Dictionary() {
         <p className="text-neutral-500">Dictionary — placeholder page (wire me up later)</p>
       </header>
       <p>
-        This placeholder keeps the Sigil & Syntax navigation functioning until the interactive
-        dictionary experience is restored.
+        This placeholder keeps the <a href="#/sigil-syntax" data-game="original">Sigil &amp; Syntax</a>
+        navigation functioning until the interactive dictionary experience is restored.
       </p>
       <p>
         <Link className="text-blue-500 underline" to="/">Return home</Link>

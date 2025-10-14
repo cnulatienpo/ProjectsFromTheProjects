@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://projectsfromtheprojects.github.io/ProjectsFromTheProjects/sitemap.xml

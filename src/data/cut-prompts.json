@@ -1,0 +1,20 @@
+[
+  {
+    "id": "cut-001",
+    "title": "Surgical Draft",
+    "instructions": "Take a bloated paragraph and trim it to half its length while keeping the narrative spine intact.",
+    "tags": ["editing", "precision", "clarity"]
+  },
+  {
+    "id": "cut-002",
+    "title": "Out Loud",
+    "instructions": "Rewrite a monologue so it sounds natural when spoken, cutting any line that feels stiff on the tongue.",
+    "tags": ["dialogue", "voice", "rhythm"]
+  },
+  {
+    "id": "cut-003",
+    "title": "Negative Space",
+    "instructions": "Revise a descriptive passage so that what's unsaid becomes louder than what is explained.",
+    "tags": ["revision", "subtext", "tone"]
+  }
+]

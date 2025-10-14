@@ -1,0 +1,44 @@
+[
+  {
+    "id": "fh-001",
+    "title": "Write Like You Hate It",
+    "sourceLesson": "emotion_reveal",
+    "description": "Take an emotional scene and rewrite it like you're embarrassed to feel anything. Dry it out. Wring it flat.",
+    "variants": [
+      {
+        "mode": "Flat Emotion",
+        "instructions": "Rewrite your most emotional scene using only facts. No metaphors. No feelings. Just the events."
+      },
+      {
+        "mode": "Hostile Voice",
+        "instructions": "Keep the same scene, but rewrite it with a mean, cynical voice that mocks everything heartfelt in the original."
+      },
+      {
+        "mode": "Third-Person Detachment",
+        "instructions": "Rewrite it in distant third person, like a bored narrator watching ants fight."
+      }
+    ],
+    "tags": ["emotion", "anti-style", "funhouse"],
+    "unlocksWith": ["emotion_reveal"],
+    "shadow": false
+  },
+  {
+    "id": "fh-002",
+    "title": "Too Many Adjectives",
+    "sourceLesson": "description_basics",
+    "description": "Drown a basic scene in excessive adjectives and adverbs. Make it absolutely unreadable.",
+    "variants": [
+      {
+        "mode": "Purple Prose",
+        "instructions": "Describe a room using at least 3 adjectives per noun. Every sentence should sound like it got rejected from a Victorian novel."
+      },
+      {
+        "mode": "Simile Overdose",
+        "instructions": "Use a simile in every single sentence, whether it makes sense or not. Make them ridiculous."
+      }
+    ],
+    "tags": ["description", "style_breaker", "funhouse"],
+    "unlocksWith": ["description_basics"],
+    "shadow": true
+  }
+]
