@@ -1,44 +1,45 @@
-import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import PackPage from "./pages/Pack";
-import PracticePage from "./pages/Practice";
-import PracticeHub from "./pages/Play";
-import Settings from "./pages/Settings";
-import PlaySee from "./pages/PlaySee";
-import PlayMCQ from "./pages/PlayMCQ";
-import PlaySlot from "./pages/PlaySlot";
-import NotFound from "./pages/NotFound";
-import CutGames from "./pages/CutGames";
-import FunhouseHub from "./pages/FunhouseHub";
-import FunhouseGame from "./pages/FunhouseGame";
-import FunhousePast from "./pages/FunhousePast";
-import FunhouseReplay from "./pages/FunhouseReplay";
-import FunhouseDebug from "./pages/FunhouseDebug";
-import Games from "./pages/games";
-import Privacy from "./pages/Privacy";
-import Terms from "./pages/Terms";
-import Cookies from "./pages/Cookies";
-import DMCA from "./pages/DMCA";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import ResetPassword from "./pages/ResetPassword";
-import SiteChrome from "./components/SiteChrome";
-import { ErrorBoundary } from "./components/ErrorBoundary";
-import Welcome from "./pages/Welcome";
-import { useFirstRun } from "./state/useFirstRun";
+import Home from "@/pages/Home";
+import NotFound from "@/pages/NotFound";
+import Games from "@/pages/games";
+import PackPage from "@/pages/Pack";
+import PracticePage from "@/pages/Practice";
+import PracticeHub from "@/pages/Play";
+import Settings from "@/pages/Settings";
+import PlaySee from "@/pages/PlaySee";
+import PlayMCQ from "@/pages/PlayMCQ";
+import PlaySlot from "@/pages/PlaySlot";
+import CutGames from "@/pages/CutGames";
+import FunhouseHub from "@/pages/FunhouseHub";
+import FunhouseGame from "@/pages/FunhouseGame";
+import FunhousePast from "@/pages/FunhousePast";
+import FunhouseReplay from "@/pages/FunhouseReplay";
+import FunhouseDebug from "@/pages/FunhouseDebug";
+import Privacy from "@/pages/Privacy";
+import Terms from "@/pages/Terms";
+import Cookies from "@/pages/Cookies";
+import DMCA from "@/pages/DMCA";
+import About from "@/pages/About";
+import Contact from "@/pages/Contact";
+import Login from "@/pages/Login";
+import Signup from "@/pages/Signup";
+import ResetPassword from "@/pages/ResetPassword";
+import Welcome from "@/pages/Welcome";
+import Game from "@/pages/Game";
+import SiteChrome from "@/components/SiteChrome";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
+import GoodWord from "@/games/goodword";
 
 export default function App() {
-  const seenWelcome = useFirstRun((state) => state.seenWelcome);
   return (
     <ErrorBoundary>
       <BrowserRouter basename={import.meta.env.BASE_URL}>
         <SiteChrome>
           <Routes>
-            <Route path="/" element={seenWelcome ? <Home /> : <Welcome />} />
-            <Route path="/welcome" element={<Welcome />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/games" element={<Games />} />
+            <Route path="/games/goodword" element={<GoodWord />} />
+
             <Route path="/pack/:id" element={<PackPage />} />
             <Route path="/practice" element={<PracticeHub />} />
             <Route path="/practice/:id" element={<PracticePage />} />
@@ -48,7 +49,6 @@ export default function App() {
             <Route path="/funhouse/replay/:id" element={<FunhouseReplay />} />
             <Route path="/funhouse/:id" element={<FunhouseGame />} />
             <Route path="/funhouse-debug" element={<FunhouseDebug />} />
-            <Route path="/games" element={<Games />} />
             <Route path="/play/:id/see" element={<PlaySee />} />
             <Route path="/play/:id/mcq" element={<PlayMCQ />} />
             <Route path="/play/:id/slot" element={<PlaySlot />} />
@@ -62,6 +62,9 @@ export default function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/reset" element={<ResetPassword />} />
+            <Route path="/welcome" element={<Welcome />} />
+            <Route path="/game" element={<Game />} />
+
             <Route path="*" element={<NotFound />} />
           </Routes>
         </SiteChrome>
