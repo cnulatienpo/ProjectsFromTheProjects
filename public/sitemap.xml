@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://<USERNAME>.github.io/<REPO>/</loc>
+    <loc>https://projectsfromtheprojects.github.io/ProjectsFromTheProjects/</loc>
   </url>
   <url>
-    <loc>https://<USERNAME>.github.io/<REPO>/privacy</loc>
+    <loc>https://projectsfromtheprojects.github.io/ProjectsFromTheProjects/privacy</loc>
   </url>
   <url>
-    <loc>https://<USERNAME>.github.io/<REPO>/terms</loc>
+    <loc>https://projectsfromtheprojects.github.io/ProjectsFromTheProjects/terms</loc>
   </url>
   <url>
-    <loc>https://<USERNAME>.github.io/<REPO>/cookies</loc>
+    <loc>https://projectsfromtheprojects.github.io/ProjectsFromTheProjects/cookies</loc>
   </url>
   <url>
-    <loc>https://<USERNAME>.github.io/<REPO>/dmca</loc>
+    <loc>https://projectsfromtheprojects.github.io/ProjectsFromTheProjects/dmca</loc>
   </url>
   <url>
-    <loc>https://<USERNAME>.github.io/<REPO>/about</loc>
+    <loc>https://projectsfromtheprojects.github.io/ProjectsFromTheProjects/about</loc>
   </url>
   <url>
-    <loc>https://<USERNAME>.github.io/<REPO>/contact</loc>
+    <loc>https://projectsfromtheprojects.github.io/ProjectsFromTheProjects/contact</loc>
   </url>
   <url>
-    <loc>https://<USERNAME>.github.io/<REPO>/login</loc>
+    <loc>https://projectsfromtheprojects.github.io/ProjectsFromTheProjects/login</loc>
   </url>
   <url>
-    <loc>https://<USERNAME>.github.io/<REPO>/signup</loc>
+    <loc>https://projectsfromtheprojects.github.io/ProjectsFromTheProjects/signup</loc>
   </url>
   <url>
-    <loc>https://<USERNAME>.github.io/<REPO>/reset</loc>
+    <loc>https://projectsfromtheprojects.github.io/ProjectsFromTheProjects/reset</loc>
   </url>
 </urlset>
