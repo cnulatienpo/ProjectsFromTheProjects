@@ -11,31 +11,15 @@ export const WordEntrySchema = z.object({
 });
 
 export const PackSchema = z.object({
+  id: z.string(),
+  label: z.string(),
   entries: z.array(WordEntrySchema),
 });
 
-export default function validateAndNormalize(fileName: string, raw: unknown) {
-  let entries: any[] = [];
-  let issues: string[] = [];
-
-  // Accept either array or { entries: [...] }
-  if (Array.isArray(raw)) {
-    const result = z.array(WordEntrySchema).safeParse(raw);
-    if (result.success) {
-      entries = result.data;
-    } else {
-      issues = Object.values(result.error.format());
-    }
-  } else if (typeof raw === 'object' && raw !== null && 'entries' in raw) {
-    const result = PackSchema.safeParse(raw);
-    if (result.success) {
-      entries = result.data.entries;
-    } else {
-      issues = Object.values(result.error.format());
-    }
-  } else {
-    issues.push(`Invalid format in ${fileName}: must be array or { entries: [...] }`);
+export function validateAndNormalizePack(data: unknown) {
+  const result = PackSchema.safeParse(data);
+  if (!result.success) {
+    throw new Error('Invalid pack data: ' + JSON.stringify(result.error.format(), null, 2));
   }
-
-  return { entries, issues };
+  return result.data;
 }
