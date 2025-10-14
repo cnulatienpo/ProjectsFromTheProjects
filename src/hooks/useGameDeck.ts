@@ -1,6 +1,6 @@
 import { useMemo, useRef, useState } from "react";
 import { useProgress } from "../state/useProgress";
-import type { WordEntry } from "../data/validateAndNormalize";
+import type { WordEntry } from "@/utils/validateAndNormalize";
 import { rng } from "../utils/rng";
 
 export function useGameDeck(all: WordEntry[], opts?: { includeSeen?: boolean }) {

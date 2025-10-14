@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { loadAllPacksSafe } from "../data/loadAllPacksSafe";
 import { useGameDeck } from "../hooks/useGameDeck";
 import { useProgress } from "../state/useProgress";
-import type { WordEntry } from "../data/validateAndNormalize";
+import type { WordEntry } from "@/utils/validateAndNormalize";
 import { ProgressBar } from "../components/ProgressBar";
 import { useToast } from "../state/useToast";
 
