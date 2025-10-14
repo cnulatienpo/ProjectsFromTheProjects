@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 
-const FILE = path.resolve('game thingss', 'reportPhrases.json')
+const FILE = path.resolve('game thingss', 'sigil-syntax', 'reportPhrases.json')
 
 const FALLBACK = {
     closers: {

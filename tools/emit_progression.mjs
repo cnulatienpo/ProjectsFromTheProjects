@@ -32,7 +32,7 @@ const badgesPath = process.env.BADGES_TS || path.resolve('app/src/progression/ba
 const levels = parseTSFile(levelsPath, 'levels.ts')
 const badges = parseTSFile(badgesPath, 'badges.ts')
 
-const outDir = path.resolve('game thingss')
+const outDir = path.resolve('game thingss', 'sigil-syntax')
 if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true })
 
 if (levels) {

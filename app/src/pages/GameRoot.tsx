@@ -1,7 +1,10 @@
+import { SigilSyntaxHeader } from '@sigil'
+
 export default function GameRoot() {
     return (
         <div>
-            <div style={{ padding: 8, fontSize: 14 }}>Loaded: Literary Deviousness ✅</div>
+            <SigilSyntaxHeader />
+            <div style={{ padding: 8, fontSize: 14 }}>Loaded: Sigil_&_Syntax ✅</div>
             {/* ...rest of your game UI... */}
         </div>
     )

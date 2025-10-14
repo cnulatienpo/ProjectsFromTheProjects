@@ -1,7 +1,7 @@
 # Report Phrases
 
 - Author phrases in `app/src/ai/reportPhrases.ts`.
-- Emit with `npm run emit:phrases` → backend reads `game thingss/reportPhrases.json`.
+- Emit with `npm run emit:phrases` → backend reads `game thingss/sigil-syntax/reportPhrases.json`.
 
 ## Shape
 

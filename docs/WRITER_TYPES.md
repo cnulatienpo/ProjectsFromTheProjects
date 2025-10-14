@@ -1,6 +1,6 @@
 # Writer Types
 
-- Author in `game thingss/writer_type_custom_elements.jsonl` (one JSON object per line).
+- Author in `game thingss/sigil-syntax/writer_type_custom_elements.jsonl` (one JSON object per line).
 - Emit with `npm run emit:writer-types` (script: `"emit:writer-types": "node tools/emit_writer_types.mjs"`).
 
 ## Backend serves

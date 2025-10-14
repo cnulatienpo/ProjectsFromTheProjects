@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import GameLayout from '@/components/GameLayout.tsx'
-import GameItem from '@/components/GameItem.tsx'
+import { GameLayout, GameItem } from '@sigil'
 
 export default function GameShowcase() {
     const [points, setPoints] = useState(0)
