@@ -6,6 +6,7 @@ import ResultsScreen from "./pages/ResultsScreen.jsx";
 import Health from "./pages/Health.jsx";
 import CutGame from "./pages/CutGame.jsx";
 import GoodWord from "./pages/GoodWord.jsx";
+import SigilSyntax from "./pages/SigilSyntax.jsx";
 
 export default [
     { path: "/", element: <Home /> },
@@ -14,5 +15,7 @@ export default [
     { path: "/results", element: <ResultsScreen /> },
     { path: "/health", element: <Health /> },
     { path: "/cut/:id", element: <CutGame /> },
-    { path: "/goodword/:id", element: <GoodWord /> }
+    { path: "/goodword/:id", element: <GoodWord /> },
+    { path: "/sigil", element: <SigilSyntax /> },
+    { path: "/sigil/:id", element: <SigilSyntax /> }
 ];

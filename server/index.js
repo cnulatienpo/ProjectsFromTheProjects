@@ -13,7 +13,9 @@ import { evaluateAttempt } from './sigil-syntax/judgment.js'
 import { listWriterTypes, getWriterType, allWriterTypes } from './sigil-syntax/writerTypes.js'
 import { listReportTypes, getReportType, defaultReportType } from './sigil-syntax/reportTypes.js'
 import { analyzeText } from './sigil-syntax/styleReport.js'
-import { listCutIds, getCutItem, listGoodIds, getGoodItem } from './cutGood/index.js'
+import { listCutIds, getCutItem } from './cutGood/index.js'
+import { listGoodIds, getGoodItem } from './goodword/index.js'
+import { listSigilIds, getSigilItem, firstSigilId } from './sigil-syntax/content.js'
 
 const app = express()
 app.use(express.json())
@@ -63,6 +65,14 @@ app.get('/cut/game/:id', (req,res) => {
 app.get('/goodword/catalog', (req,res) => res.json({ games: listGoodIds() }))
 app.get('/goodword/game/:id', (req,res) => {
     const it = getGoodItem(req.params.id)
+    if (!it) return res.status(404).json({ error:'not_found', id:req.params.id })
+    res.json(it)
+})
+
+// Sigil_&_Syntax lessons
+app.get('/sigil/catalog', (req,res) => res.json({ games: listSigilIds(), first: firstSigilId() }))
+app.get('/sigil/game/:id', (req,res) => {
+    const it = getSigilItem(req.params.id)
     if (!it) return res.status(404).json({ error:'not_found', id:req.params.id })
     res.json(it)
 })

@@ -9,7 +9,10 @@
     "preview": "vite preview --port 4173",
     "emit:cut": "node tools/build_cut_game.mjs",
     "emit:good": "node tools/build_good_word.mjs",
-    "emit:games": "npm run emit:cut && npm run emit:good"
+    "emit:games": "npm run emit:cut && npm run emit:good",
+    "emit:good:labeled": "node tools/build_good_word_from_labeled.mjs",
+    "emit:sigil:labeled": "node tools/build_sigil_from_labeled.mjs",
+    "emit:content": "npm run emit:good:labeled && npm run emit:sigil:labeled"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.14",
