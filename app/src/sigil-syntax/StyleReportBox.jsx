@@ -1,4 +1,4 @@
-import StyleReportBox from '@/components/StyleReportBox.jsx'
+import StyleReportBox from '@sigil/StyleReportBox'
 import { api } from '@/lib/apiBase.js'
 import { useState } from 'react'
 

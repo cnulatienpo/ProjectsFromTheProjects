@@ -4,12 +4,12 @@ import { listSkills, unitsForSkill, nextUnitForSkill } from './contentMap.js'
 import { readBundle, listItemIds, getItem, listLessons, getLesson } from './bundle.js'
 import { loadFoundations } from './foundations.loader.js'
 import { readStatus } from './status.js'
-import { levelForXp, checkBadges } from './progression.js'
+import { levelForXp, checkBadges } from './sigil-syntax/progression.js'
 import fs from 'fs'
 import path from 'path'
-import { evaluateAttempt } from './judgment.js'
-import { listWriterTypes, getWriterType, allWriterTypes } from './writerTypes.js'
-import { listReportTypes, getReportType, defaultReportType } from './reportTypes.js'
+import { evaluateAttempt } from './sigil-syntax/judgment.js'
+import { listWriterTypes, getWriterType, allWriterTypes } from './sigil-syntax/writerTypes.js'
+import { listReportTypes, getReportType, defaultReportType } from './sigil-syntax/reportTypes.js'
 
 const app = express()
 app.use(express.json())

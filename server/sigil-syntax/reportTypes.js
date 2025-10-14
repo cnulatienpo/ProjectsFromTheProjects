@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-const FILE = path.resolve('game thingss', 'reportTypes.json')
+const FILE = path.resolve('game thingss', 'sigil-syntax', 'reportTypes.json')
 
 function readBundle() {
     try { return JSON.parse(fs.readFileSync(FILE, 'utf8')) } catch { return { version: 0, reportTypes: [] } }

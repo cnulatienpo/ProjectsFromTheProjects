@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-const FILE = path.resolve('game thingss', 'writer_types.json')
+const FILE = path.resolve('game thingss', 'sigil-syntax', 'writer_types.json')
 function safeRead() {
     try { return JSON.parse(fs.readFileSync(FILE, 'utf8')) } catch { return { version: 0, items: [] } }
 }

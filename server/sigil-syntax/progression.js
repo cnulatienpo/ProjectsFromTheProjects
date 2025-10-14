@@ -5,8 +5,8 @@ function readJsonOrNull(p) {
     try { return JSON.parse(fs.readFileSync(p, 'utf8')) } catch { return null }
 }
 
-const L_JSON = path.resolve('game thingss/levels.json')
-const B_JSON = path.resolve('game thingss/badges.json')
+const L_JSON = path.resolve('game thingss', 'sigil-syntax', 'levels.json')
+const B_JSON = path.resolve('game thingss', 'sigil-syntax', 'badges.json')
 
 let LEVELS = readJsonOrNull(L_JSON)
 let BADGES = readJsonOrNull(B_JSON)

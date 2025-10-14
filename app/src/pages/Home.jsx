@@ -41,7 +41,7 @@ export default function Home() {
 
             <main className="wrap">
                 <h2 className="project-line">
-                    <span className="black-strong">Project #1</span>&nbsp; Literary Deviousness
+                    <span className="black-strong">Project #1</span>&nbsp; Sigil_&_Syntax
                 </h2>
                 <p className="tagline black-strong">
                     Fiction Writing School for Broke Mutherfuckers.

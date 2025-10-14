@@ -1,7 +1,7 @@
 # Report Types
 
 - Author in `app/src/ai/reportTypes.ts` (TS, with comments).
-- Emit with `npm run emit:report-types` → backend reads `game thingss/reportTypes.json`.
+- Emit with `npm run emit:report-types` → backend reads `game thingss/sigil-syntax/reportTypes.json`.
 
 ## API
 

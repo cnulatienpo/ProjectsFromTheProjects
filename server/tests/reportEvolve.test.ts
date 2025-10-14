@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
-import { evaluateAttempt } from '../judgment.js'
-import { evolveReport } from '../reportEvolve.js'
+import { evaluateAttempt } from '../sigil-syntax/judgment.js'
+import { evolveReport } from '../sigil-syntax/reportEvolve.js'
 
 // helpers: minimal fake game so evaluateAttempt() has context
 const W_GAME = { id: 'write-demo', title: 'Write Demo', input_type: 'write', skill: 'grammar', min_words: 20 }

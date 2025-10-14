@@ -1,12 +1,12 @@
 // Convert a TS phrases file to JSON for the backend.
 // Input (default): app/src/ai/reportPhrases.ts
-// Output: game thingss/reportPhrases.json
+// Output: game thingss/sigil-syntax/reportPhrases.json
 
 import fs from 'fs'
 import path from 'path'
 
 const INPUT = process.env.PHRASES_TS || path.resolve('app/src/ai/reportPhrases.ts')
-const OUT_DIR = path.resolve('game thingss')
+const OUT_DIR = path.resolve('game thingss', 'sigil-syntax')
 const OUT_FILE = path.join(OUT_DIR, 'reportPhrases.json')
 
 function read(p) {
