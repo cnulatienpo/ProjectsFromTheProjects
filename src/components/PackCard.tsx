@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { Link } from "react-router-dom";
-import type { WordEntry } from "../data/wordTypes";
+import type { WordEntry } from "@/utils/validateAndNormalize";
 import { useProgress } from "../state/useProgress";
 import { ProgressBar } from "./ProgressBar";
 
