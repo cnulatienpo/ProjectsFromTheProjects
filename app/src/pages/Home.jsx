@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import '@/styles/links.css'
+import BackendHealth from '@/components/BackendHealth.jsx'
 
 export default function Home() {
   return (
@@ -20,6 +21,8 @@ export default function Home() {
         <p>Do you not know shit about writing or you suck at it? Me too. I made these games to learn grammar, character, narrative structure, and of course — the literary devices. You write, you read, you get feedback. It’s a lot like an interactive textbook on creative writing. If you know how to write already you will probably get bored. Thanks for playing.</p>
         <p><Link className="link-white" to="/sigil">Start →</Link></p>
       </section>
+
+      <BackendHealth />
     </main>
   )
 }
