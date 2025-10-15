@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import sigilSyntaxItems from "@/sigilSyntaxItems"; // or "@/sigilSyntaxItems.json"
 import { loadSigilPackSafe } from "@/games/sigilSyntaxData";
 import "@/styles/brutalist.css";
 import "@/styles/theme/theme.css";
@@ -38,6 +39,10 @@ function Play() {
 
   const items = pack.items;
   const cur = items[index] ?? null;
+
+  function nextItem() {
+    setIndex((i) => (i + 1) % sigilSyntaxItems.length);
+  }
 
   return (
     <main className="p-6 font-mono text-sm border-t-4 border-black" data-testid="sigil-play">
@@ -78,6 +83,20 @@ function Play() {
           </Link>
         </>
       )}
+      <div className="bg-neutral-900 text-white rounded-xl shadow-lg p-8 mb-6 text-xl font-semibold text-center">
+        <div style={{ fontSize: "2rem", fontWeight: "bold" }}>
+          {sigilSyntaxItems[index].title}
+        </div>
+        <div style={{ fontSize: "1.1rem", marginTop: "1rem" }}>
+          {sigilSyntaxItems[index].description}
+        </div>
+      </div>
+      <button
+        className="bg-neutral-800 text-white px-6 py-2 rounded hover:bg-neutral-700 transition"
+        onClick={nextItem}
+      >
+        Next
+      </button>
     </main>
   );
 }
