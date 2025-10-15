@@ -1,13 +1,13 @@
 // Converts a TypeScript influence catalog to JSON for the backend.
 // Default input: app/src/ai/sigil-syntax/influenceCatalog.ts
-// Output: game thingss/sigil-syntax/influences.json
+// Output: game things/sigil-syntax/influences.json
 
 import fs from 'fs'
 import path from 'path'
 
 const INPUT =
   process.env.INFLUENCES_TS || path.resolve('app/src/ai/sigil-syntax/influenceCatalog.ts')
-const OUT_DIR = path.resolve('game thingss', 'sigil-syntax')
+const OUT_DIR = path.resolve('game things', 'sigil-syntax')
 const OUT_FILE = path.join(OUT_DIR, 'influences.json')
 
 function readFileSafe(p) {

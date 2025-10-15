@@ -1,7 +1,19 @@
 import fs from 'fs'
 import path from 'path'
 
-const SIGIL = path.resolve('game things', 'build', 'sigil-syntax', 'bundle_sigil_syntax.json')
+// NOTE: prefers `game things/...`; falls back to legacy `game thingss/...`.
+
+function firstExisting(...paths) {
+  for (const p of paths) {
+    if (fs.existsSync(p)) return p
+  }
+  return paths[0]
+}
+
+const SIGIL = firstExisting(
+  path.resolve('game things', 'build', 'sigil-syntax', 'bundle_sigil_syntax.json'),
+  path.resolve('game thingss', 'build', 'sigil-syntax', 'bundle_sigil_syntax.json')
+)
 
 function safe(){
   try {

@@ -1,6 +1,19 @@
 import fs from 'fs'
 import path from 'path'
-const FILE = path.resolve('game thingss', 'sigil-syntax', 'reportTypes.json')
+
+// NOTE: prefers `game things/...`; falls back to legacy `game thingss/...`.
+
+function firstExisting(...paths) {
+    for (const p of paths) {
+        if (fs.existsSync(p)) return p
+    }
+    return paths[0]
+}
+
+const FILE = firstExisting(
+    path.resolve('game things', 'sigil-syntax', 'reportTypes.json'),
+    path.resolve('game thingss', 'sigil-syntax', 'reportTypes.json')
+)
 
 function readBundle() {
     try { return JSON.parse(fs.readFileSync(FILE, 'utf8')) } catch { return { version: 0, reportTypes: [] } }

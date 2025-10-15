@@ -1,7 +1,19 @@
 import fs from 'fs'
 import path from 'path'
 
-const FILE = path.resolve('game thingss', 'sigil-syntax', 'reportPhrases.json')
+// NOTE: prefers `game things/...`; falls back to legacy `game thingss/...`.
+
+function firstExisting(...paths) {
+    for (const p of paths) {
+        if (fs.existsSync(p)) return p
+    }
+    return paths[0]
+}
+
+const FILE = firstExisting(
+    path.resolve('game things', 'sigil-syntax', 'reportPhrases.json'),
+    path.resolve('game thingss', 'sigil-syntax', 'reportPhrases.json')
+)
 
 const FALLBACK = {
     closers: {

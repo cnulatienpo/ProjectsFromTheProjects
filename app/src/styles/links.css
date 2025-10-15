@@ -1,0 +1,40 @@
+/* Global white links for game entry points */
+.link-white,
+.link-white:visited {
+  color: #ffffff;
+  text-decoration: none;
+}
+.link-white:hover,
+.link-white:focus {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* Tile layout for games page */
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  align-items: stretch;
+}
+
+.game-tile {
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: 2px solid #000;
+  border-radius: 14px;
+  padding: 14px;
+  text-align: center;
+  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.25);
+}
+.game-tile a,
+.game-tile a:visited {
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+/* Optional polish */
+.link-white:hover {
+  filter: brightness(1.1);
+}

@@ -1,12 +1,27 @@
 import fs from 'fs'
 import path from 'path'
 
+// NOTE: prefers `game things/...`; falls back to legacy `game thingss/...`.
+
+function firstExisting(...paths) {
+    for (const p of paths) {
+        if (fs.existsSync(p)) return p
+    }
+    return paths[0]
+}
+
 function readJsonOrNull(p) {
     try { return JSON.parse(fs.readFileSync(p, 'utf8')) } catch { return null }
 }
 
-const L_JSON = path.resolve('game thingss', 'sigil-syntax', 'levels.json')
-const B_JSON = path.resolve('game thingss', 'sigil-syntax', 'badges.json')
+const L_JSON = firstExisting(
+    path.resolve('game things', 'sigil-syntax', 'levels.json'),
+    path.resolve('game thingss', 'sigil-syntax', 'levels.json')
+)
+const B_JSON = firstExisting(
+    path.resolve('game things', 'sigil-syntax', 'badges.json'),
+    path.resolve('game thingss', 'sigil-syntax', 'badges.json')
+)
 
 let LEVELS = readJsonOrNull(L_JSON)
 let BADGES = readJsonOrNull(B_JSON)
