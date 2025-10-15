@@ -1,18 +1,16 @@
 import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 import path from 'path'
 
-const REPO = process.env.GHPAGES_REPO || 'ProjectsFromTheProjects'
+const REPO = process.env.GHPAGES_REPO || 'projects-from-the-projects'
 
 export default defineConfig({
-  esbuild: {
-    jsx: 'automatic',
-    jsxImportSource: 'react',
-  },
+  plugins: [react()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
-      '@sigil': path.resolve(__dirname, 'src/sigil-syntax'),
-    },
+      '@sigil': path.resolve(__dirname, 'src/sigil-syntax')
+    }
   },
-  base: process.env.GHPAGES_BASE || `/${REPO}/`,
+  base: process.env.GHPAGES_BASE || `/${REPO}/`
 })

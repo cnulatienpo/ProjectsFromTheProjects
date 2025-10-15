@@ -10,12 +10,15 @@ export default function SigilSyntax(){
   const [spec, setSpec] = useState(null)
   const [err, setErr] = useState('')
 
-  // If no :id, jump to first lesson from tweetrunk_renumbered
   useEffect(() => {
     if (!id) firstSigilId().then(fid => { if (fid) nav(`/sigil/${encodeURIComponent(fid)}`, { replace:true }) })
   }, [id, nav])
 
-  useEffect(()=>{ if(!id) return; setSpec(null); setErr(''); fetchSigilItem(id).then(setSpec).catch(e=>setErr(String(e))) }, [id])
+  useEffect(() => {
+    if (!id) return
+    setSpec(null); setErr('')
+    fetchSigilItem(id).then(setSpec).catch(e => setErr(String(e)))
+  }, [id])
 
   return (
     <GameLayout title="Sigil_&_Syntax" feedback={err && <span style={{color:'tomato'}}>{err}</span>} onPrev={()=>nav(-1)}>
@@ -23,4 +26,3 @@ export default function SigilSyntax(){
     </GameLayout>
   )
 }
-
