@@ -2,17 +2,9 @@
   "name": "ProjectsFromTheProjects",
   "private": true,
   "scripts": {
+    "build": "VITE_BUILD_STAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ) vite build && node scripts/copy-404.js",
     "dev": "vite",
-    "prebuild": "node scripts/freeze-manifests.mjs",
-    "build": "node scripts/vite-build.mjs",
-    "build:pages": "node scripts/vite-build.mjs && node scripts/copy404.mjs",
-    "preview": "vite preview --port 4173",
-    "emit:cut": "node tools/build_cut_game.mjs",
-    "emit:good": "node tools/build_good_word.mjs",
-    "emit:games": "npm run emit:cut && npm run emit:good",
-    "emit:good:labeled": "node tools/build_good_word_from_labeled.mjs",
-    "emit:sigil:labeled": "node tools/build_sigil_from_labeled.mjs",
-    "emit:content": "npm run emit:good:labeled && npm run emit:sigil:labeled"
+    "preview": "vite preview"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.14",

@@ -21,7 +21,14 @@ const app = express()
 app.use(express.json())
 
 // DEV-ONLY: loosen CORS to reflect any Origin
-app.use(cors({ origin: true }))
+const ORIGIN_PAGES = process.env.ORIGIN_PAGES || 'https://<your-user>.github.io';
+app.use(cors({
+    origin: [ORIGIN_PAGES, /\.github\.io$/],
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: false
+}));
+app.options('*', cors());
 
 // List available skills
 app.get('/content/skills', (req, res) => {
@@ -54,26 +61,26 @@ app.get('/catalog/game/:id', (req, res) => {
 })
 
 // Cut Game
-app.get('/cut/catalog', (req,res) => res.json({ games: listCutIds() }))
-app.get('/cut/game/:id', (req,res) => {
+app.get('/cut/catalog', (req, res) => res.json({ games: listCutIds() }))
+app.get('/cut/game/:id', (req, res) => {
     const it = getCutItem(req.params.id)
-    if (!it) return res.status(404).json({ error:'not_found', id:req.params.id })
+    if (!it) return res.status(404).json({ error: 'not_found', id: req.params.id })
     res.json(it)
 })
 
 // The Good Word
-app.get('/goodword/catalog', (req,res) => res.json({ games: listGoodIds() }))
-app.get('/goodword/game/:id', (req,res) => {
+app.get('/goodword/catalog', (req, res) => res.json({ games: listGoodIds() }))
+app.get('/goodword/game/:id', (req, res) => {
     const it = getGoodItem(req.params.id)
-    if (!it) return res.status(404).json({ error:'not_found', id:req.params.id })
+    if (!it) return res.status(404).json({ error: 'not_found', id: req.params.id })
     res.json(it)
 })
 
 // Sigil_&_Syntax lessons
-app.get('/sigil/catalog', (req,res) => res.json({ games: listSigilIds(), first: firstSigilId() }))
-app.get('/sigil/game/:id', (req,res) => {
+app.get('/sigil/catalog', (req, res) => res.json({ games: listSigilIds(), first: firstSigilId() }))
+app.get('/sigil/game/:id', (req, res) => {
     const it = getSigilItem(req.params.id)
-    if (!it) return res.status(404).json({ error:'not_found', id:req.params.id })
+    if (!it) return res.status(404).json({ error: 'not_found', id: req.params.id })
     res.json(it)
 })
 

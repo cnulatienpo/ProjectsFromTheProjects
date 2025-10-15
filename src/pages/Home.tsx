@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import BuildStamp from "@/components/BuildStamp.jsx";
 
 export default function Home() {
   return (
@@ -11,14 +11,15 @@ export default function Home() {
       </h1>
       <div className="text-center mb-8">
         <h2 className="text-2xl font-bold mb-4">Project 1</h2>
-        <Link
-          to="/games"
+        <a
+          href="/games"
           className="block mx-auto max-w-xl bg-neutral-900 text-white rounded-xl shadow-lg p-8 text-xl font-semibold hover:bg-neutral-800 transition cursor-pointer"
           style={{ textDecoration: "none" }}
         >
           Literary Deviousness—A Gamified Fiction Writing School for Broke Mutherfuckers
-        </Link>
+        </a>
       </div>
+      <BuildStamp />
     </main>
   );
 }
