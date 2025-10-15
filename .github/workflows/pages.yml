@@ -1,0 +1,17 @@
+# ...existing workflow steps...
+
+defaults:
+  run:
+    working-directory: app
+
+jobs:
+  build:
+    # ...existing job config...
+    steps:
+      # ...other steps...
+      - name: Build
+        run: npm run build
+      - name: Copy 404 for SPA
+        working-directory: .
+        run: node scripts/copy-404.js
+      # ...other steps...
