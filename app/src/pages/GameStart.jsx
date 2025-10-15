@@ -2,25 +2,53 @@ import { Link } from 'react-router-dom'
 import SceneShell from '../components/SceneShell.jsx'
 
 export default function GameStart() {
+    const entries = [
+        {
+            key: 'grammar',
+            node: (
+                <Link className="link-white" to="/game/lesson/grammar-101">
+                    New Game → Grammar 101
+                </Link>
+            )
+        },
+        {
+            key: 'devices',
+            node: (
+                <Link className="link-white" to="/game/lesson/devices-101">
+                    New Game → Literary Devices 101
+                </Link>
+            )
+        },
+        {
+            key: 'continue',
+            node: (
+                <a
+                    className="link-white"
+                    href="#"
+                    onClick={e => {
+                        e.preventDefault()
+                        alert('Continue: no saves yet.')
+                    }}
+                >
+                    Continue (coming soon)
+                </a>
+            )
+        }
+    ]
+
     return (
-        <SceneShell title="Start">
+        <SceneShell title="Literary Deviousness">
             <p style={{ marginTop: 0 }}>
                 Choose a starting lane. You can jump around later.
             </p>
 
-            <ul style={{ paddingLeft: '1.2rem', lineHeight: 1.6 }}>
-                <li>
-                    <Link className="start-link" to="/game/lesson/grammar-101">New Game → Grammar 101</Link>
-                </li>
-                <li style={{ marginTop: '.75rem' }}>
-                    <Link className="start-link" to="/game/lesson/devices-101">New Game → Literary Devices 101</Link>
-                </li>
-                <li style={{ marginTop: '.75rem' }}>
-                    <a className="start-link" href="#" onClick={e => { e.preventDefault(); alert('Continue: no saves yet.'); }}>
-                        Continue (coming soon)
-                    </a>
-                </li>
-            </ul>
+            <div className="games-grid">
+                {entries.map(entry => (
+                    <div key={entry.key} className="game-tile">
+                        {entry.node}
+                    </div>
+                ))}
+            </div>
         </SceneShell>
     )
 }

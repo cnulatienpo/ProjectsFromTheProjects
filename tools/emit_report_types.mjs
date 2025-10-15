@@ -1,12 +1,12 @@
 // Input (default): app/src/ai/sigil-syntax/reportTypes.ts
-// Output: game thingss/sigil-syntax/reportTypes.json
+// Output: game things/sigil-syntax/reportTypes.json
 
 import fs from 'fs'
 import path from 'path'
 
 const INPUT =
   process.env.REPORT_TYPES_TS || path.resolve('app/src/ai/sigil-syntax/reportTypes.ts')
-const OUTDIR = path.resolve('game thingss', 'sigil-syntax')
+const OUTDIR = path.resolve('game things', 'sigil-syntax')
 const OUT = path.join(OUTDIR, 'reportTypes.json')
 
 function read(p) {

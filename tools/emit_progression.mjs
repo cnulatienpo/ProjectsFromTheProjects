@@ -34,7 +34,7 @@ const badgesPath =
 const levels = parseTSFile(levelsPath, 'levels.ts')
 const badges = parseTSFile(badgesPath, 'badges.ts')
 
-const outDir = path.resolve('game thingss', 'sigil-syntax')
+const outDir = path.resolve('game things', 'sigil-syntax')
 if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true })
 
 if (levels) {

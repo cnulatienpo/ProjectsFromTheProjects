@@ -49,8 +49,8 @@ export default function Home() {
                     Fiction Writing School for Broke Mutherfuckers.
                 </p>
 
-                <Link className="tile" to="/game">
-                    ▶︎ Play the game
+                <Link className="tile link-white" to="/sigil">
+                    Literary Deviousness
                 </Link>
             </main>
         </div>

@@ -1,4 +1,4 @@
-// Read writer_type_custom_elements.jsonl → emit game thingss/sigil-syntax/writer_types.json
+// Read writer_type_custom_elements.jsonl → emit game things/sigil-syntax/writer_types.json
 
 import fs from 'fs'
 import path from 'path'
@@ -6,7 +6,7 @@ import path from 'path'
 const INPUT =
   process.env.WRITER_TYPES_JSONL ||
   path.resolve('game thingss', 'writer_type_custom_elements.jsonl')
-const OUTDIR = path.resolve('game thingss', 'sigil-syntax')
+const OUTDIR = path.resolve('game things', 'sigil-syntax')
 const OUT = path.join(OUTDIR, 'writer_types.json')
 
 function readLines(p) {
