@@ -1,5 +1,5 @@
 import React from 'react'
-import { api } from '@/lib/apiBase.js'
+import { api, safeFetchJSON } from '@/lib/apiBase.js'
 
 export function adaptToSpec(it){
   if (!it) return null
@@ -25,23 +25,21 @@ export function adaptToSpec(it){
 
 // Good Word
 export async function fetchGoodItem(id){
-  const r = await fetch(api(`/goodword/game/${encodeURIComponent(id)}`))
-  if (!r.ok) throw new Error(String(r.status))
-  return adaptToSpec(await r.json())
+  const j = await safeFetchJSON(api(`/goodword/game/${encodeURIComponent(id)}`))
+  return adaptToSpec(j)
 }
 export async function listGoodIds(){
-  const r = await fetch(api('/goodword/catalog')); const j = await r.json()
+  const j = await safeFetchJSON(api('/goodword/catalog'))
   return j.games || []
 }
 
 // Sigil_&_Syntax
 export async function fetchSigilItem(id){
-  const r = await fetch(api(`/sigil/game/${encodeURIComponent(id)}`))
-  if (!r.ok) throw new Error(String(r.status))
-  return adaptToSpec(await r.json())
+  const j = await safeFetchJSON(api(`/sigil/game/${encodeURIComponent(id)}`))
+  return adaptToSpec(j)
 }
 export async function firstSigilId(){
-  const r = await fetch(api('/sigil/catalog')); const j = await r.json()
+  const j = await safeFetchJSON(api('/sigil/catalog'))
   return j.first || (j.games && j.games[0]) || null
 }
 
