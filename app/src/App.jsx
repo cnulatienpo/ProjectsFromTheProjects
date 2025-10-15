@@ -1,24 +1,26 @@
 import React from 'react'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import ErrorBoundary from '@/components/ErrorBoundary.jsx'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Home from '@/pages/Home.jsx'
-import SigilSyntax from '@/pages/SigilSyntax.jsx'
-import GoodWord from '@/pages/GoodWord.jsx'
+import SigilSyntax from '@/pages/SigilSyntax.stub.jsx'
+import GoodWord from '@/pages/GoodWord.stub.jsx'
 
-const routes = [
-  { path: '/', element: <Home /> },
-  { path: '/sigil', element: <SigilSyntax /> },
-  { path: '/sigil/:id', element: <SigilSyntax /> },
-  { path: '/goodword/:id', element: <GoodWord /> },
-  { path: '*', element: <div style={{padding:24}}>Not found. <a href="/">Home</a></div> }
-]
-
-const router = createBrowserRouter(routes, { basename: import.meta.env.BASE_URL })
-
-export default function App(){
+export default function App() {
   return (
-    <ErrorBoundary>
-      <RouterProvider router={router} />
-    </ErrorBoundary>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/sigil" element={<SigilSyntax />} />
+        <Route path="/sigil/:id" element={<SigilSyntax />} />
+        <Route path="/goodword/:id" element={<GoodWord />} />
+        <Route
+          path="*"
+          element={
+            <div style={{ padding: 24 }}>
+              Not found. <Link to="/">Home</Link>
+            </div>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   )
 }
