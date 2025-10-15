@@ -2,9 +2,9 @@ import fs from 'fs'
 import path from 'path'
 
 // Put your source files under "game thingss/"
-const FOUNDATIONS_JSONL = path.resolve('game thingss', 'foundations.jsonl') // rename your tweetrunk file here
+const FOUNDATIONS_JSONL = path.resolve('game thingss', 'foundations.jsonl')
 const SKILL_MAP_JSON = path.resolve('game thingss', 'foundation_skill_map.json')
-const CATALOG_JSON = path.resolve('server/data', 'games_catalog.json') // practice pool
+const CATALOG_JSON = path.resolve('server/data', 'games_catalog.json')
 
 function readLines(file) {
     try {
@@ -15,7 +15,7 @@ function readLines(file) {
 }
 
 export function loadFoundations() {
-    const lessons = readLines(FOUNDATIONS_JSONL) // [{lesson_id, order?, title, tags[], body}, ...]
+    const lessons = readLines(FOUNDATIONS_JSONL)
     const skillMap = JSON.parse(fs.readFileSync(SKILL_MAP_JSON, 'utf8'))
     const catalog = fs.existsSync(CATALOG_JSON) ? JSON.parse(fs.readFileSync(CATALOG_JSON, 'utf8')) : { games: {} }
 

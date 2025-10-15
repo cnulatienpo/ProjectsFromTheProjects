@@ -1,28 +1,36 @@
 import { useEffect, useState } from 'react'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import GameLayout from '@sigil/GameLayout'
-import GameItem from '@sigil/GameItem'
-import { useParams, useNavigate } from 'react-router-dom'
-import { fetchSigilItem, firstSigilId } from '@/lib/gameAdapters/sources.js'
+import { api, safeFetchJSON } from '@/lib/apiBase.js'
 
-export default function SigilSyntax(){
+export default function SigilSyntax() {
   const { id } = useParams()
   const nav = useNavigate()
-  const [spec, setSpec] = useState(null)
-  const [err, setErr] = useState('')
+  const [status, setStatus] = useState('Checking…')
+  const [first, setFirst] = useState(null)
 
   useEffect(() => {
-    if (!id) firstSigilId().then(fid => { if (fid) nav(`/sigil/${encodeURIComponent(fid)}`, { replace:true }) })
-  }, [id, nav])
-
-  useEffect(() => {
-    if (!id) return
-    setSpec(null); setErr('')
-    fetchSigilItem(id).then(setSpec).catch(e => setErr(String(e)))
-  }, [id])
+    safeFetchJSON(api('/sigil/catalog'))
+      .then(j => {
+        setStatus(`Found ${j?.games?.length ?? 0} lessons`)
+        setFirst(j?.first || j?.games?.[0] || null)
+      })
+      .catch(e => setStatus(`Error: ${String(e.message || e)}`))
+  }, [])
 
   return (
-    <GameLayout title="Sigil_&_Syntax" feedback={err && <span style={{color:'tomato'}}>{err}</span>} onPrev={()=>nav(-1)}>
-      {spec && <GameItem spec={spec} />}
+    <GameLayout title="Sigil_&_Syntax">
+      <div style={{ padding: 12 }}>
+        <p><strong>Catalog:</strong> {status}</p>
+        {first && !id && (
+          <p>
+            <button onClick={() => nav(`/sigil/${encodeURIComponent(first)}`)}>
+              Go to first lesson
+            </button>
+          </p>
+        )}
+        <p><Link to="/">Back home</Link></p>
+      </div>
     </GameLayout>
   )
 }
