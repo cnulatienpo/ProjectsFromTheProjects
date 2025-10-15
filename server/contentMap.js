@@ -1,39 +1,24 @@
-import fs from 'fs'
-import path from 'path'
-const MAP_PATH = path.resolve('server/data/foundation_skill_map.json')
-let warnedMissing = false
+let warned = false
 
-function readMap() {
-    if (!fs.existsSync(MAP_PATH)) {
-        if (!warnedMissing) {
-            console.warn('[opt] foundation_skill_map.json missing — returning empty content map')
-            warnedMissing = true
-        }
-        return {}
-    }
-
-    try {
-        const txt = fs.readFileSync(MAP_PATH, 'utf8')
-        return JSON.parse(txt)
-    } catch (e) {
-        console.error('Failed to read content map:', e.message)
-        return {}
+function warnOnce() {
+    if (!warned) {
+        console.warn('[opt] foundations/skill map disabled; returning empty content map')
+        warned = true
     }
 }
 
 export function listSkills() {
-    const map = readMap()
-    return Object.keys(map)
+    warnOnce()
+    return []
 }
 
 export function unitsForSkill(skill) {
-    const map = readMap()
-    return map[skill] || []
+    warnOnce()
+    return []
 }
 
 /** Pick the next unit for a skill (very simple placeholder policy) */
 export function nextUnitForSkill(skill, history = []) {
-    const units = unitsForSkill(skill)
-    const remaining = units.filter(u => !history.includes(u))
-    return (remaining[0] || units[0] || null)
+    warnOnce()
+    return null
 }
