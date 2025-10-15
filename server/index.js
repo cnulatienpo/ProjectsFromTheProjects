@@ -1,5 +1,8 @@
 import express from 'express'
 import cors from 'cors'
+import fs from 'fs'
+import path from 'path'
+import { ENV } from './config/env.js'
 import { listSkills, unitsForSkill, nextUnitForSkill } from './contentMap.js'
 import { readBundle, listItemIds, getItem, listLessons, getLesson } from './bundle.js'
 import { loadFoundations } from './foundations.loader.js'
@@ -7,8 +10,6 @@ import { readStatus } from './status.js'
 import { levelForXp, checkBadges } from './sigil-syntax/progression.js'
 import { readReportPhrases } from './sigil-syntax/reportPhrases.js'
 import { loadEvolver } from './sigil-syntax/reportEvolve.loader.js'
-import fs from 'fs'
-import path from 'path'
 import { evaluateAttempt } from './sigil-syntax/judgment.js'
 import { listWriterTypes, getWriterType, allWriterTypes } from './sigil-syntax/writerTypes.js'
 import { listReportTypes, getReportType, defaultReportType } from './sigil-syntax/reportTypes.js'
@@ -17,18 +18,120 @@ import { listCutIds, getCutItem } from './cutGood/index.js'
 import { listGoodIds, getGoodItem } from './goodword/index.js'
 import { listSigilIds, getSigilItem, firstSigilId } from './sigil-syntax/content.js'
 
-const app = express()
-app.use(express.json())
+let morgan = null
+try {
+    const mod = await import('morgan')
+    morgan = mod.default || mod
+} catch {
+    morgan = null
+}
 
-// DEV-ONLY: loosen CORS to reflect any Origin
-const ORIGIN_PAGES = process.env.ORIGIN_PAGES || 'https://<your-user>.github.io';
+const app = express()
+
+// --- CORS logic: allow GitHub Pages, ENV origins, and localhost in dev ---
+const ORIGIN_PAGES = process.env.ORIGIN_PAGES || ENV.ORIGIN_PAGES || 'https://<your-user>.github.io'
+const allowedOrigins = new Set(
+    [
+        ORIGIN_PAGES,
+        ...(ENV.ORIGIN_EXTRA || []),
+        ...(ENV.ALLOW_LOCALHOST ? [
+            'http://localhost:5173',
+            'http://127.0.0.1:5173',
+            'http://localhost:5174',
+            'http://127.0.0.1:5174'
+        ] : [])
+    ].filter(Boolean)
+)
+
+function corsOrigin(origin, cb) {
+    if (!origin) return cb(null, true)
+    try {
+        const url = new URL(origin)
+        if (allowedOrigins.has(origin)) return cb(null, true)
+        if (/\.github\.io$/i.test(url.hostname)) return cb(null, true)
+        return cb(new Error(`CORS blocked for origin: ${origin}`))
+    } catch {
+        return cb(new Error(`Invalid origin: ${origin}`))
+    }
+}
+
 app.use(cors({
-    origin: [ORIGIN_PAGES, /\.github\.io$/],
+    origin: corsOrigin,
     methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: false
-}));
-app.options('*', cors());
+}))
+app.options('*', cors())
+
+if (morgan) {
+    app.use(morgan(':method :url :status :res[content-length] - :response-time ms'))
+} else {
+    app.use((req, res, next) => {
+        const started = Date.now()
+        res.on('finish', () => {
+            const duration = Date.now() - started
+            console.log(req.method, req.url, res.statusCode, `${duration}ms`)
+        })
+        next()
+    })
+}
+
+app.use(express.json({ limit: '1mb' }))
+
+const state = new Map()
+
+app.get('/health', (req, res) => {
+    res.json({ ok: true, ts: new Date().toISOString() })
+})
+
+app.get('/status', (req, res) => {
+    res.json({
+        ok: true,
+        env: ENV.NODE_ENV,
+        version: ENV.VERSION || null,
+        build: ENV.BUILD_STAMP || null,
+        time: new Date().toISOString(),
+        status: readStatus()
+    })
+})
+
+app.get('/ping', (req, res) => res.type('text/plain').send('pong'))
+
+app.post('/echo', (req, res) => {
+    res.json({ ok: true, headers: req.headers, body: req.body || null })
+})
+
+app.get('/_debug/cors', (req, res) => {
+    const origin = req.headers.origin || null
+    let allowed = false
+    if (!origin) {
+        allowed = true
+    } else {
+        try {
+            const url = new URL(origin)
+            allowed = allowedOrigins.has(origin) || /\.github\.io$/i.test(url.hostname)
+        } catch {
+            allowed = false
+        }
+    }
+
+    res.json({
+        ok: true,
+        origin,
+        allowed,
+        allowedOrigins: Array.from(allowedOrigins)
+    })
+})
+
+app.get('/whoami', (req, res) => {
+    res.json({
+        ip: req.ip,
+        ips: req.ips || [],
+        ua: req.headers['user-agent'] || '',
+        origin: req.headers.origin || null,
+        referer: req.headers.referer || null
+    })
+})
 
 // List available skills
 app.get('/content/skills', (req, res) => {
@@ -128,7 +231,7 @@ app.get('/api/mastery', (req, res) => {
 })
 
 // Get server status
-app.get('/status', (req, res) => res.json(readStatus()))
+app.get('/status/raw', (req, res) => res.json(readStatus()))
 
 function getUser(u = 'local-user') {
     if (!state.has(u)) state.set(u, {
@@ -307,4 +410,11 @@ app.get('/report-types/:id', (req, res) => {
     res.json(t)
 })
 
+const server = process.env.NODE_ENV === 'test'
+    ? null
+    : app.listen(ENV.PORT, ENV.HOST, () => {
+        console.log(`Server listening on http://${ENV.HOST}:${ENV.PORT}  (env=${ENV.NODE_ENV})`)
+    })
+
+export { app, server }
 export default app
