@@ -5,7 +5,8 @@
   "scripts": {
     "build": "npm run build --prefix app && node scripts/copy-404.js",
     "dev:app": "npm run dev --prefix app",
-    "build:app": "npm run build --prefix app"
+    "build:app": "npm run build --prefix app",
+    "emit:sigil:labeled": "node tools/build_sigil_from_labeled.mjs"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.14",

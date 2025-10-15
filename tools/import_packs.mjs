@@ -6,6 +6,11 @@ const PACKS_DIR = path.resolve('game thingss', 'packs')
 const BUILD_DIR = path.resolve('game thingss', 'build')
 const FOUNDATIONS_JSONL = path.resolve('game thingss', 'foundations.jsonl')
 const SKILL_MAP_JSON = path.resolve('game thingss', 'foundation_skill_map.json')
+const SKIP_FOUNDATIONS = true
+
+if (SKIP_FOUNDATIONS) {
+    console.warn('[opt] foundations/skill map disabled; skipping foundations import')
+}
 const LOG_FILE = path.resolve('tools', 'import.log')
 
 // Ensure build dir exists
@@ -77,15 +82,17 @@ for (const file of fs.readdirSync(PACKS_DIR).filter(f => f.endsWith('.jsonl'))) 
 // Read foundations and skill map if present
 let lessons = []
 let skillMap = {}
-if (fs.existsSync(SKILL_MAP_JSON)) {
-    skillMap = JSON.parse(fs.readFileSync(SKILL_MAP_JSON, 'utf8'))
-}
-if (fs.existsSync(FOUNDATIONS_JSONL)) {
-    const lines = fs.readFileSync(FOUNDATIONS_JSONL, 'utf8').split('\n')
-    lessons = lines
-        .map((line, i) => safeParse(line, 'foundations.jsonl', i + 1, errors))
-        .filter(Boolean)
-        .map(obj => normalizeLesson(obj, skillMap))
+if (!SKIP_FOUNDATIONS) {
+    if (fs.existsSync(SKILL_MAP_JSON)) {
+        skillMap = JSON.parse(fs.readFileSync(SKILL_MAP_JSON, 'utf8'))
+    }
+    if (fs.existsSync(FOUNDATIONS_JSONL)) {
+        const lines = fs.readFileSync(FOUNDATIONS_JSONL, 'utf8').split('\n')
+        lessons = lines
+            .map((line, i) => safeParse(line, 'foundations.jsonl', i + 1, errors))
+            .filter(Boolean)
+            .map(obj => normalizeLesson(obj, skillMap))
+    }
 }
 
 // Write bundle

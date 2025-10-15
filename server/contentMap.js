@@ -1,8 +1,17 @@
 import fs from 'fs'
 import path from 'path'
 const MAP_PATH = path.resolve('server/data/foundation_skill_map.json')
+let warnedMissing = false
 
 function readMap() {
+    if (!fs.existsSync(MAP_PATH)) {
+        if (!warnedMissing) {
+            console.warn('[opt] foundation_skill_map.json missing — returning empty content map')
+            warnedMissing = true
+        }
+        return {}
+    }
+
     try {
         const txt = fs.readFileSync(MAP_PATH, 'utf8')
         return JSON.parse(txt)
