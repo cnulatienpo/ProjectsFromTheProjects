@@ -12,30 +12,19 @@ import {
 } from './sigil-syntax/content.js'
 
 const app = express()
+
+app.use((req, res, next) => {
+  // allow all for testing; tighten later if needed
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS')
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With')
+  if (req.method === 'OPTIONS') return res.sendStatus(204)
+  next()
+})
+app.use(cors({ origin: true, credentials: false }))
+
 app.use(express.json({ limit: '1mb' }))
 app.use(cookieParser())
-
-// CORS so the frontend (dev + prod) can talk to us
-app.use(
-  cors({
-    origin: (origin, cb) => {
-      if (!origin) return cb(null, true)
-      try {
-        const { host } = new URL(origin)
-        if (host.endsWith('.app.github.dev')) return cb(null, true)
-      } catch {}
-      if (origin.startsWith('http://localhost:')) return cb(null, true)
-      return cb(null, false)
-    },
-    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
-    maxAge: 86400,
-    credentials: false
-  })
-)
-
-// Make sure preflight never 404s
-app.options('*', cors())
 
 // --- health & ping
 app.get('/health', (_req, res) => res.json({ ok: true, ts: new Date().toISOString() }))

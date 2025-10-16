@@ -1,17 +1,19 @@
 // src/lib/cutGamesClient.ts
-import { apiUrl } from "./apiBase";
+import { apiBase } from "./apiBase";
+
+const withApiBase = (path: string) => `${apiBase}${path.startsWith("/") ? path : `/${path}`}`;
 
 export type PracticeItem = { id:number; scene:string; beat?:string; pitfall?:string };
 
 async function get<T>(url: string): Promise<T> {
-  const target = apiUrl(url);
+  const target = withApiBase(url);
   const res = await fetch(target, { credentials: "include" });
   if (!res.ok) throw new Error(`GET ${url} failed: ${res.status}`);
   return res.json();
 }
 
 async function post<T>(url: string, body: any): Promise<T> {
-  const target = apiUrl(url);
+  const target = withApiBase(url);
   const res = await fetch(target, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
