@@ -2,9 +2,8 @@
 import express from 'express'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
-import { fileURLToPath } from 'url'
-import path from 'path'
 
+// Sigil content loader (reads the cached bundle)
 import {
   listSigilIds,
   getSigilItem,
@@ -13,73 +12,43 @@ import {
 } from './sigil-syntax/content.js'
 
 const app = express()
-
-const DEV = process.env.NODE_ENV !== 'production'
-if (DEV) {
-  // allow any dev origin (Codespaces URLs change)
-  app.use(cors({ origin: true, credentials: false }))
-  app.options('*', cors())
-} else {
-  // tighten in prod if you want
-  app.use(cors({ origin: process.env.FRONTEND_ORIGIN || false }))
-}
-
-// Basic middleware
 app.use(express.json({ limit: '1mb' }))
 app.use(cookieParser())
 
-app.get('/', (req, res) => {
-  res.json({ ok: true, msg: 'API server. Try /health or /sigil/catalog' })
+// CORS: open in dev; tighten in prod if needed
+const DEV = process.env.NODE_ENV !== 'production'
+app.use(cors({ origin: DEV ? true : (process.env.FRONTEND_ORIGIN || false) }))
+app.options('*', cors())
+
+// --- health & ping
+app.get('/health', (_req, res) => res.json({ ok: true, ts: new Date().toISOString() }))
+app.get('/__ping', (req, res) => {
+  res.json({ ok: true, path: req.path, origin: req.headers.origin || null })
 })
 
-// Health & status
-app.get('/health', (req, res) => res.json({ ok: true, ts: new Date().toISOString() }))
-app.get('/status', (req, res) => res.json({ ok: true, env: process.env.NODE_ENV || 'development' }))
+// --- Sigil_&_Syntax API
+app.get('/_debug/sigil', (_req, res) => res.json(getSigilDebug()))
 
-// ---- Sigil_&_Syntax (catalog + single lesson)
-app.get('/_debug/sigil', (req, res) => res.json(getSigilDebug()))
-
-app.get('/sigil/catalog', (req, res) => {
-  try {
-    const games = listSigilIds()
-    return res.json({ games, first: firstSigilId() })
-  } catch (e) {
-    return res.status(500).json({ error: 'sigil_catalog_failed', message: String(e) })
-  }
+app.get('/sigil/catalog', (_req, res) => {
+  const games = listSigilIds()
+  res.json({ games, first: firstSigilId() })
 })
 
 app.get('/sigil/game/:id', (req, res) => {
-  try {
-    const it = getSigilItem(req.params.id)
-    if (!it) return res.status(404).json({ error: 'not_found', id: req.params.id })
-    return res.json(it)
-  } catch (e) {
-    return res.status(500).json({ error: 'sigil_item_failed', message: String(e), id: req.params.id })
-  }
+  const it = getSigilItem(req.params.id)
+  if (!it) return res.status(404).json({ error: 'not_found', id: req.params.id })
+  res.json(it)
 })
 
-app.get('/__ping', (req, res) => {
-  res.json({
-    ok: true,
-    origin: req.headers.origin || null,
-    path: req.path,
-    ua: req.headers['user-agent'] || '',
-  })
-})
-
-// ---- 404 (must be last non-error middleware)
-app.use((req, res) => {
-  res.status(404).json({ error: 'not_found', path: req.path })
-})
-
-// ---- Error handler (must have 4 args)
-app.use((err, req, res, next) => {
-  console.error('[server error]', err)
+// --- 404 and error handlers
+app.use((req, res) => res.status(404).json({ error: 'not_found', path: req.path }))
+app.use((err, _req, res, next) => {
   if (res.headersSent) return next(err)
   res.status(500).json({ error: 'server_error', message: String(err?.message || err) })
 })
 
-// ---- Start server ONLY when run as entrypoint; never call app() directly
+// --- start only if this file is the entrypoint
+import { fileURLToPath } from 'url'
 const isEntrypoint = fileURLToPath(import.meta.url) === process.argv[1]
 const PORT = Number(process.env.PORT || 3001)
 const HOST = process.env.HOST || '0.0.0.0'
