@@ -1,5 +1,5 @@
 import React from 'react'
-import { api } from '@/lib/apiBase.js'
+import { safeFetchJSON } from '@/lib/apiBase'
 
 // normalize a server game to your GameItem spec
 export function adaptItem(it) {
@@ -24,22 +24,20 @@ export function adaptItem(it) {
 }
 
 export async function fetchCutItem(id) {
-  const r = await fetch(api(`/cut/game/${encodeURIComponent(id)}`))
-  if (!r.ok) throw new Error(String(r.status))
-  return adaptItem(await r.json())
+  const json = await safeFetchJSON(`/cut/game/${encodeURIComponent(id)}`)
+  return adaptItem(json)
 }
 
 export async function fetchGoodItem(id) {
-  const r = await fetch(api(`/goodword/game/${encodeURIComponent(id)}`))
-  if (!r.ok) throw new Error(String(r.status))
-  return adaptItem(await r.json())
+  const json = await safeFetchJSON(`/goodword/game/${encodeURIComponent(id)}`)
+  return adaptItem(json)
 }
 
 export async function listCutIds() {
-  const r = await fetch(api('/cut/catalog')); const j = await r.json()
-  return j.games || []
+  const j = await safeFetchJSON('/cut/catalog')
+  return j.items || j.games || []
 }
 export async function listGoodIds() {
-  const r = await fetch(api('/goodword/catalog')); const j = await r.json()
-  return j.games || []
+  const j = await safeFetchJSON('/goodword/catalog')
+  return j.items || j.games || []
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
-import { api, safeFetchJSON } from '@/lib/apiBase.js'
+import { apiBase, safeFetchJSON } from '@/lib/apiBase'
 
 function useInterval(fn, ms) {
   const ref = useRef(fn)
@@ -14,17 +14,20 @@ export default function BackendHealth({ className = '', intervalMs = 10000 }) {
   const [status, setStatus] = useState({ ok: false, msg: 'Checking…', ts: null })
 
   const backendBase = useMemo(() => {
-    const isDev = import.meta.env.DEV
-    const prod = (import.meta.env.VITE_PROD_API || '').replace(/\/+$/, '')
-    return isDev ? '(dev proxy)' : (prod || '(no VITE_PROD_API)')
+    if (import.meta.env.DEV) {
+      return apiBase || '(relative via proxy)'
+    }
+    const prod = import.meta.env.VITE_PROD_API?.toString().trim()
+    return prod || '(no VITE_PROD_API)'
   }, [])
 
   async function check() {
     try {
-      const j = await safeFetchJSON(api('/health'))
+      const j = await safeFetchJSON('/health')
       setStatus({ ok: !!j?.ok, msg: j?.ok ? 'OK' : 'Not OK', ts: j?.ts || new Date().toISOString() })
     } catch (e) {
-      setStatus({ ok: false, msg: String(e.message || e), ts: new Date().toISOString() })
+      const message = e instanceof Error ? e.message : String(e)
+      setStatus({ ok: false, msg: message, ts: new Date().toISOString() })
     }
   }
 

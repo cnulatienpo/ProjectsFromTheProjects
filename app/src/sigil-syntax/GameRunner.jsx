@@ -7,7 +7,7 @@ import LevelUpModal from '@sigil/LevelUpModal'
 import BadgeStrip from '@sigil/BadgeStrip'
 import StyleReportBox from '@sigil/StyleReportBox'
 import { toSpec } from '@/lib/gameAdapter.js'
-import { api } from '@/lib/apiBase.js'
+import { api } from '@/lib/apiBase'
 
 export default function GameRunner() {
     const { id } = useParams()

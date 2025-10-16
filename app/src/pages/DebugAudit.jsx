@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
-import { api, safeFetchJSON } from '@/lib/apiBase.js'
+import { apiBase, safeFetchJSON } from '@/lib/apiBase'
 import { Link } from 'react-router-dom'
 
 export default function DebugAudit(){
   const [d, setD] = useState(null)
   const [err, setErr] = useState('')
   useEffect(() => {
-    safeFetchJSON(api('/__diag')).then(setD).catch(e => setErr(String(e)))
+    safeFetchJSON('/__diag').then(setD).catch(e => setErr(String(e)))
   }, [])
   if (err) return <main style={{padding:24}}><h2>Audit Error</h2><pre>{err}</pre></main>
   if (!d) return <main style={{padding:24}}>Running audit…</main>
@@ -33,7 +33,7 @@ export default function DebugAudit(){
   return (
     <main style={{ padding:24 }}>
       <h1>Audit</h1>
-      <p>Backend base: {import.meta.env.DEV ? (import.meta.env.VITE_DEV_API || '(proxy)') : (import.meta.env.VITE_PROD_API || '(unset)')}</p>
+      <p>Backend base: {import.meta.env.DEV ? (apiBase || '(proxy)') : (import.meta.env.VITE_PROD_API || '(unset)')}</p>
       <ul>{checks.map(([ok,name,extra],i)=><Line key={i} ok={ok} name={name} extra={extra}/>)}</ul>
       <p><Link to="/">Home</Link></p>
     </main>
