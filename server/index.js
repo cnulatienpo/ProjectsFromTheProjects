@@ -215,7 +215,9 @@ app.get('/bundle/info', (req, res) => {
 })
 
 // --- For /api/next, /api/submit, /api/progress, use bundle lessons/items ---
-const { lessons, items } = loadFoundations() // use bundle for lessons/items
+// foundations disabled (Sigil_&_Syntax uses bundle from tweetrunk)
+const lessons = []
+const items = []
 
 // mastery rollup per skill (for the Progress panel)
 app.get('/api/mastery', (req, res) => {
