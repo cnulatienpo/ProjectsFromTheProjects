@@ -1,36 +1,33 @@
 import { useEffect, useState } from 'react'
-import { useParams, Link, useNavigate } from 'react-router-dom'
-import GameLayout from '@sigil/GameLayout'
 import { api, safeFetchJSON } from '@/lib/apiBase.js'
+import { useNavigate } from 'react-router-dom'
 
-export default function SigilSyntax() {
-  const { id } = useParams()
+export default function SigilSyntax(){
+  const [cat, setCat] = useState(null)
+  const [err, setErr] = useState('')
   const nav = useNavigate()
-  const [status, setStatus] = useState('Checking…')
-  const [first, setFirst] = useState(null)
 
   useEffect(() => {
-    safeFetchJSON(api('/sigil/catalog'))
-      .then(j => {
-        setStatus(`Found ${j?.games?.length ?? 0} lessons`)
-        setFirst(j?.first || j?.games?.[0] || null)
-      })
-      .catch(e => setStatus(`Error: ${String(e.message || e)}`))
+    safeFetchJSON(api('/sigil/catalog')).then(setCat).catch(e=>setErr(String(e)))
   }, [])
 
+  if (err) return <main style={{padding:24}}>Catalog: <b>Error:</b> {err}</main>
+  if (!cat) return <main style={{padding:24}}>Catalog: loading…</main>
+
+  const count = (cat.games||[]).length
   return (
-    <GameLayout title="Sigil_&_Syntax">
-      <div style={{ padding: 12 }}>
-        <p><strong>Catalog:</strong> {status}</p>
-        {first && !id && (
-          <p>
-            <button onClick={() => nav(`/sigil/${encodeURIComponent(first)}`)}>
-              Go to first lesson
-            </button>
-          </p>
-        )}
-        <p><Link to="/">Back home</Link></p>
-      </div>
-    </GameLayout>
+    <main style={{padding:24, display:'grid', gap:16}}>
+      <h1>Sigil &amp; Syntax</h1>
+      <p>Catalog: Found {count} lessons</p>
+      {!!cat.first && (
+        <button
+          onClick={()=>nav(`/sigil/${encodeURIComponent(cat.first)}`)}
+          style={{padding:'10px 16px', border:'1px solid #000', background:'#fff', cursor:'pointer', width:'fit-content'}}
+        >
+          Start first lesson
+        </button>
+      )}
+      <p><a href="/">Back home</a></p>
+    </main>
   )
 }
