@@ -1,20 +1,24 @@
-const PROD = import.meta.env.VITE_PROD_API || ''
+// app/src/lib/apiBase.js
+const DEV_BASE  = (import.meta.env.VITE_DEV_API || '').replace(/\/+$/, '')
+const PROD_BASE = (import.meta.env.VITE_PROD_API || '').replace(/\/+$/, '')
+
 export const api = (p = '') => {
-  const base = (import.meta.env.DEV ? '' : PROD).replace(/\/+$/, '')
   const path = p.startsWith('/') ? p : `/${p}`
+  const base = import.meta.env.DEV ? DEV_BASE : PROD_BASE
   return `${base}${path}`
 }
 
-export async function safeFetchJSON(url, init) {
-  const res = await fetch(url, init)
-  const ct = res.headers.get('content-type') || ''
-  if (!res.ok) {
-    const body = ct.includes('html') ? await res.text() : ''
-    throw new Error(`HTTP ${res.status} for ${url}${ct.includes('html') ? ' (HTML received)' : ''}${body ? ' :: ' + body.slice(0,120) : ''}`)
+export async function safeFetchJSON(url, opts) {
+  const r = await fetch(url, { headers: { 'accept': 'application/json' }, ...opts })
+  const ct = r.headers.get('content-type') || ''
+  if (!r.ok) {
+    let msg = `HTTP ${r.status} for ${url}`
+    if (ct.includes('application/json')) {
+      const j = await r.json().catch(()=>null)
+      if (j && (j.error || j.message)) msg += `: ${j.error || j.message}`
+    }
+    throw new Error(msg)
   }
-  if (ct.includes('html')) {
-    const body = await res.text()
-    throw new Error(`Expected JSON from ${url}, but got HTML (likely a 404 or SPA index). First bytes: ${body.slice(0,120)}`)
-  }
-  return res.json()
+  if (!ct.includes('application/json')) throw new Error(`HTML received for ${url}`)
+  return r.json()
 }

@@ -18,10 +18,18 @@ const app = express()
 app.use(express.json({ limit: '1mb' }))
 app.use(cookieParser())
 
-// CORS: open in dev; restrictable in prod via env
-const DEV = process.env.NODE_ENV !== 'production'
-const allowAll = (origin, cb) => cb(null, true)
-app.use(cors(allowAll))
+// CORS: allow your dev frontend origin explicitly
+const FRONTEND_ORIGIN = 'https://animated-carnival-v4g77qwxgvv3p5p5-5173.app.github.dev'
+app.use(cors({
+  origin: [FRONTEND_ORIGIN],
+  credentials: false,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Accept', 'Authorization'],
+}))
+
+app.get('/', (req, res) => {
+  res.json({ ok: true, msg: 'API server. Try /health or /sigil/catalog' })
+})
 
 // Health & status
 app.get('/health', (req, res) => res.json({ ok: true, ts: new Date().toISOString() }))
