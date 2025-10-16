@@ -4,6 +4,7 @@ import sigilSyntaxItems from "@/sigilSyntaxItems"; // or "@/sigilSyntaxItems.jso
 import { loadSigilPackSafe } from "@/games/sigilSyntaxData";
 import "@/styles/brutalist.css";
 import "@/styles/theme/theme.css";
+import "./SigilSyntaxGame.css";
 
 function Menu() {
   const nav = useNavigate();
@@ -104,9 +105,11 @@ function Play() {
 /** Router-less shell (nested under /games/sigil-syntax/*) */
 export default function SigilSyntaxGame() {
   return (
-    <Routes>
-      <Route path="" element={<Menu />} />
-      <Route path="play" element={<Play />} />
-    </Routes>
+    <div className="sigil-root surface">
+      <Routes>
+        <Route path="" element={<Menu />} />
+        <Route path="play" element={<Play />} />
+      </Routes>
+    </div>
   );
 }
