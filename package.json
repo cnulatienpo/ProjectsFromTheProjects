@@ -6,14 +6,10 @@
     "dev:app": "npm run dev --prefix app",
     "build:app": "npm run build --prefix app",
     "preview:app": "npm run preview --prefix app",
-
     "dev:server": "node server/index.js",
     "start:server": "node server/index.js",
     "start": "npm run dev:server & npm run dev:app",
-
-    "dev:server": "node server/index.js",
-    "start:server": "node server/index.js",
-    "start": "npm run dev:server & npm run dev:app",
+    "emit:progression": "node tools/emit_progression_defaults.mjs",
     "emit:sigil:labeled": "node tools/build_sigil_from_labeled.mjs"
   },
   "devDependencies": {
