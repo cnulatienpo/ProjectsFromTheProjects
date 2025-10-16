@@ -202,6 +202,23 @@ app.get('/sigil/catalog', (req, res) => {
     }
 })
 
+// NEW: get a single lesson by id
+app.get('/sigil/game/:id', (req, res) => {
+    try {
+        const it = getSigilItem(req.params.id)
+        if (!it) return res.status(404).json({ error: 'not_found', id: req.params.id })
+        return res.json(it)
+    } catch (e) {
+        return res.status(500).json({ error: 'sigil_item_failed', message: String(e), id: req.params.id })
+    }
+})
+
+// Optional: quick peek at first few ids
+app.get('/_debug/sigil/catalog', (req, res) => {
+    const ids = listSigilIds()
+    res.json({ count: ids.length, first: firstSigilId(), sample: ids.slice(0, 10) })
+})
+
 // Lessons endpoints
 app.get('/lessons', (req, res) => {
     res.json({ lessons: listLessons() })
