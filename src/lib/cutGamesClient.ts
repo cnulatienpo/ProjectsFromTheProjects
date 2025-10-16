@@ -1,5 +1,5 @@
 // src/lib/cutGamesClient.ts
-import { apiBase } from "./apiBase";
+import { apiBase } from "@/lib/apiBase";
 
 const withApiBase = (path: string) => `${apiBase}${path.startsWith("/") ? path : `/${path}`}`;
 
