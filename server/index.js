@@ -18,6 +18,7 @@ import { listGoodIds, getGoodItem } from './goodword/index.js'
 import { listSigilIds, getSigilItem, firstSigilId, getSigilDebug } from './sigil-syntax/content.js'
 import basicAuth from 'basic-auth'
 import { debugResolvedPaths } from './lib/resolvePaths.js'
+import { collectDiagnostics } from './diag.js'
 
 let morgan = null
 try {
@@ -122,6 +123,14 @@ app.get('/_debug/cors', (req, res) => {
         allowed,
         allowedOrigins: Array.from(allowedOrigins)
     })
+})
+
+app.get('/__diag', (req, res) => {
+    try {
+        res.json({ ok: true, ...collectDiagnostics() })
+    } catch (e) {
+        res.status(500).json({ ok: false, error: String(e) })
+    }
 })
 
 app.get('/whoami', (req, res) => {
