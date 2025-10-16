@@ -8,6 +8,11 @@ export const api = (p = '') => {
   return `${base}${path}`
 }
 
+const _dbg = import.meta.env.DEV
+  ? (import.meta.env.VITE_DEV_API || '(proxy)')
+  : (import.meta.env.VITE_PROD_API || '(unset)')
+if (typeof window !== 'undefined') console.log('[API BASE]', _dbg)
+
 export async function safeFetchJSON(url, opts) {
   const r = await fetch(url, { headers: { 'accept': 'application/json' }, ...opts })
   const ct = r.headers.get('content-type') || ''
