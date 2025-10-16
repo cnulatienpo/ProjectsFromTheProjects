@@ -2,6 +2,17 @@
 /* Global brutalist theme overrides */
 
 :root {
+    /* Hard fallbacks in case tokens weren’t set or clash with system dark-mode */
+    --bg: #0a0a0a;
+    --fg: #f5f5f5;
+    --muted: #9a9a9a;
+    --card: #111111;
+    --card-fg: #f7f7f7;
+    --border: #222222;
+    --accent: #ffd400;
+
+    color-scheme: dark;
+
     --brutalist-bg: #fff;
     --brutalist-border: #222;
     --brutalist-accent: #e0f2fe;
@@ -9,26 +20,89 @@
     --brutalist-text: #222;
 }
 
+html,
+body,
+#root {
+    background: var(--bg);
+    color: var(--fg);
+    min-height: 100%;
+}
+
+/* Cards / surfaces */
+.card,
+.panel,
+.surface {
+    background: var(--card);
+    color: var(--card-fg);
+    border: 1px solid var(--border);
+}
+
+/* Headings inherit but stay readable */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: inherit;
+}
+
+/* Links and buttons with brutalist clarity */
+a {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+button,
+.btn {
+    background: transparent;
+    color: var(--fg);
+    border: 1px solid var(--fg);
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: #111;
+    border-color: #111;
+}
+
+/* Utility: force readable foreground when a component goes rogue */
+.force-ink,
+.force-ink * {
+    color: #111 !important;
+}
+
+.force-paper,
+.force-paper * {
+    color: #f5f5f5 !important;
+}
+
+/* Optional debug to spot invisible elements */
+.debug-outline * {
+    outline: 1px dashed rgba(255, 255, 0, 0.35);
+    outline-offset: 1px;
+}
+
 body,
 .brutalist-root {
-    background: var(--brutalist-bg) !important;
-    color: var(--brutalist-text) !important;
+    background: var(--brutalist-bg, var(--bg)) !important;
+    color: var(--brutalist-text, var(--fg)) !important;
     font-family: var(--brutalist-font) !important;
-    border: 4px solid var(--brutalist-border);
-    box-shadow: 0 0 0 4px var(--brutalist-border);
+    border: 4px solid var(--brutalist-border, var(--border));
+    box-shadow: 0 0 0 4px var(--brutalist-border, var(--border));
 }
 
 a,
 .brutalist-root a {
-    color: var(--brutalist-text) !important;
+    color: var(--accent, var(--brutalist-text, var(--fg))) !important;
     text-decoration: underline;
     padding: 0 0.5em;
 }
 
 a:hover,
 .brutalist-root a:hover {
-    background: var(--brutalist-accent);
-    color: #005;
+    background: var(--brutalist-accent, var(--accent));
+    color: #111;
 }
 
 nav,

@@ -1,0 +1,19 @@
+.sigil-root {
+  background: var(--card);
+  color: var(--card-fg);
+  min-height: 100%;
+  padding: 1.25rem;
+}
+
+.sigil-root p,
+.sigil-root li,
+.sigil-root span,
+.sigil-root label {
+  color: inherit;
+}
+
+.sigil-root .btn,
+.sigil-root button {
+  color: var(--card-fg);
+  border-color: var(--card-fg);
+}

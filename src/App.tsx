@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "@/pages/Home";
 import NotFound from "@/pages/NotFound";
@@ -31,7 +32,24 @@ import { ErrorBoundary } from "@/components/ErrorBoundary";
 import GoodWord from "@/games/goodword";
 import SigilSyntaxGame from "@/pages/SigilSyntaxGame";
 
+function useDebugParam() {
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search);
+    if (q.get("debug") === "1") {
+      document.body.classList.add("debug-outline");
+    } else {
+      document.body.classList.remove("debug-outline");
+    }
+
+    return () => {
+      document.body.classList.remove("debug-outline");
+    };
+  }, []);
+}
+
 export default function App() {
+  useDebugParam();
+
   return (
     <ErrorBoundary>
       <BrowserRouter basename={import.meta.env.BASE_URL}>
