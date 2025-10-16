@@ -9,6 +9,7 @@
     "dev:server": "node server/index.js",
     "start:server": "node server/index.js",
     "start": "npm run dev:server & npm run dev:app",
+    "emit:progression": "node tools/emit_progression_defaults.mjs",
     "emit:sigil:labeled": "node tools/build_sigil_from_labeled.mjs"
   },
   "devDependencies": {
