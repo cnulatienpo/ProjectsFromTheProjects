@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { apiUrl } from "../lib/apiBase";
+import { apiBase } from "../lib/apiBase";
 
 type Flags = { gameEnabled?: boolean; maintenanceMessage?: string };
 
 async function fetchFlags(): Promise<Flags> {
   try {
-    const r = await fetch(apiUrl("/api/flags"), { cache: "no-store" });
+    const r = await fetch(`${apiBase}/api/flags`, { cache: "no-store" });
     const j = await r.json();
     return (j?.flags ?? j) as Flags;
   } catch {

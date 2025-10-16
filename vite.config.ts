@@ -13,7 +13,8 @@ export default defineConfig({
     proxy: {
       "/sigil": {
         target: process.env.VITE_DEV_API || "http://localhost:3001",
-        changeOrigin: true
+        changeOrigin: true,
+        secure: false
       },
       "/cut-games": {
         target: process.env.VITE_DEV_API || "http://localhost:3001",
