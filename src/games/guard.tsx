@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { apiBase } from "../lib/apiBase";
+import { apiBase } from "@/lib/apiBase";
 
 type Flags = { gameEnabled?: boolean; maintenanceMessage?: string };
 
