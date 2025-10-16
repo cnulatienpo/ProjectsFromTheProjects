@@ -1,3 +1,8 @@
+// server/foundations.loader.js
+// Optional/legacy foundations loader — safe no-op so imports won't crash.
+export function loadFoundations() {
+  console.warn('[opt] foundations loader called — returning empty data (tweetrunk is source of truth).')
+  return { lessons: [], skillMap: {} }
 import fs from 'fs'
 import path from 'path'
 
@@ -60,89 +65,3 @@ function updateMastery(mu = 0, sigma = 0.35, score = 0) {
     const next = Math.max(0, Math.min(1, mu * 0.85 + score * 0.25))
     return { mu: next, sigma }
 }
-
-app.get('/api/next', (req, res) => {
-    const user_id = String(req.query.user_id || 'local-user')
-    const U = getUser(user_id)
-
-    // ensure progress rows
-    for (const f of lessons) U.progress[f.lesson_id] ||= { attempts: 0, last_score: 0 }
-
-    // first non-mastered lesson
-    for (const f of lessons) {
-        const prog = U.progress[f.lesson_id]
-        const mastered = avgMastery(U.mastery, f.skills) >= TARGET && prog.attempts >= MIN_PRACTICE
-        if (!mastered) {
-            if (prog.attempts === 0) {
-                // theory card
-                return res.json({
-                    item: {
-                        id: `theory_${f.lesson_id}`,
-                        arena: 'foundations',
-                        mode: 'reflection',
-                        prompt: `Read this lesson and note one concrete checkpoint you will use.\n\n${f.body.slice(0, 1200)}`,
-                        payload: {},
-                        skills: f.skills,
-                        answer: {}
-                    }
-                })
-            } else {
-                // practice: choose an item that trains any of the lesson skills; otherwise any item
-                const pool = items.filter(it => it.skills?.some(s => f.skills.includes(s)))
-                const pick = (pool.length ? pool : items)[Math.floor(Math.random() * (pool.length ? pool.length : items.length))]
-                return res.json({ item: pick })
-            }
-        }
-    }
-    res.json({ item: null }) // all mastered
-})
-
-app.post('/api/submit', (req, res) => {
-    const { user_id = 'local-user', item_id, response, score } = req.body || {}
-    const U = getUser(user_id)
-
-    // derive a simple score if not provided (works for mcq/write/read)
-    let s = typeof score === 'number' ? score : 0.5
-    try {
-        if (item_id && item_id.startsWith('theory_')) s = 1
-        else if (response?.key !== undefined) {
-            // mcq path
-            const game = items.find(g => g.id === item_id)
-            s = (response.key === game?.correct_index) ? 1 : 0
-        } else if (typeof response?.text === 'string') {
-            const words = response.text.trim().split(/\s+/).filter(Boolean).length
-            s = words === 0 ? 0 : words < 30 ? 0.5 : 1
-        }
-    } catch { s = 0.5 }
-
-    // bump mastery for any skills we can infer
-    let skills = []
-    const theory = /^theory_(.+)$/.exec(item_id)
-    if (theory) {
-        const f = lessons.find(x => x.lesson_id === theory[1]); skills = f?.skills || []
-        const P = U.progress[f.lesson_id]; P.attempts++; P.last_score = s
-    } else {
-        const game = items.find(g => g.id === item_id)
-        skills = game?.skills || []
-        // best-effort: find a lesson that teaches one of these skills and bump its attempts
-        const f = lessons.find(x => x.skills.some(k => skills.includes(k)))
-        if (f) { const P = U.progress[f.lesson_id]; P.attempts++; P.last_score = s }
-    }
-
-    for (const sid of skills) {
-        const cur = { mu: U.mastery[sid] || 0, sigma: 0.35 }
-        U.mastery[sid] = updateMastery(cur.mu, cur.sigma, s).mu
-    }
-
-    res.json({ ok: true, score: s })
-})
-
-app.get('/api/progress', (req, res) => {
-    const user_id = String(req.query.user_id || 'local-user')
-    const U = getUser(user_id)
-    const rows = lessons.map(f => ({
-        ord: f.ord, lesson_id: f.lesson_id, title: f.title, skills: f.skills,
-        ...U.progress[f.lesson_id]
-    }))
-    res.json({ rows })
-})
