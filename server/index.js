@@ -14,18 +14,19 @@ import {
 
 const app = express()
 
+const DEV = process.env.NODE_ENV !== 'production'
+if (DEV) {
+  // allow any dev origin (Codespaces URLs change)
+  app.use(cors({ origin: true, credentials: false }))
+  app.options('*', cors())
+} else {
+  // tighten in prod if you want
+  app.use(cors({ origin: process.env.FRONTEND_ORIGIN || false }))
+}
+
 // Basic middleware
 app.use(express.json({ limit: '1mb' }))
 app.use(cookieParser())
-
-// CORS: allow your dev frontend origin explicitly
-const FRONTEND_ORIGIN = 'https://animated-carnival-v4g77qwxgvv3p5p5-5173.app.github.dev'
-app.use(cors({
-  origin: [FRONTEND_ORIGIN],
-  credentials: false,
-  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Accept', 'Authorization'],
-}))
 
 app.get('/', (req, res) => {
   res.json({ ok: true, msg: 'API server. Try /health or /sigil/catalog' })
@@ -55,6 +56,15 @@ app.get('/sigil/game/:id', (req, res) => {
   } catch (e) {
     return res.status(500).json({ error: 'sigil_item_failed', message: String(e), id: req.params.id })
   }
+})
+
+app.get('/__ping', (req, res) => {
+  res.json({
+    ok: true,
+    origin: req.headers.origin || null,
+    path: req.path,
+    ua: req.headers['user-agent'] || '',
+  })
 })
 
 // ---- 404 (must be last non-error middleware)
