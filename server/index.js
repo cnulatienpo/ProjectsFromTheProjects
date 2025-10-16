@@ -2,7 +2,6 @@ import express from 'express'
 import cors from 'cors'
 import fs from 'fs'
 import path from 'path'
-import { ENV } from './config/env.js'
 import { listSkills, unitsForSkill, nextUnitForSkill } from './contentMap.js'
 import { readBundle, listItemIds, getItem, listLessons, getLesson } from './bundle.js'
 import { readStatus } from './status.js'
@@ -82,20 +81,9 @@ app.use(express.json({ limit: '1mb' }))
 
 const state = new Map()
 
-app.get('/health', (req, res) => {
-    res.json({ ok: true, ts: new Date().toISOString() })
-})
+app.get('/health', (req, res) => res.json({ ok: true, ts: new Date().toISOString() }))
 
-app.get('/status', (req, res) => {
-    res.json({
-        ok: true,
-        env: ENV.NODE_ENV,
-        version: ENV.VERSION || null,
-        build: ENV.BUILD_STAMP || null,
-        time: new Date().toISOString(),
-        status: readStatus()
-    })
-})
+app.get('/status', (req, res) => res.json({ ok: true, env: process.env.NODE_ENV || 'development' }))
 
 app.get('/ping', (req, res) => res.type('text/plain').send('pong'))
 
@@ -192,25 +180,15 @@ app.get('/goodword/game/:id', (req, res) => {
 // Debug: see which file/path the server is using
 app.get('/_debug/sigil', (req, res) => res.json(getSigilDebug()))
 
-// Catalog with error disclosure instead of silent 500
 app.get('/sigil/catalog', (req, res) => {
-    try {
-        const ids = listSigilIds()
-        return res.json({ games: ids, first: firstSigilId() })
-    } catch (e) {
-        return res.status(500).json({ error: 'sigil_catalog_failed', message: String(e) })
-    }
+    const games = listSigilIds()
+    res.json({ games, first: firstSigilId() })
 })
 
-// NEW: get a single lesson by id
 app.get('/sigil/game/:id', (req, res) => {
-    try {
-        const it = getSigilItem(req.params.id)
-        if (!it) return res.status(404).json({ error: 'not_found', id: req.params.id })
-        return res.json(it)
-    } catch (e) {
-        return res.status(500).json({ error: 'sigil_item_failed', message: String(e), id: req.params.id })
-    }
+    const it = getSigilItem(req.params.id)
+    if (!it) return res.status(404).json({ error: 'not_found', id: req.params.id })
+    res.json(it)
 })
 
 // Optional: quick peek at first few ids
@@ -463,11 +441,29 @@ app.use((req, res, next) => {
     next()
 })
 
-const server = process.env.NODE_ENV === 'test'
-    ? null
-    : app.listen(ENV.PORT, ENV.HOST, () => {
-        console.log(`Server listening on http://${ENV.HOST}:${ENV.PORT}  (env=${ENV.NODE_ENV})`)
-    })
+// ---- 404 (must be last non-error middleware)
+app.use((req, res) => {
+    res.status(404).json({ error: 'not_found', path: req.path })
+})
 
-export { app, server }
+// ---- Error handler (must have 4 args)
+app.use((err, req, res, next) => {
+    console.error('[server error]', err)
+    if (res.headersSent) return next(err)
+    res.status(500).json({ error: 'server_error', message: String(err?.message || err) })
+})
+
+// ---- Start server (never call app() directly)
+import { ENV } from './config/env.js'
+const PORT = ENV?.PORT ?? Number(process.env.PORT || 3001)
+const HOST = ENV?.HOST || process.env.HOST || '0.0.0.0'
+
+// If this file is the entrypoint, listen. Do NOT invoke app() anywhere.
+if (process.argv[1] && process.argv[1].endsWith('/server/index.js')) {
+    app.listen(PORT, HOST, () => {
+        console.log(`Server listening on http://${HOST}:${PORT}`)
+    })
+}
+
+// Export for tests/tools (optional)
 export default app
