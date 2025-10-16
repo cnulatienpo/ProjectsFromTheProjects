@@ -1,0 +1,37 @@
+name: Snapshots (Playwright)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  snap:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install root tools
+        run: npm i --no-audit --no-fund
+
+      - name: Install app deps
+        run: npm i --prefix app --no-audit --no-fund
+
+      - name: Run Playwright screenshots
+        env:
+          # Replace with your public backend in CI if needed.
+          # For Codespaces backend, this won’t be reachable from GitHub runners.
+          VITE_PROD_API: https://animated-carnival-v4g77qwxgvv3p5p5-3001.app.github.dev
+        run: npx playwright install --with-deps && npm run snap:test
+
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: sigil-screens
+          path: |
+            app/test-output/**/*.png
+            app/test-output/html
