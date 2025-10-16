@@ -1,16 +1,14 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Home from '@/pages/Home.jsx'
 import SigilSyntax from '@/pages/SigilSyntax.jsx'
 import SigilRunner from '@/pages/SigilRunner.jsx'
 
 export default function App(){
   return (
-    <BrowserRouter basename="/projects-from-the-projects">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/sigil" element={<SigilSyntax />} />
-        <Route path="/sigil/:id" element={<SigilRunner />} />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/sigil" element={<SigilSyntax />} />
+      <Route path="/sigil/:id" element={<SigilRunner />} />
+    </Routes>
   )
 }

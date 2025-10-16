@@ -4,8 +4,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview --strictPort --port 5173"
+    "build": "vite build && node scripts/copy404.mjs",
+    "preview": "vite preview --port 4173 --strictPort"
   },
   "dependencies": {
     "clsx": "^2.1.1",

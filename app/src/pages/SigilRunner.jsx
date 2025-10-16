@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
-import { api, safeFetchJSON } from '@/lib/apiBase.js'
+import { safeFetchJSON } from '@/lib/apiBase'
 import NotesPanel from '@/components/NotesPanel.jsx'
 import { snapAndDownload } from '@/lib/snapshot.js'
 
@@ -14,7 +14,7 @@ export default function SigilRunner(){
   // load lesson
   useEffect(() => {
     setErr(''); setIt(null)
-    safeFetchJSON(api(`/sigil/game/${encodeURIComponent(id)}`))
+    safeFetchJSON(`/sigil/game/${encodeURIComponent(id)}`)
       .then(setIt)
       .catch(e=>setErr(String(e)))
   }, [id])
@@ -36,8 +36,8 @@ export default function SigilRunner(){
     return { words, min }
   }, [text, it])
 
-  if (err) return <main style={{padding:24}}><b>Error:</b> {err} <p><Link to="/sigil">Back to catalog</Link></p></main>
-  if (!it) return <main style={{padding:24}}>Loading lesson…</main>
+  if (err) return <main className="sigil-root surface" style={{padding:24}}><b>Error:</b> {err} <p><Link to="/sigil">Back to catalog</Link></p></main>
+  if (!it) return <main className="sigil-root surface" style={{padding:24}}>Loading lesson…</main>
 
   // simple “Ray Ray Says” lines (placeholder; can be real analysis later)
   const rayLines = [
@@ -47,7 +47,7 @@ export default function SigilRunner(){
   ]
 
   return (
-    <main style={{padding:24}}>
+    <main className="sigil-root surface" style={{padding:24}}>
       <div style={{display:'flex', gap:8, justifyContent:'flex-end', marginBottom:8}}>
         <button
           onClick={()=>snapAndDownload('main', `sigil-${encodeURIComponent(id)}.png`)}
@@ -88,8 +88,8 @@ export default function SigilRunner(){
           <button style={btn} onClick={()=>nav('/sigil')}>Skip</button>
           <button style={btn} onClick={()=>{
             // simplistic “next”: go to next id in catalog
-            safeFetchJSON(api('/sigil/catalog')).then(cat=>{
-              const ids = cat.games || []
+            safeFetchJSON('/sigil/catalog').then(cat=>{
+              const ids = cat.items || cat.games || []
               const i = ids.indexOf(id)
               const next = ids[i+1] || ids[0]
               nav(`/sigil/${encodeURIComponent(next)}`)
