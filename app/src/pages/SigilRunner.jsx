@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { api, safeFetchJSON } from '@/lib/apiBase.js'
 import NotesPanel from '@/components/NotesPanel.jsx'
+import { snapAndDownload } from '@/lib/snapshot.js'
 
 export default function SigilRunner(){
   const { id } = useParams()
@@ -47,6 +48,14 @@ export default function SigilRunner(){
 
   return (
     <main style={{padding:24}}>
+      <div style={{display:'flex', gap:8, justifyContent:'flex-end', marginBottom:8}}>
+        <button
+          onClick={()=>snapAndDownload('main', `sigil-${encodeURIComponent(id)}.png`)}
+          style={{padding:'8px 12px', border:'1px solid #000', background:'#fff', cursor:'pointer', fontSize:12}}
+        >
+          Save screenshot
+        </button>
+      </div>
       <div style={{display:'grid', gridTemplateColumns:'2fr 1fr', gap:16, alignItems:'start'}}>
         {/* READ BOX */}
         <section style={{border:'1px solid #000', background:'#f6f6f6', padding:16}}>
