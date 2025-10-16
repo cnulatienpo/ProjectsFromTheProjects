@@ -1,27 +1,15 @@
-import React from 'react'
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from '@/pages/Home.jsx'
 import SigilSyntax from '@/pages/SigilSyntax.jsx'
-import GoodWord from '@/pages/GoodWord.jsx'
-import DebugAudit from '@/pages/DebugAudit.jsx'
+import SigilRunner from '@/pages/SigilRunner.jsx'
 
-export default function App() {
+export default function App(){
   return (
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
+    <BrowserRouter basename="/projects-from-the-projects">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/sigil" element={<SigilSyntax />} />
-        <Route path="/sigil/:id" element={<SigilSyntax />} />
-        <Route path="/debug/audit" element={<DebugAudit />} />
-        <Route path="/goodword/:id" element={<GoodWord />} />
-        <Route
-          path="*"
-          element={
-            <div style={{ padding: 24 }}>
-              Not found. <Link to="/">Home</Link>
-            </div>
-          }
-        />
+        <Route path="/sigil/:id" element={<SigilRunner />} />
       </Routes>
     </BrowserRouter>
   )
