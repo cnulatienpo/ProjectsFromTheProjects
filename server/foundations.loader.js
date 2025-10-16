@@ -42,7 +42,6 @@ export function loadFoundations() {
 }
 
 // Add to your server/index.js (or import from a new file)
-import { loadFoundations } from './foundations.loader.js'
 const { lessons, items } = loadFoundations()
 
 // in-memory user state (swap to a json file later if you want persistence)
