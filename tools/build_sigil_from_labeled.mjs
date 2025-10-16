@@ -17,8 +17,11 @@ function listSorted(dir){
     .map(f=>({ f, n: +(f.match(/^(\d+)/)?.[1] ?? 999999) }))
     .sort((a,b)=>a.n-b.n).map(x=>path.join(dir,x.f))
 }
+const seen = new Set()
+function uniqId(base){ let i=0, out=base; while(seen.has(out)) out = `${base}#${++i}`; seen.add(out); return out }
+
 function toItem(o, i){
-  const id = o.id || `w:${i+1}`
+  const id = uniqId(o.id || `w:${i+1}`)
   const prompt = o.prompt_html || o.prompt || o.text || ''
   return {
     id:`sigil:${id}`,
@@ -28,8 +31,13 @@ function toItem(o, i){
     min_words: +(o.min_words ?? 30)
   }
 }
-(function main(){
+
+;(function main(){
   const files = listSorted(TWEETS)
+  if (files.length === 0) {
+    console.error('❌ No lesson files found in', TWEETS)
+    process.exit(1)
+  }
   let items = []
   for (const p of files) {
     if (p.endsWith('.jsonl')) items.push(...readJSONL(p).map((o,i)=>toItem(o, items.length+i)))
@@ -38,7 +46,7 @@ function toItem(o, i){
         const raw = JSON.parse(fs.readFileSync(p,'utf8'))
         const arr = Array.isArray(raw) ? raw : (raw.items || raw.lessons || [raw])
         items.push(...arr.map((o,i)=>toItem(o, items.length+i)))
-      } catch {}
+      } catch(e) { console.warn('⚠️ Could not parse', p, e.message) }
     }
   }
   const bundle = { kind:'sigil-syntax', version:1, first: items[0]?.id || null, items }
