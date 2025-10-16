@@ -29,5 +29,10 @@ export const ENV = {
 
     // Build/version stamps (optional)
     BUILD_STAMP: process.env.BUILD_STAMP || '',
-    VERSION: process.env.VERSION || ''
+    VERSION: process.env.VERSION || '',
+
+    // Authentication
+    REQUIRE_AUTH: (process.env.REQUIRE_AUTH || '').trim() === '1',
+    AUTH_USER: process.env.AUTH_USER || '',
+    AUTH_PASS: process.env.AUTH_PASS || ''
 }

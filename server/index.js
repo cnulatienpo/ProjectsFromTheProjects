@@ -15,7 +15,9 @@ import { listReportTypes, getReportType, defaultReportType } from './sigil-synta
 import { analyzeText } from './sigil-syntax/styleReport.js'
 import { listCutIds, getCutItem } from './cutGood/index.js'
 import { listGoodIds, getGoodItem } from './goodword/index.js'
-import { listSigilIds, getSigilItem, firstSigilId } from './sigil-syntax/content.js'
+import { listSigilIds, getSigilItem, firstSigilId, getSigilDebug } from './sigil-syntax/content.js'
+import basicAuth from 'basic-auth'
+import { debugResolvedPaths } from './lib/resolvePaths.js'
 
 let morgan = null
 try {
@@ -178,12 +180,17 @@ app.get('/goodword/game/:id', (req, res) => {
     res.json(it)
 })
 
-// Sigil_&_Syntax lessons
-app.get('/sigil/catalog', (req, res) => res.json({ games: listSigilIds(), first: firstSigilId() }))
-app.get('/sigil/game/:id', (req, res) => {
-    const it = getSigilItem(req.params.id)
-    if (!it) return res.status(404).json({ error: 'not_found', id: req.params.id })
-    res.json(it)
+// Debug: see which file/path the server is using
+app.get('/_debug/sigil', (req, res) => res.json(getSigilDebug()))
+
+// Catalog with error disclosure instead of silent 500
+app.get('/sigil/catalog', (req, res) => {
+    try {
+        const ids = listSigilIds()
+        return res.json({ games: ids, first: firstSigilId() })
+    } catch (e) {
+        return res.status(500).json({ error: 'sigil_catalog_failed', message: String(e) })
+    }
 })
 
 // Lessons endpoints
@@ -208,7 +215,7 @@ app.get('/bundle/info', (req, res) => {
 })
 
 // --- For /api/next, /api/submit, /api/progress, use bundle lessons/items ---
-const { lessons, items } = readBundle() // use bundle for lessons/items
+const { lessons, items } = loadFoundations() // use bundle for lessons/items
 
 // mastery rollup per skill (for the Progress panel)
 app.get('/api/mastery', (req, res) => {
@@ -407,6 +414,25 @@ app.get('/report-types/:id', (req, res) => {
     const t = getReportType(req.params.id)
     if (!t) return res.status(404).json({ error: 'not_found', id: req.params.id })
     res.json(t)
+})
+
+app.get('/_debug/paths', (req, res) => res.json({ paths: debugResolvedPaths() }))
+
+const PUBLIC_PATHS = [
+    /^\/health$/, /^\/status$/, /^\/_debug\/sigil$/,
+    /^\/sigil(\/|$)/, /^\/goodword(\/|$)/,
+    /^\/report-types(\/|$)/, /^\/writer-types(\/|$)/
+]
+const isPublic = (p) => PUBLIC_PATHS.some(rx => rx.test(p))
+
+app.use((req, res, next) => {
+    if (isPublic(req.path) || !ENV.REQUIRE_AUTH) return next()
+    const creds = basicAuth && basicAuth(req)
+    if (!creds || creds.name !== ENV.AUTH_USER || creds.pass !== ENV.AUTH_PASS) {
+        res.set('WWW-Authenticate', 'Basic realm="pfp"')
+        return res.status(401).json({ error: 'auth_required' })
+    }
+    next()
 })
 
 const server = process.env.NODE_ENV === 'test'

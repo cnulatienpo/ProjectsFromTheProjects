@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Home from '@/pages/Home.jsx'
-import SigilSyntax from '@/pages/SigilSyntax.stub.jsx'
+import SigilSyntax from '@/pages/SigilSyntax.jsx'
 import GoodWord from '@/pages/GoodWord.stub.jsx'
 
 export default function App() {

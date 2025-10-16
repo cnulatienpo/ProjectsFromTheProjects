@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import GameLayout from '@sigil/GameLayout'
 import GameItem from '@sigil/GameItem'
 import { useParams, useNavigate } from 'react-router-dom'
-import { fetchGoodItem } from '@/lib/gameAdapters/sources.js'
+import { fetchGoodItem } from '@/lib/gameAdapters/sources.jsx'
 
-export default function GoodWord(){
+export default function GoodWord() {
   const { id } = useParams()
   const nav = useNavigate()
   const [spec, setSpec] = useState(null)
@@ -16,7 +16,7 @@ export default function GoodWord(){
   }, [id])
 
   return (
-    <GameLayout title="The Good Word" feedback={err && <span style={{color:'tomato'}}>{err}</span>} onPrev={()=>nav(-1)}>
+    <GameLayout title="The Good Word" feedback={err && <span style={{ color: 'tomato' }}>{err}</span>} onPrev={() => nav(-1)}>
       {spec && <GameItem spec={spec} />}
     </GameLayout>
   )
