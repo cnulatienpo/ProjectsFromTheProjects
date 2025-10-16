@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { api, safeFetchJSON } from '@/lib/apiBase.js'
 import { useNavigate } from 'react-router-dom'
+import { snapAndDownload } from '@/lib/snapshot.js'
 
 export default function SigilSyntax(){
   const [cat, setCat] = useState(null)
@@ -32,14 +33,22 @@ URL:  ${debug.tried}`}</pre>
     <main style={{padding:24, display:'grid', gap:16}}>
       <h1>Sigil &amp; Syntax</h1>
       <p>Catalog: Found {count} lessons</p>
-      {!!cat.first && (
+      <div style={{display:'flex', gap:8, flexWrap:'wrap'}}>
+        {!!cat.first && (
+          <button
+            onClick={()=>nav(`/sigil/${encodeURIComponent(cat.first)}`)}
+            style={{padding:'10px 16px', border:'1px solid #000', background:'#fff', cursor:'pointer'}}
+          >
+            Start first lesson
+          </button>
+        )}
         <button
-          onClick={()=>nav(`/sigil/${encodeURIComponent(cat.first)}`)}
-          style={{padding:'10px 16px', border:'1px solid #000', background:'#fff', cursor:'pointer', width:'fit-content'}}
+          onClick={()=>snapAndDownload('main', 'sigil-catalog.png')}
+          style={{padding:'10px 16px', border:'1px solid #000', background:'#fff', cursor:'pointer'}}
         >
-          Start first lesson
+          Save screenshot
         </button>
-      )}
+      </div>
       <p><a href="/">Back home</a></p>
     </main>
   )
