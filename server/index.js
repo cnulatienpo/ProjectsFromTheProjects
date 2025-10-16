@@ -15,10 +15,8 @@ const app = express()
 app.use(express.json({ limit: '1mb' }))
 app.use(cookieParser())
 
-// CORS: open in dev; tighten in prod if needed
-const DEV = process.env.NODE_ENV !== 'production'
-app.use(cors({ origin: DEV ? true : (process.env.FRONTEND_ORIGIN || false) }))
-app.options('*', cors())
+// CORS so the frontend (dev + prod) can talk to us
+app.use(cors({ origin: true, credentials: false }))
 
 // --- health & ping
 app.get('/health', (_req, res) => res.json({ ok: true, ts: new Date().toISOString() }))
@@ -31,7 +29,7 @@ app.get('/_debug/sigil', (_req, res) => res.json(getSigilDebug()))
 
 app.get('/sigil/catalog', (_req, res) => {
   const games = listSigilIds()
-  res.json({ games, first: firstSigilId() })
+  res.json({ ok: true, items: games, first: firstSigilId() })
 })
 
 app.get('/sigil/game/:id', (req, res) => {

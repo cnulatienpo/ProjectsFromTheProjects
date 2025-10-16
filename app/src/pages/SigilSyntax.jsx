@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { api, safeFetchJSON } from '@/lib/apiBase.js'
+import { api, apiBase, safeFetchJSON } from '@/lib/apiBase'
 import { useNavigate } from 'react-router-dom'
 import { snapAndDownload } from '@/lib/snapshot.js'
 
@@ -10,14 +10,14 @@ export default function SigilSyntax(){
   const nav = useNavigate()
 
   useEffect(() => {
-    const base = api('')
+    const base = apiBase || '(relative)'
     const url = api('/sigil/catalog')
     setDebug({ base, tried: url })
     safeFetchJSON(url).then(setCat).catch(e=>setErr(String(e)))
   }, [])
 
   if (err) return (
-    <main style={{padding:24}}>
+    <main className="sigil-root surface" style={{padding:24}}>
       Catalog: <b>Error:</b> {err}
       <pre style={{marginTop:12, fontSize:12, opacity:.8}}>{`Base: ${debug.base}
 URL:  ${debug.tried}`}</pre>
@@ -26,11 +26,11 @@ URL:  ${debug.tried}`}</pre>
       </p>
     </main>
   )
-  if (!cat) return <main style={{padding:24}}>Catalog: loading…</main>
+  if (!cat) return <main className="sigil-root surface" style={{padding:24}}>Catalog: loading…</main>
 
-  const count = (cat.games||[]).length
+  const count = (cat.items || cat.games || []).length
   return (
-    <main style={{padding:24, display:'grid', gap:16}}>
+    <main className="sigil-root surface" style={{padding:24, display:'grid', gap:16}}>
       <h1>Sigil &amp; Syntax</h1>
       <p>Catalog: Found {count} lessons</p>
       <div style={{display:'flex', gap:8, flexWrap:'wrap'}}>
