@@ -1,9 +1,21 @@
-:root { --bru-font: ui-monospace, Menlo, Monaco, "Courier New", monospace; --bru-bg:#fff; --bru-fg:#000; --bru-border:#000; }
-html,body,#root { height:100%; }
+:root {
+  --bru-font: ui-monospace, Menlo, Monaco, "Courier New", monospace;
+  --bru-bg: #fff;
+  --bru-fg: #000;
+  --bru-border: #000;
+  --bg: #0a0a0a;
+  --fg: #f5f5f5;
+  --card: #111111;
+  --card-fg: #f7f7f7;
+  --border: #222222;
+  --accent: #ffd400;
+}
+html,body,#root { height:100%; background:var(--bg); color:var(--fg); }
 html.brutalist, body.brutalist { background:var(--bru-bg); color:var(--bru-fg); }
 a { color:inherit; text-decoration:underline; text-underline-offset:2px; }
 button,.btn { font-family:var(--bru-font); background:transparent; border:2px solid var(--bru-border); padding:.6rem 1rem; box-shadow:4px 4px 0 var(--bru-border); }
 input,textarea,select { border:2px solid var(--bru-border); background:#fff; color:#000; padding:.5rem .6rem; box-shadow:4px 4px 0 var(--bru-border); }
+.card,.surface { background:var(--card); color:var(--card-fg); border:1px solid var(--border); }
 .card,.panel,.box { border:3px solid var(--bru-border); padding:1rem; box-shadow:6px 6px 0 var(--bru-border); }
 h1,h2,h3,h4 { font-family:var(--bru-font); text-transform:uppercase; margin:1rem 0 .5rem; }
 hr { border:0; border-top:3px solid var(--bru-border); }
