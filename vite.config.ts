@@ -1,30 +1,19 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import path from "node:path";
-
-const base = process.env.VITE_PAGES_BASE || "/";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import path from 'node:path';
 
 export default defineConfig({
-  base,
+  base: process.env.VITE_PAGES_BASE || '/',
   plugins: [react()],
-  resolve: { alias: { "@": path.resolve(__dirname, "src") } },
+  resolve: { alias: { '@': path.resolve(__dirname, 'src') } },
   server: {
-    open: "/",
     proxy: {
-      "/sigil": {
-        target: process.env.VITE_DEV_API || "http://localhost:3001",
+      '/sigil': {
+        target: process.env.VITE_DEV_API || 'http://localhost:3001',
         changeOrigin: true,
-        secure: false
+        secure: false,
       },
-      "/cut-games": {
-        target: process.env.VITE_DEV_API || "http://localhost:3001",
-        changeOrigin: true
-      },
-      "/api": {
-        target: process.env.VITE_DEV_API || "http://localhost:3001",
-        changeOrigin: true
-      }
-    }
+    },
   },
   build: { sourcemap: true },
 });
