@@ -3,6 +3,7 @@
 export function loadFoundations() {
   console.warn('[opt] foundations loader called — returning empty data (tweetrunk is source of truth).')
   return { lessons: [], skillMap: {} }
+}
 import fs from 'fs'
 import path from 'path'
 
