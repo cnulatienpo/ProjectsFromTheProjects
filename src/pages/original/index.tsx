@@ -2,5 +2,5 @@ import type { JSX } from "react";
 import { Navigate } from "react-router-dom";
 
 export default function OriginalAlias(): JSX.Element {
-  return <Navigate to="/games/sigil-syntax" replace />;
+  return <Navigate to="/sigil" replace />;
 }

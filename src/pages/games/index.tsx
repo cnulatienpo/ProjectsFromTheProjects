@@ -26,7 +26,7 @@ export default function GamesHub(): JSX.Element {
             </Link>
           </li>
           <li className="mb-2">
-            <Link className="underline" to="/games/sigil-syntax">
+            <Link className="underline" to="/sigil">
               Sigil &amp; Syntax
             </Link>
           </li>

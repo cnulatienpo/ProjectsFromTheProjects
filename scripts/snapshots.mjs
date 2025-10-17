@@ -7,7 +7,16 @@ const BASE = process.env.VITE_PAGES_BASE || '/';
 const ROUTES = ['/', '/sigil', '/goodword', '/cut'];
 
 const wait = (ms) => new Promise(r => setTimeout(r, ms));
-const joinUrl = (base, path) => (base.endsWith('/')?base:base+'/') + (path.startsWith('/')?path.slice(1):path);
+
+async function navClient(page, base, to) {
+  await page.goto(base, { waitUntil: 'networkidle' });
+  await page.waitForTimeout(300);
+  await page.evaluate((toPath) => {
+    window.history.pushState({}, '', toPath);
+    window.dispatchEvent(new PopStateEvent('popstate'));
+  }, to);
+  await page.waitForTimeout(600);
+}
 
 async function startPreview() {
   const proc = spawn('npm', ['run', 'preview'], { stdio: 'inherit', shell: true });
@@ -39,12 +48,19 @@ async function startPreview() {
   await mkdir('screenshots', { recursive: true });
 
   for (const r of ROUTES) {
-    const target = joinUrl(url, r);
-    await page.goto(target, { waitUntil: 'networkidle' });
-    await page.waitForTimeout(600);
-    const name = r === '/' ? 'home' : r.replace(/\//g,'_').replace(/^_/, '');
-    await page.screenshot({ path: `screenshots/${ts}-${name}.png`, fullPage: true });
-    console.log(`✔ screenshots/${ts}-${name}.png`);
+    try {
+      if (r === '/') {
+        await page.goto(url, { waitUntil: 'networkidle' });
+        await page.waitForTimeout(600);
+      } else {
+        await navClient(page, url, r);
+      }
+      const name = r === '/' ? 'home' : r.replace(/\//g,'_').replace(/^_/, '');
+      await page.screenshot({ path: `screenshots/${ts}-${name}.png`, fullPage: true });
+      console.log(`✔ screenshots/${ts}-${name}.png`);
+    } catch (e) {
+      console.warn(`! failed ${r}`, e);
+    }
   }
 
   await browser.close();

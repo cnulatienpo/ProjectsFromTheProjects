@@ -1,7 +1,6 @@
 import { useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Home from "@/pages/Home";
-import NotFound from "@/pages/NotFound";
 import Games from "@/pages/games";
 import PackPage from "@/pages/Pack";
 import PracticePage from "@/pages/Practice";
@@ -57,7 +56,12 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/games" element={<Games />} />
           <Route path="/games/goodword" element={<GoodWord />} />
-          <Route path="/games/sigil-syntax/*" element={<SigilSyntaxGame />} />
+          <Route path="/sigil/*" element={<SigilSyntaxGame />} />
+
+          {/* --- Aliases / legacy paths --- */}
+          <Route path="/games/sigil-syntax/*" element={<Navigate to="/sigil" replace />} />
+          <Route path="/sigil-syntax/*" element={<Navigate to="/sigil" replace />} />
+          <Route path="/games/SigilSyntax" element={<Navigate to="/sigil" replace />} />
 
           <Route path="/pack/:id" element={<PackPage />} />
           <Route path="/practice" element={<PracticeHub />} />
@@ -84,7 +88,7 @@ export default function App() {
           <Route path="/welcome" element={<Welcome />} />
           <Route path="/game" element={<Game />} />
 
-          <Route path="*" element={<NotFound />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </SiteChrome>
     </ErrorBoundary>
