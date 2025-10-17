@@ -2,7 +2,7 @@ import React, { useMemo, useState } from "react";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import sigilSyntaxItems from "@/sigilSyntaxItems"; // or "@/sigilSyntaxItems.json"
 import { loadSigilPackSafe } from "@/games/sigilSyntaxData";
-import { toCatalogItems } from "@/lib/normalize";
+import { safeItems, getId, getTitle, getType, getLevel } from "@/lib/safe";
 import "@/styles/brutalist.css";
 import "@/styles/theme/theme.css";
 import "./SigilSyntaxGame.css";
@@ -23,11 +23,7 @@ function Menu() {
 function Play() {
   const pack = useMemo(() => loadSigilPackSafe(), []);
   const [index, setIndex] = useState(0);
-  const catalogItems = useMemo(() => toCatalogItems(sigilSyntaxItems), []);
-  const rawCatalog = useMemo(
-    () => (Array.isArray(sigilSyntaxItems) ? sigilSyntaxItems : []),
-    []
-  );
+  const catalogItems = useMemo(() => safeItems(sigilSyntaxItems), []);
 
   if (!pack) {
     return (
@@ -44,24 +40,25 @@ function Play() {
     );
   }
 
-  const items = Array.isArray(pack.items) ? pack.items : [];
-  const hasItems = items.length > 0;
+  const packItems = safeItems(pack.items);
+  const hasItems = packItems.length > 0;
   const safeItemIndex = hasItems
-    ? Math.min(Math.max(index, 0), items.length - 1)
+    ? Math.min(Math.max(index, 0), packItems.length - 1)
     : 0;
-  const cur = hasItems ? items[safeItemIndex] ?? null : null;
+  const cur = hasItems ? packItems[safeItemIndex] ?? null : null;
   const hasCatalogItems = catalogItems.length > 0;
   const safeCatalogIndex = hasCatalogItems
     ? Math.min(Math.max(index, 0), catalogItems.length - 1)
     : 0;
   const catalogEntry = hasCatalogItems ? catalogItems[safeCatalogIndex] : null;
-  const catalogTitle = catalogEntry?.title ?? "Untitled";
-  const catalogType = catalogEntry?.type ?? "lesson";
-  const catalogLevel = catalogEntry?.level ?? 1;
-  const rawDescription =
-    typeof rawCatalog[safeCatalogIndex]?.description === "string"
-      ? rawCatalog[safeCatalogIndex].description
+  const catalogTitle = getTitle(catalogEntry);
+  const catalogType = getType(catalogEntry);
+  const catalogLevel = getLevel(catalogEntry);
+  const catalogDescription =
+    typeof catalogEntry?.description === "string"
+      ? catalogEntry.description
       : "—";
+  const catalogId = getId(catalogEntry, safeCatalogIndex);
 
   function nextItem() {
     setIndex((i) => {
@@ -99,7 +96,7 @@ function Play() {
                   if (!hasItems) {
                     return 0;
                   }
-                  return Math.min(items.length - 1, i + 1);
+                  return Math.min(packItems.length - 1, i + 1);
                 })
               }
             >
@@ -120,9 +117,12 @@ function Play() {
       )}
       {hasCatalogItems ? (
         <>
-          <div className="bg-neutral-900 text-white rounded-xl shadow-lg p-8 mb-6 text-xl font-semibold text-center">
+          <div
+            key={catalogId}
+            className="bg-neutral-900 text-white rounded-xl shadow-lg p-8 mb-6 text-xl font-semibold text-center"
+          >
             <div style={{ fontSize: "2rem", fontWeight: "bold" }}>{catalogTitle}</div>
-            <div style={{ fontSize: "1.1rem", marginTop: "1rem" }}>{rawDescription}</div>
+            <div style={{ fontSize: "1.1rem", marginTop: "1rem" }}>{catalogDescription}</div>
             <div style={{ fontSize: "0.95rem", marginTop: "1rem", opacity: 0.85 }}>
               {catalogType} • L{catalogLevel}
             </div>
