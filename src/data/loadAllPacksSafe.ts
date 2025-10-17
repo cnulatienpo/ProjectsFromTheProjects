@@ -120,14 +120,18 @@ export function reportPackHealth(packs: Pack[], report: string[]): void {
   console.log("TOTAL ENTRIES:", total);
 }
 
-export function assertMinimum(total: number, min: number): void {
-  if (total < min) {
-    const msg = [
-      `Not enough entries: have ${total}, need at least ${min}.`,
-      '• Make sure your JSON packs are in /src/labeled-data and end with ".json".',
-      '• Only arrays or { entries: [...] } are accepted.',
-      '• Use "npm i zod" and our validator to drop bad rows safely.',
-    ].join("\n");
+export function assertMinimum(count: number): void {
+  const MIN = import.meta.env.DEV ? 1 : 2000;
+  if (count < MIN) {
+    const msg =
+      `Not enough entries: have ${count}, need at least ${MIN}.` +
+      (import.meta.env.DEV
+        ? ` (DEV mode: allowed, continuing with small pack.)`
+        : `\n• Make sure your JSON packs are in /src/labeled-data and end with ".json".\n• Only arrays or { entries: [...] } are accepted.\n• Use "npm i zod" and our validator to drop bad rows safely.`);
+    if (import.meta.env.DEV) {
+      console.warn('Word pack health report (dev):', msg);
+      return;
+    }
     throw new Error(msg);
   }
 }

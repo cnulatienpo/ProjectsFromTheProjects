@@ -11,6 +11,8 @@ export default function SigilSyntaxGame() {
   const [source, setSource] = useState<string>("loading");
   const [sample, setSample] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const debugEnabled =
+    typeof window !== "undefined" && new URLSearchParams(window.location.search).get("debug") === "1";
 
   useEffect(() => {
     let alive = true;
@@ -33,6 +35,14 @@ export default function SigilSyntaxGame() {
       <h1>Sigil &amp; Syntax</h1>
       <DebugPanel source={source} count={items.length} sample={sample} apiBase={apiBase ?? ""} />
 
+      {debugEnabled && (
+        <div className="surface" style={{ padding: 8, margin: "8px 0" }}>
+          <small>
+            Sigil data source: <code>{source}</code>
+          </small>
+        </div>
+      )}
+
       {loading && <div className="surface" style={{ padding: "12px" }}>Loading…</div>}
 
       {!loading && items.length === 0 && (
@@ -45,10 +55,10 @@ export default function SigilSyntaxGame() {
       {items.length > 0 && (
         <div className="grid">
           {items.map((it, i) => (
-            <article key={it.id || `item-${i}`} className="card" style={{ padding: "12px" }}>
-              <h3 style={{ margin: 0 }}>{it.title || "Untitled"}</h3>
+            <article key={it?.id ?? `item-${i}`} className="card" style={{ padding: "12px" }}>
+              <h3 style={{ margin: 0 }}>{it?.title ?? "Untitled"}</h3>
               <div className="muted" style={{ fontSize: 12 }}>
-                {(it.type || "lesson")} • {it.level ? `L${it.level}` : "L1"}
+                {(it?.type ?? "lesson")} • L{it?.level ?? 1}
               </div>
               <footer style={{ marginTop: 8 }}>
                 <button className="btn btn-primary">Play</button>

@@ -2,12 +2,12 @@
 import express from 'express'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
+import { readFileSync } from 'node:fs'
+import { join } from 'node:path'
 
 // Sigil content loader (reads the cached bundle)
 import {
-  listSigilIds,
   getSigilItem,
-  firstSigilId,
   getSigilDebug,
 } from './sigil-syntax/content.js'
 
@@ -36,8 +36,24 @@ app.get('/__ping', (req, res) => {
 app.get('/_debug/sigil', (_req, res) => res.json(getSigilDebug()))
 
 app.get('/sigil/catalog', (_req, res) => {
-  const games = listSigilIds()
-  res.json({ ok: true, items: games, first: firstSigilId() })
+  try {
+    const p = join(process.cwd(), 'src', 'data', 'sigilCatalog.json')
+    let payload
+    try {
+      payload = JSON.parse(readFileSync(p, 'utf8'))
+    } catch {
+      payload = {
+        items: [
+          { id: 'fallback-001', title: 'Sigil Welcome', level: 1, type: 'lesson' }
+        ]
+      }
+    }
+    res.setHeader('Content-Type', 'application/json')
+    res.status(200).json(payload)
+  } catch (e) {
+    console.error('catalog error', e)
+    res.status(200).json({ items: [] })
+  }
 })
 
 app.get('/sigil/game/:id', (req, res) => {

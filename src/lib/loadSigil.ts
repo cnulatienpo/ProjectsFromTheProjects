@@ -46,11 +46,11 @@ export async function loadSigilCatalog(apiBase:string): Promise<{items:SigilItem
 
   // 2) Local candidates (common names you’ve used)
   const candidates = [
+    '/src/data/sigilCatalog.json',
     '/src/games/sigilSyntaxItems.ts',
     '/src/games/sigilSyntaxItems.tsx',
     '/src/games/sigil/index.ts',
     '/src/data/sigilSyntaxItems.json',
-    '/src/data/sigilCatalog.json',
     '/src/game thingss/sigil/catalog.json',      // your phrasing suggests this path
     '/src/game thingss/sigil/index.ts',          // fallback
   ];

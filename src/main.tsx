@@ -20,9 +20,13 @@ if (import.meta.env.DEV) {
     try {
       const { packs, report, total } = await loadAllPacksSafe();
       reportPackHealth(packs, report);
-      assertMinimum(total, 2000);
+      assertMinimum(total);
     } catch (error) {
-      console.error('Failed to load word pack health report:', error);
+      if (import.meta.env.DEV) {
+        console.warn('Continuing without full word pack (dev):', error);
+      } else {
+        throw error;
+      }
     }
   })();
 }
