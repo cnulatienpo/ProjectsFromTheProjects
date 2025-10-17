@@ -2,8 +2,6 @@
 import express from 'express'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
-import { readFileSync } from 'node:fs'
-import { join } from 'node:path'
 
 // Sigil content loader (reads the cached bundle)
 import {
@@ -32,29 +30,26 @@ app.get('/__ping', (req, res) => {
   res.json({ ok: true, path: req.path, origin: req.headers.origin || null })
 })
 
-// --- Sigil_&_Syntax API
-app.get('/_debug/sigil', (_req, res) => res.json(getSigilDebug()))
-
+// Minimal /sigil/catalog that never 500s in dev.
 app.get('/sigil/catalog', (_req, res) => {
   try {
-    const p = join(process.cwd(), 'src', 'data', 'sigilCatalog.json')
-    let payload
-    try {
-      payload = JSON.parse(readFileSync(p, 'utf8'))
-    } catch {
-      payload = {
-        items: [
-          { id: 'fallback-001', title: 'Sigil Welcome', level: 1, type: 'lesson' }
-        ]
-      }
+    // TODO: replace with real data later
+    const payload = {
+      items: [
+        { id: 'clause-001', title: 'Independent vs Dependent Clause', level: 1, type: 'lesson' },
+        { id: 'punct-001',  title: 'Comma Splices: Cut or Join?',     level: 1, type: 'drill'  },
+        { id: 'device-001', title: 'Metaphor vs Simile',               level: 1, type: 'drill'  }
+      ]
     }
-    res.setHeader('Content-Type', 'application/json')
     res.status(200).json(payload)
   } catch (e) {
     console.error('catalog error', e)
-    res.status(200).json({ items: [] })
+    res.status(200).json({ items: [] }) // never throw in dev
   }
 })
+
+// --- Sigil_&_Syntax API
+app.get('/_debug/sigil', (_req, res) => res.json(getSigilDebug()))
 
 app.get('/sigil/game/:id', (req, res) => {
   const it = getSigilItem(req.params.id)

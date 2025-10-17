@@ -1,0 +1,7 @@
+{
+  "items": [
+    { "id": "clause-001", "title": "Independent vs Dependent Clause", "level": 1, "type": "lesson" },
+    { "id": "punct-001",  "title": "Comma Splices: Cut or Join?",     "level": 1, "type": "drill"  },
+    { "id": "device-001", "title": "Metaphor vs Simile",               "level": 1, "type": "drill"  }
+  ]
+}
