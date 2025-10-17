@@ -1,5 +1,5 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
+import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import { assertMinimum, loadAllPacksSafe, reportPackHealth } from './data/loadAllPacksSafe';
@@ -27,8 +27,10 @@ if (import.meta.env.DEV) {
   })();
 }
 
-createRoot(rootEl).render(
-  <BrowserRouter basename={import.meta.env.BASE_URL}>
-    <App />
-  </BrowserRouter>,
+ReactDOM.createRoot(rootEl).render(
+  <React.StrictMode>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>,
 );
