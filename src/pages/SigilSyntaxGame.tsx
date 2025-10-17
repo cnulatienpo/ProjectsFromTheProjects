@@ -22,7 +22,7 @@ export default function SigilSyntaxGame() {
       if (!alive) return;
       setItems(res.items);
       setSource(res.source);
-      setSample(res.items[0] ?? res.raw);
+      setSample(res.items[0] ?? null);
       setLoading(false);
     })();
     return () => {
@@ -43,16 +43,16 @@ export default function SigilSyntaxGame() {
         </div>
       )}
 
-      {loading && <div className="surface" style={{ padding: "12px" }}>Loading…</div>}
-
-      {!loading && items.length === 0 && (
+      {loading ? (
+        <div className="surface" style={{ padding: "12px" }}>Loading…</div>
+      ) : items.length === 0 ? (
         <div className="surface" style={{ padding: "12px" }}>
-          <strong>No lessons found</strong>
-          <div className="muted">Source tried: {source}</div>
+          <div className="muted">No lessons yet.</div>
+          <div className="muted" style={{ marginTop: 4 }}>
+            Source tried: <code>{source}</code>
+          </div>
         </div>
-      )}
-
-      {items.length > 0 && (
+      ) : (
         <div className="grid">
           {items.map((it, i) => (
             <article key={it?.id ?? `item-${i}`} className="card" style={{ padding: "12px" }}>
