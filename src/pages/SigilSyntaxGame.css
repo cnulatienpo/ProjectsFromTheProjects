@@ -17,3 +17,7 @@
   color: var(--card-fg);
   border-color: var(--card-fg);
 }
+
+.muted {
+  color: var(--muted, #9a9a9a);
+}
