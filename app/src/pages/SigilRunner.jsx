@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom'
 import { safeFetchJSON } from '@/lib/apiBase'
 import NotesPanel from '@/components/NotesPanel.jsx'
 import { snapAndDownload } from '@/lib/snapshot.js'
+import { toCatalogItems } from '@/lib/normalize'
 
 export default function SigilRunner(){
   const { id } = useParams()
@@ -89,10 +90,12 @@ export default function SigilRunner(){
           <button style={btn} onClick={()=>{
             // simplistic “next”: go to next id in catalog
             safeFetchJSON('/sigil/catalog').then(cat=>{
-              const ids = cat.items || cat.games || []
-              const i = ids.indexOf(id)
-              const next = ids[i+1] || ids[0]
-              nav(`/sigil/${encodeURIComponent(next)}`)
+              const items = toCatalogItems(cat)
+              const ids = items.map(entry => entry.id)
+              const idx = ids.indexOf(id)
+              const nextIdx = idx >= 0 ? idx + 1 : 0
+              const next = ids[nextIdx] ?? ids[0]
+              if (next) nav(`/sigil/${encodeURIComponent(next)}`)
             })
           }}>Next</button>
           <button style={btn} onClick={()=>setText('')}>Try again</button>

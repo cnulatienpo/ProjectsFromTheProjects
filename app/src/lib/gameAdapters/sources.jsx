@@ -1,5 +1,6 @@
 import React from 'react'
 import { safeFetchJSON } from '@/lib/apiBase'
+import { toCatalogItems } from '@/lib/normalize'
 
 export function adaptToSpec(it){
   if (!it) return null
@@ -40,6 +41,7 @@ export async function fetchSigilItem(id){
 }
 export async function firstSigilId(){
   const j = await safeFetchJSON('/sigil/catalog')
-  return j.first || (j.items && j.items[0]) || (j.games && j.games[0]) || null
+  const items = toCatalogItems(j)
+  return j?.first || (items[0]?.id ?? null)
 }
 
