@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Home from "@/pages/Home";
 import NotFound from "@/pages/NotFound";
 import Games from "@/pages/games";
@@ -52,43 +52,41 @@ export default function App() {
 
   return (
     <ErrorBoundary>
-      <BrowserRouter basename={import.meta.env.BASE_URL}>
-        <SiteChrome>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/games" element={<Games />} />
-            <Route path="/games/goodword" element={<GoodWord />} />
-            <Route path="/games/sigil-syntax/*" element={<SigilSyntaxGame />} />
+      <SiteChrome>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/games" element={<Games />} />
+          <Route path="/games/goodword" element={<GoodWord />} />
+          <Route path="/games/sigil-syntax/*" element={<SigilSyntaxGame />} />
 
-            <Route path="/pack/:id" element={<PackPage />} />
-            <Route path="/practice" element={<PracticeHub />} />
-            <Route path="/practice/:id" element={<PracticePage />} />
-            <Route path="/play/cut-games" element={<CutGames />} />
-            <Route path="/funhouse" element={<FunhouseHub />} />
-            <Route path="/funhouse/past" element={<FunhousePast />} />
-            <Route path="/funhouse/replay/:id" element={<FunhouseReplay />} />
-            <Route path="/funhouse/:id" element={<FunhouseGame />} />
-            <Route path="/funhouse-debug" element={<FunhouseDebug />} />
-            <Route path="/play/:id/see" element={<PlaySee />} />
-            <Route path="/play/:id/mcq" element={<PlayMCQ />} />
-            <Route path="/play/:id/slot" element={<PlaySlot />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/terms" element={<Terms />} />
-            <Route path="/cookies" element={<Cookies />} />
-            <Route path="/dmca" element={<DMCA />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/reset" element={<ResetPassword />} />
-            <Route path="/welcome" element={<Welcome />} />
-            <Route path="/game" element={<Game />} />
+          <Route path="/pack/:id" element={<PackPage />} />
+          <Route path="/practice" element={<PracticeHub />} />
+          <Route path="/practice/:id" element={<PracticePage />} />
+          <Route path="/play/cut-games" element={<CutGames />} />
+          <Route path="/funhouse" element={<FunhouseHub />} />
+          <Route path="/funhouse/past" element={<FunhousePast />} />
+          <Route path="/funhouse/replay/:id" element={<FunhouseReplay />} />
+          <Route path="/funhouse/:id" element={<FunhouseGame />} />
+          <Route path="/funhouse-debug" element={<FunhouseDebug />} />
+          <Route path="/play/:id/see" element={<PlaySee />} />
+          <Route path="/play/:id/mcq" element={<PlayMCQ />} />
+          <Route path="/play/:id/slot" element={<PlaySlot />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/cookies" element={<Cookies />} />
+          <Route path="/dmca" element={<DMCA />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/reset" element={<ResetPassword />} />
+          <Route path="/welcome" element={<Welcome />} />
+          <Route path="/game" element={<Game />} />
 
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </SiteChrome>
-      </BrowserRouter>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </SiteChrome>
     </ErrorBoundary>
   );
 }
