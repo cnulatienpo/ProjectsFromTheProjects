@@ -1,2 +1,5 @@
 @import "theme/brutalist-src/style.css";
 /* brutalist overrides last */
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));}
+.muted{color:var(--muted,#9a9a9a);}
+.surface{background:var(--card,#111);color:var(--card-fg,#f7f7f7);border:1px solid var(--border,#222);}
