@@ -2,6 +2,7 @@
 import express from 'express'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
+import { fileURLToPath } from 'url'
 
 // Sigil content loader (reads the cached bundle)
 import {
@@ -24,16 +25,16 @@ app.use(cors({ origin: true, credentials: false }))
 app.use(express.json({ limit: '1mb' }))
 app.use(cookieParser())
 
-// ---- DEV LOGGING (first middleware) ----
+// --- DEV LOGGING ---
 app.use((req, res, next) => {
-  console.log('[API]', req.method, req.url);
-  next();
-});
+  console.log('[API]', req.method, req.url)
+  next()
+})
 
-// ---- HEALTH ----
-app.get('/health', (req, res) => res.status(200).json({ ok: true }));
+// --- HEALTH ---
+app.get('/health', (req, res) => res.status(200).json({ ok: true, pid: process.pid }))
 
-// ---- CATALOG: NEVER 500 IN DEV ----
+// --- DEV-SAFE CATALOG (no 500s) ---
 app.get('/sigil/catalog', (req, res) => {
   try {
     const payload = {
@@ -42,13 +43,25 @@ app.get('/sigil/catalog', (req, res) => {
         { id: 'punct-001', title: 'Comma Splices: Cut or Join?', level: 1, type: 'drill' },
         { id: 'device-001', title: 'Metaphor vs Simile', level: 1, type: 'drill' }
       ]
-    };
-    console.log('[API] returning catalog payload of', payload.items.length, 'items');
-    res.status(200).json(payload);
+    }
+    console.log('[API] returning catalog', payload.items.length)
+    res.status(200).json(payload)
   } catch (e) {
-    console.error('[API] catalog error', e);
-    res.status(200).json({ items: [] }); // never 500 in dev
+    console.error('[API] catalog error', e)
+    res.status(200).json({ items: [] }) // never fail in dev
   }
+})
+
+// --- DEBUG: show request headers & env
+app.get('/_debug/api', (req, res) => {
+  res.json({
+    headers: req.headers,
+    env: {
+      NODE_ENV: process.env.NODE_ENV,
+      PORT: process.env.PORT,
+    },
+    routes: ['/health', '/sigil/catalog', '/_debug/api'],
+  })
 })
 
 // --- Sigil_&_Syntax API
@@ -66,17 +79,12 @@ app.use((err, _req, res, next) => {
   if (res.headersSent) return next(err)
   res.status(500).json({ error: 'server_error', message: String(err?.message || err) })
 })
-
-// --- start only if this file is the entrypoint
-import { fileURLToPath } from 'url'
 const isEntrypoint = fileURLToPath(import.meta.url) === process.argv[1]
-const PORT = Number(process.env.PORT || 3001)
-const HOST = process.env.HOST || '0.0.0.0'
+let server
 
-if (isEntrypoint) {
-  app.listen(PORT, HOST, () => {
-    console.log(`Server listening on http://${HOST}:${PORT}`)
-  })
+if (isEntrypoint && !server?.listening && typeof app.listen === 'function') {
+  const PORT = process.env.PORT || 3001
+  server = app.listen(PORT, () => console.log(`[API] listening on http://localhost:${PORT}`))
 }
 
 export default app
