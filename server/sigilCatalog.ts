@@ -12,7 +12,9 @@ const TITLE_KEYS = [
   'title','heading','name','label','prompt','text','tweet','tweet_text','full_text',
   'content','body','message','excerpt','line','sentence'
 ];
-const ID_KEYS = ['id','slug','key','uid','code','hash','guid'];
+const ID_KEYS = ['new_id','original_id','id','slug','key','uid','code','hash','guid'];
+
+type Lesson = { id: string; title: string; intro: string; prompt: string };
 
 type Item = { id: string; title: string; level?: number; type?: string };
 
@@ -21,6 +23,7 @@ function firstString(obj: any, keys: string[]): string | undefined {
   for (const k of keys) {
     const v = obj?.[k];
     if (typeof v === 'string' && v.trim()) return v.trim();
+    if (typeof v === 'number' && Number.isFinite(v)) return String(v);
   }
   return undefined;
 }
@@ -34,6 +37,43 @@ function normalize(row: any, i: number): Item | null {
   const level = Number.isFinite(levelRaw) ? levelRaw : undefined;
   const type = typeof row.type === 'string' ? row.type : 'lesson';
   return { id: String(id), title: String(title), level, type };
+}
+
+function splitIntroPrompt(text: string): { intro: string; prompt: string } {
+  const t = (text ?? '').toString();
+  const marker = /(?:^|\n)\s*Before we start:/i;
+  const idx = t.search(marker);
+  if (idx >= 0) {
+    return { intro: t.slice(0, idx).trim(), prompt: t.slice(idx).trim() };
+  }
+  const parts = t.split(/\n\s*\n/);
+  if (parts.length >= 2) {
+    const prompt = parts.pop()!.trim();
+    const intro = parts.join('\n\n').trim();
+    return { intro, prompt };
+  }
+  return { intro: t.trim(), prompt: '' };
+}
+
+async function* iterateJSONLRows(path: string): AsyncGenerator<{ row: any; index: number }> {
+  if (!existsSync(path)) return;
+  const rl = readline.createInterface({ input: createReadStream(path), crlfDelay: Infinity });
+  let index = 0;
+  for await (const ln of rl) {
+    const obj = parseLineJSON(ln);
+    if (obj) {
+      yield { row: obj, index };
+    }
+    index++;
+  }
+}
+
+function rowToLesson(row: any, index: number): Lesson {
+  const id = firstString(row, ID_KEYS) ?? `item-${index}`;
+  const title = firstString(row, TITLE_KEYS) ?? (row?.text ?? '').toString().split('\n')[0] ?? `Untitled ${id}`;
+  const text = (row?.text ?? '').toString();
+  const { intro, prompt } = splitIntroPrompt(text);
+  return { id: String(id), title: String(title), intro, prompt };
 }
 
 // Tiny CSV parser (handles quoted commas & double-quotes)
@@ -159,6 +199,25 @@ export function installSigilCatalogRoute(app: Express) {
     } catch (e) {
       console.error('[Sigil] catalog error', e);
       res.status(200).json({ items: [] });
+    }
+  });
+
+  app.get('/sigil/lesson/:id', async (req, res) => {
+    const want = String(req.params.id ?? '').trim();
+    if (!want) {
+      return res.status(400).json({ error: 'missing_id' });
+    }
+    try {
+      for await (const { row, index } of iterateJSONLRows(JSONL)) {
+        const lesson = rowToLesson(row, index);
+        if (lesson.id === want) {
+          return res.status(200).json(lesson);
+        }
+      }
+      return res.status(404).json({ error: 'lesson_not_found', id: want });
+    } catch (err) {
+      console.error('[Sigil] lesson error', err);
+      res.status(500).json({ error: 'lesson_error', message: String((err as Error)?.message || err) });
     }
   });
 }
