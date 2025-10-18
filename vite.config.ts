@@ -13,6 +13,16 @@ export default defineConfig({
         changeOrigin: true,
         secure: false,
       },
+      '/health': {
+        target: process.env.VITE_DEV_API || 'http://localhost:3001',
+        changeOrigin: true,
+        secure: false,
+      },
+      '/_debug': {
+        target: process.env.VITE_DEV_API || 'http://localhost:3001',
+        changeOrigin: true,
+        secure: false,
+      },
     },
   },
   build: { sourcemap: true },

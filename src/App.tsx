@@ -26,6 +26,7 @@ import Signup from "@/pages/Signup";
 import ResetPassword from "@/pages/ResetPassword";
 import Welcome from "@/pages/Welcome";
 import Game from "@/pages/Game";
+import DebugDashboard from "@/pages/DebugDashboard";
 import SiteChrome from "@/components/SiteChrome";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import GoodWord from "@/games/goodword";
@@ -87,6 +88,7 @@ export default function App() {
           <Route path="/reset" element={<ResetPassword />} />
           <Route path="/welcome" element={<Welcome />} />
           <Route path="/game" element={<Game />} />
+          <Route path="/_ui/debug" element={<DebugDashboard />} />
 
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
