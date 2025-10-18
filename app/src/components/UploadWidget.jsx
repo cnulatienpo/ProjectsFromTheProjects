@@ -12,7 +12,7 @@ export default function UploadWidget() {
         setMsg('Signing…'); setLink('')
         try {
             const key = `assets/uploads/${Date.now()}-${file.name.replace(/\s+/g, '_')}`
-            await presignAndUpload({ file, key, presignBase: 'http://localhost:8787' })
+            await presignAndUpload({ file, key })
             const url = publicUrl(key)
             setMsg(`✅ Uploaded as ${key}`)
             setLink(url)

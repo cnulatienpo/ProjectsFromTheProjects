@@ -1,5 +1,6 @@
-export async function presignAndUpload({ file, key, presignBase = 'http://localhost:8787' }) {
-    const res = await fetch(`${presignBase}/sign`, {
+export async function presignAndUpload({ file, key, presignBase = '' }) {
+    const base = presignBase || ''
+    const res = await fetch(`${base}/sign`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ key, contentType: file.type || 'application/octet-stream' })

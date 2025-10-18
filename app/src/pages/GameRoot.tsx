@@ -10,5 +10,4 @@ export default function GameRoot() {
     )
 }
 
-fetch('https://your-api-host/api/game')
-// or use your api-shim for static mode
+// (Use the api() helper or relative paths for backend calls)

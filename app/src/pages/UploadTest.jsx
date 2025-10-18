@@ -10,7 +10,7 @@ export default function UploadTest() {
         setMsg('Signing…')
         try {
             const key = `assets/uploads/${Date.now()}-${file.name.replace(/\s+/g, '_')}`
-            await presignAndUpload({ file, key, presignBase: 'http://localhost:8787' })
+            await presignAndUpload({ file, key })
             setMsg(`✅ Uploaded as ${key}`)
         } catch (err) {
             setMsg('❌ ' + err.message)

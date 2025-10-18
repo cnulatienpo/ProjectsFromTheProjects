@@ -1,6 +1,6 @@
 import { presignAndUpload } from './upload.js'
 
-const PRESIGN_BASE = 'http://localhost:8787'
+const PRESIGN_BASE = ''
 
 export async function saveDraftToCloud({ lessonId, text }) {
     const blob = new Blob([text], { type: 'text/plain;charset=utf-8' })

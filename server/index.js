@@ -25,7 +25,7 @@ async function* readJSONL(path) {
   for await (const ln of rl) {
     const s = ln.trim();
     if (!s || s.startsWith('//')) continue;
-    try { yield JSON.parse(s.replace(/,?$/, '')); } catch {}
+    try { yield JSON.parse(s.replace(/,?$/, '')); } catch { }
   }
 }
 
@@ -37,7 +37,7 @@ app.get('/sigil/catalog', async (_req, res) => {
     let i = 0;
     for await (const row of readJSONL(FILE)) {
       const id = String(row?.new_id ?? row?.original_id ?? `item-${i}`);
-      const title = String(row?.title ?? (row?.text ?? '').toString().slice(0,140) || `Untitled ${id}`);
+      const title = String((row?.title ?? ((row?.text ?? '').toString().slice(0, 140))) || `Untitled ${id}`);
       items.push({ id, title });
       if (++i >= 500) break;
     }
@@ -69,5 +69,7 @@ app.get('/sigil/lesson/:id', async (req, res) => {
 });
 
 const PORT = process.env.PORT || 3001;
-const HOST = '0.0.0.0'; // important for Codespaces
-app.listen(PORT, HOST, () => console.log(`[API] listening on http://${HOST}:${PORT}`));
+const HOST = '0.0.0.0';               // <— IMPORTANT in Codespaces
+app.listen(PORT, HOST, () => {
+  console.log(`[API] listening on http://${HOST}:${PORT}`);
+});
