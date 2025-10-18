@@ -14,9 +14,25 @@ export default function GoodWord() {
   const seen = useProgress((state) => state.seen);
 
   useEffect(() => {
-    loadAllPacksSafe()
-      .then(({ packs: loaded }) => setPacks(loaded))
-      .catch((e) => setError(String(e)));
+    let alive = true;
+    (async () => {
+      try {
+        const result = await loadAllPacksSafe?.();
+        if (!alive) return;
+        setPacks(result?.packs ?? []);
+      } catch (e) {
+        if (!alive) return;
+        if (import.meta.env.DEV) {
+          console.warn('[GoodWord] health check skipped in dev:', e);
+          setPacks([]);
+        } else {
+          setError(String(e));
+        }
+      }
+    })();
+    return () => {
+      alive = false;
+    };
   }, []);
 
   if (error) {

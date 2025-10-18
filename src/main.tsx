@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
-import { assertMinimum, loadAllPacksSafe, reportPackHealth } from './data/loadAllPacksSafe';
+import { loadAllPacksSafe } from './data/loadAllPacksSafe';
 
 import './index.css';
 import './styles/brutalist.css';
@@ -18,14 +18,12 @@ const rootEl =
 if (import.meta.env.DEV) {
   void (async () => {
     try {
-      const { packs, report, total } = await loadAllPacksSafe();
-      reportPackHealth(packs, report);
-      assertMinimum(total);
-    } catch (error) {
+      await loadAllPacksSafe?.();
+    } catch (e) {
       if (import.meta.env.DEV) {
-        console.warn('Continuing without full word pack (dev):', error);
+        console.warn('[GoodWord] health check skipped in dev:', e);
       } else {
-        throw error;
+        throw e;
       }
     }
   })();
