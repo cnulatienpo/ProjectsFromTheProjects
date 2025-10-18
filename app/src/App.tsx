@@ -1,6 +1,7 @@
 import React from "react";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import GameRoot from "./pages/GameRoot"; // adjust path if needed
+import Smoke from "./pages/Smoke";
 
 const modules = import.meta.glob(
     [
@@ -79,6 +80,7 @@ export function App() {
         <HashRouter>
             <Routes>
                 <Route path="/" element={<GameRoot />} />
+                <Route path="/_ui/smoke" element={<Smoke />} />
                 <Route path="*" element={<GameRoot />} />
             </Routes>
         </HashRouter>

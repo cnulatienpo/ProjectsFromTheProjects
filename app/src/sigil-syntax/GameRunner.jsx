@@ -7,7 +7,7 @@ import LevelUpModal from '@sigil/LevelUpModal'
 import BadgeStrip from '@sigil/BadgeStrip'
 import StyleReportBox from '@sigil/StyleReportBox'
 import { toSpec } from '@/lib/gameAdapter.js'
-import { api } from '@/lib/apiBase'
+import { safeFetchJSON } from '@/lib/apiBase'
 
 export default function GameRunner() {
     const { id } = useParams()
@@ -23,10 +23,9 @@ export default function GameRunner() {
 
     useEffect(() => {
         setErr(''); setFeedback([]); setPoints(0); setLevelUp(null); setNewBadges([]); setStyleReport(null); setStyleStatus('')
-        fetch(api(`/catalog/game/${id}`))
-            .then(r => r.ok ? r.json() : Promise.reject(r.status))
+        safeFetchJSON(`/catalog/game/${id}`)
             .then(setGame)
-            .catch(e => setErr(`Could not load game "${id}" (${e}).`))
+            .catch(e => setErr(`Could not load game "${id}" (${e?.message || e}).`))
     }, [id])
 
     const spec = game ? toSpec(game) : null
@@ -42,12 +41,11 @@ export default function GameRunner() {
         setFeedback(lines)
         // ask backend to award XP + badges using this attempt
         const payload = { user_id: 'local-user', item_id: game.id, response: r.response, score: r.score }
-        fetch(api('/api/submit'), {
+        safeFetchJSON('/api/submit', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
         })
-            .then(resp => resp.ok ? resp.json() : Promise.reject(resp.status))
             .then(data => {
                 setPoints(p => p + Math.round(r.score * 10))
                 if (data.levelUp) setLevelUp(data.levelUp)
@@ -59,12 +57,11 @@ export default function GameRunner() {
         if (game?.input_type === 'write' && textResponse && textResponse.trim()) {
             setStyleReport(null)
             setStyleStatus('Analyzing style…')
-            fetch(api('/style-report'), {
+            safeFetchJSON('/style-report', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ text: textResponse })
             })
-                .then(resp => resp.ok ? resp.json() : Promise.reject(resp.status))
                 .then(data => {
                     setStyleReport(data)
                     setStyleStatus('')
