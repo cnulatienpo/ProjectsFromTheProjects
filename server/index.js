@@ -1,75 +1,73 @@
 // server/index.js
-import express from 'express'
-import cors from 'cors'
-import cookieParser from 'cookie-parser'
-import { fileURLToPath } from 'url'
+import express from 'express';
+import cors from 'cors';
+import { createReadStream, existsSync } from 'node:fs';
+import { resolve } from 'node:path';
+import * as readline from 'node:readline';
 
-// Sigil content loader (reads the cached bundle)
-import {
-  getSigilItem,
-  getSigilDebug,
-} from './sigil-syntax/content.js'
-import { installSigilCatalogRoute } from './sigilCatalog'
+const app = express();
+app.use(cors());
 
-const app = express()
+const FILE = resolve(process.cwd(), 'labeled data', 'tweetrunk_renumbered.jsonl'); // <-- exact path with space
 
-app.use((req, res, next) => {
-  // allow all for testing; tighten later if needed
-  res.header('Access-Control-Allow-Origin', '*')
-  res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS')
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With')
-  if (req.method === 'OPTIONS') return res.sendStatus(204)
-  next()
-})
-app.use(cors({ origin: true, credentials: false }))
-
-app.use(express.json({ limit: '1mb' }))
-app.use(cookieParser())
-
-// --- DEV LOGGING ---
-app.use((req, res, next) => {
-  console.log('[API]', req.method, req.url)
-  next()
-})
-
-// --- HEALTH ---
-app.get('/health', (req, res) => res.status(200).json({ ok: true, pid: process.pid }))
-
-installSigilCatalogRoute(app)
-
-// --- DEBUG: show request headers & env
-app.get('/_debug/api', (req, res) => {
-  res.json({
-    headers: req.headers,
-    env: {
-      NODE_ENV: process.env.NODE_ENV,
-      PORT: process.env.PORT,
-    },
-    routes: ['/health', '/sigil/catalog', '/_debug/api'],
-  })
-})
-
-// --- Sigil_&_Syntax API
-app.get('/_debug/sigil', (_req, res) => res.json(getSigilDebug()))
-
-app.get('/sigil/game/:id', (req, res) => {
-  const it = getSigilItem(req.params.id)
-  if (!it) return res.status(404).json({ error: 'not_found', id: req.params.id })
-  res.json(it)
-})
-
-// --- 404 and error handlers
-app.use((req, res) => res.status(404).json({ error: 'not_found', path: req.path }))
-app.use((err, _req, res, next) => {
-  if (res.headersSent) return next(err)
-  res.status(500).json({ error: 'server_error', message: String(err?.message || err) })
-})
-const isEntrypoint = fileURLToPath(import.meta.url) === process.argv[1]
-let server
-
-if (isEntrypoint && !server?.listening && typeof app.listen === 'function') {
-  const PORT = process.env.PORT || 3001
-  server = app.listen(PORT, () => console.log(`[API] listening on http://localhost:${PORT}`))
+function splitIntroPrompt(text) {
+  const t = String(text || '');
+  const m = t.search(/(?:^|\n)\s*Before we start:/i);
+  if (m >= 0) return { intro: t.slice(0, m).trim(), prompt: t.slice(m).trim() };
+  const parts = t.split(/\n\s*\n/);
+  if (parts.length >= 2) return { intro: parts.slice(0, -1).join('\n\n').trim(), prompt: parts.at(-1).trim() };
+  return { intro: t.trim(), prompt: '' };
 }
 
-export default app
+async function* readJSONL(path) {
+  if (!existsSync(path)) { console.warn('[Sigil] JSONL not found:', path); return; }
+  const rl = readline.createInterface({ input: createReadStream(path), crlfDelay: Infinity });
+  for await (const ln of rl) {
+    const s = ln.trim();
+    if (!s || s.startsWith('//')) continue;
+    try { yield JSON.parse(s.replace(/,?$/, '')); } catch {}
+  }
+}
+
+app.get('/health', (_req, res) => res.json({ ok: true }));
+
+app.get('/sigil/catalog', async (_req, res) => {
+  try {
+    const items = [];
+    let i = 0;
+    for await (const row of readJSONL(FILE)) {
+      const id = String(row?.new_id ?? row?.original_id ?? `item-${i}`);
+      const title = String(row?.title ?? (row?.text ?? '').toString().slice(0,140) || `Untitled ${id}`);
+      items.push({ id, title });
+      if (++i >= 500) break;
+    }
+    res.status(200).json({ items });
+  } catch (e) {
+    console.error('[Sigil] /sigil/catalog error', e);
+    res.status(200).json({ items: [] });
+  }
+});
+
+app.get('/sigil/lesson/:id', async (req, res) => {
+  const want = String(req.params.id);
+  try {
+    let i = 0;
+    for await (const row of readJSONL(FILE)) {
+      const id = String(row?.new_id ?? row?.original_id ?? `item-${i}`);
+      if (id === want) {
+        const title = String(row?.title ?? (row?.text ?? '').toString().split('\n')[0] ?? `Untitled ${id}`);
+        const { intro, prompt } = splitIntroPrompt((row?.text ?? '').toString());
+        return res.status(200).json({ id, title, intro, prompt });
+      }
+      i++;
+    }
+    res.status(404).json({ error: 'lesson_not_found', id: want });
+  } catch (e) {
+    console.error('[Sigil] /sigil/lesson error', e);
+    res.status(200).json({ error: 'read_error' });
+  }
+});
+
+const PORT = process.env.PORT || 3001;
+const HOST = '0.0.0.0'; // important for Codespaces
+app.listen(PORT, HOST, () => console.log(`[API] listening on http://${HOST}:${PORT}`));
