@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { api, apiBase, safeFetchJSON } from '@/lib/apiBase'
+import { apiBase, safeFetchJSON } from '@/lib/apiBase'
 import { useNavigate } from 'react-router-dom'
 import { snapAndDownload } from '@/lib/snapshot.js'
 import { toCatalogItems } from '@/lib/normalize'
@@ -13,14 +13,15 @@ export default function SigilSyntax(){
 
   useEffect(() => {
     const base = apiBase || '(relative)'
-    const url = api('/sigil/catalog')
+    const path = '/sigil/catalog'
+    const url = `${apiBase}${path}`
     setDebug({ base, tried: url })
     let alive = true
     ;(async () => {
       try {
         setLoading(true)
         setError('')
-        const json = await safeFetchJSON(url)
+        const json = await safeFetchJSON(path)
         if (alive) setRaw(json)
       } catch (e) {
         console.warn('Catalog load failed:', e?.message || e)
