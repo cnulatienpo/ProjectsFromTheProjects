@@ -9,7 +9,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/sigil': {
-        target: process.env.VITE_DEV_API || 'http://localhost:3001',
+        target: 'http://localhost:3001',
         changeOrigin: true,
         secure: false,
       },

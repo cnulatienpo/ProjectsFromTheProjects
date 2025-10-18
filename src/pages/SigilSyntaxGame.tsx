@@ -1,24 +1,29 @@
 import { useEffect, useState } from 'react';
-import { loadSigilCatalog, type SigilItem } from '@/lib/loadSigil';
 import './SigilSyntaxGame.css';
 
+type Item = { id: string; title: string; level?: number; type?: string };
+
 export default function SigilSyntaxGame() {
-  const [items, setItems] = useState<SigilItem[]>([]);
+  const [items, setItems] = useState<Item[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let alive = true;
     (async () => {
-      setLoading(true);
-      const res = await loadSigilCatalog();
-      if (!alive) return;
-      setItems(res.items);
-      setLoading(false);
-      console.log('[Sigil] loaded', res.items.length, 'items from tweetwunk_renumbered');
+      try {
+        setLoading(true);
+        const r = await fetch('/sigil/catalog', { headers: { Accept: 'application/json' }});
+        const json = await r.json();
+        if (!alive) return;
+        setItems(Array.isArray(json?.items) ? json.items : []);
+      } catch {
+        if (!alive) return;
+        setItems([]);
+      } finally {
+        if (alive) setLoading(false);
+      }
     })();
-    return () => {
-      alive = false;
-    };
+    return () => { alive = false; };
   }, []);
 
   return (
@@ -31,7 +36,7 @@ export default function SigilSyntaxGame() {
         <div className="surface" style={{ padding: 12 }}>
           <strong>No lessons found.</strong>
           <div className="muted" style={{ fontSize: 12 }}>
-            Looking in <code>src/tweetwunk_renumbered/**/*.jsonl</code> and <code>**/*.json</code>
+            Looking in <code>labeled data/tweetrunk_renumbered.jsonl</code> via <code>/sigil/catalog</code>
           </div>
         </div>
       )}

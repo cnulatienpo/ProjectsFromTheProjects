@@ -9,6 +9,7 @@ import {
   getSigilItem,
   getSigilDebug,
 } from './sigil-syntax/content.js'
+import { installSigilCatalogRoute } from './sigilCatalog'
 
 const app = express()
 
@@ -34,23 +35,7 @@ app.use((req, res, next) => {
 // --- HEALTH ---
 app.get('/health', (req, res) => res.status(200).json({ ok: true, pid: process.pid }))
 
-// --- DEV-SAFE CATALOG (no 500s) ---
-app.get('/sigil/catalog', (req, res) => {
-  try {
-    const payload = {
-      items: [
-        { id: 'clause-001', title: 'Independent vs Dependent Clause', level: 1, type: 'lesson' },
-        { id: 'punct-001', title: 'Comma Splices: Cut or Join?', level: 1, type: 'drill' },
-        { id: 'device-001', title: 'Metaphor vs Simile', level: 1, type: 'drill' }
-      ]
-    }
-    console.log('[API] returning catalog', payload.items.length)
-    res.status(200).json(payload)
-  } catch (e) {
-    console.error('[API] catalog error', e)
-    res.status(200).json({ items: [] }) // never fail in dev
-  }
-})
+installSigilCatalogRoute(app)
 
 // --- DEBUG: show request headers & env
 app.get('/_debug/api', (req, res) => {
