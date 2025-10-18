@@ -8,39 +8,36 @@ export default function SigilSyntaxGame() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    let alive = true;
+    let live = true;
     (async () => {
       try {
         setLoading(true);
         const r = await fetch('/sigil/catalog', { headers: { Accept: 'application/json' }});
-        const json = await r.json();
-        if (!alive) return;
-        setItems(Array.isArray(json?.items) ? json.items : []);
+        const j = await r.json();
+        if (!live) return;
+        setItems(Array.isArray(j?.items) ? j.items : []);
       } catch {
-        if (!alive) return;
+        if (!live) return;
         setItems([]);
       } finally {
-        if (alive) setLoading(false);
+        live && setLoading(false);
       }
     })();
-    return () => { alive = false; };
+    return () => { live = false; };
   }, []);
 
   return (
     <div className="sigil-root surface" style={{ padding: 16 }}>
       <h1>Sigil &amp; Syntax</h1>
-
       {loading && <div className="surface" style={{ padding: 12 }}>Loading…</div>}
-
       {!loading && items.length === 0 && (
         <div className="surface" style={{ padding: 12 }}>
           <strong>No lessons found.</strong>
           <div className="muted" style={{ fontSize: 12 }}>
-            Looking in <code>labeled data/tweetrunk_renumbered.jsonl</code> via <code>/sigil/catalog</code>
+            Reading JSONL + CSV from <code>labeled data/</code> via <code>/sigil/catalog</code>
           </div>
         </div>
       )}
-
       {items.length > 0 && (
         <div className="grid">
           {items.map((it, i) => (
