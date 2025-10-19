@@ -9,10 +9,10 @@ const JSONL = resolve(process.cwd(), 'labeled data', 'tweetrunk_renumbered.jsonl
 
 // Choose title/id keys generously so your rows get picked up
 const TITLE_KEYS = [
-  'title','heading','name','label','prompt','text','tweet','tweet_text','full_text',
-  'content','body','message','excerpt','line','sentence'
+  'title', 'heading', 'name', 'label', 'prompt', 'text', 'tweet', 'tweet_text', 'full_text',
+  'content', 'body', 'message', 'excerpt', 'line', 'sentence'
 ];
-const ID_KEYS = ['new_id','original_id','id','slug','key','uid','code','hash','guid'];
+const ID_KEYS = ['new_id', 'original_id', 'id', 'slug', 'key', 'uid', 'code', 'hash', 'guid'];
 
 type Lesson = { id: string; title: string; intro: string; prompt: string };
 
@@ -81,23 +81,23 @@ function parseCSV(text: string): any[] {
   if (!text) return [];
   const rows: string[] = [];
   let cur = '', inQ = false;
-  for (let i=0;i<text.length;i++){
-    const ch = text[i], nx = text[i+1];
-    if (ch === '"' && inQ && nx === '"'){ cur += '"'; i++; continue; }
-    if (ch === '"'){ inQ = !inQ; continue; }
-    if (ch === '\n' || ch === '\r'){
-      if (!inQ){ rows.push(cur); cur=''; if (ch==='\r' && nx==='\n') i++; continue; }
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i], nx = text[i + 1];
+    if (ch === '"' && inQ && nx === '"') { cur += '"'; i++; continue; }
+    if (ch === '"') { inQ = !inQ; continue; }
+    if (ch === '\n' || ch === '\r') {
+      if (!inQ) { rows.push(cur); cur = ''; if (ch === '\r' && nx === '\n') i++; continue; }
     }
     cur += ch;
   }
   if (cur) rows.push(cur);
   if (rows.length === 0) return [];
-  const header = rows[0].split(',').map(h=>h.trim());
+  const header = rows[0].split(',').map(h => h.trim());
   const out: any[] = [];
-  for (let r=1; r<rows.length; r++){
+  for (let r = 1; r < rows.length; r++) {
     const cols = splitCSVLine(rows[r]);
     const obj: any = {};
-    for (let c=0;c<header.length;c++){ obj[header[c]] = (cols[c] ?? '').trim(); }
+    for (let c = 0; c < header.length; c++) { obj[header[c]] = (cols[c] ?? '').trim(); }
     out.push(obj);
   }
   return out;
@@ -105,11 +105,11 @@ function parseCSV(text: string): any[] {
   function splitCSVLine(line: string): string[] {
     const arr: string[] = [];
     let buf = '', q = false;
-    for (let i=0;i<line.length;i++){
-      const ch = line[i], nx = line[i+1];
-      if (ch === '"' && q && nx === '"'){ buf += '"'; i++; continue; }
-      if (ch === '"'){ q = !q; continue; }
-      if (ch === ',' && !q){ arr.push(buf); buf=''; continue; }
+    for (let i = 0; i < line.length; i++) {
+      const ch = line[i], nx = line[i + 1];
+      if (ch === '"' && q && nx === '"') { buf += '"'; i++; continue; }
+      if (ch === '"') { q = !q; continue; }
+      if (ch === ',' && !q) { arr.push(buf); buf = ''; continue; }
       buf += ch;
     }
     arr.push(buf);
@@ -126,7 +126,7 @@ function parseLineJSON(s: string): any | null {
 }
 
 // ---------- readers ----------
-async function readJSONL(path: string): Promise<{items: Item[], stats: any}> {
+async function readJSONL(path: string): Promise<{ items: Item[], stats: any }> {
   const stats = { exists: existsSync(path), lines: 0, parsed: 0, accepted: 0, dropped_no_title: 0, dropped_bad_json: 0 };
   const items: Item[] = [];
   if (!stats.exists) return { items, stats };
@@ -136,7 +136,7 @@ async function readJSONL(path: string): Promise<{items: Item[], stats: any}> {
   if (raw.trim().startsWith('[')) {
     const arr = JSON.parse(raw);
     stats.parsed = arr.length;
-    for (let i=0;i<arr.length;i++){
+    for (let i = 0; i < arr.length; i++) {
       const it = normalize(arr[i], i);
       if (it) { items.push(it); stats.accepted++; } else { stats.dropped_no_title++; }
     }
@@ -148,22 +148,22 @@ async function readJSONL(path: string): Promise<{items: Item[], stats: any}> {
   for await (const ln of rl) {
     stats.lines++;
     const obj = parseLineJSON(ln);
-    if (!obj){ stats.dropped_bad_json++; i++; continue; }
+    if (!obj) { stats.dropped_bad_json++; i++; continue; }
     stats.parsed++;
     const it = normalize(obj, i);
-    if (it){ items.push(it); stats.accepted++; } else { stats.dropped_no_title++; }
+    if (it) { items.push(it); stats.accepted++; } else { stats.dropped_no_title++; }
     i++;
   }
   return { items, stats };
 }
 
-function readAllCSV(dir: string): {items: Item[], stats: any} {
+function readAllCSV(dir: string): { items: Item[], stats: any } {
   const stats = { files: 0, rows: 0, accepted: 0 };
   const items: Item[] = [];
   let list: string[] = [];
   try {
     list = readdirSync(dir).filter(n => n.toLowerCase().endsWith('.csv'));
-  } catch {}
+  } catch { }
   for (const name of list) {
     stats.files++;
     const text = readFileSync(join(dir, name), 'utf8');
@@ -171,7 +171,7 @@ function readAllCSV(dir: string): {items: Item[], stats: any} {
     stats.rows += rows.length;
     rows.forEach((row, i) => {
       const it = normalize(row, i);
-      if (it){ items.push(it); stats.accepted++; }
+      if (it) { items.push(it); stats.accepted++; }
     });
   }
   return { items, stats };
@@ -182,14 +182,14 @@ export function installSigilCatalogRoute(app: Express) {
   app.get('/sigil/catalog', async (_req, res) => {
     try {
       const { items: jsonlItems, stats: s1 } = await readJSONL(JSONL);
-      const { items: csvItems,   stats: s2 } = readAllCSV(LABELED);
+      const { items: csvItems, stats: s2 } = readAllCSV(LABELED);
 
       let items = [...jsonlItems, ...csvItems];
 
       // dedupe + sort
       const seen = new Set<string>();
       items = items.filter(it => (seen.has(it.id) ? false : (seen.add(it.id), true)))
-                   .sort((a,b)=>a.id.localeCompare(b.id));
+        .sort((a, b) => a.id.localeCompare(b.id));
 
       console.log('[Sigil] JSONL stats:', s1, 'CSV stats:', s2, 'total:', items.length);
       if (!items.length) {
@@ -209,9 +209,35 @@ export function installSigilCatalogRoute(app: Express) {
     }
     try {
       for await (const { row, index } of iterateJSONLRows(JSONL)) {
-        const lesson = rowToLesson(row, index);
-        if (lesson.id === want) {
-          return res.status(200).json(lesson);
+        // derive an id for the row using the same ID keys logic
+        const id = (row && (row.new_id ?? row.original_id ?? row.id)) ? String(row.new_id ?? row.original_id ?? row.id) : `item-${index}`;
+        if (String(id) === want) {
+          // Robust field normalization — support historical shapes
+          const content =
+            row?.content_html ??
+            row?.contentHTML ??
+            row?.html ??
+            row?.prompt_html ??
+            row?.text ??
+            row?.content ??
+            row?.body ??
+            ''
+
+          const prompt =
+            row?.prompt_hint ??
+            row?.prompt_html ??
+            row?.prompt ??
+            row?.instructions ??
+            ''
+
+          const min = Number(row?.min_words ?? row?.minWords ?? row?.minimum ?? 30)
+
+          return res.status(200).json({
+            id: String(id),
+            content_html: String(content),
+            prompt_html: String(prompt),
+            min_words: isFinite(min) && min > 0 ? min : 30
+          })
         }
       }
       return res.status(404).json({ error: 'lesson_not_found', id: want });
