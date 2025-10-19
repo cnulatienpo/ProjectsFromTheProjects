@@ -31,6 +31,7 @@ import SiteChrome from "@/components/SiteChrome";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import GoodWord from "@/games/goodword";
 import SigilSyntaxGame from "@/pages/SigilSyntaxGame";
+import BeatSandbox from "@/pages/BeatSandbox";
 
 function useDebugParam() {
   useEffect(() => {
@@ -58,6 +59,7 @@ export default function App() {
           <Route path="/games" element={<Games />} />
           <Route path="/games/goodword" element={<GoodWord />} />
           <Route path="/sigil/*" element={<SigilSyntaxGame />} />
+          <Route path="/beat-sandbox" element={<BeatSandbox />} />
 
           {/* --- Aliases / legacy paths --- */}
           <Route path="/games/sigil-syntax/*" element={<Navigate to="/sigil" replace />} />
