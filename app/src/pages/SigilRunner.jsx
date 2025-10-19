@@ -10,7 +10,7 @@ import { getLesson } from '@/services/sigilLesson'
 import BeatPalette from '@/components/BeatPalette.jsx'
 import FeedbackTray from '@/components/FeedbackTray.jsx'
 import { submitAttempt } from '@/lib/attemptApi.js'
-import { markStarted, markSubmitted } from '@/lib/progressApi.js'
+import { markStarted, markSubmitted, markSkipped } from '@/lib/progressApi.js'
 import { setLastSeen } from '@/lib/lastSeen.js'
 
 export default function SigilRunner() {
@@ -160,7 +160,26 @@ export default function SigilRunner() {
             <div>{stats.words} words {stats.words < stats.min ? `(need at least ${stats.min})` : '✓'}</div>
             <div style={{ display: 'flex', gap: 8 }}>
               <button style={btn} onClick={handleSubmit}>Submit</button>
-              <button style={btn} onClick={() => nav('/sigil')}>I don’t feel like it</button>
+              <button
+                style={btn}
+                onClick={() => {
+                  if (lessonId) void markSkipped(lessonId)
+                  safeFetchJSON('/sigil/catalog')
+                    .then(cat => {
+                      const items = toCatalogItems(cat)
+                      const ids = items.map(entry => entry.id)
+                      const current = lessonId ?? ''
+                      const idx = Math.max(0, ids.indexOf(current))
+                      const next = ids[idx + 1] ?? ids[0]
+                      if (next) {
+                        nav(`/sigil/${encodeURIComponent(next)}`)
+                      } else {
+                        nav('/sigil')
+                      }
+                    })
+                    .catch(() => nav('/sigil'))
+                }}
+              >I don’t feel like it</button>
               <button style={btn} onClick={() => {
                 safeFetchJSON('/sigil/catalog').then(cat => {
                   const items = toCatalogItems(cat)
