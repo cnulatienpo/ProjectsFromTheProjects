@@ -1,8 +1,8 @@
-import validateAndNormalize, { type ValidationResult, type WordEntry } from "@/utils/validateAndNormalize";
-import { ensurePackObject } from "@/utils/ensurePackObject";
+import validateAndNormalize, { type ValidationResult, type WordEntry } from "../utils/validateAndNormalize";
+import { ensurePackObject } from "../utils/ensurePackObject";
 import { collectRawPacks } from "./packSources";
 
-export type { WordEntry } from "@/utils/validateAndNormalize";
+export type { WordEntry } from "../utils/validateAndNormalize";
 
 export type Pack = {
   id: string;
