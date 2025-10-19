@@ -1,12 +1,13 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
-import { safeFetchJSON } from '@/lib/apiBase'
+import { safeFetchJSON, api } from '@/lib/apiBase'
 import NotesPanel from '@/components/NotesPanel.jsx'
+import FeedbackTray from '@/components/FeedbackTray.jsx'
 import { snapAndDownload } from '@/lib/snapshot.js'
 import { toCatalogItems } from '@/lib/normalize'
 import { getLesson } from '@/services/sigilLesson'
 
-export default function SigilRunner(){
+export default function SigilRunner() {
   const { id } = useParams()
   const nav = useNavigate()
   const [lesson, setLesson] = useState(null)
@@ -68,8 +69,22 @@ export default function SigilRunner(){
   const promptHtml = useMemo(() => lessonToHtml(lesson), [lesson])
   const lessonId = lesson?.id ?? (id ? String(id) : null)
 
-  if (err) return <main className="sigil-root surface" style={{padding:24}}><b>Error:</b> {err} <p><Link to="/sigil">Back to catalog</Link></p></main>
-  if (!lesson) return <main className="sigil-root surface" style={{padding:24}}>{loading ? 'Loading lesson…' : 'No lesson available.'}</main>
+  // helper to strip an auto-generated title from content HTML
+  const stripAutoTitle = (html) => {
+    if (!html) return ''
+    // remove a leading H1/H2 or a single <p><strong>...</strong></p> “title” line
+    const hTag = html.replace(/^\s*<h[12][^>]*>.*?<\/h[12]>\s*/is, '')
+    const strongFirst = hTag.replace(/^\s*<p>\s*<strong>[^<]+<\/strong>\s*<\/p>\s*/is, '')
+    return strongFirst
+  }
+
+  // minimal submit stub (preserve previous behavior until backend wiring is reintroduced)
+  function handleSubmit() {
+    alert('Submit stubbed (wire later)')
+  }
+
+  if (err) return <main className="sigil-root surface" style={{ padding: 24 }}><b>Error:</b> {err} <p><Link to="/sigil">Back to catalog</Link></p></main>
+  if (!lesson) return <main className="sigil-root surface" style={{ padding: 24 }}>{loading ? 'Loading lesson…' : 'No lesson available.'}</main>
 
   // simple “Ray Ray Says” lines (placeholder; can be real analysis later)
   const rayLines = [
@@ -77,62 +92,77 @@ export default function SigilRunner(){
     'Add a concrete obstacle; make it specific.',
     'Use one sensory detail (sound, smell, texture).'
   ]
+  // Never show titles or game name — use content/prompt only
+  const it = lesson
+  const rawContent = it?.content_html || it?.prompt_html || ''
+  const contentHTML = stripAutoTitle(rawContent)
+  const promptHTML = it?.prompt_hint || (it?.content_html && it?.prompt_html ? it.prompt_html : '')
 
   return (
-    <main className="sigil-root surface" style={{padding:24}}>
-      <div style={{display:'flex', gap:8, justifyContent:'flex-end', marginBottom:8}}>
-        <button
-          onClick={()=>snapAndDownload('main', `sigil-${encodeURIComponent(lessonId ?? 'lesson')}.png`)}
-          style={{padding:'8px 12px', border:'1px solid #000', background:'#fff', cursor:'pointer', fontSize:12}}
-        >
-          Save screenshot
-        </button>
-      </div>
-      <div style={{display:'grid', gridTemplateColumns:'2fr 1fr', gap:16, alignItems:'start'}}>
-        {/* READ BOX */}
-        <section style={{border:'1px solid #000', background:'#f6f6f6', padding:16}}>
-          <h2 style={{marginTop:0}}>{lesson.title}</h2>
-          <div dangerouslySetInnerHTML={{__html: promptHtml}} />
+    <main className="pfp-shell">
+      <div className="sigil-stage">
+        {/* CONTENT (centered, grows with text) */}
+        <section className="sigil-box sigil-content">
+          <div dangerouslySetInnerHTML={{ __html: contentHTML }} />
         </section>
 
-        {/* NOTES (Ray Ray + My notes) */}
-        <NotesPanel
-          gameKey="sigil"
-          lessonId={lessonId}
-          rayRayTitle="Ray Ray Says"
-          rayRayLines={rayLines}
-        />
-      </div>
+        {/* PROMPT (same width, unlabeled) */}
+        <section className="sigil-box sigil-prompt">
+          <div dangerouslySetInnerHTML={{ __html: promptHTML }} />
+        </section>
 
-      {/* BIG WRITER BOX */}
-      <section style={{marginTop:16}}>
-        <textarea
-          value={text}
-          onChange={e=>setText(e.target.value)}
-          style={{width:'100%', height:'60vh', padding:16, border:'1px solid #000', background:'#fff'}}
-          placeholder="Write your response here…"
-        />
-        <div style={{marginTop:8, fontSize:12, opacity:.75}}>
-          {stats.words} words {stats.words < stats.min ? `(need at least ${stats.min})` : '✓'}
+        {/* Editor + Notes side-by-side (notes attached right) */}
+        <div className="sigil-row">
+          <section className="sigil-editor">
+            <textarea
+              value={text}
+              onChange={e => setText(e.target.value)}
+              data-editor="sigil"
+              className="sigil-textarea"
+              placeholder="Write your response here…"
+            />
+            <div className="sigil-meta" style={{ padding: '8px 12px', borderTop: '1px solid #000' }}>
+              {stats.words} words {stats.words < stats.min ? `(need at least ${stats.min})` : '✓'}
+            </div>
+          </section>
+
+          <aside className="sigil-notes">
+            <NotesPanel
+              gameKey="sigil"
+              lessonId={id}
+              rayRayTitle="Ray Ray Says"
+              rayRayLines={rayLines}
+            />
+          </aside>
         </div>
-        <div style={{marginTop:12, display:'flex', gap:8, flexWrap:'wrap'}}>
-          <button style={btn} onClick={()=>alert('Submit stubbed (wire later)')}>Submit</button>
-          <button style={btn} onClick={()=>nav('/sigil')}>Skip</button>
-          <button style={btn} onClick={()=>{
-            // simplistic “next”: go to next id in catalog
-            safeFetchJSON('/sigil/catalog').then(cat=>{
-              const items = toCatalogItems(cat)
-              const ids = items.map(entry => entry.id)
-              const current = lessonId ?? ''
-              const idx = ids.indexOf(current)
-              const nextIdx = idx >= 0 ? idx + 1 : 0
-              const next = ids[nextIdx] ?? ids[0]
-              if (next) nav(`/sigil/${encodeURIComponent(next)}`)
-            })
-          }}>Next</button>
-          <button style={btn} onClick={()=>setText('')}>Try again</button>
-        </div>
-      </section>
+
+        {/* Ray Ray Says + navigation (full width, grows with content) */}
+        <section className="sigil-tray">
+          <div className="sigil-tray-title">ray ray says:</div>
+          <FeedbackTray text={text} minWords={stats.min} />
+          <div className="pfp-actions">
+            <button className="pfp-btn" onClick={handleSubmit}>Submit</button>
+            <button className="pfp-btn" onClick={() => setText('')}>Try again</button>
+            <button className="pfp-btn" onClick={() => {
+              safeFetchJSON(api('/sigil/catalog')).then(cat => {
+                const ids = cat.games || []
+                const i = ids.indexOf(id)
+                const next = ids[i + 1] || ids[0]
+                nav(`/sigil/${encodeURIComponent(next)}`)
+              }).catch(() => nav('/sigil'))
+            }}>Next</button>
+            <button className="pfp-btn" onClick={() => {
+              try { markSkipped?.(id) } catch { }
+              safeFetchJSON(api('/sigil/catalog')).then(cat => {
+                const ids = cat.games || []
+                const i = Math.max(0, ids.indexOf(id))
+                const next = ids[i + 1] || ids[0]
+                nav(`/sigil/${encodeURIComponent(next)}`)
+              }).catch(() => nav('/sigil'))
+            }}>I don’t feel like it</button>
+          </div>
+        </section>
+      </div>
     </main>
   )
 }
@@ -162,4 +192,4 @@ function lessonToHtml(lesson) {
   return parts.join('')
 }
 
-const btn = { padding:'10px 16px', border:'1px solid #000', background:'#fff', cursor:'pointer' }
+const btn = { padding: '10px 16px', border: '1px solid #000', background: '#fff', cursor: 'pointer' }
