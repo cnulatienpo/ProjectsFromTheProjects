@@ -1,9 +1,10 @@
-.sigil-root {
-  /* Force a light background and dark text for the Sigil UI so content remains readable
-     even when the global theme uses dark card colors. We set explicit values here to
-     avoid changing global theme variables. */
-  background: #ffffff;
-  color: #000000;
+.sigil-root,
+.sigil-root.surface {
+  /* Strongly enforce a light background and dark text for the Sigil UI so lesson
+     content remains readable regardless of global theme ordering. Using a more
+     specific selector and !important ensures these rules win over theme CSS. */
+  background: #ffffff !important;
+  color: #000000 !important;
   min-height: 100%;
   padding: 1.25rem;
 }
@@ -16,9 +17,11 @@
 }
 
 .sigil-root .btn,
-.sigil-root button {
-  color: #000000;
-  border-color: #000000;
+.sigil-root button,
+.sigil-root * {
+  /* Force children text and controls to use dark color */
+  color: #000000 !important;
+  border-color: #000000 !important;
 }
 
 .muted {

@@ -1,0 +1,36 @@
+/* Runner-specific layout for Sigil */
+.sigil-topbar {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sigil-top-boxes {
+    align-items: start;
+}
+
+.sigil-content-box {
+    background: #fbfbfb;
+}
+
+.sigil-prompt-box {
+    background: #fff;
+}
+
+.sigil-grid {
+    min-height: 600px;
+}
+
+.feedback-tray {
+    border-radius: 4px;
+}
+
+/* Small responsive tweaks */
+@media (max-width: 900px) {
+    .sigil-grid {
+        grid-template-columns: 1fr !important
+    }
+
+    .sigil-top-boxes {
+        flex-direction: column
+    }
+}
