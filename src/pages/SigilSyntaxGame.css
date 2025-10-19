@@ -1,6 +1,9 @@
 .sigil-root {
-  background: var(--card);
-  color: var(--card-fg);
+  /* Force a light background and dark text for the Sigil UI so content remains readable
+     even when the global theme uses dark card colors. We set explicit values here to
+     avoid changing global theme variables. */
+  background: #ffffff;
+  color: #000000;
   min-height: 100%;
   padding: 1.25rem;
 }
@@ -14,8 +17,8 @@
 
 .sigil-root .btn,
 .sigil-root button {
-  color: var(--card-fg);
-  border-color: var(--card-fg);
+  color: #000000;
+  border-color: #000000;
 }
 
 .muted {
