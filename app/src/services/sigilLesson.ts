@@ -46,7 +46,9 @@ async function tryServer(wantId?: string): Promise<Lesson | null> {
   }
 }
 
-const jsonlRawImport = import.meta.glob("/labeled data/tweetrunk_renumbered.jsonl", { as: "raw", eager: true });
+// In some environments import.meta.glob isn't typed/available. We avoid relying on it
+// and instead fetch the public JSONL in dev or use the bundled import when available.
+const jsonlRawImport = {} as Record<string, string>;
 
 function parseJSONL(raw: string): any[] {
   const out: any[] = [];
@@ -66,33 +68,33 @@ function parseJSONL(raw: string): any[] {
 function rowToLesson(row: any, fallbackIndex: number): Lesson {
   const id = String(
     row?.new_id ??
-      row?.original_id ??
-      row?.id ??
-      row?.slug ??
-      row?.key ??
-      row?.uid ??
-      row?.code ??
-      row?.hash ??
-      row?.guid ??
-      `item-${fallbackIndex}`,
+    row?.original_id ??
+    row?.id ??
+    row?.slug ??
+    row?.key ??
+    row?.uid ??
+    row?.code ??
+    row?.hash ??
+    row?.guid ??
+    `item-${fallbackIndex}`,
   );
   const title = String(
     row?.title ??
-      row?.heading ??
-      row?.name ??
-      row?.label ??
-      row?.prompt ??
-      row?.text ??
-      row?.tweet ??
-      row?.tweet_text ??
-      row?.full_text ??
-      row?.content ??
-      row?.body ??
-      row?.message ??
-      row?.excerpt ??
-      row?.line ??
-      row?.sentence ??
-      `Untitled ${id}`,
+    row?.heading ??
+    row?.name ??
+    row?.label ??
+    row?.prompt ??
+    row?.text ??
+    row?.tweet ??
+    row?.tweet_text ??
+    row?.full_text ??
+    row?.content ??
+    row?.body ??
+    row?.message ??
+    row?.excerpt ??
+    row?.line ??
+    row?.sentence ??
+    `Untitled ${id}`,
   );
   const text = (row?.text ?? "").toString();
   const { intro, prompt } = splitIntroPrompt(text);
@@ -105,15 +107,15 @@ function fromRawRows(rows: any[], wantId?: string): Lesson | null {
     const match = rows.find((row, index) => {
       const lessonId = String(
         row?.new_id ??
-          row?.original_id ??
-          row?.id ??
-          row?.slug ??
-          row?.key ??
-          row?.uid ??
-          row?.code ??
-          row?.hash ??
-          row?.guid ??
-          `item-${index}`,
+        row?.original_id ??
+        row?.id ??
+        row?.slug ??
+        row?.key ??
+        row?.uid ??
+        row?.code ??
+        row?.hash ??
+        row?.guid ??
+        `item-${index}`,
       );
       return lessonId === wantId;
     });
@@ -126,9 +128,69 @@ function fromRawRows(rows: any[], wantId?: string): Lesson | null {
 }
 
 async function getLessonFromRaw(wantId?: string): Promise<Lesson | null> {
-  const mod = Object.values(jsonlRawImport)[0] as unknown as string | undefined;
-  if (!mod) return null;
-  const rows = parseJSONL(mod);
+  // First, try the common public path (works in dev when file is in `public/data/...`)
+  let rawText: string | undefined = undefined;
+  try {
+    // eslint-disable-next-line no-await-in-loop
+    const r = await fetch('/data/cut_games/tweetrunk_renumbered.jsonl', { headers: { Accept: 'text/plain' } });
+    if (r.ok) {
+      // eslint-disable-next-line no-await-in-loop
+      const txt = await r.text();
+      // Vite may return the SPA index.html if the file isn't present in the app's public folder.
+      if (txt && txt.length && !txt.trim().startsWith('<')) rawText = txt;
+    }
+  } catch {
+    // ignore
+  }
+
+  // If the public fetch didn't succeed, try the bundled import (if available) and other fallbacks
+  if (!rawText) {
+    const mod = Object.values(jsonlRawImport)[0] as unknown as string | undefined;
+    if (mod) {
+      rawText = mod as string;
+    } else {
+      // Fallback: try fetching from public paths that may be available in dev
+      const candidates = [
+        '/data/cut_games/tweetrunk_renumbered.jsonl',
+        '/public/data/cut_games/tweetrunk_renumbered.jsonl',
+        '/labeled%20data/tweetrunk_renumbered.jsonl',
+        '/labeled data/tweetrunk_renumbered.jsonl',
+      ];
+      for (const url of candidates) {
+        try {
+          // attempt to fetch; ignore failures
+          // eslint-disable-next-line no-await-in-loop
+          const r = await fetch(url, { headers: { Accept: 'text/plain' } });
+          if (!r.ok) continue;
+          // eslint-disable-next-line no-await-in-loop
+          const txt = await r.text();
+          if (txt && txt.length) {
+            rawText = txt;
+            break;
+          }
+        } catch {
+          // ignore
+        }
+      }
+      // Last resort: fetch the workspace file via Vite's /@fs/ file-system URL (dev-only)
+      if (!rawText) {
+        try {
+          const fsUrl = '/@fs/workspaces/ProjectsFromTheProjects/public/data/cut_games/tweetrunk_renumbered.jsonl';
+          // eslint-disable-next-line no-await-in-loop
+          const r2 = await fetch(fsUrl, { headers: { Accept: 'text/plain' } });
+          if (r2.ok) {
+            // eslint-disable-next-line no-await-in-loop
+            const txt2 = await r2.text();
+            if (txt2 && txt2.length) rawText = txt2;
+          }
+        } catch {
+          // ignore
+        }
+      }
+    }
+  }
+  if (!rawText) return null;
+  const rows = parseJSONL(rawText);
   const lesson = fromRawRows(rows, wantId);
   return lesson ?? null;
 }
