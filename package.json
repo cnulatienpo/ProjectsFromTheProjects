@@ -3,21 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "audit": "node tools/audit_readiness.mjs",
-    "dev": "vite",
-    "build": "vite build && node scripts/copy404.mjs",
-    "preview": "vite preview --port 4173 --strictPort",
-    "server": "node server/index.js",
-    "server:dev": "nodemon server/index.js",
-    "shots": "node scripts/snapshots.mjs",
-    "shots:pages": "VITE_PAGES_BASE='/${npm_package_name}/' node scripts/snapshots.mjs",
-    "start": "npm run dev",
-    "emit:progression": "node tools/emit_progression_defaults.mjs",
-    "emit:sigil:labeled": "node tools/build_sigil_from_labeled.mjs",
-    "reattach:sigil": "node tools/reattach_sigil_ui.mjs",
-    "emit:reports": "node tools/compile_reports.mjs",
-    "snap:preview": "cross-env VITE_PROD_API=https://animated-carnival-v4g77qwxgvv3p5p5-3001.app.github.dev npm run build --prefix app && npm run preview --prefix app",
-    "snap:test": "playwright test -c app/playwright.config.ts"
+    "dev:server": "node server/index.js",
+    "dev:app": "npm run dev --prefix app",
+    "build:app": "npm run build --prefix app"
   },
   "devDependencies": {
     "@playwright/test": "^1.56.1",
