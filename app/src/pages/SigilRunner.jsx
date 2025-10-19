@@ -86,7 +86,8 @@ export default function SigilRunner() {
   async function handleSubmit() {
     try {
       const rsp = await submitAttempt({ id, text, minWords: stats.min })
-      setRayMemo(rsp?.report?.memo || [])
+      const memo = rsp?.report?.memo
+      setRayMemo(Array.isArray(memo) ? memo : memo ? [String(memo)] : [])
       const tray = document.querySelector('.sigil-tray')
       tray?.scrollIntoView({ behavior: 'smooth', block: 'start' })
     } catch (e) {
