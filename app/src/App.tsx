@@ -1,7 +1,7 @@
 import React from "react";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import GameRoot from "./pages/GameRoot"; // adjust path if needed
-import Smoke from "./pages/Smoke";
+import Smoke from "@/pages/Smoke";
 
 const modules = import.meta.glob(
     [
