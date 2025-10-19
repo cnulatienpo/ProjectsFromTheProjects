@@ -5,7 +5,7 @@ import helmet from 'helmet';
 import { createReadStream, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 import * as readline from 'node:readline';
-import { analyzeAttempt } from './attempt/analyze.js'
+import { buildReport } from './report/index.js';
 
 const app = express();
 app.use(cors());
@@ -90,12 +90,16 @@ app.get('/sigil/lesson/:id', async (req, res) => {
 });
 
 // POST attempt analysis
-app.post('/attempt', express.json(), (req, res) => {
-  const { id, text, minWords } = req.body || {}
-  if (typeof text !== 'string') return res.status(400).json({ error: 'bad_request', message: 'text required' })
-  const report = analyzeAttempt(text, { minWords: Number(minWords || 30) })
-  res.json({ id: id || null, report })
-})
+app.post('/attempt', express.json(), async (req, res) => {
+  const { id, text, minWords } = req.body || {};
+  if (typeof text !== 'string') return res.status(400).json({ error: 'bad_request', message: 'text required' });
+  try {
+    const report = await buildReport(text, { minWords: Number(minWords || 30) });
+    res.json({ id: id || null, report });
+  } catch (e) {
+    res.status(500).json({ error: 'server_error', message: String(e?.message || e) });
+  }
+});
 
 // Start server
 const PORT = process.env.PORT || 3001;
