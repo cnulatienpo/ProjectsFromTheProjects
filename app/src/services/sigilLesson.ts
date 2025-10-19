@@ -1,4 +1,4 @@
-export type Lesson = { id: string; title: string; intro: string; prompt: string };
+export type Lesson = { id: string; title: string; intro: string; prompt: string; content_html?: string; prompt_html?: string; min_words?: number };
 
 function splitIntroPrompt(text: string): { intro: string; prompt: string } {
   const t = (text ?? "").toString();
@@ -32,12 +32,15 @@ async function tryServer(wantId?: string): Promise<Lesson | null> {
     });
     if (!r.ok) return null;
     const l = await r.json();
-    if (l?.id && (l.intro ?? l.prompt) !== undefined) {
+    if (l?.id) {
       return {
         id: String(l.id),
         title: String(l.title ?? "Untitled"),
         intro: String(l.intro ?? ""),
         prompt: String(l.prompt ?? ""),
+        content_html: typeof l.content_html === 'string' ? l.content_html : (typeof l.content === 'string' ? l.content : undefined),
+        prompt_html: typeof l.prompt_html === 'string' ? l.prompt_html : (typeof l.prompt === 'string' ? l.prompt : undefined),
+        min_words: Number.isFinite(Number(l?.min_words ?? l?.minWords ?? l?.minimum ?? 0)) ? Number(l?.min_words ?? l?.minWords ?? l?.minimum ?? 0) : undefined
       };
     }
     return null;
@@ -63,6 +66,23 @@ function parseJSONL(raw: string): any[] {
     }
   }
   return out;
+}
+
+function escapeHtml(str = '') {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
+
+function toParagraphHtml(text = '') {
+  const safe = escapeHtml(text)
+  return safe
+    .split(/\n\s*\n/)
+    .map(block => `<p>${block.replace(/\n/g, '<br />')}</p>`)
+    .join('')
 }
 
 function rowToLesson(row: any, fallbackIndex: number): Lesson {
@@ -98,7 +118,11 @@ function rowToLesson(row: any, fallbackIndex: number): Lesson {
   );
   const text = (row?.text ?? "").toString();
   const { intro, prompt } = splitIntroPrompt(text);
-  return { id, title, intro, prompt };
+  const contentHtmlRaw = row?.content_html ?? row?.contentHTML ?? row?.html ?? row?.text ?? row?.content ?? row?.body ?? '';
+  const promptHtmlRaw = row?.prompt_html ?? row?.prompt ?? row?.instructions ?? '';
+  const content_html = contentHtmlRaw && typeof contentHtmlRaw === 'string' ? (contentHtmlRaw.trim().startsWith('<') ? contentHtmlRaw : toParagraphHtml(contentHtmlRaw)) : '';
+  const prompt_html = promptHtmlRaw && typeof promptHtmlRaw === 'string' ? (promptHtmlRaw.trim().startsWith('<') ? promptHtmlRaw : toParagraphHtml(promptHtmlRaw)) : '';
+  return { id, title, intro, prompt, content_html, prompt_html };
 }
 
 function fromRawRows(rows: any[], wantId?: string): Lesson | null {
