@@ -124,19 +124,29 @@ export default function SigilRunner() {
         </button>
       </div>
 
-      {/* Top: only render lesson intro (no title) and a static prompt placeholder */}
+      {/* Content then prompt stacked */}
       <div className="sigil-top-boxes" style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 12 }}>
-        <section className="sigil-content-box" style={{ border: '1px solid #000', padding: 12, background: '#f6f6f6' }} aria-label="Lesson intro">
-          <div dangerouslySetInnerHTML={{ __html: lesson?.intro ? toParagraphHtml(lesson.intro) : '' }} />
+        <section className="sigil-content-box" style={{ border: '1px solid #000', padding: 12, background: '#f6f6f6' }}>
+          <h2 style={{ marginTop: 0 }}>{lesson.title}</h2>
+          <div dangerouslySetInnerHTML={{ __html: promptHtml }} />
         </section>
-        <section className="sigil-prompt-box" style={{ border: '1px solid #000', padding: 12, background: '#fff' }} aria-label="Prompt">
+        <section className="sigil-prompt-box" style={{ border: '1px solid #000', padding: 12, background: '#fff' }}>
           <h3 style={{ marginTop: 0 }}>Prompt</h3>
-          <div>Prompt placeholder — prompt content will appear here.</div>
+          <div dangerouslySetInnerHTML={{ __html: promptHtml }} />
         </section>
       </div>
 
-      {/* two-column layout: EDITOR | NOTES (removed BeatPalette column) */}
-      <div className="sigil-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 360px', gap: 16, alignItems: 'start' }}>
+      {/* three-column layout: BEATS | EDITOR | NOTES */}
+      <div className="sigil-grid" style={{ display: 'grid', gridTemplateColumns: '240px 1fr 360px', gap: 16, alignItems: 'start' }}>
+        {/* BEATS */}
+        <aside style={{ border: '1px solid #000', padding: 12, background: '#fff' }}>
+          <h4 style={{ marginTop: 0 }}>Beats</h4>
+          <BeatPalette vertical compact onInsert={chunk => {
+            // insert chunk into the current cursor position (simple append for now)
+            setText(prev => prev + (prev ? '\n\n' : '') + chunk)
+          }} />
+        </aside>
+
         {/* EDITOR */}
         <section style={{ border: '1px solid #000', padding: 12, background: '#fff' }}>
           <textarea
