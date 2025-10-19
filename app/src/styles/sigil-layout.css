@@ -34,32 +34,55 @@
         flex-direction: column
     }
 }
+
 /* --- Force readable (black) text for Sigil screens --- */
 .pfp-shell,
 .pfp-shell * {
-  color: #111 !important;
+    color: #111 !important;
 }
 
 /* main reading boxes */
 .sigil-box,
 .sigil-box * {
-  color: #111 !important;
-  background: #fff; /* keep text on white */
+    color: #111 !important;
+    background: #fff;
+    /* keep text on white */
 }
 
 /* editor */
 .sigil-textarea {
-  color: #111 !important;
-  background: #fff !important;
-  caret-color: #111;
+    color: #111 !important;
+    background: #fff !important;
+    caret-color: #111;
 }
 
 /* Ray Ray tray */
 .sigil-tray,
 .sigil-tray * {
-  color: #111 !important;
+    color: #111 !important;
 }
 
 /* buttons and links readable on light backgrounds */
-.pfp-btn { color: #111 !important; background: #fff; border-color: #000; }
-a { color: #0645AD !important; }
+.pfp-btn {
+    color: #111 !important;
+    background: #fff;
+    border-color: #000;
+}
+
+a {
+    color: #0645AD !important;
+}
+
+/* Ensure Sigil area uses dark text even when global theme variables are set */
+.sigil-root {
+    /* override theme variables locally for Sigil pages */
+    --fg: #111 !important;
+    --card-fg: #111 !important;
+    color: var(--fg) !important;
+    background: #fff !important;
+}
+
+.sigil-root,
+.sigil-root * {
+    color: var(--fg) !important;
+}
