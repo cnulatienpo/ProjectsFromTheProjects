@@ -1,0 +1,221 @@
+.sigil-classic {
+  min-height: 100%;
+  padding: 32px 24px 48px;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.sigil-classic a {
+  color: inherit;
+}
+
+.sigil-classic .sigil-header {
+  max-width: 960px;
+  margin: 0 auto 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.sigil-classic .sigil-head-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.sigil-classic .sigil-head-meta {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.sigil-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
+  gap: 28px;
+  align-items: flex-start;
+}
+
+@media (max-width: 1100px) {
+  .sigil-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.sigil-column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sigil-box {
+  padding: 20px 24px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(4px);
+}
+
+.sigil-box-title {
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.sigil-box h2 {
+  margin: 0 0 12px;
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+
+.sigil-box p {
+  margin: 0 0 14px;
+  line-height: 1.6;
+}
+
+.sigil-box p:last-child {
+  margin-bottom: 0;
+}
+
+.sigil-box textarea {
+  width: 100%;
+  min-height: 280px;
+  padding: 16px 18px;
+  border-radius: 12px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  font-size: 1rem;
+  line-height: 1.55;
+  resize: vertical;
+}
+
+.sigil-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.sigil-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.sigil-btn {
+  appearance: none;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: inherit;
+  padding: 10px 20px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.sigil-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-1px);
+}
+
+.sigil-btn:active {
+  transform: translateY(1px);
+}
+
+.sigil-btn.primary {
+  background: var(--fg);
+  color: var(--bg);
+  border-color: transparent;
+}
+
+.sigil-btn.primary:hover {
+  background: #ffffff;
+  color: #111;
+}
+
+.sigil-btn:disabled,
+.sigil-btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.sigil-tray {
+  position: relative;
+}
+
+.sigil-tray .sigil-tray-toggle {
+  margin-bottom: 16px;
+}
+
+.sigil-tray-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sigil-tray-section {
+  padding: 18px 20px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
+}
+
+.sigil-tray-section h3 {
+  margin: 0 0 10px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+}
+
+.sigil-tray-section p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.sigil-tray textarea {
+  min-height: 180px;
+}
+
+.sigil-feedback-list {
+  list-style: disc;
+  margin: 0;
+  padding-left: 20px;
+  line-height: 1.6;
+}
+
+.sigil-feedback-empty {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.sigil-tray.closed .sigil-tray-body {
+  display: none;
+}
+
+.sigil-tray.closed .sigil-tray-toggle::after {
+  content: ' (hidden)';
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+@media (max-width: 700px) {
+  .sigil-classic {
+    padding: 24px 18px 36px;
+  }
+
+  .sigil-box {
+    padding: 18px;
+  }
+
+  .sigil-layout {
+    gap: 20px;
+  }
+}

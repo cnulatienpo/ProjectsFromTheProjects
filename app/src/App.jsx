@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import Home from '@/pages/Home.jsx'
-import SigilSyntax from '@/pages/SigilSyntax.jsx'
-import SigilRunner from '@/pages/SigilRunner.jsx'
+import SigilClassic from '@/pages/SigilClassic'
 import Smoke from '@/pages/Smoke.tsx'
 
 export default function App(){
@@ -9,8 +8,8 @@ export default function App(){
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/_ui/smoke" element={<Smoke />} />
-      <Route path="/sigil" element={<SigilSyntax />} />
-      <Route path="/sigil/:id" element={<SigilRunner />} />
+      <Route path="/sigil" element={<SigilClassic />} />
+      <Route path="/sigil/:id" element={<SigilClassic />} />
     </Routes>
   )
 }

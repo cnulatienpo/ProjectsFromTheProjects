@@ -1,0 +1,5 @@
+:root{ --bg:#0e0e10; --fg:#eaeaea; --muted:#a4a4a4; --card:#18181b; --border:#2a2a2e; }
+html,body,#root{ min-height:100%; }
+body{ background:var(--bg); color:var(--fg); }
+.surface{ background:var(--card); border:1px solid var(--border); border-radius:12px; }
+textarea{ background:transparent; color:inherit; border:1px solid var(--border); }
