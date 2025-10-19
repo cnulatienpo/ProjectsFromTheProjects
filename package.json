@@ -15,6 +15,7 @@
     "emit:progression": "node tools/emit_progression_defaults.mjs",
     "emit:sigil:labeled": "node tools/build_sigil_from_labeled.mjs",
     "reattach:sigil": "node tools/reattach_sigil_ui.mjs",
+    "emit:reports": "node tools/compile_reports.mjs",
     "snap:preview": "cross-env VITE_PROD_API=https://animated-carnival-v4g77qwxgvv3p5p5-3001.app.github.dev npm run build --prefix app && npm run preview --prefix app",
     "snap:test": "playwright test -c app/playwright.config.ts"
   },
@@ -30,6 +31,7 @@
     "cross-env": "^7.0.3",
     "eslint": "^9.37.0",
     "eslint-config-prettier": "^10.1.8",
+    "esbuild": "^0.24.0",
     "nodemon": "^3.1.9",
     "postcss": "^8.5.6",
     "prettier": "^3.6.2",

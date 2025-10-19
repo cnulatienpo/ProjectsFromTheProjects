@@ -9,6 +9,8 @@ import { toCatalogItems } from '@/lib/normalize'
 import { getLesson } from '@/services/sigilLesson'
 import FeedbackTray from '@/components/FeedbackTray.jsx'
 import { submitAttempt } from '@/lib/attemptApi.js'
+import { markStarted, markSubmitted, markSkipped } from '@/lib/progressApi.js'
+import { setLastSeen } from '@/lib/lastSeen.js'
 
 export default function SigilRunner() {
   const { id } = useParams()
@@ -72,6 +74,14 @@ export default function SigilRunner() {
   const promptHtml = useMemo(() => lessonToHtml(lesson), [lesson])
   const lessonId = lesson?.id ?? (id ? String(id) : null)
 
+  // mark started once we have the lesson (backend only; no UI) + remember locally
+  useEffect(() => {
+    if (lessonId && lesson) {
+      markStarted(lessonId)
+      setLastSeen(lessonId)
+    }
+  }, [lessonId, lesson])
+
   // “Ray Ray Says” — live from backend once you submit
   const [rayMemo, setRayMemo] = useState(null)
   const rayLines = rayMemo && Array.isArray(rayMemo) && rayMemo.length
@@ -85,7 +95,12 @@ export default function SigilRunner() {
   async function handleSubmit() {
     try {
       const rsp = await submitAttempt({ id, text, minWords: stats.min })
-      setRayMemo(rsp?.report?.memo || [])
+      const memo = rsp?.report?.memo
+      setRayMemo(Array.isArray(memo) ? memo : memo ? [String(memo)] : [])
+      // save “submitted” on backend (no visible progress)
+      if (lessonId) markSubmitted(lessonId, rsp?.report?.verdict)
+      // also refresh local last seen
+      if (lessonId) setLastSeen(lessonId)
       const tray = document.querySelector('.sigil-tray')
       tray?.scrollIntoView({ behavior: 'smooth', block: 'start' })
     } catch (e) {
@@ -136,7 +151,26 @@ export default function SigilRunner() {
             <div>{stats.words} words {stats.words < stats.min ? `(need at least ${stats.min})` : '✓'}</div>
             <div style={{ display: 'flex', gap: 8 }}>
               <button style={btn} onClick={handleSubmit}>Submit</button>
-              <button style={btn} onClick={() => nav('/sigil')}>I don’t feel like it</button>
+              <button
+                style={btn}
+                onClick={() => {
+                  if (lessonId) void markSkipped(lessonId)
+                  safeFetchJSON('/sigil/catalog')
+                    .then(cat => {
+                      const items = toCatalogItems(cat)
+                      const ids = items.map(entry => entry.id)
+                      const current = lessonId ?? ''
+                      const idx = Math.max(0, ids.indexOf(current))
+                      const next = ids[idx + 1] ?? ids[0]
+                      if (next) {
+                        nav(`/sigil/${encodeURIComponent(next)}`)
+                      } else {
+                        nav('/sigil')
+                      }
+                    })
+                    .catch(() => nav('/sigil'))
+                }}
+              >I don’t feel like it</button>
               <button style={btn} onClick={() => {
                 safeFetchJSON('/sigil/catalog').then(cat => {
                   const items = toCatalogItems(cat)

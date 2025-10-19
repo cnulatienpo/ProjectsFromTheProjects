@@ -1,36 +1,58 @@
 import { useEffect, useState } from 'react'
-// ensure the Sigil UI stylesheet is loaded (shared source copy)
 import '../../../src/pages/SigilSyntaxGame.css'
-import { apiBase, safeFetchJSON } from '@/lib/apiBase'
+import { api, safeFetchJSON } from '@/lib/apiBase'
 import { useNavigate } from 'react-router-dom'
-import { snapAndDownload } from '@/lib/snapshot.js'
-import { toCatalogItems } from '@/lib/normalize'
+import { fetchNextId } from '@/lib/progressApi.js'
 
-export default function SigilSyntax() {
-  const [intro, setIntro] = useState('')
+export default function SigilSyntax(){
   const nav = useNavigate()
+  const [cat, setCat] = useState({ games: [], first: null })
+  const [err, setErr] = useState('')
+  const [nextId, setNextId] = useState(null)
+
+  useEffect(()=>{
+    setErr('')
+    safeFetchJSON(api('/sigil/catalog'))
+      .then(async (j)=>{
+        const games = Array.isArray(j?.games)
+          ? j.games.map(it => typeof it === 'string' ? it : it?.id).filter(Boolean)
+          : []
+        const first = j?.first ? String(j.first) : (games[0] ?? null)
+        setCat({ ...j, games, first })
+        // ask backend what to resume; fallback to local if needed; validate against catalog
+        try { setNextId(await fetchNextId(games)) } catch { setNextId(null) }
+      })
+      .catch(e=>setErr(String(e)))
+  },[])
+
+  if (err) return <main style={{padding:24}}><b>Catalog:</b> Error: {String(err)}</main>
+
+  const count = cat.games?.length || 0
 
   return (
-    <main className="sigil-root surface" style={{ padding: 24, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '60vh' }}>
-      <div style={{ maxWidth: 720, width: '100%', textAlign: 'center' }}>
-        <h1 style={{ marginTop: 0 }}>Sigil &amp; Syntax</h1>
-        <p style={{ marginTop: 8, marginBottom: 8 }}>Write the short intro or instructions for the lesson below. This text is a placeholder for now.</p>
-        <textarea
-          value={intro}
-          onChange={e => setIntro(e.target.value)}
-          placeholder="Write your intro/instructions here..."
-          style={{ width: '100%', minHeight: 140, padding: 12, border: '1px solid #000', background: '#fff', color: '#000' }}
-        />
-
-        <div style={{ marginTop: 16, display: 'flex', justifyContent: 'center', gap: 12 }}>
+    <main style={{padding:24, display:'grid', gap:16}}>
+      <h1>Sigil &amp; Syntax</h1>
+      <p>Catalog: Found {count} lessons</p>
+      <div style={{display:'flex', gap:8, flexWrap:'wrap'}}>
+        {!!cat.first && (
           <button
-            onClick={() => nav('/sigil/1')}
-            style={{ padding: '10px 18px', border: '1px solid #000', background: '#000', color: '#fff', cursor: 'pointer' }}
+            onClick={()=>nav(`/sigil/${encodeURIComponent(cat.first)}`)}
+            style={{padding:'10px 16px', border:'1px solid #000', background:'#fff', cursor:'pointer'}}
           >
-            Start
+            Start first lesson
           </button>
-        </div>
+        )}
+        {!!nextId && (
+          <button
+            onClick={()=>nav(`/sigil/${encodeURIComponent(nextId)}`)}
+            style={{padding:'10px 16px', border:'1px solid #000', background:'#fff', cursor:'pointer'}}
+            title="Continue where you left off"
+          >
+            Continue where I left off
+          </button>
+        )}
       </div>
+      <p><a href="/">Back home</a></p>
     </main>
   )
 }

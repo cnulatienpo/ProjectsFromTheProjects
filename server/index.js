@@ -5,7 +5,9 @@ import helmet from 'helmet';
 import { createReadStream, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 import * as readline from 'node:readline';
-import { analyzeAttempt } from './attempt/analyze.js'
+import { buildReport } from './report/index.js';
+import { mark, getUserState } from './progress/store.js';
+import { listSigilIds } from './sigil/catalogIds.js';
 
 const app = express();
 app.use(cors());
@@ -89,13 +91,47 @@ app.get('/sigil/lesson/:id', async (req, res) => {
   }
 });
 
+// Save progress events (started/submitted)
+app.post('/progress/mark', express.json(), async (req, res) => {
+  const { userId, lessonId, kind, verdict } = req.body || {};
+  if (!userId || !lessonId || !kind) return res.status(400).json({ error: 'bad_request' });
+  const state = await mark(userId, lessonId, String(kind), verdict);
+  res.json({ ok: true, state });
+});
+
+// Minimal state (for debugging or future use)
+app.get('/progress/state', async (req, res) => {
+  const userId = String(req.query.userId || '');
+  if (!userId) return res.status(400).json({ error: 'bad_request' });
+  const state = await getUserState(userId);
+  res.json({ ok: true, state });
+});
+
+// What lesson should "Continue" open?
+app.get('/progress/next', async (req, res) => {
+  const userId = String(req.query.userId || '');
+  if (!userId) return res.status(400).json({ error: 'bad_request' });
+  const ids = listSigilIds();
+  const state = await getUserState(userId);
+  if (!ids.length) return res.json({ ok: true, nextId: null });
+  // first unfinished, else fall back to lastId, else first
+  const set = new Set(state.submitted || []);
+  const firstUnfinished = ids.find(id => !set.has(id)) || null;
+  const nextId = firstUnfinished || state.lastId || ids[0];
+  res.json({ ok: true, nextId });
+});
+
 // POST attempt analysis
-app.post('/attempt', express.json(), (req, res) => {
-  const { id, text, minWords } = req.body || {}
-  if (typeof text !== 'string') return res.status(400).json({ error: 'bad_request', message: 'text required' })
-  const report = analyzeAttempt(text, { minWords: Number(minWords || 30) })
-  res.json({ id: id || null, report })
-})
+app.post('/attempt', express.json(), async (req, res) => {
+  const { id, text, minWords } = req.body || {};
+  if (typeof text !== 'string') return res.status(400).json({ error: 'bad_request', message: 'text required' });
+  try {
+    const report = await buildReport(text, { minWords: Number(minWords || 30) });
+    res.json({ id: id || null, report });
+  } catch (e) {
+    res.status(500).json({ error: 'server_error', message: String(e?.message || e) });
+  }
+});
 
 // Start server
 const PORT = process.env.PORT || 3001;
