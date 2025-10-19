@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
+// ensure the Sigil UI stylesheet is loaded (shared source copy)
+import '../../../src/pages/SigilSyntaxGame.css'
 import { apiBase, safeFetchJSON } from '@/lib/apiBase'
 import { useNavigate } from 'react-router-dom'
 import { snapAndDownload } from '@/lib/snapshot.js'
 import { toCatalogItems } from '@/lib/normalize'
 
-export default function SigilSyntax(){
+export default function SigilSyntax() {
   const [raw, setRaw] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -17,31 +19,31 @@ export default function SigilSyntax(){
     const url = `${apiBase}${path}`
     setDebug({ base, tried: url })
     let alive = true
-    ;(async () => {
-      try {
-        setLoading(true)
-        setError('')
-        const json = await safeFetchJSON(path)
-        if (alive) setRaw(json)
-      } catch (e) {
-        console.warn('Catalog load failed:', e?.message || e)
-        if (alive) {
-          setRaw(null)
-          setError(e?.message ? String(e.message) : String(e))
+      ; (async () => {
+        try {
+          setLoading(true)
+          setError('')
+          const json = await safeFetchJSON(path)
+          if (alive) setRaw(json)
+        } catch (e) {
+          console.warn('Catalog load failed:', e?.message || e)
+          if (alive) {
+            setRaw(null)
+            setError(e?.message ? String(e.message) : String(e))
+          }
+        } finally {
+          if (alive) setLoading(false)
         }
-      } finally {
-        if (alive) setLoading(false)
-      }
-    })()
+      })()
     return () => { alive = false }
   }, [])
 
   if (error) return (
-    <main className="sigil-root surface" style={{padding:24}}>
+    <main className="sigil-root surface" style={{ padding: 24 }}>
       Catalog: <b>Error:</b> {error}
-      <pre style={{marginTop:12, fontSize:12, opacity:.8}}>{`Base: ${debug.base}
+      <pre style={{ marginTop: 12, fontSize: 12, opacity: .8 }}>{`Base: ${debug.base}
 URL:  ${debug.tried}`}</pre>
-      <p style={{fontSize:12, opacity:.8}}>
+      <p style={{ fontSize: 12, opacity: .8 }}>
         Try opening the URL above in a new tab. If it’s not JSON, the backend isn’t serving that path.
       </p>
     </main>
@@ -52,21 +54,21 @@ URL:  ${debug.tried}`}</pre>
   const firstId = raw?.first || (items[0]?.id ?? null)
 
   return (
-    <main className="sigil-root surface" style={{padding:24, display:'grid', gap:16}}>
+    <main className="sigil-root surface" style={{ padding: 24, display: 'grid', gap: 16 }}>
       <h1>Sigil &amp; Syntax</h1>
       <p>Catalog: Found {count} lessons</p>
-      <div style={{display:'flex', gap:8, flexWrap:'wrap'}}>
+      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
         {!!firstId && (
           <button
-            onClick={()=>nav(`/sigil/${encodeURIComponent(firstId)}`)}
-            style={{padding:'10px 16px', border:'1px solid #000', background:'#fff', cursor:'pointer'}}
+            onClick={() => nav(`/sigil/${encodeURIComponent(firstId)}`)}
+            style={{ padding: '10px 16px', border: '1px solid #000', background: '#fff', cursor: 'pointer' }}
           >
             Start first lesson
           </button>
         )}
         <button
-          onClick={()=>snapAndDownload('main', 'sigil-catalog.png')}
-          style={{padding:'10px 16px', border:'1px solid #000', background:'#fff', cursor:'pointer'}}
+          onClick={() => snapAndDownload('main', 'sigil-catalog.png')}
+          style={{ padding: '10px 16px', border: '1px solid #000', background: '#fff', cursor: 'pointer' }}
         >
           Save screenshot
         </button>
