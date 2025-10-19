@@ -18,12 +18,18 @@ export async function writeProgress(obj) {
 }
 
 /**
- * shape: map of userId -> { lastId?: string, started: string[], submitted: string[], verdicts: Record<string,string> }
+ * shape: userId -> {
+ *   lastId?: string,
+ *   started: string[],
+ *   submitted: string[],
+ *   skipped: string[],
+ *   verdicts: Record<string,string>
+ * }
  */
 export async function mark(userId, lessonId, kind, verdict) {
   if (!userId || !lessonId) return
   const db = await readProgress()
-  const u = db[userId] ||= { lastId: null, started: [], submitted: [], verdicts: {} }
+  const u = db[userId] ||= { lastId: null, started: [], submitted: [], skipped: [], verdicts: {} }
   if (kind === 'started') {
     if (!u.started.includes(lessonId)) u.started.push(lessonId)
     u.lastId = lessonId
@@ -32,6 +38,10 @@ export async function mark(userId, lessonId, kind, verdict) {
     if (!u.submitted.includes(lessonId)) u.submitted.push(lessonId)
     if (verdict) u.verdicts[lessonId] = verdict
     u.lastId = lessonId
+  } else if (kind === 'skipped') {
+    if (!u.started.includes(lessonId)) u.started.push(lessonId)
+    if (!u.skipped.includes(lessonId)) u.skipped.push(lessonId)
+    u.lastId = lessonId
   }
   await writeProgress(db)
   return u
@@ -39,5 +49,5 @@ export async function mark(userId, lessonId, kind, verdict) {
 
 export async function getUserState(userId) {
   const db = await readProgress()
-  return db[userId] || { lastId: null, started: [], submitted: [], verdicts: {} }
+  return db[userId] || { lastId: null, started: [], submitted: [], skipped: [], verdicts: {} }
 }

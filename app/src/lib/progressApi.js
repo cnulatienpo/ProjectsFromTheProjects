@@ -18,6 +18,14 @@ export async function markSubmitted(lessonId, verdict){
     body: JSON.stringify({ userId, lessonId, kind:'submitted', verdict })
   })
 }
+export async function markSkipped(lessonId){
+  const userId = getUserId()
+  return safeFetchJSON(api('/progress/mark'), {
+    method:'POST',
+    headers:{ 'content-type':'application/json' },
+    body: JSON.stringify({ userId, lessonId, kind:'skipped' })
+  })
+}
 export async function fetchNextId(validIds = []){
   const userId = getUserId()
   // 1) Try backend with a 3s timeout
