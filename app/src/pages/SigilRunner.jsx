@@ -17,6 +17,7 @@ export default function SigilRunner(){
   const [text, setText] = useState('')
   const [rayMemo, setRayMemo] = useState(null)
 
+  // load lesson
   useEffect(() => {
     setErr(''); setIt(null)
     safeFetchJSON(api(`/sigil/game/${encodeURIComponent(id)}`))
@@ -24,15 +25,26 @@ export default function SigilRunner(){
       .catch(e=>setErr(String(e)))
   }, [id])
 
+  // restore draft
   useEffect(() => {
     const key = `sigil:draft:${id}`
     const saved = localStorage.getItem(key)
     if (saved !== null) setText(saved)
   }, [id])
+
+  // persist draft
   useEffect(() => {
     const key = `sigil:draft:${id}`
     localStorage.setItem(key, text)
   }, [id, text])
+
+  // mark started + remember locally (must be before any early return)
+  useEffect(() => {
+    if (id && it) {
+      try { markStarted?.(id) } catch {}
+      try { setLastSeen?.(id) } catch {}
+    }
+  }, [id, it])
 
   const stats = useMemo(() => {
     const words = text.trim() ? text.trim().split(/\s+/).length : 0
@@ -40,11 +52,13 @@ export default function SigilRunner(){
     return { words, min }
   }, [text, it])
 
-  if (err) return (
-    <main style={{padding:24}}>
-      <b>Error:</b> {String(err)} <p><Link to="/sigil">Back to catalog</Link></p>
-    </main>
-  )
+  if (err) {
+    return (
+      <main style={{padding:24}}>
+        <b>Error:</b> {String(err)} <p><Link to="/sigil">Back to catalog</Link></p>
+      </main>
+    )
+  }
   if (!it) return <main style={{padding:24}}>Loading lesson…</main>
 
   // Never show titles or game name — use content/prompt only
@@ -70,14 +84,6 @@ export default function SigilRunner(){
       if (ta) { ta.focus(); const pos = start + snippet.length; ta.setSelectionRange(pos, pos) }
     })
   }
-
-  // mark started + last seen (silent)
-  useEffect(()=>{
-    if (id && it) {
-      try { markStarted?.(id) } catch {}
-      try { setLastSeen?.(id) } catch {}
-    }
-  }, [id, it])
 
   async function handleSubmit(){
     try{
@@ -154,7 +160,7 @@ export default function SigilRunner(){
               nav(`/sigil/${encodeURIComponent(next)}`)
             }).catch(()=>nav('/sigil'))
           }}>Next</button>
-          <button className="pfp-btn" onClick(()=>{
+          <button className="pfp-btn" onClick={()=>{
             try { markSkipped?.(id) } catch {}
             safeFetchJSON(api('/sigil/catalog')).then(cat=>{
               const ids = cat.games || []
@@ -168,3 +174,4 @@ export default function SigilRunner(){
     </main>
   )
 }
+
