@@ -11,6 +11,7 @@ import BeatPalette from '@/components/BeatPalette.jsx'
 import FeedbackTray from '@/components/FeedbackTray.jsx'
 import { submitAttempt } from '@/lib/attemptApi.js'
 import { markStarted, markSubmitted } from '@/lib/progressApi.js'
+import { setLastSeen } from '@/lib/lastSeen.js'
 
 export default function SigilRunner() {
   const { id } = useParams()
@@ -74,10 +75,11 @@ export default function SigilRunner() {
   const promptHtml = useMemo(() => lessonToHtml(lesson), [lesson])
   const lessonId = lesson?.id ?? (id ? String(id) : null)
 
-  // mark started once we have the lesson (backend only; no UI)
+  // mark started once we have the lesson (backend only; no UI) + remember locally
   useEffect(() => {
     if (lessonId && lesson) {
-      markStarted(lessonId).catch(() => {})
+      markStarted(lessonId)
+      setLastSeen(lessonId)
     }
   }, [lessonId, lesson])
 
@@ -97,7 +99,9 @@ export default function SigilRunner() {
       const memo = rsp?.report?.memo
       setRayMemo(Array.isArray(memo) ? memo : memo ? [String(memo)] : [])
       // save “submitted” on backend (no visible progress)
-      if (lessonId) markSubmitted(lessonId, rsp?.report?.verdict).catch(() => {})
+      if (lessonId) markSubmitted(lessonId, rsp?.report?.verdict)
+      // also refresh local last seen
+      if (lessonId) setLastSeen(lessonId)
       const tray = document.querySelector('.sigil-tray')
       tray?.scrollIntoView({ behavior: 'smooth', block: 'start' })
     } catch (e) {

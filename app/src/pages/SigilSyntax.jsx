@@ -6,26 +6,28 @@ import { fetchNextId } from '@/lib/progressApi.js'
 
 export default function SigilSyntax(){
   const nav = useNavigate()
-  const [cat, setCat] = useState({ items: [], first: null })
+  const [cat, setCat] = useState({ games: [], first: null })
   const [err, setErr] = useState('')
   const [nextId, setNextId] = useState(null)
 
   useEffect(()=>{
     setErr('')
     safeFetchJSON(api('/sigil/catalog'))
-      .then((j)=>{
-        const items = Array.isArray(j?.items) ? j.items : []
-        const first = j?.first ? String(j.first) : (items[0]?.id ?? null)
-        setCat({ items, first })
-        // ask backend what to resume; no counts shown
-        fetchNextId().then(setNextId).catch(()=>setNextId(null))
+      .then(async (j)=>{
+        const games = Array.isArray(j?.games)
+          ? j.games.map(it => typeof it === 'string' ? it : it?.id).filter(Boolean)
+          : []
+        const first = j?.first ? String(j.first) : (games[0] ?? null)
+        setCat({ ...j, games, first })
+        // ask backend what to resume; fallback to local if needed; validate against catalog
+        try { setNextId(await fetchNextId(games)) } catch { setNextId(null) }
       })
       .catch(e=>setErr(String(e)))
   },[])
 
   if (err) return <main style={{padding:24}}><b>Catalog:</b> Error: {String(err)}</main>
 
-  const count = cat.items?.length || 0
+  const count = cat.games?.length || 0
 
   return (
     <main style={{padding:24, display:'grid', gap:16}}>
