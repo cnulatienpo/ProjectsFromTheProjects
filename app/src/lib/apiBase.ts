@@ -16,14 +16,9 @@ export async function safeFetchJSON<T = any>(
   init?: RequestInit
 ): Promise<T> {
   const url = toUrl(path);
-  const headers = new Headers({ Accept: 'application/json' });
-  if (init?.headers) {
-    const extra = new Headers(init.headers as HeadersInit);
-    extra.forEach((value, key) => headers.set(key, value));
-  }
   const res = await fetch(url, {
+    headers: { Accept: 'application/json' },
     ...init,
-    headers,
   });
   if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
   return res.json() as Promise<T>;
