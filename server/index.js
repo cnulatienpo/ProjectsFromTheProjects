@@ -1,14 +1,38 @@
 // server/index.js
 import express from 'express';
 import cors from 'cors';
+import helmet from 'helmet';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { createReadStream, existsSync } from 'node:fs';
-import { resolve } from 'node:path';
 import * as readline from 'node:readline';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 app.use(cors());
 
-const FILE = resolve(process.cwd(), 'labeled data', 'tweetrunk_renumbered.jsonl'); // <-- exact path with space
+if (process.env.NODE_ENV === 'production') {
+  app.use(helmet({
+    contentSecurityPolicy: {
+      useDefaults: true,
+      directives: {
+        "default-src": ["'self'"],
+        "script-src": ["'self'"],
+        "style-src": ["'self'", "'unsafe-inline'"],
+        "img-src": ["'self'", 'data:'],
+        "connect-src": ["'self'"],
+      },
+    },
+  }));
+} else {
+  app.use(helmet({
+    contentSecurityPolicy: false,
+  }));
+}
+
+const FILE = path.resolve(process.cwd(), 'labeled data', 'tweetrunk_renumbered.jsonl'); // <-- exact path with space
 
 function splitIntroPrompt(text) {
   const t = String(text || '');
@@ -67,6 +91,31 @@ app.get('/sigil/lesson/:id', async (req, res) => {
     res.status(200).json({ error: 'read_error' });
   }
 });
+
+if (process.env.NODE_ENV === 'production') {
+  const dist = path.resolve(__dirname, '../dist');
+  app.use(express.static(dist));
+
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/sigil/catalog') || req.path.startsWith('/sigil/lesson/')) {
+      return next();
+    }
+
+    if (req.method !== 'GET') {
+      return next();
+    }
+
+    if (req.path === '/sigil' || req.path.startsWith('/sigil/')) {
+      return res.sendFile(path.join(dist, 'index.html'));
+    }
+
+    if (req.accepts('html') && !req.path.includes('.')) {
+      return res.sendFile(path.join(dist, 'index.html'));
+    }
+
+    return next();
+  });
+}
 
 const PORT = process.env.PORT || 3001;
 const HOST = '0.0.0.0';               // <— IMPORTANT in Codespaces
