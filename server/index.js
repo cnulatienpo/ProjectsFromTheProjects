@@ -45,7 +45,7 @@ async function* readJSONL(path) {
   for await (const ln of rl) {
     const s = ln.trim();
     if (!s || s.startsWith('//')) continue;
-    try { yield JSON.parse(s.replace(/,?$/, '')); } catch {}
+    try { yield JSON.parse(s.replace(/,?$/, '')); } catch { }
   }
 }
 
@@ -57,7 +57,7 @@ app.get('/sigil/catalog', async (_req, res) => {
     let i = 0;
     for await (const row of readJSONL(FILE)) {
       const id = String(row?.new_id ?? row?.original_id ?? `item-${i}`);
-      const title = String(row?.title ?? (row?.text ?? '').toString().slice(0, 140) || `Untitled ${id}`);
+      const title = String((row?.title ?? ((row?.text ?? '').toString().slice(0, 140))) || `Untitled ${id}`);
       items.push({ id, title });
       if (++i >= 500) break;
     }
