@@ -1,232 +1,170 @@
 import { useEffect, useMemo, useState } from 'react'
-// ensure the Sigil UI stylesheet is loaded (shared source copy)
-import '../../../src/pages/SigilSyntaxGame.css'
-import { useParams, Link, useNavigate } from 'react-router-dom'
-import { safeFetchJSON } from '@/lib/apiBase'
+import { useParams, useNavigate, Link } from 'react-router-dom'
+import { api, safeFetchJSON } from '@/lib/apiBase.js'
+import BeatPalette from '@/components/BeatPalette.jsx'
 import NotesPanel from '@/components/NotesPanel.jsx'
-import { snapAndDownload } from '@/lib/snapshot.js'
-import { toCatalogItems } from '@/lib/normalize'
-import { getLesson } from '@/services/sigilLesson'
 import FeedbackTray from '@/components/FeedbackTray.jsx'
 import { submitAttempt } from '@/lib/attemptApi.js'
 import { markStarted, markSubmitted, markSkipped } from '@/lib/progressApi.js'
 import { setLastSeen } from '@/lib/lastSeen.js'
+import { snapAndDownload } from '@/lib/snapshot.js'
 
-export default function SigilRunner() {
+export default function SigilRunner(){
   const { id } = useParams()
   const nav = useNavigate()
-  const [lesson, setLesson] = useState(null)
+  const [it, setIt] = useState(null)
   const [err, setErr] = useState('')
   const [text, setText] = useState('')
-  const [loading, setLoading] = useState(true)
+  const [rayMemo, setRayMemo] = useState(null)
 
-  // load lesson
   useEffect(() => {
-    let active = true
-    setErr('')
-    setLesson(null)
-    setLoading(true)
-    const targetId = id ? String(id) : undefined
-    getLesson(targetId)
-      .then(data => {
-        if (!active) return
-        if (!data) {
-          setErr('Lesson unavailable.')
-          return
-        }
-        setLesson(data)
-      })
-      .catch(e => {
-        if (!active) return
-        setErr(e?.message ? String(e.message) : String(e))
-      })
-      .finally(() => {
-        if (active) setLoading(false)
-      })
-    return () => { active = false }
+    setErr(''); setIt(null)
+    safeFetchJSON(api(`/sigil/game/${encodeURIComponent(id)}`))
+      .then(setIt)
+      .catch(e=>setErr(String(e)))
   }, [id])
 
-  // draft autosave keyed by lesson id
   useEffect(() => {
-    const lessonId = lesson?.id ?? (id ? String(id) : null)
-    if (!lessonId) return
-    const key = `sigil:draft:${lessonId}`
+    const key = `sigil:draft:${id}`
     const saved = localStorage.getItem(key)
-    if (saved !== null) {
-      setText(saved)
-    } else {
-      setText('')
-    }
-  }, [lesson, id])
+    if (saved !== null) setText(saved)
+  }, [id])
   useEffect(() => {
-    const lessonId = lesson?.id ?? (id ? String(id) : null)
-    if (!lessonId) return
-    const key = `sigil:draft:${lessonId}`
+    const key = `sigil:draft:${id}`
     localStorage.setItem(key, text)
-  }, [lesson, id, text])
+  }, [id, text])
 
   const stats = useMemo(() => {
     const words = text.trim() ? text.trim().split(/\s+/).length : 0
-    const min = 30
+    const min = it?.min_words ?? 30
     return { words, min }
-  }, [text])
+  }, [text, it])
 
-  const promptHtml = useMemo(() => lessonToHtml(lesson), [lesson])
-  const lessonId = lesson?.id ?? (id ? String(id) : null)
+  if (err) return (
+    <main style={{padding:24}}>
+      <b>Error:</b> {String(err)} <p><Link to="/sigil">Back to catalog</Link></p>
+    </main>
+  )
+  if (!it) return <main style={{padding:24}}>Loading lesson…</main>
 
-  // mark started once we have the lesson (backend only; no UI) + remember locally
-  useEffect(() => {
-    if (lessonId && lesson) {
-      markStarted(lessonId)
-      setLastSeen(lessonId)
+  // Never show titles or game name — use content/prompt only
+  const contentHTML = it.content_html || it.prompt_html || ''
+  const promptHTML  = it.prompt_hint || (it.content_html && it.prompt_html ? it.prompt_html : '')
+
+  // small default memo until first submit
+  const memoFallback = [
+    'Focus your character’s desire in the first 1–2 sentences.',
+    'Add a concrete obstacle; make it specific.',
+    'Use one sensory detail (sound, smell, texture).'
+  ]
+  const rayLines = (rayMemo && Array.isArray(rayMemo) && rayMemo.length) ? rayMemo : memoFallback
+
+  // insert helper for BeatPalette
+  const insertAtCursor = (snippet) => {
+    const ta = document.querySelector('textarea[data-editor="sigil"]')
+    const start = ta?.selectionStart ?? text.length
+    const end   = ta?.selectionEnd ?? text.length
+    const next  = text.slice(0, start) + snippet + text.slice(end)
+    setText(next)
+    requestAnimationFrame(() => {
+      if (ta) { ta.focus(); const pos = start + snippet.length; ta.setSelectionRange(pos, pos) }
+    })
+  }
+
+  // mark started + last seen (silent)
+  useEffect(()=>{
+    if (id && it) {
+      try { markStarted?.(id) } catch {}
+      try { setLastSeen?.(id) } catch {}
     }
-  }, [lessonId, lesson])
+  }, [id, it])
 
-  // “Ray Ray Says” — live from backend once you submit
-  const [rayMemo, setRayMemo] = useState(null)
-  const rayLines = rayMemo && Array.isArray(rayMemo) && rayMemo.length
-    ? rayMemo
-    : [
-      'Focus your character’s desire in the first 1–2 sentences.',
-      'Add a concrete obstacle; make it specific.',
-      'Use one sensory detail (sound, smell, texture).'
-    ]
-
-  async function handleSubmit() {
-    try {
+  async function handleSubmit(){
+    try{
       const rsp = await submitAttempt({ id, text, minWords: stats.min })
-      const memo = rsp?.report?.memo
-      setRayMemo(Array.isArray(memo) ? memo : memo ? [String(memo)] : [])
-      // save “submitted” on backend (no visible progress)
-      if (lessonId) markSubmitted(lessonId, rsp?.report?.verdict)
-      // also refresh local last seen
-      if (lessonId) setLastSeen(lessonId)
+      const rep = rsp?.report || null
+      setRayMemo(rep?.memo || [])
+      try { markSubmitted?.(id, rep?.verdict) } catch {}
       const tray = document.querySelector('.sigil-tray')
-      tray?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    } catch (e) {
-      // keep simple for now
-      alert('Could not submit: ' + (e?.message || String(e)))
+      tray?.scrollIntoView({ behavior:'smooth', block:'start' })
+    }catch(e){
+      alert('Could not submit: ' + e)
     }
   }
 
-  if (err) return <main className="sigil-root surface" style={{ padding: 24 }}><b>Error:</b> {err} <p><Link to="/sigil">Back to catalog</Link></p></main>
-  if (!lesson) return <main className="sigil-root surface" style={{ padding: 24 }}>{loading ? 'Loading lesson…' : 'No lesson available.'}</main>
-
   return (
-    <main className="sigil-root surface sigil-layout" style={{ padding: 24 }}>
-      <div className="sigil-topbar" style={{ display: 'flex', gap: 8, justifyContent: 'flex-end', marginBottom: 8 }}>
-        <button
-          onClick={() => snapAndDownload('main', `sigil-${encodeURIComponent(lessonId ?? 'lesson')}.png`)}
-          style={{ padding: '8px 12px', border: '1px solid #000', background: '#fff', cursor: 'pointer', fontSize: 12 }}
-        >
-          Save screenshot
-        </button>
+    <main className="pfp-shell">
+      {/* Top toolbar — no game name, no titles */}
+      <div className="pfp-toolbar">
+        <button onClick={()=>snapAndDownload('main', `sigil-${encodeURIComponent(id)}.png`)} className="pfp-btn">Save screenshot</button>
+        <button onClick={()=>nav('/sigil')} className="pfp-btn">Back to catalog</button>
       </div>
 
-      {/* Content then prompt stacked */}
-      <div className="sigil-top-boxes" style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 12 }}>
-        <section className="sigil-content-box" style={{ border: '1px solid #000', padding: 12, background: '#f6f6f6' }}>
-          {/* intentionally no title — do not promote first line to a heading */}
-          <div dangerouslySetInnerHTML={{ __html: toParagraphHtml(lesson.intro || '') }} />
-        </section>
-        <section className="sigil-prompt-box" style={{ border: '1px solid #000', padding: 12, background: '#fff' }}>
-          {/* placeholder until prompt wiring is fixed */}
-          <div style={{ color: '#444' }}>Prompt placeholder — prompt content will appear here.</div>
-        </section>
-      </div>
+      {/* CONTENT (top) */}
+      <section className="sigil-box sigil-content">
+        <div dangerouslySetInnerHTML={{__html: contentHTML}} />
+      </section>
 
-      {/* two-column layout: EDITOR | NOTES (BeatPalette removed) */}
-      <div className="sigil-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 360px', gap: 16, alignItems: 'start' }}>
+      {/* PROMPT (smaller, same width, unlabeled) */}
+      <section className="sigil-box sigil-prompt">
+        <div dangerouslySetInnerHTML={{__html: promptHTML}} />
+      </section>
 
-        {/* EDITOR */}
-        <section style={{ border: '1px solid #000', padding: 12, background: '#fff' }}>
+      {/* 3-column: beats • editor • notes */}
+      <div className="sigil-grid-3">
+        <aside className="sigil-beats">
+          <BeatPalette onInsert={insertAtCursor} compact vertical />
+        </aside>
+
+        <section className="sigil-editor">
           <textarea
             value={text}
-            onChange={e => setText(e.target.value)}
-            style={{ width: '100%', height: '60vh', padding: 12, border: '1px solid #000', background: '#fff' }}
+            onChange={e=>setText(e.target.value)}
+            data-editor="sigil"
+            className="sigil-textarea"
             placeholder="Write your response here…"
           />
-
-          <div style={{ marginTop: 8, fontSize: 12, opacity: .85, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <div>{stats.words} words {stats.words < stats.min ? `(need at least ${stats.min})` : '✓'}</div>
-            <div style={{ display: 'flex', gap: 8 }}>
-              <button style={btn} onClick={handleSubmit}>Submit</button>
-              <button
-                style={btn}
-                onClick={() => {
-                  if (lessonId) void markSkipped(lessonId)
-                  safeFetchJSON('/sigil/catalog')
-                    .then(cat => {
-                      const items = toCatalogItems(cat)
-                      const ids = items.map(entry => entry.id)
-                      const current = lessonId ?? ''
-                      const idx = Math.max(0, ids.indexOf(current))
-                      const next = ids[idx + 1] ?? ids[0]
-                      if (next) {
-                        nav(`/sigil/${encodeURIComponent(next)}`)
-                      } else {
-                        nav('/sigil')
-                      }
-                    })
-                    .catch(() => nav('/sigil'))
-                }}
-              >I don’t feel like it</button>
-              <button style={btn} onClick={() => {
-                safeFetchJSON('/sigil/catalog').then(cat => {
-                  const items = toCatalogItems(cat)
-                  const ids = items.map(entry => entry.id)
-                  const current = lessonId ?? ''
-                  const idx = ids.indexOf(current)
-                  const nextIdx = idx >= 0 ? idx + 1 : 0
-                  const next = ids[nextIdx] ?? ids[0]
-                  if (next) nav(`/sigil/${encodeURIComponent(next)}`)
-                })
-              }}>Next</button>
-              <button style={btn} onClick={() => setText('')}>Try again</button>
-            </div>
-          </div>
-
-          {/* Feedback tray below editor */}
-          <div style={{ marginTop: 12 }} className="sigil-tray">
-            <FeedbackTray lesson={lesson} text={text} />
+          <div className="sigil-meta">
+            {stats.words} words {stats.words < stats.min ? `(need at least ${stats.min})` : '✓'}
           </div>
         </section>
 
-        {/* NOTES (Ray Ray + My notes) */}
-        <NotesPanel
-          gameKey="sigil"
-          lessonId={lessonId}
-          rayRayTitle="Ray Ray Says"
-          rayRayLines={rayLines}
-        />
+        <aside className="sigil-notes">
+          <NotesPanel
+            gameKey="sigil"
+            lessonId={id}
+            rayRayTitle="Ray Ray Says"
+            rayRayLines={rayLines}
+          />
+        </aside>
       </div>
+
+      {/* Ray Ray Says + nav buttons */}
+      <section className="sigil-tray">
+        <div className="sigil-tray-title">Ray Ray Says</div>
+        <FeedbackTray text={text} minWords={stats.min} />
+        <div className="pfp-actions">
+          <button className="pfp-btn" onClick={handleSubmit}>Submit</button>
+          <button className="pfp-btn" onClick={()=>setText('')}>Try again</button>
+          <button className="pfp-btn" onClick={()=>{
+            safeFetchJSON(api('/sigil/catalog')).then(cat=>{
+              const ids = cat.games || []
+              const i = ids.indexOf(id)
+              const next = ids[i+1] || ids[0]
+              nav(`/sigil/${encodeURIComponent(next)}`)
+            }).catch(()=>nav('/sigil'))
+          }}>Next</button>
+          <button className="pfp-btn" onClick(()=>{
+            try { markSkipped?.(id) } catch {}
+            safeFetchJSON(api('/sigil/catalog')).then(cat=>{
+              const ids = cat.games || []
+              const i = Math.max(0, ids.indexOf(id))
+              const next = ids[i+1] || ids[0]
+              nav(`/sigil/${encodeURIComponent(next)}`)
+            }).catch(()=>nav('/sigil'))
+          }}>I don’t feel like it</button>
+        </div>
+      </section>
     </main>
   )
 }
-
-function escapeHtml(str = '') {
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;')
-}
-
-function toParagraphHtml(text = '') {
-  const safe = escapeHtml(text)
-  return safe
-    .split(/\n\s*\n/)
-    .map(block => `<p>${block.replace(/\n/g, '<br />')}</p>`)
-    .join('')
-}
-
-function lessonToHtml(lesson) {
-  if (!lesson) return ''
-  const parts = []
-  if (lesson.intro) parts.push(toParagraphHtml(lesson.intro))
-  if (lesson.prompt) parts.push(toParagraphHtml(lesson.prompt))
-  return parts.join('')
-}
-
-const btn = { padding: '10px 16px', border: '1px solid #000', background: '#fff', cursor: 'pointer' }
