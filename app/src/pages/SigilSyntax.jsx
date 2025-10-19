@@ -1,58 +1,63 @@
 import { useEffect, useState } from 'react'
-import '../../../src/pages/SigilSyntaxGame.css'
-import { api, safeFetchJSON } from '@/lib/apiBase'
 import { useNavigate } from 'react-router-dom'
-import { fetchNextId } from '@/lib/progressApi.js'
+import { api, safeFetchJSON } from '@/lib/apiBase.js'
+import { fetchNextId } from '@/lib/progressApi.js' // ok if missing; guard below
 
 export default function SigilSyntax(){
   const nav = useNavigate()
   const [cat, setCat] = useState({ games: [], first: null })
-  const [err, setErr] = useState('')
   const [nextId, setNextId] = useState(null)
+  const [err, setErr] = useState('')
 
   useEffect(()=>{
+    let mounted = true
     setErr('')
     safeFetchJSON(api('/sigil/catalog'))
-      .then(async (j)=>{
-        const games = Array.isArray(j?.games)
-          ? j.games.map(it => typeof it === 'string' ? it : it?.id).filter(Boolean)
-          : []
-        const first = j?.first ? String(j.first) : (games[0] ?? null)
-        setCat({ ...j, games, first })
-        // ask backend what to resume; fallback to local if needed; validate against catalog
-        try { setNextId(await fetchNextId(games)) } catch { setNextId(null) }
+      .then(async j=>{
+        if (!mounted) return
+        const games = Array.isArray(j?.games) ? j.games : []
+        const first = j?.first || games[0] || null
+        setCat({ games, first })
+        try {
+          if (typeof fetchNextId === 'function') {
+            const id = await fetchNextId(games)
+            if (mounted) setNextId(id)
+          }
+        } catch {}
       })
-      .catch(e=>setErr(String(e)))
+      .catch(e=>mounted && setErr(String(e)))
+    return ()=>{ mounted = false }
   },[])
 
-  if (err) return <main style={{padding:24}}><b>Catalog:</b> Error: {String(err)}</main>
-
-  const count = cat.games?.length || 0
-
+  const count = cat.games.length
   return (
     <main style={{padding:24, display:'grid', gap:16}}>
       <h1>Sigil &amp; Syntax</h1>
       <p>Catalog: Found {count} lessons</p>
+
       <div style={{display:'flex', gap:8, flexWrap:'wrap'}}>
-        {!!cat.first && (
+        {cat.first && (
           <button
             onClick={()=>nav(`/sigil/${encodeURIComponent(cat.first)}`)}
-            style={{padding:'10px 16px', border:'1px solid #000', background:'#fff', cursor:'pointer'}}
+            style={btn}
           >
             Start first lesson
           </button>
         )}
-        {!!nextId && (
+        {nextId && (
           <button
             onClick={()=>nav(`/sigil/${encodeURIComponent(nextId)}`)}
-            style={{padding:'10px 16px', border:'1px solid #000', background:'#fff', cursor:'pointer'}}
+            style={btn}
             title="Continue where you left off"
           >
             Continue where I left off
           </button>
         )}
       </div>
+
+      {err && <div style={{color:'#b54708'}}><b>Catalog:</b> Error: {err}</div>}
       <p><a href="/">Back home</a></p>
     </main>
   )
 }
+const btn = { padding:'10px 16px', border:'1px solid #000', background:'#fff', cursor:'pointer' }

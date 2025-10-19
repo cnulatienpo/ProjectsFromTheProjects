@@ -1,40 +1,24 @@
-import React from 'react'
+import { BEATS } from '@/shared/beatPalette.js'
 
-export default function BeatPalette({ beats = [], vertical = false, compact = false, onInsert = () => { } }) {
-    // simple default beats if none provided
-    const defaultBeats = [
-        'A sharp knock at the door.',
-        'He hesitated, then reached.',
-        'Something small snapped in the dark.'
-    ]
-    const items = beats.length ? beats : defaultBeats
-
-    const containerStyle = {
-        display: 'flex',
-        flexDirection: vertical ? 'column' : 'row',
-        gap: compact ? 6 : 12,
-        alignItems: vertical ? 'stretch' : 'flex-start',
-        maxHeight: vertical ? '60vh' : 'auto',
-        overflowY: vertical ? 'auto' : 'visible'
-    }
-
-    const chipStyle = {
-        padding: compact ? '6px 8px' : '10px 12px',
-        border: '1px solid #ccc',
-        borderRadius: 6,
-        background: '#fafafa',
-        cursor: 'pointer',
-        fontSize: compact ? 12 : 14,
-        lineHeight: 1.2
-    }
-
-    return (
-        <div style={containerStyle}>
-            {items.map((b, i) => (
-                <div key={i} style={chipStyle} onClick={() => onInsert(b)} title="Insert beat">
-                    {b}
-                </div>
-            ))}
-        </div>
-    )
+export default function BeatPalette({ onInsert, compact=false, vertical=false }) {
+  const btnStyle = {
+    padding: compact ? '4px 8px' : '6px 10px',
+    border:'1px solid #222',
+    background:'#fff',
+    fontSize: compact ? 11 : 12,
+    cursor:'pointer',
+    lineHeight: 1.1
+  }
+  const wrapStyle = vertical
+    ? { display:'flex', flexDirection:'column', gap:6 }
+    : { display:'flex', gap:8, flexWrap:'wrap' }
+  return (
+    <div style={{ ...wrapStyle, border:'1px dashed #888', padding:8, background:'#fafafa' }}>
+      {BEATS.map(b => (
+        <button key={b.key} onClick={() => onInsert(b.text)} title={b.text} style={btnStyle}>
+          {b.label}
+        </button>
+      ))}
+    </div>
+  )
 }
