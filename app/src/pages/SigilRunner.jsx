@@ -10,6 +10,7 @@ import { getLesson } from '@/services/sigilLesson'
 import BeatPalette from '@/components/BeatPalette.jsx'
 import FeedbackTray from '@/components/FeedbackTray.jsx'
 import { submitAttempt } from '@/lib/attemptApi.js'
+import { markStarted, markSubmitted } from '@/lib/progressApi.js'
 
 export default function SigilRunner() {
   const { id } = useParams()
@@ -73,6 +74,13 @@ export default function SigilRunner() {
   const promptHtml = useMemo(() => lessonToHtml(lesson), [lesson])
   const lessonId = lesson?.id ?? (id ? String(id) : null)
 
+  // mark started once we have the lesson (backend only; no UI)
+  useEffect(() => {
+    if (lessonId && lesson) {
+      markStarted(lessonId).catch(() => {})
+    }
+  }, [lessonId, lesson])
+
   // “Ray Ray Says” — live from backend once you submit
   const [rayMemo, setRayMemo] = useState(null)
   const rayLines = rayMemo && Array.isArray(rayMemo) && rayMemo.length
@@ -88,6 +96,8 @@ export default function SigilRunner() {
       const rsp = await submitAttempt({ id, text, minWords: stats.min })
       const memo = rsp?.report?.memo
       setRayMemo(Array.isArray(memo) ? memo : memo ? [String(memo)] : [])
+      // save “submitted” on backend (no visible progress)
+      if (lessonId) markSubmitted(lessonId, rsp?.report?.verdict).catch(() => {})
       const tray = document.querySelector('.sigil-tray')
       tray?.scrollIntoView({ behavior: 'smooth', block: 'start' })
     } catch (e) {
