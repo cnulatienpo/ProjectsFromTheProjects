@@ -11,40 +11,24 @@ import { listSigilIds } from './sigil/catalogIds.js';
 
 const app = express();
 app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // === Helmet: relaxed CSP in DEV so Vite dev client works; strict in PROD ===
-const isDev = process.env.NODE_ENV !== 'production';
+const isProd = process.env.NODE_ENV === 'production';
 
-if (isDev) {
-  // 🔓 Development: relax CSP so Vite HMR + eval-based modules can run
+if (isProd) {
+  app.use(helmet());
+  console.log('🔒 Helmet: production CSP enabled');
+} else {
   app.use(
     helmet({
-      contentSecurityPolicy: {
-        directives: {
-          defaultSrc: ["'self'"],
-          scriptSrc: ["'self'", "'unsafe-eval'", "'unsafe-inline'"],
-          connectSrc: ["'self'", "ws:", "wss:"],
-          styleSrc: ["'self'", "'unsafe-inline'"],
-        },
-      },
+      contentSecurityPolicy: false,
       crossOriginEmbedderPolicy: false,
       crossOriginOpenerPolicy: false,
     })
   );
   console.log('⚙️  Helmet: relaxed CSP for development');
-} else {
-  // Dev: turn off CSP so Vite’s dev client can run
-  app.use(helmet({
-    contentSecurityPolicy: false,
-  }));
-  app.use(helmet({ contentSecurityPolicy: false })); // DEV: turn off CSP on API origin
-  // 🔒 Production: strict security (no eval)
-  app.use(
-    helmet({
-      contentSecurityPolicy: true,
-    })
-  );
-  console.log('🔒 Helmet: production CSP enabled');
 }
 
 // ====== Sigil JSONL endpoints (unchanged) ======
@@ -133,17 +117,28 @@ app.get('/sigil/lesson/:id', async (req, res) => {
 });
 
 // Save progress events (started/submitted)
-app.post('/progress/mark', express.json(), async (req, res) => {
+app.post('/progress/mark', async (req, res) => {
   try {
-    const { userId, lessonId, kind, verdict } = req.body || {};
-    if (!userId || !lessonId || !kind) return res.status(400).json({ error: 'bad_request' });
-    const state = await mark(userId, lessonId, String(kind), verdict);
-    res.json({ ok: true, state });
+    const body = req.body ?? {};
+    const userId = typeof body.userId === 'string' && body.userId.trim() ? body.userId.trim() : null;
+    const lessonIdRaw = body.lessonId ?? body.id ?? req.query.lessonId ?? null;
+    const lessonId = typeof lessonIdRaw === 'string' && lessonIdRaw.trim() ? lessonIdRaw.trim() : null;
+    const kindRaw = body.kind ?? body.event ?? null;
+    const kind = typeof kindRaw === 'string' && kindRaw.trim() ? kindRaw.trim() : null;
+    const verdict = body.verdict ?? null;
+
+    if (!userId || !lessonId || !kind) {
+      console.warn('[progress/mark] missing fields', { userId, lessonId, kind });
+      return res.status(200).json({ ok: false, error: 'missing_fields', userId, lessonId, kind });
+    }
+
+    const state = await mark(userId, lessonId, kind, verdict);
+    return res.json({ ok: true, state });
   } catch (e) {
     const msg = `[PROGRESS MARK ERROR] ${new Date().toISOString()} ${String(e.stack || e)}\n`;
     try { appendFileSync('/tmp/server.err.log', msg); } catch (ex) { /* ignore */ }
-    console.error(msg);
-    res.status(500).json({ error: 'server_error', message: String(e?.message || e) });
+    console.error('[/progress/mark] error', e);
+    return res.status(200).json({ ok: false, error: 'server_error', message: String(e?.message || e) });
   }
 });
 
