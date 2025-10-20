@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import BeatEditor from "@/components/BeatEditor";
-import BeatRail from "@/components/BeatRail";
+import BeatRailOverlay from "@/components/BeatRailOverlay";
 import type { LessonMeta } from "@/components/BeatSpawner";
 import { useBeatUnlocks } from "@/state/useBeatUnlocks";
 import { beatsForLesson } from "@/logic/beatUnlockSchedule";
@@ -34,21 +34,22 @@ export default function BeatWritingBox({ lesson }: { lesson: LessonMeta }) {
   }, [lesson?.id]);
 
   return (
-    <div className="beat-writing-wrap">
-      {/* The side rail attaches to the outside, top-left */}
-      <BeatRail
-        lessonId={lesson.id}
-        emoticonColor={lesson.emoticonColor}
+    <>
+      <BeatRailOverlay
         emoticonMap={lesson.emoticonMap}
+        colorMap={lesson.emoticonColor}
+        editorSelectorHints={[".beat-writing-box"]}
         onInsert={(payload) => setPendingInsert(payload)}
       />
-      {/* The editor occupies the main area */}
-      <div className="beat-writing-box">
-        <BeatEditor
-          pendingInsert={pendingInsert}
-          onConsumeInsert={() => setPendingInsert(null)}
-        />
+      <div className="beat-writing-wrap">
+        {/* The editor occupies the main area */}
+        <div className="beat-writing-box">
+          <BeatEditor
+            pendingInsert={pendingInsert}
+            onConsumeInsert={() => setPendingInsert(null)}
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
