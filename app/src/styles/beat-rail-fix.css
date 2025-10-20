@@ -1,0 +1,29 @@
+/* === Beat Rail unclipping & positioning (scoped) === */
+
+/* Unclip the editor only when the rail wrapper is present */
+.beat-writing-wrap .sigil-editor,
+.beat-writing-wrap [class*="sigil-editor"] {
+  overflow: visible !important;  /* <-- stop clipping the rail */
+}
+
+/* Ensure the wrapper provides a positioning context & reserves left space */
+.beat-writing-wrap {
+  position: relative !important;
+  --rail-left: 96px;             /* width to reserve for 1-column rail */
+  margin-left: var(--rail-left) !important;
+}
+
+/* Pin the rail outside-left of the writing area */
+.beat-rail {
+  position: absolute !important;
+  top: 0;
+  bottom: 0;
+  left: calc(-1 * var(--rail-left)) !important;
+  z-index: 10000;                /* above editor chrome */
+  pointer-events: auto;
+}
+
+/* Optional: when you switch to 2 columns later */
+.beat-rail.two {
+  --rail-left: 160px; /* ~2*btn + gaps */
+}
