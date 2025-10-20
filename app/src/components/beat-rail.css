@@ -1,0 +1,46 @@
+:root {
+    --rail-btn: 28px;
+    --rail-pad: 6px;
+    --rail-gap: 8px;
+    --rail-left: 96px;
+}
+
+.beat-rail {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(-1 * var(--rail-left));
+    z-index: 10;
+    background: rgba(255, 0, 0, .06);
+    pointer-events: none;
+}
+
+.rail-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--rail-gap);
+    padding: 0;
+    margin: 0;
+    pointer-events: auto;
+}
+
+.beat-rail.two .rail-grid {
+    grid-template-columns: 1fr 1fr;
+}
+
+.rail-btn {
+    width: var(--rail-btn);
+    height: var(--rail-btn);
+    border-radius: 8px;
+    border: 0;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .1) inset, 0 1px 2px rgba(0, 0, 0, .06);
+}
+
+.emoji {
+    font-size: 16px;
+    line-height: 1;
+    user-select: none;
+}

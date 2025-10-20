@@ -2,7 +2,7 @@
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
-import { createReadStream, existsSync } from 'node:fs';
+import { createReadStream, existsSync, appendFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import * as readline from 'node:readline';
 import { buildReport } from './report/index.js';
@@ -12,23 +12,34 @@ import { listSigilIds } from './sigil/catalogIds.js';
 const app = express();
 app.use(cors());
 
-// === Helmet: strict CSP in PROD; disable CSP in DEV so Vite dev client works ===
-if (process.env.NODE_ENV === 'production') {
-  app.use(helmet({
-    contentSecurityPolicy: {
-      useDefaults: true,
-      directives: {
-        "default-src": ["'self'"],
-        "script-src": ["'self'"],          // no eval, no inline in prod
-        "style-src": ["'self'", "'unsafe-inline'"],
-        "img-src": ["'self'", "data:"],
-        "connect-src": ["'self'"],         // add external APIs if needed
-        "font-src": ["'self'", "data:"],
-      }
-    }
-  }));
+// === Helmet: relaxed CSP in DEV so Vite dev client works; strict in PROD ===
+const isDev = process.env.NODE_ENV !== 'production';
+
+if (isDev) {
+  // 🔓 Development: relax CSP so Vite HMR + eval-based modules can run
+  app.use(
+    helmet({
+      contentSecurityPolicy: {
+        directives: {
+          defaultSrc: ["'self'"],
+          scriptSrc: ["'self'", "'unsafe-eval'", "'unsafe-inline'"],
+          connectSrc: ["'self'", "ws:", "wss:"],
+          styleSrc: ["'self'", "'unsafe-inline'"],
+        },
+      },
+      crossOriginEmbedderPolicy: false,
+      crossOriginOpenerPolicy: false,
+    })
+  );
+  console.log('⚙️  Helmet: relaxed CSP for development');
 } else {
-  app.use(helmet({ contentSecurityPolicy: false })); // DEV: turn off CSP on API origin
+  // 🔒 Production: strict security (no eval)
+  app.use(
+    helmet({
+      contentSecurityPolicy: true,
+    })
+  );
+  console.log('🔒 Helmet: production CSP enabled');
 }
 
 // ====== Sigil JSONL endpoints (unchanged) ======
@@ -107,17 +118,26 @@ app.get('/sigil/lesson/:id', async (req, res) => {
     }
     res.status(404).json({ error: 'lesson_not_found', id: want });
   } catch (e) {
-    console.error('[Sigil] /sigil/lesson error', e);
-    res.status(200).json({ error: 'read_error' });
+    const msg = `[SIGIL LESSON ERROR] ${new Date().toISOString()} ${String(e.stack || e)}\n`;
+    try { appendFileSync('/tmp/server.err.log', msg); } catch (ex) { /* ignore */ }
+    console.error(msg);
+    res.status(500).json({ error: 'server_error', message: String(e?.message || e) });
   }
 });
 
 // Save progress events (started/submitted)
 app.post('/progress/mark', express.json(), async (req, res) => {
-  const { userId, lessonId, kind, verdict } = req.body || {};
-  if (!userId || !lessonId || !kind) return res.status(400).json({ error: 'bad_request' });
-  const state = await mark(userId, lessonId, String(kind), verdict);
-  res.json({ ok: true, state });
+  try {
+    const { userId, lessonId, kind, verdict } = req.body || {};
+    if (!userId || !lessonId || !kind) return res.status(400).json({ error: 'bad_request' });
+    const state = await mark(userId, lessonId, String(kind), verdict);
+    res.json({ ok: true, state });
+  } catch (e) {
+    const msg = `[PROGRESS MARK ERROR] ${new Date().toISOString()} ${String(e.stack || e)}\n`;
+    try { appendFileSync('/tmp/server.err.log', msg); } catch (ex) { /* ignore */ }
+    console.error(msg);
+    res.status(500).json({ error: 'server_error', message: String(e?.message || e) });
+  }
 });
 
 // Minimal state (for debugging or future use)

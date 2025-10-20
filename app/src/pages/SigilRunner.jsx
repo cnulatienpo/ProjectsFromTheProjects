@@ -3,6 +3,9 @@ import { useParams, Link, useNavigate } from 'react-router-dom'
 import { safeFetchJSON, api } from '@/lib/apiBase'
 import NotesPanel from '@/components/NotesPanel.jsx'
 import FeedbackTray from '@/components/FeedbackTray.jsx'
+import BeatWritingBox from '@/components/BeatWritingBox.jsx'
+import { beatsForLesson } from '@/logic/beatUnlockSchedule'
+import { useBeatUnlocks } from '@/state/useBeatUnlocks'
 import { submitAttempt } from '@/lib/attemptApi.js'
 import { markStarted, markSubmitted, markSkipped, fetchNextId } from '@/lib/progressApi.js'
 import { snapAndDownload } from '@/lib/snapshot.js'
@@ -10,6 +13,7 @@ import { toCatalogItems } from '@/lib/normalize'
 import { getLesson } from '@/services/sigilLesson'
 
 export default function SigilRunner() {
+  console.log('[SIGIL RUNNER] mount id=', window.location.pathname)
   const { id } = useParams()
   const nav = useNavigate()
   const [lesson, setLesson] = useState(null)
@@ -26,6 +30,7 @@ export default function SigilRunner() {
     const targetId = id ? String(id) : undefined
     getLesson(targetId)
       .then(data => {
+        console.log('[SIGIL RUNNER] getLesson response for', targetId, data && typeof data === 'object' ? (data.id || '[has id]') : data)
         if (!active) return
         if (!data) {
           setErr('Lesson unavailable.')
@@ -89,6 +94,16 @@ export default function SigilRunner() {
     if (!lId) return
     try { markStarted?.(lId) } catch { }
   }, [lesson, id])
+
+  // beat unlocks when lesson becomes available
+  const { unlockBeats } = useBeatUnlocks()
+  useEffect(() => {
+    const lessonNumber = (() => { try { const m = String(lesson?.id || id || '').match(/(\d+)/); return m ? parseInt(m[1], 10) : NaN } catch { return NaN } })()
+    if (!lesson || Number.isNaN(lessonNumber)) return
+    const toUnlock = beatsForLesson(lessonNumber)
+    console.log('[BEATS] unlocking', { lessonId: lesson?.id, lessonNumber, toUnlock })
+    unlockBeats(lesson?.id || (`lesson-${lessonNumber}`), toUnlock, lesson?.emoticonColor)
+  }, [lesson?.id, id])
 
   // real submit handler: post attempt, record submitted, then advance
   async function handleSubmit() {
@@ -194,12 +209,19 @@ export default function SigilRunner() {
         {/* Editor + Notes side-by-side (notes attached right) */}
         <div className="sigil-row">
           <section className="sigil-editor">
+            <div className="beat-writing-wrap">
+              <BeatWritingBox lesson={{ id: lesson?.id, number: lesson?.number, emoticonColor: lesson?.emoticonColor }} />
+            </div>
             <textarea
+              id="sigil-text"
+              name="sigilText"
+              aria-label="Sigil response"
               value={text}
               onChange={e => setText(e.target.value)}
               data-editor="sigil"
               className="sigil-textarea"
               placeholder="Write your response here…"
+              autoComplete="off"
             />
             <div className="sigil-meta" style={{ padding: '8px 12px', borderTop: '1px solid #000' }}>
               {stats.words} words {stats.words < stats.min ? `(need at least ${stats.min})` : '✓'}

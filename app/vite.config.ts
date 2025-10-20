@@ -1,3 +1,4 @@
+
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'node:path'
@@ -10,10 +11,11 @@ const defaultProxy = {
   '/sigil/catalog': { target: baseProxyTarget, changeOrigin: true, secure: false },
   '/sigil/lesson': { target: baseProxyTarget, changeOrigin: true, secure: false },
   '/attempt': { target: baseProxyTarget, changeOrigin: true, secure: false },
+  '/progress': { target: baseProxyTarget, changeOrigin: true, secure: false },
   '/health': { target: baseProxyTarget, changeOrigin: true, secure: false },
 } as const
 
-const extraProxyTargets = ['/goodword', '/cut', '/__diag', '/api', '/style-report', '/catalog', '/attempt'] as const
+const extraProxyTargets = ['/goodword', '/cut', '/__diag', '/api', '/style-report', '/catalog', '/attempt', '/progress'] as const
 
 const proxyConfig = (() => {
   const target = process.env.VITE_DEV_API?.trim()
@@ -44,5 +46,8 @@ export default defineConfig({
   },
   server: {
     proxy: proxyConfig,
+    host: '0.0.0.0',
+    port: 5173,
+    strictPort: true,
   },
 })
