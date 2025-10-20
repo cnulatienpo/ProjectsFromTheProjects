@@ -28,6 +28,10 @@ if (process.env.NODE_ENV === 'production') {
     }
   }));
 } else {
+  // Dev: turn off CSP so Vite’s dev client can run
+  app.use(helmet({
+    contentSecurityPolicy: false,
+  }));
   app.use(helmet({ contentSecurityPolicy: false })); // DEV: turn off CSP on API origin
 }
 
