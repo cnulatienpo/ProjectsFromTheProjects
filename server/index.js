@@ -90,6 +90,7 @@ app.get('/health', (_req, res) => res.json({ ok: true }));
 
 app.get('/sigil/catalog', async (_req, res) => {
   try {
+    console.log('[Sigil] Starting catalog read from:', FILE);
     const items = [];
     let i = 0;
     for await (const row of readJSONL(FILE)) {
@@ -98,10 +99,11 @@ app.get('/sigil/catalog', async (_req, res) => {
       items.push({ id, title });
       if (++i >= 500) break;
     }
+    console.log('[Sigil] Catalog loaded', items.length, 'items');
     res.status(200).json({ items });
   } catch (e) {
     console.error('[Sigil] /sigil/catalog error', e);
-    res.status(200).json({ items: [] });
+    res.status(500).json({ error: 'Failed to load catalog', message: e.message });
   }
 });
 

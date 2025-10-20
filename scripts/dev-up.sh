@@ -3,10 +3,13 @@ set -euo pipefail
 ROOT="/workspaces/ProjectsFromTheProjects"
 APP="$ROOT/app"
 
-# Kill anything stale
-npx kill-port 3001 5173 >/dev/null 2>&1 || true
+# Kill anything stale (use fuser instead of npx kill-port to avoid hangs)
+fuser -k 3001/tcp 2>/dev/null || true
+fuser -k 3002/tcp 2>/dev/null || true
+fuser -k 5173/tcp 2>/dev/null || true
 pkill -f "node.*server/index.js" 2>/dev/null || true
 pkill -f "vite" 2>/dev/null || true
+sleep 1
 
 # Ensure vite dev script binds to 0.0.0.0:5173 (so Ports forwarding works)
 if [ -f "$APP/package.json" ]; then
@@ -22,7 +25,7 @@ fi
 
 # Start backend (dev) in the background (nohup)
 cd "$ROOT"
-( NODE_ENV=development nohup npm run dev:server > /tmp/server.out 2>&1 & echo $! > /tmp/server.pid )
+( PORT=3002 NODE_ENV=development nohup npm run dev:server > /tmp/server.out 2>&1 & echo $! > /tmp/server.pid )
 sleep 0.7
 
 # Start Vite (bind 0.0.0.0) in the background (nohup)
@@ -33,7 +36,7 @@ sleep 1.0
 cd "$ROOT"
 echo "🧪 Health checks:"
 printf " 5173: "; curl -sI http://127.0.0.1:5173/ | head -n1 || true
-printf " 3001: "; curl -sI http://127.0.0.1:3001/ | head -n1 || true
+printf " 3002: "; curl -sI http://127.0.0.1:3002/health | head -n1 || true
 
 echo "📄 Logs: tail -f /tmp/vite.out /tmp/server.out"
 echo "🛑 Stop: scripts/dev-down.sh"

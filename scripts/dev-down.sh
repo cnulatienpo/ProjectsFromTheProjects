@@ -4,5 +4,7 @@ set -euo pipefail
 [ -f /tmp/server.pid ] && kill $(cat /tmp/server.pid) 2>/dev/null || true
 pkill -f "node.*server/index.js" 2>/dev/null || true
 pkill -f "vite" 2>/dev/null || true
-npx kill-port 3001 5173 >/dev/null 2>&1 || true
-echo "✅ Stopped dev servers on 3001 and 5173."
+fuser -k 3001/tcp 2>/dev/null || true
+fuser -k 3002/tcp 2>/dev/null || true
+fuser -k 5173/tcp 2>/dev/null || true
+echo "✅ Stopped dev servers on 3002 and 5173."
