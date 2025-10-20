@@ -24,10 +24,16 @@ export async function safeFetchJSON<T = any>(
   return res.json() as Promise<T>;
 }
 
-// Lightweight helper object
-export const api = {
-  getJSON: safeFetchJSON,
-  get: safeFetchJSON,
+// Lightweight helper with callable + helpers
+type ApiHelper = ((path: string) => string) & {
+  getJSON: typeof safeFetchJSON;
+  get: typeof safeFetchJSON;
 };
+
+const apiFunc = ((path: string) => toUrl(path)) as ApiHelper;
+apiFunc.getJSON = safeFetchJSON;
+apiFunc.get = safeFetchJSON;
+
+export const api = apiFunc;
 
 // NOTE: No example usage or imports in this file.

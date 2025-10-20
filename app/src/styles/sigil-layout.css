@@ -1,0 +1,307 @@
+/* Runner-specific layout for Sigil */
+.sigil-topbar {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sigil-top-boxes {
+    align-items: start;
+}
+
+.sigil-content-box {
+    background: #fbfbfb;
+}
+
+.sigil-prompt-box {
+    background: #fff;
+}
+
+.sigil-grid {
+    min-height: 600px;
+}
+
+.feedback-tray {
+    border-radius: 4px;
+}
+
+/* Small responsive tweaks */
+@media (max-width: 900px) {
+    .sigil-grid {
+        grid-template-columns: 1fr !important
+    }
+
+    .sigil-top-boxes {
+        flex-direction: column
+    }
+}
+
+/* --- Force readable (black) text for Sigil screens --- */
+.pfp-shell,
+.pfp-shell * {
+    color: #111 !important;
+}
+
+/* main reading boxes */
+.sigil-box,
+.sigil-box * {
+    color: #111 !important;
+    background: #fff;
+    /* keep text on white */
+}
+
+/* editor */
+.sigil-textarea {
+    color: #111 !important;
+    background: #fff !important;
+    caret-color: #111;
+}
+
+/* Ray Ray tray */
+.sigil-tray,
+.sigil-tray * {
+    color: #111 !important;
+}
+
+/* buttons and links readable on light backgrounds */
+.pfp-btn {
+    color: #111 !important;
+    background: #fff;
+    border-color: #000;
+}
+
+a {
+    color: #0645AD !important;
+}
+
+/* Ensure Sigil area uses dark text even when global theme variables are set */
+.sigil-root {
+    /* override theme variables locally for Sigil pages */
+    --fg: #111 !important;
+    --card-fg: #111 !important;
+    color: var(--fg) !important;
+    background: #fff !important;
+}
+
+.sigil-root,
+.sigil-root * {
+    color: var(--fg) !important;
+}
+
+/* === Centered Sigil layout + proportions (appended) === */
+
+/* Center the whole screen and constrain width */
+.pfp-shell {
+    display: flex;
+    justify-content: center;
+}
+
+.sigil-stage {
+    width: 100%;
+    max-width: 980px;
+    /* nice reading width */
+    padding: 16px;
+    display: grid;
+    gap: 16px;
+}
+
+/* Content and prompt: full width, auto-grow with content */
+.sigil-box {
+    background: #fff;
+    border: 1px solid #000;
+    padding: 16px;
+    width: 100%;
+}
+
+/* Remove accidental auto-title (style) if one slips in */
+.sigil-content h1,
+.sigil-content h2,
+.sigil-content .auto-title {
+    display: none;
+}
+
+/* Editor + notes side-by-side; notes attached to right edge */
+.sigil-row {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    /* editor :: notes */
+    gap: 12px;
+    align-items: start;
+}
+
+/* Word-doc-like editor box with its own scroll */
+.sigil-editor {
+    background: #fff;
+    border: 1px solid #000;
+    padding: 0;
+    min-height: 60vh;
+    max-height: 75vh;
+    /* keeps it usable on small screens */
+    overflow: hidden;
+    /* textarea handles scroll */
+    display: flex;
+    flex-direction: column;
+}
+
+.sigil-textarea {
+    width: 100%;
+    height: 100%;
+    min-height: 60vh;
+    /* “Word doc” proportions */
+    resize: none;
+    border: 0;
+    padding: 18px 20px;
+    line-height: 1.5;
+    outline: none;
+    overflow: auto;
+}
+
+/* Notes panel: same height as editor, visually attached to the right
+   Make the outer container neutral so the internal .notepad paper renders
+   the pale yellow ruled sheet without duplication. */
+.sigil-notes {
+    background: transparent;
+    /* let .notepad show its own paper */
+    border: 0;
+    /* remove outer border */
+    padding: 0;
+    /* inner pad handles its own padding */
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.sigil-notes .notepad {
+    width: 100%;
+    height: 100%;
+}
+
+.notepad__paper {
+    /* ensure the paper fills the notes column */
+    height: 100%;
+}
+
+/* Feedback (“Ray Ray Says:”) under the editor, same width, auto-grow */
+.sigil-tray {
+    background: #fff;
+    border: 1px solid #000;
+    padding: 12px;
+    width: 100%;
+}
+
+.sigil-tray-title {
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-transform: none;
+}
+
+/* Keep buttons tidy */
+.pfp-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+
+/* Mobile: stack editor and notes */
+@media (max-width: 860px) {
+    .sigil-row {
+        grid-template-columns: 1fr;
+    }
+
+    .sigil-notes {
+        height: auto;
+    }
+}
+
+/* === Notes pad: unified, precise single-spaced ruled paper === */
+.notepad {
+    height: 100%;
+}
+
+.notepad__paper {
+    /* pale yellow sheet with blue ruled lines */
+    background-color: #fff8cc;
+    /* 20px rhythm: 19px clear + 1px line */
+    background-image: repeating-linear-gradient(to bottom,
+            transparent 0,
+            transparent 19px,
+            #a6c8ff 19px,
+            #a6c8ff 20px);
+    border: 1px solid #000;
+    padding: 12px 14px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.notepad__heading {
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    line-height: 20px;
+    color: #111;
+}
+
+.notepad__section {
+    margin-bottom: 12px;
+}
+
+.notepad__lines {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.notepad__line {
+    font-size: 14px;
+    /* match textarea font */
+    line-height: 20px;
+    /* align to ruled background */
+    color: #111;
+    white-space: pre-wrap;
+}
+
+.notepad__rule {
+    border: 0;
+    border-top: 1px solid #000;
+    margin: 10px 0;
+}
+
+.notepad__textarea {
+    width: 100%;
+    min-height: 40vh;
+    /* local min height inside the pad */
+    background: transparent;
+    /* show lines through */
+    border: 0;
+    outline: none;
+    resize: vertical;
+    font-size: 14px;
+    line-height: 20px;
+    /* align to ruled background */
+    color: #111;
+    padding: 0;
+    /* rely on outer padding */
+    box-sizing: border-box;
+}
+
+/* Make the editor/notes taller overall */
+.sigil-row {
+    grid-template-columns: 1fr 320px;
+    align-items: stretch;
+    /* ensure notes matches editor height */
+}
+
+.sigil-editor {
+    min-height: 120vh;
+    /* ~2× taller than before */
+    max-height: none;
+    /* allow tall pages */
+}
+
+.sigil-textarea {
+    min-height: 120vh;
+    /* match editor container */
+}
+
+/* Notes column takes full height of the editor */
+.sigil-notes {
+    height: 100%;
+}

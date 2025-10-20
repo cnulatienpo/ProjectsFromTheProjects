@@ -3,12 +3,17 @@ import react from '@vitejs/plugin-react'
 import path from 'node:path'
 
 const baseProxyTarget = 'http://127.0.0.1:3001'
+// Only proxy API endpoints (catalog + lesson) to the backend.
+// Do NOT proxy the entire /sigil prefix — that prevents client-side routes
+// like /sigil/:id from rendering the SPA when reloading or directly visiting.
 const defaultProxy = {
-  '/sigil': { target: baseProxyTarget, changeOrigin: true, secure: false },
+  '/sigil/catalog': { target: baseProxyTarget, changeOrigin: true, secure: false },
+  '/sigil/lesson': { target: baseProxyTarget, changeOrigin: true, secure: false },
+  '/attempt': { target: baseProxyTarget, changeOrigin: true, secure: false },
   '/health': { target: baseProxyTarget, changeOrigin: true, secure: false },
 } as const
 
-const extraProxyTargets = ['/goodword', '/cut', '/__diag', '/api', '/style-report', '/catalog'] as const
+const extraProxyTargets = ['/goodword', '/cut', '/__diag', '/api', '/style-report', '/catalog', '/attempt'] as const
 
 const proxyConfig = (() => {
   const target = process.env.VITE_DEV_API?.trim()

@@ -1,0 +1,14 @@
+/* This container previously reserved inline space for the rail. The new
+   overlay floats independently, so we keep the wrapper simple. */
+.beat-writing-wrap {
+  position: relative;
+}
+
+/* Your actual writing box (the visible editor frame) */
+.beat-writing-box {
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: 10px;
+  padding: 12px;
+  min-height: 240px;
+  background: #fff;
+}

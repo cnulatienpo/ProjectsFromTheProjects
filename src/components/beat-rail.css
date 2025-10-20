@@ -1,0 +1,67 @@
+/* The rail attaches to the outside, upper-left corner of the editor container.
+   The container will position:relative; the rail is absolute and spans full height. */
+:root {
+  --rail-gap: 8px;
+  --rail-btn: 28px;         /* button square size */
+  --rail-pad: 6px;
+  --rail-bg: transparent;   /* keep it invisible except buttons */
+  --rail-shadow: none;
+}
+
+/* The rail */
+.beat-rail {
+  position: absolute;
+  top: 0;
+  bottom: 0;     /* full height of the writing box */
+  left: calc(-1 * (var(--rail-width) + var(--rail-gap)));
+  width: var(--rail-width);
+  background: var(--rail-bg);
+  box-shadow: var(--rail-shadow);
+  display: grid;
+  align-items: start;
+  pointer-events: none;   /* rail doesn't block editor unless on buttons */
+}
+
+/* compute width dynamically from columns */
+.beat-rail.one { --rail-width: calc(var(--rail-btn) + 2*var(--rail-pad)); }
+.beat-rail.two { --rail-width: calc(2 * (var(--rail-btn) + 2*var(--rail-pad)) + var(--rail-btn) * 0.25); }
+
+.rail-grid {
+  margin-top: 0; /* top aligned with editor top */
+  padding: 0;
+  display: grid;
+  gap: 6px;
+  grid-auto-flow: row;
+  /* columns switch automatically via parent class */
+  grid-template-columns: 1fr;
+  justify-items: center;
+  pointer-events: auto; /* buttons clickable */
+}
+
+/* two-column layout */
+.beat-rail.two .rail-grid {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* the buttons */
+.rail-btn {
+  width: var(--rail-btn);
+  height: var(--rail-btn);
+  border: 0;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.08) inset, 0 1px 2px rgba(0,0,0,.06);
+}
+
+.rail-btn .emoji {
+  font-size: 16px;
+  line-height: 1;
+  user-select: none;
+  filter: drop-shadow(0 1px 0 rgba(0,0,0,.15));
+}
+
+/* modest hover focus */
+.rail-btn:focus-visible { outline: 2px solid rgba(0,0,0,.25); outline-offset: 2px; }
+.rail-btn:hover { transform: translateY(-1px); }

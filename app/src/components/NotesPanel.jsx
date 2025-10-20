@@ -1,57 +1,61 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
-export default function NotesPanel({ gameKey='sigil', lessonId, rayRayTitle='Ray Ray Says', rayRayLines=[] }){
-  const storageKey = `${gameKey}:notes:${lessonId}`
-  const [tab, setTab] = useState('ray')
-  const [myNotes, setMyNotes] = useState('')
+/**
+ * One unified notepad:
+ * - Top: "Ray Ray Says" lines (read-only)
+ * - Divider
+ * - Bottom: "Your notes" textarea (saved per lesson)
+ */
+export default function NotesPanel({ gameKey = 'sigil', lessonId, rayRayTitle = 'Ray Ray Says', rayRayLines = [] }) {
+  const storeKey = `${gameKey}:notes:${lessonId || 'unknown'}`
+  const [mine, setMine] = useState('')
 
+  // load my notes
   useEffect(() => {
-    const saved = localStorage.getItem(storageKey)
-    if (saved !== null) setMyNotes(saved)
-  }, [storageKey])
+    try {
+      const v = localStorage.getItem(storeKey)
+      if (v != null) setMine(v)
+    } catch { }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [storeKey])
+
+  // save on change
   useEffect(() => {
-    localStorage.setItem(storageKey, myNotes)
-  }, [storageKey, myNotes])
+    try { localStorage.setItem(storeKey, mine) } catch { }
+  }, [storeKey, mine])
+
+  const rr = useMemo(() => Array.isArray(rayRayLines) ? rayRayLines : [], [rayRayLines])
 
   return (
-    <aside style={paper}>
-      <div style={{display:'flex', gap:8, marginBottom:8}}>
-        <button onClick={()=>setTab('ray')} style={tabBtn(tab==='ray')}>Ray Ray</button>
-        <button onClick={()=>setTab('mine')} style={tabBtn(tab==='mine')}>My notes</button>
-      </div>
-      {tab==='ray' ? (
-        <div>
-          <div style={{fontSize:12, opacity:.7, marginBottom:6}}>{rayRayTitle}:</div>
-          <ul style={{margin:0, paddingLeft:18}}>
-            {rayRayLines.map((s,i)=><li key={i} style={{marginBottom:6}}>{s}</li>)}
+    <div className="notepad">
+      <div className="notepad__paper">
+        <div className="notepad__section">
+          <div className="notepad__heading">{rayRayTitle}:</div>
+          <ul className="notepad__lines">
+            {rr.length ? rr.map((l, i) => (
+              <li key={i} className="notepad__line">{String(l)}</li>
+            )) : (
+              <>
+                <li className="notepad__line">• Focus your character’s desire in the first 1–2 sentences.</li>
+                <li className="notepad__line">• Add one concrete obstacle.</li>
+                <li className="notepad__line">• Include a sensory detail (sound/smell/texture).</li>
+              </>
+            )}
           </ul>
         </div>
-      ) : (
-        <textarea
-          value={myNotes}
-          onChange={e=>setMyNotes(e.target.value)}
-          style={{width:'100%', height:'45vh', border:'none', background:'transparent', lineHeight:'1.4'}}
-          placeholder="Jot your notes here…"
-        />
-      )}
-    </aside>
+
+        <hr className="notepad__rule" />
+
+        <div className="notepad__section">
+          <div className="notepad__heading">Your notes:</div>
+          <textarea
+            className="notepad__textarea"
+            placeholder="Jot your plan, beats, or reminders…"
+            value={mine}
+            onChange={(e) => setMine(e.target.value)}
+          />
+        </div>
+      </div>
+    </div>
   )
 }
-
-const paper = {
-  border:'1px solid #caa74a',
-  background:'#fff8c6',
-  padding:'12px 14px',
-  boxShadow:'0 2px 6px rgba(0,0,0,.12)',
-  backgroundImage:`linear-gradient(#bfe1ff 1px, transparent 1px)`,
-  backgroundSize:'100% 24px'
-}
-const tabBtn = (active)=>(
-  {
-    padding:'6px 10px',
-    border:'1px solid #000',
-    background: active ? '#fff' : '#f1f1f1',
-    cursor:'pointer',
-    fontSize:12
-  }
-)

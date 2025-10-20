@@ -1,0 +1,30 @@
+M	app/src/lib/apiBase.ts
+M	app/src/lib/attemptApi.js
+A	app/src/lib/lastSeen.js
+A	app/src/lib/progressApi.js
+A	app/src/lib/userId.js
+M	app/src/pages/SigilRunner.jsx
+M	app/src/pages/SigilSyntax.jsx
+A	game thingss/derived/beat-unlock-sequence.csv
+A	game thingss/derived/beats-by-lesson.json
+A	game thingss/derived/unique-beats.json
+A	game thingss/derived/validation-report.json
+M	package-lock.json
+M	package.json
+A	scripts/extract-beats.mjs
+M	server/index.js
+A	server/progress/store.js
+A	server/report/index.js
+A	server/sigil/catalogIds.js
+M	src/App.tsx
+A	src/components/BeatEditor.tsx
+A	src/components/BeatSpawner.tsx
+A	src/components/beat-editor.css
+A	src/components/beat-spawner.css
+A	src/lib/beatTypes.ts
+A	src/lib/storage.ts
+A	src/pages/BeatSandbox.tsx
+A	src/state/useBeatUnlocks.ts
+A	src/state/useUndo.ts
+A	tools/compile_reports.mjs
+M	vite.config.ts
