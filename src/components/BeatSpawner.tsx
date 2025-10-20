@@ -6,6 +6,7 @@ export type LessonMeta = {
   id: string;
   beats: string[];
   emoticonColor?: Record<string, string>;
+  emoticonMap?: Record<string, string>;
 };
 
 type InsertPayload = { type: string; color: string; sourceLesson?: string };

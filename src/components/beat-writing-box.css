@@ -1,0 +1,16 @@
+/* This container defines the “writing box” and gives the rail a positioning context */
+.beat-writing-wrap {
+  position: relative;    /* allows the rail to absolutely position against it */
+  /* add a left margin to make room for the rail outside the box */
+  /* rail width is computed; add safe breathing room */
+  margin-left: calc(var(--rail-width) + var(--rail-gap));
+}
+
+/* Your actual writing box (the visible editor frame) */
+.beat-writing-box {
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: 10px;
+  padding: 12px;
+  min-height: 240px;
+  background: #fff;
+}
