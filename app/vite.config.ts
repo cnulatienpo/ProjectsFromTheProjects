@@ -3,7 +3,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'node:path'
 
-const baseProxyTarget = 'http://127.0.0.1:3001'
+const baseProxyTarget = 'http://127.0.0.1:3002'
 // Only proxy API endpoints (catalog + lesson) to the backend.
 // Do NOT proxy the entire /sigil prefix — that prevents client-side routes
 // like /sigil/:id from rendering the SPA when reloading or directly visiting.
