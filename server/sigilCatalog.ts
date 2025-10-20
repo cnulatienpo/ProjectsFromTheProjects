@@ -125,6 +125,27 @@ function parseLineJSON(s: string): any | null {
   catch { return null; }
 }
 
+// Helpers to safely produce minimal HTML from plain text
+function escapeHtml(s: string): string {
+  return String(s ?? '').replace(/[&<>"']/g, (ch) => {
+    switch (ch) {
+      case '&': return '&amp;';
+      case '<': return '&lt;';
+      case '>': return '&gt;';
+      case '"': return '&quot;';
+      case "'": return '&#39;';
+      default: return ch;
+    }
+  });
+}
+
+function toParagraphHtml(s: string): string {
+  if (!s) return '';
+  // split on blank lines into paragraphs
+  const parts = String(s).split(/\n\s*\n+/).map(p => p.trim()).filter(Boolean);
+  return parts.map(p => `<p>${escapeHtml(p).replace(/\n/g, '<br/>')}</p>`).join('\n');
+}
+
 // ---------- readers ----------
 async function readJSONL(path: string): Promise<{ items: Item[], stats: any }> {
   const stats = { exists: existsSync(path), lines: 0, parsed: 0, accepted: 0, dropped_no_title: 0, dropped_bad_json: 0 };
@@ -213,31 +234,35 @@ export function installSigilCatalogRoute(app: Express) {
         const id = (row && (row.new_id ?? row.original_id ?? row.id)) ? String(row.new_id ?? row.original_id ?? row.id) : `item-${index}`;
         if (String(id) === want) {
           // Robust field normalization — support historical shapes
-          const content =
+          const rawContent =
             row?.content_html ??
             row?.contentHTML ??
             row?.html ??
-            row?.prompt_html ??
             row?.text ??
             row?.content ??
             row?.body ??
-            ''
+            '';
 
-          const prompt =
+          const rawPrompt =
             row?.prompt_hint ??
             row?.prompt_html ??
             row?.prompt ??
             row?.instructions ??
-            ''
+            '';
 
-          const min = Number(row?.min_words ?? row?.minWords ?? row?.minimum ?? 30)
+          const min = Number(row?.min_words ?? row?.minWords ?? row?.minimum ?? 30);
+
+          // If the author already provided HTML in content_html/prompt_html, prefer it;
+          // otherwise, synthesize safe paragraph HTML from available text (intro/prompt or text split).
+          const contentHtml = row?.content_html ? String(row.content_html) : toParagraphHtml(rawContent || (row?.intro ?? row?.description ?? row?.summary ?? ''));
+          const promptHtml = row?.prompt_html ? String(row.prompt_html) : toParagraphHtml(rawPrompt);
 
           return res.status(200).json({
             id: String(id),
-            content_html: String(content),
-            prompt_html: String(prompt),
+            content_html: contentHtml,
+            prompt_html: promptHtml,
             min_words: isFinite(min) && min > 0 ? min : 30
-          })
+          });
         }
       }
       return res.status(404).json({ error: 'lesson_not_found', id: want });
