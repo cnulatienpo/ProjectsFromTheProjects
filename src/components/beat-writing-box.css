@@ -1,9 +1,7 @@
-/* This container defines the “writing box” and gives the rail a positioning context */
+/* This container previously reserved inline space for the rail. The new
+   overlay floats independently, so we keep the wrapper simple. */
 .beat-writing-wrap {
-  position: relative;    /* allows the rail to absolutely position against it */
-  /* add a left margin to make room for the rail outside the box */
-  /* rail width is computed; add safe breathing room */
-  margin-left: calc(var(--rail-width) + var(--rail-gap));
+  position: relative;
 }
 
 /* Your actual writing box (the visible editor frame) */
