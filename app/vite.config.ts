@@ -8,11 +8,11 @@ const baseProxyTarget = 'http://127.0.0.1:3002'
 // Do NOT proxy the entire /sigil prefix — that prevents client-side routes
 // like /sigil/:id from rendering the SPA when reloading or directly visiting.
 const defaultProxy = {
-  '/sigil/catalog': { target: baseProxyTarget, changeOrigin: true, secure: false },
-  '/sigil/lesson': { target: baseProxyTarget, changeOrigin: true, secure: false },
-  '/attempt': { target: baseProxyTarget, changeOrigin: true, secure: false },
-  '/progress': { target: baseProxyTarget, changeOrigin: true, secure: false },
-  '/health': { target: baseProxyTarget, changeOrigin: true, secure: false },
+  '/sigil/catalog': { target: baseProxyTarget, changeOrigin: true, secure: false, timeout: 10000 },
+  '/sigil/lesson': { target: baseProxyTarget, changeOrigin: true, secure: false, timeout: 10000 },
+  '/attempt': { target: baseProxyTarget, changeOrigin: true, secure: false, timeout: 10000 },
+  '/progress': { target: baseProxyTarget, changeOrigin: true, secure: false, timeout: 10000 },
+  '/health': { target: baseProxyTarget, changeOrigin: true, secure: false, timeout: 10000 },
 } as const
 
 const extraProxyTargets = ['/goodword', '/cut', '/__diag', '/api', '/style-report', '/catalog', '/attempt', '/progress'] as const

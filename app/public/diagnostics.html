@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Development Diagnostics</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+
+        .test {
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 4px;
+        }
+
+        .success {
+            background: #d4edda;
+        }
+
+        .error {
+            background: #f8d7da;
+        }
+
+        .info {
+            background: #d1ecf1;
+        }
+
+        pre {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🔧 Development Server Diagnostics</h1>
+    <div id="results"></div>
+
+    <script>
+        const results = document.getElementById('results');
+
+        function addResult(title, content, type = 'info') {
+            const div = document.createElement('div');
+            div.className = `test ${type}`;
+            div.innerHTML = `<h3>${title}</h3><pre>${content}</pre>`;
+            results.appendChild(div);
+        }
+
+        async function runDiagnostics() {
+            // 1. Check CSP headers
+            try {
+                const response = await fetch(window.location.href, { method: 'HEAD' });
+                const csp = response.headers.get('content-security-policy');
+                addResult('🔍 CSP Headers from Server', csp || 'No CSP header found', csp ? 'success' : 'error');
+            } catch (e) {
+                addResult('❌ CSP Headers Check Failed', e.message, 'error');
+            }
+
+            // 2. Check meta CSP tags
+            const metaTags = [...document.querySelectorAll('meta[http-equiv*="Content-Security-Policy"]')];
+            if (metaTags.length > 0) {
+                const content = metaTags.map(m => m.content).join('\n');
+                addResult('🏷️ Meta CSP Tags Found', content, 'error');
+            } else {
+                addResult('✅ No Meta CSP Tags', 'No conflicting meta tags found', 'success');
+            }
+
+            // 3. Test eval
+            try {
+                eval('1+1');
+                addResult('✅ JavaScript eval() Test', 'eval() works - CSP allows unsafe-eval', 'success');
+            } catch (e) {
+                addResult('❌ JavaScript eval() Blocked', e.message, 'error');
+            }
+
+            // 4. Test backend connectivity
+            try {
+                const healthCheck = await fetch('/health');
+                const healthText = await healthCheck.text();
+                addResult('🏥 Backend Health Check', `Status: ${healthCheck.status}\nResponse: ${healthText}`, healthCheck.ok ? 'success' : 'error');
+            } catch (e) {
+                addResult('❌ Backend Health Check Failed', e.message, 'error');
+            }
+
+            // 5. Test catalog endpoint
+            try {
+                const catalogResponse = await fetch('/sigil/catalog');
+                const catalogData = await catalogResponse.json();
+                addResult('📚 Catalog Endpoint', `Status: ${catalogResponse.status}\nItems: ${catalogData.items?.length || 0}`, catalogResponse.ok ? 'success' : 'error');
+            } catch (e) {
+                addResult('❌ Catalog Endpoint Failed', e.message, 'error');
+            }
+
+            // 6. Test progress endpoint
+            try {
+                const progressResponse = await fetch('/progress/mark', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ type: 'started', lessonId: 'test-diagnostic', userId: 'test-user' })
+                });
+                const progressText = await progressResponse.text();
+                addResult('📈 Progress Endpoint', `Status: ${progressResponse.status}\nResponse: ${progressText}`, progressResponse.ok ? 'success' : 'error');
+            } catch (e) {
+                addResult('❌ Progress Endpoint Failed', e.message, 'error');
+            }
+
+            // 7. Vite HMR test
+            try {
+                const viteResponse = await fetch('/__vite_ping');
+                addResult('⚡ Vite HMR Connection', `Status: ${viteResponse.status} - ${viteResponse.ok ? 'Connected' : 'Failed'}`, viteResponse.ok ? 'success' : 'error');
+            } catch (e) {
+                addResult('❌ Vite HMR Test Failed', e.message, 'error');
+            }
+
+            // 8. Current location info
+            addResult('🌐 Current Page Info', `URL: ${window.location.href}\nHost: ${window.location.host}\nProtocol: ${window.location.protocol}`, 'info');
+        }
+
+        // Run diagnostics when page loads
+        runDiagnostics();
+    </script>
+</body>
+
+</html>

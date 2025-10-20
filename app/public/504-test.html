@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Quick 504 Test</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 20px;
+        }
+
+        .result {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .success {
+            background: #d4edda;
+        }
+
+        .error {
+            background: #f8d7da;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🔧 Quick 504 Error Test</h1>
+    <div id="results"></div>
+
+    <script>
+        const results = document.getElementById('results');
+
+        function addResult(test, success, message) {
+            const div = document.createElement('div');
+            div.className = `result ${success ? 'success' : 'error'}`;
+            div.innerHTML = `<strong>${test}:</strong> ${message}`;
+            results.appendChild(div);
+        }
+
+        async function testEndpoints() {
+            // Test the endpoints that were causing 504 errors
+            const tests = [
+                { name: 'Health Check', url: '/health' },
+                { name: 'Catalog', url: '/sigil/catalog' },
+                { name: 'Progress (POST)', url: '/progress/mark', method: 'POST', body: JSON.stringify({ type: 'test', lessonId: 'test', userId: 'test' }) }
+            ];
+
+            for (const test of tests) {
+                try {
+                    const options = {
+                        method: test.method || 'GET',
+                        headers: test.method === 'POST' ? { 'Content-Type': 'application/json' } : {}
+                    };
+                    if (test.body) options.body = test.body;
+
+                    const start = Date.now();
+                    const response = await fetch(test.url, options);
+                    const time = Date.now() - start;
+
+                    if (response.ok) {
+                        addResult(test.name, true, `✅ Status ${response.status} (${time}ms)`);
+                    } else {
+                        addResult(test.name, false, `❌ Status ${response.status} (${time}ms)`);
+                    }
+                } catch (error) {
+                    addResult(test.name, false, `❌ Error: ${error.message}`);
+                }
+            }
+        }
+
+        testEndpoints();
+    </script>
+</body>
+
+</html>

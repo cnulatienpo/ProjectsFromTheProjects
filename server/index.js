@@ -177,6 +177,6 @@ app.post('/attempt', express.json(), async (req, res) => {
 });
 
 // Start server
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;  // Default to 3002 for consistency with Vite proxy
 const HOST = '0.0.0.0';
 app.listen(PORT, HOST, () => console.log(`[API] listening on http://${HOST}:${PORT}`));
