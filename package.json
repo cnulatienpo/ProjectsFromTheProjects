@@ -6,9 +6,8 @@
     "dev:server": "node server/index.js",
     "server:server": "node server/index.js",
     "dev:app": "npm run dev --prefix app",
-    "build:app": "npm run build --prefix app",
-    "dev:up": "bash scripts/dev-up.sh",
-    "dev:down": "bash scripts/dev-down.sh"
+    "build": "node scripts/offline-vite-build.mjs",
+    "build:app": "node scripts/offline-vite-build.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.56.1",

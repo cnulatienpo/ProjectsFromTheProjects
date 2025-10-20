@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 5173 --strictPort",
-    "dev:app": "vite --host 0.0.0.0 --port 5174 --strictPort",
+    "dev:app": "vite",
     "build": "vite build && node scripts/copy404.mjs",
     "preview": "vite preview --port 5173",
     "test:smoke": "playwright test app/tests/smoke.spec.ts",
