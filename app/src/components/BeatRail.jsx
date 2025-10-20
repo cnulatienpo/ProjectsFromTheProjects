@@ -11,20 +11,24 @@ function pickColor(type, colorMap) {
 }
 
 export default function BeatRail({ emoticonMap, colorMap, onInsert }) {
-    const { getUnlockedBeats } = useBeatUnlocks();
-    const beats = getUnlockedBeats?.() || []; // [{id:string, label?:string}] or [string]
+    const { getUnlocked } = useBeatUnlocks();
+    const lesson = { id: 'lesson-71' }; // Default lesson for testing
+    const unlocked = getUnlocked(lesson.id);
+    const beats = unlocked?.beats || [];
 
-    if (!beats.length) return null;
+    // If no beats are unlocked, show some default ones for testing
+    const defaultBeats = beats.length > 0 ? beats : ['action', 'dialogue', 'description', 'emotion'];
 
-    const twoCols = beats.length > 12; // switch to two columns when many
+    if (!defaultBeats.length) return null; const twoCols = defaultBeats.length > 12; // switch to two columns when many
     return (
         <aside className={`beat-rail ${twoCols ? 'two' : 'one'}`} aria-label="Beat rail">
             <div className="rail-grid" role="list">
-                {beats.map((b) => {
+                {defaultBeats.map((b) => {
                     const type = typeof b === 'string' ? b : (b.id || b.type || '');
                     if (!type) return null;
                     const emoji = (emoticonMap && emoticonMap[type]) || '•';
-                    const color = pickColor(type, colorMap);
+                    // Use colors from unlocked data first, then colorMap, then pickColor fallback
+                    const color = unlocked?.colors?.[type] || pickColor(type, colorMap);
                     return (
                         <button
                             key={type}

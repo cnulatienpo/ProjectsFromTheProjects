@@ -8,11 +8,12 @@
 .beat-rail {
     position: absolute;
     top: 0;
-    bottom: 0;
-    left: calc(-1 * var(--rail-left));
+    left: 0;
     z-index: 10;
-    background: rgba(255, 0, 0, .06);
+    background: transparent;
+    width: 80px;
     pointer-events: none;
+    padding: var(--rail-pad);
 }
 
 .rail-grid {
@@ -37,6 +38,12 @@
     place-items: center;
     cursor: pointer;
     box-shadow: 0 0 0 1px rgba(0, 0, 0, .1) inset, 0 1px 2px rgba(0, 0, 0, .06);
+    transition: transform 0.1s ease;
+}
+
+.rail-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .2) inset, 0 2px 4px rgba(0, 0, 0, .12);
 }
 
 .emoji {

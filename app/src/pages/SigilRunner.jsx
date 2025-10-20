@@ -4,6 +4,7 @@ import { safeFetchJSON, api } from '@/lib/apiBase'
 import NotesPanel from '@/components/NotesPanel.jsx'
 import FeedbackTray from '@/components/FeedbackTray.jsx'
 import BeatWritingBox from '@/components/BeatWritingBox.jsx'
+import BeatRail from '@/components/BeatRail.jsx'
 import { beatsForLesson } from '@/logic/beatUnlockSchedule'
 import { useBeatUnlocks } from '@/state/useBeatUnlocks'
 import { submitAttempt } from '@/lib/attemptApi.js'
@@ -11,6 +12,44 @@ import { markStarted, markSubmitted, markSkipped, fetchNextId } from '@/lib/prog
 import { snapAndDownload } from '@/lib/snapshot.js'
 import { toCatalogItems } from '@/lib/normalize'
 import { getLesson } from '@/services/sigilLesson'
+import BeatTextEditor from '@/components/BeatTextEditor.jsx'
+
+// Import the default emoticon mapping
+const defaultBeatEmoticon = {
+  action: "🔨",
+  decision: "✅",
+  desire: "❤️",
+  conflict: "⚔️",
+  obstacle: "🧱",
+  climax: "⛰️",
+  resolution: "🌅",
+  reveal: "👁️",
+  realization: "💡",
+  exposition: "📜",
+  foreshadow: "🌒",
+  setup: "🎯",
+  payoff: "🎉",
+  emotion: "😭",
+  suppression: "🤐",
+  vulnerability: "🫀",
+  power: "👑",
+  shift: "🔄",
+  intimacy: "🤝",
+  alienation: "🪫",
+  dialogue: "💬",
+  nonverbal: "👀",
+  interaction: "↔️",
+  agreement: "✍️",
+  disagreement: "❌",
+  test: "🧪",
+  reversal: "🔁",
+  atmosphere: "🌫️",
+  discovery: "🗺️",
+  loss: "🕳️",
+  arrival: "🚪",
+  departure: "🛫",
+  transition: "⏭️"
+};
 
 export default function SigilRunner() {
   console.log('[SIGIL RUNNER] mount id=', window.location.pathname)
@@ -20,8 +59,17 @@ export default function SigilRunner() {
   const [err, setErr] = useState('')
   const [text, setText] = useState('')
   const [loading, setLoading] = useState(true)
+  const [pendingInsert, setPendingInsert] = useState(null)
 
-  // load lesson
+  // Function to handle beat insertion
+  const handleBeatInsert = (beatData) => {
+    console.log('Beat insert requested:', beatData);
+    setPendingInsert(beatData);
+  };
+
+  const handleConsumePendingInsert = () => {
+    setPendingInsert(null);
+  };  // load lesson
   useEffect(() => {
     let active = true
     setErr('')
@@ -207,21 +255,19 @@ export default function SigilRunner() {
         </section>
 
         {/* Editor + Notes side-by-side (notes attached right) */}
-        <div className="sigil-row">
+        <div className="sigil-row" style={{ position: 'relative' }}>
+          <BeatRail
+            emoticonMap={lesson?.emoticonMap || defaultBeatEmoticon}
+            colorMap={lesson?.emoticonColor}
+            onInsert={handleBeatInsert}
+          />
           <section className="sigil-editor">
-            <div className="beat-writing-wrap">
-              <BeatWritingBox lesson={{ id: lesson?.id, number: lesson?.number, emoticonColor: lesson?.emoticonColor }} />
-            </div>
-            <textarea
-              id="sigil-textarea"
-              name="sigil"
-              aria-label="Sigil response"
+            <BeatTextEditor
               value={text}
-              onChange={e => setText(e.target.value)}
-              data-editor="sigil"
-              className="sigil-textarea"
+              onChange={setText}
               placeholder="Write your response here…"
-              autoComplete="off"
+              pendingInsert={pendingInsert}
+              onConsumeInsert={handleConsumePendingInsert}
             />
             <div className="sigil-meta" style={{ padding: '8px 12px', borderTop: '1px solid #000' }}>
               {stats.words} words {stats.words < stats.min ? `(need at least ${stats.min})` : '✓'}
