@@ -42,6 +42,15 @@ Icon?
 !/node_modules/uuid/
 /node_modules/uuid/*
 !/node_modules/uuid/index.js
+!/node_modules/.bin/
+/node_modules/.bin/*
+!/node_modules/.bin/vite
+!/node_modules/vite/
+/node_modules/vite/*
+!/node_modules/vite/bin
+!/node_modules/vite/bin/
+!/node_modules/vite/bin/vite.js
+!/node_modules/vite/package.json
 .pnpm-store/
 .npm/
 .yarn/
@@ -94,6 +103,7 @@ target/
 
 # Go (if used later)
 bin/
+!/node_modules/vite/bin/
 !tools/ts-node/bin/
 pkg/
 *.test
