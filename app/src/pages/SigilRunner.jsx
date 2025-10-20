@@ -3,6 +3,8 @@ import { useParams, Link, useNavigate } from 'react-router-dom'
 import { safeFetchJSON, api } from '@/lib/apiBase'
 import NotesPanel from '@/components/NotesPanel.jsx'
 import FeedbackTray from '@/components/FeedbackTray.jsx'
+import { submitAttempt } from '@/lib/attemptApi.js'
+import { markStarted, markSubmitted, markSkipped, fetchNextId } from '@/lib/progressApi.js'
 import { snapAndDownload } from '@/lib/snapshot.js'
 import { toCatalogItems } from '@/lib/normalize'
 import { getLesson } from '@/services/sigilLesson'
@@ -78,9 +80,87 @@ export default function SigilRunner() {
     return strongFirst
   }
 
-  // minimal submit stub (preserve previous behavior until backend wiring is reintroduced)
-  function handleSubmit() {
-    alert('Submit stubbed (wire later)')
+  const [submitting, setSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState(null)
+
+  // mark started when lesson loads
+  useEffect(() => {
+    const lId = lesson?.id ?? (id ? String(id) : null)
+    if (!lId) return
+    try { markStarted?.(lId) } catch { }
+  }, [lesson, id])
+
+  // real submit handler: post attempt, record submitted, then advance
+  async function handleSubmit() {
+    const lId = lesson?.id ?? (id ? String(id) : null)
+    if (!lId) return alert('No lesson id')
+    if (!text || text.trim().length === 0) return alert('Please write something first')
+    setSubmitting(true)
+    setSubmitError(null)
+    try {
+      const res = await submitAttempt({ id: lId, text, minWords: stats.min })
+      // server returns { id, report }
+      const verdict = res?.report?.verdict ?? null
+      try { await markSubmitted?.(lId, verdict) } catch (e) { console.warn('markSubmitted failed', e) }
+      // if the report contains memo lines, show them (optional)
+      // advance to next lesson if desired
+      const nextId = await fetchNextId()
+      if (nextId) {
+        nav(`/sigil/${encodeURIComponent(nextId)}`)
+      } else {
+        // fallback: use catalog
+        await goNext()
+      }
+    } catch (err) {
+      console.error('submit error', err)
+      const msg = err?.message || String(err)
+      setSubmitError(msg)
+    } finally {
+      setSubmitting(false)
+    }
+  }
+
+  // compute "next" id helper
+  async function goNext() {
+    function extractIds(cat) {
+      if (!cat) return []
+      // If the catalog itself is an array
+      if (Array.isArray(cat)) {
+        return cat.map(it => typeof it === 'string' ? it : (it?.id ?? it?.new_id ?? it?.original_id ?? ''))
+          .filter(Boolean)
+      }
+      // arrays under common keys
+      if (Array.isArray(cat.games)) return cat.games.map(g => typeof g === 'string' ? g : (g?.id ?? g))
+      if (Array.isArray(cat.items)) return cat.items.map(i => i?.id ?? i)
+      if (Array.isArray(cat.list)) return cat.list.map(i => i?.id ?? i)
+      // fallback: try to pull ids from object values
+      const arr = []
+      for (const k of ['items', 'games', 'list']) {
+        if (Array.isArray(cat[k])) {
+          return cat[k].map(x => typeof x === 'string' ? x : (x?.id ?? x))
+        }
+      }
+      return []
+    }
+
+    try {
+      const cat = await safeFetchJSON(api('/sigil/catalog'))
+      const idsRaw = extractIds(cat) || []
+      const ids = idsRaw.map(String)
+
+      // Prefer canonical lesson id when available
+      const current = String(lesson?.id ?? lessonId ?? id ?? '')
+      let idx = ids.indexOf(current)
+      if (idx < 0) idx = Math.max(0, ids.indexOf(String(id)))
+      if (idx < 0) idx = 0
+      const next = ids[idx + 1] || ids[0]
+      if (!next) return nav('/sigil')
+      nav(`/sigil/${encodeURIComponent(next)}`)
+    } catch (e) {
+      // on error, fall back to catalog root
+      console.warn('goNext error', e)
+      nav('/sigil')
+    }
   }
 
   if (err) return <main className="sigil-root surface" style={{ padding: 24 }}><b>Error:</b> {err} <p><Link to="/sigil">Back to catalog</Link></p></main>
@@ -139,28 +219,20 @@ export default function SigilRunner() {
         {/* Ray Ray Says + navigation (full width, grows with content) */}
         <section className="sigil-tray">
           <div className="sigil-tray-title">ray ray says:</div>
-          <FeedbackTray text={text} minWords={stats.min} />
-          <div className="pfp-actions">
-            <button className="pfp-btn" onClick={handleSubmit}>Submit</button>
-            <button className="pfp-btn" onClick={() => setText('')}>Try again</button>
-            <button className="pfp-btn" onClick={() => {
-              safeFetchJSON(api('/sigil/catalog')).then(cat => {
-                const ids = cat.games || []
-                const i = ids.indexOf(id)
-                const next = ids[i + 1] || ids[0]
-                nav(`/sigil/${encodeURIComponent(next)}`)
-              }).catch(() => nav('/sigil'))
-            }}>Next</button>
-            <button className="pfp-btn" onClick={() => {
-              try { markSkipped?.(id) } catch { }
-              safeFetchJSON(api('/sigil/catalog')).then(cat => {
-                const ids = cat.games || []
-                const i = Math.max(0, ids.indexOf(id))
-                const next = ids[i + 1] || ids[0]
-                nav(`/sigil/${encodeURIComponent(next)}`)
-              }).catch(() => nav('/sigil'))
-            }}>I don’t feel like it</button>
-          </div>
+          <FeedbackTray
+            text={text}
+            minWords={stats.min}
+            memo={rayLines}
+            onSubmit={handleSubmit}
+            onRetry={() => setText('')}
+            onNext={goNext}
+            onSkip={async () => {
+              try { await markSkipped?.(id) } catch { }
+              goNext()
+            }}
+            submitting={submitting}
+            error={submitError}
+          />
         </section>
       </div>
     </main>

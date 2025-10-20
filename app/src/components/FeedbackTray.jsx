@@ -1,20 +1,37 @@
-import React from 'react'
-
-export default function FeedbackTray({ lesson = {}, text = '' }) {
-    // minimal live checks — placeholder for richer analysis
-    const checks = []
-    if (!text || text.trim().length === 0) checks.push({ ok: false, msg: 'No content yet.' })
-    if (text && text.trim().split(/\s+/).length < 20) checks.push({ ok: false, msg: 'Short draft — try expanding.' })
-    if (checks.length === 0) checks.push({ ok: true, msg: 'Looks good so far.' })
+// app/src/components/FeedbackTray.jsx
+export default function FeedbackTray({
+    text = "",
+    minWords = 30,
+    memo = [],
+    onSubmit,
+    onRetry,
+    onNext,
+    onSkip,
+    submitting = false,
+    error = null
+}) {
+    const words = (text || '').trim().split(/\s+/).filter(Boolean).length || 0
+    const canSubmit = words >= (minWords || 30)
 
     return (
-        <section className="feedback-tray" style={{ border: '1px solid #ddd', padding: 8, background: '#fff' }}>
-            {/* Intentionally no title here; page provides heading */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                {checks.map((c, i) => (
-                    <div key={i} style={{ color: c.ok ? 'green' : '#b33' }}>{c.msg}</div>
-                ))}
+        <div>
+            {/* optional memo lines already rendered above as "ray ray says:"; keep this light */}
+            {Array.isArray(memo) && memo.length > 0 && (
+                <ul style={{ margin: 0, paddingLeft: 18 }}>
+                    {memo.map((m, i) => <li key={i}>{String(m)}</li>)}
+                </ul>
+            )}
+
+            {error && (
+                <div className="feedback-error" style={{ color: '#b54708', marginTop: 8 }}>{String(error)}</div>
+            )}
+
+            <div className="pfp-actions" style={{ marginTop: 12 }}>
+                <button className="pfp-btn" disabled={!canSubmit || submitting} onClick={onSubmit}>{submitting ? 'Submitting…' : 'Submit'}</button>
+                <button className="pfp-btn" onClick={onRetry} disabled={submitting}>Try again</button>
+                <button className="pfp-btn" onClick={onNext} disabled={submitting}>Next</button>
+                <button className="pfp-btn" onClick={onSkip} disabled={submitting}>I don’t feel like it</button>
             </div>
-        </section>
+        </div>
     )
 }
