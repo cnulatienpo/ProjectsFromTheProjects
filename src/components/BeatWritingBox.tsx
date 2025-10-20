@@ -12,6 +12,7 @@ export default function BeatWritingBox({ lesson }: { lesson: LessonMeta }) {
   const { unlockBeats } = useBeatUnlocks();
 
   useEffect(() => {
+    console.log('[BWB] mount', lesson?.id, lesson);
     const maybeNumber = (lesson as any)?.number;
     const n = typeof maybeNumber === 'number'
       ? maybeNumber
@@ -26,13 +27,11 @@ export default function BeatWritingBox({ lesson }: { lesson: LessonMeta }) {
     const toUnlock = Array.from(new Set([...scheduled, ...declared].map((b) => String(b))));
 
     if (toUnlock.length) {
-      // keep a debug line while testing
-      // eslint-disable-next-line no-console
-      console.log('[BeatWritingBox] unlocking for lesson', lesson.id, 'n=', n, toUnlock);
+      console.log('[BWB] unlocking with', toUnlock, lesson.emoticonColor);
       unlockBeats(lesson.id, toUnlock, lesson.emoticonColor);
     }
     // only run on lesson id changes
-  }, [lesson.id]);
+  }, [lesson?.id]);
 
   return (
     <div className="beat-writing-wrap">
