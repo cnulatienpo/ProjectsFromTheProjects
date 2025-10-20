@@ -22,6 +22,7 @@ First milestone: **Literary Deviousness** — fiction writing games.
 ## Dev tips
 - Make shell scripts executable: `chmod +x scripts/*.sh`
 - If on Windows, use the `.ps1` versions.
+- To verify the dev server stays free of CSP headers or service workers, run `bash tools/check_dev_csp.sh`.
 
 ---
 ## GitHub Pages Deployment
