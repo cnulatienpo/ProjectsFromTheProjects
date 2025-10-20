@@ -42,6 +42,24 @@ function splitIntroPrompt(text) {
   if (parts.length >= 2) return { intro: parts.slice(0, -1).join('\n\n').trim(), prompt: parts.at(-1).trim() };
   return { intro: t.trim(), prompt: '' };
 }
+function escapeHtml(s) {
+  return String(s ?? '').replace(/[&<>"']/g, (ch) => {
+    switch (ch) {
+      case '&': return '&amp;';
+      case '<': return '&lt;';
+      case '>': return '&gt;';
+      case '"': return '&quot;';
+      case "'": return '&#39;';
+      default: return ch;
+    }
+  });
+}
+
+function toParagraphHtml(s) {
+  if (!s) return '';
+  const parts = String(s).split(/\n\s*\n+/).map(p => p.trim()).filter(Boolean);
+  return parts.map(p => `<p>${escapeHtml(p).replace(/\n/g, '<br/>')}</p>`).join('\n');
+}
 async function* readJSONL(path) {
   if (!existsSync(path)) return;
   const rl = readline.createInterface({ input: createReadStream(path), crlfDelay: Infinity });
@@ -80,7 +98,10 @@ app.get('/sigil/lesson/:id', async (req, res) => {
       if (id === want) {
         const title = String(row?.title ?? (row?.text ?? '').toString().split('\n')[0] ?? `Untitled ${id}`);
         const { intro, prompt } = splitIntroPrompt((row?.text ?? '').toString());
-        return res.status(200).json({ id, title, intro, prompt });
+        const content_html = toParagraphHtml(intro || (row?.text ?? ''));
+        const prompt_html = toParagraphHtml(prompt || row?.prompt || '');
+        const min_words = Number(row?.min_words ?? row?.minWords ?? row?.minimum ?? 30) || 30;
+        return res.status(200).json({ id, title, intro, prompt, content_html, prompt_html, min_words });
       }
       i++;
     }
