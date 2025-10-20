@@ -213,8 +213,8 @@ export default function SigilRunner() {
               <BeatWritingBox lesson={{ id: lesson?.id, number: lesson?.number, emoticonColor: lesson?.emoticonColor }} />
             </div>
             <textarea
-              id="sigil-text"
-              name="sigilText"
+              id="sigil-textarea"
+              name="sigil"
               aria-label="Sigil response"
               value={text}
               onChange={e => setText(e.target.value)}

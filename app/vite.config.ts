@@ -45,6 +45,10 @@ export default defineConfig({
     },
   },
   server: {
+    headers: {
+      // DEV ONLY: allow HMR/react-refresh to eval while debugging in the browser.
+      'Content-Security-Policy': "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob:; connect-src 'self' ws: wss:;",
+    },
     proxy: proxyConfig,
     host: '0.0.0.0',
     port: 5173,
