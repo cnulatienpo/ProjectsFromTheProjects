@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import type { NextFunction, Request, Response } from "express";
 import { v4 as uuidv4 } from "uuid";
 import cutGamesRouter from "./routes/cutGames";
+import attemptRoutes from "../../packages/server/src/routes/attempt";
 
 function loadExpress() {
     const localRequire = createRequire(import.meta.url);
@@ -65,6 +66,7 @@ app.use((req: PlayerRequest, res: Response, next: NextFunction) => {
 
 app.use(express.json());
 app.use(express.static(path.resolve(process.cwd(), "public")));
+app.use("/api", attemptRoutes);
 app.use(cutGamesRouter);
 
 export default app;

@@ -28,6 +28,12 @@
         "paths": {
             "@/*": [
                 "src/*"
+            ],
+            "@shared/*": [
+                "packages/shared/src/*"
+            ],
+            "@server/*": [
+                "packages/server/src/*"
             ]
         }
     },
@@ -38,7 +44,9 @@
         "scripts/**/*.ts",
         "scripts/**/*.tsx",
         "vite.config.ts",
-        "playwright.config.ts"
+        "playwright.config.ts",
+        "packages/**/*",
+        "apps/**/*"
     ],
     "exclude": [
         "node_modules",
