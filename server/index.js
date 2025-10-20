@@ -33,6 +33,11 @@ if (isDev) {
   );
   console.log('⚙️  Helmet: relaxed CSP for development');
 } else {
+  // Dev: turn off CSP so Vite’s dev client can run
+  app.use(helmet({
+    contentSecurityPolicy: false,
+  }));
+  app.use(helmet({ contentSecurityPolicy: false })); // DEV: turn off CSP on API origin
   // 🔒 Production: strict security (no eval)
   app.use(
     helmet({
