@@ -1,6 +1,6 @@
 {
   "612d149a-0fe8-4d36-8b19-91188947ac43": {
-    "lastId": "72",
+    "lastId": "2",
     "started": [
       "2",
       "71",
@@ -8,10 +8,12 @@
       "72"
     ],
     "submitted": [
-      "71"
+      "71",
+      "1"
     ],
     "skipped": [],
     "verdicts": {
+      "1": "revise",
       "71": "revise"
     }
   }

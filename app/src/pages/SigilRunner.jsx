@@ -60,6 +60,8 @@ export default function SigilRunner() {
   const [text, setText] = useState('')
   const [loading, setLoading] = useState(true)
   const [pendingInsert, setPendingInsert] = useState(null)
+  const [feedback, setFeedback] = useState(null)
+  const [showFeedback, setShowFeedback] = useState(false)
 
   // Function to handle beat insertion
   const handleBeatInsert = (beatData) => {
@@ -153,20 +155,48 @@ export default function SigilRunner() {
     unlockBeats(lesson?.id || (`lesson-${lessonNumber}`), toUnlock, lesson?.emoticonColor)
   }, [lesson?.id, id])
 
-  // real submit handler: post attempt, record submitted, then advance
+  // real submit handler: post attempt, record submitted, show feedback
   async function handleSubmit() {
     const lId = lesson?.id ?? (id ? String(id) : null)
     if (!lId) return alert('No lesson id')
     if (!text || text.trim().length === 0) return alert('Please write something first')
     setSubmitting(true)
     setSubmitError(null)
+    setShowFeedback(false)
     try {
+      console.log('Submitting attempt...', { id: lId, text: text.substring(0, 50) + '...' })
       const res = await submitAttempt({ id: lId, text, minWords: stats.min })
+      console.log('Server response:', res)
+
       // server returns { id, report }
-      const verdict = res?.report?.verdict ?? null
+      const report = res?.report
+      const verdict = report?.verdict ?? null
+
+      // Store feedback for display
+      setFeedback({
+        verdict,
+        memo: report?.memo || [],
+        rubric: report?.rubric || [],
+        badge: report?.badge,
+        level: report?.level
+      })
+      setShowFeedback(true)
+
       try { await markSubmitted?.(lId, verdict) } catch (e) { console.warn('markSubmitted failed', e) }
-      // if the report contains memo lines, show them (optional)
-      // advance to next lesson if desired
+
+      console.log('Feedback set, showing results')
+    } catch (err) {
+      console.error('submit error', err)
+      const msg = err?.message || String(err)
+      setSubmitError(msg)
+    } finally {
+      setSubmitting(false)
+    }
+  }
+
+  // Handle advancing to next lesson after reviewing feedback
+  async function handleNext() {
+    try {
       const nextId = await fetchNextId()
       if (nextId) {
         nav(`/sigil/${encodeURIComponent(nextId)}`)
@@ -175,11 +205,7 @@ export default function SigilRunner() {
         await goNext()
       }
     } catch (err) {
-      console.error('submit error', err)
-      const msg = err?.message || String(err)
-      setSubmitError(msg)
-    } finally {
-      setSubmitting(false)
+      console.error('next lesson error', err)
     }
   }
 
@@ -229,12 +255,14 @@ export default function SigilRunner() {
   if (err) return <main className="sigil-root surface" style={{ padding: 24 }}><b>Error:</b> {err} <p><Link to="/sigil">Back to catalog</Link></p></main>
   if (!lesson) return <main className="sigil-root surface" style={{ padding: 24 }}>{loading ? 'Loading lesson…' : 'No lesson available.'}</main>
 
-  // simple “Ray Ray Says” lines (placeholder; can be real analysis later)
-  const rayLines = [
-    'Focus your character’s desire in the first 1–2 sentences.',
-    'Add a concrete obstacle; make it specific.',
-    'Use one sensory detail (sound, smell, texture).'
-  ]
+  // Ray Ray Says lines - show feedback if available, otherwise default tips
+  const rayLines = showFeedback && feedback?.memo ?
+    feedback.memo :
+    [
+      'Focus your character\'s desire in the first 1–2 sentences.',
+      'Add a concrete obstacle; make it specific.',
+      'Use one sensory detail (sound, smell, texture).'
+    ]
   // Never show titles or game name — use content/prompt only
   const it = lesson
   const rawContent = it?.content_html || it?.prompt_html || ''
@@ -291,15 +319,20 @@ export default function SigilRunner() {
             text={text}
             minWords={stats.min}
             memo={rayLines}
-            onSubmit={handleSubmit}
-            onRetry={() => setText('')}
-            onNext={goNext}
+            onSubmit={showFeedback ? null : handleSubmit}
+            onRetry={() => {
+              setText('')
+              setShowFeedback(false)
+              setFeedback(null)
+            }}
+            onNext={showFeedback ? handleNext : null}
             onSkip={async () => {
               try { await markSkipped?.(id) } catch { }
-              goNext()
+              handleNext()
             }}
             submitting={submitting}
             error={submitError}
+            showingFeedback={showFeedback}
           />
         </section>
       </div>

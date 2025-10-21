@@ -8,7 +8,8 @@ export default function FeedbackTray({
     onNext,
     onSkip,
     submitting = false,
-    error = null
+    error = null,
+    showingFeedback = false
 }) {
     const words = (text || '').trim().split(/\s+/).filter(Boolean).length || 0
     const canSubmit = words >= (minWords || 30)
@@ -26,11 +27,73 @@ export default function FeedbackTray({
                 <div className="feedback-error" style={{ color: '#b54708', marginTop: 8 }}>{String(error)}</div>
             )}
 
+            {/* Show feedback details after submission */}
+            {showingFeedback && (
+                <div style={{ marginTop: 16, padding: 12, border: '1px solid #ddd', borderRadius: 6, background: '#f9f9f9' }}>
+                    <div style={{ fontWeight: 'bold', marginBottom: 8 }}>Submission Results:</div>
+                    <div style={{ fontSize: '14px', color: '#666' }}>
+                        Word count: {words} / {minWords} minimum
+                    </div>
+                </div>
+            )}
+
             <div className="pfp-actions" style={{ marginTop: 12 }}>
-                <button className="pfp-btn" disabled={!canSubmit || submitting} onClick={onSubmit}>{submitting ? 'Submitting…' : 'Submit'}</button>
-                <button className="pfp-btn" onClick={onRetry} disabled={submitting}>Try again</button>
-                <button className="pfp-btn" onClick={onNext} disabled={submitting}>Next</button>
-                <button className="pfp-btn" onClick={onSkip} disabled={submitting}>I don’t feel like it</button>
+                {/* Show Submit button only if not showing feedback */}
+                {!showingFeedback && onSubmit && (
+                    <button
+                        type="button"
+                        className="pfp-btn"
+                        disabled={!canSubmit || submitting}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            console.log('Submit button clicked');
+                            onSubmit?.(e);
+                        }}
+                    >
+                        {submitting ? 'Submitting…' : 'Submit'}
+                    </button>
+                )}
+
+                {/* Try Again button */}
+                <button
+                    type="button"
+                    className="pfp-btn"
+                    onClick={(e) => {
+                        e.preventDefault();
+                        onRetry?.(e);
+                    }}
+                    disabled={submitting}
+                >
+                    {showingFeedback ? 'Revise' : 'Try again'}
+                </button>
+
+                {/* Next button - show after feedback or if explicitly provided */}
+                {(showingFeedback || onNext) && (
+                    <button
+                        type="button"
+                        className="pfp-btn"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            onNext?.(e);
+                        }}
+                        disabled={submitting}
+                    >
+                        Next Lesson
+                    </button>
+                )}
+
+                {/* Skip button */}
+                <button
+                    type="button"
+                    className="pfp-btn"
+                    onClick={(e) => {
+                        e.preventDefault();
+                        onSkip?.(e);
+                    }}
+                    disabled={submitting}
+                >
+                    {showingFeedback ? 'Skip to Next' : 'I don\'t feel like it'}
+                </button>
             </div>
         </div>
     )
