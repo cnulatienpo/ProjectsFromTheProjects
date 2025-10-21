@@ -13,6 +13,9 @@ import { listSigilIds } from './sigil/catalogIds.js';
 import attemptRoutes from './routes/attempt.js';
 import nextRoutes from './routes/next.js';
 import skipRoutes from './routes/skip.js';
+import versionRoutes from './routes/version.js';
+import healthRoutes from './routes/health.js';
+import debugContentRoutes from './routes/debugContent.js';
 
 const app = express();
 app.use(cors());
@@ -40,6 +43,9 @@ if (isProd) {
 app.use('/api', attemptRoutes);
 app.use('/api', nextRoutes);
 app.use('/api', skipRoutes);
+app.use('/api', versionRoutes);
+app.use('/api', healthRoutes);
+app.use('/api', debugContentRoutes);
 
 // ====== Sigil JSONL endpoints (unchanged) ======
 const FILE = resolve(process.cwd(), 'labeled data', 'tweetrunk_renumbered.jsonl');
