@@ -16,6 +16,7 @@ import skipRoutes from './routes/skip.js';
 import versionRoutes from './routes/version.js';
 import healthRoutes from './routes/health.js';
 import debugContentRoutes from './routes/debugContent.js';
+import attemptRoutes from './routes/attempt.js';
 
 const { createReadStream, appendFileSync } = fs;
 const { resolve } = path;
@@ -57,66 +58,12 @@ try {
   console.warn('Route mounting warning:', e && e.message);
 }
 
-app.get('/api/attempt', (_req, res) => {
-  res.json({ ok: true, ping: 'attempt-route-alive' });
-});
-
-app.post('/api/attempt', (req, res) => {
-  const body = req.body ?? {};
-  const { userId, itemId, mode, answer } = body;
-
-  const hasUserId = typeof userId === 'string' && userId.trim().length > 0;
-  const hasMode = typeof mode === 'string' && mode.trim().length > 0;
-  const hasItemId =
-    (typeof itemId === 'string' && itemId.trim().length > 0) ||
-    (typeof itemId === 'number' && Number.isFinite(itemId));
-  const hasAnswer = Object.prototype.hasOwnProperty.call(body, 'answer');
-
-  if (!hasUserId || !hasMode || !hasItemId || !hasAnswer) {
-    return res.status(400).json({ ok: false, error: 'BadRequest' });
-  }
-
-  let echo;
-  if (typeof answer === 'string') {
-    echo = answer;
-  } else {
-    try {
-      echo = JSON.stringify(answer).slice(0, 200);
-    } catch (err) {
-      echo = String(answer);
-    }
-  }
-
-  res.json({
-    ok: true,
-    itemId,
-    mode,
-    score: 0.8,
-    rubric: [
-      { key: 'Accuracy', ok: true },
-      { key: 'Clarity', ok: true },
-      { key: 'Voice', ok: true },
-      { key: 'Consistency', ok: true },
-      { key: 'Professionalism', ok: true },
-    ],
-    spans: [],
-    correctSequence: [],
-    fixSuggestion: 'Tighten the sentence. Cut a hedge word.',
-    nextHints: ['Try adding a Reveal 👁️ before the Payoff 🎉.'],
-    details: {
-      message: 'Stub grader: received your answer and awarded provisional credit.',
-      mode,
-      echo,
-    },
-    gradedAt: new Date().toISOString(),
-  });
-});
-
-console.log('>>> Mounted POST /api/attempt (stub grader)');
+app.use('/api/attempt', attemptRoutes);
+console.log('>>> Mounted routes: /api/attempt');
 app.use('/api', nextRoutes);
 app.use('/api', skipRoutes);
 
-console.log('>>> Mounted routes: /api/attempt, /api/healthz, /api/version, /api/debug/content, /api/skip');
+console.log('>>> Mounted routes: /api/next, /api/skip, /api/healthz, /api/version, /api/debug/content');
 
 // ====== Sigil JSONL endpoints (unchanged) ======
 const FILE = resolve(process.cwd(), 'labeled data', 'tweetrunk_renumbered.jsonl');
