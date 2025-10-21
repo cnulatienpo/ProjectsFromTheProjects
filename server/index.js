@@ -9,7 +9,6 @@ import { mark, getUserState } from './progress/store.js';
 import { listSigilIds } from './sigil/catalogIds.js';
 
 // Import new API routes
-import attemptRoutes from './routes/attempt.js';
 import nextRoutes from './routes/next.js';
 import skipRoutes from './routes/skip.js';
 import versionRoutes from './routes/version.js';
@@ -20,6 +19,7 @@ const require = createRequire(import.meta.url);
 const fs = require("fs");
 const path = require("path");
 const express = require("express");
+const attemptRoutes = require("./routes/attempt.js");
 const { createReadStream, appendFileSync } = fs;
 const { resolve } = path;
 
@@ -60,11 +60,11 @@ try {
   console.warn('Route mounting warning:', e && e.message);
 }
 
-app.use('/api', attemptRoutes);
+app.use(attemptRoutes);
 app.use('/api', nextRoutes);
 app.use('/api', skipRoutes);
 
-console.log('>>> Mounted routes: /api/healthz, /api/version, /api/debug/content, /api/skip');
+console.log('>>> Mounted routes: /api/attempt, /api/healthz, /api/version, /api/debug/content, /api/skip');
 
 // ====== Sigil JSONL endpoints (unchanged) ======
 const FILE = resolve(process.cwd(), 'labeled data', 'tweetrunk_renumbered.jsonl');
