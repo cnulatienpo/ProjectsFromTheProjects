@@ -36,13 +36,14 @@ export type ItemBase = {
   mode: AttemptMode;
   skillIds: string[];       // e.g., ["beat.conflict","comma.coordinate"]
   passage?: string;
-  options?: { id:string; text:string }[];
+  options?: { id:string; text:string; rationale?: string }[];
   gold?: {
     beats?: string[];
     order?: string[];
     spans?: Span[];
     choiceId?: string;
     rationaleTags?: string[];
+    missingBeat?: string;
   };
   meta?: Record<string, unknown>;
 };

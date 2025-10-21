@@ -1,4 +1,4 @@
-import type { AttemptPayload, AttemptResult } from "../types";
+import type { AttemptPayload, AttemptResult } from "@shared/gameTypes";
 
 import nameBeat from "./nameBeat";
 import missingBeat from "./missingBeat";
