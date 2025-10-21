@@ -1,5 +1,5 @@
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
 
 function resolveExisting(paths) {
     for (const candidate of paths) {
@@ -17,7 +17,7 @@ function readJSONL(absPath) {
         .map(l => JSON.parse(l));
 }
 
-const ROOT = "/workspaces/ProjectsFromTheProjects";
+const ROOT = process.env.PROJECT_ROOT || process.cwd();
 
 export function loadTweetrunk() {
     const p = resolveExisting([
