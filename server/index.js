@@ -224,7 +224,7 @@ app.get('*', (req, res, next) => {
 });
 
 // Start server
-const PORT = process.env.PORT || 3002;  // Default to 3002 for consistency with Vite proxy
+const PORT = process.env.PORT || 3000;  // Default to 3000 when PORT not provided
 const HOST = '0.0.0.0';
 app.listen(PORT, HOST, () => {
   console.log(`>>> Server listening on http://localhost:${PORT}`);
