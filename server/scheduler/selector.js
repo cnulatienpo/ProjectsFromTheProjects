@@ -6,12 +6,31 @@ export default async function pickNext(userId) {
     if (!pool.length) {
         throw new Error("No items available");
     }
-    const last = await getLastAttempt(userId);
-    const lastDetails = last?.result?.details;
-    const lastReason = typeof lastDetails?.reason === "string" ? lastDetails.reason : undefined;
-    const filtered = lastReason === "user_skip"
-        ? pool.filter((item) => item.id !== last?.itemId)
-        : pool;
-    const candidates = filtered.length ? filtered : pool;
+    let candidates = pool;
+
+    const lastSkip = (global.__skips && global.__skips.get(userId)) || null;
+    if (lastSkip?.itemId) {
+        const filtered = pool.filter((item) => item.id !== lastSkip.itemId);
+        if (filtered.length) {
+            candidates = filtered;
+        }
+    }
+
+    if (candidates === pool) {
+        const last = await getLastAttempt(userId);
+        const lastDetails = last?.result?.details;
+        const lastReason = typeof lastDetails?.reason === "string" ? lastDetails.reason : undefined;
+        if (lastReason === "user_skip" && last?.itemId) {
+            const filtered = pool.filter((item) => item.id !== last.itemId);
+            if (filtered.length) {
+                candidates = filtered;
+            }
+        }
+    }
+
+    if (!candidates.length) {
+        candidates = pool;
+    }
+
     return candidates[Math.floor(Math.random() * candidates.length)];
 }
