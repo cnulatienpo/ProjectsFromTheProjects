@@ -16,13 +16,42 @@ import skipRoutes from './routes/skip.js';
 import versionRoutes from './routes/version.js';
 import healthRoutes from './routes/health.js';
 import debugContentRoutes from './routes/debugContent.js';
-import attemptRoutes from './routes/attempt.js';
 
 const { createReadStream, appendFileSync } = fs;
 const { resolve } = path;
 
 const __filename = fileURLToPath(import.meta.url);
 const app = express();
+const mounted = [];
+
+const logMountedRoutes = () => {
+  if (!mounted.length) return;
+  const preferredOrder = [
+    '/api/attempt',
+    '/api/healthz',
+    '/api/version',
+    '/api/debug/content',
+    '/api/skip',
+  ];
+  const seen = new Set();
+  const ordered = [];
+
+  for (const route of preferredOrder) {
+    if (mounted.includes(route) && !seen.has(route)) {
+      ordered.push(route);
+      seen.add(route);
+    }
+  }
+
+  for (const route of mounted) {
+    if (!seen.has(route)) {
+      ordered.push(route);
+      seen.add(route);
+    }
+  }
+
+  console.log(`>>> Mounted routes: ${ordered.join(', ')}`);
+};
 
 console.log(">>> BOOTED SERVER FROM", __filename);
 
@@ -51,19 +80,31 @@ if (isProd) {
 
 // ====== New API routes ======
 try {
-  app.use(healthRoutes);
-  app.use(versionRoutes);
-  app.use(debugContentRoutes);
+  app.use(healthRoutes);            // GET /api/healthz
+  mounted.push('/api/healthz');
+  app.use(versionRoutes);           // GET /api/version
+  mounted.push('/api/version');
+  app.use(debugContentRoutes);      // GET /api/debug/content
+  mounted.push('/api/debug/content');
 } catch (e) {
   console.warn('Route mounting warning:', e && e.message);
 }
 
-app.use('/api/attempt', attemptRoutes);
-console.log('>>> Mounted routes: /api/attempt');
-app.use('/api', nextRoutes);
-app.use('/api', skipRoutes);
+app.use('/api', nextRoutes);        // GET /api/next
+app.use('/api', skipRoutes);        // POST /api/skip
+mounted.push('/api/skip');
 
-console.log('>>> Mounted routes: /api/next, /api/skip, /api/healthz, /api/version, /api/debug/content');
+const attemptRouteMount = (async () => {
+  try {
+    const mod = await import('./routes/attempt.js');
+    const attemptRouter = mod.default || mod;
+    app.use('/api/attempt', attemptRouter);
+    mounted.push('/api/attempt');
+    logMountedRoutes();
+  } catch (err) {
+    console.error('Attempt route mount failed:', err?.message || err);
+  }
+})();
 
 // ====== Sigil JSONL endpoints (unchanged) ======
 const FILE = resolve(process.cwd(), 'labeled data', 'tweetrunk_renumbered.jsonl');
@@ -210,17 +251,30 @@ app.post('/attempt', express.json(), async (req, res) => {
   }
 });
 
-const distDir = path.join(process.cwd(), "app", "dist");
-const hasDist = fs.existsSync(path.join(distDir, "index.html"));
+await attemptRouteMount;
 
-if (hasDist) {
-  console.log(">>> Serving static bundle from", distDir);
-  app.use(express.static(distDir));
-  app.get("*", (_req, res) => res.sendFile(path.join(distDir, "index.html")));
+// 🔒 Make sure unknown /api/* doesn't fall through to static site
+app.use('/api', (req, res, next) => {
+  if (!res.headersSent) {
+    return res.status(404).json({ error: 'Not Found', path: req.originalUrl });
+  }
+  next();
+});
+
+// ====== Static site serving (after APIs) ======
+const distDir = path.join(process.cwd(), 'app', 'dist');
+const hasDist = fs.existsSync(path.join(distDir, 'index.html'));
+
+if (!hasDist) {
+  console.log(`>>> Static bundle missing at ${distDir} — run \`npm run build\` to generate it.`);
 } else {
-  console.warn(">>> Bundle not found at", distDir, "— run `npm run build` to generate it.");
-  app.get("*", (_req, res) => {
-    res.status(503).type("text/plain").send("Bundle not built. Run: npm run build");
+  console.log(`>>> Serving static bundle from ${distDir}`);
+  app.use(express.static(distDir, { index: 'index.html' }));
+  app.get('*', (req, res) => {
+    if (req.path.startsWith('/api/')) {
+      return res.status(404).json({ error: 'Not Found' });
+    }
+    res.sendFile(path.join(distDir, 'index.html'));
   });
 }
 
