@@ -10,7 +10,9 @@
     "dev:down": "bash scripts/dev-down.sh",
     "build": "node scripts/offline-vite-build.mjs",
     "build:app": "node scripts/offline-vite-build.mjs",
-    "smoke:content": "ts-node scripts/smokeContent.ts"
+    "smoke:content": "ts-node scripts/smokeContent.ts",
+    "start": "node server/index.js",
+    "dev": "bash scripts/dev-up.sh"
   },
   "devDependencies": {
     "@playwright/test": "^1.56.1",

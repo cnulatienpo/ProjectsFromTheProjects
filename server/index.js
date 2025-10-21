@@ -3,7 +3,8 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import { createReadStream, existsSync, appendFileSync } from 'node:fs';
-import { resolve } from 'node:path';
+import path, { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import * as readline from 'node:readline';
 import { buildReport } from './report/index.js';
 import { mark, getUserState } from './progress/store.js';
@@ -17,7 +18,17 @@ import versionRoutes from './routes/version.js';
 import healthRoutes from './routes/health.js';
 import debugContentRoutes from './routes/debugContent.js';
 
+const __filename = fileURLToPath(import.meta.url);
+
 const app = express();
+
+console.log('>>> BOOTED SERVER FROM', __filename);
+
+app.set('trust proxy', true);
+
+const dist = path.join(process.cwd(), 'dist');
+const indexHtmlPath = path.join(dist, 'index.html');
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -40,12 +51,23 @@ if (isProd) {
 }
 
 // ====== New API routes ======
+try {
+  app.use(versionRoutes);
+  app.use(healthRoutes);
+  app.use(debugContentRoutes);
+} catch (e) {
+  console.warn('Route mounting warning:', e && e.message);
+}
+
 app.use('/api', attemptRoutes);
 app.use('/api', nextRoutes);
 app.use('/api', skipRoutes);
-app.use('/api', versionRoutes);
-app.use('/api', healthRoutes);
-app.use('/api', debugContentRoutes);
+
+if (existsSync(dist)) {
+  app.use(express.static(dist));
+} else {
+  console.warn(`>>> Static bundle missing at ${dist}`);
+}
 
 // ====== Sigil JSONL endpoints (unchanged) ======
 const FILE = resolve(process.cwd(), 'labeled data', 'tweetrunk_renumbered.jsonl');
@@ -192,7 +214,18 @@ app.post('/attempt', express.json(), async (req, res) => {
   }
 });
 
+app.get('*', (req, res, next) => {
+  if (req.method !== 'GET') return next();
+  if (req.path.startsWith('/api/')) return next();
+  if (existsSync(indexHtmlPath)) {
+    return res.sendFile(indexHtmlPath);
+  }
+  return res.status(404).type('text/plain').send('dist/index.html not found');
+});
+
 // Start server
-const PORT = process.env.PORT || 3002;  // Default to 3002 for consistency with Vite proxy
+const PORT = process.env.PORT || 3000;  // Default to 3000 when PORT not provided
 const HOST = '0.0.0.0';
-app.listen(PORT, HOST, () => console.log(`[API] listening on http://${HOST}:${PORT}`));
+app.listen(PORT, HOST, () => {
+  console.log(`>>> Server listening on http://localhost:${PORT}`);
+});
