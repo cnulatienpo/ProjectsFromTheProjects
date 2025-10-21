@@ -5,6 +5,7 @@ type Props = {
   onNext: () => void;
   onRetry?: () => void;
   onQueue?: () => void;
+  onSkip?: () => void;
   isLoading?: boolean;
 };
 export default function LogicNavButtons({
@@ -12,6 +13,7 @@ export default function LogicNavButtons({
   onNext,
   onRetry,
   onQueue,
+  onSkip,
   isLoading,
 }: Props) {
   return (
@@ -21,6 +23,9 @@ export default function LogicNavButtons({
       </button>
       <button type="button" className="rounded px-3 py-2 border" onClick={onQueue}>
         Queue Drill
+      </button>
+      <button type="button" className="rounded px-3 py-2 border" onClick={onSkip}>
+        I don’t feel like it
       </button>
       <button
         type="button"
