@@ -1,6 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
+// GET ping so we can verify the route is mounted
+router.get("/api/attempt", (_req, res) => {
+  res.json({ ok: true, ping: "attempt-route-alive" });
+});
+
 /**
  * POST /api/attempt
  * body: { userId, itemId, mode, answer }
@@ -12,8 +17,6 @@ router.post("/api/attempt", express.json(), async (req, res) => {
     return res.status(400).json({ error: "missing userId, itemId, or mode" });
   }
 
-  // TODO: swap this stub for real graders later.
-  // For now: naive scoring (has some answer → pass-ish), echo details.
   const hasAnswer =
     answer != null &&
     (typeof answer === "string" ? answer.trim().length > 0 : true);
@@ -27,10 +30,8 @@ router.post("/api/attempt", express.json(), async (req, res) => {
     { key: "Professionalism", ok: true },
   ];
 
-  // keep spans/sequence shape so Highlight/Order UIs don’t break
-  const spans = [];            // e.g., [{ start: 10, end: 22, tag: "signal" }]
-  const correctSequence = [];  // e.g., ["setup","reveal","payoff"]
-
+  const spans = [];
+  const correctSequence = [];
   const details = {
     message: hasAnswer
       ? "Stub grader: received your answer and awarded provisional credit."
@@ -47,12 +48,12 @@ router.post("/api/attempt", express.json(), async (req, res) => {
     ok: true,
     itemId,
     mode,
-    score,              // 0..1
-    rubric,             // [{key, ok}]
-    spans,              // []
-    correctSequence,    // []
+    score,
+    rubric,
+    spans,
+    correctSequence,
     fixSuggestion: hasAnswer ? "Tighten the sentence. Cut a hedge word." : null,
-    nextHints,          // string[]
+    nextHints,
     details,
     gradedAt: new Date().toISOString(),
   });
