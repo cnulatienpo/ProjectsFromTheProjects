@@ -8,6 +8,9 @@ import cutGamesRouter from "./routes/cutGames";
 import attemptRoutes from "../../packages/server/src/routes/attempt";
 import nextRoutes from "../../packages/server/src/routes/next";
 import skipRoutes from "../../packages/server/src/routes/skip";
+import versionRoute from "../../packages/server/src/routes/version";
+import healthRoute from "../../packages/server/src/routes/health";
+import debugContentRoute from "../../packages/server/src/routes/debugContent";
 
 function loadExpress() {
     const localRequire = createRequire(import.meta.url);
@@ -71,6 +74,9 @@ app.use(express.static(path.resolve(process.cwd(), "public")));
 app.use("/api", attemptRoutes);
 app.use("/api", nextRoutes);
 app.use("/api", skipRoutes);
+app.use("/api", versionRoute);
+app.use("/api", healthRoute);
+app.use("/api", debugContentRoute);
 app.use(cutGamesRouter);
 
 export default app;
