@@ -4,7 +4,9 @@ const CANON = (s: string) => s.toLowerCase().replace(/[^a-z ]/g, "").trim();
 const TAGS = ["accuracy", "clarity", "voice", "consistency", "professionalism"];
 
 export default async function whyReflect(p: AttemptPayload): Promise<AttemptResult> {
-  const gold = ((p as any).gold?.rationaleTags || []).map(CANON);
+  const rawGold = (p as any).gold?.rationaleTags ?? [];
+  const goldArr = Array.isArray(rawGold) ? rawGold : String(rawGold).split(/[,;\|]+/).map(s => s.trim()).filter(Boolean);
+  const gold = goldArr.map(CANON);
   const text = p.answer.rationale || "";
   const hits = new Set<string>();
   for (const t of TAGS) {

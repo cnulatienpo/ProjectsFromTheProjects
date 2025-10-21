@@ -27,20 +27,17 @@ export default function NotesPanel({ gameKey = 'sigil', lessonId, rayRayTitle = 
   const rr = useMemo(() => Array.isArray(rayRayLines) ? rayRayLines : [], [rayRayLines])
 
   return (
-    <div className="notepad">
+    <div className="notepad" data-debug="NotesPanel-EDITED-v2" style={{ position: 'relative' }}>
+      <div style={{ position: 'absolute', top: '-15px', right: '0', fontSize: '10px', color: 'red', background: 'yellow', padding: '2px' }}>
+        EDITED-v2
+      </div>
       <div className="notepad__paper">
         <div className="notepad__section">
           <div className="notepad__heading">{rayRayTitle}:</div>
           <ul className="notepad__lines">
             {rr.length ? rr.map((l, i) => (
               <li key={i} className="notepad__line">{String(l)}</li>
-            )) : (
-              <>
-                <li className="notepad__line">• Focus your character’s desire in the first 1–2 sentences.</li>
-                <li className="notepad__line">• Add one concrete obstacle.</li>
-                <li className="notepad__line">• Include a sensory detail (sound/smell/texture).</li>
-              </>
-            )}
+            )) : null}
           </ul>
         </div>
 
@@ -50,7 +47,7 @@ export default function NotesPanel({ gameKey = 'sigil', lessonId, rayRayTitle = 
           <div className="notepad__heading">Your notes:</div>
           <textarea
             className="notepad__textarea"
-            placeholder="Jot your plan, beats, or reminders…"
+            placeholder=""
             value={mine}
             onChange={(e) => setMine(e.target.value)}
           />

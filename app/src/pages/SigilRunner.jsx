@@ -13,6 +13,7 @@ import { snapAndDownload } from '@/lib/snapshot.js'
 import { toCatalogItems } from '@/lib/normalize'
 import { getLesson } from '@/services/sigilLesson'
 import BeatTextEditor from '@/components/BeatTextEditor.jsx'
+import { useAttempt } from '@/hooks/useAttempt.js'
 
 // Import the default emoticon mapping
 const defaultBeatEmoticon = {
@@ -62,6 +63,10 @@ export default function SigilRunner() {
   const [pendingInsert, setPendingInsert] = useState(null)
   const [feedback, setFeedback] = useState(null)
   const [showFeedback, setShowFeedback] = useState(false)
+  const [submitError, setSubmitError] = useState(null)
+
+  // Use the enhanced API system
+  const { submit: submitToAPI, result: gameResult, isLoading: submitting } = useAttempt("sigil", "sigil-user")
 
   // Function to handle beat insertion
   const handleBeatInsert = (beatData) => {
@@ -135,9 +140,6 @@ export default function SigilRunner() {
     return strongFirst
   }
 
-  const [submitting, setSubmitting] = useState(false)
-  const [submitError, setSubmitError] = useState(null)
-
   // mark started when lesson loads
   useEffect(() => {
     const lId = lesson?.id ?? (id ? String(id) : null)
@@ -155,42 +157,54 @@ export default function SigilRunner() {
     unlockBeats(lesson?.id || (`lesson-${lessonNumber}`), toUnlock, lesson?.emoticonColor)
   }, [lesson?.id, id])
 
-  // real submit handler: post attempt, record submitted, show feedback
+  // Enhanced submit handler using new API system
   async function handleSubmit() {
     const lId = lesson?.id ?? (id ? String(id) : null)
     if (!lId) return alert('No lesson id')
     if (!text || text.trim().length === 0) return alert('Please write something first')
-    setSubmitting(true)
+
     setSubmitError(null)
     setShowFeedback(false)
+
     try {
-      console.log('Submitting attempt...', { id: lId, text: text.substring(0, 50) + '...' })
-      const res = await submitAttempt({ id: lId, text, minWords: stats.min })
-      console.log('Server response:', res)
+      console.log('Submitting to enhanced API...', { id: lId, text: text.substring(0, 50) + '...' })
 
-      // server returns { id, report }
-      const report = res?.report
-      const verdict = report?.verdict ?? null
+      // Extract beats from text for the new API
+      const beatMatches = text.match(/\[([^\]]+)\]/g) || [];
+      const sigils = beatMatches.map(match => match.slice(1, -1).toLowerCase());
 
-      // Store feedback for display
+      // Submit to enhanced API system
+      const answer = {
+        text: text,
+        sigils: sigils,
+        minWords: stats.min
+      };
+
+      const res = await submitToAPI(lId, answer);
+      console.log('Enhanced API response:', res)
+
+      // Extract enhanced results
+      const score = res?.score ?? null;
+      const rubric = res?.rubric || [];
+      const memo = res?.memo || [];
+
+      // Store enhanced feedback for display
       setFeedback({
-        verdict,
-        memo: report?.memo || [],
-        rubric: report?.rubric || [],
-        badge: report?.badge,
-        level: report?.level
+        verdict: score >= 0.7 ? 'pass' : score >= 0.5 ? 'needs-work' : 'retry',
+        memo: memo.length > 0 ? memo : [`Score: ${score ? (score * 100).toFixed(0) + '%' : 'N/A'}`],
+        rubric: rubric,
+        score: score,
+        gameResult: res // Store full result for enhanced display
       })
       setShowFeedback(true)
 
-      try { await markSubmitted?.(lId, verdict) } catch (e) { console.warn('markSubmitted failed', e) }
+      try { await markSubmitted?.(lId, score >= 0.7 ? 'pass' : 'needs-work') } catch (e) { console.warn('markSubmitted failed', e) }
 
-      console.log('Feedback set, showing results')
+      console.log('Enhanced feedback set, showing results')
     } catch (err) {
-      console.error('submit error', err)
+      console.error('enhanced submit error', err)
       const msg = err?.message || String(err)
       setSubmitError(msg)
-    } finally {
-      setSubmitting(false)
     }
   }
 
@@ -255,14 +269,17 @@ export default function SigilRunner() {
   if (err) return <main className="sigil-root surface" style={{ padding: 24 }}><b>Error:</b> {err} <p><Link to="/sigil">Back to catalog</Link></p></main>
   if (!lesson) return <main className="sigil-root surface" style={{ padding: 24 }}>{loading ? 'Loading lesson…' : 'No lesson available.'}</main>
 
-  // Ray Ray Says lines - show feedback if available, otherwise default tips
+  // Ray Ray Says lines - show enhanced feedback if available, otherwise default tips
   const rayLines = showFeedback && feedback?.memo ?
     feedback.memo :
-    [
-      'Focus your character\'s desire in the first 1–2 sentences.',
-      'Add a concrete obstacle; make it specific.',
-      'Use one sensory detail (sound, smell, texture).'
-    ]
+    showFeedback && feedback?.gameResult ?
+      [
+        feedback.gameResult.score != null ? `Score: ${(feedback.gameResult.score * 100).toFixed(0)}%` : "",
+        feedback.gameResult.rubric?.length ? `Analysis: ${feedback.gameResult.rubric.join(", ")}` : "",
+        feedback.gameResult.details?.message ?? "",
+        feedback.gameResult.fixSuggestion ? `Suggestion: ${feedback.gameResult.fixSuggestion}` : "",
+      ].filter(Boolean) :
+      [] // No default tips - let Ray Ray be empty until there's actual feedback
   // Never show titles or game name — use content/prompt only
   const it = lesson
   const rawContent = it?.content_html || it?.prompt_html || ''
@@ -333,7 +350,29 @@ export default function SigilRunner() {
             submitting={submitting}
             error={submitError}
             showingFeedback={showFeedback}
+            result={feedback?.gameResult} // Enhanced AI results
           />
+
+          {/* Enhanced grading results display */}
+          {showFeedback && feedback?.gameResult && (
+            <div style={{ marginTop: '16px', padding: '12px', background: '#f0f9ff', border: '1px solid #0369a1', borderRadius: '6px' }}>
+              <div style={{ fontWeight: 'bold', marginBottom: '8px' }}>🤖 AI Analysis:</div>
+              <div style={{ fontSize: '14px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+                <div><strong>Score:</strong> {Math.round(feedback.gameResult.score * 100)}%</div>
+                <div><strong>Mode:</strong> {feedback.gameResult.mode}</div>
+                {feedback.gameResult.rubric?.length > 0 && (
+                  <div style={{ gridColumn: '1 / -1' }}>
+                    <strong>Detailed Analysis:</strong> {feedback.gameResult.rubric.join(", ")}
+                  </div>
+                )}
+                {feedback.gameResult.fixSuggestion && (
+                  <div style={{ gridColumn: '1 / -1' }}>
+                    <strong>Suggestion:</strong> {feedback.gameResult.fixSuggestion}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
         </section>
       </div>
     </main>

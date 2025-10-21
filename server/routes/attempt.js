@@ -19,7 +19,14 @@ router.post("/attempt", async (req, res) => {
         payload.goldBeats = item?.meta?.beat_tags || item?.gold?.order || [];
         payload.goldMissing = item?.gold?.missingBeat;
 
-        const result = await gradeAttempt(payload);
+        let result;
+        try {
+            result = await gradeAttempt(payload);
+        } catch (gErr) {
+            console.error('[GRADER ERROR] payload:', JSON.stringify(payload).slice(0, 1000));
+            console.error('[GRADER ERROR] error: ', gErr);
+            throw gErr;
+        }
 
         const { leveledUp, level, badges } = await updateMastery(payload.userId, payload, result);
         result.leveledUp = leveledUp;

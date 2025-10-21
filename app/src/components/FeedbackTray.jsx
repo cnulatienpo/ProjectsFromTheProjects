@@ -30,7 +30,10 @@ export default function FeedbackTray({
         .join("\n") : ""
 
     return (
-        <div>
+        <div data-debug="FeedbackTray-EDITED-v2" style={{ position: 'relative' }}>
+            <div style={{ position: 'absolute', top: '-20px', right: '0', fontSize: '10px', color: 'red', background: 'yellow', padding: '2px' }}>
+                EDITED-v2
+            </div>
             {/* optional memo lines already rendered above as "ray ray says:"; keep this light */}
             {Array.isArray(memo) && memo.length > 0 && (
                 <ul style={{ margin: 0, paddingLeft: 18 }}>
@@ -46,9 +49,7 @@ export default function FeedbackTray({
             {showingFeedback && (
                 <div style={{ marginTop: 16, padding: 12, border: '1px solid #ddd', borderRadius: 6, background: '#f9f9f9' }}>
                     <div style={{ fontWeight: 'bold', marginBottom: 8 }}>Submission Results:</div>
-                    <div style={{ fontSize: '14px', color: '#666' }}>
-                        Word count: {words} / {minWords} minimum
-                    </div>
+                    {/* Word count intentionally hidden to avoid duplicated UI responsibility. */}
                 </div>
             )}
 
@@ -58,9 +59,9 @@ export default function FeedbackTray({
                     <label className="text-sm font-medium">Detailed Feedback</label>
                     <textarea
                         className="w-full min-h-[200px] rounded-xl border p-2 mt-2"
-                        value={notes || auto}
+                        value={notes}
                         onChange={(e) => onChangeNotes?.(e.target.value)}
-                        placeholder="Feedback prints here; you can type over it."
+                        placeholder=""
                     />
                     {children}
                 </div>

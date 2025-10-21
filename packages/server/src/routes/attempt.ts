@@ -16,6 +16,9 @@ router.post("/attempt", async (req, res) => {
     }
 
     const item = fetchItemById(payload.itemId);
+    // Debug: ensure gold fields are arrays when expected
+    console.log('[ATTEMPT DEBUG] item gold:', item?.gold);
+    console.log('[ATTEMPT DEBUG] item meta:', item?.meta);
     (payload as any).gold = item?.gold || {};
     (payload as any).options = item?.options || [];
     (payload as any).goldBeats = (item?.meta as any)?.beat_tags || item?.gold?.order || [];

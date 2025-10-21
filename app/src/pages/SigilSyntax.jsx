@@ -39,9 +39,7 @@ export default function SigilSyntax() {
       <section style={card}>
         {/* Placeholder copy — replace with your own text later */}
         <div style={placeholderCopy}>
-          {/* Write your landing text here. Keep it short; this is just a placeholder. */}
           <p style={{ margin: 0, opacity: 0.9 }}>
-            {/* TODO: Replace this with your real intro text. */}
             This space is reserved for your intro copy to the Sigil &amp; Syntax game.
           </p>
         </div>

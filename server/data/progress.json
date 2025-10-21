@@ -4,8 +4,12 @@
     "started": [
       "1"
     ],
-    "submitted": [],
+    "submitted": [
+      "1"
+    ],
     "skipped": [],
-    "verdicts": {}
+    "verdicts": {
+      "1": "needs-work"
+    }
   }
 }
