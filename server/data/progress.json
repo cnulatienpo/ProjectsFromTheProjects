@@ -2,19 +2,10 @@
   "612d149a-0fe8-4d36-8b19-91188947ac43": {
     "lastId": "1",
     "started": [
-      "2",
-      "71",
-      "1",
-      "72"
-    ],
-    "submitted": [
-      "71",
       "1"
     ],
+    "submitted": [],
     "skipped": [],
-    "verdicts": {
-      "1": "revise",
-      "71": "revise"
-    }
+    "verdicts": {}
   }
 }

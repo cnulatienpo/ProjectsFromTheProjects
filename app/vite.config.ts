@@ -13,6 +13,7 @@ const defaultProxy = {
   '/attempt': { target: baseProxyTarget, changeOrigin: true, secure: false, timeout: 10000 },
   '/progress': { target: baseProxyTarget, changeOrigin: true, secure: false, timeout: 10000 },
   '/health': { target: baseProxyTarget, changeOrigin: true, secure: false, timeout: 10000 },
+  '/api': { target: baseProxyTarget, changeOrigin: true, secure: false, timeout: 10000 },
 } as const
 
 const extraProxyTargets = ['/goodword', '/cut', '/__diag', '/api', '/style-report', '/catalog', '/attempt', '/progress'] as const

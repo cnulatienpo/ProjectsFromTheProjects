@@ -1,0 +1,10 @@
+// Migrated from packages/shared - Core types for the application
+export * from "./gameTypes";
+export * from "./rubric";
+export * from "./beatPalette";
+export * from "./reportTypes";
+export * from "./influenceCatalog";
+export * from "./reportPhrases";
+export * from "./reportEvolve";
+export * from "./styleFeatures";
+export * from "./judgment";

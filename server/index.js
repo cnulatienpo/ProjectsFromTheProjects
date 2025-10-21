@@ -9,6 +9,11 @@ import { buildReport } from './report/index.js';
 import { mark, getUserState } from './progress/store.js';
 import { listSigilIds } from './sigil/catalogIds.js';
 
+// Import new API routes
+import attemptRoutes from './routes/attempt.js';
+import nextRoutes from './routes/next.js';
+import skipRoutes from './routes/skip.js';
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -30,6 +35,11 @@ if (isProd) {
   );
   console.log('⚙️  Helmet: relaxed CSP for development');
 }
+
+// ====== New API routes ======
+app.use('/api', attemptRoutes);
+app.use('/api', nextRoutes);
+app.use('/api', skipRoutes);
 
 // ====== Sigil JSONL endpoints (unchanged) ======
 const FILE = resolve(process.cwd(), 'labeled data', 'tweetrunk_renumbered.jsonl');

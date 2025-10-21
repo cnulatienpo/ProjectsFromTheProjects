@@ -9,10 +9,25 @@ export default function FeedbackTray({
     onSkip,
     submitting = false,
     error = null,
-    showingFeedback = false
+    showingFeedback = false,
+    result = null,
+    notes = "",
+    onChangeNotes = null,
+    children = null
 }) {
     const words = (text || '').trim().split(/\s+/).filter(Boolean).length || 0
     const canSubmit = words >= (minWords || 30)
+
+    // Build auto feedback from result if available
+    const auto = result ? [
+        result?.score != null ? `Score: ${(result.score * 100).toFixed(0)}%` : "",
+        result?.rubric?.length ? `Rubric: ${result.rubric.join(", ")}` : "",
+        result?.details?.message ?? "",
+        result?.fixSuggestion ? `Suggestion: ${result.fixSuggestion}` : "",
+        result?.next ? `Next hint: ${result.next}` : "",
+    ]
+        .filter(Boolean)
+        .join("\n") : ""
 
     return (
         <div>
@@ -34,6 +49,20 @@ export default function FeedbackTray({
                     <div style={{ fontSize: '14px', color: '#666' }}>
                         Word count: {words} / {minWords} minimum
                     </div>
+                </div>
+            )}
+
+            {/* Enhanced feedback textarea for game mode results */}
+            {result && (
+                <div style={{ marginTop: 16 }}>
+                    <label className="text-sm font-medium">Detailed Feedback</label>
+                    <textarea
+                        className="w-full min-h-[200px] rounded-xl border p-2 mt-2"
+                        value={notes || auto}
+                        onChange={(e) => onChangeNotes?.(e.target.value)}
+                        placeholder="Feedback prints here; you can type over it."
+                    />
+                    {children}
                 </div>
             )}
 
