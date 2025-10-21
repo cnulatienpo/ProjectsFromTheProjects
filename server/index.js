@@ -56,7 +56,6 @@ try {
   app.use(healthRoutes);
   app.use(versionRoutes);
   app.use(debugContentRoutes);
-  console.log('>>> Mounted routes: /api/healthz, /api/version, /api/debug/content');
 } catch (e) {
   console.warn('Route mounting warning:', e && e.message);
 }
@@ -64,6 +63,8 @@ try {
 app.use('/api', attemptRoutes);
 app.use('/api', nextRoutes);
 app.use('/api', skipRoutes);
+
+console.log('>>> Mounted routes: /api/healthz, /api/version, /api/debug/content, /api/skip');
 
 if (!hasDist) {
   console.warn('>>> Static bundle missing at', dist, '— run `npm run build` to generate it.');
