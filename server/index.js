@@ -227,8 +227,23 @@ if (hasDist) {
 
 // Start server
 // Default to 3002 to match frontend proxy configuration and avoid conflicts
-const PORT = Number(process.env.PORT || 3002);
 const HOST = '0.0.0.0';
-app.listen(PORT, HOST, () => {
-  console.log(`>>> Server listening on http://localhost:${PORT}`);
-});
+const basePort = Number(process.env.PORT || 3002);
+
+// --- listen with auto-retry if the port is busy ---
+function listenWithRetry(port, attemptsLeft = 5) {
+  const server = app.listen(port, HOST, () => {
+    console.log(`>>> Server listening on http://localhost:${port}`);
+  });
+  server.on("error", (err) => {
+    if (process.env.FORCE_PORT === "1") throw err;
+    if (err && err.code === "EADDRINUSE" && attemptsLeft > 0) {
+      console.warn(`Port ${port} in use, retrying on ${port + 1} ...`);
+      listenWithRetry(port + 1, attemptsLeft - 1);
+    } else {
+      throw err;
+    }
+  });
+}
+
+listenWithRetry(basePort);
