@@ -3,36 +3,17 @@ import React from "react";
 type Props = {
   canNext: boolean;
   onNext: () => void;
-  onRetry?: () => void;
-  onQueue?: () => void;
-  onSkip?: () => void;
+  onSkip: () => void;
   isLoading?: boolean;
 };
-export default function LogicNavButtons({
-  canNext,
-  onNext,
-  onRetry,
-  onQueue,
-  onSkip,
-  isLoading,
-}: Props) {
+
+export default function LogicNavButtons({ canNext, onNext, onSkip, isLoading }: Props) {
   return (
-    <div className="flex gap-2">
-      <button type="button" className="rounded px-3 py-2 border" onClick={onRetry}>
-        Retry
-      </button>
-      <button type="button" className="rounded px-3 py-2 border" onClick={onQueue}>
-        Queue Drill
-      </button>
-      <button type="button" className="rounded px-3 py-2 border" onClick={onSkip}>
+    <div style={{ display: "flex", gap: 8, marginTop: 12 }}>
+      <button type="button" onClick={onSkip} className="btn" aria-label="Skip lesson">
         I don’t feel like it
       </button>
-      <button
-        type="button"
-        className="rounded px-3 py-2 bg-black text-white disabled:opacity-40"
-        disabled={!canNext || !!isLoading}
-        onClick={onNext}
-      >
+      <button type="button" onClick={onNext} disabled={!canNext || !!isLoading} className="btn-primary" aria-label="Next lesson">
         Next
       </button>
     </div>
