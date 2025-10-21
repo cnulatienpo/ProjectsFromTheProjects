@@ -3,6 +3,7 @@ import type { AttemptPayload, AttemptResult } from "../types";
 import gradeAttempt from "../graders";
 import { saveAttempt, updateMastery, latestReport } from "../db/repo";
 import { maybeBuildStyleReport } from "../styleReport";
+import { fetchItemById } from "../db/itemsRepo";
 
 const router = Router();
 
@@ -13,6 +14,12 @@ router.post("/attempt", async (req, res) => {
     if (!payload?.userId || !payload?.itemId || !payload?.mode) {
       return res.status(400).json({ error: "Missing userId, itemId, or mode" });
     }
+
+    const item = fetchItemById(payload.itemId);
+    (payload as any).gold = item?.gold || {};
+    (payload as any).options = item?.options || [];
+    (payload as any).goldBeats = (item?.meta as any)?.beat_tags || item?.gold?.order || [];
+    (payload as any).goldMissing = (item?.gold as any)?.missingBeat;
 
     const result: AttemptResult = await gradeAttempt(payload);
 
