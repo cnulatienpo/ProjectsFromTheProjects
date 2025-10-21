@@ -2,7 +2,7 @@ import { Router } from "express";
 
 const router = Router();
 
-router.get("/healthz", (_req, res) => {
+router.get("/api/healthz", (_req, res) => {
   res.type("text/plain").send("ok");
 });
 
