@@ -1,59 +1,61 @@
-import { Router } from "express";
-import gradeAttempt from "../graders/index.js";
-import { saveAttempt, updateMastery, latestReport } from "../db/repo.js";
-import { fetchItemById } from "../db/itemsRepo.js";
+const express = require("express");
+const router = express.Router();
 
-const router = Router();
+/**
+ * POST /api/attempt
+ * body: { userId, itemId, mode, answer }
+ * Returns a normalized result so the UI can render feedback.
+ */
+router.post("/api/attempt", express.json(), async (req, res) => {
+  const { userId, itemId, mode, answer } = req.body || {};
+  if (!userId || !itemId || !mode) {
+    return res.status(400).json({ error: "missing userId, itemId, or mode" });
+  }
 
-// POST /api/attempt
-router.post("/attempt", async (req, res) => {
-    try {
-        const payload = req.body;
-        if (!payload?.userId || !payload?.itemId || !payload?.mode) {
-            return res.status(400).json({ error: "Missing userId, itemId, or mode" });
-        }
+  // TODO: swap this stub for real graders later.
+  // For now: naive scoring (has some answer → pass-ish), echo details.
+  const hasAnswer =
+    answer != null &&
+    (typeof answer === "string" ? answer.trim().length > 0 : true);
 
-        const item = fetchItemById(payload.itemId);
-        payload.gold = item?.gold || {};
-        payload.options = item?.options || [];
-        payload.goldBeats = item?.meta?.beat_tags || item?.gold?.order || [];
-        payload.goldMissing = item?.gold?.missingBeat;
+  const score = hasAnswer ? 0.8 : 0.0;
+  const rubric = [
+    { key: "Accuracy", ok: hasAnswer },
+    { key: "Clarity", ok: hasAnswer },
+    { key: "Voice", ok: true },
+    { key: "Consistency", ok: true },
+    { key: "Professionalism", ok: true },
+  ];
 
-        let result;
-        try {
-            result = await gradeAttempt(payload);
-        } catch (gErr) {
-            console.error('[GRADER ERROR] payload:', JSON.stringify(payload).slice(0, 1000));
-            console.error('[GRADER ERROR] error: ', gErr);
-            throw gErr;
-        }
+  // keep spans/sequence shape so Highlight/Order UIs don’t break
+  const spans = [];            // e.g., [{ start: 10, end: 22, tag: "signal" }]
+  const correctSequence = [];  // e.g., ["setup","reveal","payoff"]
 
-        const { leveledUp, level, badges } = await updateMastery(payload.userId, payload, result);
-        result.leveledUp = leveledUp;
-        if (level != null) result.level = level;
-        if (badges?.length) result.badges = badges;
+  const details = {
+    message: hasAnswer
+      ? "Stub grader: received your answer and awarded provisional credit."
+      : "Stub grader: no answer detected.",
+    mode,
+    echo: typeof answer === "string" ? answer.slice(0, 240) : answer,
+  };
 
-        await saveAttempt(payload.userId, payload, result);
+  const nextHints = hasAnswer
+    ? ["Try adding a Reveal 👁️ before the Payoff 🎉."]
+    : ["Answer anything to proceed; this is a stub grader."];
 
-        if (leveledUp) {
-            // TODO: await maybeBuildStyleReport(payload.userId, true);
-        }
-
-        res.json(result);
-    } catch (e) {
-        res.status(500).json({ error: "Attempt failed", message: e?.message });
-    }
+  return res.json({
+    ok: true,
+    itemId,
+    mode,
+    score,              // 0..1
+    rubric,             // [{key, ok}]
+    spans,              // []
+    correctSequence,    // []
+    fixSuggestion: hasAnswer ? "Tighten the sentence. Cut a hedge word." : null,
+    nextHints,          // string[]
+    details,
+    gradedAt: new Date().toISOString(),
+  });
 });
 
-// GET /api/reports/latest
-router.get("/reports/latest", async (req, res) => {
-    try {
-        const userId = String(req.query.userId || req.headers["x-user-id"] || "anon");
-        const rpt = await latestReport(userId);
-        res.json(rpt ?? {});
-    } catch (e) {
-        res.status(500).json({ error: "Report lookup failed", message: e?.message });
-    }
-});
-
-export default router;
+module.exports = router;
