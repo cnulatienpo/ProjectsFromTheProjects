@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 import cutGamesRouter from "./routes/cutGames";
 import attemptRoutes from "../../packages/server/src/routes/attempt";
 import nextRoutes from "../../packages/server/src/routes/next";
+import skipRoutes from "../../packages/server/src/routes/skip";
 
 function loadExpress() {
     const localRequire = createRequire(import.meta.url);
@@ -69,6 +70,7 @@ app.use(express.json());
 app.use(express.static(path.resolve(process.cwd(), "public")));
 app.use("/api", attemptRoutes);
 app.use("/api", nextRoutes);
+app.use("/api", skipRoutes);
 app.use(cutGamesRouter);
 
 export default app;

@@ -16,6 +16,8 @@ export default function FeedbackTray({
     result?.score != null ? `Score: ${(result.score * 100).toFixed(0)}%` : "",
     result?.rubric?.length ? `Rubric: ${result.rubric.join(", ")}` : "",
     result?.details?.message ?? "",
+    result?.fixSuggestion ? `Suggestion: ${result.fixSuggestion}` : "",
+    result?.next ? `Next hint: ${result.next}` : "",
   ]
     .filter(Boolean)
     .join("\n");
@@ -28,9 +30,6 @@ export default function FeedbackTray({
         onChange={(e) => onChangeNotes?.(e.target.value)}
         placeholder="Feedback prints here; you can type over it."
       />
-      {result?.next && (
-        <div className="text-xs opacity-70">Next hint: {result.next}</div>
-      )}
       {children}
     </aside>
   );

@@ -5,11 +5,10 @@ import EditorWithBeatSpawner from "@/components/EditorWithBeatSpawner";
 import FeedbackTray from "@/components/FeedbackTray";
 import LogicNavButtons from "@/components/LogicNavButtons";
 import HighlightablePassage from "@/components/HighlightablePassage";
-import NotesPanel from "@/components/NotesPanel";
 
 export default function PlayModePage({ params }: { params: { mode: string } }) {
   const mode = params.mode;
-  const { current, loadNext, submit, result, isLoading } = useAttempt(mode);
+  const { current, loadNext, submit, result, isLoading, skip } = useAttempt(mode);
   const [text, setText] = useState("");
   const [rationale, setRationale] = useState("");
   const [notes, setNotes] = useState<string | undefined>();
@@ -28,6 +27,16 @@ export default function PlayModePage({ params }: { params: { mode: string } }) {
     setNotes(undefined);
     await loadNext();
   };
+
+  const onSkip = async () => {
+    if (!current?.itemId) return;
+    setText("");
+    setRationale("");
+    setNotes(undefined);
+    await skip(current.itemId);
+  };
+
+  const canNext = !!result;
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-[1fr_20rem] gap-4 p-4">
@@ -50,17 +59,17 @@ export default function PlayModePage({ params }: { params: { mode: string } }) {
             Submit
           </button>
         </div>
-        {current?.meta?.lesson && <NotesPanel {...current.meta.lesson} />}
       </section>
 
       <FeedbackTray result={result} notes={notes} onChangeNotes={setNotes} />
       <div className="md:col-span-2">
         <LogicNavButtons
-          canNext={!!result}
+          canNext={canNext}
           isLoading={isLoading}
           onNext={onNext}
           onRetry={() => setText(text)}
           onQueue={() => {}}
+          onSkip={onSkip}
         />
       </div>
     </div>

@@ -31,5 +31,15 @@ export function useAttempt(mode: string, userId = "dev") {
     return r.json();
   };
 
-  return { current, loadNext, submit, result, isLoading, latestReport };
+  const skip = async (itemId?: string) => {
+    if (!itemId) return;
+    await fetch("/api/skip", {
+      method: "POST",
+      headers: { "content-type": "application/json", "x-user-id": userId },
+      body: JSON.stringify({ userId, itemId, mode, reason: "user_skip" }),
+    });
+    return loadNext();
+  };
+
+  return { current, loadNext, submit, result, isLoading, latestReport, skip };
 }
