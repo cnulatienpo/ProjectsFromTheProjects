@@ -1,9 +1,9 @@
-import { Router, json } from "express";
+import { Router } from "express";
 
 const router = Router();
 
 // GET ping so we can verify the route is mounted
-router.get("/api/attempt", (_req, res) => {
+router.get("/", (_req, res) => {
   res.json({ ok: true, ping: "attempt-route-alive" });
 });
 
@@ -12,8 +12,9 @@ router.get("/api/attempt", (_req, res) => {
  * body: { userId, itemId, mode, answer }
  * Returns a normalized result so the UI can render feedback.
  */
-router.post("/api/attempt", json(), async (req, res) => {
+router.post("/", async (req, res) => {
   const { userId, itemId, mode, answer } = req.body || {};
+
   if (!userId || !itemId || !mode) {
     return res.status(400).json({ error: "missing userId, itemId, or mode" });
   }
@@ -47,6 +48,7 @@ router.post("/api/attempt", json(), async (req, res) => {
 
   return res.json({
     ok: true,
+    userId,
     itemId,
     mode,
     score,
