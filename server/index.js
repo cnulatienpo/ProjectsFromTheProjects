@@ -225,7 +225,8 @@ app.get('*', (req, res, next) => {
 });
 
 // Start server
-const PORT = process.env.PORT || 3000;  // Default to 3000 when PORT not provided
+// Default to 3002 to match frontend proxy configuration and avoid conflicts
+const PORT = Number(process.env.PORT || 3002);
 const HOST = '0.0.0.0';
 app.listen(PORT, HOST, () => {
   console.log(`>>> Server listening on http://localhost:${PORT}`);
