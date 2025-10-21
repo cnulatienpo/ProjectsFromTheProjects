@@ -59,8 +59,15 @@ try {
   console.warn('Route mounting warning:', e && e.message);
 }
 
+// attempt route (prefer CJS)
 try {
-  app.use(require("./routes/attempt")); // adds GET/POST /api/attempt
+  let attemptRoute;
+  try {
+    attemptRoute = require("./routes/attempt.cjs");
+  } catch {
+    attemptRoute = require("./routes/attempt.js");
+  }
+  app.use(attemptRoute);
   console.log(">>> Mounted route: /api/attempt");
 } catch (e) {
   console.warn("Attempt route mount failed:", e && e.message);
