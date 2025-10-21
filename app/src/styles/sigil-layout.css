@@ -195,6 +195,22 @@ a {
     text-transform: none;
 }
 
+.feedback-box {
+    width: 100%;
+    border: 1px solid #0a4;
+    background: #f8fff9;
+    padding: 8px;
+    border-radius: 6px;
+    font-size: 14px;
+    resize: vertical;
+}
+
+.feedback-error {
+    margin-top: 8px;
+    color: #b45309;
+    font-size: 14px;
+}
+
 /* Keep buttons tidy */
 .pfp-actions {
     display: flex;

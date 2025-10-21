@@ -1,5 +1,6 @@
-const express = require("express");
-const router = express.Router();
+import { Router, json } from "express";
+
+const router = Router();
 
 // GET ping so we can verify the route is mounted
 router.get("/api/attempt", (_req, res) => {
@@ -11,7 +12,7 @@ router.get("/api/attempt", (_req, res) => {
  * body: { userId, itemId, mode, answer }
  * Returns a normalized result so the UI can render feedback.
  */
-router.post("/api/attempt", express.json(), async (req, res) => {
+router.post("/api/attempt", json(), async (req, res) => {
   const { userId, itemId, mode, answer } = req.body || {};
   if (!userId || !itemId || !mode) {
     return res.status(400).json({ error: "missing userId, itemId, or mode" });
@@ -59,4 +60,4 @@ router.post("/api/attempt", express.json(), async (req, res) => {
   });
 });
 
-module.exports = router;
+export default router;
