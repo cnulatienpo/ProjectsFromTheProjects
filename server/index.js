@@ -19,7 +19,6 @@ const require = createRequire(import.meta.url);
 const fs = require("fs");
 const path = require("path");
 const express = require("express");
-const attemptRoutes = require("./routes/attempt.js");
 const { createReadStream, appendFileSync } = fs;
 const { resolve } = path;
 
@@ -60,7 +59,12 @@ try {
   console.warn('Route mounting warning:', e && e.message);
 }
 
-app.use(attemptRoutes);
+try {
+  app.use(require("./routes/attempt")); // adds GET/POST /api/attempt
+  console.log(">>> Mounted route: /api/attempt");
+} catch (e) {
+  console.warn("Attempt route mount failed:", e && e.message);
+}
 app.use('/api', nextRoutes);
 app.use('/api', skipRoutes);
 
