@@ -1,7 +1,9 @@
 // server/index.js
-import { createRequire } from 'node:module';
 import cors from 'cors';
+import express from 'express';
 import helmet from 'helmet';
+import fs from 'node:fs';
+import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as readline from 'node:readline';
 import { buildReport } from './report/index.js';
@@ -9,16 +11,13 @@ import { mark, getUserState } from './progress/store.js';
 import { listSigilIds } from './sigil/catalogIds.js';
 
 // Import new API routes
+import attemptRoutes from './routes/attempt.js';
 import nextRoutes from './routes/next.js';
 import skipRoutes from './routes/skip.js';
 import versionRoutes from './routes/version.js';
 import healthRoutes from './routes/health.js';
 import debugContentRoutes from './routes/debugContent.js';
 
-const require = createRequire(import.meta.url);
-const fs = require("fs");
-const path = require("path");
-const express = require("express");
 const { createReadStream, appendFileSync } = fs;
 const { resolve } = path;
 
@@ -60,7 +59,7 @@ try {
 }
 
 try {
-  app.use(require("./routes/attempt")); // adds GET/POST /api/attempt
+  app.use(attemptRoutes); // adds GET/POST /api/attempt
   console.log(">>> Mounted route: /api/attempt");
 } catch (e) {
   console.warn("Attempt route mount failed:", e && e.message);

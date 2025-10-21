@@ -9,7 +9,6 @@ import LevelUpScreen from '../components/LevelUpScreen.jsx';
 export default function GameDemo() {
     const { current, loadNext, submit, result, isLoading } = useAttempt("name", "demo-user");
     const [userText, setUserText] = useState("");
-    const [notes, setNotes] = useState("");
     const [error, setError] = useState(null);
     const [debugInfo, setDebugInfo] = useState("");
 
@@ -58,7 +57,6 @@ export default function GameDemo() {
 
     const handleNext = () => {
         setUserText("");
-        setNotes("");
         loadNext();
     };
 
@@ -178,16 +176,7 @@ export default function GameDemo() {
                             )}
 
                             {/* Enhanced Feedback */}
-                            <FeedbackTray
-                                result={result}
-                                notes={notes}
-                                onChangeNotes={setNotes}
-                                onNext={handleNext}
-                                onRetry={() => {
-                                    setUserText("");
-                                    setNotes("");
-                                }}
-                            />
+                            <FeedbackTray result={result} />
                         </div>
                     )}
 
@@ -202,7 +191,6 @@ export default function GameDemo() {
                         <button
                             onClick={() => {
                                 setUserText("");
-                                setNotes("");
                             }}
                             className="px-4 py-2 bg-yellow-600 text-white rounded"
                         >
