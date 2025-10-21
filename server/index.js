@@ -1,9 +1,7 @@
 // server/index.js
-import express from 'express';
+import { createRequire } from 'node:module';
 import cors from 'cors';
 import helmet from 'helmet';
-import { createReadStream, existsSync, appendFileSync } from 'node:fs';
-import path, { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as readline from 'node:readline';
 import { buildReport } from './report/index.js';
@@ -18,17 +16,19 @@ import versionRoutes from './routes/version.js';
 import healthRoutes from './routes/health.js';
 import debugContentRoutes from './routes/debugContent.js';
 
-const __filename = fileURLToPath(import.meta.url);
+const require = createRequire(import.meta.url);
+const fs = require("fs");
+const path = require("path");
+const express = require("express");
+const { createReadStream, appendFileSync } = fs;
+const { resolve } = path;
 
+const __filename = fileURLToPath(import.meta.url);
 const app = express();
 
-console.log('>>> BOOTED SERVER FROM', __filename);
+console.log(">>> BOOTED SERVER FROM", __filename);
 
 app.set('trust proxy', true);
-
-const dist = path.join(process.cwd(), 'dist');
-const indexHtmlPath = path.join(dist, 'index.html');
-const hasDist = existsSync(indexHtmlPath);
 
 app.use(cors());
 app.use(express.json());
@@ -66,11 +66,6 @@ app.use('/api', skipRoutes);
 
 console.log('>>> Mounted routes: /api/healthz, /api/version, /api/debug/content, /api/skip');
 
-if (!hasDist) {
-  console.warn('>>> Static bundle missing at', dist, '— run `npm run build` to generate it.');
-}
-app.use(express.static(dist));
-
 // ====== Sigil JSONL endpoints (unchanged) ======
 const FILE = resolve(process.cwd(), 'labeled data', 'tweetrunk_renumbered.jsonl');
 
@@ -101,7 +96,7 @@ function toParagraphHtml(s) {
   return parts.map(p => `<p>${escapeHtml(p).replace(/\n/g, '<br/>')}</p>`).join('\n');
 }
 async function* readJSONL(path) {
-  if (!existsSync(path)) return;
+  if (!fs.existsSync(path)) return;
   const rl = readline.createInterface({ input: createReadStream(path), crlfDelay: Infinity });
   for await (const ln of rl) {
     const s = ln.trim();
@@ -216,14 +211,19 @@ app.post('/attempt', express.json(), async (req, res) => {
   }
 });
 
-app.get('*', (req, res, next) => {
-  if (req.method !== 'GET') return next();
-  if (req.path.startsWith('/api/')) return next();
-  if (hasDist) {
-    return res.sendFile(indexHtmlPath);
-  }
-  return res.type('text/plain').status(503).send('Bundle not built. Run: npm run build');
-});
+const distDir = path.join(process.cwd(), "app", "dist");
+const hasDist = fs.existsSync(path.join(distDir, "index.html"));
+
+if (hasDist) {
+  console.log(">>> Serving static bundle from", distDir);
+  app.use(express.static(distDir));
+  app.get("*", (_req, res) => res.sendFile(path.join(distDir, "index.html")));
+} else {
+  console.warn(">>> Bundle not found at", distDir, "— run `npm run build` to generate it.");
+  app.get("*", (_req, res) => {
+    res.status(503).type("text/plain").send("Bundle not built. Run: npm run build");
+  });
+}
 
 // Start server
 // Default to 3002 to match frontend proxy configuration and avoid conflicts
