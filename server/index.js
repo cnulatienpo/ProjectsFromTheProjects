@@ -28,6 +28,7 @@ app.set('trust proxy', true);
 
 const dist = path.join(process.cwd(), 'dist');
 const indexHtmlPath = path.join(dist, 'index.html');
+const hasDist = existsSync(indexHtmlPath);
 
 app.use(cors());
 app.use(express.json());
@@ -52,9 +53,10 @@ if (isProd) {
 
 // ====== New API routes ======
 try {
-  app.use(versionRoutes);
   app.use(healthRoutes);
+  app.use(versionRoutes);
   app.use(debugContentRoutes);
+  console.log('>>> Mounted routes: /api/healthz, /api/version, /api/debug/content');
 } catch (e) {
   console.warn('Route mounting warning:', e && e.message);
 }
@@ -63,11 +65,10 @@ app.use('/api', attemptRoutes);
 app.use('/api', nextRoutes);
 app.use('/api', skipRoutes);
 
-if (existsSync(dist)) {
-  app.use(express.static(dist));
-} else {
-  console.warn(`>>> Static bundle missing at ${dist}`);
+if (!hasDist) {
+  console.warn('>>> Static bundle missing at', dist, '— run `npm run build` to generate it.');
 }
+app.use(express.static(dist));
 
 // ====== Sigil JSONL endpoints (unchanged) ======
 const FILE = resolve(process.cwd(), 'labeled data', 'tweetrunk_renumbered.jsonl');
@@ -217,10 +218,10 @@ app.post('/attempt', express.json(), async (req, res) => {
 app.get('*', (req, res, next) => {
   if (req.method !== 'GET') return next();
   if (req.path.startsWith('/api/')) return next();
-  if (existsSync(indexHtmlPath)) {
+  if (hasDist) {
     return res.sendFile(indexHtmlPath);
   }
-  return res.status(404).type('text/plain').send('dist/index.html not found');
+  return res.type('text/plain').status(503).send('Bundle not built. Run: npm run build');
 });
 
 // Start server
