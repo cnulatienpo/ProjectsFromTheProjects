@@ -4,7 +4,7 @@ import { getAllItems } from "../content/items.js";
 
 const router = Router();
 
-router.get("/debug/content", async (req, res) => {
+router.get("/api/debug/content", async (req, res) => {
   try {
     const userIdRaw = req.query.userId;
     const userId = typeof userIdRaw === "string" && userIdRaw.trim() ? userIdRaw.trim() : "dev";
