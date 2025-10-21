@@ -11,7 +11,6 @@ import { mark, getUserState } from './progress/store.js';
 import { listSigilIds } from './sigil/catalogIds.js';
 
 // Import new API routes
-import attemptRoutes from './routes/attempt.js';
 import nextRoutes from './routes/next.js';
 import skipRoutes from './routes/skip.js';
 import versionRoutes from './routes/version.js';
@@ -58,19 +57,62 @@ try {
   console.warn('Route mounting warning:', e && e.message);
 }
 
-// attempt route (prefer CJS)
-try {
-  let attemptRoute;
-  try {
-    attemptRoute = require("./routes/attempt.cjs");
-  } catch {
-    attemptRoute = require("./routes/attempt.js");
+app.get('/api/attempt', (_req, res) => {
+  res.json({ ok: true, ping: 'attempt-route-alive' });
+});
+
+app.post('/api/attempt', (req, res) => {
+  const body = req.body ?? {};
+  const { userId, itemId, mode, answer } = body;
+
+  const hasUserId = typeof userId === 'string' && userId.trim().length > 0;
+  const hasMode = typeof mode === 'string' && mode.trim().length > 0;
+  const hasItemId =
+    (typeof itemId === 'string' && itemId.trim().length > 0) ||
+    (typeof itemId === 'number' && Number.isFinite(itemId));
+  const hasAnswer = Object.prototype.hasOwnProperty.call(body, 'answer');
+
+  if (!hasUserId || !hasMode || !hasItemId || !hasAnswer) {
+    return res.status(400).json({ ok: false, error: 'BadRequest' });
   }
-  app.use(attemptRoute);
-  console.log(">>> Mounted route: /api/attempt");
-} catch (e) {
-  console.warn("Attempt route mount failed:", e && e.message);
-}
+
+  let echo;
+  if (typeof answer === 'string') {
+    echo = answer;
+  } else {
+    try {
+      echo = JSON.stringify(answer).slice(0, 200);
+    } catch (err) {
+      echo = String(answer);
+    }
+  }
+
+  res.json({
+    ok: true,
+    itemId,
+    mode,
+    score: 0.8,
+    rubric: [
+      { key: 'Accuracy', ok: true },
+      { key: 'Clarity', ok: true },
+      { key: 'Voice', ok: true },
+      { key: 'Consistency', ok: true },
+      { key: 'Professionalism', ok: true },
+    ],
+    spans: [],
+    correctSequence: [],
+    fixSuggestion: 'Tighten the sentence. Cut a hedge word.',
+    nextHints: ['Try adding a Reveal 👁️ before the Payoff 🎉.'],
+    details: {
+      message: 'Stub grader: received your answer and awarded provisional credit.',
+      mode,
+      echo,
+    },
+    gradedAt: new Date().toISOString(),
+  });
+});
+
+console.log('>>> Mounted POST /api/attempt (stub grader)');
 app.use('/api', nextRoutes);
 app.use('/api', skipRoutes);
 
