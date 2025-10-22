@@ -1,3 +1,23 @@
+// Returns the catalog from game things/games_catalog.json
+export function getCatalog() {
+  const catalogPath = path.resolve(
+    process.cwd(),
+    "game things",
+    "games_catalog.json"
+  );
+  try {
+    const raw = fs.readFileSync(catalogPath, "utf8");
+    const json = JSON.parse(raw);
+    // For compatibility with pickNext, return { items: [...] }
+    if (Array.isArray(json.items)) return json;
+    if (json.games && typeof json.games === "object") {
+      return { items: Object.values(json.games), ...json };
+    }
+    return json;
+  } catch (e) {
+    return { items: [] };
+  }
+}
 import fs from 'fs';
 import path from 'path';
 
@@ -64,7 +84,7 @@ export async function loadPracticePool() {
         if (typeof mem?.indexItems === 'function') {
           mem.indexItems(items);
         }
-      } catch {}
+      } catch { }
     }
     return Array.isArray(items) ? items : [];
   } catch {
