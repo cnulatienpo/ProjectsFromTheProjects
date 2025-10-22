@@ -42,6 +42,7 @@ router.get("/api/debug/content", async (req, res) => {
     }
 
     const mastery = getMastery(userId);
+    const masterySkillCount = mastery?.skills ? Object.keys(mastery.skills).length : 0;
 
     res.json({
       totalItems: items.length,
@@ -50,7 +51,11 @@ router.get("/api/debug/content", async (req, res) => {
       nextItem,
       attempts: mem.attempts.length,
       skips: mem.skips.length,
-      mastery: Object.keys(mastery).length,
+      mastery: {
+        level: mastery?.level ?? 1,
+        totalExp: mastery?.totalExp ?? 0,
+        skills: masterySkillCount,
+      },
     });
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
