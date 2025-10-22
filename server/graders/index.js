@@ -1,60 +1,85 @@
 // server/graders/index.js (ESM)
-// Deterministic graders for: name | missing | order | highlight | fix | why
-// Each returns the normalized shape consumed by the UI and attempt route.
+// Normalized graders for name | missing | order | highlight | fix | why
+// Always return the complete shape:
+// { score, rubric:[], spans:[], correctSequence:[], fixSuggestion, nextHints:[], details:{} }
 
-const BEAT_SYNONYMS = {
-  action: ['act', 'move', 'do', 'beat:action'],
-  decision: ['choice', 'decide', 'pick', 'beat:decision'],
-  desire: ['want', 'goal', 'yearn', 'beat:desire'],
-  conflict: ['clash', 'tension', 'problem', 'beat:conflict'],
-  obstacle: ['block', 'barrier', 'resistance', 'beat:obstacle'],
-  climax: ['peak', 'turning point', 'beat:climax'],
-  resolution: ['after', 'denouement', 'resolve', 'beat:resolution'],
-  reveal: ['discovery', 'find out', 'beat:reveal'],
-  realization: ['insight', 'epiphany', 'beat:realization'],
-  exposition: ['setup', 'context', 'beat:exposition'],
-  foreshadow: ['hint', 'omen', 'beat:foreshadow'],
-  setup: ['plant', 'seed', 'beat:setup'],
-  payoff: ['result', 'payoff', 'beat:payoff'],
-  emotion: ['feeling', 'affect', 'beat:emotion'],
-  suppression: ['hide', 'mask', 'beat:suppression'],
-  vulnerability: ['soft spot', 'open', 'beat:vulnerability'],
-  power: ['status', 'leverage', 'beat:power'],
-  shift: ['turn', 'pivot', 'beat:shift'],
-  intimacy: ['closeness', 'tender', 'beat:intimacy'],
-  alienation: ['distance', 'cold', 'beat:alienation'],
-  dialogue: ['talk', 'speak', 'line', 'beat:dialogue'],
-  nonverbal: ['gesture', 'look', 'silence', 'beat:nonverbal'],
-  interaction: ['exchange', 'back-and-forth', 'beat:interaction'],
-  agreement: ['deal', 'sign', 'beat:agreement'],
-  disagreement: ['argue', 'refuse', 'beat:disagreement'],
-  test: ['trial', 'prove', 'beat:test'],
-  reversal: ['flip', 'invert', 'beat:reversal'],
-  atmosphere: ['mood', 'texture', 'beat:atmosphere'],
-  discovery: ['learn', 'uncover', 'beat:discovery'],
-  loss: ['grief', 'missing', 'beat:loss'],
-  arrival: ['enter', 'show up', 'beat:arrival'],
-  departure: ['leave', 'exit', 'beat:departure'],
-  transition: ['cut', 'jump', 'beat:transition'],
-};
+const clamp01 = (n) => Math.max(0, Math.min(1, Number.isFinite(n) ? n : 0));
 
-const RATIONALE_KEYWORDS = {
-  emotional: ['feeling', 'emotion', 'tone', 'mood', 'affect'],
-  'money/class': ['money', 'rent', 'bill', 'class', 'status', 'work'],
-  process: ['because', 'so that', 'therefore', 'in order to', 'method'],
-  'voice/style': ['voice', 'style', 'diction', 'cadence', 'rhythm', 'syntax'],
-  clarity: ['clear', 'confusing', 'ambiguous', 'specific'],
-  stakes: ['stakes', 'risk', 'cost', 'consequence'],
-  motive: ['motive', 'want', 'goal', 'desire', 'because'],
-};
+const SHAPE_DEFAULT = Object.freeze({
+  score: 0,
+  rubric: [],
+  spans: [],
+  correctSequence: [],
+  fixSuggestion: null,
+  nextHints: [],
+  details: {},
+});
 
-// ---------- small utilities ----------
+function ensureShape(result, extra = {}) {
+  const r = result || {};
+  return {
+    score: clamp01(r.score ?? 0),
+    rubric: Array.isArray(r.rubric) ? r.rubric : [],
+    spans: Array.isArray(r.spans) ? r.spans : [],
+    correctSequence: Array.isArray(r.correctSequence) ? r.correctSequence : [],
+    fixSuggestion: r.fixSuggestion ?? null,
+    nextHints: Array.isArray(r.nextHints) ? r.nextHints : [],
+    details: typeof r.details === 'object' && r.details !== null ? r.details : {},
+    ...extra,
+  };
+}
+
+// --- light helpers used by graders ---
 const toArray = (x) => Array.isArray(x) ? x : (x == null ? [] : [x]);
 const uniq = (arr) => Array.from(new Set(arr));
-const clamp01 = (n) => Math.max(0, Math.min(1, n));
+const BEAT_SYNONYMS = {
+  action: ['act','move','do'],
+  decision: ['choice','decide','pick'],
+  desire: ['want','goal','yearn'],
+  conflict: ['clash','tension','problem'],
+  obstacle: ['block','barrier','resistance'],
+  climax: ['peak','turning point'],
+  resolution: ['denouement','resolve'],
+  reveal: ['discovery','find out'],
+  realization: ['insight','epiphany'],
+  exposition: ['setup','context'],
+  foreshadow: ['hint','omen'],
+  setup: ['plant','seed'],
+  payoff: ['result'],
+  emotion: ['feeling','affect'],
+  suppression: ['hide','mask'],
+  vulnerability: ['open','soft spot'],
+  power: ['status','leverage'],
+  shift: ['turn','pivot'],
+  intimacy: ['closeness','tender'],
+  alienation: ['distance','cold'],
+  dialogue: ['talk','speak','line'],
+  nonverbal: ['gesture','look','silence'],
+  interaction: ['exchange','back-and-forth'],
+  agreement: ['deal','sign'],
+  disagreement: ['argue','refuse'],
+  test: ['trial','prove'],
+  reversal: ['flip','invert'],
+  atmosphere: ['mood','texture'],
+  discovery: ['learn','uncover'],
+  loss: ['grief','missing'],
+  arrival: ['enter','show up'],
+  departure: ['leave','exit'],
+  transition: ['cut','jump'],
+};
+
+function canonBeat(b) {
+  const k = String(b||'').toLowerCase().trim();
+  if (!k) return '';
+  if (BEAT_SYNONYMS[k]) return k;
+  for (const [canon, syns] of Object.entries(BEAT_SYNONYMS)) {
+    if (k === canon) return canon;
+    if (syns.some(s => k.includes(s))) return canon;
+  }
+  return k;
+}
 
 function extractBeatsFromAnswer(answer) {
-  // Supports either structured {beats:[], sigils:[]} or free text with [BEAT] tags
   const beats = new Set();
   if (!answer) return [];
   if (typeof answer === 'object') {
@@ -65,28 +90,16 @@ function extractBeatsFromAnswer(answer) {
     }
   } else if (typeof answer === 'string') {
     (answer.match(/\[([A-Z][A-Z]+)\]/g) || []).forEach(t => beats.add(t.slice(1, -1).toLowerCase()));
-    // also try a very light keyword sniff for common beats
+    // keyword sniff:
     for (const [beat, syns] of Object.entries(BEAT_SYNONYMS)) {
       const hay = answer.toLowerCase();
       if (hay.includes(beat) || syns.some(s => hay.includes(s))) beats.add(beat);
     }
   }
-  return Array.from(beats);
-}
-
-function canonBeat(b) {
-  const k = String(b || '').toLowerCase().trim();
-  if (!k) return '';
-  // map synonyms → canonical label if close enough
-  for (const [canon, syns] of Object.entries(BEAT_SYNONYMS)) {
-    if (k === canon) return canon;
-    if (syns.some(s => k.includes(s))) return canon;
-  }
-  return k;
+  return Array.from(beats).map(canonBeat).filter(Boolean);
 }
 
 function kendallTauNormalized(a = [], b = []) {
-  // Kendall tau distance normalized to [0..1], where 1 = perfect, 0 = completely inverted/random
   const n = Math.min(a.length, b.length);
   if (n <= 1) return 1;
   const pa = new Map(a.map((id, i) => [id, i]));
@@ -104,162 +117,147 @@ function kendallTauNormalized(a = [], b = []) {
   }
   if (total === 0) return 1;
   const tau = 1 - (2 * discordant) / (common.length * (common.length - 1));
-  return clamp01((tau + 1) / 2); // map [-1..1] → [0..1]
+  return clamp01((tau + 1) / 2);
 }
 
 function charOverlapScore(goldSpans = [], userSpans = []) {
-  // gold/user spans: [{start,end}]
-  const cover = (spans) => {
-    const set = new Set();
-    spans.forEach(({ start, end }) => {
-      for (let i = Math.max(0, start|0); i < Math.max(0, end|0); i++) set.add(i);
-    });
-    return set;
-  };
-  const G = cover(goldSpans), U = cover(userSpans);
-  if (G.size === 0) return 0;
-  let inter = 0;
-  U.forEach(i => { if (G.has(i)) inter++; });
-  return clamp01(inter / G.size);
+  const g = new Set();
+  for (const s of goldSpans) for (let i=(s.start|0); i<(s.end|0); i++) g.add(i);
+  const u = new Set();
+  for (const s of userSpans) for (let i=(s.start|0); i<(s.end|0); i++) u.add(i);
+  if (g.size === 0) return 0;
+  let inter = 0; u.forEach(i => { if (g.has(i)) inter++; });
+  return clamp01(inter / g.size);
 }
 
-function pick(arr, n = 1) {
-  if (!arr?.length) return [];
-  const out = [];
-  for (let i = 0; i < n; i++) out.push(arr[i % arr.length]);
-  return out;
-}
-
-// ---------- graders ----------
+// ----------------- individual graders -----------------
 function gradeName(item, answer) {
   const goldBeats = uniq([
     ...toArray(item?.gold?.beats),
     ...toArray(item?.meta?.beat_tags),
   ].map(canonBeat).filter(Boolean));
 
-  const userBeats = uniq(extractBeatsFromAnswer(answer).map(canonBeat).filter(Boolean));
+  const userBeats = uniq(extractBeatsFromAnswer(answer));
 
   const hits = userBeats.filter(b => goldBeats.includes(b));
-  const near = userBeats.filter(b => !goldBeats.includes(b) && goldBeats.some(g => (BEAT_SYNONYMS[g]||[]).some(s => b.includes(s))));
+  const near = userBeats.filter(b => !goldBeats.includes(b) &&
+    goldBeats.some(g => ( (BEAT_SYNONYMS[g]||[]).some(s => b.includes(s)) ))
+  );
   const miss = goldBeats.filter(b => !userBeats.includes(b));
 
   const denom = Math.max(1, goldBeats.length);
   const score = clamp01((hits.length + 0.5 * near.length) / denom);
 
-  const rubric = [];
-  if (hits.length) rubric.push(`Matched: ${hits.join(', ')}`);
-  if (near.length) rubric.push(`Near-miss: ${near.join(', ')}`);
-  if (miss.length) rubric.push(`Missing: ${miss.join(', ')}`);
-
-  const nextHints = miss.length ? [`Scan for: ${pick(miss, 3).join(', ')}`] : ['Try adding a Reveal 👁️ before the Payoff 🎉.'];
-
-  return { score, rubric, spans: [], correctSequence: [], fixSuggestion: null, nextHints, details: { goldBeats, userBeats, hits, near, miss, mode: 'name' } };
+  return ensureShape({
+    score,
+    rubric: [
+      hits.length ? `Matched: ${hits.join(', ')}` : 'No direct matches.',
+      near.length ? `Near-miss: ${near.join(', ')}` : null,
+      miss.length ? `Missing: ${miss.join(', ')}` : null,
+    ].filter(Boolean),
+    nextHints: miss.length ? [`Scan for: ${miss.slice(0,3).join(', ')}`] : ['Try adding a Reveal 👁️ before the Payoff 🎉.'],
+    details: { mode:'name', goldBeats, userBeats, hits, near, miss },
+  });
 }
 
 function gradeMissing(item, answer) {
-  // Expect: item.gold.expectedBeats (full set) and the user supplies a single beat to insert
   const expected = uniq(toArray(item?.gold?.expectedBeats).map(canonBeat).filter(Boolean));
-  const provided = (() => {
-    if (typeof answer === 'object') {
-      const one = toArray(answer.insert)?.[0] ?? toArray(answer.beats)?.[0] ?? toArray(answer.sigils)?.[0];
-      if (one) return canonBeat(one);
-      if (typeof answer.text === 'string') {
-        const m = answer.text.match(/\[([A-Z][A-Z]+)\]/);
-        if (m) return canonBeat(m[1]);
-      }
-    } else if (typeof answer === 'string') {
-      const m = answer.match(/\[([A-Z][A-Z]+)\]/);
-      if (m) return canonBeat(m[1]);
-    }
-    return '';
-  })();
+  const present = uniq(toArray(item?.gold?.presentBeats).map(canonBeat).filter(Boolean));
+  const missing = expected.filter(b => !present.includes(b));
 
-  const missing = expected.filter(b => b && !toArray(item?.gold?.presentBeats).map(canonBeat).includes(b));
+  let provided = '';
+  if (typeof answer === 'object') {
+    provided = canonBeat(toArray(answer.insert)?.[0] ?? toArray(answer.beats)?.[0] ?? '');
+    if (!provided && typeof answer.text === 'string') {
+      const m = answer.text.match(/\[([A-Z][A-Z]+)\]/);
+      if (m) provided = canonBeat(m[1]);
+    }
+  } else if (typeof answer === 'string') {
+    const m = answer.match(/\[([A-Z][A-Z]+)\]/);
+    if (m) provided = canonBeat(m[1]);
+  }
+
   const ok = provided && missing.includes(provided);
   const near = provided && !ok && missing.some(g => (BEAT_SYNONYMS[g]||[]).some(s => provided.includes(s)));
-
   const score = ok ? 1 : near ? 0.5 : 0;
-  const rubric = ok ? ['Inserted the strongest missing beat.'] :
-                near ? [`Close! Consider: ${pick(missing, 2).join(', ')}`] :
-                       ['Pick the beat that would complete the moment.'];
 
-  const nextHints = ok ? ['Now escalate toward Payoff 🎉.'] : [`Look for the void: ${pick(missing, 1).join('')||'the hinge beat'}.`];
-
-  return { score, rubric, spans: [], correctSequence: [], fixSuggestion: ok ? null : 'Name the beat gap you’re repairing.', nextHints, details: { expected, missing, provided, mode: 'missing' } };
+  return ensureShape({
+    score,
+    rubric: ok
+      ? ['Inserted the strongest missing beat.']
+      : near
+        ? [`Close! Consider: ${missing.slice(0,2).join(', ')}`]
+        : ['Pick the beat that completes the moment.'],
+    fixSuggestion: ok ? null : 'Name the beat gap you’re repairing.',
+    nextHints: ok ? ['Now escalate toward Payoff 🎉.'] : [`Look for the void: ${missing[0] || 'the hinge beat'}.`],
+    details: { mode:'missing', expected, present, missing, provided },
+  });
 }
 
 function gradeOrder(item, answer) {
   const gold = toArray(item?.gold?.order).map(String);
   const user = (() => {
     if (typeof answer === 'object') return toArray(answer.order).map(String);
-    if (typeof answer === 'string') {
-      // allow comma/space-separated ids
-      return answer.split(/[,\s]+/).filter(Boolean);
-    }
+    if (typeof answer === 'string') return answer.split(/[\,\s]+/).filter(Boolean);
     return [];
   })();
 
   const score = kendallTauNormalized(gold, user);
-  const rubric = [];
-  const correctSequence = gold;
-
-  if (gold.length && user.length) {
-    const wrongEdges = [];
-    // find violating adjacent pairs in user wrt gold
-    const pos = new Map(gold.map((id, i) => [id, i]));
-    for (let i = 0; i < user.length - 1; i++) {
-      const a = user[i], b = user[i+1];
-      if (pos.has(a) && pos.has(b) && pos.get(a) > pos.get(b)) {
-        wrongEdges.push([a,b]);
-      }
-    }
-    if (wrongEdges.length) rubric.push(`Out of order: ${wrongEdges.slice(0,3).map(([a,b])=>`${a}→${b}`).join(' | ')}`);
+  const pos = new Map(gold.map((id, i) => [id, i]));
+  const wrong = [];
+  for (let i = 0; i < user.length - 1; i++) {
+    const a = user[i], b = user[i+1];
+    if (pos.has(a) && pos.has(b) && pos.get(a) > pos.get(b)) wrong.push([a,b]);
   }
 
-  const nextHints = score < 1 ? ['Anchor Setup 🎯 before Payoff 🎉; keep Reveal 👁️ close to the turn.'] : ['Clean chain. Ready to speed up the cadence.'];
-
-  return { score, rubric, spans: [], correctSequence, fixSuggestion: score < 1 ? 'Swap the violating pair(s) first.' : null, nextHints, details: { gold, user, mode: 'order' } };
+  return ensureShape({
+    score,
+    rubric: wrong.length ? [`Out of order: ${wrong.slice(0,3).map(([a,b])=>`${a}→${b}`).join(' | ')}`] : ['Sequence looks consistent.'],
+    correctSequence: gold,
+    fixSuggestion: score < 1 ? 'Swap the violating pair(s) first.' : null,
+    nextHints: score < 1 ? ['Keep Reveal 👁️ close to the turn; place Payoff 🎉 after Setup 🎯.'] : ['Clean chain. Ready to speed up the cadence.'],
+    details: { mode:'order', gold, user, wrong },
+  });
 }
 
 function gradeHighlight(item, answer) {
   const goldSpans = toArray(item?.gold?.spans).map(s => ({ start: s.start|0, end: s.end|0 })).filter(s => s.end > s.start);
-  const userSpans = (() => {
-    if (typeof answer === 'object') return toArray(answer.spans).map(s => ({ start: s.start|0, end: s.end|0 })).filter(s => s.end > s.start);
-    return [];
-  })();
+  const userSpans = typeof answer === 'object'
+    ? toArray(answer.spans).map(s => ({ start: s.start|0, end: s.end|0 })).filter(s => s.end > s.start)
+    : [];
 
-  const score = charOverlapScore(goldSpans, userSpans);
-  const rubric = [score >= 0.9 ? 'Great coverage.' : score >= 0.6 ? 'Partial overlap.' : 'Missed the signal span.'];
-  const nextHints = score < 0.9 ? ['Zoom into verbs and hinge words; highlight the exact trigger.'] : ['Try a tighter span next time.'];
-
-  return { score, rubric, spans: goldSpans, correctSequence: [], fixSuggestion: score < 0.6 ? 'Re-read the cue line; highlight just the mechanism.' : null, nextHints, details: { goldSpans, userSpans, mode: 'highlight' } };
+  const overlap = charOverlapScore(goldSpans, userSpans);
+  return ensureShape({
+    score: overlap,
+    rubric: [overlap >= 0.9 ? 'Great coverage.' : overlap >= 0.6 ? 'Partial overlap.' : 'Missed the signal span.'],
+    spans: goldSpans,
+    fixSuggestion: overlap < 0.6 ? 'Re-read the cue line; highlight just the mechanism.' : null,
+    nextHints: overlap < 0.9 ? ['Zoom into verbs and hinge words; highlight the exact trigger.'] : ['Try a tighter span next time.'],
+    details: { mode:'highlight', goldSpans, userSpans, overlap },
+  });
 }
 
 function gradeFix(item, answer) {
-  // MCQ: correct key in item.gold.key or item.gold.correct
   const key = String(item?.gold?.key ?? item?.gold?.correct ?? '').trim();
   const nearMiss = new Set(toArray(item?.gold?.nearMiss));
-  const choice = (() => {
-    if (typeof answer === 'object') return String(answer.choice ?? answer.id ?? '').trim();
-    if (typeof answer === 'string') return answer.trim();
-    return '';
-  })();
+  const choice = (typeof answer === 'object')
+    ? String(answer.choice ?? answer.id ?? '').trim()
+    : (typeof answer === 'string' ? answer.trim() : '');
 
   let score = 0;
   if (choice && key && choice === key) score = 1;
   else if (choice && nearMiss.has(choice)) score = 0.5;
 
-  const rubric = score === 1 ? ['Right fix: precise and minimal.'] :
-                 score === 0.5 ? ['Close fix: watch for clarity or rule edge cases.'] :
-                 ['Pick the option that removes error without adding style noise.'];
-
-  const nextHints = score === 1
-    ? ['Try the more subtle pair next round.']
-    : ['Check for label-y emotion, over-explain, or speechy theme—trim accordingly.'];
-
-  const fixSuggestion = score === 1 ? null : 'Prefer the smallest change that resolves the issue.';
-
-  return { score, rubric, spans: [], correctSequence: [], fixSuggestion, nextHints, details: { key, choice, nearMiss: Array.from(nearMiss), mode: 'fix' } };
+  return ensureShape({
+    score,
+    rubric: score === 1 ? ['Right fix: precise and minimal.']
+      : score === 0.5 ? ['Close fix: watch for clarity or rule edge cases.']
+      : ['Pick the option that removes error without adding style noise.'],
+    fixSuggestion: score === 1 ? null : 'Prefer the smallest change that resolves the issue.',
+    nextHints: score === 1 ? ['Try the subtler pair next round.']
+      : ['Check for label-y emotion, over-explain, or speechy theme—trim accordingly.'],
+    details: { mode:'fix', key, choice, nearMiss: Array.from(nearMiss) },
+  });
 }
 
 function gradeWhy(item, answer) {
@@ -269,67 +267,69 @@ function gradeWhy(item, answer) {
       .map(s => s.trim().toLowerCase())
       .filter(Boolean)
   );
-
   const text = typeof answer === 'object' ? String(answer.rationale ?? answer.text ?? '') : String(answer ?? '');
   const hay = text.toLowerCase();
 
+  const TAGS = {
+    emotional: ['feeling','emotion','tone','mood','affect'],
+    'money/class': ['money','rent','bill','class','status','work'],
+    process: ['because','so that','therefore','in order to','method'],
+    'voice/style': ['voice','style','diction','cadence','rhythm','syntax'],
+    clarity: ['clear','confusing','ambiguous','specific'],
+    stakes: ['stakes','risk','cost','consequence'],
+    motive: ['motive','want','goal','desire','because'],
+  };
+
   const hits = [];
   for (const tag of goldTags) {
-    const kws = RATIONALE_KEYWORDS[tag] || [];
+    const kws = TAGS[tag] || [];
     if (kws.some(k => hay.includes(k))) hits.push(tag);
   }
 
-  // heuristic: length helps a tiny bit (but not gating!)
   const wordCount = (text.trim().match(/\S+/g) || []).length;
-  const lcBoost = Math.min(0.15, (wordCount >= 25 ? 0.15 : wordCount / 25 * 0.15));
-
-  const base = goldTags.length ? (hits.length / goldTags.length) : 0.6; // if no tags, be generous
+  const lcBoost = Math.min(0.15, (wordCount >= 25 ? 0.15 : (wordCount / 25) * 0.15));
+  const base = goldTags.length ? (hits.length / goldTags.length) : 0.6;
   const score = clamp01(base + lcBoost);
 
-  const rubric = [];
-  if (hits.length) rubric.push(`Addresses: ${hits.join(', ')}`);
-  const miss = goldTags.filter(t => !hits.includes(t));
-  if (miss.length) rubric.push(`Could add: ${pick(miss, 2).join(', ')}`);
-
-  const nextHints = miss.length
-    ? [`Tie motive to stakes explicitly (e.g., "because …, so …").`]
-    : ['Add one concrete sentence that shows consequence, not label.'];
-
-  return { score, rubric, spans: [], correctSequence: [], fixSuggestion: null, nextHints, details: { goldTags, hits, wordCount, mode: 'why' } };
+  return ensureShape({
+    score,
+    rubric: [
+      hits.length ? `Addresses: ${hits.join(', ')}` : 'State motive and consequence explicitly.',
+      ...((goldTags.filter(t => !hits.includes(t)).length)
+        ? [`Could add: ${goldTags.filter(t => !hits.includes(t)).slice(0,2).join(', ')}`]
+        : [])
+    ],
+    nextHints: (goldTags.length && hits.length < goldTags.length)
+      ? ['Tie motive to stakes: “because …, so …”.']
+      : ['Add one concrete sentence that shows consequence, not label.'],
+    details: { mode:'why', goldTags, hits, wordCount },
+  });
 }
 
-// ---------- public API ----------
+// Public API
 export async function grade({ mode, item, answer }) {
   const m = String(mode || item?.mode || '').toLowerCase();
   try {
     switch (m) {
-      case 'name':       return gradeName(item, answer);
-      case 'missing':    return gradeMissing(item, answer);
-      case 'order':      return gradeOrder(item, answer);
-      case 'highlight':  return gradeHighlight(item, answer);
-      case 'fix':        return gradeFix(item, answer);
-      case 'why':        return gradeWhy(item, answer);
+      case 'name': return ensureShape(gradeName(item, answer));
+      case 'missing': return ensureShape(gradeMissing(item, answer));
+      case 'order': return ensureShape(gradeOrder(item, answer));
+      case 'highlight': return ensureShape(gradeHighlight(item, answer));
+      case 'fix': return ensureShape(gradeFix(item, answer));
+      case 'why': return ensureShape(gradeWhy(item, answer));
       default:
-        return {
-          score: 0,
+        return ensureShape({
           rubric: ['Unknown mode.'],
-          spans: [],
-          correctSequence: [],
-          fixSuggestion: null,
-          nextHints: ['Pick a supported mode: name, missing, order, highlight, fix, why.'],
-          details: { mode: m, error: 'unsupported-mode' },
-        };
+          nextHints: ['Use one of: name, missing, order, highlight, fix, why.'],
+          details: { error: 'unsupported-mode', mode: m },
+        });
     }
   } catch (e) {
-    return {
-      score: 0,
-      rubric: ['Grader error — returning safe fallback.'],
-      spans: [],
-      correctSequence: [],
-      fixSuggestion: null,
-      nextHints: ['Try again; if persists, see logs.'],
-      details: { mode: m, error: String(e?.message || e) },
-    };
+    return ensureShape({
+      rubric: ['Grader error — safe fallback.'],
+      nextHints: ['Try again; if persists, see server logs.'],
+      details: { error: String(e?.message || e), mode: m },
+    });
   }
 }
 
