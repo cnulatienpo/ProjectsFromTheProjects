@@ -1,11 +1,11 @@
-import { Router } from "express";
+import express from "express";
 import type { AttemptPayload, AttemptResult } from "../types";
 import gradeAttempt from "../graders";
 import { saveAttempt, updateMastery, latestReport } from "../db/repo";
 import { maybeBuildStyleReport } from "../styleReport";
 import { fetchItemById } from "../db/itemsRepo";
 
-const router = Router();
+const router = express.Router();
 
 // POST /api/attempt
 router.post("/attempt", async (req, res) => {
