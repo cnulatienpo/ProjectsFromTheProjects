@@ -1,73 +1,92 @@
-import fs from 'fs';
-import path from 'path';
+import { readdir, readFile } from "node:fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-export function readTextMaybe(p) {
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const ITEMS_DIR = path.join(__dirname, "items");
+const TWEETRUNK_DIR = path.join(__dirname, "tweetrunk");
+const PRACTICE_DIR = path.join(__dirname, "practice");
+
+function normalizeItem(raw, idx) {
+  const id = String(raw?.id ?? `item-${idx + 1}`);
+  const mode = String(raw?.mode ?? "why");
+  const prompt = String(raw?.prompt ?? "Write one sentence about cause → effect.");
+  const meta = (() => {
+    const metaFromField = raw && typeof raw.meta === "object" && raw.meta !== null ? { ...raw.meta } : {};
+    if (raw && typeof raw === "object") {
+      const extra = { ...raw };
+      delete extra.id;
+      delete extra.mode;
+      delete extra.prompt;
+      delete extra.meta;
+      return { ...extra, ...metaFromField };
+    }
+    return metaFromField;
+  })();
+  return { id, mode, prompt, meta };
+}
+
+async function loadDir(dir) {
+  let items = [];
   try {
-    return fs.readFileSync(p, 'utf8');
-  } catch {
-    return null;
-  }
-}
-
-export function readJsonl(p) {
-  const text = readTextMaybe(p);
-  if (!text) return [];
-  return text
-    .split(/\r?\n/)
-    .map((line) => line.trim())
-    .filter(Boolean)
-    .map((line) => {
+    const files = await readdir(dir, { withFileTypes: true });
+    const jsonFiles = files
+      .filter((entry) => entry.isFile() && entry.name.endsWith(".json"))
+      .map((entry) => path.join(dir, entry.name));
+    for (const filePath of jsonFiles) {
       try {
-        return JSON.parse(line.replace(/,?$/, ''));
+        const txt = await readFile(filePath, "utf8");
+        const data = JSON.parse(txt);
+        if (Array.isArray(data)) {
+          const start = items.length;
+          data.forEach((raw, idx) => items.push(normalizeItem(raw, start + idx)));
+        } else {
+          items.push(normalizeItem(data, items.length));
+        }
       } catch {
-        return null;
+        // Ignore malformed files; keep server alive.
       }
-    })
-    .filter(Boolean);
+    }
+  } catch {
+    // Directory may not exist; fall through to fallback items.
+  }
+  return items;
 }
 
-export function loadTweetrunk() {
-  const roots = [
-    path.resolve(process.cwd(), 'labeled data', 'tweetrunk_renumbered.jsonl'),
-    path.resolve(process.cwd(), 'public', 'data', 'cut_games', 'tweetrunk_renumbered.jsonl'),
-    path.resolve(process.cwd(), 'app', 'dist', 'data', 'cut_games', 'tweetrunk_renumbered.jsonl'),
-  ];
-  for (const candidate of roots) {
-    const rows = readJsonl(candidate);
-    if (rows.length) return rows;
-  }
-  return [];
+export async function loadTweetrunk() {
+  return loadDir(TWEETRUNK_DIR);
 }
 
-export function loadPractice(kind = 'good') {
-  const file = `practice_${kind}.jsonl`;
-  const roots = [
-    path.resolve(process.cwd(), 'app', 'dist', 'data', 'cut_games', file),
-    path.resolve(process.cwd(), 'public', 'data', 'cut_games', file),
-    path.resolve(process.cwd(), 'app', 'public', 'data', 'cut_games', file),
-  ];
-  for (const candidate of roots) {
-    const rows = readJsonl(candidate);
-    if (rows.length) return rows;
+export async function loadPractice() {
+  return loadDir(PRACTICE_DIR);
+}
+
+export async function getCatalog() {
+  const [core, tweets, practice] = await Promise.all([
+    loadDir(ITEMS_DIR),
+    loadTweetrunk(),
+    loadPractice(),
+  ]);
+
+  let items = [...tweets, ...practice, ...core];
+  if (items.length === 0) {
+    items = [
+      normalizeItem(
+        {
+          id: "sample-why-1",
+          mode: "why",
+          prompt: "In one line, explain why short→long sentence rhythm increases impact.",
+          meta: { freshness: 1, level: 1, introduces_beats: false },
+        },
+        0,
+      ),
+    ];
   }
-  return [];
+  return items;
 }
 
 export async function loadPracticePool() {
-  try {
-    const mod = await import('./items.js');
-    const getter = mod?.getAllItems || (mod?.default && mod.default.getAllItems);
-    const items = typeof getter === 'function' ? getter() : [];
-    if (Array.isArray(items) && items.length) {
-      try {
-        const mem = await import('../db/mem.js');
-        if (typeof mem?.indexItems === 'function') {
-          mem.indexItems(items);
-        }
-      } catch {}
-    }
-    return Array.isArray(items) ? items : [];
-  } catch {
-    return [];
-  }
+  return getCatalog();
 }
+
+export default getCatalog;
