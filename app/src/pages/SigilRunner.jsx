@@ -7,7 +7,7 @@ import BeatTextEditor from '@/components/BeatTextEditor.jsx';
 import { beatsForLesson } from '@/logic/beatUnlockSchedule';
 import { useBeatUnlocks } from '@/state/useBeatUnlocks';
 import { getLesson } from '@/services/sigilLesson';
-import { apiAttempt, apiNext, apiSkip } from '@/lib/attemptApi.js';
+import { postAttempt, getNext, skipItem } from '@/lib/attemptApi.js';
 
 const USER_ID = 'dev';
 const MODE = 'sigil';
@@ -79,7 +79,7 @@ export default function SigilRunner() {
       if (!id) {
         setLoading(true);
         try {
-          const payload = await apiNext(USER_ID);
+          const payload = await getNext(USER_ID);
           if (ignore) return;
           const nextItem = payload?.item || null;
           if (nextItem?.id) {
@@ -195,7 +195,7 @@ export default function SigilRunner() {
         plainText,
         mode: currentItem?.mode || MODE,
       });
-      const response = await apiAttempt({
+      const response = await postAttempt({
         userId: USER_ID,
         itemId: String(itemId),
         mode: currentItem?.mode || MODE,
@@ -224,7 +224,7 @@ export default function SigilRunner() {
     setPendingInsert(null);
     setLoading(true);
     try {
-      const payload = await apiNext(USER_ID);
+      const payload = await getNext(USER_ID);
       const nextItem = payload?.item || null;
       setCurrentItem(nextItem || null);
       const nextId = nextItem?.id ? String(nextItem.id) : null;
@@ -271,7 +271,7 @@ export default function SigilRunner() {
       return;
     }
     try {
-      await apiSkip({ userId: USER_ID, itemId: String(itemId), mode: currentItem?.mode || MODE });
+      await skipItem({ userId: USER_ID, itemId: String(itemId), mode: currentItem?.mode || MODE });
     } catch (e) {
       setSubmitError(e?.message || 'Failed to record skip.');
     }

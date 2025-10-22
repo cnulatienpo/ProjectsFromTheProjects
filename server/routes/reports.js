@@ -8,9 +8,13 @@ router.get('/reports/ping', (_req, res) => {
 });
 
 router.get('/reports/latest', (req, res) => {
-  const userId = String(req.query.userId || req.get('x-user-id') || 'dev');
+  const userId = String(req.get('x-user-id') || req.query.userId || 'dev');
   const memo = getLatestReport(userId);
-  res.json({ ok: true, memo });
+  if (memo) {
+    res.json({ ok: true, memo });
+  } else {
+    res.json({ ok: false, memo: null });
+  }
 });
 
 export const reportsRouter = router;
