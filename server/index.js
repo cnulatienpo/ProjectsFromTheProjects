@@ -10,6 +10,7 @@ import { buildReport } from './report/index.js';
 import { mark, getUserState } from './progress/store.js';
 import { listSigilIds } from './sigil/catalogIds.js';
 import * as mem from './db/mem.js';
+import * as grader from './graders/index.js';
 
 // Import new API routes
 import nextRoutes from './routes/next.js';
@@ -102,6 +103,48 @@ app.use(reportsRoutes);
 } catch (e) {
   console.warn('Route mounting warning:', e && e.message);
 }
+
+app.post('/api/attempt', async (req, res) => {
+  const body = req.body ?? {};
+  const { userId, itemId, mode, answer } = body;
+
+  const normalizedUserId = typeof userId === 'string' && userId.trim()
+    ? userId.trim()
+    : String(req.get('x-user-id') || 'dev');
+  const itemIdRaw = itemId ?? body.id;
+  const normalizedItemId = itemIdRaw != null
+    ? String(itemIdRaw)
+    : null;
+
+  if (!normalizedItemId) {
+    return res.status(400).json({ ok: false, error: 'missing_item_id' });
+  }
+
+  const normalizedMode = typeof mode === 'string' && mode.trim() ? mode.trim() : 'why';
+  const item = { id: normalizedItemId };
+
+  try {
+    const result = await grader.grade({
+      mode: normalizedMode,
+      item,
+      answer,
+      userId: normalizedUserId,
+      itemId: normalizedItemId,
+    });
+    // The grader now returns a fully-normalized object with all contract keys.
+    return res.json(result);
+  } catch (e) {
+    console.error('[attempt] grade error:', e && e.stack ? e.stack : e);
+    return res.status(200).json({
+      ok: false,
+      error: 'grading_failed',
+      message: e?.message || String(e),
+      userId: normalizedUserId,
+      itemId: normalizedItemId,
+      mode: normalizedMode,
+    });
+  }
+});
 
 app.use('/api/attempt', attemptRoutes);
 mounted.push('/api/attempt');
