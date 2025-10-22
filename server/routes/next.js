@@ -1,17 +1,18 @@
-import { Router } from 'express';
-import { pickNext } from '../scheduler/next.js';
+// server/routes/next.js (ESM)
+import express from 'express';
+import { getNextItem } from './utils/getNext.js';
 
-const router = Router();
+const router = express.Router();
 
-router.get('/next', (req, res) => {
+router.get('/api/next', async (req, res) => {
   try {
-    const userId = String(req.query.userId || req.get('x-user-id') || 'dev');
-    const item = pickNext({ userId });
-    res.json({ ok: true, item });
-  } catch (err) {
-    console.error('[next] failed to select item', err);
-    res.status(500).json({ ok: false, error: 'next_failed', message: err?.message });
+    const userId = String(req.get('x-user-id') || req.query.userId || 'dev');
+    const next = await getNextItem(userId);
+    res.json(next || {});
+  } catch (e) {
+    res.status(500).json({ error: String(e?.message || e) });
   }
 });
 
 export default router;
+

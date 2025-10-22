@@ -9,7 +9,7 @@ import * as readline from 'node:readline';
 import { buildReport } from './report/index.js';
 import { mark, getUserState } from './progress/store.js';
 import { listSigilIds } from './sigil/catalogIds.js';
-import { _flushNow } from './db/mem.js';
+import * as mem from './db/mem.js';
 
 // Import new API routes
 import nextRoutes from './routes/next.js';
@@ -100,9 +100,9 @@ try {
   console.warn('Route mounting warning:', e && e.message);
 }
 
-app.use('/api', nextRoutes);
+app.use(nextRoutes);
 mounted.push('/api/next');
-app.use('/api', skipRoutes);
+app.use(skipRoutes);
 mounted.push('/api/skip');
 
 const attemptRouteMount = (async () => {
@@ -333,22 +333,15 @@ function listenWithRetry(port, attemptsLeft = 5) {
   });
 }
 
-const shutdownSignals = ['SIGINT', 'SIGTERM'];
-let shuttingDown = false;
-const handleShutdown = (signal) => {
-  if (shuttingDown) return;
-  shuttingDown = true;
-  console.log(`>>> Received ${signal}, flushing progress to disk...`);
-  try {
-    _flushNow();
-  } catch (err) {
-    console.warn('[shutdown] Failed to flush data', err?.message || err);
-  }
+process.on('SIGTERM', () => {
+  console.log('>>> Received SIGTERM, flushing progress to disk...');
+  try { mem.flushAll(); } catch {}
   process.exit(0);
-};
-
-for (const sig of shutdownSignals) {
-  process.once(sig, () => handleShutdown(sig));
-}
+});
+process.on('SIGINT', () => {
+  console.log('>>> Received SIGINT, flushing progress to disk...');
+  try { mem.flushAll(); } catch {}
+  process.exit(0);
+});
 
 listenWithRetry(basePort);

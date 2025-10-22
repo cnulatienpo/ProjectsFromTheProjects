@@ -1,15 +1,7 @@
 import express from 'express';
 import grade from '../graders/index.js';
 import { getItemById } from '../content/items.js';
-import {
-  recordAttempt,
-  getAttempts,
-  addExp,
-  getMastery,
-  checkLevelUp,
-  saveReport,
-} from '../db/mem.js';
-import { buildMemo } from '../reports/buildMemo.js';
+import * as mem from '../db/mem.js';
 
 const router = express.Router();
 
@@ -58,17 +50,16 @@ router.post('/', (req, res) => {
     : (Array.isArray(item?.meta?.beat_tags) ? item.meta.beat_tags : []);
   const skillIds = rawSkillIds.map((id) => String(id)).filter(Boolean);
 
-  const expAward = Math.round(score * 20);
-  addExp(userId, skillIds, expAward);
+  const expAward = Math.round((score || 0) * 20) + 5;
 
   details.expAward = expAward;
   if (!details.skillIds) {
     details.skillIds = skillIds;
   }
 
-  const gradedAt = new Date().toISOString();
+  const gradedAt = result?.gradedAt ? String(result.gradedAt) : new Date().toISOString();
 
-  recordAttempt({
+  mem.appendAttempt({
     userId,
     itemId,
     mode,
@@ -82,15 +73,16 @@ router.post('/', (req, res) => {
     gradedAt,
   });
 
-  const { leveledUp, level, badges } = checkLevelUp(userId);
-
-  let memo;
-  if (leveledUp) {
-    const attempts = getAttempts(userId, { limit: 50 });
-    const mastery = getMastery(userId);
-    memo = buildMemo({ userId, attempts, mastery });
-    saveReport(userId, memo);
+  if (skillIds.length) {
+    mem.bumpMastery(userId, skillIds, expAward);
   }
+
+  const mastery = mem.getMastery(userId);
+  const masterySummary = skillIds.reduce((acc, id) => {
+    const entry = mastery?.[id];
+    if (entry) acc[id] = entry;
+    return acc;
+  }, {});
 
   return res.json({
     ok: true,
@@ -104,12 +96,14 @@ router.post('/', (req, res) => {
     fixSuggestion,
     nextHints,
     details,
-    leveledUp,
-    level,
-    badges,
-    memo: leveledUp ? memo : undefined,
+    leveledUp: false,
+    level: null,
+    badges: [],
+    memo: undefined,
     gradedAt,
+    mastery: masterySummary,
   });
 });
 
 export default router;
+
