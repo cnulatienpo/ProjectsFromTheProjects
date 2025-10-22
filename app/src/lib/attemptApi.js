@@ -1,28 +1,40 @@
-// app/src/lib/attemptApi.js
-import * as API from '@/lib/apiBase.js'
+/**
+ * Simple client for the game API.
+ * All calls hit the same origin (server/index.js proxies /api/*).
+ */
+const API_BASE = ''; // same-origin
 
-// Build a URL regardless of how apiBase is authored
-const makeUrl = typeof API.api === 'function'
-  ? (p) => API.api(p)
-  : (p) => {
-      const base = (API.API_BASE || '').replace(/\/$/, '')
-      return base ? base + p : p
-    }
+export async function fetchNext(userId = 'dev') {
+  const r = await fetch(`${API_BASE}/api/next`, {
+    headers: { 'x-user-id': userId }
+  });
+  if (!r.ok) throw new Error(`next: HTTP ${r.status}`);
+  return r.json();
+}
 
-// Reuse the same safe fetch helper (if provided); otherwise a tiny fallback
-const safeFetchJSON = API.safeFetchJSON || (async (url, init) => {
-  const res = await fetch(url, init)
-  if (!res.ok) {
-    const text = await res.text().catch(()=>'')
-    throw new Error(`HTTP ${res.status}${text ? ` – ${text.slice(0,120)}` : ''}`)
-  }
-  return res.json()
-})
-
-export async function submitAttempt({ id, text, minWords }) {
-  return safeFetchJSON(makeUrl('/attempt'), {
+export async function submitAttempt({ userId = 'dev', itemId, mode, answer }) {
+  const r = await fetch(`${API_BASE}/api/attempt`, {
     method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ id, text, minWords })
-  })
+    headers: { 'content-type': 'application/json', 'x-user-id': userId },
+    body: JSON.stringify({ userId, itemId, mode, answer })
+  });
+  if (!r.ok) throw new Error(`attempt: HTTP ${r.status}`);
+  return r.json();
+}
+
+export async function skipItem({ userId = 'dev', itemId, mode, reason = 'user_skip' }) {
+  const r = await fetch(`${API_BASE}/api/skip`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json', 'x-user-id': userId },
+    body: JSON.stringify({ userId, itemId, mode, reason })
+  });
+  if (!r.ok) throw new Error(`skip: HTTP ${r.status}`);
+  return true;
+}
+export async function fetchLatestReport(userId = 'dev') {
+  const res = await fetch(`/api/reports/latest?userId=${encodeURIComponent(userId)}`);
+  if (!res.ok) throw new Error(`latest report HTTP ${res.status}`);
+  const data = await res.json();
+  // shape: { ok, userId, memo: { title, body, badges } }
+  return data?.memo || null;
 }

@@ -1,3 +1,11 @@
+import React from 'react';
+
+/**
+ * FeedbackTray
+ * - Prints grading feedback into a read-only textarea
+ * - Provides Next + “I don’t feel like it” (skip) buttons
+ * - (Optional) Submit button passthrough if you still need it elsewhere
+ */
 export default function FeedbackTray({
   feedback = null,
   result = null,
@@ -7,77 +15,90 @@ export default function FeedbackTray({
   onNext = null,
   onSkip = null,
   error = '',
+  disabled = false, // extra guard you can toggle from parent
 }) {
-  const payload = feedback ?? result ?? null;
-  const value = [
-    payload?.score != null ? `Score: ${Math.round(payload.score * 100)}%` : '',
-    Array.isArray(payload?.rubric) && payload.rubric.length
-      ? `Rubric: ${payload.rubric
-          .map((r) =>
-            typeof r === 'string' ? r : `${r.key}${r.ok ? '✓' : '✗'}`,
-          )
-          .join(', ')}`
-      : '',
-    payload?.details?.message ? `Note: ${payload.details.message}` : '',
-    payload?.fixSuggestion ? `Suggestion: ${payload.fixSuggestion}` : '',
-    Array.isArray(payload?.nextHints) && payload.nextHints.length
-      ? `Next: ${payload.nextHints.join(' | ')}`
-      : '',
-  ]
-    .filter(Boolean)
-    .join('\n');
+  // Normalize lines to print
+  const lines = [];
+
+  if (result?.score != null) lines.push(`Score: ${Math.round(result.score * 100)}%`);
+  if (Array.isArray(result?.rubric) && result.rubric.length) {
+    lines.push(`Analysis: ${result.rubric.join(', ')}`);
+  }
+  if (result?.details?.message) lines.push(result.details.message);
+  if (result?.fixSuggestion) lines.push(`Suggestion: ${result.fixSuggestion}`);
+  if (Array.isArray(result?.nextHints) && result.nextHints.length) {
+    lines.push(`Next: ${result.nextHints[0]}`);
+  }
+
+  // If you still pass a plain string/array via `feedback`, append it
+  if (typeof feedback === 'string' && feedback.trim()) lines.push(feedback.trim());
+  if (Array.isArray(feedback) && feedback.length) lines.push(...feedback);
+
+  const body = lines.join('\n');
 
   return (
-    <div className="sigil-feedback-tray">
+    <aside className="feedback-tray" style={{ display: 'grid', gap: 12 }}>
+      <label style={{ fontWeight: 600 }}>ray ray says</label>
+
       <textarea
-        className="feedback-box"
         readOnly
-        rows={8}
-        value={value}
-        placeholder="Submit to see feedback."
+        value={body}
+        placeholder=""
+        style={{ minHeight: 140, width: '100%' }}
+        data-testid="feedback-output"
       />
 
       {error ? (
-        <div className="feedback-error" role="alert">
-          {error}
+        <div
+          style={{
+            border: '1px solid #b91c1c',
+            background: '#fee2e2',
+            color: '#991b1b',
+            padding: '8px 10px',
+            borderRadius: 6,
+            fontSize: 13,
+          }}
+          data-testid="feedback-error"
+        >
+          {String(error)}
         </div>
       ) : null}
 
-      <div className="sigil-actions" style={{ marginTop: 12, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', gap: 8 }}>
+        {/* Optional submit passthrough (kept for compatibility) */}
         {onSubmit ? (
           <button
             type="button"
+            className="pfp-btn"
             data-testid="btn-submit"
-            className="pfp-btn"
             onClick={onSubmit}
-            disabled={!canSubmit || submitting}
+            disabled={submitting || !canSubmit || disabled}
           >
-            {submitting ? 'Submitting…' : 'Submit'}
+            {submitting ? 'Grading…' : 'Submit'}
           </button>
         ) : null}
-        {onNext ? (
-          <button
-            type="button"
-            data-testid="btn-next"
-            className="pfp-btn"
-            onClick={onNext}
-            disabled={submitting}
-          >
-            Next
-          </button>
-        ) : null}
-        {onSkip ? (
-          <button
-            type="button"
-            data-testid="btn-skip"
-            className="pfp-btn"
-            onClick={onSkip}
-            disabled={submitting}
-          >
-            I don't feel like it
-          </button>
-        ) : null}
+
+        <button
+          type="button"
+          className="pfp-btn btn-primary"
+          data-testid="btn-next"
+          onClick={onNext}
+          disabled={submitting || disabled}
+        >
+          Next
+        </button>
+
+        <button
+          type="button"
+          className="pfp-btn"
+          data-testid="btn-skip"
+          onClick={onSkip}
+          disabled={submitting || disabled}
+        >
+          I don’t feel like it
+        </button>
       </div>
-    </div>
+    </aside>
   );
 }
+

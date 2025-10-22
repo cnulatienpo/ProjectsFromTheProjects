@@ -7,7 +7,7 @@ import BeatTextEditor from '@/components/BeatTextEditor.jsx';
 import { beatsForLesson } from '@/logic/beatUnlockSchedule';
 import { useBeatUnlocks } from '@/state/useBeatUnlocks';
 import { getLesson } from '@/services/sigilLesson';
-import { fetchNext, skipItem, submitAttempt } from '@/lib/attemptApi';
+import { fetchNext, skipItem, submitAttempt } from "../lib/attemptApi.js";
 
 const USER_ID = 'dev';
 const MODE = 'sigil';
