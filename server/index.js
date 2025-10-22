@@ -256,14 +256,28 @@ await attemptRouteMount;
 const distDir = path.join(process.cwd(), "app", "dist");
 const hasDist = fs.existsSync(path.join(distDir, "index.html"));
 
-if (hasDist) {
-  console.log(">>> Serving static bundle from", distDir);
-  app.use(express.static(distDir));
-  app.get("*", (_req, res) => res.sendFile(path.join(distDir, "index.html")));
+// 🔒 Make sure unknown /api/* doesn't fall through to static site
+app.use('/api', (req, res, next) => {
+  if (!res.headersSent) {
+    return res.status(404).json({ error: 'Not Found', path: req.originalUrl });
+  }
+  next();
+});
+
+// ====== Static site serving (after APIs) ======
+const distDir = path.join(process.cwd(), 'app', 'dist');
+const hasDist = fs.existsSync(path.join(distDir, 'index.html'));
+
+if (!hasDist) {
+  console.log(`>>> Static bundle missing at ${distDir} — run \`npm run build\` to generate it.`);
 } else {
-  console.warn(">>> Bundle not found at", distDir, "— run `npm run build` to generate it.");
-  app.get("*", (_req, res) => {
-    res.status(503).type("text/plain").send("Bundle not built. Run: npm run build");
+  console.log(`>>> Serving static bundle from ${distDir}`);
+  app.use(express.static(distDir, { index: 'index.html' }));
+  app.get('*', (req, res) => {
+    if (req.path.startsWith('/api/')) {
+      return res.status(404).json({ error: 'Not Found' });
+    }
+    res.sendFile(path.join(distDir, 'index.html'));
   });
 }
 
