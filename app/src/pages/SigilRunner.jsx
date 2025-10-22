@@ -7,7 +7,7 @@ import BeatTextEditor from '@/components/BeatTextEditor.jsx';
 import { beatsForLesson } from '@/logic/beatUnlockSchedule';
 import { useBeatUnlocks } from '@/state/useBeatUnlocks';
 import { getLesson } from '@/services/sigilLesson';
-import { fetchNext, skipItem, submitAttempt } from '@/lib/attemptApi';
+import { apiAttempt, apiNext, apiSkip } from '@/lib/attemptApi.js';
 
 const USER_ID = 'dev';
 const MODE = 'sigil';
@@ -67,7 +67,7 @@ export default function SigilRunner() {
   const [text, setText] = useState('');
   const [editorKey, setEditorKey] = useState(0);
   const [pendingInsert, setPendingInsert] = useState(null);
-  const [feedback, setFeedback] = useState(null);
+  const [result, setResult] = useState(null);
   const [submitError, setSubmitError] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
@@ -79,11 +79,12 @@ export default function SigilRunner() {
       if (!id) {
         setLoading(true);
         try {
-          const nextItem = await fetchNext(USER_ID);
+          const payload = await apiNext(USER_ID);
           if (ignore) return;
+          const nextItem = payload?.item || null;
           if (nextItem?.id) {
             setCurrentItem(nextItem);
-            setFeedback(null);
+            setResult(null);
             setSubmitError('');
             setText('');
             setEditorKey((k) => k + 1);
@@ -112,7 +113,7 @@ export default function SigilRunner() {
           setLesson(null);
         } else {
           setLesson(data);
-          setFeedback(null);
+          setResult(null);
           setSubmitError('');
           setText('');
           setEditorKey((k) => k + 1);
@@ -169,8 +170,6 @@ export default function SigilRunner() {
     if (!plainText) return 0;
     return plainText.split(/\s+/).filter(Boolean).length;
   }, [plainText]);
-  const canSubmit = plainText.length > 0;
-
   const handleBeatInsert = (beatData) => {
     setPendingInsert(beatData);
   };
@@ -180,7 +179,7 @@ export default function SigilRunner() {
   };
 
   async function handleSubmit() {
-    if (!canSubmit || submitting) return;
+    if (submitting) return;
     const itemId = currentItem?.id || lesson?.id || id;
     if (!itemId) {
       setSubmitError('Missing lesson id.');
@@ -191,15 +190,23 @@ export default function SigilRunner() {
     setSubmitError('');
 
     try {
-      const sigils = (plainText.match(/\[([^\]]+)\]/g) || []).map((s) => s.slice(1, -1).toLowerCase());
-      const answer = { text: plainText, sigils, rationale: null };
-      const result = await submitAttempt({
+      const answer = buildAnswerPayload({
+        html: text,
+        plainText,
+        mode: currentItem?.mode || MODE,
+      });
+      const response = await apiAttempt({
         userId: USER_ID,
         itemId: String(itemId),
         mode: currentItem?.mode || MODE,
         answer,
       });
-      setFeedback(result);
+      if (!response?.ok) {
+        setResult(null);
+        setSubmitError(response?.message || 'Submission could not be graded.');
+      } else {
+        setResult(response);
+      }
     } catch (e) {
       setSubmitError(e?.message || 'Submission failed.');
     } finally {
@@ -209,7 +216,7 @@ export default function SigilRunner() {
 
   async function loadNextItem(replace = false) {
     setSubmitError('');
-    setFeedback(null);
+    setResult(null);
     setError('');
     setLesson(null);
     setText('');
@@ -217,7 +224,8 @@ export default function SigilRunner() {
     setPendingInsert(null);
     setLoading(true);
     try {
-      const nextItem = await fetchNext(USER_ID);
+      const payload = await apiNext(USER_ID);
+      const nextItem = payload?.item || null;
       setCurrentItem(nextItem || null);
       const nextId = nextItem?.id ? String(nextItem.id) : null;
       if (!nextId) {
@@ -235,7 +243,7 @@ export default function SigilRunner() {
             setLesson(null);
           } else {
             setLesson(data);
-            setFeedback(null);
+            setResult(null);
             setSubmitError('');
           }
         } catch (err) {
@@ -263,7 +271,7 @@ export default function SigilRunner() {
       return;
     }
     try {
-      await skipItem(USER_ID, String(itemId), currentItem?.mode || MODE);
+      await apiSkip({ userId: USER_ID, itemId: String(itemId), mode: currentItem?.mode || MODE });
     } catch (e) {
       setSubmitError(e?.message || 'Failed to record skip.');
     }
@@ -271,20 +279,22 @@ export default function SigilRunner() {
   }
 
   const rayLines = useMemo(() => {
-    if (!feedback) return [];
+    if (!result) return [];
     const parts = [
-      feedback?.score != null ? `Score: ${Math.round(feedback.score * 100)}%` : null,
-      feedback?.rubric?.length
-        ? `Rubric: ${feedback.rubric
+      result?.score != null ? `Score: ${Math.round(result.score * 100)}%` : null,
+      result?.rubric?.length
+        ? `Rubric: ${result.rubric
             .map((r) => (typeof r === 'string' ? r : `${r.key}${r.ok ? '✓' : '✗'}`))
             .join(', ')}`
         : null,
-      feedback?.details?.message ? `Note: ${feedback.details.message}` : null,
-      feedback?.fixSuggestion ? `Suggestion: ${feedback.fixSuggestion}` : null,
-      ...(Array.isArray(feedback?.nextHints) ? feedback.nextHints.map((hint) => `Next: ${hint}`) : []),
+      result?.details?.message ? `Note: ${result.details.message}` : null,
+      result?.fixSuggestion ? `Suggestion: ${result.fixSuggestion}` : null,
+      ...(Array.isArray(result?.nextHints) ? result.nextHints.map((hint) => `Hint: ${hint}`) : []),
+      result?.leveledUp && result?.level ? `Level Up! Level ${result.level}` : null,
+      result?.memo?.title ? `${result.memo.title}: ${String(result.memo.body).split('\n')[0]}` : null,
     ];
     return parts.filter(Boolean);
-  }, [feedback]);
+  }, [result]);
 
   const rawContent = lesson?.content_html || lesson?.prompt_html || '';
   const contentHTML = useMemo(() => stripAutoTitle(rawContent), [rawContent]);
@@ -348,7 +358,7 @@ export default function SigilRunner() {
               onConsumeInsert={handleConsumePendingInsert}
             />
             <div className="sigil-meta" style={{ padding: '8px 12px', borderTop: '1px solid #000' }}>
-              {wordCount} words
+              words: {wordCount} (no minimum)
             </div>
           </section>
 
@@ -365,12 +375,14 @@ export default function SigilRunner() {
         <section className="sigil-tray">
           <div className="sigil-tray-title">ray ray says:</div>
           <FeedbackTray
-            feedback={feedback}
-            submitting={submitting}
-            canSubmit={canSubmit}
+            item={currentItem}
+            answer={plainText}
+            setAnswer={setText}
+            result={result}
             onSubmit={handleSubmit}
             onNext={handleNext}
             onSkip={handleSkip}
+            isLoading={submitting}
             error={submitError}
           />
         </section>
@@ -384,4 +396,33 @@ function stripAutoTitle(html) {
   const hTag = html.replace(/^\s*<h[12][^>]*>.*?<\/h[12]>\s*/is, '');
   const strongFirst = hTag.replace(/^\s*<p>\s*<strong>[^<]+<\/strong>\s*<\/p>\s*/is, '');
   return strongFirst;
+}
+
+function extractSigils(html, plainText) {
+  const sigils = new Set();
+  const htmlMatches = String(html || '').matchAll(/data-beat-type="([^"]+)"/gi);
+  for (const match of htmlMatches) {
+    const value = match[1]?.toLowerCase?.();
+    if (value) sigils.add(value.trim());
+  }
+  const bracketMatches = String(plainText || '').match(/\[([^\]]+)\]/g) || [];
+  for (const token of bracketMatches) {
+    const value = token.slice(1, -1).toLowerCase().trim();
+    if (value) sigils.add(value);
+  }
+  return Array.from(sigils);
+}
+
+function buildAnswerPayload({ html, plainText, mode }) {
+  const text = String(plainText ?? '').trim();
+  const words = text ? text.split(/\s+/).filter(Boolean) : [];
+  return {
+    text,
+    raw: html ?? '',
+    mode,
+    sigils: extractSigils(html, plainText),
+    spans: [],
+    order: [],
+    wordCount: words.length,
+  };
 }

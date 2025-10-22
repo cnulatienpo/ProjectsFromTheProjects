@@ -100,6 +100,7 @@ try {
 }
 
 app.use('/api', nextRoutes);
+mounted.push('/api/next');
 app.use('/api', skipRoutes);
 mounted.push('/api/skip');
 
