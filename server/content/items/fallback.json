@@ -1,0 +1,8 @@
+[
+  {
+    "id": "why-boot-001",
+    "mode": "why",
+    "prompt": "Why does short→long sentence rhythm hit harder? Answer in one line.",
+    "meta": { "freshness": 3, "level": 1, "introduces_beats": false }
+  }
+]
