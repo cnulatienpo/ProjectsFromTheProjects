@@ -16,7 +16,6 @@ import skipRoutes from './routes/skip.js';
 import versionRoutes from './routes/version.js';
 import healthRoutes from './routes/health.js';
 import debugContentRoutes from './routes/debugContent.js';
-import reportsRoutes from './routes/reports.js';
 
 const { createReadStream, appendFileSync } = fs;
 const { resolve } = path;
@@ -40,6 +39,7 @@ const logMountedRoutes = () => {
     '/api/version',
     '/api/debug/content',
     '/api/skip',
+    '/api/reports/latest',
   ];
   const seen = new Set();
   const ordered = [];
@@ -102,9 +102,6 @@ app.use('/api', nextRoutes);
 app.use('/api', skipRoutes);
 mounted.push('/api/skip');
 
-app.use('/api/reports', reportsRoutes);
-mounted.push('/api/reports/latest');
-
 const attemptRouteMount = (async () => {
   try {
     const mod = await import('./routes/attempt.js');
@@ -114,6 +111,19 @@ const attemptRouteMount = (async () => {
     logMountedRoutes();
   } catch (err) {
     console.error('Attempt route mount failed:', err?.message || err);
+  }
+})();
+
+const reportsRouteMount = (async () => {
+  try {
+    const mod = await import('./routes/reports.js');
+    const reportsRouter = mod.default || mod;
+    // mount at /api so router paths like /reports/latest map to /api/reports/latest
+    app.use('/api', reportsRouter);
+    mounted.push('/api/reports/latest');
+    logMountedRoutes();
+  } catch (err) {
+    console.error('Reports route mount failed:', err?.message || err);
   }
 })();
 
@@ -263,6 +273,7 @@ app.post('/attempt', express.json(), async (req, res) => {
 });
 
 await attemptRouteMount;
+await reportsRouteMount;
 
 // 🔒 Make sure unknown /api/* doesn't fall through to static site
 app.use('/api', (req, res, next) => {

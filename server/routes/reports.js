@@ -1,33 +1,31 @@
-import { Router } from 'express';
+// server/routes/reports.js
+import express from 'express';
 
-const router = Router();
+const router = express.Router();
 
-router.get('/latest', (req, res) => {
-  const headerUserId = req.headers['x-user-id'];
-  let userId = 'dev';
+// Ping to prove router is alive (optional but handy)
+router.get('/reports/ping', (_req, res) => {
+  res.json({ ok: true, ping: 'reports-route-alive' });
+});
 
-  if (typeof headerUserId === 'string' && headerUserId.trim()) {
-    userId = headerUserId.trim();
-  } else if (Array.isArray(headerUserId) && headerUserId.length) {
-    const candidate = headerUserId.find(value => typeof value === 'string' && value.trim());
-    if (candidate) {
-      userId = candidate.trim();
-    }
-  }
-
-  const report = {
-    ok: true,
-    userId,
-    level: 7,
-    badges: ['Beat Detective', 'Comma Wrangler'],
-    memo: {
-      title: 'Professor Ray Ray memo – your current vibe',
-      body: "You lean into visible cause→effect beats and keep the world doing work. Cadence favors short clauses, then a longer gather. You're light on setup→payoff; try planting for later returns. You avoid label-y emotions (nice). Watch for hedges (just, kind of). Nearest neighbors: Baldwin × Chandler. Mortal enemies: PurpleProse, TEDTalk.",
-    },
-    generatedAt: new Date().toISOString(),
+// GET /api/reports/latest -> stub Professor Ray Ray memo
+router.get('/reports/latest', (req, res) => {
+  const userId = (req.headers['x-user-id'] || req.query.userId || 'dev') + '';
+  const memo = {
+    title: `Professor Ray Ray memo for ${userId}`,
+    body: [
+      "VOICE: you favor concrete nouns and sturdy verbs. Keep it.",
+      "CHOICE: you escalate with Red beats (Action/Decision), sprinkle Blue (Reveal/Realization).",
+      "PACE: quick starts, then longer clauses to weight the fallouts.",
+      "INFLUENCES: Hemingway-tendencies; watch for BeigeProse drift when tired.",
+      "NEXT: Try one scene with a Green lead (Nonverbal + Interaction) and an Orange assist (Atmosphere)."
+    ].join('\n'),
+    level: 2,
+    badges: ['Beat Detective', 'Clause Wrangler'],
+    influences: { like: ['Hemingway', 'Baldwin'], avoid: ['BeigeProse'] },
+    generatedAt: new Date().toISOString()
   };
-
-  res.json(report);
+  res.json({ ok: true, memo });
 });
 
 export default router;
