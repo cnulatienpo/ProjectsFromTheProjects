@@ -150,6 +150,24 @@ app.use('/api/attempt', attemptRoutes);
 mounted.push('/api/attempt');
 logMountedRoutes();
 
+// Ensure GET /api/next exists
+app.get('/api/next', async (req, res) => {
+  try {
+    const userId = String(req.query.userId || 'anon');
+    const mod = await import('./scheduler/next.js');
+    const pickNext = mod?.pickNext || mod?.default;
+    if (typeof pickNext !== 'function') {
+      return res.status(500).json({ ok: false, error: 'scheduler.pickNext not available' });
+    }
+    const out = await pickNext(userId);
+    const id = out?.id ?? null;
+    const item = out?.item ?? null;
+    return res.json({ id, item, userId });
+  } catch (e) {
+    return res.status(500).json({ ok: false, error: String(e && e.message || e) });
+  }
+});
+
 app.use(nextRoutes);
 mounted.push('/api/next');
 app.use(skipRoutes);
