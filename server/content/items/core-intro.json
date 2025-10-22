@@ -1,0 +1,14 @@
+[
+  {
+    "id": "why-001",
+    "mode": "why",
+    "prompt": "In one line, explain why short→long sentence rhythm increases impact.",
+    "meta": { "freshness": 2, "level": 1, "introduces_beats": false }
+  },
+  {
+    "id": "sigil-001",
+    "mode": "sigil",
+    "prompt": "Paste one sentence, then mark your strongest verb with a sigil ▲.",
+    "meta": { "freshness": 1, "level": 1, "introduces_beats": true }
+  }
+]
