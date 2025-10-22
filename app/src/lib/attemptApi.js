@@ -1,28 +1,49 @@
 // app/src/lib/attemptApi.js
-import * as API from '@/lib/apiBase.js'
+// Minimal, safe helpers used by SigilRunner.jsx
 
-// Build a URL regardless of how apiBase is authored
-const makeUrl = typeof API.api === 'function'
-  ? (p) => API.api(p)
-  : (p) => {
-      const base = (API.API_BASE || '').replace(/\/$/, '')
-      return base ? base + p : p
-    }
+// Optional apiBase; if missing or partial, we safely fall back.
+let API = {};
+try {
+  API = await import('@/lib/apiBase.js');
+} catch {}
 
-// Reuse the same safe fetch helper (if provided); otherwise a tiny fallback
-const safeFetchJSON = API.safeFetchJSON || (async (url, init) => {
-  const res = await fetch(url, init)
+/** Build a URL using apiBase if available, else return the path unchanged. */
+const makeUrl =
+  typeof API.api === 'function'
+    ? (p) => API.api(p)
+    : (p) => {
+        const base = (API.API_BASE || '').replace(/\/$/, '');
+        return base ? base + p : p;
+      };
+
+/** Fetch JSON with consistent error reporting. */
+async function safeFetchJSON(url, init) {
+  const res = await fetch(url, init);
   if (!res.ok) {
-    const text = await res.text().catch(()=>'')
-    throw new Error(`HTTP ${res.status}${text ? ` – ${text.slice(0,120)}` : ''}`)
+    let text = '';
+    try { text = await res.text(); } catch {}
+    throw new Error(`HTTP ${res.status}${text ? ` - ${text.slice(0,120)}` : ''}`);
   }
-  return res.json()
-})
+  return res.json();
+}
 
-export async function submitAttempt({ id, text, minWords }) {
-  return safeFetchJSON(makeUrl('/attempt'), {
+// --- API helpers required by SigilRunner.jsx ---
+export async function fetchNext(userId = 'dev') {
+  return safeFetchJSON(makeUrl(`/api/next?userId=${encodeURIComponent(userId)}`));
+}
+
+export async function submitAttempt({ userId = 'dev', itemId, mode, answer }) {
+  return safeFetchJSON(makeUrl('/api/attempt'), {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ id, text, minWords })
-  })
+    body: JSON.stringify({ userId, itemId, mode, answer }),
+  });
+}
+
+export async function skipItem({ userId = 'dev', itemId, reason = 'user_skip' } = {}) {
+  return safeFetchJSON(makeUrl('/api/skip'), {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ userId, itemId, reason }),
+  });
 }
