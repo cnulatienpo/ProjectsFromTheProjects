@@ -28,4 +28,5 @@ router.get('/reports/latest', (req, res) => {
   res.json({ ok: true, memo });
 });
 
+export const reportsRouter = router;
 export default router;
