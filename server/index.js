@@ -22,6 +22,13 @@ const { resolve } = path;
 
 const __filename = fileURLToPath(import.meta.url);
 const app = express();
+
+// ---- static bundle paths (single source of truth)
+const distDir = path.resolve(process.cwd(), 'app', 'dist');
+const distIndex = path.join(distDir, 'index.html');
+const hasDist = fs.existsSync(distIndex);
+// -----------------------------------------------
+
 const mounted = [];
 
 const logMountedRoutes = () => {
@@ -253,9 +260,6 @@ app.post('/attempt', express.json(), async (req, res) => {
 
 await attemptRouteMount;
 
-const distDir = path.join(process.cwd(), "app", "dist");
-const hasDist = fs.existsSync(path.join(distDir, "index.html"));
-
 // 🔒 Make sure unknown /api/* doesn't fall through to static site
 app.use('/api', (req, res, next) => {
   if (!res.headersSent) {
@@ -264,22 +268,30 @@ app.use('/api', (req, res, next) => {
   next();
 });
 
-// ====== Static site serving (after APIs) ======
-const distDir = path.join(process.cwd(), 'app', 'dist');
-const hasDist = fs.existsSync(path.join(distDir, 'index.html'));
-
-if (!hasDist) {
-  console.log(`>>> Static bundle missing at ${distDir} — run \`npm run build\` to generate it.`);
-} else {
-  console.log(`>>> Serving static bundle from ${distDir}`);
-  app.use(express.static(distDir, { index: 'index.html' }));
-  app.get('*', (req, res) => {
-    if (req.path.startsWith('/api/')) {
-      return res.status(404).json({ error: 'Not Found' });
+// ====== Static UI (serves the built app/dist) ======
+if (hasDist) {
+  app.use(express.static(distDir, {
+    fallthrough: true,
+    index: 'index.html',
+    setHeaders(res) {
+      // Make it easy to test locally
+      res.setHeader('Access-Control-Allow-Origin', '*');
     }
-    res.sendFile(path.join(distDir, 'index.html'));
-  });
+  }));
+  console.log(`>>> Serving static bundle from ${distDir}`);
+} else {
+  console.warn(`>>> Static bundle missing at ${distDir} — run \`npm --prefix app run build\` to generate it.`);
 }
+
+// Fallback to index.html for client routes
+app.get('*', (req, res, next) => {
+  if (!hasDist) return next();
+  try {
+    createReadStream(distIndex).pipe(res);
+  } catch (e) {
+    next(e);
+  }
+});
 
 // Start server
 // Default to 3002 to match frontend proxy configuration and avoid conflicts
