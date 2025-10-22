@@ -52,3 +52,22 @@ export function loadPractice(kind = 'good') {
   }
   return [];
 }
+
+export async function loadPracticePool() {
+  try {
+    const mod = await import('./items.js');
+    const getter = mod?.getAllItems || (mod?.default && mod.default.getAllItems);
+    const items = typeof getter === 'function' ? getter() : [];
+    if (Array.isArray(items) && items.length) {
+      try {
+        const mem = await import('../db/mem.js');
+        if (typeof mem?.indexItems === 'function') {
+          mem.indexItems(items);
+        }
+      } catch {}
+    }
+    return Array.isArray(items) ? items : [];
+  } catch {
+    return [];
+  }
+}

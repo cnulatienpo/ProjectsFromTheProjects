@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { pickNext } from "../scheduler/next.js";
 import { getAllItems } from "../content/items.js";
-import { mem, getMastery } from "../db/mem.js";
+import { getMastery, getAttempts } from "../db/mem.js";
 
 const router = Router();
 
@@ -42,20 +42,16 @@ router.get("/api/debug/content", async (req, res) => {
     }
 
     const mastery = getMastery(userId);
-    const masterySkillCount = mastery?.skills ? Object.keys(mastery.skills).length : 0;
+    const attempts = getAttempts(userId);
 
     res.json({
       totalItems: items.length,
       modes: byMode,
       sample,
       nextItem,
-      attempts: mem.attempts.length,
-      skips: mem.skips.length,
-      mastery: {
-        level: mastery?.level ?? 1,
-        totalExp: mastery?.totalExp ?? 0,
-        skills: masterySkillCount,
-      },
+      attempts: attempts.length,
+      skips: null,
+      mastery,
     });
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);

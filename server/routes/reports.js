@@ -1,5 +1,5 @@
 import express from 'express';
-import { getLatestReport } from '../db/mem.js';
+import { getAttempts, getMastery } from '../db/mem.js';
 
 const router = express.Router();
 
@@ -9,9 +9,11 @@ router.get('/reports/ping', (_req, res) => {
 
 router.get('/reports/latest', (req, res) => {
   const userId = String(req.get('x-user-id') || req.query.userId || 'dev');
-  const memo = getLatestReport(userId);
-  if (memo) {
-    res.json({ ok: true, memo });
+  const attempts = getAttempts(userId);
+  const mastery = getMastery(userId);
+  const lastAttempt = attempts.length ? attempts[attempts.length - 1] : null;
+  if (lastAttempt || Object.keys(mastery || {}).length) {
+    res.json({ ok: true, memo: { attempts: attempts.slice(-20), mastery } });
   } else {
     res.json({ ok: false, memo: null });
   }
@@ -19,3 +21,4 @@ router.get('/reports/latest', (req, res) => {
 
 export const reportsRouter = router;
 export default router;
+
