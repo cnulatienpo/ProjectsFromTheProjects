@@ -1,132 +1,111 @@
-const pct = (value) => `${Math.round((value || 0) * 100)}%`;
+import fs from 'node:fs';
+import path from 'node:path';
 
-const NEIGHBORS = ['Hemingway', 'Baldwin', 'Didion', 'Morrison', 'Le Guin', 'Okorafor', 'Ng', 'Martín', 'Díaz'];
-const FOILS = ['PurpleProse', 'TEDTalk', 'Corporate Memo', 'Soapbox', 'Infomercial', 'Algorithmic Voice'];
+const CWD = process.cwd();
+const DATA_DIR_CANDIDATES = [
+  path.join(CWD, 'server', 'db', 'data'),
+  path.join(CWD, 'db', 'data'),
+];
 
-const verdictForAverage = (avg) => {
-  if (avg >= 0.9) return 'Verdict: Razor-sharp craft—heat with control.';
-  if (avg >= 0.75) return 'Verdict: Confident moves with flashes of fire.';
-  if (avg >= 0.6) return 'Verdict: Groove emerging—keep stacking deliberate reps.';
-  return 'Verdict: Experimental energy—tighten fundamentals to channel it.';
+const getAttemptsPath = () => {
+  for (const dir of DATA_DIR_CANDIDATES) {
+    const file = path.join(dir, 'attempts.jsonl');
+    if (fs.existsSync(file)) return file;
+  }
+  return path.join(DATA_DIR_CANDIDATES[0], 'attempts.jsonl');
 };
 
-const trendLabel = (recent, earlier) => {
-  if (!Number.isFinite(recent) || !Number.isFinite(earlier)) return 'steady';
-  const delta = recent - earlier;
-  if (delta > 0.05) return 'rising';
-  if (delta < -0.05) return 'dipping';
-  return 'steady';
-};
+// Helper: load last N attempts for a given user
+async function loadAttempts(userId, limit = 30) {
+  // Prefer in-memory if available
+  try {
+    const mem = await import('../db/mem.js');
+    const rows = Array.isArray(mem?.attempts?.rows) ? mem.attempts.rows : [];
+    const byUser = userId ? rows.filter(r => r.userId === userId) : rows;
+    if (byUser.length) {
+      return byUser.slice(-limit);
+    }
+  } catch {
+    // ignore and fall back to jsonl
+  }
 
-const averageScore = (list) => {
-  if (!list.length) return 0;
-  const total = list.reduce((sum, value) => sum + (Number(value) || 0), 0);
-  return total / list.length;
-};
+  // Fall back to jsonl
+  const attemptsPath = getAttemptsPath();
+  if (!fs.existsSync(attemptsPath)) return [];
+  const lines = fs.readFileSync(attemptsPath, 'utf8')
+    .split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+  const rows = lines.map(l => { try { return JSON.parse(l); } catch { return null; } })
+    .filter(Boolean);
+  const byUser = userId ? rows.filter(r => r.userId === userId) : rows;
+  return byUser.slice(-limit);
+}
 
-const summarizeRubrics = (attempts) => {
-  const store = new Map();
-  for (const attempt of attempts) {
-    const labels = Array.isArray(attempt?.rubric) ? attempt.rubric : [];
-    const score = Number(attempt?.score ?? 0);
-    for (const label of labels) {
-      const key = String(label);
-      if (!store.has(key)) {
-        store.set(key, { total: 0, strong: 0, weak: 0 });
-      }
-      const entry = store.get(key);
-      entry.total += 1;
-      if (score >= 0.75) entry.strong += 1;
-      if (score <= 0.5) entry.weak += 1;
+// Helper: crude feature extraction
+function extractFeatures(attempts) {
+  const n = attempts.length || 0;
+  let avgScore = 0;
+  const modeCounts = {};
+  const words = [];
+  const rubricHits = new Map();
+
+  for (const a of attempts) {
+    const s = Number(a?.score ?? 0);
+    avgScore += s;
+    const m = String(a?.mode ?? 'unknown');
+    modeCounts[m] = (modeCounts[m] || 0) + 1;
+    const wc = Number(a?.details?.wordCount ?? 0);
+    if (wc) words.push(wc);
+
+    // Track rubric keys the grader returned
+    const r = Array.isArray(a?.rubric) ? a.rubric : [];
+    for (const rk of r) {
+      const key = typeof rk === 'string' ? rk : rk?.key;
+      if (!key) continue;
+      rubricHits.set(key, (rubricHits.get(key) || 0) + 1);
     }
   }
+  avgScore = n ? avgScore / n : 0;
+  const avgWords = words.length ? Math.round(words.reduce((x,y)=>x+y,0) / words.length) : null;
 
-  const strong = [...store.entries()]
-    .filter(([, entry]) => entry.total > 0)
-    .sort((a, b) => (b[1].strong / b[1].total) - (a[1].strong / a[1].total))
-    .slice(0, 2)
-    .map(([label]) => label);
+  // crude “neighbors” (influence) by surface rules
+  const influences = [];
+  if (avgScore >= 0.7) influences.push('Hemingway-ish precision');
+  if ((rubricHits.get('Voice') || 0) > 3) influences.push('Didion-like clarity of stance');
+  if ((rubricHits.get('Clarity') || 0) > 3) influences.push('Baldwin-ish control');
+  if ((rubricHits.get('Accuracy') || 0) > 3) influences.push('Chandler lean cuts');
+  if (!influences.length) influences.push('Finding your lane—keep at it');
 
-  const shaky = [...store.entries()]
-    .filter(([, entry]) => entry.weak > 0)
-    .sort((a, b) => (b[1].weak / b[1].total) - (a[1].weak / a[1].total))
-    .slice(0, 2)
-    .map(([label]) => label);
+  // badges heuristic
+  const badges = [];
+  if (avgScore >= 0.8) badges.push('Clean Hands (Consistent High Score)');
+  if ((modeCounts['why'] || 0) >= 5) badges.push('Philosopher (Rationale Runs)');
+  if ((modeCounts['name'] || 0) >= 5) badges.push('Beat Spotter');
+  if ((modeCounts['highlight'] || 0) >= 3) badges.push('Highlighter');
+  if (!badges.length && n >= 1) badges.push('Back In The Lab');
 
-  return { strong, shaky };
-};
+  return { n, avgScore, avgWords, modeCounts, rubricHits: [...rubricHits.entries()], influences, badges };
+}
 
-const summarizeModes = (attempts) => {
-  const counts = new Map();
-  for (const attempt of attempts) {
-    const mode = String(attempt?.mode || 'why');
-    counts.set(mode, (counts.get(mode) || 0) + 1);
-  }
-  const ordered = [...counts.entries()].sort((a, b) => b[1] - a[1]);
-  return ordered.map(([mode]) => mode);
-};
+export async function buildMemo(userId = 'dev') {
+  const attempts = await loadAttempts(userId, 40);
+  const f = extractFeatures(attempts);
 
-const pickFromList = (source, seed, count) => {
-  const out = [];
-  if (!source.length || count <= 0) return out;
-  let index = Math.abs(seed) % source.length;
-  for (let i = 0; i < count; i += 1) {
-    out.push(source[index % source.length]);
-    index += 1 + ((seed >> (i % 8)) & 0x3);
-  }
-  return out;
-};
+  const pct = Math.round(f.avgScore * 100);
+  const seenModes = Object.entries(f.modeCounts)
+    .map(([k,v]) => `${k}:${v}`).join(', ') || 'none';
+  const strengths = f.rubricHits
+    .sort((a,b)=>b[1]-a[1]).slice(0,3).map(([k,v])=>`${k}`).join(', ') || '—';
 
-export function buildMemo({ userId = 'dev', attempts = [], mastery }) {
-  const totalAttempts = attempts.length;
-  const allScores = attempts.map((attempt) => Number(attempt?.score ?? 0));
-  const avgScore = averageScore(allScores);
-  const recentSlice = attempts.slice(0, 5);
-  const earlierSlice = attempts.slice(5, 10);
-  const recentAvg = averageScore(recentSlice.map((attempt) => Number(attempt?.score ?? 0)));
-  const earlierAvg = averageScore(earlierSlice.map((attempt) => Number(attempt?.score ?? 0)));
-  const trend = trendLabel(recentAvg, earlierAvg);
-  const { strong, shaky } = summarizeRubrics(attempts);
-  const modeOrder = summarizeModes(attempts);
+  const title = `Professor Ray Ray on your pages (last ${f.n} tries)`;
+  const body = [
+    `Overall: ${pct}% signal. Modes played: ${seenModes}.`,
+    f.avgWords ? `Typical length: ~${f.avgWords} words.` : null,
+    `Most reliable strengths: ${strengths}.`,
+    `Influences spotted: ${f.influences.join('; ')}.`,
+    `Next pushes: tighten setup→payoff, keep verbs doing work, and make beats *visible* on the page.`
+  ].filter(Boolean).join('\n');
 
-  const verdict = verdictForAverage(avgScore);
-  const bulletLines = [];
-  bulletLines.push(`- Avg score ${pct(avgScore)} across ${totalAttempts || 0} attempts; trend is ${trend}.`);
-
-  if (strong.length || shaky.length) {
-    const reliable = strong.length ? strong.join(' • ') : 'still forming';
-    const watch = shaky.length ? shaky.join(' • ') : 'hold steady';
-    bulletLines.push(`- Reliable: ${reliable}; Watch: ${watch}.`);
-  } else {
-    bulletLines.push('- Rubric signal still forming—log a few more graded reps.');
-  }
-
-  if (modeOrder.length) {
-    const favorites = modeOrder.slice(0, 3).join(', ');
-    bulletLines.push(`- Modes in rotation: ${favorites}.`);
-  }
-
-  if (mastery) {
-    bulletLines.push(`- Level ${mastery.level || 1} • Total EXP ${mastery.totalExp || 0}.`);
-  }
-
-  const weakestCue = shaky[0] || strong[0] || 'Clarity';
-  const nextMode = modeOrder.at(-1) || modeOrder[0] || 'why';
-  const drillLine = `What to try next: Run a ${nextMode} rep that spotlights ${weakestCue} in three sentences.`;
-
-  const seed = (userId || '').split('').reduce((acc, char, idx) => acc + char.charCodeAt(0) * (idx + 1), 0);
-  const neighborList = pickFromList(NEIGHBORS, seed, 3);
-  const foilList = pickFromList(FOILS, seed >> 3, 2);
-  const influenceLine = `Neighbors: ${neighborList.join(' • ')}; Foils: ${foilList.join(' • ')}.`;
-
-  const lines = [verdict, ...bulletLines.slice(0, 4), drillLine, influenceLine];
-
-  return {
-    title: 'Professor Ray Ray: Style Notes',
-    body: lines.join('\n'),
-    level: mastery?.level ?? 1,
-    issuedAt: new Date().toISOString(),
-  };
+  return { title, body, badges: f.badges };
 }
 
 export default buildMemo;

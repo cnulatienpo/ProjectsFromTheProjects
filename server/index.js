@@ -18,6 +18,7 @@ import versionRoutes from './routes/version.js';
 import healthRoutes from './routes/health.js';
 import debugContentRoutes from './routes/debugContent.js';
 import attemptRoutes from './routes/attempt.js';
+import reportsRoutes from './routes/reports.js';
 
 const { createReadStream, appendFileSync } = fs;
 const { resolve } = path;
@@ -103,26 +104,16 @@ try {
 
 app.use('/api/attempt', attemptRoutes);
 mounted.push('/api/attempt');
-logMountedRoutes();
 
 app.use(nextRoutes);
 mounted.push('/api/next');
 app.use(skipRoutes);
 mounted.push('/api/skip');
 
-const reportsRouteMount = (async () => {
-  try {
-    const mod = await import('./routes/reports.js');
-    const reportsRouter = mod.default || mod;
-    // mount at /api so router paths like /reports/latest map to /api/reports/latest
-    app.use('/api', reportsRouter);
-    mounted.push('/api/reports/latest');
-    mounted.push('/api/reports/ping');
-    logMountedRoutes();
-  } catch (err) {
-    console.error('Reports route mount failed:', err?.message || err);
-  }
-})();
+app.use(reportsRoutes);
+mounted.push('/api/reports/latest');
+mounted.push('/api/reports/ping');
+logMountedRoutes();
 
 // ====== Sigil JSONL endpoints (unchanged) ======
 const FILE = resolve(process.cwd(), 'labeled data', 'tweetrunk_renumbered.jsonl');
@@ -268,8 +259,6 @@ app.post('/attempt', express.json(), async (req, res) => {
     res.status(500).json({ error: 'server_error', message: String(e?.message || e) });
   }
 });
-
-await reportsRouteMount;
 
 // 🔒 Make sure unknown /api/* doesn't fall through to static site
 app.use('/api', (req, res, next) => {

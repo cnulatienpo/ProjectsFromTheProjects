@@ -1,14 +1,14 @@
-import { Router } from "express";
-import { pickNext } from "../scheduler/next.js";
-import { getAllItems } from "../content/items.js";
-import { getMastery, getAttempts } from "../db/mem.js";
+import { Router } from 'express';
+import { pickNextItem } from '../scheduler/next.js';
+import { getAllItems } from '../content/items.js';
+import { getMastery, getAttempts } from '../db/mem.js';
 
 const router = Router();
 
-router.get("/api/debug/content", async (req, res) => {
+router.get('/api/debug/content', async (req, res) => {
   try {
     const userIdRaw = req.query.userId;
-    const userId = typeof userIdRaw === "string" && userIdRaw.trim() ? userIdRaw.trim() : "dev";
+    const userId = typeof userIdRaw === 'string' && userIdRaw.trim() ? userIdRaw.trim() : 'dev';
 
     let items = [];
     try {
@@ -18,12 +18,13 @@ router.get("/api/debug/content", async (req, res) => {
     }
 
     const byMode = items.reduce((acc, item) => {
-      const mode = item?.mode || "unknown";
+      const mode = item?.mode || 'unknown';
       acc[mode] = (acc[mode] || 0) + 1;
       return acc;
     }, {});
+    const total = items.length;
 
-    const sample = items.length
+    const sample = total
       ? {
           id: items[0]?.id ?? null,
           mode: items[0]?.mode ?? null,
@@ -33,7 +34,7 @@ router.get("/api/debug/content", async (req, res) => {
 
     let nextItem = null;
     try {
-      const candidate = pickNext({ userId });
+      const candidate = pickNextItem(userId, items);
       if (candidate) {
         nextItem = { id: candidate.id, mode: candidate.mode };
       }
@@ -44,11 +45,16 @@ router.get("/api/debug/content", async (req, res) => {
     const mastery = getMastery(userId);
     const attempts = getAttempts(userId);
 
-    res.json({
-      totalItems: items.length,
-      modes: byMode,
+    res.status(200).json({
+      ok: true,
+      sha: process.env.GIT_SHA || 'dev',
+      builtAt: process.env.BUILT_AT || new Date().toISOString(),
+      total,
+      byMode,
       sample,
       nextItem,
+      totalItems: total,
+      modes: byMode,
       attempts: attempts.length,
       skips: null,
       mastery,
