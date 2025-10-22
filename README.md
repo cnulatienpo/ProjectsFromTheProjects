@@ -38,3 +38,28 @@ Local check before push:
 npm run build && npx vite preview --open
 ```
 ---
+
+## API smoke test
+
+```sh
+# start server
+npm start
+
+# health/version
+curl -s http://localhost:3002/api/healthz
+curl -s http://localhost:3002/api/version
+
+# next item
+curl -s http://localhost:3002/api/next
+
+# submit a simple attempt (why)
+printf '%s' '{"userId":"dev","itemId":"t-185","mode":"why","answer":"Short, sharp -> layered clauses to slow pace."}' \
+| curl -sS -X POST http://localhost:3002/api/attempt -H 'content-type: application/json' --data-binary @- | jq .
+
+# latest report
+curl -s http://localhost:3002/api/reports/latest?userId=dev | jq .
+
+# skip current item, then ask next
+curl -s -X POST http://localhost:3002/api/skip -H 'content-type: application/json' -d '{"userId":"dev","itemId":"t-185","mode":"why"}'
+curl -s http://localhost:3002/api/next
+```

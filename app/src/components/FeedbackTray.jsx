@@ -1,31 +1,45 @@
 export default function FeedbackTray({
-  feedback = null,
+  item: _item = null,
+  answer: _answer = '',
+  setAnswer: _setAnswer = null,
   result = null,
-  submitting = false,
-  canSubmit = false,
   onSubmit = null,
   onNext = null,
   onSkip = null,
+  isLoading = false,
   error = '',
 }) {
-  const payload = feedback ?? result ?? null;
-  const value = [
-    payload?.score != null ? `Score: ${Math.round(payload.score * 100)}%` : '',
-    Array.isArray(payload?.rubric) && payload.rubric.length
-      ? `Rubric: ${payload.rubric
-          .map((r) =>
-            typeof r === 'string' ? r : `${r.key}${r.ok ? '✓' : '✗'}`,
-          )
-          .join(', ')}`
-      : '',
-    payload?.details?.message ? `Note: ${payload.details.message}` : '',
-    payload?.fixSuggestion ? `Suggestion: ${payload.fixSuggestion}` : '',
-    Array.isArray(payload?.nextHints) && payload.nextHints.length
-      ? `Next: ${payload.nextHints.join(' | ')}`
-      : '',
-  ]
-    .filter(Boolean)
-    .join('\n');
+  const lines = [];
+  if (result) {
+    if (result.score != null) {
+      lines.push(`Score: ${Math.round(result.score * 100)}%`);
+    }
+    if (Array.isArray(result.rubric) && result.rubric.length) {
+      lines.push(`Rubric: ${result.rubric.join(', ')}`);
+    }
+    if (result.details?.message) {
+      lines.push(`Message: ${result.details.message}`);
+    }
+    if (result.fixSuggestion) {
+      lines.push(`Suggestion: ${result.fixSuggestion}`);
+    }
+    if (Array.isArray(result.nextHints) && result.nextHints.length) {
+      for (const hint of result.nextHints) {
+        lines.push(`Hint: ${hint}`);
+      }
+    }
+    if (result.leveledUp && result.level) {
+      lines.push(`Level Up! Level ${result.level}`);
+    }
+    if (result.memo?.title) {
+      lines.push(`${result.memo.title}`);
+    }
+    if (result.memo?.body) {
+      lines.push(result.memo.body);
+    }
+  }
+
+  const value = lines.join('\n\n');
 
   return (
     <div className="sigil-feedback-tray">
@@ -50,9 +64,9 @@ export default function FeedbackTray({
             data-testid="btn-submit"
             className="pfp-btn"
             onClick={onSubmit}
-            disabled={!canSubmit || submitting}
+            disabled={isLoading}
           >
-            {submitting ? 'Submitting…' : 'Submit'}
+            {isLoading ? 'Submitting…' : 'Submit & Grade'}
           </button>
         ) : null}
         {onNext ? (
@@ -61,7 +75,7 @@ export default function FeedbackTray({
             data-testid="btn-next"
             className="pfp-btn"
             onClick={onNext}
-            disabled={submitting}
+            disabled={isLoading}
           >
             Next
           </button>
@@ -72,7 +86,7 @@ export default function FeedbackTray({
             data-testid="btn-skip"
             className="pfp-btn"
             onClick={onSkip}
-            disabled={submitting}
+            disabled={isLoading}
           >
             I don't feel like it
           </button>

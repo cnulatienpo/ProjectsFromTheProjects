@@ -1,4 +1,4 @@
-import { loadTweetrunk, loadPractice } from "./loader.js";
+import { loadTweetrunk, loadPractice } from "./loaders.js";
 import { BEATS } from "../lib/beatPalette.js";
 
 let CACHE = null;
@@ -78,4 +78,10 @@ export function getAllItems() {
 
     CACHE = { items };
     return items;
+}
+
+export function getItemById(id) {
+    if (!id) return null;
+    const strId = String(id);
+    return getAllItems().find(item => String(item.id) === strId) || null;
 }
