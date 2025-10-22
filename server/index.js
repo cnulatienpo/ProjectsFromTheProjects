@@ -9,6 +9,7 @@ import * as readline from 'node:readline';
 import { buildReport } from './report/index.js';
 import { mark, getUserState } from './progress/store.js';
 import { listSigilIds } from './sigil/catalogIds.js';
+import { _flushNow } from './db/mem.js';
 
 // Import new API routes
 import nextRoutes from './routes/next.js';
@@ -330,6 +331,24 @@ function listenWithRetry(port, attemptsLeft = 5) {
       throw err;
     }
   });
+}
+
+const shutdownSignals = ['SIGINT', 'SIGTERM'];
+let shuttingDown = false;
+const handleShutdown = (signal) => {
+  if (shuttingDown) return;
+  shuttingDown = true;
+  console.log(`>>> Received ${signal}, flushing progress to disk...`);
+  try {
+    _flushNow();
+  } catch (err) {
+    console.warn('[shutdown] Failed to flush data', err?.message || err);
+  }
+  process.exit(0);
+};
+
+for (const sig of shutdownSignals) {
+  process.once(sig, () => handleShutdown(sig));
 }
 
 listenWithRetry(basePort);

@@ -1,7 +1,20 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const { promises: fsPromises } = fs;
+
 const MAX_USER_ATTEMPTS = 200;
 const MAX_GLOBAL_ATTEMPTS = 2000;
 const MAX_USER_SKIPS = 200;
 const MAX_GLOBAL_SKIPS = 1000;
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const DATA_DIR = path.join(__dirname, 'data');
+const ATTEMPTS_FILE = path.join(DATA_DIR, 'attempts.jsonl');
+const MASTERY_FILE = path.join(DATA_DIR, 'mastery.json');
+const REPORTS_FILE = path.join(DATA_DIR, 'reports.json');
+const FLUSH_INTERVAL_MS = 3000;
 
 export const mem = {
   attempts: [],
@@ -10,6 +23,9 @@ export const mem = {
   seen: new Map(),
   skips: [],
 };
+
+let masteryDirty = false;
+let reportsDirty = false;
 
 const clampScore = (value) => {
   if (!Number.isFinite(value)) return 0;
@@ -72,6 +88,26 @@ function badgesForLevel(level) {
   return pair.slice();
 }
 
+function normalizeAttemptRecord(raw = {}) {
+  const tsValue = Number(raw.ts);
+  const ts = Number.isFinite(tsValue) ? tsValue : Date.now();
+  const gradedAt = raw.gradedAt ? String(raw.gradedAt) : new Date(ts).toISOString();
+  return {
+    userId: String(raw.userId || 'dev'),
+    itemId: String(raw.itemId || ''),
+    mode: String(raw.mode || 'why'),
+    score: clampScore(Number(raw.score ?? 0)),
+    rubric: normalizeRubric(raw.rubric),
+    spans: normalizeSpans(raw.spans),
+    correctSequence: normalizeSequence(raw.correctSequence),
+    fixSuggestion: raw.fixSuggestion != null ? String(raw.fixSuggestion) : null,
+    nextHints: normalizeHints(raw.nextHints),
+    details: safeDetails(raw.details),
+    ts,
+    gradedAt,
+  };
+}
+
 function ensureUser(userId) {
   const id = String(userId || 'dev');
   if (!mem.users.has(id)) {
@@ -85,7 +121,20 @@ function ensureUser(userId) {
       badgeHistory: [],
     });
   }
-  return mem.users.get(id);
+  const user = mem.users.get(id);
+  if (!(user.skills instanceof Map)) {
+    user.skills = new Map();
+  }
+  if (!Array.isArray(user.attempts)) {
+    user.attempts = [];
+  }
+  if (!Array.isArray(user.skips)) {
+    user.skips = [];
+  }
+  if (!Array.isArray(user.badgeHistory)) {
+    user.badgeHistory = [];
+  }
+  return user;
 }
 
 function ensureSeenSet(userId) {
@@ -94,6 +143,216 @@ function ensureSeenSet(userId) {
     mem.seen.set(id, new Set());
   }
   return mem.seen.get(id);
+}
+
+function safeEnsureDataDir() {
+  try {
+    fs.mkdirSync(DATA_DIR, { recursive: true });
+  } catch (err) {
+    console.warn('[db] Failed to ensure data directory', err?.message || err);
+  }
+}
+
+function loadMastery() {
+  try {
+    if (!fs.existsSync(MASTERY_FILE)) return;
+    const raw = fs.readFileSync(MASTERY_FILE, 'utf8');
+    if (!raw.trim()) return;
+    const parsed = JSON.parse(raw);
+    const users = parsed?.users;
+    if (!users || typeof users !== 'object') return;
+    for (const [userId, info] of Object.entries(users)) {
+      const user = ensureUser(userId);
+      const totalExp = Number(info?.totalExp ?? 0);
+      user.totalExp = Number.isFinite(totalExp) ? totalExp : 0;
+      const storedLevel = Number(info?.level ?? computeLevel(user.totalExp));
+      user.level = Number.isFinite(storedLevel) ? storedLevel : computeLevel(user.totalExp);
+      user.lastLevelAck = Math.max(1, Number(info?.lastLevelAck ?? user.level ?? 1));
+      if (!(user.skills instanceof Map)) {
+        user.skills = new Map();
+      }
+      user.skills.clear();
+      const skills = info?.skills && typeof info.skills === 'object' ? info.skills : {};
+      for (const [skillId, skillInfo] of Object.entries(skills)) {
+        const exp = Number(skillInfo?.exp ?? 0);
+        const level = Number(skillInfo?.level ?? computeLevel(exp));
+        user.skills.set(skillId, {
+          exp: Number.isFinite(exp) ? exp : 0,
+          level: Number.isFinite(level) ? level : computeLevel(Number.isFinite(exp) ? exp : 0),
+        });
+      }
+    }
+  } catch (err) {
+    console.warn('[db] Failed to load mastery.json', err?.message || err);
+  }
+}
+
+function loadReports() {
+  try {
+    mem.reports.clear();
+    if (!fs.existsSync(REPORTS_FILE)) return;
+    const raw = fs.readFileSync(REPORTS_FILE, 'utf8');
+    if (!raw.trim()) return;
+    const parsed = JSON.parse(raw);
+    const users = parsed?.users;
+    if (!users || typeof users !== 'object') return;
+    for (const [userId, info] of Object.entries(users)) {
+      if (!info || typeof info !== 'object') continue;
+      const latest = info.latest ?? null;
+      const history = Array.isArray(info.history) ? info.history.slice() : [];
+      if (latest || history.length) {
+        mem.reports.set(userId, { latest, history });
+      }
+    }
+  } catch (err) {
+    console.warn('[db] Failed to load reports.json', err?.message || err);
+  }
+}
+
+function loadAttempts() {
+  try {
+    mem.attempts.length = 0;
+    mem.seen.clear();
+    for (const user of mem.users.values()) {
+      if (Array.isArray(user.attempts)) {
+        user.attempts.length = 0;
+      } else {
+        user.attempts = [];
+      }
+    }
+
+    if (!fs.existsSync(ATTEMPTS_FILE)) return;
+    const raw = fs.readFileSync(ATTEMPTS_FILE, 'utf8');
+    if (!raw.trim()) return;
+    const lines = raw.split(/\r?\n/);
+    const parsed = [];
+    for (const line of lines) {
+      const trimmed = line.trim();
+      if (!trimmed) continue;
+      try {
+        const json = JSON.parse(trimmed);
+        parsed.push(normalizeAttemptRecord(json));
+      } catch (err) {
+        console.warn('[db] Skipped invalid attempt record', err?.message || err);
+      }
+    }
+    if (!parsed.length) return;
+
+    const recent = parsed.slice(-MAX_GLOBAL_ATTEMPTS);
+    mem.attempts.push(...recent);
+
+    const perUser = new Map();
+    for (const record of recent) {
+      const uid = String(record.userId || 'dev');
+      ensureUser(uid);
+      if (record.itemId) {
+        ensureSeenSet(uid).add(record.itemId);
+      } else {
+        ensureSeenSet(uid);
+      }
+      if (!perUser.has(uid)) {
+        perUser.set(uid, []);
+      }
+      perUser.get(uid).push(record);
+    }
+
+    for (const [uid, records] of perUser.entries()) {
+      records.sort((a, b) => (b.ts ?? 0) - (a.ts ?? 0));
+      const user = ensureUser(uid);
+      user.attempts.length = 0;
+      user.attempts.push(...records.slice(0, MAX_USER_ATTEMPTS));
+    }
+  } catch (err) {
+    console.warn('[db] Failed to load attempts.jsonl', err?.message || err);
+  }
+}
+
+function initStorage() {
+  safeEnsureDataDir();
+  loadMastery();
+  loadReports();
+  loadAttempts();
+}
+
+function writeFileAtomicSync(filePath, contents) {
+  const tmpPath = `${filePath}.tmp`;
+  try {
+    safeEnsureDataDir();
+    fs.writeFileSync(tmpPath, contents);
+    fs.renameSync(tmpPath, filePath);
+  } catch (err) {
+    try {
+      if (fs.existsSync(tmpPath)) {
+        fs.unlinkSync(tmpPath);
+      }
+    } catch (cleanupErr) {
+      console.warn('[db] Failed to clean up temp file', cleanupErr?.message || cleanupErr);
+    }
+    throw err;
+  }
+}
+
+function flushMasterySync() {
+  if (!masteryDirty) return;
+  const payload = { users: {} };
+  for (const [userId, user] of mem.users.entries()) {
+    const skills = {};
+    if (user.skills instanceof Map) {
+      for (const [skillId, data] of user.skills.entries()) {
+        const exp = Number(data?.exp ?? 0);
+        const level = Number(data?.level ?? computeLevel(exp));
+        skills[skillId] = {
+          exp: Number.isFinite(exp) ? exp : 0,
+          level: Number.isFinite(level) ? level : computeLevel(Number.isFinite(exp) ? exp : 0),
+        };
+      }
+    }
+    payload.users[userId] = {
+      totalExp: Number.isFinite(Number(user.totalExp)) ? Number(user.totalExp) : 0,
+      level: Number.isFinite(Number(user.level)) ? Number(user.level) : computeLevel(Number(user.totalExp) || 0),
+      skills,
+    };
+  }
+  try {
+    writeFileAtomicSync(MASTERY_FILE, `${JSON.stringify(payload, null, 2)}\n`);
+    masteryDirty = false;
+  } catch (err) {
+    console.warn('[db] Failed to write mastery.json', err?.message || err);
+  }
+}
+
+function flushReportsSync() {
+  if (!reportsDirty) return;
+  const payload = { users: {} };
+  for (const [userId, data] of mem.reports.entries()) {
+    const latest = data?.latest ?? null;
+    const history = Array.isArray(data?.history) ? data.history.slice() : [];
+    payload.users[userId] = { latest, history };
+  }
+  try {
+    writeFileAtomicSync(REPORTS_FILE, `${JSON.stringify(payload, null, 2)}\n`);
+    reportsDirty = false;
+  } catch (err) {
+    console.warn('[db] Failed to write reports.json', err?.message || err);
+  }
+}
+
+function flushDirty() {
+  flushMasterySync();
+  flushReportsSync();
+}
+
+initStorage();
+
+const flushTimer = setInterval(() => {
+  try {
+    flushDirty();
+  } catch (err) {
+    console.warn('[db] Flush interval warning', err?.message || err);
+  }
+}, FLUSH_INTERVAL_MS);
+if (typeof flushTimer.unref === 'function') {
+  flushTimer.unref();
 }
 
 export function recordAttempt({
@@ -109,37 +368,43 @@ export function recordAttempt({
   details,
   gradedAt,
 } = {}) {
-  const uid = String(userId || 'dev');
-  const iid = String(itemId || '');
-  const safeMode = String(mode || 'why');
   const ts = Date.now();
-  const record = {
-    userId: uid,
-    itemId: iid,
-    mode: safeMode,
-    score: clampScore(Number(score ?? 0)),
-    rubric: normalizeRubric(rubric),
-    spans: normalizeSpans(spans),
-    correctSequence: normalizeSequence(correctSequence),
-    fixSuggestion: fixSuggestion ? String(fixSuggestion) : null,
-    nextHints: normalizeHints(nextHints),
-    details: safeDetails(details),
+  const record = normalizeAttemptRecord({
+    userId,
+    itemId,
+    mode,
+    score,
+    rubric,
+    spans,
+    correctSequence,
+    fixSuggestion,
+    nextHints,
+    details,
     ts,
     gradedAt: gradedAt || new Date(ts).toISOString(),
-  };
+  });
 
   mem.attempts.push(record);
   if (mem.attempts.length > MAX_GLOBAL_ATTEMPTS) {
     mem.attempts.splice(0, mem.attempts.length - MAX_GLOBAL_ATTEMPTS);
   }
 
-  const user = ensureUser(uid);
+  const user = ensureUser(record.userId);
   user.attempts.unshift(record);
   if (user.attempts.length > MAX_USER_ATTEMPTS) {
     user.attempts.splice(MAX_USER_ATTEMPTS);
   }
 
-  ensureSeenSet(uid).add(iid);
+  if (record.itemId) {
+    ensureSeenSet(record.userId).add(record.itemId);
+  } else {
+    ensureSeenSet(record.userId);
+  }
+
+  fsPromises.appendFile(ATTEMPTS_FILE, `${JSON.stringify(record)}\n`).catch((err) => {
+    console.warn('[db] Failed to append attempt', err?.message || err);
+  });
+
   return record;
 }
 
@@ -153,8 +418,10 @@ export function getAttempts(userId, { limit = 50 } = {}) {
 export function addExp(userId, skillIds = [], exp = 0) {
   const user = ensureUser(userId);
   const award = Number.isFinite(exp) ? Math.max(0, Math.round(exp)) : 0;
-  user.totalExp += award;
-  user.level = computeLevel(user.totalExp);
+  if (award > 0) {
+    user.totalExp += award;
+    user.level = computeLevel(user.totalExp);
+  }
 
   const skills = Array.isArray(skillIds) ? skillIds.map((id) => String(id)).filter(Boolean) : [];
   for (const skillId of skills) {
@@ -162,6 +429,10 @@ export function addExp(userId, skillIds = [], exp = 0) {
     current.exp += award;
     current.level = computeLevel(current.exp);
     user.skills.set(skillId, current);
+  }
+
+  if (award > 0 || skills.length) {
+    masteryDirty = true;
   }
 
   return { totalExp: user.totalExp, level: user.level };
@@ -202,15 +473,24 @@ export function checkLevelUp(userId) {
 export function saveReport(userId, memoObject) {
   const id = String(userId || 'dev');
   const memo = memoObject ? { ...memoObject } : null;
-  if (memo) {
-    mem.reports.set(id, memo);
+  if (!memo) {
+    return memo;
   }
+
+  const existing = mem.reports.get(id);
+  const history = Array.isArray(existing?.history) ? existing.history.slice() : [];
+  if (existing?.latest) {
+    history.unshift(existing.latest);
+  }
+  mem.reports.set(id, { latest: memo, history });
+  reportsDirty = true;
   return memo;
 }
 
 export function getLatestReport(userId) {
   const id = String(userId || 'dev');
-  return mem.reports.get(id) || null;
+  const entry = mem.reports.get(id);
+  return entry?.latest || null;
 }
 
 export function markSkipped(userId, itemId, { mode, reason } = {}) {
@@ -242,4 +522,12 @@ export function markSkipped(userId, itemId, { mode, reason } = {}) {
 export function userSeenSet(userId) {
   const set = ensureSeenSet(userId);
   return new Set(set);
+}
+
+export function _flushNow() {
+  try {
+    flushDirty();
+  } catch (err) {
+    console.warn('[db] Manual flush warning', err?.message || err);
+  }
 }
