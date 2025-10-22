@@ -1,4 +1,15 @@
-import { getCatalog } from "../content/loaders.js";
+// Robust ESM import that tolerates different export shapes from content/loaders.js
+const __content = await import("../content/loaders.js");
+const getCatalog =
+  __content.getCatalog ??
+  __content.loadCatalog ??
+  (__content.default &&
+    (typeof __content.default === "function"
+      ? __content.default
+      : __content.default.getCatalog));
+if (typeof getCatalog !== "function") {
+  throw new Error("Expected getCatalog() from ../content/loaders.js (named, loadCatalog, or default).");
+}
 import { attempts, skips } from "../db/mem.js";
 
 // very simple weights: skip recent item, prefer ones not skipped, and basic freshness by last attempt ts
