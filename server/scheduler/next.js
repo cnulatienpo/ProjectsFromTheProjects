@@ -16,18 +16,16 @@ if (typeof getCatalog !== "function") {
 /**
  * pickNext(userId) -> { id, item }
  * Minimal version: pick the first valid item from the catalog.
- * Keeps the API shape most servers use.
  */
 export async function pickNext(userId = "anon") {
   const catalog = await getCatalog();
   if (!Array.isArray(catalog) || catalog.length === 0) {
-    return { id: null, item: null };
+    return { id: null, item: null, userId };
   }
-  // ensure minimal shape
   const first = catalog.find(x => x && x.id) || catalog[0];
   const id = String(first.id ?? "unknown-0");
   return { id, item: first, userId };
 }
 
-// Some codebases import default; keep both.
+// Keep default for legacy imports
 export default pickNext;
