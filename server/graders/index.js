@@ -1,435 +1,336 @@
-const SUPPORTED_MODES = ['why', 'name', 'missing', 'order', 'highlight', 'fix'];
+// server/graders/index.js (ESM)
+// Deterministic graders for: name | missing | order | highlight | fix | why
+// Each returns the normalized shape consumed by the UI and attempt route.
 
-const clampScore = (value) => {
-  if (!Number.isFinite(value)) return 0;
-  if (value < 0) return 0;
-  if (value > 1) return 1;
-  return value;
+const BEAT_SYNONYMS = {
+  action: ['act', 'move', 'do', 'beat:action'],
+  decision: ['choice', 'decide', 'pick', 'beat:decision'],
+  desire: ['want', 'goal', 'yearn', 'beat:desire'],
+  conflict: ['clash', 'tension', 'problem', 'beat:conflict'],
+  obstacle: ['block', 'barrier', 'resistance', 'beat:obstacle'],
+  climax: ['peak', 'turning point', 'beat:climax'],
+  resolution: ['after', 'denouement', 'resolve', 'beat:resolution'],
+  reveal: ['discovery', 'find out', 'beat:reveal'],
+  realization: ['insight', 'epiphany', 'beat:realization'],
+  exposition: ['setup', 'context', 'beat:exposition'],
+  foreshadow: ['hint', 'omen', 'beat:foreshadow'],
+  setup: ['plant', 'seed', 'beat:setup'],
+  payoff: ['result', 'payoff', 'beat:payoff'],
+  emotion: ['feeling', 'affect', 'beat:emotion'],
+  suppression: ['hide', 'mask', 'beat:suppression'],
+  vulnerability: ['soft spot', 'open', 'beat:vulnerability'],
+  power: ['status', 'leverage', 'beat:power'],
+  shift: ['turn', 'pivot', 'beat:shift'],
+  intimacy: ['closeness', 'tender', 'beat:intimacy'],
+  alienation: ['distance', 'cold', 'beat:alienation'],
+  dialogue: ['talk', 'speak', 'line', 'beat:dialogue'],
+  nonverbal: ['gesture', 'look', 'silence', 'beat:nonverbal'],
+  interaction: ['exchange', 'back-and-forth', 'beat:interaction'],
+  agreement: ['deal', 'sign', 'beat:agreement'],
+  disagreement: ['argue', 'refuse', 'beat:disagreement'],
+  test: ['trial', 'prove', 'beat:test'],
+  reversal: ['flip', 'invert', 'beat:reversal'],
+  atmosphere: ['mood', 'texture', 'beat:atmosphere'],
+  discovery: ['learn', 'uncover', 'beat:discovery'],
+  loss: ['grief', 'missing', 'beat:loss'],
+  arrival: ['enter', 'show up', 'beat:arrival'],
+  departure: ['leave', 'exit', 'beat:departure'],
+  transition: ['cut', 'jump', 'beat:transition'],
 };
 
-const defaultRubric = ['Accuracy', 'Clarity', 'Voice'];
-
-const toLower = (value) => String(value || '').trim().toLowerCase();
-
-const normalizeStringList = (input) => {
-  if (!input) return [];
-  if (Array.isArray(input)) {
-    return input
-      .map((entry) => toLower(typeof entry === 'string' ? entry : entry?.id ?? entry))
-      .filter(Boolean);
-  }
-  if (typeof input === 'string') {
-    return input
-      .split(/[\s,]+/)
-      .map((entry) => entry.trim().toLowerCase())
-      .filter(Boolean);
-  }
-  return [];
+const RATIONALE_KEYWORDS = {
+  emotional: ['feeling', 'emotion', 'tone', 'mood', 'affect'],
+  'money/class': ['money', 'rent', 'bill', 'class', 'status', 'work'],
+  process: ['because', 'so that', 'therefore', 'in order to', 'method'],
+  'voice/style': ['voice', 'style', 'diction', 'cadence', 'rhythm', 'syntax'],
+  clarity: ['clear', 'confusing', 'ambiguous', 'specific'],
+  stakes: ['stakes', 'risk', 'cost', 'consequence'],
+  motive: ['motive', 'want', 'goal', 'desire', 'because'],
 };
 
-const normalizeSpans = (spans) => {
-  if (!Array.isArray(spans)) return [];
-  return spans
-    .map((span) => {
-      const start = Number(span?.start ?? span?.[0]);
-      const end = Number(span?.end ?? span?.[1]);
-      if (!Number.isFinite(start) || !Number.isFinite(end)) return null;
-      const a = Math.max(0, Math.min(start, end));
-      const b = Math.max(0, Math.max(start, end));
-      if (b <= a) return null;
-      return { start: a, end: b };
-    })
-    .filter(Boolean);
-};
+// ---------- small utilities ----------
+const toArray = (x) => Array.isArray(x) ? x : (x == null ? [] : [x]);
+const uniq = (arr) => Array.from(new Set(arr));
+const clamp01 = (n) => Math.max(0, Math.min(1, n));
 
-const safeDetails = (details) => {
-  if (details && typeof details === 'object' && !Array.isArray(details)) {
-    return { ...details };
-  }
-  return {};
-};
-
-const normalizeHints = (hints) => {
-  if (!Array.isArray(hints)) return [];
-  return hints.map((hint) => String(hint || '').trim()).filter(Boolean);
-};
-
-const scoreFromWordCount = (wordCount) => {
-  if (!Number.isFinite(wordCount) || wordCount <= 0) return 0.25;
-  if (wordCount >= 120) return 0.95;
-  if (wordCount >= 60) return 0.85;
-  if (wordCount >= 30) return 0.7;
-  return 0.45;
-};
-
-const defaultDetails = (mode) => ({ mode, message: 'graded' });
-
-const skillIdFallback = (item, mode) => {
-  if (Array.isArray(item?.skillIds) && item.skillIds.length) {
-    return item.skillIds.map((id) => String(id));
-  }
-  if (Array.isArray(item?.meta?.beat_tags) && item.meta.beat_tags.length) {
-    return item.meta.beat_tags.map((id) => String(id));
-  }
-  return [`craft.${mode}`];
-};
-
-const getGoldBeats = (item) => {
+function extractBeatsFromAnswer(answer) {
+  // Supports either structured {beats:[], sigils:[]} or free text with [BEAT] tags
   const beats = new Set();
-  normalizeStringList(item?.gold?.order).forEach((beat) => beats.add(beat));
-  normalizeStringList(item?.meta?.beat_tags).forEach((beat) => beats.add(beat));
-  normalizeStringList(item?.skillIds).forEach((beat) => beats.add(beat));
+  if (!answer) return [];
+  if (typeof answer === 'object') {
+    toArray(answer.beats).forEach(b => beats.add(String(b).toLowerCase()));
+    toArray(answer.sigils).forEach(s => beats.add(String(s).toLowerCase()));
+    if (typeof answer.text === 'string') {
+      (answer.text.match(/\[([A-Z][A-Z]+)\]/g) || []).forEach(t => beats.add(t.slice(1, -1).toLowerCase()));
+    }
+  } else if (typeof answer === 'string') {
+    (answer.match(/\[([A-Z][A-Z]+)\]/g) || []).forEach(t => beats.add(t.slice(1, -1).toLowerCase()));
+    // also try a very light keyword sniff for common beats
+    for (const [beat, syns] of Object.entries(BEAT_SYNONYMS)) {
+      const hay = answer.toLowerCase();
+      if (hay.includes(beat) || syns.some(s => hay.includes(s))) beats.add(beat);
+    }
+  }
   return Array.from(beats);
-};
-
-const overlap = (a, b) => {
-  const entries = new Set(a);
-  let matches = 0;
-  for (const value of b) {
-    if (entries.has(value)) matches += 1;
-  }
-  return { matches, total: b.length };
-};
-
-const pickMessage = (score, { high, mid, low }) => {
-  if (score >= 0.85) return high;
-  if (score >= 0.6) return mid;
-  return low;
-};
-
-const gradeWhy = ({ item, answer }) => {
-  const text = typeof answer === 'string' ? answer : String(answer?.text ?? answer?.raw ?? '').trim();
-  const clean = text.trim();
-  const wordCount = clean ? clean.split(/\s+/).filter(Boolean).length : 0;
-  const beatHits = getGoldBeats(item);
-  const hasBeatCallout = beatHits.some((beat) => {
-    const escaped = beat.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    return new RegExp(`\\b${escaped}\\b`, 'i').test(clean);
-  });
-  const hasBecause = /\b(because|so that|therefore|to unlock)\b/i.test(clean);
-  const hasImage = /(heat|light|shadow|color|texture|sound)/i.test(clean);
-
-  const score = clampScore(Math.min(0.98, scoreFromWordCount(wordCount) + (hasBeatCallout ? 0.08 : 0) + (hasImage ? 0.04 : 0)));
-  const message = pickMessage(score, {
-    high: 'Layered rationale with specific images—keep the pressure.',
-    mid: 'Solid motive—add one more concrete beat or consequence.',
-    low: 'Give us a clear motive and the beat that will carry it.',
-  });
-
-  return {
-    score,
-    rubric: defaultRubric,
-    spans: [],
-    correctSequence: [],
-    fixSuggestion: 'Name the beat you are steering toward and drop in one sensory hook.',
-    nextHints: [
-      hasBeatCallout ? 'Push the reveal or payoff one step further.' : 'Try adding a Reveal 👁️ before the Payoff 🎉.',
-      hasBecause ? 'Layer the stakes: what changes if the beat lands?' : 'Connect motive to stakes with a “because” clause.',
-    ],
-    details: { message, wordCount, mode: 'why' },
-  };
-};
-
-const gradeName = ({ item, answer, mode = 'name' }) => {
-  const submitted = normalizeStringList(
-    typeof answer === 'string'
-      ? answer
-      : Array.isArray(answer?.sigils)
-        ? answer.sigils
-        : answer
-  );
-
-  const goldBeats = normalizeStringList(item?.gold?.rationaleTags);
-  const skillBeats = normalizeStringList(item?.meta?.beat_tags);
-  const canonical = new Set([...goldBeats, ...skillBeats]);
-
-  if (!canonical.size) {
-    return {
-      score: 0.7,
-      rubric: ['Identification', 'Beat Fit'],
-      spans: [],
-      correctSequence: [],
-      fixSuggestion: 'List each beat explicitly—comma-separated works great.',
-      nextHints: ['Anchor each tag to a specific turn in the text.'],
-      details: { message: 'No reference beats available; granting neutral credit.', provided: submitted, mode },
-    };
-  }
-
-  const { matches, total } = overlap(canonical, submitted);
-  const coverage = total ? matches / canonical.size : 0;
-  const score = clampScore(Math.max(0, coverage));
-
-  const missList = [...canonical].filter((beat) => !submitted.includes(beat));
-
-  return {
-    score,
-    rubric: ['Identification', 'Beat Fit'],
-    spans: [],
-    correctSequence: [],
-    fixSuggestion: missList.length ? `Double-check the beat(s): ${missList.join(', ')}.` : null,
-    nextHints: missList.length
-      ? ['Re-read the turn where tone or stakes shift and tag that beat.']
-      : ['Add a quick why-this-matters note next time to cement the tag.'],
-    details: {
-      message: matches === canonical.size ? 'Perfect tag coverage.' : `Tagged ${matches} of ${canonical.size} reference beats.`,
-      provided: submitted,
-      expected: [...canonical],
-      mode,
-    },
-  };
-};
-
-const gradeMissing = ({ item, answer, mode = 'missing' }) => {
-  const inserted = toLower(typeof answer === 'string' ? answer : answer?.insertBeat ?? answer?.text ?? '');
-  const expected = toLower(item?.gold?.expected ?? item?.gold?.missingBeat ?? '');
-
-  if (!expected) {
-    return {
-      score: 0.7,
-      rubric: ['Beat Sense', 'Continuity'],
-      spans: [],
-      correctSequence: [],
-      fixSuggestion: 'Frame the beat in terms of how it shifts the stakes.',
-      nextHints: ['Describe the action or emotion that would bridge the gap.'],
-      details: { message: 'No gold beat provided; awarding middle credit.', provided: inserted || null, mode },
-    };
-  }
-
-  const correct = inserted === expected || (inserted && expected && expected.includes(inserted));
-  const score = correct ? 1 : inserted ? 0.45 : 0.2;
-
-  return {
-    score: clampScore(score),
-    rubric: ['Beat Sense', 'Continuity'],
-    spans: [],
-    correctSequence: [],
-    fixSuggestion: correct ? null : `Aim for “${expected}” to restore the flow.`,
-    nextHints: correct
-      ? ['Try writing that beat into the passage to cement it.']
-      : ['Name the emotion or action that would reset momentum.'],
-    details: {
-      message: correct ? 'Exactly the missing beat.' : `Expected “${expected}”.`,
-      provided: inserted || null,
-      expected,
-      mode,
-    },
-  };
-};
-
-const gradeOrder = ({ item, answer, mode = 'order' }) => {
-  const gold = normalizeStringList(item?.gold?.order);
-  if (!gold.length) {
-    return {
-      score: 0.7,
-      rubric: ['Sequence', 'Tempo'],
-      spans: [],
-      correctSequence: [],
-      fixSuggestion: 'Focus on the pivot beat and let the rest fall around it.',
-      nextHints: ['Track how tension rises—order follows that spine.'],
-      details: { message: 'No canonical order provided; neutral score.', mode },
-    };
-  }
-
-  const submitted = normalizeStringList(
-    Array.isArray(answer?.order)
-      ? answer.order
-      : typeof answer === 'string'
-        ? answer
-        : answer?.sequence ?? []
-  );
-
-  const total = gold.length;
-  let correct = 0;
-  const misplacements = [];
-
-  for (let i = 0; i < total; i += 1) {
-    if (submitted[i] === gold[i]) {
-      correct += 1;
-    } else if (submitted[i]) {
-      misplacements.push({ expected: gold[i], received: submitted[i] });
-    }
-  }
-
-  const score = clampScore(total ? correct / total : 0);
-  const fixSuggestion = score === 1 ? null : 'Rebuild the order around the midpoint reveal or reversal.';
-
-  return {
-    score,
-    rubric: ['Sequence', 'Tempo'],
-    spans: [],
-    correctSequence: gold,
-    fixSuggestion,
-    nextHints: [
-      score === 1 ? 'Run it once more, faster—lock the tempo.' : 'Compare each slot with the gold order and adjust the pivot beats.',
-    ],
-    details: {
-      message: score === 1 ? 'Perfect sequence.' : `Placed ${correct} of ${total} beats correctly.`,
-      provided: submitted,
-      expected: gold,
-      misplacements,
-      mode,
-    },
-  };
-};
-
-const gradeHighlight = ({ item, answer, mode = 'highlight' }) => {
-  const submittedSpans = normalizeSpans(Array.isArray(answer?.spans) ? answer.spans : answer?.spans ? [answer.spans] : []);
-  const goldInput = item?.gold?.spans ?? [];
-  const goldSpans = normalizeSpans(goldInput);
-
-  if (!submittedSpans.length) {
-    return {
-      score: goldSpans.length ? 0.2 : 0.4,
-      rubric: ['Coverage', 'Precision'],
-      spans: [],
-      correctSequence: [],
-      fixSuggestion: 'Highlight the exact sentence where the tone or stakes flip.',
-      nextHints: ['Scan for the moment pressure spikes or the reveal lands.'],
-      details: { message: 'No spans submitted.', expectedSpans: goldSpans.length, mode },
-    };
-  }
-
-  const passageLength = typeof item?.passage === 'string' ? item.passage.length : Number(item?.meta?.length ?? 0) || 0;
-  const totalSubmission = submittedSpans.reduce((sum, span) => sum + (span.end - span.start), 0);
-
-  if (!goldSpans.length) {
-    const coverageRatio = passageLength ? Math.min(1, totalSubmission / Math.max(1, passageLength)) : 0.6;
-    const score = clampScore(0.4 + coverageRatio * 0.5);
-    return {
-      score,
-      rubric: ['Coverage', 'Precision'],
-      spans: submittedSpans,
-      correctSequence: [],
-      fixSuggestion: score > 0.7 ? null : 'Tighten the highlight to the most charged sentence.',
-      nextHints: ['Focus on the language shift—the reveal hides there.'],
-      details: {
-        message: 'Gold spans unavailable; grading by coverage.',
-        coverage: coverageRatio,
-        mode,
-      },
-    };
-  }
-
-  const goldTotal = goldSpans.reduce((sum, span) => sum + (span.end - span.start), 0);
-  const overlapLength = submittedSpans.reduce((sum, span) => {
-    let overlapSum = 0;
-    for (const target of goldSpans) {
-      const start = Math.max(span.start, target.start);
-      const end = Math.min(span.end, target.end);
-      if (end > start) {
-        overlapSum += end - start;
-      }
-    }
-    return sum + overlapSum;
-  }, 0);
-
-  const recall = goldTotal ? overlapLength / goldTotal : 0;
-  const precision = totalSubmission ? overlapLength / totalSubmission : 0;
-  const harmonic = recall + precision ? (2 * recall * precision) / (recall + precision) : 0;
-  const score = clampScore(0.35 + harmonic * 0.65);
-
-  return {
-    score,
-    rubric: ['Coverage', 'Precision'],
-    spans: submittedSpans,
-    correctSequence: [],
-    fixSuggestion: precision < 0.65 ? 'Trim the highlight to the phrase doing the turn.' : null,
-    nextHints: [
-      recall < 0.8 ? 'Push the highlight further into the beat that lands the twist.' : 'Check that your highlight includes the precise verb or image.',
-    ],
-    details: {
-      message: pickMessage(score, {
-        high: 'Spot on—your highlight hugs the signal.',
-        mid: 'Close! tighten around the key clause.',
-        low: 'You brushed past the heat—zero in on the reveal.',
-      }),
-      recall,
-      precision,
-      mode,
-    },
-  };
-};
-
-const gradeFix = ({ item, answer, mode = 'fix' }) => {
-  const choice = toLower(typeof answer === 'string' ? answer : answer?.choice ?? answer?.choiceId ?? '');
-  const goldChoice = toLower(item?.gold?.choice ?? item?.gold?.choiceId ?? '');
-
-  if (!goldChoice) {
-    return {
-      score: 0.7,
-      rubric: ['Accuracy', 'Repair'],
-      spans: [],
-      correctSequence: [],
-      fixSuggestion: 'Connect the stated issue to the option that resolves it.',
-      nextHints: ['Match tone and stakes—right fix echoes both.'],
-      details: { message: 'No gold choice set; awarding neutral score.', provided: choice || null, mode },
-    };
-  }
-
-  const correct = choice === goldChoice;
-  const score = clampScore(correct ? 1 : 0.25);
-
-  return {
-    score,
-    rubric: ['Accuracy', 'Repair'],
-    spans: [],
-    correctSequence: [],
-    fixSuggestion: correct ? null : `Key is “${goldChoice.toUpperCase()}”. Trace why the wrong beat fails.`,
-    nextHints: [
-      correct ? 'Take the win and move to the next beat.' : 'Underline the precise issue, then match the fix that patches it.',
-    ],
-    details: {
-      message: correct ? 'Correct fix applied.' : `Gold answer: ${goldChoice || '—'}.`,
-      provided: choice || null,
-      expected: goldChoice || null,
-      mode,
-    },
-  };
-};
-
-const handlers = {
-  why: gradeWhy,
-  name: gradeName,
-  missing: gradeMissing,
-  order: gradeOrder,
-  highlight: gradeHighlight,
-  fix: gradeFix,
-};
-
-export function grade(mode, payload = {}) {
-  const cleanMode = SUPPORTED_MODES.includes(mode) ? mode : 'why';
-  const handler = handlers[cleanMode] || handlers.why;
-  let raw = {};
-
-  try {
-    raw = handler({ ...payload, mode: cleanMode }) || {};
-  } catch (err) {
-    console.error('[grader] failed to grade', cleanMode, err);
-    raw = {};
-  }
-
-  const normalizedRubric = Array.isArray(raw.rubric) && raw.rubric.length ? raw.rubric : defaultRubric;
-  const normalizedSpans = normalizeSpans(raw.spans);
-  const normalizedHints = normalizeHints(raw.nextHints);
-  const normalizedSequence = Array.isArray(raw.correctSequence)
-    ? raw.correctSequence.map((entry) => String(entry || '')).filter(Boolean)
-    : [];
-  const fixSuggestion = raw.fixSuggestion ? String(raw.fixSuggestion) : null;
-
-  const details = { ...defaultDetails(cleanMode), ...safeDetails(raw.details) };
-
-  return {
-    score: clampScore(Number(raw.score ?? 0)),
-    rubric: normalizedRubric.map((entry) => String(entry)),
-    spans: normalizedSpans,
-    correctSequence: normalizedSequence,
-    fixSuggestion,
-    nextHints: normalizedHints,
-    details,
-    skillIds: Array.isArray(raw.skillIds) && raw.skillIds.length
-      ? raw.skillIds.map((id) => String(id))
-      : skillIdFallback(payload.item, cleanMode),
-  };
 }
 
-export default grade;
+function canonBeat(b) {
+  const k = String(b || '').toLowerCase().trim();
+  if (!k) return '';
+  // map synonyms → canonical label if close enough
+  for (const [canon, syns] of Object.entries(BEAT_SYNONYMS)) {
+    if (k === canon) return canon;
+    if (syns.some(s => k.includes(s))) return canon;
+  }
+  return k;
+}
+
+function kendallTauNormalized(a = [], b = []) {
+  // Kendall tau distance normalized to [0..1], where 1 = perfect, 0 = completely inverted/random
+  const n = Math.min(a.length, b.length);
+  if (n <= 1) return 1;
+  const pa = new Map(a.map((id, i) => [id, i]));
+  const pb = new Map(b.map((id, i) => [id, i]));
+  const common = a.filter((id) => pb.has(id));
+  let discordant = 0, total = 0;
+  for (let i = 0; i < common.length; i++) {
+    for (let j = i + 1; j < common.length; j++) {
+      const x = common[i], y = common[j];
+      const signA = Math.sign(pa.get(x) - pa.get(y));
+      const signB = Math.sign(pb.get(x) - pb.get(y));
+      if (signA !== signB) discordant++;
+      total++;
+    }
+  }
+  if (total === 0) return 1;
+  const tau = 1 - (2 * discordant) / (common.length * (common.length - 1));
+  return clamp01((tau + 1) / 2); // map [-1..1] → [0..1]
+}
+
+function charOverlapScore(goldSpans = [], userSpans = []) {
+  // gold/user spans: [{start,end}]
+  const cover = (spans) => {
+    const set = new Set();
+    spans.forEach(({ start, end }) => {
+      for (let i = Math.max(0, start|0); i < Math.max(0, end|0); i++) set.add(i);
+    });
+    return set;
+  };
+  const G = cover(goldSpans), U = cover(userSpans);
+  if (G.size === 0) return 0;
+  let inter = 0;
+  U.forEach(i => { if (G.has(i)) inter++; });
+  return clamp01(inter / G.size);
+}
+
+function pick(arr, n = 1) {
+  if (!arr?.length) return [];
+  const out = [];
+  for (let i = 0; i < n; i++) out.push(arr[i % arr.length]);
+  return out;
+}
+
+// ---------- graders ----------
+function gradeName(item, answer) {
+  const goldBeats = uniq([
+    ...toArray(item?.gold?.beats),
+    ...toArray(item?.meta?.beat_tags),
+  ].map(canonBeat).filter(Boolean));
+
+  const userBeats = uniq(extractBeatsFromAnswer(answer).map(canonBeat).filter(Boolean));
+
+  const hits = userBeats.filter(b => goldBeats.includes(b));
+  const near = userBeats.filter(b => !goldBeats.includes(b) && goldBeats.some(g => (BEAT_SYNONYMS[g]||[]).some(s => b.includes(s))));
+  const miss = goldBeats.filter(b => !userBeats.includes(b));
+
+  const denom = Math.max(1, goldBeats.length);
+  const score = clamp01((hits.length + 0.5 * near.length) / denom);
+
+  const rubric = [];
+  if (hits.length) rubric.push(`Matched: ${hits.join(', ')}`);
+  if (near.length) rubric.push(`Near-miss: ${near.join(', ')}`);
+  if (miss.length) rubric.push(`Missing: ${miss.join(', ')}`);
+
+  const nextHints = miss.length ? [`Scan for: ${pick(miss, 3).join(', ')}`] : ['Try adding a Reveal 👁️ before the Payoff 🎉.'];
+
+  return { score, rubric, spans: [], correctSequence: [], fixSuggestion: null, nextHints, details: { goldBeats, userBeats, hits, near, miss, mode: 'name' } };
+}
+
+function gradeMissing(item, answer) {
+  // Expect: item.gold.expectedBeats (full set) and the user supplies a single beat to insert
+  const expected = uniq(toArray(item?.gold?.expectedBeats).map(canonBeat).filter(Boolean));
+  const provided = (() => {
+    if (typeof answer === 'object') {
+      const one = toArray(answer.insert)?.[0] ?? toArray(answer.beats)?.[0] ?? toArray(answer.sigils)?.[0];
+      if (one) return canonBeat(one);
+      if (typeof answer.text === 'string') {
+        const m = answer.text.match(/\[([A-Z][A-Z]+)\]/);
+        if (m) return canonBeat(m[1]);
+      }
+    } else if (typeof answer === 'string') {
+      const m = answer.match(/\[([A-Z][A-Z]+)\]/);
+      if (m) return canonBeat(m[1]);
+    }
+    return '';
+  })();
+
+  const missing = expected.filter(b => b && !toArray(item?.gold?.presentBeats).map(canonBeat).includes(b));
+  const ok = provided && missing.includes(provided);
+  const near = provided && !ok && missing.some(g => (BEAT_SYNONYMS[g]||[]).some(s => provided.includes(s)));
+
+  const score = ok ? 1 : near ? 0.5 : 0;
+  const rubric = ok ? ['Inserted the strongest missing beat.'] :
+                near ? [`Close! Consider: ${pick(missing, 2).join(', ')}`] :
+                       ['Pick the beat that would complete the moment.'];
+
+  const nextHints = ok ? ['Now escalate toward Payoff 🎉.'] : [`Look for the void: ${pick(missing, 1).join('')||'the hinge beat'}.`];
+
+  return { score, rubric, spans: [], correctSequence: [], fixSuggestion: ok ? null : 'Name the beat gap you’re repairing.', nextHints, details: { expected, missing, provided, mode: 'missing' } };
+}
+
+function gradeOrder(item, answer) {
+  const gold = toArray(item?.gold?.order).map(String);
+  const user = (() => {
+    if (typeof answer === 'object') return toArray(answer.order).map(String);
+    if (typeof answer === 'string') {
+      // allow comma/space-separated ids
+      return answer.split(/[,\s]+/).filter(Boolean);
+    }
+    return [];
+  })();
+
+  const score = kendallTauNormalized(gold, user);
+  const rubric = [];
+  const correctSequence = gold;
+
+  if (gold.length && user.length) {
+    const wrongEdges = [];
+    // find violating adjacent pairs in user wrt gold
+    const pos = new Map(gold.map((id, i) => [id, i]));
+    for (let i = 0; i < user.length - 1; i++) {
+      const a = user[i], b = user[i+1];
+      if (pos.has(a) && pos.has(b) && pos.get(a) > pos.get(b)) {
+        wrongEdges.push([a,b]);
+      }
+    }
+    if (wrongEdges.length) rubric.push(`Out of order: ${wrongEdges.slice(0,3).map(([a,b])=>`${a}→${b}`).join(' | ')}`);
+  }
+
+  const nextHints = score < 1 ? ['Anchor Setup 🎯 before Payoff 🎉; keep Reveal 👁️ close to the turn.'] : ['Clean chain. Ready to speed up the cadence.'];
+
+  return { score, rubric, spans: [], correctSequence, fixSuggestion: score < 1 ? 'Swap the violating pair(s) first.' : null, nextHints, details: { gold, user, mode: 'order' } };
+}
+
+function gradeHighlight(item, answer) {
+  const goldSpans = toArray(item?.gold?.spans).map(s => ({ start: s.start|0, end: s.end|0 })).filter(s => s.end > s.start);
+  const userSpans = (() => {
+    if (typeof answer === 'object') return toArray(answer.spans).map(s => ({ start: s.start|0, end: s.end|0 })).filter(s => s.end > s.start);
+    return [];
+  })();
+
+  const score = charOverlapScore(goldSpans, userSpans);
+  const rubric = [score >= 0.9 ? 'Great coverage.' : score >= 0.6 ? 'Partial overlap.' : 'Missed the signal span.'];
+  const nextHints = score < 0.9 ? ['Zoom into verbs and hinge words; highlight the exact trigger.'] : ['Try a tighter span next time.'];
+
+  return { score, rubric, spans: goldSpans, correctSequence: [], fixSuggestion: score < 0.6 ? 'Re-read the cue line; highlight just the mechanism.' : null, nextHints, details: { goldSpans, userSpans, mode: 'highlight' } };
+}
+
+function gradeFix(item, answer) {
+  // MCQ: correct key in item.gold.key or item.gold.correct
+  const key = String(item?.gold?.key ?? item?.gold?.correct ?? '').trim();
+  const nearMiss = new Set(toArray(item?.gold?.nearMiss));
+  const choice = (() => {
+    if (typeof answer === 'object') return String(answer.choice ?? answer.id ?? '').trim();
+    if (typeof answer === 'string') return answer.trim();
+    return '';
+  })();
+
+  let score = 0;
+  if (choice && key && choice === key) score = 1;
+  else if (choice && nearMiss.has(choice)) score = 0.5;
+
+  const rubric = score === 1 ? ['Right fix: precise and minimal.'] :
+                 score === 0.5 ? ['Close fix: watch for clarity or rule edge cases.'] :
+                 ['Pick the option that removes error without adding style noise.'];
+
+  const nextHints = score === 1
+    ? ['Try the more subtle pair next round.']
+    : ['Check for label-y emotion, over-explain, or speechy theme—trim accordingly.'];
+
+  const fixSuggestion = score === 1 ? null : 'Prefer the smallest change that resolves the issue.';
+
+  return { score, rubric, spans: [], correctSequence: [], fixSuggestion, nextHints, details: { key, choice, nearMiss: Array.from(nearMiss), mode: 'fix' } };
+}
+
+function gradeWhy(item, answer) {
+  const goldTags = uniq(
+    toArray(item?.gold?.rationaleTags ?? item?.meta?.rationaleTags)
+      .flatMap(t => String(t).split(/[;,]/))
+      .map(s => s.trim().toLowerCase())
+      .filter(Boolean)
+  );
+
+  const text = typeof answer === 'object' ? String(answer.rationale ?? answer.text ?? '') : String(answer ?? '');
+  const hay = text.toLowerCase();
+
+  const hits = [];
+  for (const tag of goldTags) {
+    const kws = RATIONALE_KEYWORDS[tag] || [];
+    if (kws.some(k => hay.includes(k))) hits.push(tag);
+  }
+
+  // heuristic: length helps a tiny bit (but not gating!)
+  const wordCount = (text.trim().match(/\S+/g) || []).length;
+  const lcBoost = Math.min(0.15, (wordCount >= 25 ? 0.15 : wordCount / 25 * 0.15));
+
+  const base = goldTags.length ? (hits.length / goldTags.length) : 0.6; // if no tags, be generous
+  const score = clamp01(base + lcBoost);
+
+  const rubric = [];
+  if (hits.length) rubric.push(`Addresses: ${hits.join(', ')}`);
+  const miss = goldTags.filter(t => !hits.includes(t));
+  if (miss.length) rubric.push(`Could add: ${pick(miss, 2).join(', ')}`);
+
+  const nextHints = miss.length
+    ? [`Tie motive to stakes explicitly (e.g., "because …, so …").`]
+    : ['Add one concrete sentence that shows consequence, not label.'];
+
+  return { score, rubric, spans: [], correctSequence: [], fixSuggestion: null, nextHints, details: { goldTags, hits, wordCount, mode: 'why' } };
+}
+
+// ---------- public API ----------
+export async function grade({ mode, item, answer }) {
+  const m = String(mode || item?.mode || '').toLowerCase();
+  try {
+    switch (m) {
+      case 'name':       return gradeName(item, answer);
+      case 'missing':    return gradeMissing(item, answer);
+      case 'order':      return gradeOrder(item, answer);
+      case 'highlight':  return gradeHighlight(item, answer);
+      case 'fix':        return gradeFix(item, answer);
+      case 'why':        return gradeWhy(item, answer);
+      default:
+        return {
+          score: 0,
+          rubric: ['Unknown mode.'],
+          spans: [],
+          correctSequence: [],
+          fixSuggestion: null,
+          nextHints: ['Pick a supported mode: name, missing, order, highlight, fix, why.'],
+          details: { mode: m, error: 'unsupported-mode' },
+        };
+    }
+  } catch (e) {
+    return {
+      score: 0,
+      rubric: ['Grader error — returning safe fallback.'],
+      spans: [],
+      correctSequence: [],
+      fixSuggestion: null,
+      nextHints: ['Try again; if persists, see logs.'],
+      details: { mode: m, error: String(e?.message || e) },
+    };
+  }
+}
+
+export default { grade };
