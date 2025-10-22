@@ -1,132 +1,96 @@
-const pct = (value) => `${Math.round((value || 0) * 100)}%`;
+import fs from "node:fs";
+import path from "node:path";
 
-const NEIGHBORS = ['Hemingway', 'Baldwin', 'Didion', 'Morrison', 'Le Guin', 'Okorafor', 'Ng', 'Martín', 'Díaz'];
-const FOILS = ['PurpleProse', 'TEDTalk', 'Corporate Memo', 'Soapbox', 'Infomercial', 'Algorithmic Voice'];
+const DATA_DIR = path.join(process.cwd(), "server", "db", "data");
+const ATTEMPTS_PATH = path.join(DATA_DIR, "attempts.jsonl");
 
-const verdictForAverage = (avg) => {
-  if (avg >= 0.9) return 'Verdict: Razor-sharp craft—heat with control.';
-  if (avg >= 0.75) return 'Verdict: Confident moves with flashes of fire.';
-  if (avg >= 0.6) return 'Verdict: Groove emerging—keep stacking deliberate reps.';
-  return 'Verdict: Experimental energy—tighten fundamentals to channel it.';
-};
+function readJsonl(file) {
+  if (!fs.existsSync(file)) return [];
+  const lines = fs.readFileSync(file, "utf8").split(/\r?\n/).filter(Boolean);
+  return lines.map(l => { try { return JSON.parse(l); } catch { return null; } }).filter(Boolean);
+}
 
-const trendLabel = (recent, earlier) => {
-  if (!Number.isFinite(recent) || !Number.isFinite(earlier)) return 'steady';
-  const delta = recent - earlier;
-  if (delta > 0.05) return 'rising';
-  if (delta < -0.05) return 'dipping';
-  return 'steady';
-};
+function fromMem(userId, limit=40) {
+  try {
+    const mem = require("../db/mem.js"); // commonjs-safe path if present
+    const rows = Array.isArray(mem?.attempts?.rows) ? mem.attempts.rows : [];
+    return (userId ? rows.filter(r => r.userId === userId) : rows).slice(-limit);
+  } catch {
+    return null;
+  }
+}
 
-const averageScore = (list) => {
-  if (!list.length) return 0;
-  const total = list.reduce((sum, value) => sum + (Number(value) || 0), 0);
-  return total / list.length;
-};
+function tidy(n) { return Number.isFinite(n) ? n : 0; }
 
-const summarizeRubrics = (attempts) => {
-  const store = new Map();
-  for (const attempt of attempts) {
-    const labels = Array.isArray(attempt?.rubric) ? attempt.rubric : [];
-    const score = Number(attempt?.score ?? 0);
-    for (const label of labels) {
-      const key = String(label);
-      if (!store.has(key)) {
-        store.set(key, { total: 0, strong: 0, weak: 0 });
-      }
-      const entry = store.get(key);
-      entry.total += 1;
-      if (score >= 0.75) entry.strong += 1;
-      if (score <= 0.5) entry.weak += 1;
-    }
+export async function buildMemo(userId="dev", limit=40) {
+  // attempts: prefer in-memory snapshot if available, else JSONL
+  const memRows = fromMem(userId, limit);
+  const rows = memRows ?? (userId
+    ? readJsonl(ATTEMPTS_PATH).filter(r => r.userId === userId).slice(-limit)
+    : readJsonl(ATTEMPTS_PATH).slice(-limit));
+
+  const n = rows.length;
+  if (!n) {
+    return {
+      title: "Professor Ray Ray: No pages yet",
+      body: "I can’t judge what you didn’t submit. Give me something with edges and I’ll bring the receipts.",
+      badges: []
+    };
   }
 
-  const strong = [...store.entries()]
-    .filter(([, entry]) => entry.total > 0)
-    .sort((a, b) => (b[1].strong / b[1].total) - (a[1].strong / a[1].total))
-    .slice(0, 2)
-    .map(([label]) => label);
+  // simple aggregates
+  const scores = rows.map(r => tidy(r?.score));
+  const avgScore = scores.reduce((a,b)=>a+b,0) / n;
+  const wc = rows.map(r => tidy(r?.details?.wordCount));
+  const avgWords = wc.reduce((a,b)=>a+b,0) / (wc.length || 1);
 
-  const shaky = [...store.entries()]
-    .filter(([, entry]) => entry.weak > 0)
-    .sort((a, b) => (b[1].weak / b[1].total) - (a[1].weak / a[1].total))
-    .slice(0, 2)
-    .map(([label]) => label);
-
-  return { strong, shaky };
-};
-
-const summarizeModes = (attempts) => {
-  const counts = new Map();
-  for (const attempt of attempts) {
-    const mode = String(attempt?.mode || 'why');
-    counts.set(mode, (counts.get(mode) || 0) + 1);
+  // collect “hits” / skills / tags for flavor
+  const hitBag = new Map();
+  const taste = new Map();
+  for (const r of rows) {
+    const hits = Array.isArray(r?.details?.hits) ? r.details.hits : [];
+    for (const h of hits) hitBag.set(h, (hitBag.get(h)||0)+1);
+    const skills = Array.isArray(r?.details?.skillIds) ? r.details.skillIds : [];
+    for (const s of skills) taste.set(s, (taste.get(s)||0)+1);
   }
-  const ordered = [...counts.entries()].sort((a, b) => b[1] - a[1]);
-  return ordered.map(([mode]) => mode);
-};
+  const topHits = [...hitBag.entries()].sort((a,b)=>b[1]-a[1]).slice(0,5).map(([k])=>k);
+  const topSkills = [...taste.entries()].sort((a,b)=>b[1]-a[1]).slice(0,5).map(([k])=>k);
 
-const pickFromList = (source, seed, count) => {
-  const out = [];
-  if (!source.length || count <= 0) return out;
-  let index = Math.abs(seed) % source.length;
-  for (let i = 0; i < count; i += 1) {
-    out.push(source[index % source.length]);
-    index += 1 + ((seed >> (i % 8)) & 0x3);
-  }
-  return out;
-};
+  // light “influences” guess from skills/tags
+  const influences = [];
+  const skillStr = topSkills.join(" ").toLowerCase();
+  if (skillStr.includes("dialogue")) influences.push("Didion (clean control)");
+  if (skillStr.includes("conflict")) influences.push("Chandler (pressure & tilt)");
+  if (skillStr.includes("reveal") || skillStr.includes("payoff")) influences.push("Morrison (earned turn)");
+  if (!influences.length) influences.push("Baldwin (clarity + heat)");
 
-export function buildMemo({ userId = 'dev', attempts = [], mastery }) {
-  const totalAttempts = attempts.length;
-  const allScores = attempts.map((attempt) => Number(attempt?.score ?? 0));
-  const avgScore = averageScore(allScores);
-  const recentSlice = attempts.slice(0, 5);
-  const earlierSlice = attempts.slice(5, 10);
-  const recentAvg = averageScore(recentSlice.map((attempt) => Number(attempt?.score ?? 0)));
-  const earlierAvg = averageScore(earlierSlice.map((attempt) => Number(attempt?.score ?? 0)));
-  const trend = trendLabel(recentAvg, earlierAvg);
-  const { strong, shaky } = summarizeRubrics(attempts);
-  const modeOrder = summarizeModes(attempts);
+  const verdict =
+    avgScore >= 0.8 ? "You’re landing beats with intention." :
+    avgScore >= 0.6 ? "You have a feel — shape the turns cleaner." :
+    "You’ve got sparks. Aim them.";
 
-  const verdict = verdictForAverage(avgScore);
-  const bulletLines = [];
-  bulletLines.push(`- Avg score ${pct(avgScore)} across ${totalAttempts || 0} attempts; trend is ${trend}.`);
+  const body =
+`Professor Ray Ray on your pages (last ${n} tries)
 
-  if (strong.length || shaky.length) {
-    const reliable = strong.length ? strong.join(' • ') : 'still forming';
-    const watch = shaky.length ? shaky.join(' • ') : 'hold steady';
-    bulletLines.push(`- Reliable: ${reliable}; Watch: ${watch}.`);
-  } else {
-    bulletLines.push('- Rubric signal still forming—log a few more graded reps.');
-  }
+Overall: ${verdict}
+Average score: ${(avgScore*100).toFixed(0)}%
+Typical length: ~${Math.round(avgWords)} words
 
-  if (modeOrder.length) {
-    const favorites = modeOrder.slice(0, 3).join(', ');
-    bulletLines.push(`- Modes in rotation: ${favorites}.`);
-  }
+Most consistent signals: ${topHits.join(", ") || "—"}
+Skill lean: ${topSkills.join(", ") || "—"}
+Influences I clock: ${influences.join("; ")}
 
-  if (mastery) {
-    bulletLines.push(`- Level ${mastery.level || 1} • Total EXP ${mastery.totalExp || 0}.`);
-  }
+Next drills:
+• Tighten the line right before the turn (cut a hedge, punch the verb).
+• Name the beat you’re aiming at, then let *action* (not labels) carry it.
+• If you reveal, follow it with a consequence we can see/hear.`.trim();
 
-  const weakestCue = shaky[0] || strong[0] || 'Clarity';
-  const nextMode = modeOrder.at(-1) || modeOrder[0] || 'why';
-  const drillLine = `What to try next: Run a ${nextMode} rep that spotlights ${weakestCue} in three sentences.`;
+  const badges = [];
+  if (avgScore >= 0.7) badges.push("Beat Finder");
+  if (topHits.includes("clarity")) badges.push("Clean Glass");
+  if (topHits.includes("voice")) badges.push("Voice Prints");
 
-  const seed = (userId || '').split('').reduce((acc, char, idx) => acc + char.charCodeAt(0) * (idx + 1), 0);
-  const neighborList = pickFromList(NEIGHBORS, seed, 3);
-  const foilList = pickFromList(FOILS, seed >> 3, 2);
-  const influenceLine = `Neighbors: ${neighborList.join(' • ')}; Foils: ${foilList.join(' • ')}.`;
-
-  const lines = [verdict, ...bulletLines.slice(0, 4), drillLine, influenceLine];
-
-  return {
-    title: 'Professor Ray Ray: Style Notes',
-    body: lines.join('\n'),
-    level: mastery?.level ?? 1,
-    issuedAt: new Date().toISOString(),
-  };
+  return { title: "Professor Ray Ray — Style Report", body, badges };
 }
 
 export default buildMemo;

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { pickNext } from "../scheduler/next.js";
+import { pickNext } from "../scheduler/pickNextShim.js";
 import { getAllItems } from "../content/items.js";
 import { getMastery, getAttempts } from "../db/mem.js";
 

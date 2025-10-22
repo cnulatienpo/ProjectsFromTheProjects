@@ -17,6 +17,7 @@ import skipRoutes from './routes/skip.js';
 import versionRoutes from './routes/version.js';
 import healthRoutes from './routes/health.js';
 import debugContentRoutes from './routes/debugContent.js';
+import reportsRoutes from './routes/reports.js';
 import attemptRoutes from './routes/attempt.js';
 
 const { createReadStream, appendFileSync } = fs;
@@ -96,6 +97,7 @@ try {
   app.use(versionRoutes);
   mounted.push('/api/version');
   app.use(debugContentRoutes);
+app.use(reportsRoutes);
   mounted.push('/api/debug/content');
 } catch (e) {
   console.warn('Route mounting warning:', e && e.message);
