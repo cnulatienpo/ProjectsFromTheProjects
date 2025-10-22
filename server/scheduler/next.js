@@ -1,119 +1,109 @@
-import { getAllItems } from '../content/items.js';
-import { mem, getMastery, getAttempts, userSeenSet } from '../db/mem.js';
+// server/scheduler/next.js (ESM)
+// Bias by (1) low mastery, (2) freshness/recency, (3) unlock gates via introduces_beats.
+// Works with mem stores in server/db/mem.js and items shaped by server/content/loaders.js.
 
-const SUPPORTED_MODES = new Set(['why', 'name', 'highlight', 'order', 'fix', 'missing']);
-const RECENT_ATTEMPT_WINDOW = 1000 * 60 * 20; // 20 minutes
-const RECENT_SKIP_WINDOW = 1000 * 60 * 30; // 30 minutes
+import * as mem from '../db/mem.js';
 
-function normalizeItemShape(item) {
-  if (!item) return null;
-  const payload = {
-    id: item.id,
-    mode: item.mode || 'why',
-  };
-  if (item.passage) payload.passage = item.passage;
-  if (item.options) payload.options = item.options;
-  if (item.gold) payload.gold = item.gold;
-  if (item.meta) payload.meta = item.meta;
-  if (item.skillIds) payload.skillIds = item.skillIds;
-  return payload;
+// Safeguards
+const toArray = (x) => Array.isArray(x) ? x : (x == null ? [] : [x]);
+const uniq = (arr) => Array.from(new Set(arr));
+
+function now() { return Date.now(); }
+function daysAgo(ts) {
+  if (!ts) return Infinity;
+  return (now() - ts) / (1000 * 60 * 60 * 24);
 }
 
-const toSkillList = (item) => {
-  if (Array.isArray(item?.skillIds) && item.skillIds.length) {
-    return item.skillIds.map((id) => String(id)).filter(Boolean);
+// beats unlocked for a user: stored in mem, or derivable from attempts + introduces_beats items
+function getUnlockedBeats(userId) {
+  const u = mem.getUser(userId) || {};
+  const unlocked = new Set(toArray(u.unlockedBeats));
+  // auto-derive from completed items that introduce beats
+  const hist = mem.getAttempts(userId);
+  for (const a of hist) {
+    const item = mem.getItemById(a.itemId);
+    const intro = toArray(item?.meta?.introduces_beats);
+    intro.forEach(b => unlocked.add(String(b).toLowerCase()));
   }
-  if (Array.isArray(item?.meta?.beat_tags) && item.meta.beat_tags.length) {
-    return item.meta.beat_tags.map((id) => String(id)).filter(Boolean);
-  }
-  return [];
-};
-
-const computeWeakness = (skillIds, masterySkills, overallLevel) => {
-  if (!skillIds.length) {
-    return 1 / Math.max(1, overallLevel || 1);
-  }
-  let totalLevel = 0;
-  let missing = 0;
-  for (const skillId of skillIds) {
-    const data = masterySkills[skillId];
-    if (!data) {
-      missing += 1;
-      totalLevel += 0.5;
-    } else {
-      totalLevel += Math.max(0.5, data.level);
-    }
-  }
-  const average = totalLevel / skillIds.length;
-  const base = 1 / Math.max(average, 0.5);
-  const missingBonus = missing ? missing / skillIds.length : 0;
-  return base + missingBonus;
-};
-
-const computePenalty = (timestamp, window, now) => {
-  if (!timestamp) return 0;
-  const delta = now - timestamp;
-  if (delta <= 0) return 1;
-  if (delta >= window) return 0;
-  return 1 - delta / window;
-};
-
-export function pickNext({ userId }) {
-  const user = userId ? String(userId) : 'dev';
-  const items = getAllItems();
-  if (!items.length) {
-    throw new Error('No items available');
-  }
-
-  const mastery = getMastery(user);
-  const masterySkills = mastery?.skills || {};
-  const overallLevel = mastery?.level || 1;
-  const attempts = getAttempts(user, { limit: 120 });
-  const seen = userSeenSet(user);
-  const now = Date.now();
-
-  const lastAttemptByItem = new Map();
-  for (const attempt of attempts) {
-    const id = String(attempt.itemId);
-    const ts = Number(attempt.ts ?? (attempt.gradedAt ? Date.parse(attempt.gradedAt) : 0));
-    if (!lastAttemptByItem.has(id) || ts > lastAttemptByItem.get(id)) {
-      lastAttemptByItem.set(id, ts);
-    }
-  }
-
-  const lastSkipByItem = new Map();
-  for (const skip of mem.skips) {
-    if (String(skip.userId) !== user) continue;
-    const id = String(skip.itemId);
-    const ts = Number(skip.ts) || 0;
-    if (!lastSkipByItem.has(id) || ts > lastSkipByItem.get(id)) {
-      lastSkipByItem.set(id, ts);
-    }
-  }
-
-  const candidates = items.filter((item) => SUPPORTED_MODES.has(item.mode || 'why'));
-  const pool = candidates.length ? candidates : items;
-
-  const scored = pool
-    .map((item) => {
-      const itemId = String(item.id);
-      const skillIds = toSkillList(item);
-      const weakness = computeWeakness(skillIds, masterySkills, overallLevel);
-      const unseenBonus = seen.has(itemId) ? 0 : 0.8;
-      const introduceBonus = Array.isArray(item?.meta?.introduces_beats) && item.meta.introduces_beats.length ? 0.3 : 0;
-      const recencyPenalty = computePenalty(lastAttemptByItem.get(itemId), RECENT_ATTEMPT_WINDOW, now);
-      const skipPenalty = computePenalty(lastSkipByItem.get(itemId), RECENT_SKIP_WINDOW, now) * 1.3;
-      const seenPenalty = seen.has(itemId) ? 0.05 : 0;
-      const priority = weakness + unseenBonus + introduceBonus - recencyPenalty - skipPenalty - seenPenalty;
-      return { item, priority };
-    })
-    .sort((a, b) => {
-      if (b.priority !== a.priority) return b.priority - a.priority;
-      return String(a.item.id).localeCompare(String(b.item.id));
-    });
-
-  const chosen = scored.length ? scored[0].item : pool[0];
-  return normalizeItemShape(chosen);
+  return unlocked;
 }
 
-export default pickNext;
+function getUserMastery(userId) {
+  // mastery map: skillId -> { level, exp, lastSeen }
+  // mem provides a soft store; fallback to empty
+  return mem.getMastery(userId) || {};
+}
+
+function inferSkillsFromItem(item) {
+  // Prefer explicit skillIds; fall back to beat_tags
+  const ids = new Set();
+  toArray(item?.skillIds).forEach(s => ids.add(String(s)));
+  toArray(item?.meta?.beat_tags).forEach(b => ids.add(`beat.${String(b).toLowerCase()}`));
+  return Array.from(ids);
+}
+
+function scoreItemForUser(userId, item) {
+  const mastery = getUserMastery(userId);
+  const skills = inferSkillsFromItem(item);
+
+  // 1) Weakness: lower mastery.level → higher need
+  let weakness = 0;
+  for (const s of skills) {
+    const m = mastery[s];
+    const lvl = m?.level ?? 0;
+    weakness += (Math.max(0, 5 - lvl) / 5); // 0..1
+  }
+  if (skills.length) weakness = weakness / skills.length;
+
+  // 2) Freshness: prefer items not seen recently
+  const lastSeen = (() => {
+    const hist = mem.getAttempts(userId).filter(a => a.itemId === item.id);
+    if (!hist.length) return null;
+    return Math.max(...hist.map(a => a.ts || a.time || 0));
+  })();
+  const days = daysAgo(lastSeen);
+  const freshness = Math.min(1, Math.max(0, days / 7)); // fully fresh after ~7 days, 0 if seen today
+
+  // 3) Unlock gates via introduces_beats
+  const unlocks = getUnlockedBeats(userId);
+  const introduced = toArray(item?.meta?.introduces_beats).map(b => String(b).toLowerCase());
+  const requires = toArray(item?.meta?.beat_tags).map(b => String(b).toLowerCase());
+
+  let gate = 1;
+  // allow any item that introduces beats (that’s how you unlock!)
+  if (!introduced.length && requires.length) {
+    // if it requires beats the user doesn't have, down-rank hard
+    const missingReq = requires.filter(b => !unlocks.has(b));
+    if (missingReq.length) gate = 0.05; // not strictly forbidden, just very unlikely
+  }
+
+  // Combine: weighted sum → 0..1 then small jitter for variety
+  const combined = (0.55 * weakness) + (0.35 * freshness) + (0.10 * gate);
+  const jitter = (Math.random() * 0.04) - 0.02; // ±0.02
+  const finalScore = Math.max(0, Math.min(1, combined + jitter));
+
+  return { score: finalScore, components: { weakness, freshness, gate, skills, introduced, requires } };
+}
+
+export function pickNextItem(userId, pool) {
+  const items = Array.isArray(pool) ? pool : [];
+  if (!items.length) return null;
+
+  // Filter out items marked as retired/disabled if present
+  const candidates = items.filter(i => !i?.meta?.retired);
+
+  let best = null;
+  let bestScore = -1;
+
+  for (const item of candidates) {
+    const { score, components } = scoreItemForUser(userId || 'dev', item);
+    if (score > bestScore) {
+      bestScore = score;
+      best = { ...item, _score: score, _why: components };
+    }
+  }
+
+  return best;
+}
+
+export default { pickNextItem };
