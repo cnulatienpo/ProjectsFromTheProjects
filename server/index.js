@@ -80,18 +80,18 @@ if (isProd) {
 
 // ====== New API routes ======
 try {
-  app.use(healthRoutes);            // GET /api/healthz
+  app.use(healthRoutes);
   mounted.push('/api/healthz');
-  app.use(versionRoutes);           // GET /api/version
+  app.use(versionRoutes);
   mounted.push('/api/version');
-  app.use(debugContentRoutes);      // GET /api/debug/content
+  app.use(debugContentRoutes);
   mounted.push('/api/debug/content');
 } catch (e) {
   console.warn('Route mounting warning:', e && e.message);
 }
 
-app.use('/api', nextRoutes);        // GET /api/next
-app.use('/api', skipRoutes);        // POST /api/skip
+app.use('/api', nextRoutes);
+app.use('/api', skipRoutes);
 mounted.push('/api/skip');
 
 const attemptRouteMount = (async () => {
@@ -252,6 +252,9 @@ app.post('/attempt', express.json(), async (req, res) => {
 });
 
 await attemptRouteMount;
+
+const distDir = path.join(process.cwd(), "app", "dist");
+const hasDist = fs.existsSync(path.join(distDir, "index.html"));
 
 // 🔒 Make sure unknown /api/* doesn't fall through to static site
 app.use('/api', (req, res, next) => {
