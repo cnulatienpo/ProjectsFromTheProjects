@@ -40,6 +40,7 @@ const logMountedRoutes = () => {
     '/api/debug/content',
     '/api/skip',
     '/api/reports/latest',
+    '/api/reports/ping',
   ];
   const seen = new Set();
   const ordered = [];
@@ -121,6 +122,7 @@ const reportsRouteMount = (async () => {
     // mount at /api so router paths like /reports/latest map to /api/reports/latest
     app.use('/api', reportsRouter);
     mounted.push('/api/reports/latest');
+    mounted.push('/api/reports/ping');
     logMountedRoutes();
   } catch (err) {
     console.error('Reports route mount failed:', err?.message || err);
