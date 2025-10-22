@@ -16,6 +16,7 @@ import skipRoutes from './routes/skip.js';
 import versionRoutes from './routes/version.js';
 import healthRoutes from './routes/health.js';
 import debugContentRoutes from './routes/debugContent.js';
+import reportsRoutes from './routes/reports.js';
 
 const { createReadStream, appendFileSync } = fs;
 const { resolve } = path;
@@ -100,6 +101,9 @@ try {
 app.use('/api', nextRoutes);
 app.use('/api', skipRoutes);
 mounted.push('/api/skip');
+
+app.use('/api/reports', reportsRoutes);
+mounted.push('/api/reports/latest');
 
 const attemptRouteMount = (async () => {
   try {
