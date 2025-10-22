@@ -17,6 +17,7 @@ import skipRoutes from './routes/skip.js';
 import versionRoutes from './routes/version.js';
 import healthRoutes from './routes/health.js';
 import debugContentRoutes from './routes/debugContent.js';
+import attemptRoutes from './routes/attempt.js';
 
 const { createReadStream, appendFileSync } = fs;
 const { resolve } = path;
@@ -100,22 +101,14 @@ try {
   console.warn('Route mounting warning:', e && e.message);
 }
 
+app.use('/api/attempt', attemptRoutes);
+mounted.push('/api/attempt');
+logMountedRoutes();
+
 app.use(nextRoutes);
 mounted.push('/api/next');
 app.use(skipRoutes);
 mounted.push('/api/skip');
-
-const attemptRouteMount = (async () => {
-  try {
-    const mod = await import('./routes/attempt.js');
-    const attemptRouter = mod.default || mod;
-    app.use('/api/attempt', attemptRouter);
-    mounted.push('/api/attempt');
-    logMountedRoutes();
-  } catch (err) {
-    console.error('Attempt route mount failed:', err?.message || err);
-  }
-})();
 
 const reportsRouteMount = (async () => {
   try {
@@ -276,7 +269,6 @@ app.post('/attempt', express.json(), async (req, res) => {
   }
 });
 
-await attemptRouteMount;
 await reportsRouteMount;
 
 // 🔒 Make sure unknown /api/* doesn't fall through to static site
