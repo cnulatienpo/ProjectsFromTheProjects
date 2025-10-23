@@ -307,7 +307,7 @@ function gradeWhy(item, answer) {
 }
 
 // Public API
-export async function grade({ mode, item, answer }) {
+export async function _grade({ mode, item, answer }) {
   const m = String(mode || item?.mode || '').toLowerCase();
   try {
     switch (m) {
@@ -334,3 +334,46 @@ export async function grade({ mode, item, answer }) {
 }
 
 export default { grade };
+
+// --- wrapper: coerce mode + normalize attempt response ---
+const __ALLOWED_MODES = new Set(["name","missing","order","highlight","fix","why","sigil"]);
+function __coerceMode(m) {
+  const s = (m ?? "").toString().toLowerCase();
+  return __ALLOWED_MODES.has(s) ? s : "why";
+}
+function __normalizeResult(r = {}, ctx = {}) {
+  const now = new Date().toISOString();
+  const userId = ctx.userId ?? r.userId ?? "anon";
+  const itemId = ctx.itemId ?? r.itemId ?? null;
+  const mode = ctx.mode ?? r.mode ?? "why";
+  return {
+    ok: true,
+    userId,
+    itemId,
+    mode,
+    score: typeof r.score === "number" ? r.score : 0.0,
+    rubric: Array.isArray(r.rubric) ? r.rubric : [],
+    spans: Array.isArray(r.spans) ? r.spans : [],
+    correctSequence: Array.isArray(r.correctSequence) ? r.correctSequence : [],
+    fixSuggestion: r.fixSuggestion ?? null,
+    nextHints: Array.isArray(r.nextHints) ? r.nextHints : [],
+    details: (r.details && typeof r.details === "object") ? r.details : {},
+    leveledUp: !!r.leveledUp,
+    level: Number.isFinite(r.level) ? r.level : 1,
+    badges: Array.isArray(r.badges) ? r.badges : [],
+    gradedAt: typeof r.gradedAt === "string" ? r.gradedAt : now
+  };
+}
+
+// IMPORTANT: _grade is the original implementation renamed above.
+// If _grade is missing (edge case), fall back to a no-op that yields a valid shape.
+async function __fallbackGrade() { return {}; }
+
+export async function grade(mode, payload) {
+  const coerced = __coerceMode(mode);
+  const base = (typeof _grade === "function" ? await _grade(coerced, payload) : await __fallbackGrade(coerced, payload)) || {};
+  return __normalizeResult(
+    { ...base, mode: coerced, userId: payload?.userId, itemId: payload?.itemId },
+    { mode: coerced, userId: payload?.userId, itemId: payload?.itemId }
+  );
+}
