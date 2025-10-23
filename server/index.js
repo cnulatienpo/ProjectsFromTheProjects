@@ -346,3 +346,8 @@ function __coerceAllowedMode(m) {
   const s = (m ?? "").toString().toLowerCase();
   return ALLOWED.has(s) ? s : "why";
 }
+
+// --- hotfix helpers for /api/attempt mode coercion ---
+const __ALLOWED_MODES = new Set(["name","missing","order","highlight","fix","why","sigil"]);
+function __coerceAllowedMode(m){ const s=(m??"").toString().toLowerCase(); return __ALLOWED_MODES.has(s)?s:"why"; }
+
