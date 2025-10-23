@@ -12,7 +12,8 @@
     "build:app": "node scripts/offline-vite-build.mjs",
     "smoke:content": "ts-node scripts/smokeContent.ts",
     "start": "node server/index.js",
-    "dev": "bash scripts/dev-up.sh"
+    "dev": "bash scripts/dev-up.sh",
+    "audit": "node tools/audit/audit.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.56.1",
