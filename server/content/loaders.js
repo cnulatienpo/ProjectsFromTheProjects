@@ -66,7 +66,15 @@ export function validateAndNormalizeItem(raw, idx = 0, source = "core") {
     console.warn("[schema] missing text/prompt @", id, source);
     return null;
   }
-  const mode = __coerceMode(raw.mode ?? raw.task ?? raw.type);
+  const rawModeValue = raw.mode ?? raw.task ?? raw.type;
+  const mode = __coerceMode(rawModeValue);
+  if (rawModeValue != null) {
+    const rawModeString = String(rawModeValue).trim().toLowerCase();
+    if (rawModeString && !__ALLOWED_MODES.has(rawModeString)) {
+      console.warn("[schema] invalid mode @", id, source, rawModeValue);
+      return null;
+    }
+  }
   const metaBase = raw && typeof raw.meta === "object" && raw.meta !== null ? { ...raw.meta } : {};
   const meta = { source, ...metaBase };
   const ibSources = [raw.introduces_beats, raw.introducesBeats, meta.introduces_beats, meta.introducesBeats];
