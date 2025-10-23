@@ -1,5 +1,6 @@
 import express from 'express';
 import { grade } from '../graders/index.js';
+import { addExp } from '../db/mem.js';
 
 const router = express.Router();
 
@@ -49,10 +50,11 @@ router.post('/', async (req, res) => {
   const correctSequence = Array.isArray(result?.correctSequence) ? result.correctSequence : [];
   const fixSuggestion = result?.fixSuggestion ?? null;
   const nextHints = Array.isArray(result?.nextHints) ? result.nextHints : [];
-  const details = result?.details && typeof result.details === 'object' ? result.details : {};
-  const leveledUp = !!result?.leveledUp;
-  const level = Number.isFinite(result?.level) ? result.level : 1;
-  const badges = Array.isArray(result?.badges) ? result.badges : [];
+  const detailsBase = result?.details && typeof result.details === 'object' ? result.details : {};
+  const expAwardedRaw = Number(detailsBase?.expAwarded ?? Math.round(score * 100));
+  const expAwarded = Number.isFinite(expAwardedRaw) ? expAwardedRaw : Math.round(score * 100);
+  const { leveledUp, level, badges } = addExp(normalizedUserId, expAwarded);
+  const details = { ...detailsBase, expAwarded };
   const gradedAtValue = result?.gradedAt;
 
   let gradedAt = new Date().toISOString();

@@ -172,3 +172,36 @@ export function getItemById(id) {
   return state.itemsIndex.get(String(id)) || null;
 }
 
+const __users = new Map();
+
+export function getUserState(userId = "anon") {
+  const key = String(userId || "anon");
+  if (!__users.has(key)) {
+    __users.set(key, { exp: 0, level: 1, badges: [] });
+  }
+  return __users.get(key);
+}
+
+const LEVELS = [0, 200, 500, 900, 1400, 2000];
+
+export function addExp(userId, exp) {
+  const stateRef = getUserState(userId);
+  const beforeLevel = stateRef.level || 1;
+  const gain = Math.max(0, exp | 0);
+  stateRef.exp = Math.max(0, (stateRef.exp || 0) + gain);
+  let newLevel = beforeLevel;
+  for (let i = LEVELS.length - 1; i >= 0; i -= 1) {
+    if (stateRef.exp >= LEVELS[i]) {
+      newLevel = Math.max(1, i + 1);
+      break;
+    }
+  }
+  stateRef.level = newLevel;
+  const leveledUp = newLevel > beforeLevel;
+  if (leveledUp) {
+    const badge = `level-${newLevel}`;
+    if (!stateRef.badges.includes(badge)) stateRef.badges.push(badge);
+  }
+  return { leveledUp, level: stateRef.level, badges: stateRef.badges.slice() };
+}
+

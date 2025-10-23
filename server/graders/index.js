@@ -72,6 +72,18 @@ function normalizeResult(r = {}, { userId = 'anon', itemId = null, mode = 'why' 
   };
 }
 
+function __awardExpFromScore(score) {
+  return Math.max(0, Math.round((Number(score) || 0) * 100));
+}
+
+function __withExpAward(result) {
+  const expAwarded = __awardExpFromScore(result?.score);
+  const details = result && typeof result.details === 'object' && !Array.isArray(result.details)
+    ? { ...result.details, expAwarded }
+    : { expAwarded };
+  return { ...result, details };
+}
+
 // --- light helpers used by graders ---
 const toArray = (x) => Array.isArray(x) ? x : (x == null ? [] : [x]);
 const uniq = (arr) => Array.from(new Set(arr));
@@ -246,6 +258,8 @@ function gradeOrder(item, answer) {
   })();
 
   const score = kendallTauNormalized(gold, user);
+  const distance = Math.max(0, 1 - score);
+  const distanceRounded = Number.isFinite(distance) ? Number(distance.toFixed(4)) : 0;
   const pos = new Map(gold.map((id, i) => [id, i]));
   const wrong = [];
   for (let i = 0; i < user.length - 1; i++) {
@@ -259,7 +273,7 @@ function gradeOrder(item, answer) {
     correctSequence: gold,
     fixSuggestion: score < 1 ? 'Swap the violating pair(s) first.' : null,
     nextHints: score < 1 ? ['Keep Reveal 👁️ close to the turn; place Payoff 🎉 after Setup 🎯.'] : ['Clean chain. Ready to speed up the cadence.'],
-    details: { mode:'order', gold, user, wrong },
+    details: { mode:'order', gold, user, wrong, distance: distanceRounded },
   });
 }
 
@@ -389,7 +403,8 @@ export async function grade(modeOrPayload, maybePayload) {
   const callPayload = { ...basePayload, mode, userId, itemId };
   const raw = await _grade(callPayload);
   const merged = { ...raw, mode, userId, itemId };
-  return normalizeResult(merged, { userId, itemId, mode });
+  const withExp = __withExpAward(merged);
+  return normalizeResult(withExp, { userId, itemId, mode });
 }
 
 export default { grade };
@@ -431,8 +446,10 @@ async function __fallbackGrade() { return {}; }
 export async function gradeNormalized(mode, payload) {
   const coerced = __coerceMode(mode);
   const base = (typeof _grade === "function" ? await _grade(coerced, payload) : await __fallbackGrade(coerced, payload)) || {};
+  const merged = { ...base, mode: coerced, userId: payload?.userId, itemId: payload?.itemId };
+  const withExp = __withExpAward(merged);
   return __normalizeResult(
-    { ...base, mode: coerced, userId: payload?.userId, itemId: payload?.itemId },
+    withExp,
     { mode: coerced, userId: payload?.userId, itemId: payload?.itemId }
   );
 }
