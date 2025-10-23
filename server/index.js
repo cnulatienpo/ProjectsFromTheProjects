@@ -10,6 +10,7 @@ import { buildReport } from './report/index.js';
 import { mark, getUserState } from './progress/store.js';
 import { listSigilIds } from './sigil/catalogIds.js';
 import * as mem from './db/mem.js';
+import * as grader from './graders/index.js';
 
 // Import new API routes
 import nextRoutes from './routes/next.js';
@@ -107,9 +108,69 @@ app.use(reportsRoutes);
   console.warn('Route mounting warning:', e && e.message);
 }
 
+app.post('/api/attempt', async (req, res) => {
+  const body = req.body ?? {};
+  const { userId, itemId, mode, answer } = body;
+
+  const normalizedUserId = typeof userId === 'string' && userId.trim()
+    ? userId.trim()
+    : String(req.get('x-user-id') || 'dev');
+  const itemIdRaw = itemId ?? body.id;
+  const normalizedItemId = itemIdRaw != null
+    ? String(itemIdRaw)
+    : null;
+
+  if (!normalizedItemId) {
+    return res.status(400).json({ ok: false, error: 'missing_item_id' });
+  }
+
+  const normalizedMode = typeof mode === 'string' && mode.trim() ? mode.trim() : 'why';
+  const item = { id: normalizedItemId };
+
+  try {
+    const result = await grader.grade({
+      mode: normalizedMode,
+      item,
+      answer,
+      userId: normalizedUserId,
+      itemId: normalizedItemId,
+    });
+    // The grader now returns a fully-normalized object with all contract keys.
+    return res.json(result);
+  } catch (e) {
+    console.error('[attempt] grade error:', e && e.stack ? e.stack : e);
+    return res.status(200).json({
+      ok: false,
+      error: 'grading_failed',
+      message: e?.message || String(e),
+      userId: normalizedUserId,
+      itemId: normalizedItemId,
+      mode: normalizedMode,
+    });
+  }
+});
+
 app.use('/api/attempt', attemptRoutes);
 mounted.push('/api/attempt');
 logMountedRoutes();
+
+// Ensure GET /api/next exists
+app.get('/api/next', async (req, res) => {
+  try {
+    const userId = String(req.query.userId || 'anon');
+    const mod = await import('./scheduler/next.js');
+    const pickNext = mod?.pickNext || mod?.default;
+    if (typeof pickNext !== 'function') {
+      return res.status(500).json({ ok: false, error: 'scheduler.pickNext not available' });
+    }
+    const out = await pickNext(userId);
+    const id = out?.id ?? null;
+    const item = out?.item ?? null;
+    return res.json({ id, item, userId });
+  } catch (e) {
+    return res.status(500).json({ ok: false, error: String(e && e.message || e) });
+  }
+});
 
 app.use(nextRoutes);
 mounted.push('/api/next');

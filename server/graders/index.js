@@ -29,6 +29,49 @@ function ensureShape(result, extra = {}) {
   };
 }
 
+// Normalizer ensures the /api/attempt contract is always satisfied.
+function normalizeResult(r = {}, { userId = 'anon', itemId = null, mode = 'why' } = {}) {
+  const now = new Date().toISOString();
+  const normalizedUserId = typeof r.userId === 'string' && r.userId.trim()
+    ? r.userId.trim()
+    : (typeof userId === 'string' && userId.trim() ? userId.trim() : 'anon');
+  const itemIdSource = r.itemId ?? itemId;
+  const normalizedItemId = itemIdSource == null ? null : String(itemIdSource);
+  const modeSource = typeof r.mode === 'string' && r.mode.trim()
+    ? r.mode.trim()
+    : (typeof mode === 'string' && mode.trim() ? mode.trim() : 'why');
+  const gradedAtValue = r.gradedAt;
+  let gradedAt = now;
+  if (typeof gradedAtValue === 'string' && gradedAtValue.trim()) {
+    gradedAt = gradedAtValue;
+  } else if (gradedAtValue instanceof Date && !Number.isNaN(gradedAtValue.valueOf())) {
+    gradedAt = gradedAtValue.toISOString();
+  }
+  const numericScore = Number(r.score);
+  const score = Number.isFinite(numericScore) ? clamp01(numericScore) : 0.0;
+  const levelValue = Number(r.level);
+  const level = Number.isFinite(levelValue) ? levelValue : 1;
+  const detailsValue = (r.details && typeof r.details === 'object' && !Array.isArray(r.details)) ? r.details : {};
+
+  return {
+    ok: typeof r.ok === 'boolean' ? r.ok : true,
+    userId: normalizedUserId,
+    itemId: normalizedItemId,
+    mode: modeSource,
+    score,
+    rubric: Array.isArray(r.rubric) ? r.rubric : [],
+    spans: Array.isArray(r.spans) ? r.spans : [],
+    correctSequence: Array.isArray(r.correctSequence) ? r.correctSequence : [],
+    fixSuggestion: r.fixSuggestion ?? null,
+    nextHints: Array.isArray(r.nextHints) ? r.nextHints : [],
+    details: detailsValue,
+    leveledUp: !!r.leveledUp,
+    level,
+    badges: Array.isArray(r.badges) ? r.badges : [],
+    gradedAt,
+  };
+}
+
 // --- light helpers used by graders ---
 const toArray = (x) => Array.isArray(x) ? x : (x == null ? [] : [x]);
 const uniq = (arr) => Array.from(new Set(arr));
@@ -331,6 +374,22 @@ export async function _grade({ mode, item, answer }) {
       details: { error: String(e?.message || e), mode: m },
     });
   }
+}
+
+export async function grade(modeOrPayload, maybePayload) {
+  const basePayload = (typeof modeOrPayload === 'string')
+    ? { ...(maybePayload || {}), mode: modeOrPayload }
+    : ((modeOrPayload && typeof modeOrPayload === 'object') ? modeOrPayload : {});
+  const rawMode = basePayload.mode ?? basePayload.item?.mode;
+  const mode = typeof rawMode === 'string' && rawMode.trim() ? rawMode.trim() : 'why';
+  const userIdValue = basePayload.userId;
+  const userId = typeof userIdValue === 'string' && userIdValue.trim() ? userIdValue.trim() : 'anon';
+  const itemIdSource = basePayload.itemId ?? basePayload.item?.id ?? null;
+  const itemId = itemIdSource == null ? null : String(itemIdSource);
+  const callPayload = { ...basePayload, mode, userId, itemId };
+  const raw = await _grade(callPayload);
+  const merged = { ...raw, mode, userId, itemId };
+  return normalizeResult(merged, { userId, itemId, mode });
 }
 
 export default { grade };
