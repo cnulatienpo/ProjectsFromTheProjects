@@ -76,43 +76,43 @@ function normalizeResult(r = {}, { userId = 'anon', itemId = null, mode = 'why' 
 const toArray = (x) => Array.isArray(x) ? x : (x == null ? [] : [x]);
 const uniq = (arr) => Array.from(new Set(arr));
 const BEAT_SYNONYMS = {
-  action: ['act','move','do'],
-  decision: ['choice','decide','pick'],
-  desire: ['want','goal','yearn'],
-  conflict: ['clash','tension','problem'],
-  obstacle: ['block','barrier','resistance'],
-  climax: ['peak','turning point'],
-  resolution: ['denouement','resolve'],
-  reveal: ['discovery','find out'],
-  realization: ['insight','epiphany'],
-  exposition: ['setup','context'],
-  foreshadow: ['hint','omen'],
-  setup: ['plant','seed'],
+  action: ['act', 'move', 'do'],
+  decision: ['choice', 'decide', 'pick'],
+  desire: ['want', 'goal', 'yearn'],
+  conflict: ['clash', 'tension', 'problem'],
+  obstacle: ['block', 'barrier', 'resistance'],
+  climax: ['peak', 'turning point'],
+  resolution: ['denouement', 'resolve'],
+  reveal: ['discovery', 'find out'],
+  realization: ['insight', 'epiphany'],
+  exposition: ['setup', 'context'],
+  foreshadow: ['hint', 'omen'],
+  setup: ['plant', 'seed'],
   payoff: ['result'],
-  emotion: ['feeling','affect'],
-  suppression: ['hide','mask'],
-  vulnerability: ['open','soft spot'],
-  power: ['status','leverage'],
-  shift: ['turn','pivot'],
-  intimacy: ['closeness','tender'],
-  alienation: ['distance','cold'],
-  dialogue: ['talk','speak','line'],
-  nonverbal: ['gesture','look','silence'],
-  interaction: ['exchange','back-and-forth'],
-  agreement: ['deal','sign'],
-  disagreement: ['argue','refuse'],
-  test: ['trial','prove'],
-  reversal: ['flip','invert'],
-  atmosphere: ['mood','texture'],
-  discovery: ['learn','uncover'],
-  loss: ['grief','missing'],
-  arrival: ['enter','show up'],
-  departure: ['leave','exit'],
-  transition: ['cut','jump'],
+  emotion: ['feeling', 'affect'],
+  suppression: ['hide', 'mask'],
+  vulnerability: ['open', 'soft spot'],
+  power: ['status', 'leverage'],
+  shift: ['turn', 'pivot'],
+  intimacy: ['closeness', 'tender'],
+  alienation: ['distance', 'cold'],
+  dialogue: ['talk', 'speak', 'line'],
+  nonverbal: ['gesture', 'look', 'silence'],
+  interaction: ['exchange', 'back-and-forth'],
+  agreement: ['deal', 'sign'],
+  disagreement: ['argue', 'refuse'],
+  test: ['trial', 'prove'],
+  reversal: ['flip', 'invert'],
+  atmosphere: ['mood', 'texture'],
+  discovery: ['learn', 'uncover'],
+  loss: ['grief', 'missing'],
+  arrival: ['enter', 'show up'],
+  departure: ['leave', 'exit'],
+  transition: ['cut', 'jump'],
 };
 
 function canonBeat(b) {
-  const k = String(b||'').toLowerCase().trim();
+  const k = String(b || '').toLowerCase().trim();
   if (!k) return '';
   if (BEAT_SYNONYMS[k]) return k;
   for (const [canon, syns] of Object.entries(BEAT_SYNONYMS)) {
@@ -165,9 +165,9 @@ function kendallTauNormalized(a = [], b = []) {
 
 function charOverlapScore(goldSpans = [], userSpans = []) {
   const g = new Set();
-  for (const s of goldSpans) for (let i=(s.start|0); i<(s.end|0); i++) g.add(i);
+  for (const s of goldSpans) for (let i = (s.start | 0); i < (s.end | 0); i++) g.add(i);
   const u = new Set();
-  for (const s of userSpans) for (let i=(s.start|0); i<(s.end|0); i++) u.add(i);
+  for (const s of userSpans) for (let i = (s.start | 0); i < (s.end | 0); i++) u.add(i);
   if (g.size === 0) return 0;
   let inter = 0; u.forEach(i => { if (g.has(i)) inter++; });
   return clamp01(inter / g.size);
@@ -184,7 +184,7 @@ function gradeName(item, answer) {
 
   const hits = userBeats.filter(b => goldBeats.includes(b));
   const near = userBeats.filter(b => !goldBeats.includes(b) &&
-    goldBeats.some(g => ( (BEAT_SYNONYMS[g]||[]).some(s => b.includes(s)) ))
+    goldBeats.some(g => ((BEAT_SYNONYMS[g] || []).some(s => b.includes(s))))
   );
   const miss = goldBeats.filter(b => !userBeats.includes(b));
 
@@ -198,8 +198,8 @@ function gradeName(item, answer) {
       near.length ? `Near-miss: ${near.join(', ')}` : null,
       miss.length ? `Missing: ${miss.join(', ')}` : null,
     ].filter(Boolean),
-    nextHints: miss.length ? [`Scan for: ${miss.slice(0,3).join(', ')}`] : ['Try adding a Reveal 👁️ before the Payoff 🎉.'],
-    details: { mode:'name', goldBeats, userBeats, hits, near, miss },
+    nextHints: miss.length ? [`Scan for: ${miss.slice(0, 3).join(', ')}`] : ['Try adding a Reveal 👁️ before the Payoff 🎉.'],
+    details: { mode: 'name', goldBeats, userBeats, hits, near, miss },
   });
 }
 
@@ -221,7 +221,7 @@ function gradeMissing(item, answer) {
   }
 
   const ok = provided && missing.includes(provided);
-  const near = provided && !ok && missing.some(g => (BEAT_SYNONYMS[g]||[]).some(s => provided.includes(s)));
+  const near = provided && !ok && missing.some(g => (BEAT_SYNONYMS[g] || []).some(s => provided.includes(s)));
   const score = ok ? 1 : near ? 0.5 : 0;
 
   return ensureShape({
@@ -229,11 +229,11 @@ function gradeMissing(item, answer) {
     rubric: ok
       ? ['Inserted the strongest missing beat.']
       : near
-        ? [`Close! Consider: ${missing.slice(0,2).join(', ')}`]
+        ? [`Close! Consider: ${missing.slice(0, 2).join(', ')}`]
         : ['Pick the beat that completes the moment.'],
     fixSuggestion: ok ? null : 'Name the beat gap you’re repairing.',
     nextHints: ok ? ['Now escalate toward Payoff 🎉.'] : [`Look for the void: ${missing[0] || 'the hinge beat'}.`],
-    details: { mode:'missing', expected, present, missing, provided },
+    details: { mode: 'missing', expected, present, missing, provided },
   });
 }
 
@@ -249,24 +249,24 @@ function gradeOrder(item, answer) {
   const pos = new Map(gold.map((id, i) => [id, i]));
   const wrong = [];
   for (let i = 0; i < user.length - 1; i++) {
-    const a = user[i], b = user[i+1];
-    if (pos.has(a) && pos.has(b) && pos.get(a) > pos.get(b)) wrong.push([a,b]);
+    const a = user[i], b = user[i + 1];
+    if (pos.has(a) && pos.has(b) && pos.get(a) > pos.get(b)) wrong.push([a, b]);
   }
 
   return ensureShape({
     score,
-    rubric: wrong.length ? [`Out of order: ${wrong.slice(0,3).map(([a,b])=>`${a}→${b}`).join(' | ')}`] : ['Sequence looks consistent.'],
+    rubric: wrong.length ? [`Out of order: ${wrong.slice(0, 3).map(([a, b]) => `${a}→${b}`).join(' | ')}`] : ['Sequence looks consistent.'],
     correctSequence: gold,
     fixSuggestion: score < 1 ? 'Swap the violating pair(s) first.' : null,
     nextHints: score < 1 ? ['Keep Reveal 👁️ close to the turn; place Payoff 🎉 after Setup 🎯.'] : ['Clean chain. Ready to speed up the cadence.'],
-    details: { mode:'order', gold, user, wrong },
+    details: { mode: 'order', gold, user, wrong },
   });
 }
 
 function gradeHighlight(item, answer) {
-  const goldSpans = toArray(item?.gold?.spans).map(s => ({ start: s.start|0, end: s.end|0 })).filter(s => s.end > s.start);
+  const goldSpans = toArray(item?.gold?.spans).map(s => ({ start: s.start | 0, end: s.end | 0 })).filter(s => s.end > s.start);
   const userSpans = typeof answer === 'object'
-    ? toArray(answer.spans).map(s => ({ start: s.start|0, end: s.end|0 })).filter(s => s.end > s.start)
+    ? toArray(answer.spans).map(s => ({ start: s.start | 0, end: s.end | 0 })).filter(s => s.end > s.start)
     : [];
 
   const overlap = charOverlapScore(goldSpans, userSpans);
@@ -276,7 +276,7 @@ function gradeHighlight(item, answer) {
     spans: goldSpans,
     fixSuggestion: overlap < 0.6 ? 'Re-read the cue line; highlight just the mechanism.' : null,
     nextHints: overlap < 0.9 ? ['Zoom into verbs and hinge words; highlight the exact trigger.'] : ['Try a tighter span next time.'],
-    details: { mode:'highlight', goldSpans, userSpans, overlap },
+    details: { mode: 'highlight', goldSpans, userSpans, overlap },
   });
 }
 
@@ -295,11 +295,11 @@ function gradeFix(item, answer) {
     score,
     rubric: score === 1 ? ['Right fix: precise and minimal.']
       : score === 0.5 ? ['Close fix: watch for clarity or rule edge cases.']
-      : ['Pick the option that removes error without adding style noise.'],
+        : ['Pick the option that removes error without adding style noise.'],
     fixSuggestion: score === 1 ? null : 'Prefer the smallest change that resolves the issue.',
     nextHints: score === 1 ? ['Try the subtler pair next round.']
       : ['Check for label-y emotion, over-explain, or speechy theme—trim accordingly.'],
-    details: { mode:'fix', key, choice, nearMiss: Array.from(nearMiss) },
+    details: { mode: 'fix', key, choice, nearMiss: Array.from(nearMiss) },
   });
 }
 
@@ -314,13 +314,13 @@ function gradeWhy(item, answer) {
   const hay = text.toLowerCase();
 
   const TAGS = {
-    emotional: ['feeling','emotion','tone','mood','affect'],
-    'money/class': ['money','rent','bill','class','status','work'],
-    process: ['because','so that','therefore','in order to','method'],
-    'voice/style': ['voice','style','diction','cadence','rhythm','syntax'],
-    clarity: ['clear','confusing','ambiguous','specific'],
-    stakes: ['stakes','risk','cost','consequence'],
-    motive: ['motive','want','goal','desire','because'],
+    emotional: ['feeling', 'emotion', 'tone', 'mood', 'affect'],
+    'money/class': ['money', 'rent', 'bill', 'class', 'status', 'work'],
+    process: ['because', 'so that', 'therefore', 'in order to', 'method'],
+    'voice/style': ['voice', 'style', 'diction', 'cadence', 'rhythm', 'syntax'],
+    clarity: ['clear', 'confusing', 'ambiguous', 'specific'],
+    stakes: ['stakes', 'risk', 'cost', 'consequence'],
+    motive: ['motive', 'want', 'goal', 'desire', 'because'],
   };
 
   const hits = [];
@@ -339,18 +339,19 @@ function gradeWhy(item, answer) {
     rubric: [
       hits.length ? `Addresses: ${hits.join(', ')}` : 'State motive and consequence explicitly.',
       ...((goldTags.filter(t => !hits.includes(t)).length)
-        ? [`Could add: ${goldTags.filter(t => !hits.includes(t)).slice(0,2).join(', ')}`]
+        ? [`Could add: ${goldTags.filter(t => !hits.includes(t)).slice(0, 2).join(', ')}`]
         : [])
     ],
     nextHints: (goldTags.length && hits.length < goldTags.length)
       ? ['Tie motive to stakes: “because …, so …”.']
       : ['Add one concrete sentence that shows consequence, not label.'],
-    details: { mode:'why', goldTags, hits, wordCount },
+    details: { mode: 'why', goldTags, hits, wordCount },
   });
 }
 
-// Public API
-export async function _grade({ mode, item, answer }) {
+
+// Internal grader implementation
+async function _grade({ mode, item, answer }) {
   const m = String(mode || item?.mode || '').toLowerCase();
   try {
     switch (m) {
@@ -376,107 +377,31 @@ export async function _grade({ mode, item, answer }) {
   }
 }
 
-export async function _grade(modeOrPayload, maybePayload) {
-  const basePayload = (typeof modeOrPayload === 'string')
-    ? { ...(maybePayload || {}), mode: modeOrPayload }
-    : ((modeOrPayload && typeof modeOrPayload === 'object') ? modeOrPayload : {});
-  const rawMode = basePayload.mode ?? basePayload.item?.mode;
-  const mode = typeof rawMode === 'string' && rawMode.trim() ? rawMode.trim() : 'why';
-  const userIdValue = basePayload.userId;
-  const userId = typeof userIdValue === 'string' && userIdValue.trim() ? userIdValue.trim() : 'anon';
-  const itemIdSource = basePayload.itemId ?? basePayload.item?.id ?? null;
-  const itemId = itemIdSource == null ? null : String(itemIdSource);
-  const callPayload = { ...basePayload, mode, userId, itemId };
-  const raw = await _grade(callPayload);
-  const merged = { ...raw, mode, userId, itemId };
-  return normalizeResult(merged, { userId, itemId, mode });
+// Public API: wrapper that coerces mode and normalizes output
+export async function grade(mode, payload) {
+  const allowedModes = new Set(["name", "missing", "order", "highlight", "fix", "why", "sigil"]);
+  const coerced = allowedModes.has((mode ?? "").toString().toLowerCase()) ? (mode ?? "").toString().toLowerCase() : "why";
+  const basePayload = { ...(payload || {}), mode: coerced };
+  const raw = await _grade(basePayload);
+  // Normalize output
+  const now = new Date().toISOString();
+  return {
+    ok: true,
+    userId: basePayload.userId ?? raw.userId ?? "anon",
+    itemId: basePayload.itemId ?? raw.itemId ?? null,
+    mode: coerced,
+    score: typeof raw.score === "number" ? raw.score : 0.0,
+    rubric: Array.isArray(raw.rubric) ? raw.rubric : [],
+    spans: Array.isArray(raw.spans) ? raw.spans : [],
+    correctSequence: Array.isArray(raw.correctSequence) ? raw.correctSequence : [],
+    fixSuggestion: raw.fixSuggestion ?? null,
+    nextHints: Array.isArray(raw.nextHints) ? raw.nextHints : [],
+    details: (raw.details && typeof raw.details === "object") ? raw.details : {},
+    leveledUp: !!raw.leveledUp,
+    level: Number.isFinite(raw.level) ? raw.level : 1,
+    badges: Array.isArray(raw.badges) ? raw.badges : [],
+    gradedAt: typeof raw.gradedAt === "string" ? raw.gradedAt : now
+  };
 }
 
 export default { grade };
-
-// --- wrapper: coerce mode + normalize attempt response ---
-const __ALLOWED_MODES = new Set(["name","missing","order","highlight","fix","why","sigil"]);
-function __coerceMode(m) {
-  const s = (m ?? "").toString().toLowerCase();
-  return __ALLOWED_MODES.has(s) ? s : "why";
-}
-function __normalizeResult(r = {}, ctx = {}) {
-  const now = new Date().toISOString();
-  const userId = ctx.userId ?? r.userId ?? "anon";
-  const itemId = ctx.itemId ?? r.itemId ?? null;
-  const mode = ctx.mode ?? r.mode ?? "why";
-  return {
-    ok: true,
-    userId,
-    itemId,
-    mode,
-    score: typeof r.score === "number" ? r.score : 0.0,
-    rubric: Array.isArray(r.rubric) ? r.rubric : [],
-    spans: Array.isArray(r.spans) ? r.spans : [],
-    correctSequence: Array.isArray(r.correctSequence) ? r.correctSequence : [],
-    fixSuggestion: r.fixSuggestion ?? null,
-    nextHints: Array.isArray(r.nextHints) ? r.nextHints : [],
-    details: (r.details && typeof r.details === "object") ? r.details : {},
-    leveledUp: !!r.leveledUp,
-    level: Number.isFinite(r.level) ? r.level : 1,
-    badges: Array.isArray(r.badges) ? r.badges : [],
-    gradedAt: typeof r.gradedAt === "string" ? r.gradedAt : now
-  };
-}
-
-// IMPORTANT: _grade is the original implementation renamed above.
-// If _grade is missing (edge case), fall back to a no-op that yields a valid shape.
-async function __fallbackGrade() { return {}; }
-
-async function __grade_removed__(mode, payload) {
-  const coerced = __coerceMode(mode);
-  const base = (typeof _grade === "function" ? await _grade(coerced, payload) : await __fallbackGrade(coerced, payload)) || {};
-  return __normalizeResult(
-    { ...base, mode: coerced, userId: payload?.userId, itemId: payload?.itemId },
-    { mode: coerced, userId: payload?.userId, itemId: payload?.itemId }
-  );
-}
-
-// --- [dedupe wrapper appended by fix/graders-dedupe-grade] ---
-const __AUD_ALLOWED_1 = new Set(["name","missing","order","highlight","fix","why","sigil"]);
-function __aud_coerce_mode_1(m){ const s=(m??"").toString().toLowerCase(); return __AUD_ALLOWED_1.has(s)?s:"why"; }
-function __aud_normalize_1(r = {}, ctx = {}) {
-  const now = new Date().toISOString();
-  const userId = ctx.userId ?? r.userId ?? "anon";
-  const itemId = ctx.itemId ?? r.itemId ?? null;
-  const mode   = ctx.mode   ?? r.mode   ?? "why";
-  return {
-    ok: true,
-    userId,
-    itemId,
-    mode,
-    score: typeof r.score === "number" ? r.score : 0.0,
-    rubric: Array.isArray(r.rubric) ? r.rubric : [],
-    spans: Array.isArray(r.spans) ? r.spans : [],
-    correctSequence: Array.isArray(r.correctSequence) ? r.correctSequence : [],
-    fixSuggestion: r.fixSuggestion ?? null,
-    nextHints: Array.isArray(r.nextHints) ? r.nextHints : [],
-    details: (r.details && typeof r.details === "object") ? r.details : {},
-    leveledUp: !!r.leveledUp,
-    level: Number.isFinite(r.level) ? r.level : 1,
-    badges: Array.isArray(r.badges) ? r.badges : [],
-    gradedAt: typeof r.gradedAt === "string" ? r.gradedAt : now
-  };
-}
-
-// IMPORTANT: `_grade` is the original function renamed above. If it somehow does not exist, fallback to empty.
-async function __aud_fallback_grade_1(){ return {}; }
-
-export async function grade(mode, payload) {
-  const coerced = __aud_coerce_mode_1(mode);
-  let base = {};
-  try {
-    if (typeof _grade === "function") base = await _grade(coerced, payload);
-    else base = await __aud_fallback_grade_1(coerced, payload);
-  } catch {}
-  return __aud_normalize_1(
-    { ...base, mode: coerced, userId: payload?.userId, itemId: payload?.itemId },
-    { mode: coerced, userId: payload?.userId, itemId: payload?.itemId }
-  );
-}
-// --- [end wrapper] ---

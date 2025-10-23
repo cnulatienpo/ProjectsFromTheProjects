@@ -2,19 +2,28 @@
 // Shared helper used by skip route to fetch a candidate next item.
 // Respects mem.tickNextPick and mem.shouldAvoidItem.
 
+
 import * as mem from '../../db/mem.js';
-import { loadPracticePool } from '../../content/loaders.js';
 import scheduler from '../../scheduler/next.js';
 
 export async function getNextItem(userId = 'dev') {
-  const pool = await loadPracticePool(); // returns array of items
-  // avoid immediately resurfacing skipped items: filter by mem.shouldAvoidItem
-  const filtered = pool.filter(it => !mem.shouldAvoidItem(userId, it.id));
-  // Advance the rolling "pick tick" each time we compute next:
   mem.tickNextPick(userId);
-  // let scheduler pick the best
-  const next = scheduler.pickNextItem(userId, filtered);
-  return next || filtered[0] || pool[0] || null;
+  // Use scheduler.pickNext, which guarantees a normalized, non-empty catalog and real id
+  const next = await scheduler.pickNext(userId);
+  // Defensive: always return an object with id, item, userId
+  if (!next || !next.id || !next.item) {
+    return {
+      id: 'why-boot-001',
+      item: {
+        id: 'why-boot-001',
+        mode: 'why',
+        prompt: 'Why does short→long sentence rhythm hit harder? One line.',
+        meta: { source: 'fallback', level: 1, freshness: 3, introduces_beats: false }
+      },
+      userId
+    };
+  }
+  return next;
 }
 
 export default { getNextItem };

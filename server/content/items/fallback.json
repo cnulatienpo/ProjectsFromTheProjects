@@ -1,0 +1,11 @@
+[
+  {
+    "id": "why-boot-001",
+    "mode": "why",
+    "prompt": "Why does short→long rhythm hit harder? One line.",
+    "meta": {
+      "freshness": 3,
+      "level": 1
+    }
+  }
+]
