@@ -35,35 +35,65 @@ function dedupe(list) {
   return out;
 }
 
-function normalizeIntroducesBeats(raw, meta) {
-  const fromRaw = toStringArray(raw?.introduces_beats ?? raw?.introducesBeats);
-  const fromMeta = toStringArray(meta?.introduces_beats ?? meta?.introducesBeats);
-  return dedupe([...fromRaw, ...fromMeta]);
+const __ALLOWED_MODES = new Set(["name", "missing", "order", "highlight", "fix", "why", "sigil"]);
+function __coerceMode(m) {
+  const s = (m ?? "").toString().toLowerCase();
+  return __ALLOWED_MODES.has(s) ? s : "why";
+}
+function __firstString(...xs) {
+  for (const v of xs) {
+    if (typeof v === "string" && v.trim()) return v.trim();
+  }
+  return null;
 }
 
-function normalizeItem(raw, idx) {
-  const id = String(raw?.id ?? `item-${idx + 1}`);
-  const mode = String(raw?.mode ?? "why");
-  const prompt = String(raw?.prompt ?? "Write one sentence about cause → effect.");
-  const baseMeta = (() => {
-    const metaFromField = raw && typeof raw.meta === "object" && raw.meta !== null ? { ...raw.meta } : {};
-    if (raw && typeof raw === "object") {
-      const extra = { ...raw };
-      delete extra.id;
-      delete extra.mode;
-      delete extra.prompt;
-      delete extra.meta;
-      return { ...extra, ...metaFromField };
-    }
-    return metaFromField;
-  })();
-  const introduces_beats = normalizeIntroducesBeats(raw, baseMeta);
-  const meta = { ...baseMeta, introduces_beats };
+export function validateAndNormalizeItem(raw, idx = 0, source = "core") {
+  if (!raw || typeof raw !== "object") {
+    console.warn("[schema] non-object item @", source, idx);
+    return null;
+  }
+  const id = __firstString(raw.id, raw.uid, raw.key, raw._id, raw.slug) ?? `${source}-${idx + 1}`;
+  const text = __firstString(
+    raw.prompt,
+    raw.passage,
+    raw.text,
+    raw.body,
+    raw.sentence,
+    raw.instruction,
+    raw?.meta?.title,
+  );
+  if (!text) {
+    console.warn("[schema] missing text/prompt @", id, source);
+    return null;
+  }
+  const mode = __coerceMode(raw.mode ?? raw.task ?? raw.type);
+  const metaBase = raw && typeof raw.meta === "object" && raw.meta !== null ? { ...raw.meta } : {};
+  const meta = { source, ...metaBase };
+  const ibSources = [raw.introduces_beats, raw.introducesBeats, meta.introduces_beats, meta.introducesBeats];
+  const introduces_beats = dedupe(
+    ibSources
+      .flatMap((value) => toStringArray(value))
+      .map((beat) => beat.trim())
+      .filter(Boolean),
+  );
+  meta.introduces_beats = introduces_beats;
   delete meta.introducesBeats;
-  return { id, mode, prompt, meta, introduces_beats };
+
+  const base = { ...raw };
+  base.id = String(id);
+  base.mode = mode;
+  base.prompt = text;
+  if (!base.text) base.text = text;
+  if (!base.passage) base.passage = text;
+  base.meta = meta;
+  base.introduces_beats = introduces_beats;
+  if (Array.isArray(base.correctSequence)) {
+    base.correctSequence = base.correctSequence.map((entry) => String(entry));
+  }
+  return base;
 }
 
-async function loadDir(dir) {
+async function loadDir(dir, source = "core") {
   let items = [];
   try {
     const files = await readdir(dir, { withFileTypes: true });
@@ -76,9 +106,13 @@ async function loadDir(dir) {
         const data = JSON.parse(txt);
         if (Array.isArray(data)) {
           const start = items.length;
-          data.forEach((raw, idx) => items.push(normalizeItem(raw, start + idx)));
+          data.forEach((raw, idx) => {
+            const normalized = validateAndNormalizeItem(raw, start + idx, source);
+            if (normalized) items.push(normalized);
+          });
         } else {
-          items.push(normalizeItem(data, items.length));
+          const normalized = validateAndNormalizeItem(data, items.length, source);
+          if (normalized) items.push(normalized);
         }
       } catch {
         // Ignore malformed files; keep server alive.
@@ -87,15 +121,15 @@ async function loadDir(dir) {
   } catch {
     // Directory may not exist; fall through to fallback items.
   }
-  return items;
+  return items.filter(Boolean);
 }
 
 export async function loadTweetrunk() {
-  return loadDir(TWEETRUNK_DIR);
+  return loadDir(TWEETRUNK_DIR, "tweetrunk");
 }
 
 export async function loadPractice() {
-  return loadDir(PRACTICE_DIR);
+  return loadDir(PRACTICE_DIR, "practice");
 }
 
 export async function getCatalog() {
@@ -105,19 +139,19 @@ export async function getCatalog() {
     loadPractice(),
   ]);
 
-  let items = [...tweets, ...practice, ...core];
+  let items = [...tweets, ...practice, ...core].filter(Boolean);
   if (items.length === 0) {
-    items = [
-      normalizeItem(
-        {
-          id: "sample-why-1",
-          mode: "why",
-          prompt: "In one line, explain why short→long sentence rhythm increases impact.",
-          meta: { freshness: 1, level: 1, introduces_beats: [] },
-        },
-        0,
-      ),
-    ];
+    const fallback = validateAndNormalizeItem(
+      {
+        id: "sample-why-1",
+        mode: "why",
+        prompt: "In one line, explain why short→long sentence rhythm increases impact.",
+        meta: { freshness: 1, level: 1, introduces_beats: [] },
+      },
+      0,
+      "core",
+    );
+    items = fallback ? [fallback] : [];
   }
   return items;
 }

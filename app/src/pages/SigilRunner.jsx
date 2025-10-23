@@ -1,389 +1,200 @@
-import { useEffect, useMemo, useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
-import NotesPanel from '@/components/NotesPanel.jsx';
+import React from 'react';
+import HighlightablePassage from '@/components/HighlightablePassage.jsx';
+import OrderBeats from '@/components/OrderBeats.jsx';
+import BeatPalette from '@/components/BeatPalette.jsx';
 import FeedbackTray from '@/components/FeedbackTray.jsx';
-import BeatRail from '@/components/BeatRail.jsx';
-import BeatTextEditor from '@/components/BeatTextEditor.jsx';
-import { beatsForLesson } from '@/logic/beatUnlockSchedule';
-import { useBeatUnlocks } from '@/state/useBeatUnlocks';
-import { getLesson } from '@/services/sigilLesson';
-import { fetchNext, skipItem, submitAttempt } from '@/lib/attemptApi';
+import { fetchNext, skipItem, submitAttempt } from '@/lib/attemptApi.js';
 
 const USER_ID = 'dev';
-const MODE = 'why';
+const DEFAULT_MODE = 'why';
 
-const defaultBeatEmoticon = {
-  action: '🔨',
-  decision: '✅',
-  desire: '❤️',
-  conflict: '⚔️',
-  obstacle: '🧱',
-  climax: '⛰️',
-  resolution: '🌅',
-  reveal: '👁️',
-  realization: '💡',
-  exposition: '📜',
-  foreshadow: '🌒',
-  setup: '🎯',
-  payoff: '🎉',
-  emotion: '😭',
-  suppression: '🤐',
-  vulnerability: '🫀',
-  power: '👑',
-  shift: '🔄',
-  intimacy: '🤝',
-  alienation: '🪫',
-  dialogue: '💬',
-  nonverbal: '👀',
-  interaction: '↔️',
-  agreement: '✍️',
-  disagreement: '❌',
-  test: '🧪',
-  reversal: '🔁',
-  atmosphere: '🌫️',
-  discovery: '🗺️',
-  loss: '🕳️',
-  arrival: '🚪',
-  departure: '🛫',
-  transition: '⏭️',
-};
-
-function toPlainText(input = '') {
-  return String(input)
-    .replace(/<br\s*\/?>(?=\s)/gi, ' ')
-    .replace(/<[^>]+>/g, ' ')
-    .replace(/&nbsp;/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
+function coerceMode(mode) {
+  const value = typeof mode === 'string' ? mode.toLowerCase() : '';
+  return ['name', 'missing', 'order', 'highlight', 'fix', 'why', 'sigil'].includes(value)
+    ? value
+    : DEFAULT_MODE;
 }
 
 export default function SigilRunner() {
-  const { id } = useParams();
-  const nav = useNavigate();
-  const [lesson, setLesson] = useState(null);
-  const [currentItem, setCurrentItem] = useState(null);
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(true);
-  const [text, setText] = useState('');
-  const [editorKey, setEditorKey] = useState(0);
-  const [pendingInsert, setPendingInsert] = useState(null);
-  const [feedback, setFeedback] = useState(null);
-  const [submitError, setSubmitError] = useState('');
-  const [submitting, setSubmitting] = useState(false);
+  const [item, setItem] = React.useState(null);
+  const [answer, setAnswer] = React.useState('');
+  const [orderAnswer, setOrderAnswer] = React.useState([]);
+  const [result, setResult] = React.useState(null);
+  const [busy, setBusy] = React.useState(false);
+  const [unlocks, setUnlocks] = React.useState([]);
+  const [error, setError] = React.useState('');
 
-  // Load lesson when id changes. When no id is provided, grab one from /api/next.
-  useEffect(() => {
-    let ignore = false;
+  React.useEffect(() => {
+    void handleNext();
+  }, []);
 
-    async function loadFromRoute() {
-      if (!id) {
-        setLoading(true);
-        try {
-          const nextItem = await fetchNext(USER_ID);
-          if (ignore) return;
-          if (nextItem?.id) {
-            setCurrentItem({ ...nextItem, mode: nextItem.mode || MODE });
-            setFeedback(null);
-            setSubmitError('');
-            setText('');
-            setEditorKey((k) => k + 1);
-            nav(`/sigil/${encodeURIComponent(nextItem.id)}`, { replace: true });
-          } else {
-            setError('No lesson available.');
-            setLoading(false);
-          }
-        } catch (e) {
-          if (!ignore) {
-            setError(e?.message || 'Failed to load next lesson.');
-            setLoading(false);
-          }
-        }
-        return;
-      }
-
-      setLoading(true);
-      setError('');
-      setLesson(null);
-      try {
-        const data = await getLesson(String(id));
-        if (ignore) return;
-        if (!data) {
-          setError('Lesson unavailable.');
-          setLesson(null);
-        } else {
-          setLesson(data);
-          setFeedback(null);
-          setSubmitError('');
-          setText('');
-          setEditorKey((k) => k + 1);
-          setPendingInsert(null);
-        }
-      } catch (e) {
-        if (!ignore) {
-          setError(e?.message ? String(e.message) : String(e));
-          setLesson(null);
-        }
-      } finally {
-        if (!ignore) {
-          setLoading(false);
-        }
-      }
-    }
-
-    loadFromRoute();
-    return () => {
-      ignore = true;
-    };
-  }, [id, nav]);
-
-  // Ensure currentItem reflects the lesson id when loaded directly.
-  useEffect(() => {
-    if (!lesson?.id) return;
-    setCurrentItem((prev) => {
-      if (prev && prev.id === lesson.id) {
-        return prev.mode ? prev : { ...prev, mode: prev.mode || MODE };
-      }
-      return { id: lesson.id, mode: MODE };
-    });
-  }, [lesson?.id]);
-
-  const { unlockBeats } = useBeatUnlocks();
-  useEffect(() => {
-    if (!lesson?.id) return;
-    const lessonNumber = (() => {
-      try {
-        const match = String(lesson.id).match(/(\d+)/);
-        return match ? parseInt(match[1], 10) : NaN;
-      } catch {
-        return NaN;
-      }
-    })();
-    if (!Number.isNaN(lessonNumber)) {
-      const toUnlock = beatsForLesson(lessonNumber);
-      unlockBeats(lesson.id || `lesson-${lessonNumber}`, toUnlock, lesson?.emoticonColor);
-    }
-  }, [lesson?.id, lesson?.emoticonColor, unlockBeats]);
-
-  const plainText = useMemo(() => toPlainText(text), [text]);
-  const wordCount = useMemo(() => {
-    if (!plainText) return 0;
-    return plainText.split(/\s+/).filter(Boolean).length;
-  }, [plainText]);
-  const canSubmit = true;
-
-  const handleBeatInsert = (beatData) => {
-    setPendingInsert(beatData);
-  };
-
-  const handleConsumePendingInsert = () => {
-    setPendingInsert(null);
-  };
-
-  async function handleSubmit() {
-    if (submitting) return;
-    const itemId = currentItem?.id || lesson?.id || id;
-    if (!itemId) {
-      setSubmitError('Missing lesson id.');
-      return;
-    }
-
-    setSubmitting(true);
-    setSubmitError('');
-
-    try {
-      const sigils = (plainText.match(/\[([^\]]+)\]/g) || []).map((s) => s.slice(1, -1).toLowerCase());
-      const answer = { text: plainText, sigils, rationale: null };
-      const result = await submitAttempt({
-        userId: USER_ID,
-        itemId: String(itemId),
-        mode: currentItem?.mode || MODE,
-        answer,
-      });
-      setFeedback(result);
-    } catch (e) {
-      setSubmitError(e?.message || 'Submission failed.');
-    } finally {
-      setSubmitting(false);
-    }
-  }
-
-  async function loadNextItem(replace = false) {
-    setSubmitError('');
-    setFeedback(null);
-    setError('');
-    setLesson(null);
-    setText('');
-    setEditorKey((k) => k + 1);
-    setPendingInsert(null);
-    setLoading(true);
-    try {
-      const nextItem = await fetchNext(USER_ID);
-      const normalized = nextItem ? { ...nextItem, mode: nextItem.mode || MODE } : null;
-      setCurrentItem(normalized);
-      const nextId = normalized?.id ? String(normalized.id) : null;
-      if (!nextId) {
-        setError('No additional lessons available.');
-        setLoading(false);
-        return;
-      }
-
-      const currentRouteId = id ? String(id) : null;
-      if (currentRouteId && nextId === currentRouteId) {
-        try {
-          const data = await getLesson(nextId);
-          if (!data) {
-            setError('Lesson unavailable.');
-            setLesson(null);
-          } else {
-            setLesson(data);
-            setFeedback(null);
-            setSubmitError('');
-          }
-        } catch (err) {
-          setError(err?.message || 'Failed to load lesson.');
-        } finally {
-          setLoading(false);
-        }
-      } else {
-        nav(`/sigil/${encodeURIComponent(nextId)}`, { replace });
-      }
-    } catch (e) {
-      setError(e?.message || 'Failed to load the next lesson.');
-      setLoading(false);
-    }
-  }
+  const promptText = item?.prompt || item?.passage || item?.text || '';
+  const mode = coerceMode(item?.mode);
 
   async function handleNext() {
-    await loadNextItem(false);
+    setBusy(true);
+    setError('');
+    try {
+      const nxt = await fetchNext(USER_ID);
+      const picked = nxt?.item && nxt?.id ? { id: String(nxt.id), ...(nxt.item || {}) } : nxt;
+      if (picked && picked.id) {
+        const normalizedMode = coerceMode(picked.mode ?? picked.task ?? picked.type);
+        const meta = picked.meta && typeof picked.meta === 'object' ? picked.meta : {};
+        const introduces = [
+          ...(Array.isArray(picked.introduces_beats) ? picked.introduces_beats.map((b) => String(b)) : []),
+          ...(Array.isArray(meta.introduces_beats) ? meta.introduces_beats.map((b) => String(b)) : []),
+        ].filter(Boolean);
+        if (introduces.length) {
+          setUnlocks((prev) => {
+            const set = new Set(prev.map((b) => String(b)));
+            introduces.forEach((b) => set.add(String(b)));
+            return Array.from(set);
+          });
+        }
+        const correctSequence = Array.isArray(picked.correctSequence)
+          ? picked.correctSequence.map((v) => String(v))
+          : [];
+        const orderOptions = (() => {
+          if (Array.isArray(picked.orderOptions) && picked.orderOptions.length) return picked.orderOptions;
+          if (Array.isArray(meta.orderOptions) && meta.orderOptions.length) return meta.orderOptions;
+          return correctSequence;
+        })().map((v) => String(v));
+        setItem({
+          id: String(picked.id),
+          prompt: promptFromItem(picked),
+          mode: normalizedMode,
+          meta,
+          correctSequence,
+          orderOptions,
+        });
+        setAnswer('');
+        setOrderAnswer(orderOptions);
+        setResult(null);
+      } else {
+        setItem(null);
+        setResult(null);
+      }
+    } catch (e) {
+      setError(e?.message || 'Failed to load next item.');
+    } finally {
+      setBusy(false);
+    }
   }
 
   async function handleSkip() {
-    const itemId = currentItem?.id || lesson?.id || id;
-    if (!itemId) {
-      setError('Unable to skip without a lesson id.');
-      return;
-    }
+    if (!item?.id) return;
+    setBusy(true);
     try {
-      await skipItem({ userId: USER_ID, itemId: String(itemId) });
+      await skipItem({ userId: USER_ID, itemId: item.id, reason: 'user_skip' });
+      await handleNext();
     } catch (e) {
-      setSubmitError(e?.message || 'Failed to record skip.');
+      setError(e?.message || 'Failed to skip item.');
+      setBusy(false);
     }
-    await loadNextItem(false);
   }
 
-  const rayLines = useMemo(() => {
-    if (!feedback) return [];
-    const parts = [
-      feedback?.score != null ? `Score: ${Math.round(feedback.score * 100)}%` : null,
-      feedback?.rubric?.length
-        ? `Rubric: ${feedback.rubric
-            .map((r) => (typeof r === 'string' ? r : `${r.key}${r.ok ? '✓' : '✗'}`))
-            .join(', ')}`
-        : null,
-      feedback?.details?.message ? `Note: ${feedback.details.message}` : null,
-      feedback?.fixSuggestion ? `Suggestion: ${feedback.fixSuggestion}` : null,
-      ...(Array.isArray(feedback?.nextHints) ? feedback.nextHints.map((hint) => `Next: ${hint}`) : []),
-    ];
-    return parts.filter(Boolean);
-  }, [feedback]);
-
-  const rawContent = lesson?.content_html || lesson?.prompt_html || '';
-  const contentHTML = useMemo(() => stripAutoTitle(rawContent), [rawContent]);
-  const promptHTML = useMemo(() => {
-    if (!lesson) return '';
-    if (lesson.prompt_hint) return lesson.prompt_hint;
-    if (lesson.content_html && lesson.prompt_html) return lesson.prompt_html;
-    return '';
-  }, [lesson]);
-
-  if (error) {
-    return (
-      <main className="sigil-root surface" style={{ padding: 24 }}>
-        <b>Error:</b> {error} <p><Link to="/sigil">Back to catalog</Link></p>
-      </main>
-    );
+  async function handleSubmit() {
+    if (!item?.id) return;
+    setBusy(true);
+    setError('');
+    try {
+      const payload = mode === 'order'
+        ? { userId: USER_ID, itemId: item.id, mode: 'order', answer: orderAnswer }
+        : { userId: USER_ID, itemId: item.id, mode, answer };
+      const res = await submitAttempt(payload);
+      setResult(res);
+    } catch (e) {
+      setError(e?.message || 'Submission failed.');
+    } finally {
+      setBusy(false);
+    }
   }
 
-  if (loading && !lesson) {
-    return (
-      <main className="sigil-root surface" style={{ padding: 24 }}>
-        Loading lesson…
-      </main>
-    );
-  }
+  const wordCount = React.useMemo(() => {
+    const tokens = String(answer).trim().split(/\s+/).filter(Boolean);
+    return tokens.length;
+  }, [answer]);
 
-  if (!lesson) {
-    return (
-      <main className="sigil-root surface" style={{ padding: 24 }}>
-        No lesson available.
-      </main>
-    );
-  }
+  const canSubmit = mode === 'order' ? orderAnswer.length > 0 : true;
 
-  const lessonId = currentItem?.id || lesson?.id || id;
+  const levelInfo = result?.level ? `Level ${result.level}` : '';
 
   return (
-    <main className="pfp-shell">
-      <div className="sigil-stage">
-        <section className="sigil-box sigil-content">
-          <div dangerouslySetInnerHTML={{ __html: contentHTML }} />
-        </section>
-
-        <section className="sigil-box sigil-prompt">
-          <div dangerouslySetInnerHTML={{ __html: promptHTML }} />
-        </section>
-
-        <div className="sigil-row" style={{ position: 'relative' }}>
-          <BeatRail
-            emoticonMap={lesson?.emoticonMap || defaultBeatEmoticon}
-            colorMap={lesson?.emoticonColor}
-            onInsert={handleBeatInsert}
-          />
-          <section className="sigil-editor">
-            <BeatTextEditor
-              key={editorKey}
-              value={text}
-              onChange={setText}
-              placeholder="Write your response here…"
-              pendingInsert={pendingInsert}
-              onConsumeInsert={handleConsumePendingInsert}
-            />
-            <div className="sigil-meta" style={{ padding: '8px 12px', borderTop: '1px solid #000' }}>
-              {wordCount} words
-            </div>
-          </section>
-
-          <aside className="sigil-notes">
-            <NotesPanel
-              gameKey="sigil"
-              lessonId={lessonId}
-              rayRayTitle="Ray Ray Says"
-              rayRayLines={rayLines}
-            />
-          </aside>
-        </div>
-
-        <section className="sigil-tray">
-          <div className="sigil-tray-title">ray ray says:</div>
-          <FeedbackTray
-            feedback={feedback}
-            submitting={submitting}
-            canSubmit={canSubmit}
-            onSubmit={handleSubmit}
-            onNext={handleNext}
-            onSkip={handleSkip}
-            error={submitError}
-            nextEnabled={Boolean(feedback)}
-          />
-        </section>
+    <div className="p-4 space-y-4">
+      <div className="text-lg font-semibold">Sigil Runner</div>
+      {levelInfo ? <div className="text-sm">{levelInfo}</div> : null}
+      {error ? <div className="text-sm text-red-600">{error}</div> : null}
+      <div className="border rounded p-3">
+        <div className="text-sm opacity-80 mb-2">Prompt</div>
+        {mode === 'highlight'
+          ? <HighlightablePassage text={promptText} spans={result?.spans || []} />
+          : <pre className="whitespace-pre-wrap text-sm">{promptText || 'Loading…'}</pre>}
       </div>
-    </main>
+
+      {mode === 'order' ? (
+        <OrderBeats options={item?.orderOptions || []} onChange={setOrderAnswer} />
+      ) : (
+        <>
+          <div className="text-xs opacity-60">Words: {wordCount}</div>
+          <textarea
+            value={answer}
+            onChange={(e) => setAnswer(e.target.value)}
+            rows={8}
+            className="w-full border rounded p-2"
+            placeholder="Write here…"
+            disabled={busy}
+          />
+        </>
+      )}
+
+      {Array.isArray(item?.meta?.beats) && item.meta.beats.length ? (
+        <BeatPalette
+          beats={item.meta.beats}
+          unlocks={unlocks}
+          onPick={(label, beatObj) => {
+            const text = typeof label === 'string' && label.trim()
+              ? label
+              : (beatObj && (beatObj.label || beatObj.id || beatObj.key || beatObj.text || ''));
+            if (!text) return;
+            setAnswer((prev) => `${prev}${prev ? ' ' : ''}${text}`);
+          }}
+        />
+      ) : null}
+
+      <div className="flex gap-2 flex-wrap">
+        <button
+          onClick={handleSubmit}
+          disabled={busy || !item?.id || !canSubmit}
+          className="px-3 py-2 border rounded"
+        >
+          Submit
+        </button>
+        <button
+          onClick={handleNext}
+          disabled={busy}
+          className="px-3 py-2 border rounded"
+        >
+          Next
+        </button>
+        <button
+          onClick={handleSkip}
+          disabled={busy || !item?.id}
+          className="px-3 py-2 border rounded"
+        >
+          I don’t feel like it
+        </button>
+      </div>
+
+      <FeedbackTray result={result} onNext={handleNext} />
+    </div>
   );
 }
 
-function stripAutoTitle(html) {
-  if (!html) return '';
-  const hTag = html.replace(/^\s*<h[12][^>]*>.*?<\/h[12]>\s*/is, '');
-  const strongFirst = hTag.replace(/^\s*<p>\s*<strong>[^<]+<\/strong>\s*<\/p>\s*/is, '');
-  return strongFirst;
+function promptFromItem(raw) {
+  if (!raw || typeof raw !== 'object') return '';
+  const fields = [raw.prompt, raw.passage, raw.text, raw.body];
+  for (const entry of fields) {
+    if (typeof entry === 'string' && entry.trim()) return entry;
+  }
+  return '';
 }

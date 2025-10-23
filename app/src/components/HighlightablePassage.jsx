@@ -1,19 +1,25 @@
 import React from "react";
 
-export default function HighlightablePassage({ text, spans = [] }) {
-    if (!spans.length) return <pre className="whitespace-pre-wrap">{text}</pre>;
-    const sorted = [...spans].sort((a, b) => a.start - b.start);
-    const parts = [];
-    let i = 0;
-    sorted.forEach((s, idx) => {
-        if (s.start > i) parts.push(<span key={`t-${idx}-pre`}>{text.slice(i, s.start)}</span>);
-        parts.push(
-            <mark key={`m-${idx}`} className="bg-yellow-200">
-                {text.slice(s.start, s.end)}
-            </mark>
-        );
-        i = s.end;
-    });
-    if (i < text.length) parts.push(<span key="t-last">{text.slice(i)}</span>);
-    return <pre className="whitespace-pre-wrap">{parts}</pre>;
+export default function HighlightablePassage({ text = "", spans = [] }) {
+  if (!text) return null;
+  const safeSpans = Array.isArray(spans)
+    ? spans
+        .filter((s) => Number.isFinite(s?.start) && Number.isFinite(s?.end) && s.end > s.start)
+        .sort((a, b) => a.start - b.start)
+    : [];
+
+  const out = [];
+  let i = 0;
+  for (const s of safeSpans) {
+    if (s.start > i) out.push(<span key={`t-${i}`}>{text.slice(i, s.start)}</span>);
+    out.push(
+      <mark key={`m-${s.start}-${s.end}`} data-label={s.label || ""}>
+        {text.slice(s.start, s.end)}
+      </mark>
+    );
+    i = s.end;
+  }
+  if (i < text.length) out.push(<span key={`t-end`}>{text.slice(i)}</span>);
+
+  return <p className="whitespace-pre-wrap leading-relaxed">{out}</p>;
 }

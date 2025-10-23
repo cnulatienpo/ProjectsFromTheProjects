@@ -1,103 +1,45 @@
-export default function FeedbackTray({
-  feedback = null,
-  result = null,
-  submitting = false,
-  canSubmit = true,
-  onSubmit = null,
-  onNext = null,
-  onSkip = null,
-  error = '',
-  nextEnabled = false,
-}) {
-  const payload = feedback ?? result ?? null;
+import React from 'react';
+
+export default function FeedbackTray({ result, feedback, onNext }) {
+  const payload = result ?? feedback ?? null;
+  const score = Number.isFinite(payload?.score) ? Math.round(payload.score * 100) : null;
+  const rubric = Array.isArray(payload?.rubric) ? payload.rubric : [];
+  const nextHints = Array.isArray(payload?.nextHints) ? payload.nextHints : [];
   const lines = [];
-
-  if (payload?.score != null) {
-    lines.push(`Score: ${Math.round(payload.score * 100)}%`);
-  }
-
-  const rubricEntries = Array.isArray(payload?.rubric) ? payload.rubric : [];
-  if (rubricEntries.length) {
-    lines.push('Rubric:');
-    for (const entry of rubricEntries) {
-      if (!entry) continue;
-      if (typeof entry === 'string') {
-        lines.push(`- ${entry}`);
-      } else {
-        const label = [entry.key, entry.ok != null ? (entry.ok ? '✓' : '✗') : null]
-          .filter(Boolean)
-          .join(' ');
-        lines.push(`- ${label || JSON.stringify(entry)}`);
-      }
+  if (score !== null) lines.push(`Score: ${score}%`);
+  if (rubric.length) lines.push(`Rubric:\n- ${rubric.join('\n- ')}`);
+  if (nextHints.length) lines.push(`Next:\n- ${nextHints.join('\n- ')}`);
+  if (payload?.details?.distance != null) {
+    const distance = Number(payload.details.distance);
+    if (Number.isFinite(distance)) {
+      lines.push(`Distance: ${distance.toFixed(2)}`);
     }
   }
-
-  const hintSources = [];
-  if (Array.isArray(payload?.nextHints)) hintSources.push(...payload.nextHints);
-  if (Array.isArray(payload?.next)) hintSources.push(...payload.next);
-  if (typeof payload?.next === 'string') hintSources.push(payload.next);
-  if (typeof payload?.nextHint === 'string') hintSources.push(payload.nextHint);
-  if (typeof payload?.fixSuggestion === 'string') hintSources.push(payload.fixSuggestion);
-  const hints = hintSources
-    .map((hint) => (hint == null ? '' : String(hint).trim()))
-    .filter(Boolean);
-  if (hints.length) {
-    lines.push('Next:');
-    for (const hint of hints) {
-      lines.push(`- ${hint}`);
+  if (payload?.details?.expAwarded != null) {
+    const exp = Number(payload.details.expAwarded);
+    if (Number.isFinite(exp)) {
+      lines.push(`EXP: +${exp}`);
     }
   }
-
-  const value = lines.join('\n');
-
+  if (payload?.leveledUp) {
+    lines.push('Level up!');
+  }
+  if (Array.isArray(payload?.badges) && payload.badges.length) {
+    lines.push(`Badges: ${payload.badges.join(', ')}`);
+  }
+  const text = lines.join('\n\n');
   return (
-    <div className="sigil-feedback-tray">
+    <div className="feedback-tray space-y-2">
       <textarea
-        className="feedback-box"
+        value={text}
         readOnly
-        rows={8}
-        value={value}
+        rows={Math.max(6, Math.min(16, (text.match(/\n/g)?.length || 2) + 2))}
+        className="w-full border rounded p-2 font-mono text-sm"
+        aria-label="Feedback"
       />
-
-      {error ? (
-        <div className="feedback-error" role="alert">
-          {error}
-        </div>
-      ) : null}
-
-      <div className="sigil-actions" style={{ marginTop: 12, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-        {onSubmit ? (
-          <button
-            type="button"
-            data-testid="btn-submit"
-            className="pfp-btn"
-            onClick={onSubmit}
-            disabled={!canSubmit || submitting}
-          >
-            {submitting ? 'Submitting…' : 'Submit'}
-          </button>
-        ) : null}
+      <div>
         {onNext ? (
-          <button
-            type="button"
-            data-testid="btn-next"
-            className="pfp-btn"
-            onClick={onNext}
-            disabled={submitting || !nextEnabled}
-          >
-            Next
-          </button>
-        ) : null}
-        {onSkip ? (
-          <button
-            type="button"
-            data-testid="btn-skip"
-            className="pfp-btn"
-            onClick={onSkip}
-            disabled={submitting}
-          >
-            I don't feel like it
-          </button>
+          <button onClick={onNext} className="px-3 py-2 border rounded">Next</button>
         ) : null}
       </div>
     </div>
