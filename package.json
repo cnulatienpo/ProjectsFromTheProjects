@@ -5,11 +5,11 @@
   "scripts": {
     "dev:server": "node server/index.js",
     "server:server": "node server/index.js",
-    "dev:app": "npm run dev --prefix app",
+    "dev:app": "npm --prefix app run dev",
     "dev:up": "bash scripts/dev-up.sh",
     "dev:down": "bash scripts/dev-down.sh",
     "build": "node scripts/offline-vite-build.mjs",
-    "build:app": "node scripts/offline-vite-build.mjs",
+    "build:app": "npm --prefix app run build",
     "smoke:content": "ts-node scripts/smokeContent.ts",
     "start": "node server/index.js",
     "dev": "bash scripts/dev-up.sh",
