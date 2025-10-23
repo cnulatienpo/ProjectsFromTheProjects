@@ -10,7 +10,7 @@ import { getLesson } from '@/services/sigilLesson';
 import { fetchNext, skipItem, submitAttempt } from '@/lib/attemptApi';
 
 const USER_ID = 'dev';
-const MODE = 'sigil';
+const MODE = 'why';
 
 const defaultBeatEmoticon = {
   action: '🔨',
@@ -82,7 +82,7 @@ export default function SigilRunner() {
           const nextItem = await fetchNext(USER_ID);
           if (ignore) return;
           if (nextItem?.id) {
-            setCurrentItem(nextItem);
+            setCurrentItem({ ...nextItem, mode: nextItem.mode || MODE });
             setFeedback(null);
             setSubmitError('');
             setText('');
@@ -169,7 +169,7 @@ export default function SigilRunner() {
     if (!plainText) return 0;
     return plainText.split(/\s+/).filter(Boolean).length;
   }, [plainText]);
-  const canSubmit = plainText.length > 0;
+  const canSubmit = true;
 
   const handleBeatInsert = (beatData) => {
     setPendingInsert(beatData);
@@ -180,7 +180,7 @@ export default function SigilRunner() {
   };
 
   async function handleSubmit() {
-    if (!canSubmit || submitting) return;
+    if (submitting) return;
     const itemId = currentItem?.id || lesson?.id || id;
     if (!itemId) {
       setSubmitError('Missing lesson id.');
@@ -218,8 +218,9 @@ export default function SigilRunner() {
     setLoading(true);
     try {
       const nextItem = await fetchNext(USER_ID);
-      setCurrentItem(nextItem || null);
-      const nextId = nextItem?.id ? String(nextItem.id) : null;
+      const normalized = nextItem ? { ...nextItem, mode: nextItem.mode || MODE } : null;
+      setCurrentItem(normalized);
+      const nextId = normalized?.id ? String(normalized.id) : null;
       if (!nextId) {
         setError('No additional lessons available.');
         setLoading(false);
@@ -263,7 +264,7 @@ export default function SigilRunner() {
       return;
     }
     try {
-      await skipItem(USER_ID, String(itemId), currentItem?.mode || MODE);
+      await skipItem({ userId: USER_ID, itemId: String(itemId) });
     } catch (e) {
       setSubmitError(e?.message || 'Failed to record skip.');
     }
@@ -372,6 +373,7 @@ export default function SigilRunner() {
             onNext={handleNext}
             onSkip={handleSkip}
             error={submitError}
+            nextEnabled={Boolean(feedback)}
           />
         </section>
       </div>

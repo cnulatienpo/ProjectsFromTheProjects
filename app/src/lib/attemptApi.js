@@ -29,7 +29,38 @@ async function safeFetchJSON(url, init) {
 
 // --- API helpers required by SigilRunner.jsx ---
 export async function fetchNext(userId = 'dev') {
-  return safeFetchJSON(makeUrl(`/api/next?userId=${encodeURIComponent(userId)}`));
+  const res = await safeFetchJSON(makeUrl(`/api/next?userId=${encodeURIComponent(userId)}`));
+  if (!res || typeof res !== 'object') return res ?? null;
+
+  const base = res && typeof res.item === 'object' && res.item !== null ? res.item : res;
+  if (!base || typeof base !== 'object') return null;
+
+  const item = { ...base };
+  if (item.id == null && res.id != null) {
+    item.id = res.id;
+  }
+  if (item.id == null) return null;
+  item.id = String(item.id);
+
+  const mode = res.mode ?? base.mode;
+  if (!item.mode && mode) {
+    item.mode = mode;
+  }
+  if (!item.mode) {
+    item.mode = 'why';
+  }
+
+  const introducesTop = res.introduces_beats;
+  if (!Array.isArray(item.introduces_beats) && Array.isArray(introducesTop)) {
+    item.introduces_beats = introducesTop;
+  }
+  if (Array.isArray(item.introduces_beats)) {
+    item.introduces_beats = item.introduces_beats
+      .map((beat) => (beat == null ? '' : String(beat).trim()))
+      .filter(Boolean);
+  }
+
+  return item;
 }
 
 export async function submitAttempt({ userId = 'dev', itemId, mode, answer }) {
