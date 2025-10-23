@@ -428,7 +428,7 @@ function __normalizeResult(r = {}, ctx = {}) {
 // If _grade is missing (edge case), fall back to a no-op that yields a valid shape.
 async function __fallbackGrade() { return {}; }
 
-export async function grade(mode, payload) {
+export async function gradeNormalized(mode, payload) {
   const coerced = __coerceMode(mode);
   const base = (typeof _grade === "function" ? await _grade(coerced, payload) : await __fallbackGrade(coerced, payload)) || {};
   return __normalizeResult(

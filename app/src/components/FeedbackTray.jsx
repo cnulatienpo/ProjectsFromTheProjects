@@ -2,30 +2,53 @@ export default function FeedbackTray({
   feedback = null,
   result = null,
   submitting = false,
-  canSubmit = false,
+  canSubmit = true,
   onSubmit = null,
   onNext = null,
   onSkip = null,
   error = '',
+  nextEnabled = false,
 }) {
   const payload = feedback ?? result ?? null;
-  const value = [
-    payload?.score != null ? `Score: ${Math.round(payload.score * 100)}%` : '',
-    Array.isArray(payload?.rubric) && payload.rubric.length
-      ? `Rubric: ${payload.rubric
-          .map((r) =>
-            typeof r === 'string' ? r : `${r.key}${r.ok ? '✓' : '✗'}`,
-          )
-          .join(', ')}`
-      : '',
-    payload?.details?.message ? `Note: ${payload.details.message}` : '',
-    payload?.fixSuggestion ? `Suggestion: ${payload.fixSuggestion}` : '',
-    Array.isArray(payload?.nextHints) && payload.nextHints.length
-      ? `Next: ${payload.nextHints.join(' | ')}`
-      : '',
-  ]
-    .filter(Boolean)
-    .join('\n');
+  const lines = [];
+
+  if (payload?.score != null) {
+    lines.push(`Score: ${Math.round(payload.score * 100)}%`);
+  }
+
+  const rubricEntries = Array.isArray(payload?.rubric) ? payload.rubric : [];
+  if (rubricEntries.length) {
+    lines.push('Rubric:');
+    for (const entry of rubricEntries) {
+      if (!entry) continue;
+      if (typeof entry === 'string') {
+        lines.push(`- ${entry}`);
+      } else {
+        const label = [entry.key, entry.ok != null ? (entry.ok ? '✓' : '✗') : null]
+          .filter(Boolean)
+          .join(' ');
+        lines.push(`- ${label || JSON.stringify(entry)}`);
+      }
+    }
+  }
+
+  const hintSources = [];
+  if (Array.isArray(payload?.nextHints)) hintSources.push(...payload.nextHints);
+  if (Array.isArray(payload?.next)) hintSources.push(...payload.next);
+  if (typeof payload?.next === 'string') hintSources.push(payload.next);
+  if (typeof payload?.nextHint === 'string') hintSources.push(payload.nextHint);
+  if (typeof payload?.fixSuggestion === 'string') hintSources.push(payload.fixSuggestion);
+  const hints = hintSources
+    .map((hint) => (hint == null ? '' : String(hint).trim()))
+    .filter(Boolean);
+  if (hints.length) {
+    lines.push('Next:');
+    for (const hint of hints) {
+      lines.push(`- ${hint}`);
+    }
+  }
+
+  const value = lines.join('\n');
 
   return (
     <div className="sigil-feedback-tray">
@@ -34,7 +57,6 @@ export default function FeedbackTray({
         readOnly
         rows={8}
         value={value}
-        placeholder="Submit to see feedback."
       />
 
       {error ? (
@@ -61,7 +83,7 @@ export default function FeedbackTray({
             data-testid="btn-next"
             className="pfp-btn"
             onClick={onNext}
-            disabled={submitting}
+            disabled={submitting || !nextEnabled}
           >
             Next
           </button>
