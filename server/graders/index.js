@@ -376,7 +376,7 @@ export async function _grade({ mode, item, answer }) {
   }
 }
 
-export async function grade(modeOrPayload, maybePayload) {
+export async function _grade(modeOrPayload, maybePayload) {
   const basePayload = (typeof modeOrPayload === 'string')
     ? { ...(maybePayload || {}), mode: modeOrPayload }
     : ((modeOrPayload && typeof modeOrPayload === 'object') ? modeOrPayload : {});
@@ -428,7 +428,7 @@ function __normalizeResult(r = {}, ctx = {}) {
 // If _grade is missing (edge case), fall back to a no-op that yields a valid shape.
 async function __fallbackGrade() { return {}; }
 
-export async function grade(mode, payload) {
+async function __grade_removed__(mode, payload) {
   const coerced = __coerceMode(mode);
   const base = (typeof _grade === "function" ? await _grade(coerced, payload) : await __fallbackGrade(coerced, payload)) || {};
   return __normalizeResult(
@@ -436,3 +436,47 @@ export async function grade(mode, payload) {
     { mode: coerced, userId: payload?.userId, itemId: payload?.itemId }
   );
 }
+
+// --- [dedupe wrapper appended by fix/graders-dedupe-grade] ---
+const __AUD_ALLOWED_1 = new Set(["name","missing","order","highlight","fix","why","sigil"]);
+function __aud_coerce_mode_1(m){ const s=(m??"").toString().toLowerCase(); return __AUD_ALLOWED_1.has(s)?s:"why"; }
+function __aud_normalize_1(r = {}, ctx = {}) {
+  const now = new Date().toISOString();
+  const userId = ctx.userId ?? r.userId ?? "anon";
+  const itemId = ctx.itemId ?? r.itemId ?? null;
+  const mode   = ctx.mode   ?? r.mode   ?? "why";
+  return {
+    ok: true,
+    userId,
+    itemId,
+    mode,
+    score: typeof r.score === "number" ? r.score : 0.0,
+    rubric: Array.isArray(r.rubric) ? r.rubric : [],
+    spans: Array.isArray(r.spans) ? r.spans : [],
+    correctSequence: Array.isArray(r.correctSequence) ? r.correctSequence : [],
+    fixSuggestion: r.fixSuggestion ?? null,
+    nextHints: Array.isArray(r.nextHints) ? r.nextHints : [],
+    details: (r.details && typeof r.details === "object") ? r.details : {},
+    leveledUp: !!r.leveledUp,
+    level: Number.isFinite(r.level) ? r.level : 1,
+    badges: Array.isArray(r.badges) ? r.badges : [],
+    gradedAt: typeof r.gradedAt === "string" ? r.gradedAt : now
+  };
+}
+
+// IMPORTANT: `_grade` is the original function renamed above. If it somehow does not exist, fallback to empty.
+async function __aud_fallback_grade_1(){ return {}; }
+
+export async function grade(mode, payload) {
+  const coerced = __aud_coerce_mode_1(mode);
+  let base = {};
+  try {
+    if (typeof _grade === "function") base = await _grade(coerced, payload);
+    else base = await __aud_fallback_grade_1(coerced, payload);
+  } catch {}
+  return __aud_normalize_1(
+    { ...base, mode: coerced, userId: payload?.userId, itemId: payload?.itemId },
+    { mode: coerced, userId: payload?.userId, itemId: payload?.itemId }
+  );
+}
+// --- [end wrapper] ---
