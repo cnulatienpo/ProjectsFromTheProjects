@@ -27,6 +27,10 @@ const { resolve } = path;
 const __filename = fileURLToPath(import.meta.url);
 const app = express();
 
+// --- hotfix helpers for /api/attempt mode coercion ---
+const __ALLOWED_MODES = new Set(["name","missing","order","highlight","fix","why","sigil"]);
+function __coerceAllowedMode(m){ const s=(m??"").toString().toLowerCase(); return __ALLOWED_MODES.has(s)?s:"why"; }
+
 // ---- static bundle paths (single source of truth)
 const distDir = path.resolve(process.cwd(), 'app', 'dist');
 const distIndex = path.join(distDir, 'index.html');
@@ -400,3 +404,6 @@ process.on('SIGINT', () => {
 });
 
 listenWithRetry(basePort);
+
+// --- hotfix: coerce unknown modes to "why" so grader never errors ---
+// --- hotfix helpers for /api/attempt mode coercion ---
