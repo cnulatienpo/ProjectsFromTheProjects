@@ -4,6 +4,7 @@ import { LOOKOUT_CONFIG } from "./config.js";
 import { validateAndNormalizeEvent } from "./validator.js";
 import { LookoutAggregator } from "./aggregator.js";
 import { loadSecretsOrThrow, makeS3Client, putObjectText } from "./uploader.js";
+import { scheduleHourlyFlush } from "./scheduler.js";
 
 function utcDateHourKey() {
   const iso = new Date().toISOString();
@@ -83,14 +84,12 @@ async function main() {
     await flushOnce({ aggregator, s3, bucket: secrets.bucket });
   }
 
-  // Hourly flush (fixed interval). This flushes “what happened in the last hour of runtime”.
+  //scheduleHourlyFlush(async () => {
+  await flushOnce({ aggregator, s3, bucket: secrets.bucket });
+});
+ Hourly flush (fixed interval). This flushes “what happened in the last hour of runtime”.
   // If you want boundary-aligned (top-of-hour) flushing, replace with a scheduler that sleeps until next hour.
-  setInterval(() => {
-    flushOnce({ aggregator, s3, bucket: secrets.bucket }).catch((e) => {
-      console.error("[lookout] flush error:", e?.message || e);
-    });
-  }, LOOKOUT_CONFIG.flush.intervalMs);
-}
+  
 
 async function flushOnce({ aggregator, s3, bucket }) {
   const snap = aggregator.snapshotAndReset();
