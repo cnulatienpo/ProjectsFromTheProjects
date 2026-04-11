@@ -1,6 +1,0 @@
-.beat-writing-wrap {
-    position: relative;
-    margin-left: var(--rail-left, 96px);
-    height: 100%;
-    /* Ensure it takes full height */
-}
